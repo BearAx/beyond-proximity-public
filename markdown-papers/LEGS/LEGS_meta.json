@@ -1,0 +1,775 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Language-Embedded Gaussian Splats (LEGS):\nIncrementally Building Room-Scale Representations with a Mobile Robot",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          54.0,
+          71.9296875
+        ],
+        [
+          558.0992431640625,
+          71.9296875
+        ],
+        [
+          558.0992431640625,
+          108.67376708984375
+        ],
+        [
+          54.0,
+          108.67376708984375
+        ]
+      ]
+    },
+    {
+      "title": "I . I N T R O D U C T I O N",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          129.09375,
+          390.97265625
+        ],
+        [
+          222.0034637451172,
+          390.97265625
+        ],
+        [
+          222.0034637451172,
+          401.0330810546875
+        ],
+        [
+          129.09375,
+          401.0330810546875
+        ]
+      ]
+    },
+    {
+      "title": "I I . RE L AT E D W O R K",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          127.001953125,
+          168.609375
+        ],
+        [
+          225.615234375,
+          168.609375
+        ],
+        [
+          225.615234375,
+          179.05303955078125
+        ],
+        [
+          127.001953125,
+          179.05303955078125
+        ]
+      ]
+    },
+    {
+      "title": "A. Mobile Robot Mapping",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          51.697265625,
+          184.078125
+        ],
+        [
+          162.53256225585938,
+          184.078125
+        ],
+        [
+          162.53256225585938,
+          194.171630859375
+        ],
+        [
+          51.697265625,
+          194.171630859375
+        ]
+      ]
+    },
+    {
+      "title": "B. Semantic Scene Mapping for Robotics",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          53.19140625,
+          433.51171875
+        ],
+        [
+          223.73280334472656,
+          433.51171875
+        ],
+        [
+          223.73280334472656,
+          443.5436096191406
+        ],
+        [
+          53.19140625,
+          443.5436096191406
+        ]
+      ]
+    },
+    {
+      "title": "C. 3D Gaussian Splatting",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          312.275390625,
+          360.421875
+        ],
+        [
+          420.0887145996094,
+          360.421875
+        ],
+        [
+          420.0887145996094,
+          371.4405822753906
+        ],
+        [
+          312.275390625,
+          371.4405822753906
+        ]
+      ]
+    },
+    {
+      "title": "D. Concurrent Research",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          312.275390625,
+          623.77734375
+        ],
+        [
+          413.47357177734375,
+          623.77734375
+        ],
+        [
+          413.47357177734375,
+          634.3056030273438
+        ],
+        [
+          312.275390625,
+          634.3056030273438
+        ]
+      ]
+    },
+    {
+      "title": "I I I . P R O B L E M S TAT E M E N T",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          108.7734375,
+          561.90234375
+        ],
+        [
+          243.67092895507812,
+          561.90234375
+        ],
+        [
+          243.67092895507812,
+          572.424072265625
+        ],
+        [
+          108.7734375,
+          572.424072265625
+        ]
+      ]
+    },
+    {
+      "title": "I V. M E T H O D S",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          398.63671875,
+          348.046875
+        ],
+        [
+          471.0531921386719,
+          348.046875
+        ],
+        [
+          471.0531921386719,
+          358.8240966796875
+        ],
+        [
+          398.63671875,
+          358.8240966796875
+        ]
+      ]
+    },
+    {
+      "title": "A. Multi-Camera Reconstruction",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          310.78125,
+          659.35546875
+        ],
+        [
+          447.4261169433594,
+          659.35546875
+        ],
+        [
+          447.4261169433594,
+          670.5896148681641
+        ],
+        [
+          310.78125,
+          670.5896148681641
+        ]
+      ]
+    },
+    {
+      "title": "B. Incremental 3DGS Construction + Bundle Adjustment",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          52.5,
+          169.5
+        ],
+        [
+          289.5,
+          169.5
+        ],
+        [
+          289.5,
+          178.5
+        ],
+        [
+          52.5,
+          178.5
+        ]
+      ]
+    },
+    {
+      "title": "C. Language Embedded Gaussian Splats",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          52.5,
+          660.0
+        ],
+        [
+          222.75,
+          660.0
+        ],
+        [
+          222.75,
+          669.796875
+        ],
+        [
+          52.5,
+          669.796875
+        ]
+      ]
+    },
+    {
+      "title": "V. EXPERIMENTS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          389.373046875,
+          593.61328125
+        ],
+        [
+          480.75,
+          593.61328125
+        ],
+        [
+          480.75,
+          603.0
+        ],
+        [
+          389.373046875,
+          603.0
+        ]
+      ]
+    },
+    {
+      "title": "A. Physical Experiments",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          310.18359375,
+          611.25
+        ],
+        [
+          414.75,
+          611.25
+        ],
+        [
+          414.75,
+          621.0
+        ],
+        [
+          310.18359375,
+          621.0
+        ]
+      ]
+    },
+    {
+      "title": "B. Reconstruction quality comparison",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          52.59375,
+          332.19140625
+        ],
+        [
+          209.57594299316406,
+          332.19140625
+        ],
+        [
+          209.57594299316406,
+          342.41058349609375
+        ],
+        [
+          52.59375,
+          342.41058349609375
+        ]
+      ]
+    },
+    {
+      "title": "V I . LI M I TAT I O N S",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          390.26953125,
+          218.49609375
+        ],
+        [
+          480.0084533691406,
+          218.49609375
+        ],
+        [
+          480.0084533691406,
+          228.93603515625
+        ],
+        [
+          390.26953125,
+          228.93603515625
+        ]
+      ]
+    },
+    {
+      "title": "V I I . C O N C L U S I O N",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          387.580078125,
+          609.85546875
+        ],
+        [
+          482.5376281738281,
+          609.85546875
+        ],
+        [
+          482.5376281738281,
+          621.3650817871094
+        ],
+        [
+          387.580078125,
+          621.3650817871094
+        ]
+      ]
+    },
+    {
+      "title": "RE F E R E N C E S",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          143.4375,
+          54.4814453125
+        ],
+        [
+          209.03756713867188,
+          54.4814453125
+        ],
+        [
+          209.03756713867188,
+          64.44403076171875
+        ],
+        [
+          143.4375,
+          64.44403076171875
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          261
+        ],
+        [
+          "Line",
+          94
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "Footnote",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          327
+        ],
+        [
+          "Line",
+          110
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          187
+        ],
+        [
+          "Line",
+          78
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          116
+        ],
+        [
+          "Span",
+          34
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          133
+        ],
+        [
+          "Line",
+          50
+        ],
+        [
+          "TableCell",
+          18
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          216
+        ],
+        [
+          "Line",
+          88
+        ],
+        [
+          "TableCell",
+          14
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          636
+        ],
+        [
+          "Line",
+          150
+        ],
+        [
+          "ListItem",
+          57
+        ],
+        [
+          "Reference",
+          57
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/LEGS"
+}

@@ -1,0 +1,30 @@
+# 3D Data
+*.ply
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+.venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cursor/IDE
+.cursor/
+.vscode/
+
+# Build
+dist/
+build/
+*.egg-info/
