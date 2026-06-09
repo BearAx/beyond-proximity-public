@@ -6,6 +6,10 @@ scenes/
 outputs/
 *.zip
 
+# Large pilot scene binaries (keep json/scripts in git)
+data/replica/**/rgb/
+data/replica/**/depth/
+
 # Python
 __pycache__/
 *.py[cod]

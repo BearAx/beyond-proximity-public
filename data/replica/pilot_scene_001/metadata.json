@@ -1,0 +1,51 @@
+{
+  "scene_name": "default",
+  "source_dataset": "provided_data_converted_as_replica_pilot",
+  "num_frames": 19,
+  "has_rgb": true,
+  "rgb_mode": "RGB",
+  "original_rgb_mode": "RGBA",
+  "has_depth": true,
+  "depth_format": ".npy",
+  "depth_shape": [
+    733,
+    1722
+  ],
+  "has_poses": true,
+  "has_intrinsics": true,
+  "has_ground_truth_labels": false,
+  "image_policy": "converted RGBA to RGB; kept original resolution; scaled intrinsics to 1722x733",
+  "depth_stats_first_5": [
+    {
+      "min": 0.10000000149011612,
+      "max": 0.10000000149011612,
+      "mean": 0.10000000894069672
+    },
+    {
+      "min": 0.10000000149011612,
+      "max": 0.10000000149011612,
+      "mean": 0.10000000894069672
+    },
+    {
+      "min": 0.10000000149011612,
+      "max": 0.10000000149011612,
+      "mean": 0.10000000894069672
+    },
+    {
+      "min": 0.10000000149011612,
+      "max": 0.10000000149011612,
+      "mean": 0.10000000894069672
+    },
+    {
+      "min": 0.10000000149011612,
+      "max": 0.10000000149011612,
+      "mean": 0.10000000894069672
+    }
+  ],
+  "depth_all_constant": true,
+  "warnings": [
+    "Depth arrays are constant-valued at 0.1, so they are not useful for real 3D geometry.",
+    "Intrinsics were originally 800x600 and have been scaled to match actual RGB resolution 1722x733.",
+    "This is not an official Replica scene; it is project data converted to the expected unified format."
+  ]
+}
