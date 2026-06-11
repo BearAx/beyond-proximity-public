@@ -1,8 +1,8 @@
 /**
  * ControlPanel — scene selector, PLY URL input, and tree refresh button.
  */
-import React, { useState } from 'react'
-import { scenesApi, treeApi, queryApi, queryLogApi } from '../../api/client'
+import React, { useEffect, useState } from 'react'
+import { healthApi, scenesApi, treeApi, queryApi, queryLogApi } from '../../api/client'
 import { useSceneStore } from '../../store/sceneStore'
 import { useTreeStore } from '../../store/treeStore'
 import { useQueryStore } from '../../store/queryStore'
@@ -22,8 +22,45 @@ export function ControlPanel({ onPlyUrlChange, plyUrl }: ControlPanelProps) {
 
   const [inputScene, setInputScene]   = useState(sceneId)
   const [inputPly,   setInputPly]     = useState(plyUrl)
+  const [plyOptions, setPlyOptions]   = useState<string[]>([])
   const [status,     setStatus]       = useState<string | null>(null)
   const [queryText,  setQueryText]    = useState('')
+
+  useEffect(() => {
+    setInputPly(plyUrl)
+  }, [plyUrl])
+
+  const refreshPlyList = async (autoPick = false) => {
+    try {
+      const res = await healthApi.get()
+      const files = res.data.ply_files ?? []
+      setPlyOptions(files)
+      if (files.length === 0) {
+        setStatus('Нет .ply в scenes/ — положи файлы в папку scenes/')
+        return
+      }
+      if (autoPick && !plyUrl) {
+        const preferred = files.find((f) => f === 'ConferenceHall.ply') ?? files[0]
+        const url = `/scenes/${preferred}`
+        setInputPly(url)
+        onPlyUrlChange(url)
+      }
+      setStatus(`Доступно сцен: ${files.length}`)
+    } catch {
+      setStatus('Backend не отвечает — проверь ./start_all.sh')
+    }
+  }
+
+  useEffect(() => {
+    refreshPlyList(true)
+    const onFocus = () => refreshPlyList()
+    const timer = window.setInterval(() => refreshPlyList(), 10_000)
+    window.addEventListener('focus', onFocus)
+    return () => {
+      window.removeEventListener('focus', onFocus)
+      window.clearInterval(timer)
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const applyScene = async () => {
     setSceneId(inputScene)
@@ -115,15 +152,33 @@ export function ControlPanel({ onPlyUrlChange, plyUrl }: ControlPanelProps) {
         </button>
       </div>
 
-      {/* PLY URL */}
-      <div className="flex items-center gap-1.5 flex-1 min-w-[200px]">
-        <label className="text-xs text-gray-400 whitespace-nowrap">PLY URL</label>
-        <input
-          className="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-white flex-1 focus:outline-none focus:border-green-500"
-          value={inputPly}
-          onChange={(e) => setInputPly(e.target.value)}
-          placeholder="/scenes/ConferenceHall.ply"
-        />
+      {/* PLY scene */}
+      <div className="flex items-center gap-1.5 flex-1 min-w-[260px]">
+        <label className="text-xs text-gray-400 whitespace-nowrap">3D Scene</label>
+        {plyOptions.length > 0 ? (
+          <select
+            className="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-white flex-1 focus:outline-none focus:border-green-500"
+            value={inputPly}
+            onChange={(e) => {
+              setInputPly(e.target.value)
+              onPlyUrlChange(e.target.value)
+              setStatus('Loading PLY…')
+            }}
+          >
+            {plyOptions.map((f) => (
+              <option key={f} value={`/scenes/${f}`}>
+                {f}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <input
+            className="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-white flex-1 focus:outline-none focus:border-green-500"
+            value={inputPly}
+            onChange={(e) => setInputPly(e.target.value)}
+            placeholder="/scenes/ConferenceHall.ply"
+          />
+        )}
         <button
           onClick={loadPly}
           className="text-xs bg-indigo-700 hover:bg-indigo-600 text-white px-2 py-1 rounded transition-colors"
