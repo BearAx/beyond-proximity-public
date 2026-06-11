@@ -19,6 +19,7 @@ from backend.query.pipeline import (
     build_traversal_step,
     build_leaf_confirmation_for_view,
 )
+from backend.query.benchmark import compare_modes, DEFAULT_BENCHMARK_QUERIES
 
 router = APIRouter()
 
@@ -162,6 +163,31 @@ def api_map_refined_bbox(scene_id: str, body: MapRefinedBBoxRequest):
     """
     mapped = map_refined_bbox(body.crop_region, body.bbox_in_crop)
     return {"bbox_2d_original": mapped}
+
+
+# ── Graph vs flat benchmark (resources & speed) ────────────────────────────────
+
+
+class BenchmarkRequest(BaseModel):
+    query: Optional[str] = None
+    queries: Optional[list[str]] = None
+
+
+@router.post("/{scene_id}/benchmark")
+def api_query_benchmark(scene_id: str, body: BenchmarkRequest):
+    """Compare graph-pruned vs flat (all-views) search — counts prompt tokens."""
+    queries = body.queries or ([body.query] if body.query else DEFAULT_BENCHMARK_QUERIES)
+    results = [compare_modes(scene_id, q) for q in queries]
+    n = len(results)
+    avg_token_savings = (
+        sum(r["savings"]["tokens_pct"] for r in results) / n if n else 0
+    )
+    return {
+        "scene_id": scene_id,
+        "queries_run": n,
+        "avg_token_savings_pct": round(avg_token_savings, 1),
+        "results": results,
+    }
 
 
 # ── Optional keyword demo (not part of the spec algorithm) ──────────────────

@@ -3,6 +3,10 @@ import type { CapturePayload, SceneInfo, D3TreeNode, QueryResult, BBox3D } from 
 
 const api = axios.create({ baseURL: '/api' })
 
+export const healthApi = {
+  get: () => api.get<{ status: string; scenes_dir: string; ply_files: string[] }>('/health'),
+}
+
 // ── Scenes ────────────────────────────────────────────────────────────────────
 
 export const scenesApi = {
