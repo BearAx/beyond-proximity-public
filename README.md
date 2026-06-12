@@ -1,248 +1,225 @@
-<p align="center">
-  <img src="docs/assets/banner-animated.svg" alt="SemanticSplat" width="100%"/>
-</p>
+<div align="center">
 
-<h3 align="center">Open-vocabulary object search in 3D Gaussian Splatting scenes<br/>via hierarchical semantic trees &amp; graph-pruned VLM traversal</h3>
+# SemanticSplat
 
-<p align="center">
-  <a href="https://github.com/LeoPython2006/beyond-proximity"><img src="https://img.shields.io/badge/🌐-LeoPython2006%2Fbeyond--proximity-4ade80?style=for-the-badge&logo=github&logoColor=white"/></a>
-  <a href="docs/benchmark_graph_vs_flat.md"><img src="https://img.shields.io/badge/📊-Benchmark-22d3ee?style=for-the-badge"/></a>
-  <a href="docs/launch_guide_ru.md"><img src="https://img.shields.io/badge/🇷🇺-Launch%20Guide-64748b?style=for-the-badge"/></a>
-  <a href="docs/benchmark_results/failure_case_demo.mp4"><img src="https://img.shields.io/badge/🎬-Demo%20Video-f97316?style=for-the-badge"/></a>
-</p>
+**Language-grounded object search in 3D Gaussian Splatting scenes**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white"/>
-  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black"/>
-  <img src="https://img.shields.io/badge/3DGS-Spark.js-0ea5e9?style=flat-square"/>
-  <img src="https://img.shields.io/badge/MCP-Cursor-111827?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Scene-19%20views-4ade80?style=flat-square"/>
-</p>
+[![GitHub](https://img.shields.io/badge/github-LeoPython2006%2Fbeyond--proximity-181717?style=flat-square&logo=github)](https://github.com/LeoPython2006/beyond-proximity)
+[![Python](https://img.shields.io/badge/python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](backend/requirements.txt)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](backend/api/server.py)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](frontend/package.json)
+[![Docs](https://img.shields.io/badge/docs-benchmark-0ea5e9?style=flat-square)](docs/benchmark_graph_vs_flat.md)
 
-<p align="center">
-  <a href="#-highlights">Highlights</a> ·
-  <a href="#-method">Method</a> ·
-  <a href="#-results">Results</a> ·
-  <a href="#-demo">Demo</a> ·
-  <a href="#-quick-start">Quick Start</a> ·
-  <a href="#-citation">Citation</a>
-</p>
+[Quick Start](#quick-start) · [Results](#results) · [Method](#method) · [Demo](#demo) · [Docs](#documentation) · [Citation](#citation)
+
+<img src="docs/assets/hero-banner.png" alt="SemanticSplat — 3D Gaussian Splatting semantic navigation" width="100%"/>
+
+</div>
 
 ---
 
-## Overview
+SemanticSplat is a research prototype for **open-vocabulary object search** in large indoor 3DGS scenes. The system builds a **hierarchical semantic tree** from VLM annotations and runs **graph-pruned top-down traversal** (design spec §7) instead of checking every captured view.
 
-**SemanticSplat** navigates large indoor **3D Gaussian Splatting** environments with natural language. A VLM-indexed **semantic tree** prunes the search space before leaf-level confirmation — yielding **4.1×** lower estimated latency and **zero wrong-room failures** on our curated disambiguation suite (flat search fails **2/5**).
+Compared to a flat exhaustive baseline on scene `default` (19 views, 15 tree nodes):
 
-```
-Query  →  Decompose  →  Tree traverse  →  Leaf VLM  →  2D bbox  →  3D unprojection
-         (§7)            (~4 views)        (not 19)
-```
+| | Graph search | Flat search |
+|:--|--:|--:|
+| Est. latency | **48.7 s** | 197.0 s |
+| Input tokens | **6,430** | 26,604 |
+| Views checked | **4.0** | 19.0 |
+| Wrong-room failures (5 cases) | **0** | 2 |
 
-<p align="center">
-  <img src="docs/assets/pipeline-animated.svg" alt="Animated §7 pipeline" width="92%"/>
-</p>
-
----
-
-## ✨ Highlights
-
-<table>
-<tr>
-<td align="center" width="25%">
-<h3>4.1×</h3>
-<sub>faster est. time<br/>graph vs flat</sub>
-</td>
-<td align="center" width="25%">
-<h3>8.5×</h3>
-<sub>fewer input tokens</sub>
-</td>
-<td align="center" width="25%">
-<h3>4 / 19</h3>
-<sub>views checked<br/>per query</sub>
-</td>
-<td align="center" width="25%">
-<h3>0 / 5</h3>
-<sub>wrong-room failures<br/>(graph)</sub>
-</td>
-</tr>
-</table>
-
-| Capability | Description |
-|:-----------|:------------|
-| **Navigator** | Fly through `.ply` splats in-browser (Spark.js, WASD) |
-| **Semantic tree** | Recursive zones/leaves built with Cursor + MCP + VLM |
-| **Query Flow** | Live §7 pipeline trace — decomposition → traversal → leaf checks |
-| **One-click Ask** | Auto-runs search in backend — no session ID copy-paste |
-| **Benchmark suite** | `./run_all_docs.sh` → charts, reasoning traces, demo MP4 |
+Full report: [`docs/benchmark_graph_vs_flat.md`](docs/benchmark_graph_vs_flat.md)
 
 ---
 
-## 🔬 Method
+## News
+
+- **2026-06-12** — **Ask** button auto-runs the §7 pipeline in the backend ([`live_session.py`](backend/query/live_session.py)); Query Flow polls live steps.
+- **2026-06-12** — Benchmark suite + reasoning traces + failure-case demo video under [`docs/benchmark_results/`](docs/benchmark_results/).
+- **2026-06-11** — Graph vs flat benchmark: **4.1×** faster, **8.5×** fewer tokens on demo queries.
+
+---
+
+## Method
+
+<img src="docs/assets/pipeline.svg" alt="Query pipeline: Query to Decompose to Traverse to Leaf VLM to 2D bbox to 3D bbox" width="100%"/>
 
 ```mermaid
-flowchart LR
-    subgraph A["① Capture"]
-        PLY["3DGS scene"]
-        CAP["RGB + depth + pose"]
+flowchart TB
+    subgraph capture [1. Capture]
+        ply[3DGS PLY scene]
+        nav[Browser navigator]
+        cap[RGB + depth + pose]
+        ply --> nav --> cap
     end
-    subgraph B["② Index"]
-        VLM["ViewJSON annotations"]
-        TREE["Semantic tree"]
+    subgraph index [2. Semantic index]
+        vlm[VLM view analysis]
+        tree[Semantic tree]
+        cap --> vlm --> tree
     end
-    subgraph C["③ Search"]
-        G["Graph traverse"]
-        F["Flat baseline"]
+    subgraph search [3. Query]
+        q[Natural language query]
+        dec[Decomposition]
+        trav[Tree traversal]
+        leaf[Leaf confirmation]
+        bbox[Depth unprojection]
+        q --> dec --> trav --> leaf --> bbox
     end
-    PLY --> CAP --> VLM --> TREE
-    TREE --> G
-    TREE --> F
-    G -->|"~4 views"| OK["✓ localize"]
-    F -->|"19 views"| OK
+    tree --> trav
 ```
 
-| Stage | Input | Output |
-|:------|:------|:-------|
-| Capture | `.ply` + user flight | `views/`, `depths/`, poses |
-| Analysis | VLM via MCP | `ViewJSON` per view |
-| Structure | LLM recursion | `tree/*.json` |
-| **Graph search** | NL query | pruned traversal → bbox₃D |
-| **Flat search** | NL query | exhaustive → bbox₃D |
+| Stage | Mechanism | Artifact |
+|:------|:----------|:---------|
+| Capture | Spark.js viewer, key **R** | `views/`, `depths/`, `transforms.json` |
+| Analysis | Cursor + MCP + VLM | `views/v*.json` (ViewJSON) |
+| Structure | Recursive zone / leaf tree | `tree/*.json` |
+| Graph search | Top-down prune | ~4 leaf checks per query |
+| Flat baseline | Exhaustive scan | 19 leaf checks per query |
 
-**Failure case:** *“Where is the screen in the conference room?”* — flat → lobby screen (**v012**); graph → ballroom stage screen (**v017**).
-
----
-
-## 📊 Results
-
-<p align="center">
-  <img src="docs/benchmark_results/summary_averages.png" width="48%"/>
-  &nbsp;
-  <img src="docs/benchmark_results/speedup_per_query.png" width="48%"/>
-</p>
-
-<p align="center">
-  <img src="docs/benchmark_results/tokens_comparison.png" width="48%"/>
-  &nbsp;
-  <img src="docs/benchmark_results/failure_room_accuracy.png" width="48%"/>
-</p>
-
-<p align="center">
-  <a href="docs/benchmark_graph_vs_flat.md"><b>→ Full benchmark report</b></a>
-  &nbsp;·&nbsp;
-  scene <code>default</code> · 19 views · 15 nodes · 2026-06-12
-</p>
-
-| | Graph | Flat | Δ |
-|:--|--:|--:|:--|
-| Est. time | **48.7 s** | 197.0 s | 4.1× |
-| Tokens | **6,430** | 26,604 | 8.5× |
-| Views | **4.0** | 19.0 | 12.5× |
-| Wrong-room | **0** | 2 | graph wins |
+**Representative failure case:** *"Where is the screen in the conference room?"* — flat returns a lobby screen (`v012`); graph returns the ballroom stage screen (`v017`).
 
 ---
 
-### Demo video — conference-room screen disambiguation
+## Results
 
-[▶ **Watch failure-case demo (MP4)**](docs/benchmark_results/failure_case_demo.mp4) · graph finds stage screen · flat picks wrong room
+<div align="center">
+<table>
+<tr>
+<td align="center"><img src="docs/benchmark_results/summary_averages.png" alt="Average metrics" width="400"/><br/><sub>Average metrics</sub></td>
+<td align="center"><img src="docs/benchmark_results/speedup_per_query.png" alt="Speedup per query" width="400"/><br/><sub>Speedup per query</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/benchmark_results/tokens_comparison.png" alt="Token comparison" width="400"/><br/><sub>Token usage</sub></td>
+<td align="center"><img src="docs/benchmark_results/failure_room_accuracy.png" alt="Room accuracy" width="400"/><br/><sub>Room disambiguation</sub></td>
+</tr>
+</table>
+</div>
 
-| Asset | Link |
-|:------|:-----|
-| Demo video (MP4) | [`docs/benchmark_results/failure_case_demo.mp4`](docs/benchmark_results/failure_case_demo.mp4) |
+Timing model (fast LLM, no extended thinking): `total_sec ≈ infra + llm_calls×0.35 + tokens/140`. See [methodology](docs/benchmark_graph_vs_flat.md#methodology).
+
+---
+
+## Demo
+
+**Failure-case video** — conference-room screen disambiguation (graph vs flat):
+
+**[Download / watch: failure_case_demo.mp4](docs/benchmark_results/failure_case_demo.mp4)**
+
+| Resource | Link |
+|:---------|:-----|
+| Demo MP4 | [`docs/benchmark_results/failure_case_demo.mp4`](docs/benchmark_results/failure_case_demo.mp4) |
 | Reasoning traces | [`docs/project_log/runs/2026-06-12_1829/reasoning/`](docs/project_log/runs/2026-06-12_1829/reasoning/) |
-| Live UI | `./start_all.sh` → **Query Flow** tab |
+| Live UI | `./start_all.sh` → tab **Query Flow** |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
+
+### Run the app
 
 ```bash
 chmod +x start_all.sh run_all_docs.sh
-./start_all.sh          # → http://localhost:5173
+./start_all.sh
 ```
 
-| # | Action |
-|:-:|:-------|
-| 1 | Scene **`default`** → **Set** |
-| 2 | Load **`ConferenceHall.ply`** |
-| 3 | Fly + press **`R`** to capture views |
-| 4 | Type query → **Ask** → open **Query Flow** |
+Open **http://localhost:5173**
 
-<details>
-<summary><b>First-time install</b></summary>
+| Step | Action |
+|:--:|:-------|
+| 1 | Scene ID `default` → **Set** |
+| 2 | Load `ConferenceHall.ply` from the dropdown |
+| 3 | Navigate with WASD + mouse; press **R** to capture a view |
+| 4 | Enter a query → **Ask** → open **Query Flow** |
+
+Services: frontend `:5173` · API `:8000` · MCP `:8001`
+
+### Install dependencies (first time)
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r backend/requirements.txt
 cd frontend && npm install && cd ..
 ```
 
-Add `.ply` files to `scenes/` (not in git).
-
-</details>
+Place `.ply` files in [`scenes/`](scenes/) (gitignored — not shipped with the repo).
 
 <details>
-<summary><b>Cursor MCP setup</b></summary>
+<summary><strong>Cursor MCP configuration</strong></summary>
+
+Create [`.cursor/mcp.json`](.cursor/mcp.json):
 
 ```json
 {
   "mcpServers": {
-    "semantic-splat": { "url": "http://127.0.0.1:8001/mcp" }
+    "semantic-splat": {
+      "url": "http://127.0.0.1:8001/mcp"
+    }
   }
 }
 ```
 
-File: `.cursor/mcp.json` · enable in Cursor → Settings → MCP
+Enable **semantic-splat** in Cursor → Settings → MCP after starting `./start_all.sh`.
 
 </details>
 
 <details>
-<summary><b>Regenerate all docs & benchmarks</b></summary>
+<summary><strong>Regenerate benchmarks and documentation</strong></summary>
 
 ```bash
 ./run_all_docs.sh
 ```
 
-Outputs: [`docs/README.md`](docs/README.md) · charts · reasoning · demo MP4
+Outputs charts, reasoning markdown, demo video, and updates [`docs/README.md`](docs/README.md).
 
 </details>
 
 ---
 
-## 📁 Structure
-
-```
-beyond-proximity/
-├── start_all.sh / run_all_docs.sh
-├── backend/          api · mcp · query · tree · data/scenes/
-├── frontend/           React + Spark.js viewer
-├── docs/               reports · assets · project_log
-└── scenes/             local .ply (gitignored)
-```
-
----
-
-## 📚 Docs
+## Documentation
 
 | Document | Description |
 |:---------|:------------|
+| [Docs hub](docs/README.md) | Index of reports and runs |
+| [Benchmark report](docs/benchmark_graph_vs_flat.md) | Graph vs flat — full analysis |
+| [Launch guide (RU)](docs/launch_guide_ru.md) | Step-by-step setup and Query Flow |
 | [Design spec §7](docs/superpowers/specs/2026-04-05-semantic-3dgs-navigator-design.md) | System architecture |
-| [Launch guide 🇷🇺](docs/launch_guide_ru.md) | Full walkthrough |
-| [Baselines](docs/baselines_matrix.md) | Comparison matrix |
 | [Project log](docs/project_log/) | Experiment history |
 
 ---
 
-## 🧪 Tests
+## Project structure
 
-```bash
-source .venv/bin/activate && PYTHONPATH=. pytest tests/backend/ -v
+```
+beyond-proximity/
+├── start_all.sh              # Launch frontend + backend + MCP
+├── run_all_docs.sh           # Benchmark + docs pipeline
+├── backend/
+│   ├── api/                  # FastAPI REST + WebSocket
+│   ├── mcp/                  # MCP tools + prompt templates
+│   ├── query/                # Pipeline, benchmark, live_session
+│   └── data/scenes/default/  # Views, tree, query sessions
+├── frontend/                 # React + Spark.js viewer
+├── docs/                     # Reports, assets, project log
+└── scenes/                   # Local .ply files (gitignored)
 ```
 
 ---
 
-## 📖 Citation
+## Tests
+
+```bash
+source .venv/bin/activate
+export PYTHONPATH=.
+pytest tests/backend/ -v
+```
+
+---
+
+## Citation
+
+If you use this codebase in academic work, please cite:
 
 ```bibtex
 @software{semanticsplat2026,
@@ -253,12 +230,16 @@ source .venv/bin/activate && PYTHONPATH=. pytest tests/backend/ -v
 }
 ```
 
-Also: [`CITATION.cff`](CITATION.cff)
+GitHub citation widget: [`CITATION.cff`](CITATION.cff)
 
 ---
 
-<p align="center">
-  <img src="docs/assets/banner.svg" width="60%" alt="SemanticSplat"/>
-  <br/><br/>
-  <sub>Research prototype · graph-pruned semantic 3DGS navigation</sub>
-</p>
+## License
+
+See repository license. Scene `.ply` assets are not included — add your own under `scenes/`.
+
+---
+
+<div align="center">
+<sub>SemanticSplat · graph-pruned semantic 3DGS navigation · scene <code>default</code></sub>
+</div>
