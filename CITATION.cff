@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SemanticSplat: Language-Grounded Navigation over 3D Gaussian Splats"
+version: 0.2.0
+date-released: 2026-06-12
+authors:
+  - family-names: "LeoPython2006"
+    affiliation: "Independent"
+repository-code: "https://github.com/LeoPython2006/beyond-proximity"
+url: "https://github.com/LeoPython2006/beyond-proximity"
+abstract: >-
+  Interactive research prototype for open-vocabulary object search in 3D Gaussian
+  Splatting scenes using hierarchical semantic trees and graph-pruned VLM traversal.
+keywords:
+  - 3d gaussian splatting
+  - semantic navigation
+  - vision-language models
+  - scene graphs
+  - open-vocabulary search

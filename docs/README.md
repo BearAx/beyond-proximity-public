@@ -1,5 +1,13 @@
 # SemanticSplat — Documentation Hub
 
+<p align="center">
+  <a href="../README.md">← Repository home</a>
+  &nbsp;·&nbsp;
+  <a href="benchmark_graph_vs_flat.md">Benchmark report</a>
+  &nbsp;·&nbsp;
+  <a href="launch_guide_ru.md">🇷🇺 Launch guide</a>
+</p>
+
 > **Latest run:** `2026-06-12_1829` · 2026-06-12 18:29 UTC · scene `default`
 
 ---

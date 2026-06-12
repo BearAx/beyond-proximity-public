@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="SemanticSplat social preview">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#g)"/>
+  <text x="80" y="280" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="72" font-weight="700">SemanticSplat</text>
+  <text x="84" y="360" fill="#4ade80" font-family="system-ui, sans-serif" font-size="34" font-weight="600">3DGS · Semantic Trees · Graph Search</text>
+  <text x="84" y="430" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="24">beyond-proximity</text>
+</svg>
