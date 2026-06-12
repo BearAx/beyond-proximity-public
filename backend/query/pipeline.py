@@ -10,6 +10,7 @@ import math
 from typing import Any, Dict, List, Optional
 
 from backend.config import DATA_DIR
+from backend.io.annotator import view_image_usable
 from backend.io.view_store import load_view_analysis
 from backend.schemas.types import (
     QUERY_DECOMPOSITION_PROMPT,
@@ -157,19 +158,19 @@ def build_leaf_confirmation_for_view(
 
 # ── Best-view ranking ─────────────────────────────────────────────────────────
 
-def score_view_result(result: dict) -> float:
+def score_view_result(result: dict, scene_id: Optional[str] = None) -> float:
     """Score a single leaf-confirmation result for best-view ranking.
 
     Returns a float in [0, 1] — higher is better.  Used to select the canonical
     view when multiple views contain the same object.
 
     Factors (weighted sum):
-      - Confidence level   (weight 0.50):  high=1.0 / medium=0.6 / low=0.3
-      - BBox area          (weight 0.30):  larger bbox = object fills more of the
+      - Confidence level   (weight 0.40):  high=1.0 / medium=0.6 / low=0.3
+      - BBox area          (weight 0.25):  larger bbox = object fills more of the
                                            frame, indicating closer/cleaner shot.
                                            Capped at 25 % of image area.
-      - BBox centrality    (weight 0.20):  bbox centre close to image centre
-                                           means the object is well-framed.
+      - BBox centrality    (weight 0.15):  bbox centre close to image centre
+      - Usable PNG         (weight 0.20):  skip dark placeholder images in Query Flow
     """
     confidence_map = {"high": 1.0, "medium": 0.6, "low": 0.3}
     confidence_score = confidence_map.get(result.get("confidence", "low"), 0.3)
@@ -195,10 +196,20 @@ def score_view_result(result: dict) -> float:
         # Max possible distance from centre to corner ≈ 0.707
         centrality_score = max(0.0, 1.0 - dist / 0.707)
 
-    return round(0.50 * confidence_score + 0.30 * bbox_score + 0.20 * centrality_score, 4)
+    image_score = 1.0
+    if scene_id and result.get("view_id"):
+        image_score = 1.0 if view_image_usable(scene_id, result["view_id"]) else 0.0
+
+    return round(
+        0.40 * confidence_score
+        + 0.25 * bbox_score
+        + 0.15 * centrality_score
+        + 0.20 * image_score,
+        4,
+    )
 
 
-def rank_leaf_results(results: List[dict]) -> List[dict]:
+def rank_leaf_results(results: List[dict], scene_id: Optional[str] = None) -> List[dict]:
     """Sort a list of leaf-confirmation results, best first.
 
     Each item must have at minimum: view_id, found, confidence, bbox_2d.
@@ -209,9 +220,9 @@ def rank_leaf_results(results: List[dict]) -> List[dict]:
     def sort_key(r: dict) -> float:
         if not r.get("found", False):
             return -1.0
-        return score_view_result(r)
+        return score_view_result(r, scene_id)
 
     ranked = sorted(results, key=sort_key, reverse=True)
     for r in ranked:
-        r["_score"] = score_view_result(r) if r.get("found") else 0.0
+        r["_score"] = score_view_result(r, scene_id) if r.get("found") else 0.0
     return ranked

@@ -227,6 +227,7 @@ See [`docs/benchmark_graph_vs_flat.md`](docs/benchmark_graph_vs_flat.md) for per
 
 ## Related docs
 
+- [**launch_guide_ru.md**](launch_guide_ru.md) — **полный путь запуска** (команды, output, Query Flow, benchmark)
 - [`docs/repo_setup_notes.md`](docs/repo_setup_notes.md) — setup notes
 - [`docs/baselines_matrix.md`](docs/baselines_matrix.md) — baseline comparison matrix
 - [`docs/superpowers/specs/2026-04-05-semantic-3dgs-navigator-design.md`](docs/superpowers/specs/2026-04-05-semantic-3dgs-navigator-design.md) — design spec

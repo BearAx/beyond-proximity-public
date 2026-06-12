@@ -1,54 +1,54 @@
 {
   "scene_id": "default",
-  "generated_at": "2026-06-11T17:45:47.379013+00:00",
-  "run_slug": "2026-06-11_1745",
+  "generated_at": "2026-06-12T18:29:38.154932+00:00",
+  "run_slug": "2026-06-12_1829",
   "cases": [
     {
       "case_index": 1,
       "query": "where is the screen in the conference room",
       "graph_verdict": "correct_room",
       "flat_verdict": "wrong_room",
-      "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/01_where_is_the_screen_in_the_c.md",
-      "session_graph": "auto_b171d426_graph.json",
-      "session_flat": "auto_b171d426_flat.json"
+      "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/01_where_is_the_screen_in_the_c.md",
+      "session_graph": "auto_a1c7ca80_graph.json",
+      "session_flat": "auto_a1c7ca80_flat.json"
     },
     {
       "case_index": 2,
       "query": "where is the screen in the conference room located",
       "graph_verdict": "correct_room",
       "flat_verdict": "wrong_room",
-      "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/02_where_is_the_screen_in_the_c.md",
-      "session_graph": "auto_18f9a9f6_graph.json",
-      "session_flat": "auto_18f9a9f6_flat.json"
+      "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/02_where_is_the_screen_in_the_c.md",
+      "session_graph": "auto_8ac3faa5_graph.json",
+      "session_flat": "auto_8ac3faa5_flat.json"
     },
     {
       "case_index": 3,
       "query": "where is the projection screen in the ballroom",
       "graph_verdict": "correct_room",
       "flat_verdict": "correct_room",
-      "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/03_where_is_the_projection_scre.md",
-      "session_graph": "auto_f2322a71_graph.json",
-      "session_flat": "auto_f2322a71_flat.json"
+      "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/03_where_is_the_projection_scre.md",
+      "session_graph": "auto_4565d5ce_graph.json",
+      "session_flat": "auto_4565d5ce_flat.json"
     },
     {
       "case_index": 4,
       "query": "find the projector in the ballroom",
       "graph_verdict": "correct_room",
       "flat_verdict": "correct_room",
-      "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/04_find_the_projector_in_the_ba.md",
-      "session_graph": "auto_b2aed653_graph.json",
-      "session_flat": "auto_b2aed653_flat.json"
+      "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/04_find_the_projector_in_the_ba.md",
+      "session_graph": "auto_647ee43a_graph.json",
+      "session_flat": "auto_647ee43a_flat.json"
     },
     {
       "case_index": 5,
       "query": "where is the exit sign in the lobby",
       "graph_verdict": "miss",
       "flat_verdict": "miss",
-      "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/05_where_is_the_exit_sign_in_th.md",
-      "session_graph": "auto_a279d8c7_graph.json",
-      "session_flat": "auto_a279d8c7_flat.json"
+      "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/05_where_is_the_exit_sign_in_th.md",
+      "session_graph": "auto_00910838_graph.json",
+      "session_flat": "auto_00910838_flat.json"
     }
   ],
-  "reasoning_md_dir": "project_log/runs/2026-06-11_1745/reasoning",
-  "run_dashboard": "project_log/runs/2026-06-11_1745/README.md"
+  "reasoning_md_dir": "project_log/runs/2026-06-12_1829/reasoning",
+  "run_dashboard": "project_log/runs/2026-06-12_1829/README.md"
 }

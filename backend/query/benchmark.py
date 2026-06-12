@@ -14,12 +14,15 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
 from backend.config import DATA_DIR
+from backend.io.annotator import view_image_usable
 from backend.io.view_store import list_view_ids, load_view_analysis
 from backend.query.pipeline import (
     build_decomposition_prompt,
     build_leaf_confirmation_for_view,
     build_traversal_step,
+    rank_leaf_results,
 )
+from backend.query.benchmark_reasoning import _extract_target
 from backend.query.timing import attach_timing
 from backend.query.tokens import count_tokens
 from backend.tree.nodes import NodeType
@@ -167,6 +170,7 @@ def simulate_graph_search(
             view_ids = step.get("view_ids", [])
             if active_view_ids is not None:
                 view_ids = [v for v in view_ids if v in active_view_ids]
+            leaf_candidates: List[dict] = []
             for vid in view_ids:
                 leaf = build_leaf_confirmation_for_view(scene_id, node_id, vid, query, plan)
                 if "error" in leaf:
@@ -176,10 +180,13 @@ def simulate_graph_search(
                 checked_ids.append(vid)
                 v = load_view_analysis(scene_dir, vid)
                 if v and _view_matches(v.model_dump(), query):
-                    found = True
-                    found_view = vid
-                    break
-            if found:
+                    leaf_candidates.append(
+                        _leaf_match_candidate(scene_id, node_id, vid, query, v.model_dump())
+                    )
+            best = _pick_best_leaf_match(scene_id, leaf_candidates)
+            if best:
+                found = True
+                found_view = best["view_id"]
                 break
             continue
 
@@ -246,6 +253,7 @@ def simulate_flat_search(
     if active_view_ids is not None:
         view_ids = [v for v in view_ids if v in active_view_ids]
 
+    flat_candidates: List[dict] = []
     for vid in view_ids:
         node_id = _node_for_view(scene_dir, vid)
         if node_id is None:
@@ -258,9 +266,15 @@ def simulate_flat_search(
         views_checked += 1
         checked_ids.append(vid)
         v = load_view_analysis(scene_dir, vid)
-        if not found and v and _view_matches(v.model_dump(), query):
-            found = True
-            found_view = vid
+        if v and _view_matches(v.model_dump(), query):
+            flat_candidates.append(
+                _leaf_match_candidate(scene_id, node_id, vid, query, v.model_dump())
+            )
+
+    best = _pick_best_leaf_match(scene_id, flat_candidates)
+    if best:
+        found = True
+        found_view = best["view_id"]
 
     elapsed = (time.perf_counter() - t0) * 1000
     return BenchmarkResult(
@@ -288,6 +302,50 @@ def _view_matches(view_dict: dict, query: str) -> bool:
         return True
     kws = _keywords(query)
     return bool(kws) and all(k in haystack for k in kws)
+
+
+def _target_object_in_view(view_dict: dict, query: str) -> Optional[dict]:
+    """Best-matching object entry for the query target, if any."""
+    target = _extract_target(query).lower()
+    best: Optional[dict] = None
+    for obj in view_dict.get("objects", []):
+        label = obj.get("label", "").lower()
+        if target in label or label in target or target in label.replace("_", " "):
+            conf = float(obj.get("confidence", 0))
+            if best is None or conf > float(best.get("confidence", 0)):
+                best = obj
+    return best
+
+
+def _leaf_match_candidate(
+    scene_id: str,
+    node_id: str,
+    view_id: str,
+    query: str,
+    view_dict: dict,
+) -> dict:
+    obj = _target_object_in_view(view_dict, query)
+    conf = float(obj.get("confidence", 0)) if obj else 0.0
+    confidence = "high" if conf >= 0.85 else "medium" if conf >= 0.7 else "low"
+    return {
+        "view_id": view_id,
+        "node_id": node_id,
+        "found": True,
+        "confidence": confidence,
+        "bbox_2d": obj.get("bbox_2d") if obj else None,
+        "matched_object": (obj or {}).get("label") or _extract_target(query),
+        "explanation": view_dict.get("scene_summary", ""),
+    }
+
+
+def _pick_best_leaf_match(scene_id: str, candidates: List[dict]) -> Optional[dict]:
+    """Prefer views with real PNGs and strong bbox scores for Query Flow display."""
+    if not candidates:
+        return None
+    usable = [c for c in candidates if view_image_usable(scene_id, c["view_id"])]
+    pool = usable if usable else candidates
+    ranked = rank_leaf_results(pool, scene_id)
+    return ranked[0] if ranked else None
 
 
 def replay_graph_from_session(session_path: Path) -> Optional[Dict[str, List[str]]]:

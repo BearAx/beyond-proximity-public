@@ -152,13 +152,16 @@ def list_sessions(scene_id: str) -> List[dict]:
         try:
             with open(p, encoding="utf-8") as fh:
                 data = json.load(fh)
+            source = data.get("source", "")
             sessions.append({
-                "session_id": data["session_id"],
+                # File stem is the API key (matches benchmark *_graph / *_flat filenames).
+                "session_id": p.stem,
                 "original_query": data["original_query"],
                 "started_at": data["started_at"],
                 "finished_at": data.get("finished_at"),
                 "step_count": len(data.get("steps", [])),
                 "found": data.get("result", {}).get("found") if data.get("result") else None,
+                "source": source or None,
             })
         except Exception:
             pass
@@ -167,8 +170,18 @@ def list_sessions(scene_id: str) -> List[dict]:
 
 def get_session(scene_id: str, session_id: str) -> Optional[dict]:
     """Return full session JSON."""
-    p = _queries_dir(scene_id) / f"{session_id}.json"
-    if not p.exists():
-        return None
-    with open(p, encoding="utf-8") as fh:
-        return json.load(fh)
+    d = _queries_dir(scene_id)
+    p = d / f"{session_id}.json"
+    if p.exists():
+        with open(p, encoding="utf-8") as fh:
+            return json.load(fh)
+    # Legacy benchmark files: JSON session_id may differ from filename stem.
+    for candidate in d.glob("*.json"):
+        try:
+            with open(candidate, encoding="utf-8") as fh:
+                data = json.load(fh)
+            if data.get("session_id") == session_id:
+                return data
+        except Exception:
+            pass
+    return None

@@ -51,6 +51,25 @@ def _load_image(scene_id: str, view_id: str) -> Optional[Image.Image]:
     return Image.open(img_path).convert("RGB")
 
 
+# Placeholder captures (e.g. stub PNGs) are nearly black; real views are much brighter.
+MIN_VIEW_LUMINANCE = 100.0
+
+
+def view_image_mean_luminance(scene_id: str, view_id: str) -> Optional[float]:
+    """Mean RGB of the view PNG, or None if missing."""
+    img = _load_image(scene_id, view_id)
+    if img is None:
+        return None
+    import numpy as np
+    return float(np.array(img).mean())
+
+
+def view_image_usable(scene_id: str, view_id: str, min_mean: float = MIN_VIEW_LUMINANCE) -> bool:
+    """False for missing images or dark placeholder stubs unsuitable for Query Flow."""
+    mean = view_image_mean_luminance(scene_id, view_id)
+    return mean is not None and mean >= min_mean
+
+
 def annotate_view(
     scene_id: str,
     view_id: str,
