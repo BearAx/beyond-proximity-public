@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="200" viewBox="0 0 960 200" role="img" aria-label="Query pipeline animation">
+  <defs>
+    <linearGradient id="pipe" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="200" rx="12" fill="#0f172a"/>
+
+  <!-- nodes -->
+  <g font-family="system-ui,sans-serif" font-size="13" fill="#e2e8f0" text-anchor="middle">
+    <rect x="24" y="70" width="120" height="60" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="84" y="106">Query</text>
+
+    <rect x="184" y="70" width="120" height="60" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="244" y="106">Decompose</text>
+
+    <rect x="344" y="70" width="120" height="60" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="404" y="106">Traverse</text>
+
+    <rect x="504" y="70" width="120" height="60" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="564" y="106">Leaf VLM</text>
+
+    <rect x="664" y="70" width="120" height="60" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="724" y="106">2D bbox</text>
+
+    <rect x="824" y="70" width="112" height="60" rx="10" fill="#14532d" stroke="#4ade80"/>
+    <text x="880" y="106" fill="#bbf7d0">3D bbox</text>
+  </g>
+
+  <!-- base lines -->
+  <g stroke="#334155" stroke-width="2">
+    <line x1="144" y1="100" x2="184" y2="100"/>
+    <line x1="304" y1="100" x2="344" y2="100"/>
+    <line x1="464" y1="100" x2="504" y2="100"/>
+    <line x1="624" y1="100" x2="664" y2="100"/>
+    <line x1="784" y1="100" x2="824" y2="100"/>
+  </g>
+
+  <!-- animated pulse along pipeline -->
+  <circle r="6" fill="url(#pipe)">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M144,100 L184,100 L304,100 L344,100 L464,100 L504,100 L624,100 L664,100 L784,100 L824,100"/>
+  </circle>
+
+  <text x="480" y="168" fill="#64748b" font-family="ui-monospace,Menlo,monospace" font-size="12" text-anchor="middle">§7 pipeline · graph prunes ~79% of views before leaf checks</text>
+</svg>

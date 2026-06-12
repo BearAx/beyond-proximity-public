@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-label="SemanticSplat animated banner">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4ade80">
+        <animate attributeName="stop-color" values="#4ade80;#22d3ee;#4ade80" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#22d3ee">
+        <animate attributeName="stop-color" values="#22d3ee;#86efac;#22d3ee" dur="6s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="340" rx="16" fill="url(#bg)"/>
+
+  <!-- ambient orbs -->
+  <circle cx="1020" cy="70" r="130" fill="url(#orb)">
+    <animate attributeName="cx" values="1020;1040;1020" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="70;90;70" dur="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="280" r="100" fill="url(#orb)" opacity="0.7">
+    <animate attributeName="cx" values="140;160;140" dur="9s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- gaussian splats -->
+  <g filter="url(#softGlow)">
+    <ellipse cx="950" cy="210" rx="34" ry="20" fill="#4ade80" opacity="0.45">
+      <animate attributeName="rx" values="34;40;34" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.35;0.55;0.35" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="990" cy="225" rx="26" ry="16" fill="#22d3ee" opacity="0.4">
+      <animate attributeName="ry" values="16;22;16" dur="2.5s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="920" cy="228" rx="22" ry="14" fill="#86efac" opacity="0.35">
+      <animate attributeName="cx" values="920;930;920" dur="4s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+  <!-- semantic tree -->
+  <g stroke="#4ade80" stroke-width="1.5" fill="none" opacity="0.5">
+    <path d="M900 250 L960 130 L1020 250"/>
+    <path d="M940 190 L960 130 L980 190"/>
+    <circle cx="960" cy="130" r="7" fill="#4ade80" stroke="none" filter="url(#softGlow)">
+      <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="900" cy="250" r="5" fill="#22d3ee" stroke="none"/>
+    <circle cx="1020" cy="250" r="5" fill="#22d3ee" stroke="none"/>
+  </g>
+
+  <!-- scan line -->
+  <rect x="0" y="0" width="1200" height="340" fill="url(#accent)" opacity="0.03">
+    <animate attributeName="opacity" values="0.02;0.06;0.02" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="64" y="124" fill="#f8fafc" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="56" font-weight="700" letter-spacing="-1.5">SemanticSplat</text>
+  <text x="66" y="168" fill="url(#accent)" font-family="system-ui,sans-serif" font-size="23" font-weight="600">Language-Grounded Navigation over 3D Gaussian Splats</text>
+  <text x="66" y="208" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="16">Graph-pruned semantic trees · VLM leaf confirmation · Live Query Flow demo</text>
+
+  <rect x="66" y="232" width="248" height="38" rx="19" fill="#052e16" stroke="#4ade80" stroke-width="1.2" opacity="0.95"/>
+  <text x="90" y="257" fill="#bbf7d0" font-family="ui-monospace,Menlo,monospace" font-size="13.5">4.1× faster  ·  8.5× fewer tokens  ·  0 wrong-room</text>
+
+  <!-- pipeline dots -->
+  <g font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#64748b">
+    <circle cx="66" cy="300" r="4" fill="#4ade80"><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" begin="0s" repeatCount="indefinite"/></circle>
+    <text x="78" y="304">capture</text>
+    <circle cx="168" cy="300" r="4" fill="#4ade80"><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"/></circle>
+    <text x="180" y="304">index</text>
+    <circle cx="248" cy="300" r="4" fill="#4ade80"><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" begin="0.6s" repeatCount="indefinite"/></circle>
+    <text x="260" y="304">traverse</text>
+    <circle cx="348" cy="300" r="4" fill="#4ade80"><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" begin="0.9s" repeatCount="indefinite"/></circle>
+    <text x="360" y="304">localize</text>
+  </g>
+</svg>
