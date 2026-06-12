@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ControlPanel } from './components/ControlPanel/ControlPanel'
 import { Navigator } from './components/Navigator/Navigator'
 import { TreeVisualizer } from './components/TreeVisualizer/TreeVisualizer'
 import { QueryFlow } from './components/QueryFlow/QueryFlow'
+import { scenesApi } from './api/client'
 import { useSceneStore } from './store/sceneStore'
+
+const DEFAULT_PLY = '/scenes/ConferenceHall.ply'
 
 type Tab = 'navigator' | 'tree' | 'query'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('navigator')
-  const [plyUrl, setPlyUrl] = useState<string>('')
+  const [plyUrl, setPlyUrl] = useState<string>(DEFAULT_PLY)
   const { sceneId } = useSceneStore()
+
+  useEffect(() => {
+    scenesApi.init('default').catch(() => {
+      /* backend may still be starting */
+    })
+  }, [])
 
   const tabs: { id: Tab; label: string }[] = [
     { id: 'navigator', label: '🧭 Navigator' },

@@ -37,3 +37,6 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+
+# Matplotlib cache (benchmark charts)
+.matplotlib/

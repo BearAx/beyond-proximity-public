@@ -1,0 +1,2337 @@
+{
+  "scene_id": "default",
+  "total_views": 19,
+  "graph_stats": {
+    "has_tree": true,
+    "node_count": 15,
+    "max_depth": 2,
+    "root_id": "root_conference_hall",
+    "nodes_by_type": {
+      "leaf": 10,
+      "zone": 4,
+      "root": 1
+    },
+    "leaf_count": 10,
+    "zone_count": 4,
+    "views_in_tree": 19
+  },
+  "queries_run": 12,
+  "results": [
+    {
+      "query": "take me to the projector",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "take me to the projector",
+        "found": true,
+        "view_id": "v013",
+        "llm_calls": 17,
+        "input_tokens": 19379,
+        "views_checked": 13,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013"
+        ],
+        "nodes_visited": 7,
+        "traversal_steps": 3,
+        "elapsed_ms": 64.79879199832794,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_corridor_lounge",
+          "leaf_lobby_foyer_prefunction",
+          "leaf_lobby_bar_reception",
+          "zone_ballroom",
+          "leaf_ballroom_main_floor"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.06,
+          "llm_sec": 144.37,
+          "total_sec": 144.44,
+          "llm_calls": 17,
+          "input_tokens": 19379
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "take me to the projector",
+        "found": true,
+        "view_id": "v013",
+        "llm_calls": 20,
+        "input_tokens": 26587,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 18.5025829996448,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 196.91,
+          "total_sec": 196.93,
+          "llm_calls": 20,
+          "input_tokens": 26587
+        }
+      },
+      "savings": {
+        "tokens_pct": 27.1,
+        "calls_pct": 15.0,
+        "views_pct": 31.6,
+        "tokens_times_less": 1.4,
+        "calls_times_less": 1.2,
+        "views_times_faster": 1.5
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "take me to the projector",
+          "found": true,
+          "view_id": "v013",
+          "llm_calls": 5,
+          "input_tokens": 3248,
+          "views_checked": 2,
+          "views_checked_ids": [
+            "v012",
+            "v013"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 1.5725419980299193,
+          "path": [
+            "root_conference_hall",
+            "zone_ballroom",
+            "leaf_ballroom_main_floor"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 24.95,
+            "total_sec": 24.95,
+            "llm_calls": 5,
+            "input_tokens": 3248
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 87.8,
+          "views_pct": 89.5,
+          "calls_pct": 75.0,
+          "tokens_times_less": 8.2,
+          "views_times_faster": 9.5,
+          "calls_times_less": 4.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/795243fa.json"
+    },
+    {
+      "query": "find the bar",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "find the bar",
+        "found": true,
+        "view_id": "v009",
+        "llm_calls": 4,
+        "input_tokens": 2114,
+        "views_checked": 1,
+        "views_checked_ids": [
+          "v009"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 1.2942089997522999,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_bar_reception"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 16.5,
+          "total_sec": 16.5,
+          "llm_calls": 4,
+          "input_tokens": 2114
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "find the bar",
+        "found": true,
+        "view_id": "v003",
+        "llm_calls": 20,
+        "input_tokens": 26547,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 15.883041996858083,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 196.62,
+          "total_sec": 196.64,
+          "llm_calls": 20,
+          "input_tokens": 26547
+        }
+      },
+      "savings": {
+        "tokens_pct": 92.0,
+        "calls_pct": 80.0,
+        "views_pct": 94.7,
+        "tokens_times_less": 12.6,
+        "calls_times_less": 5.0,
+        "views_times_faster": 19.0
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "find the bar",
+          "found": false,
+          "view_id": null,
+          "llm_calls": 2,
+          "input_tokens": 363,
+          "views_checked": 0,
+          "views_checked_ids": [],
+          "nodes_visited": 1,
+          "traversal_steps": 1,
+          "elapsed_ms": 0.2286670023750048,
+          "path": [
+            "root_conference_hall"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 3.29,
+            "total_sec": 3.29,
+            "llm_calls": 2,
+            "input_tokens": 363
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 98.6,
+          "views_pct": 100.0,
+          "calls_pct": 90.0,
+          "tokens_times_less": 73.1,
+          "views_times_faster": null,
+          "calls_times_less": 10.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/d482464e.json"
+    },
+    {
+      "query": "find the red sofa",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "find the red sofa",
+        "found": true,
+        "view_id": "v004",
+        "llm_calls": 7,
+        "input_tokens": 5950,
+        "views_checked": 4,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 2.432083998428425,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_corridor_lounge"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 44.95,
+          "total_sec": 44.95,
+          "llm_calls": 7,
+          "input_tokens": 5950
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "find the red sofa",
+        "found": true,
+        "view_id": "v004",
+        "llm_calls": 20,
+        "input_tokens": 26567,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 15.582374999212334,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 196.76,
+          "total_sec": 196.78,
+          "llm_calls": 20,
+          "input_tokens": 26567
+        }
+      },
+      "savings": {
+        "tokens_pct": 77.6,
+        "calls_pct": 65.0,
+        "views_pct": 78.9,
+        "tokens_times_less": 4.5,
+        "calls_times_less": 2.9,
+        "views_times_faster": 4.8
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "find the red sofa",
+          "found": true,
+          "view_id": "v004",
+          "llm_calls": 7,
+          "input_tokens": 5950,
+          "views_checked": 4,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 2.4056250003923196,
+          "path": [
+            "root_conference_hall",
+            "zone_lobby_reception",
+            "leaf_lobby_corridor_lounge"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 44.95,
+            "total_sec": 44.95,
+            "llm_calls": 7,
+            "input_tokens": 5950
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 77.6,
+          "views_pct": 78.9,
+          "calls_pct": 65.0,
+          "tokens_times_less": 4.5,
+          "views_times_faster": 4.8,
+          "calls_times_less": 2.9
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/7b1df6e4.json"
+    },
+    {
+      "query": "where is the exit sign?",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "where is the exit sign?",
+        "found": true,
+        "view_id": "v006",
+        "llm_calls": 4,
+        "input_tokens": 2225,
+        "views_checked": 1,
+        "views_checked_ids": [
+          "v006"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 1.4389999996637926,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_foyer_prefunction"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 17.29,
+          "total_sec": 17.29,
+          "llm_calls": 4,
+          "input_tokens": 2225
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "where is the exit sign?",
+        "found": true,
+        "view_id": "v001",
+        "llm_calls": 20,
+        "input_tokens": 26587,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 18.24704099999508,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 196.91,
+          "total_sec": 196.93,
+          "llm_calls": 20,
+          "input_tokens": 26587
+        }
+      },
+      "savings": {
+        "tokens_pct": 91.6,
+        "calls_pct": 80.0,
+        "views_pct": 94.7,
+        "tokens_times_less": 11.9,
+        "calls_times_less": 5.0,
+        "views_times_faster": 19.0
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "where is the exit sign?",
+          "found": false,
+          "view_id": null,
+          "llm_calls": 2,
+          "input_tokens": 367,
+          "views_checked": 0,
+          "views_checked_ids": [],
+          "nodes_visited": 1,
+          "traversal_steps": 1,
+          "elapsed_ms": 0.23720799799775705,
+          "path": [
+            "root_conference_hall"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 3.32,
+            "total_sec": 3.32,
+            "llm_calls": 2,
+            "input_tokens": 367
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 98.6,
+          "views_pct": 100.0,
+          "calls_pct": 90.0,
+          "tokens_times_less": 72.4,
+          "views_times_faster": null,
+          "calls_times_less": 10.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/84f25367.json"
+    },
+    {
+      "query": "find the piano",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "find the piano",
+        "found": true,
+        "view_id": "v006",
+        "llm_calls": 4,
+        "input_tokens": 2217,
+        "views_checked": 1,
+        "views_checked_ids": [
+          "v006"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 1.0478750009497162,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_foyer_prefunction"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 17.24,
+          "total_sec": 17.24,
+          "llm_calls": 4,
+          "input_tokens": 2217
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "find the piano",
+        "found": true,
+        "view_id": "v006",
+        "llm_calls": 20,
+        "input_tokens": 26547,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 15.861791001952952,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 196.62,
+          "total_sec": 196.64,
+          "llm_calls": 20,
+          "input_tokens": 26547
+        }
+      },
+      "savings": {
+        "tokens_pct": 91.6,
+        "calls_pct": 80.0,
+        "views_pct": 94.7,
+        "tokens_times_less": 12.0,
+        "calls_times_less": 5.0,
+        "views_times_faster": 19.0
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "find the piano",
+          "found": true,
+          "view_id": "v006",
+          "llm_calls": 4,
+          "input_tokens": 2217,
+          "views_checked": 1,
+          "views_checked_ids": [
+            "v006"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 1.029541999741923,
+          "path": [
+            "root_conference_hall",
+            "zone_lobby_reception",
+            "leaf_lobby_foyer_prefunction"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 17.24,
+            "total_sec": 17.24,
+            "llm_calls": 4,
+            "input_tokens": 2217
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 91.6,
+          "views_pct": 94.7,
+          "calls_pct": 80.0,
+          "tokens_times_less": 12.0,
+          "views_times_faster": 19.0,
+          "calls_times_less": 5.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/685ff869.json"
+    },
+    {
+      "query": "find all exit signs",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "find all exit signs",
+        "found": true,
+        "view_id": "v008",
+        "llm_calls": 11,
+        "input_tokens": 12278,
+        "views_checked": 8,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008"
+        ],
+        "nodes_visited": 4,
+        "traversal_steps": 2,
+        "elapsed_ms": 4.7904170023684856,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_corridor_lounge",
+          "leaf_lobby_foyer_prefunction"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 91.55,
+          "total_sec": 91.55,
+          "llm_calls": 11,
+          "input_tokens": 12278
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "find all exit signs",
+        "found": true,
+        "view_id": "v008",
+        "llm_calls": 20,
+        "input_tokens": 26567,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 17.172292002214817,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 196.76,
+          "total_sec": 196.78,
+          "llm_calls": 20,
+          "input_tokens": 26567
+        }
+      },
+      "savings": {
+        "tokens_pct": 53.8,
+        "calls_pct": 45.0,
+        "views_pct": 57.9,
+        "tokens_times_less": 2.2,
+        "calls_times_less": 1.8,
+        "views_times_faster": 2.4
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "find all exit signs",
+          "found": true,
+          "view_id": "v008",
+          "llm_calls": 11,
+          "input_tokens": 12278,
+          "views_checked": 8,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008"
+          ],
+          "nodes_visited": 4,
+          "traversal_steps": 2,
+          "elapsed_ms": 5.372792002162896,
+          "path": [
+            "root_conference_hall",
+            "zone_lobby_reception",
+            "leaf_lobby_corridor_lounge",
+            "leaf_lobby_foyer_prefunction"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.01,
+            "llm_sec": 91.55,
+            "total_sec": 91.56,
+            "llm_calls": 11,
+            "input_tokens": 12278
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 53.8,
+          "views_pct": 57.9,
+          "calls_pct": 45.0,
+          "tokens_times_less": 2.2,
+          "views_times_faster": 2.4,
+          "calls_times_less": 1.8
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/79e3904d.json"
+    },
+    {
+      "query": "find the projector in the ballroom",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "find the projector in the ballroom",
+        "found": true,
+        "view_id": "v013",
+        "llm_calls": 17,
+        "input_tokens": 19413,
+        "views_checked": 13,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013"
+        ],
+        "nodes_visited": 7,
+        "traversal_steps": 3,
+        "elapsed_ms": 8.031249999476131,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_corridor_lounge",
+          "leaf_lobby_foyer_prefunction",
+          "leaf_lobby_bar_reception",
+          "zone_ballroom",
+          "leaf_ballroom_main_floor"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.01,
+          "llm_sec": 144.61,
+          "total_sec": 144.62,
+          "llm_calls": 17,
+          "input_tokens": 19413
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "find the projector in the ballroom",
+        "found": true,
+        "view_id": "v013",
+        "llm_calls": 20,
+        "input_tokens": 26627,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 16.237249998084735,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 197.19,
+          "total_sec": 197.21,
+          "llm_calls": 20,
+          "input_tokens": 26627
+        }
+      },
+      "savings": {
+        "tokens_pct": 27.1,
+        "calls_pct": 15.0,
+        "views_pct": 31.6,
+        "tokens_times_less": 1.4,
+        "calls_times_less": 1.2,
+        "views_times_faster": 1.5
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "find the projector in the ballroom",
+          "found": true,
+          "view_id": "v013",
+          "llm_calls": 17,
+          "input_tokens": 19413,
+          "views_checked": 13,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013"
+          ],
+          "nodes_visited": 7,
+          "traversal_steps": 3,
+          "elapsed_ms": 7.717708002019208,
+          "path": [
+            "root_conference_hall",
+            "zone_lobby_reception",
+            "leaf_lobby_corridor_lounge",
+            "leaf_lobby_foyer_prefunction",
+            "leaf_lobby_bar_reception",
+            "zone_ballroom",
+            "leaf_ballroom_main_floor"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.01,
+            "llm_sec": 144.61,
+            "total_sec": 144.62,
+            "llm_calls": 17,
+            "input_tokens": 19413
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 27.1,
+          "views_pct": 31.6,
+          "calls_pct": 15.0,
+          "tokens_times_less": 1.4,
+          "views_times_faster": 1.5,
+          "calls_times_less": 1.2
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/auto_d62ef13d_flat.json"
+    },
+    {
+      "query": "where is the projection screen in the ballroom",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "where is the projection screen in the ballroom",
+        "found": true,
+        "view_id": "v017",
+        "llm_calls": 4,
+        "input_tokens": 2034,
+        "views_checked": 1,
+        "views_checked_ids": [
+          "v017"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 0.9266669985663611,
+        "path": [
+          "root_conference_hall",
+          "zone_ballroom",
+          "leaf_ballroom_stage_front"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 15.93,
+          "total_sec": 15.93,
+          "llm_calls": 4,
+          "input_tokens": 2034
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "where is the projection screen in the ballroom",
+        "found": true,
+        "view_id": "v012",
+        "llm_calls": 20,
+        "input_tokens": 26667,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 17.0479999978852,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 197.48,
+          "total_sec": 197.5,
+          "llm_calls": 20,
+          "input_tokens": 26667
+        }
+      },
+      "savings": {
+        "tokens_pct": 92.4,
+        "calls_pct": 80.0,
+        "views_pct": 94.7,
+        "tokens_times_less": 13.1,
+        "calls_times_less": 5.0,
+        "views_times_faster": 19.0
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "where is the projection screen in the ballroom",
+          "found": true,
+          "view_id": "v017",
+          "llm_calls": 4,
+          "input_tokens": 2034,
+          "views_checked": 1,
+          "views_checked_ids": [
+            "v017"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 1.4642499991168734,
+          "path": [
+            "root_conference_hall",
+            "zone_ballroom",
+            "leaf_ballroom_stage_front"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 15.93,
+            "total_sec": 15.93,
+            "llm_calls": 4,
+            "input_tokens": 2034
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 92.4,
+          "views_pct": 94.7,
+          "calls_pct": 80.0,
+          "tokens_times_less": 13.1,
+          "views_times_faster": 19.0,
+          "calls_times_less": 5.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/auto_de0b412c_flat.json"
+    },
+    {
+      "query": "where is the screen in the conference room located",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "where is the screen in the conference room located",
+        "found": true,
+        "view_id": "v017",
+        "llm_calls": 4,
+        "input_tokens": 2034,
+        "views_checked": 1,
+        "views_checked_ids": [
+          "v017"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 1.0265419987263158,
+        "path": [
+          "root_conference_hall",
+          "zone_ballroom",
+          "leaf_ballroom_stage_front"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 15.93,
+          "total_sec": 15.93,
+          "llm_calls": 4,
+          "input_tokens": 2034
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "where is the screen in the conference room located",
+        "found": true,
+        "view_id": "v012",
+        "llm_calls": 20,
+        "input_tokens": 26667,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 16.859374998603016,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 197.48,
+          "total_sec": 197.5,
+          "llm_calls": 20,
+          "input_tokens": 26667
+        }
+      },
+      "savings": {
+        "tokens_pct": 92.4,
+        "calls_pct": 80.0,
+        "views_pct": 94.7,
+        "tokens_times_less": 13.1,
+        "calls_times_less": 5.0,
+        "views_times_faster": 19.0
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "where is the screen in the conference room located",
+          "found": true,
+          "view_id": "v017",
+          "llm_calls": 4,
+          "input_tokens": 2034,
+          "views_checked": 1,
+          "views_checked_ids": [
+            "v017"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 0.994999998511048,
+          "path": [
+            "root_conference_hall",
+            "zone_ballroom",
+            "leaf_ballroom_stage_front"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 15.93,
+            "total_sec": 15.93,
+            "llm_calls": 4,
+            "input_tokens": 2034
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 92.4,
+          "views_pct": 94.7,
+          "calls_pct": 80.0,
+          "tokens_times_less": 13.1,
+          "views_times_faster": 19.0,
+          "calls_times_less": 5.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/auto_288fc72b_flat.json"
+    },
+    {
+      "query": "where is the exit sign in the lobby",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "where is the exit sign in the lobby",
+        "found": false,
+        "view_id": null,
+        "llm_calls": 6,
+        "input_tokens": 5257,
+        "views_checked": 3,
+        "views_checked_ids": [
+          "v006",
+          "v007",
+          "v008"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 2.192500000091968,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_foyer_prefunction"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 39.65,
+          "total_sec": 39.65,
+          "llm_calls": 6,
+          "input_tokens": 5257
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "where is the exit sign in the lobby",
+        "found": false,
+        "view_id": null,
+        "llm_calls": 20,
+        "input_tokens": 26647,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 16.136499998538056,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 197.34,
+          "total_sec": 197.35,
+          "llm_calls": 20,
+          "input_tokens": 26647
+        }
+      },
+      "savings": {
+        "tokens_pct": 80.3,
+        "calls_pct": 70.0,
+        "views_pct": 84.2,
+        "tokens_times_less": 5.1,
+        "calls_times_less": 3.3,
+        "views_times_faster": 6.3
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "where is the exit sign in the lobby",
+          "found": false,
+          "view_id": null,
+          "llm_calls": 6,
+          "input_tokens": 5257,
+          "views_checked": 3,
+          "views_checked_ids": [
+            "v006",
+            "v007",
+            "v008"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 2.1487910016730893,
+          "path": [
+            "root_conference_hall",
+            "zone_lobby_reception",
+            "leaf_lobby_foyer_prefunction"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 39.65,
+            "total_sec": 39.65,
+            "llm_calls": 6,
+            "input_tokens": 5257
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 80.3,
+          "views_pct": 84.2,
+          "calls_pct": 70.0,
+          "tokens_times_less": 5.1,
+          "views_times_faster": 6.3,
+          "calls_times_less": 3.3
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/auto_2c7ca5da_flat.json"
+    },
+    {
+      "query": "where is the screen in the conference room",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "where is the screen in the conference room",
+        "found": true,
+        "view_id": "v017",
+        "llm_calls": 4,
+        "input_tokens": 2030,
+        "views_checked": 1,
+        "views_checked_ids": [
+          "v017"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 0.9403750009369105,
+        "path": [
+          "root_conference_hall",
+          "zone_ballroom",
+          "leaf_ballroom_stage_front"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 15.9,
+          "total_sec": 15.9,
+          "llm_calls": 4,
+          "input_tokens": 2030
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "where is the screen in the conference room",
+        "found": true,
+        "view_id": "v012",
+        "llm_calls": 20,
+        "input_tokens": 26647,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 17.467125002440298,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 197.34,
+          "total_sec": 197.35,
+          "llm_calls": 20,
+          "input_tokens": 26647
+        }
+      },
+      "savings": {
+        "tokens_pct": 92.4,
+        "calls_pct": 80.0,
+        "views_pct": 94.7,
+        "tokens_times_less": 13.1,
+        "calls_times_less": 5.0,
+        "views_times_faster": 19.0
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "where is the screen in the conference room",
+          "found": true,
+          "view_id": "v017",
+          "llm_calls": 4,
+          "input_tokens": 2030,
+          "views_checked": 1,
+          "views_checked_ids": [
+            "v017"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 1.0700420025386848,
+          "path": [
+            "root_conference_hall",
+            "zone_ballroom",
+            "leaf_ballroom_stage_front"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 15.9,
+            "total_sec": 15.9,
+            "llm_calls": 4,
+            "input_tokens": 2030
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 92.4,
+          "views_pct": 94.7,
+          "calls_pct": 80.0,
+          "tokens_times_less": 13.1,
+          "views_times_faster": 19.0,
+          "calls_times_less": 5.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/auto_9f59cb6c_flat.json"
+    },
+    {
+      "query": "where is the exit sign",
+      "total_views": 19,
+      "graph": {
+        "mode": "graph",
+        "query": "where is the exit sign",
+        "found": true,
+        "view_id": "v006",
+        "llm_calls": 4,
+        "input_tokens": 2225,
+        "views_checked": 1,
+        "views_checked_ids": [
+          "v006"
+        ],
+        "nodes_visited": 3,
+        "traversal_steps": 2,
+        "elapsed_ms": 1.0487919971637893,
+        "path": [
+          "root_conference_hall",
+          "zone_lobby_reception",
+          "leaf_lobby_foyer_prefunction"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.0,
+          "llm_sec": 17.29,
+          "total_sec": 17.29,
+          "llm_calls": 4,
+          "input_tokens": 2225
+        }
+      },
+      "flat": {
+        "mode": "flat",
+        "query": "where is the exit sign",
+        "found": true,
+        "view_id": "v001",
+        "llm_calls": 20,
+        "input_tokens": 26587,
+        "views_checked": 19,
+        "views_checked_ids": [
+          "v001",
+          "v002",
+          "v003",
+          "v004",
+          "v005",
+          "v006",
+          "v007",
+          "v008",
+          "v009",
+          "v010",
+          "v011",
+          "v012",
+          "v013",
+          "v014",
+          "v015",
+          "v016",
+          "v017",
+          "v018",
+          "v019"
+        ],
+        "nodes_visited": 0,
+        "traversal_steps": 0,
+        "elapsed_ms": 15.674999998736894,
+        "path": [
+          "all_views"
+        ],
+        "details": {},
+        "timing": {
+          "infra_sec": 0.02,
+          "llm_sec": 196.91,
+          "total_sec": 196.92,
+          "llm_calls": 20,
+          "input_tokens": 26587
+        }
+      },
+      "savings": {
+        "tokens_pct": 91.6,
+        "calls_pct": 80.0,
+        "views_pct": 94.7,
+        "tokens_times_less": 11.9,
+        "calls_times_less": 5.0,
+        "views_times_faster": 19.0
+      },
+      "graph_wins_on_tokens": true,
+      "graph_wins_on_calls": true,
+      "graph_wins_on_views": true,
+      "oracle": {
+        "graph_oracle": {
+          "mode": "graph",
+          "query": "where is the exit sign",
+          "found": false,
+          "view_id": null,
+          "llm_calls": 2,
+          "input_tokens": 367,
+          "views_checked": 0,
+          "views_checked_ids": [],
+          "nodes_visited": 1,
+          "traversal_steps": 1,
+          "elapsed_ms": 0.2115419993060641,
+          "path": [
+            "root_conference_hall"
+          ],
+          "details": {},
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 3.32,
+            "total_sec": 3.32,
+            "llm_calls": 2,
+            "input_tokens": 367
+          }
+        },
+        "savings_vs_flat": {
+          "tokens_pct": 98.6,
+          "views_pct": 100.0,
+          "calls_pct": 90.0,
+          "tokens_times_less": 72.4,
+          "views_times_faster": null,
+          "calls_times_less": 10.0
+        }
+      },
+      "session_file": "/Users/leo/beyond-proximity/backend/data/scenes/default/queries/d809b008.json"
+    }
+  ],
+  "scaling": {
+    "query": "find the bar",
+    "graph_stats": {
+      "has_tree": true,
+      "node_count": 15,
+      "max_depth": 2,
+      "root_id": "root_conference_hall",
+      "nodes_by_type": {
+        "leaf": 10,
+        "zone": 4,
+        "root": 1
+      },
+      "leaf_count": 10,
+      "zone_count": 4,
+      "views_in_tree": 19
+    },
+    "rows": [
+      {
+        "views_available": 3,
+        "graph": {
+          "views_checked": 0,
+          "nodes_visited": 3,
+          "input_tokens": 607,
+          "llm_calls": 3,
+          "total_sec": 5.39
+        },
+        "flat": {
+          "views_checked": 3,
+          "input_tokens": 4196,
+          "llm_calls": 4,
+          "total_sec": 31.37
+        },
+        "speedup_sec": 5.8
+      },
+      {
+        "views_available": 5,
+        "graph": {
+          "views_checked": 0,
+          "nodes_visited": 3,
+          "input_tokens": 607,
+          "llm_calls": 3,
+          "total_sec": 5.39
+        },
+        "flat": {
+          "views_checked": 5,
+          "input_tokens": 7197,
+          "llm_calls": 6,
+          "total_sec": 53.51
+        },
+        "speedup_sec": 9.9
+      },
+      {
+        "views_available": 10,
+        "graph": {
+          "views_checked": 1,
+          "nodes_visited": 3,
+          "input_tokens": 2114,
+          "llm_calls": 4,
+          "total_sec": 16.5
+        },
+        "flat": {
+          "views_checked": 10,
+          "input_tokens": 14616,
+          "llm_calls": 11,
+          "total_sec": 108.26
+        },
+        "speedup_sec": 6.6
+      },
+      {
+        "views_available": 15,
+        "graph": {
+          "views_checked": 1,
+          "nodes_visited": 3,
+          "input_tokens": 2114,
+          "llm_calls": 4,
+          "total_sec": 16.5
+        },
+        "flat": {
+          "views_checked": 15,
+          "input_tokens": 21687,
+          "llm_calls": 16,
+          "total_sec": 160.52
+        },
+        "speedup_sec": 9.7
+      },
+      {
+        "views_available": 19,
+        "graph": {
+          "views_checked": 1,
+          "nodes_visited": 3,
+          "input_tokens": 2114,
+          "llm_calls": 4,
+          "total_sec": 16.5
+        },
+        "flat": {
+          "views_checked": 19,
+          "input_tokens": 26547,
+          "llm_calls": 20,
+          "total_sec": 196.64
+        },
+        "speedup_sec": 11.9
+      }
+    ],
+    "interpretation": {
+      "flat_driver": "view_count",
+      "flat_sec_per_extra_view": 10.33,
+      "graph_driver": "tree_depth_and_branch_pruning",
+      "graph_sec_per_extra_view": 0.69,
+      "note": "Flat time grows ~linearly with view count (checks every view). Graph time grows slowly \u2014 dominated by tree depth (~2 levels, 10 leaves) and query-specific branches, not total views."
+    }
+  },
+  "timing_model": {
+    "mode": "fast_llm_no_thinking",
+    "sec_per_call": 0.35,
+    "tokens_per_sec": 140,
+    "formula": "total_sec = infra_sec + llm_calls*0.35 + input_tokens/140"
+  },
+  "summary": {
+    "avg_token_savings_pct": 75.8,
+    "avg_view_savings_pct": 78.9,
+    "avg_call_savings_pct": 64.2,
+    "avg_tokens_times_less": 8.5,
+    "avg_views_times_faster": 12.5,
+    "avg_calls_times_less": 3.8,
+    "avg_graph_tokens": 6430,
+    "avg_flat_tokens": 26604,
+    "avg_graph_views_checked": 4.0,
+    "avg_graph_total_sec": 48.44,
+    "avg_flat_total_sec": 197.04,
+    "avg_sec_times_faster": 4.1,
+    "oracle_queries": 12,
+    "oracle_avg_token_savings_pct": 82.6,
+    "oracle_avg_tokens_times_less": 24.2,
+    "oracle_avg_views_times_faster": 11.2,
+    "oracle_avg_calls_times_less": 5.3,
+    "graph_wins_all_queries": true
+  },
+  "failure_cases": {
+    "scene_id": "default",
+    "cases_run": 5,
+    "summary": {
+      "graph_room_correct": 4,
+      "flat_room_correct": 2,
+      "flat_wrong_room_count": 2,
+      "graph_wins_room_count": 2,
+      "highlight_case": "where is the screen in the conference room"
+    },
+    "results": [
+      {
+        "case": {
+          "query": "where is the screen in the conference room",
+          "room_label": "Conference room / stage (presentation end)",
+          "positive_view_ids": [
+            "v017",
+            "v018"
+          ],
+          "wrong_room_view_ids": [
+            "v012",
+            "v015"
+          ],
+          "expected_leaf_nodes": [
+            "leaf_ballroom_stage_front",
+            "leaf_stage"
+          ],
+          "why_it_matters": "Multiple projection screens exist in the hall. Flat search returns the first keyword match (often v012 \u2014 ballroom floor through doors) without respecting the room constraint. Graph traversal enters the stage/screen leaf and confirms v017/v018.",
+          "category": "room_disambiguation"
+        },
+        "graph": {
+          "mode": "graph",
+          "query": "where is the screen in the conference room",
+          "found": true,
+          "view_id": "v017",
+          "llm_calls": 4,
+          "input_tokens": 2030,
+          "views_checked": 1,
+          "views_checked_ids": [
+            "v017"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 0.9962500007532071,
+          "path": [
+            "root_conference_hall",
+            "zone_ballroom",
+            "leaf_ballroom_stage_front"
+          ],
+          "details": {},
+          "classification": "correct_room",
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 15.9,
+            "total_sec": 15.9,
+            "llm_calls": 4,
+            "input_tokens": 2030
+          }
+        },
+        "flat": {
+          "mode": "flat",
+          "query": "where is the screen in the conference room",
+          "found": true,
+          "view_id": "v012",
+          "llm_calls": 20,
+          "input_tokens": 26647,
+          "views_checked": 19,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014",
+            "v015",
+            "v016",
+            "v017",
+            "v018",
+            "v019"
+          ],
+          "nodes_visited": 0,
+          "traversal_steps": 0,
+          "elapsed_ms": 15.857292000873713,
+          "path": [
+            "all_views"
+          ],
+          "details": {},
+          "classification": "wrong_room",
+          "timing": {
+            "infra_sec": 0.02,
+            "llm_sec": 197.34,
+            "total_sec": 197.35,
+            "llm_calls": 20,
+            "input_tokens": 26647
+          }
+        },
+        "graph_wins_room": true,
+        "flat_wrong_room": true,
+        "demo_highlight": true
+      },
+      {
+        "case": {
+          "query": "where is the screen in the conference room located",
+          "room_label": "Conference room / stage (presentation end)",
+          "positive_view_ids": [
+            "v017",
+            "v018"
+          ],
+          "wrong_room_view_ids": [
+            "v012",
+            "v015"
+          ],
+          "expected_leaf_nodes": [
+            "leaf_ballroom_stage_front",
+            "leaf_stage"
+          ],
+          "why_it_matters": "Same room constraint with natural phrasing ('located'). Tests whether filler words break matching and whether graph still scopes correctly.",
+          "category": "room_disambiguation"
+        },
+        "graph": {
+          "mode": "graph",
+          "query": "where is the screen in the conference room located",
+          "found": true,
+          "view_id": "v017",
+          "llm_calls": 4,
+          "input_tokens": 2034,
+          "views_checked": 1,
+          "views_checked_ids": [
+            "v017"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 0.9576249976817053,
+          "path": [
+            "root_conference_hall",
+            "zone_ballroom",
+            "leaf_ballroom_stage_front"
+          ],
+          "details": {},
+          "classification": "correct_room",
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 15.93,
+            "total_sec": 15.93,
+            "llm_calls": 4,
+            "input_tokens": 2034
+          }
+        },
+        "flat": {
+          "mode": "flat",
+          "query": "where is the screen in the conference room located",
+          "found": true,
+          "view_id": "v012",
+          "llm_calls": 20,
+          "input_tokens": 26667,
+          "views_checked": 19,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014",
+            "v015",
+            "v016",
+            "v017",
+            "v018",
+            "v019"
+          ],
+          "nodes_visited": 0,
+          "traversal_steps": 0,
+          "elapsed_ms": 17.919583999173483,
+          "path": [
+            "all_views"
+          ],
+          "details": {},
+          "classification": "wrong_room",
+          "timing": {
+            "infra_sec": 0.02,
+            "llm_sec": 197.48,
+            "total_sec": 197.5,
+            "llm_calls": 20,
+            "input_tokens": 26667
+          }
+        },
+        "graph_wins_room": true,
+        "flat_wrong_room": true,
+        "demo_highlight": true
+      },
+      {
+        "case": {
+          "query": "where is the projection screen in the ballroom",
+          "room_label": "Ballroom (any zone)",
+          "positive_view_ids": [
+            "v012",
+            "v015",
+            "v017",
+            "v018"
+          ],
+          "wrong_room_view_ids": [
+            "v001",
+            "v002"
+          ],
+          "expected_leaf_nodes": [
+            "leaf_ballroom_main_floor",
+            "leaf_ballroom_stage_front"
+          ],
+          "why_it_matters": "Ballroom-wide query \u2014 both floor and stage screens are valid. Graph should stay inside zone_ballroom; flat may still work but checks all 19 views.",
+          "category": "room_scoped_search"
+        },
+        "graph": {
+          "mode": "graph",
+          "query": "where is the projection screen in the ballroom",
+          "found": true,
+          "view_id": "v017",
+          "llm_calls": 4,
+          "input_tokens": 2034,
+          "views_checked": 1,
+          "views_checked_ids": [
+            "v017"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 1.0367079994466621,
+          "path": [
+            "root_conference_hall",
+            "zone_ballroom",
+            "leaf_ballroom_stage_front"
+          ],
+          "details": {},
+          "classification": "correct_room",
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 15.93,
+            "total_sec": 15.93,
+            "llm_calls": 4,
+            "input_tokens": 2034
+          }
+        },
+        "flat": {
+          "mode": "flat",
+          "query": "where is the projection screen in the ballroom",
+          "found": true,
+          "view_id": "v012",
+          "llm_calls": 20,
+          "input_tokens": 26667,
+          "views_checked": 19,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014",
+            "v015",
+            "v016",
+            "v017",
+            "v018",
+            "v019"
+          ],
+          "nodes_visited": 0,
+          "traversal_steps": 0,
+          "elapsed_ms": 16.38870800161385,
+          "path": [
+            "all_views"
+          ],
+          "details": {},
+          "classification": "correct_room",
+          "timing": {
+            "infra_sec": 0.02,
+            "llm_sec": 197.48,
+            "total_sec": 197.49,
+            "llm_calls": 20,
+            "input_tokens": 26667
+          }
+        },
+        "graph_wins_room": false,
+        "flat_wrong_room": false,
+        "demo_highlight": false
+      },
+      {
+        "case": {
+          "query": "find the projector in the ballroom",
+          "room_label": "Ballroom AV (side wall projector)",
+          "positive_view_ids": [
+            "v013"
+          ],
+          "wrong_room_view_ids": [
+            "v001",
+            "v002",
+            "v009"
+          ],
+          "expected_leaf_nodes": [
+            "leaf_ballroom_main_floor"
+          ],
+          "why_it_matters": "Projector on AV stand (v013) vs projection screens elsewhere. Room + object disambiguation \u2014 flat may confuse screen views with projector view.",
+          "category": "room_disambiguation"
+        },
+        "graph": {
+          "mode": "graph",
+          "query": "find the projector in the ballroom",
+          "found": true,
+          "view_id": "v013",
+          "llm_calls": 17,
+          "input_tokens": 19413,
+          "views_checked": 13,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013"
+          ],
+          "nodes_visited": 7,
+          "traversal_steps": 3,
+          "elapsed_ms": 7.706500000494998,
+          "path": [
+            "root_conference_hall",
+            "zone_lobby_reception",
+            "leaf_lobby_corridor_lounge",
+            "leaf_lobby_foyer_prefunction",
+            "leaf_lobby_bar_reception",
+            "zone_ballroom",
+            "leaf_ballroom_main_floor"
+          ],
+          "details": {},
+          "classification": "correct_room",
+          "timing": {
+            "infra_sec": 0.01,
+            "llm_sec": 144.61,
+            "total_sec": 144.62,
+            "llm_calls": 17,
+            "input_tokens": 19413
+          }
+        },
+        "flat": {
+          "mode": "flat",
+          "query": "find the projector in the ballroom",
+          "found": true,
+          "view_id": "v013",
+          "llm_calls": 20,
+          "input_tokens": 26627,
+          "views_checked": 19,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014",
+            "v015",
+            "v016",
+            "v017",
+            "v018",
+            "v019"
+          ],
+          "nodes_visited": 0,
+          "traversal_steps": 0,
+          "elapsed_ms": 15.867207999690436,
+          "path": [
+            "all_views"
+          ],
+          "details": {},
+          "classification": "correct_room",
+          "timing": {
+            "infra_sec": 0.02,
+            "llm_sec": 197.19,
+            "total_sec": 197.21,
+            "llm_calls": 20,
+            "input_tokens": 26627
+          }
+        },
+        "graph_wins_room": false,
+        "flat_wrong_room": false,
+        "demo_highlight": false
+      },
+      {
+        "case": {
+          "query": "where is the exit sign in the lobby",
+          "room_label": "Lobby / reception",
+          "positive_view_ids": [
+            "v008",
+            "v009",
+            "v011"
+          ],
+          "wrong_room_view_ids": [
+            "v012",
+            "v017",
+            "v018"
+          ],
+          "expected_leaf_nodes": [
+            "leaf_lobby_corridor_lounge",
+            "leaf_lobby_foyer_prefunction",
+            "leaf_lobby_bar_reception"
+          ],
+          "why_it_matters": "Exit signs appear throughout the venue. Lobby-specific query should not return ballroom or stage signs that flat search hits when scanning all views.",
+          "category": "room_disambiguation"
+        },
+        "graph": {
+          "mode": "graph",
+          "query": "where is the exit sign in the lobby",
+          "found": false,
+          "view_id": null,
+          "llm_calls": 6,
+          "input_tokens": 5257,
+          "views_checked": 3,
+          "views_checked_ids": [
+            "v006",
+            "v007",
+            "v008"
+          ],
+          "nodes_visited": 3,
+          "traversal_steps": 2,
+          "elapsed_ms": 2.892790998885175,
+          "path": [
+            "root_conference_hall",
+            "zone_lobby_reception",
+            "leaf_lobby_foyer_prefunction"
+          ],
+          "details": {},
+          "classification": "miss",
+          "timing": {
+            "infra_sec": 0.0,
+            "llm_sec": 39.65,
+            "total_sec": 39.65,
+            "llm_calls": 6,
+            "input_tokens": 5257
+          }
+        },
+        "flat": {
+          "mode": "flat",
+          "query": "where is the exit sign in the lobby",
+          "found": false,
+          "view_id": null,
+          "llm_calls": 20,
+          "input_tokens": 26647,
+          "views_checked": 19,
+          "views_checked_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014",
+            "v015",
+            "v016",
+            "v017",
+            "v018",
+            "v019"
+          ],
+          "nodes_visited": 0,
+          "traversal_steps": 0,
+          "elapsed_ms": 17.450625000492437,
+          "path": [
+            "all_views"
+          ],
+          "details": {},
+          "classification": "miss",
+          "timing": {
+            "infra_sec": 0.02,
+            "llm_sec": 197.34,
+            "total_sec": 197.35,
+            "llm_calls": 20,
+            "input_tokens": 26647
+          }
+        },
+        "graph_wins_room": false,
+        "flat_wrong_room": false,
+        "demo_highlight": false
+      }
+    ]
+  },
+  "generated_at": "2026-06-11T17:45:42.725544+00:00",
+  "run_slug": "2026-06-11_1745",
+  "demo_video": "benchmark_results/failure_case_demo.mp4",
+  "reasoning": {
+    "bundle_path": "benchmark_results/reasoning_default.json",
+    "reasoning_md_paths": [
+      "project_log/runs/2026-06-11_1745/reasoning/01_where_is_the_screen_in_the_c.md",
+      "project_log/runs/2026-06-11_1745/reasoning/02_where_is_the_screen_in_the_c.md",
+      "project_log/runs/2026-06-11_1745/reasoning/03_where_is_the_projection_scre.md",
+      "project_log/runs/2026-06-11_1745/reasoning/04_find_the_projector_in_the_ba.md",
+      "project_log/runs/2026-06-11_1745/reasoning/05_where_is_the_exit_sign_in_th.md"
+    ],
+    "session_paths": [
+      "backend/data/scenes/default/queries/auto_b171d426_graph.json",
+      "backend/data/scenes/default/queries/auto_b171d426_flat.json",
+      "backend/data/scenes/default/queries/auto_18f9a9f6_graph.json",
+      "backend/data/scenes/default/queries/auto_18f9a9f6_flat.json",
+      "backend/data/scenes/default/queries/auto_f2322a71_graph.json",
+      "backend/data/scenes/default/queries/auto_f2322a71_flat.json",
+      "backend/data/scenes/default/queries/auto_b2aed653_graph.json",
+      "backend/data/scenes/default/queries/auto_b2aed653_flat.json",
+      "backend/data/scenes/default/queries/auto_a279d8c7_graph.json",
+      "backend/data/scenes/default/queries/auto_a279d8c7_flat.json"
+    ],
+    "cases": [
+      {
+        "case_index": 1,
+        "query": "where is the screen in the conference room",
+        "graph_verdict": "correct_room",
+        "flat_verdict": "wrong_room",
+        "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/01_where_is_the_screen_in_the_c.md",
+        "session_graph": "auto_b171d426_graph.json",
+        "session_flat": "auto_b171d426_flat.json"
+      },
+      {
+        "case_index": 2,
+        "query": "where is the screen in the conference room located",
+        "graph_verdict": "correct_room",
+        "flat_verdict": "wrong_room",
+        "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/02_where_is_the_screen_in_the_c.md",
+        "session_graph": "auto_18f9a9f6_graph.json",
+        "session_flat": "auto_18f9a9f6_flat.json"
+      },
+      {
+        "case_index": 3,
+        "query": "where is the projection screen in the ballroom",
+        "graph_verdict": "correct_room",
+        "flat_verdict": "correct_room",
+        "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/03_where_is_the_projection_scre.md",
+        "session_graph": "auto_f2322a71_graph.json",
+        "session_flat": "auto_f2322a71_flat.json"
+      },
+      {
+        "case_index": 4,
+        "query": "find the projector in the ballroom",
+        "graph_verdict": "correct_room",
+        "flat_verdict": "correct_room",
+        "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/04_find_the_projector_in_the_ba.md",
+        "session_graph": "auto_b2aed653_graph.json",
+        "session_flat": "auto_b2aed653_flat.json"
+      },
+      {
+        "case_index": 5,
+        "query": "where is the exit sign in the lobby",
+        "graph_verdict": "miss",
+        "flat_verdict": "miss",
+        "reasoning_md": "project_log/runs/2026-06-11_1745/reasoning/05_where_is_the_exit_sign_in_th.md",
+        "session_graph": "auto_a279d8c7_graph.json",
+        "session_flat": "auto_a279d8c7_flat.json"
+      }
+    ],
+    "run_slug": "2026-06-11_1745",
+    "run_dashboard": "project_log/runs/2026-06-11_1745/README.md"
+  },
+  "charts": {
+    "tokens": "benchmark_results/tokens_comparison.png",
+    "time": "benchmark_results/time_seconds.png",
+    "summary": "benchmark_results/summary_averages.png",
+    "scaling": "benchmark_results/scaling_curve.png",
+    "speedup": "benchmark_results/speedup_per_query.png",
+    "failure": "benchmark_results/failure_room_accuracy.png"
+  },
+  "docs_hub": "docs/README.md",
+  "run_dashboard": "docs/project_log/runs/2026-06-11_1745/README.md"
+}
