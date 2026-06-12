@@ -176,6 +176,7 @@ export interface QuerySessionHeader {
   finished_at: string | null;
   step_count: number;
   found: boolean | null;
+  source?: string | null;
 }
 
 export interface QuerySession {

@@ -311,8 +311,17 @@ export function QueryFlow({ sceneId }: QueryFlowProps) {
   const { sceneId: storeSceneId } = useSceneStore()
   const sid = sceneId || storeSceneId
 
-  const { sessions, activeSession, pollingSessionId, setSessions, setActiveSession, setPollingSessionId, updateActiveSession } =
-    useQueryLogStore()
+  const {
+    sessions,
+    activeSession,
+    pollingSessionId,
+    pendingOpenSessionId,
+    setSessions,
+    setActiveSession,
+    setPollingSessionId,
+    setPendingOpenSessionId,
+    updateActiveSession,
+  } = useQueryLogStore()
 
   const logRef = useRef<HTMLDivElement>(null)
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -356,7 +365,7 @@ export function QueryFlow({ sceneId }: QueryFlowProps) {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight
   }, [activeSession?.steps.length])
 
-  const openSession = async (sessionId: string) => {
+  const openSession = useCallback(async (sessionId: string) => {
     try {
       const res = await queryLogApi.getSession(sid, sessionId)
       setActiveSession(res.data)
@@ -366,7 +375,13 @@ export function QueryFlow({ sceneId }: QueryFlowProps) {
         setPollingSessionId(null)
       }
     } catch { /* ignore */ }
-  }
+  }, [sid, setActiveSession, setPollingSessionId])
+
+  useEffect(() => {
+    if (!pendingOpenSessionId) return
+    void openSession(pendingOpenSessionId)
+    setPendingOpenSessionId(null)
+  }, [pendingOpenSessionId, openSession, setPendingOpenSessionId])
 
   return (
     <div className="flex h-full bg-gray-950 rounded-lg border border-gray-800 overflow-hidden">

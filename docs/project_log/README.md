@@ -4,8 +4,8 @@ History of benchmark runs. For the latest overview, start at [**docs/README.md**
 
 ## Runs (newest first)
 
-- **2026-06-12 17:14** — [Run dashboard](runs/2026-06-12_1714/README.md) · [Log](2026-06-12_1714_benchmark.md) · graph 48.45s vs flat 197.09s · wrong-room 2/5
-- **2026-06-12 17:13** — [Run dashboard](runs/2026-06-12_1713/README.md) · [Log](2026-06-12_1713_benchmark.md) · graph 48.45s vs flat 197.09s · wrong-room 2/5
-- **2026-06-12 17:07** — [Run dashboard](runs/2026-06-12_1707/README.md) · [Log](2026-06-12_1707_benchmark.md) · graph 48.45s vs flat 197.09s · wrong-room 2/5
-- **2026-06-12 17:06** — [Run dashboard](runs/2026-06-12_1706/README.md) · [Log](2026-06-12_1706_benchmark.md) · graph 48.75s vs flat 197.12s · wrong-room 2/5
+- **2026-06-12 19:35** — [Log](2026-06-12_1935_auto_query_pipeline.md) · Ask button auto-runs §7 pipeline (no Cursor session ID paste)
+- **2026-06-12 22:30** — [Log](2026-06-12_2230_query_flow_image_quality.md) · Query Flow skips dark placeholder PNGs; session `68b30f74` → v004 sofa
+- **2026-06-12 18:29** — [Run dashboard](runs/2026-06-12_1829/README.md) · [Log](2026-06-12_1829_benchmark.md) · graph 48.65s vs flat 197.04s · wrong-room 2/5
+- **2026-06-11 19:11** — [Run dashboard](runs/2026-06-11_1911/README.md) · [Log](2026-06-11_1911_benchmark.md) · graph 48.44s vs flat 197.04s · wrong-room 2/5
 - **2026-06-11 17:45** — [Run dashboard](runs/2026-06-11_1745/README.md) · [Log](2026-06-11_1745_benchmark.md) · graph 48.44s vs flat 197.04s · wrong-room 2/5

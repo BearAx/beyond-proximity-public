@@ -2,9 +2,10 @@
 import json
 from typing import Any, Dict, Optional
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, BackgroundTasks, HTTPException
 from pydantic import BaseModel
 
+from backend.query.live_session import run_query_session_safe
 from backend.query.log import list_sessions, get_session, QuerySession
 
 router = APIRouter()
@@ -34,6 +35,25 @@ def api_create_session(scene_id: str, body: CreateSessionRequest):
     """Create a new (empty) log session. Returns session_id for subsequent log calls."""
     sess = QuerySession(scene_id, body.original_query)
     return {"session_id": sess.session_id}
+
+
+class RunSessionRequest(BaseModel):
+    original_query: str
+    step_delay_sec: float = 0.35
+
+
+@router.post("/{scene_id}/sessions/run")
+def api_run_session(scene_id: str, body: RunSessionRequest, background_tasks: BackgroundTasks):
+    """Create a session and run the §7 pipeline in the background (Query Flow polls live steps)."""
+    sess = QuerySession(scene_id, body.original_query)
+    background_tasks.add_task(
+        run_query_session_safe,
+        scene_id,
+        sess.session_id,
+        body.original_query,
+        step_delay_sec=body.step_delay_sec,
+    )
+    return {"session_id": sess.session_id, "status": "running"}
 
 
 class LogDecompositionRequest(BaseModel):

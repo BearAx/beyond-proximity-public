@@ -94,6 +94,11 @@ export const queryLogApi = {
     api.get<import('../types').QuerySession>(`/query-log/${sceneId}/sessions/${sessionId}`),
   createSession: (sceneId: string, originalQuery: string) =>
     api.post<{ session_id: string }>(`/query-log/${sceneId}/sessions`, { original_query: originalQuery }),
+  runSession: (sceneId: string, originalQuery: string, stepDelaySec = 0.35) =>
+    api.post<{ session_id: string; status: string }>(`/query-log/${sceneId}/sessions/run`, {
+      original_query: originalQuery,
+      step_delay_sec: stepDelaySec,
+    }),
   logDecomposition: (sceneId: string, sessionId: string, structuredPlan: Record<string, unknown>, prompt?: string) =>
     api.post(`/query-log/${sceneId}/sessions/log/decomposition`, { session_id: sessionId, structured_plan: structuredPlan, prompt: prompt ?? '' }),
   logTraversal: (sceneId: string, body: {

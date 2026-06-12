@@ -300,14 +300,14 @@ def finalize_refined_bbox_tool(
 
 # ── Best-view ranking ─────────────────────────────────────────────────────────
 
-def rank_leaf_results_tool(results: List[dict]) -> Dict[str, Any]:
+def rank_leaf_results_tool(scene_id: str, results: List[dict]) -> Dict[str, Any]:
     """Rank leaf-confirmation results and identify the best view.
 
     Pass the full list of leaf-check results (found AND not-found alike).
     Returns them sorted best-first with an added `_score` field, plus a
     `best` shortcut pointing to the top-ranked positive result.
 
-    Score factors: confidence (50 %), bbox area (30 %), bbox centrality (20 %).
+    Score factors: confidence, bbox area, centrality, and usable PNG brightness.
 
     Use this after collecting all leaf checks for a query to decide:
     - object_finding queries  → display only `best`
@@ -315,6 +315,7 @@ def rank_leaf_results_tool(results: List[dict]) -> Dict[str, Any]:
 
     Parameters
     ----------
+    scene_id : scene identifier (for image-quality scoring)
     results : list of dicts, each must contain:
         view_id   : str
         found     : bool
@@ -322,7 +323,7 @@ def rank_leaf_results_tool(results: List[dict]) -> Dict[str, Any]:
         bbox_2d   : [x1, y1, x2, y2] | null
         (any extra fields are preserved unchanged)
     """
-    ranked = rank_leaf_results(results)
+    ranked = rank_leaf_results(results, scene_id)
     best = next((r for r in ranked if r.get("found")), None)
     return {
         "ranked": ranked,
