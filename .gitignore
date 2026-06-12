@@ -40,3 +40,7 @@ build/
 
 # Matplotlib cache (benchmark charts)
 .matplotlib/
+
+# Local merge clones / backups (if copied into repo root)
+/leo-fork/
+local_backup*.zip

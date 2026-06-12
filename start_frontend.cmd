@@ -1,11 +1,17 @@
 @echo off
 cd /d "%~dp0frontend"
-set "PATH=C:\Users\m.mousatat\AppData\Local\miniconda3\envs\pcg;%PATH%"
 
-if not exist "C:\Users\m.mousatat\AppData\Local\miniconda3\envs\pcg\node.exe" (
-  echo ERROR: Node.js not found in pcg conda env.
+where npm >nul 2>&1
+if errorlevel 1 (
+  echo ERROR: npm not found in PATH. Install Node.js 18+ and reopen the terminal.
   exit /b 1
 )
 
-echo Starting SemanticSplat frontend on http://localhost:5173 ^(node from pcg env^)
+if not exist "node_modules\" (
+  echo Installing frontend dependencies...
+  call npm install
+  if errorlevel 1 exit /b 1
+)
+
+echo Starting SemanticSplat frontend on http://localhost:5173
 call npm run dev

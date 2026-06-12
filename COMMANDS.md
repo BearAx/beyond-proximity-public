@@ -127,7 +127,14 @@ pytest tests\backend\ -v
 
 ## 7. Запуск demo UI (не нужен для pipeline)
 
-**Терминал 1 — API:**
+**Вариант A — одной командой (3 окна):**
+
+```powershell
+cd "C:\Users\Asus\Desktop\Semantic 3D mapping\beyond-proximity"
+.\start_all.cmd
+```
+
+**Вариант B — вручную в трёх терминалах:**
 
 ```powershell
 cd "C:\Users\Asus\Desktop\Semantic 3D mapping\beyond-proximity"
@@ -156,7 +163,43 @@ npm run dev
 
 ---
 
-## 8. Git
+## 8. Benchmark Leo (graph vs flat) — Windows
+
+После merge с fork Leo. Один раз установить matplotlib (уже в `backend/requirements.txt`):
+
+```powershell
+cd "C:\Users\Asus\Desktop\Semantic 3D mapping\beyond-proximity"
+.\.venv\Scripts\Activate.ps1
+$env:PYTHONPATH = "."
+pip install -r backend\requirements.txt
+```
+
+Полный прогон (отчёты, графики, reasoning):
+
+```powershell
+.\run_all_docs.ps1
+```
+
+Или через cmd:
+
+```powershell
+cmd /c run_all_docs.cmd
+```
+
+Или вручную:
+
+```powershell
+$env:MPLCONFIGDIR = ".\.matplotlib"
+python scripts\run_full_benchmark.py
+```
+
+Стартовая страница доков: `docs\README.md`
+
+**Примечание:** генерация MP4 требует `ffmpeg` в PATH. Без ffmpeg видео пропускается, остальное работает (в репо уже есть готовый `docs/benchmark_results/failure_case_demo.mp4` от Leo).
+
+---
+
+## 9. Git
 
 ```powershell
 cd "C:\Users\Asus\Desktop\Semantic 3D mapping\beyond-proximity"
@@ -171,6 +214,8 @@ git push -u origin main
 
 ## Примечания
 
+- Бэкап до merge: `..\local_backup_before_leo_merge_2026-06-09.zip` (вне git, см. `..\`.gitignore`).
+- Клон Leo для сравнения: `..\beyond-proximity-leo\` (тоже вне git).
 - Большие `rgb/` и `depth/` в git не попадают (см. `.gitignore`). Локально должны лежать в `data/replica/pilot_scene_001/`.
 - Stub использует готовые `views/` и `tree/` из `default` — для live mode нужен отдельный этап.
 - Depth в pilot scene сейчас константа `0.1` — 3D bbox в stub не работает.

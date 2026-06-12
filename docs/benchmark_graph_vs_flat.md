@@ -1,9 +1,9 @@
 # Graph vs Flat — Benchmark Report
 
 > Semantic tree traversal (graph) compared to exhaustive view search (flat).
-> **Scene:** `default` · **Generated:** 2026-06-11 17:45 UTC
+> **Scene:** `default` · **Generated:** 2026-06-12 17:14 UTC
 
-**Navigation:** [Docs hub](README.md) · [Run dashboard](project_log/runs/2026-06-11_1745/README.md) · [Project log](project_log/README.md)
+**Navigation:** [Docs hub](README.md) · [Run dashboard](project_log/runs/2026-06-12_1714/README.md) · [Project log](project_log/README.md)
 
 ## Contents
 
@@ -24,7 +24,7 @@
 | Input tokens | 6,430 | 26,604 | **8.5×** less |
 | Views checked | 4.0 | 19 | **12.5×** faster |
 | LLM calls | 7.2 | 20 | **3.8×** less |
-| **Time (est.)** | **48.44 s** | **197.04 s** | **4.1×** faster |
+| **Time (est.)** | **48.45 s** | **197.09 s** | **4.1×** faster |
 
 The graph search checks **fewer views and sends fewer tokens** to the LLM, so queries finish in a fraction of the time.
 
@@ -80,18 +80,18 @@ When a saved query session exists, we replay the exact branch choices the LLM ma
 
 | Query | Graph tok | Flat tok | × less | Views G/F | Graph s | Flat s | × faster |
 |-------|----------:|---------:|-------:|----------:|--------:|-------:|---------:|
-| take me to the projector | 19,379 | 26,587 | 1.4× | 13/19 | 144.44 | 196.93 | 1.4× |
-| find the bar | 2,114 | 26,547 | 12.6× | 1/19 | 16.5 | 196.64 | 11.9× |
-| find the red sofa | 5,950 | 26,567 | 4.5× | 4/19 | 44.95 | 196.78 | 4.4× |
-| where is the exit sign? | 2,225 | 26,587 | 11.9× | 1/19 | 17.29 | 196.93 | 11.4× |
-| find the piano | 2,217 | 26,547 | 12.0× | 1/19 | 17.24 | 196.64 | 11.4× |
-| find all exit signs | 12,278 | 26,567 | 2.2× | 8/19 | 91.55 | 196.78 | 2.1× |
-| find the projector in the ballroom | 19,413 | 26,627 | 1.4× | 13/19 | 144.62 | 197.21 | 1.4× |
-| where is the projection screen in the ballroom | 2,034 | 26,667 | 13.1× | 1/19 | 15.93 | 197.5 | 12.4× |
-| where is the screen in the conference room located | 2,034 | 26,667 | 13.1× | 1/19 | 15.93 | 197.5 | 12.4× |
-| where is the exit sign in the lobby | 5,257 | 26,647 | 5.1× | 3/19 | 39.65 | 197.35 | 5.0× |
-| where is the screen in the conference room | 2,030 | 26,647 | 13.1× | 1/19 | 15.9 | 197.35 | 12.4× |
-| where is the exit sign | 2,225 | 26,587 | 11.9× | 1/19 | 17.29 | 196.92 | 11.4× |
+| take me to the projector | 19,379 | 26,587 | 1.4× | 13/19 | 144.49 | 196.97 | 1.4× |
+| find the bar | 2,114 | 26,547 | 12.6× | 1/19 | 16.5 | 196.68 | 11.9× |
+| find the red sofa | 5,950 | 26,567 | 4.5× | 4/19 | 44.96 | 196.82 | 4.4× |
+| where is the exit sign? | 2,225 | 26,587 | 11.9× | 1/19 | 17.3 | 196.96 | 11.4× |
+| find the piano | 2,217 | 26,547 | 12.0× | 1/19 | 17.24 | 196.68 | 11.4× |
+| find all exit signs | 12,278 | 26,567 | 2.2× | 8/19 | 91.56 | 196.82 | 2.1× |
+| where is the projection screen in the ballroom | 2,034 | 26,667 | 13.1× | 1/19 | 15.93 | 197.54 | 12.4× |
+| where is the exit sign in the lobby | 5,257 | 26,647 | 5.1× | 3/19 | 39.66 | 197.4 | 5.0× |
+| where is the screen in the conference room located | 2,034 | 26,667 | 13.1× | 1/19 | 15.93 | 197.54 | 12.4× |
+| where is the screen in the conference room | 2,030 | 26,647 | 13.1× | 1/19 | 15.9 | 197.4 | 12.4× |
+| find the projector in the ballroom | 19,413 | 26,627 | 1.4× | 13/19 | 144.64 | 197.26 | 1.4× |
+| where is the exit sign | 2,225 | 26,587 | 11.9× | 1/19 | 17.3 | 196.97 | 11.4× |
 
 ![Speedup per query](benchmark_results/speedup_per_query.png)
 
@@ -111,11 +111,11 @@ Scaling sweep on *"find the bar"* — vary how many views exist in the scene:
 
 | Views | Flat (s) | Graph (s) | × faster | Flat views chk | Graph views chk | Graph nodes |
 |------:|---------:|----------:|---------:|---------------:|----------------:|------------:|
-| 3 | 31.37 | 5.39 | 5.8× | 3 | 0 | 3 |
-| 5 | 53.51 | 5.39 | 9.9× | 5 | 0 | 3 |
-| 10 | 108.26 | 16.5 | 6.6× | 10 | 1 | 3 |
-| 15 | 160.52 | 16.5 | 9.7× | 15 | 1 | 3 |
-| 19 | 196.64 | 16.5 | 11.9× | 19 | 1 | 3 |
+| 3 | 31.38 | 5.39 | 5.8× | 3 | 0 | 3 |
+| 5 | 53.52 | 5.39 | 9.9× | 5 | 0 | 3 |
+| 10 | 108.28 | 16.5 | 6.6× | 10 | 1 | 3 |
+| 15 | 160.56 | 16.5 | 9.7× | 15 | 1 | 3 |
+| 19 | 196.68 | 16.5 | 11.9× | 19 | 1 | 3 |
 
 **Takeaway:** Flat time grows ~linearly with view count (checks every view). Graph time grows slowly — dominated by tree depth (~2 levels, 10 leaves) and query-specific branches, not total views.
 
@@ -135,11 +135,11 @@ Queries where the same object exists in **multiple rooms**. Flat search scans al
 
 | Query | Graph view | Verdict | Flat view | Verdict | Tokens G/F | Time G/F |
 |-------|------------|---------|-----------|---------|------------|----------|
-| where is the screen in the conference room | v017 | correct_room | v012 | **wrong_room** | 2,030/26,647 | 15.9/197.35 s |
-| where is the screen in the conference room located | v017 | correct_room | v012 | **wrong_room** | 2,034/26,667 | 15.93/197.5 s |
-| where is the projection screen in the ballroom | v017 | correct_room | v012 | **correct_room** | 2,034/26,667 | 15.93/197.49 s |
-| find the projector in the ballroom | v013 | correct_room | v013 | **correct_room** | 19,413/26,627 | 144.62/197.21 s |
-| where is the exit sign in the lobby | — | miss | — | **miss** | 5,257/26,647 | 39.65/197.35 s |
+| where is the screen in the conference room | v017 | correct_room | v012 | **wrong_room** | 2,030/26,647 | 15.9/197.39 s |
+| where is the screen in the conference room located | v017 | correct_room | v012 | **wrong_room** | 2,034/26,667 | 15.93/197.54 s |
+| where is the projection screen in the ballroom | v017 | correct_room | v012 | **correct_room** | 2,034/26,667 | 15.93/197.54 s |
+| find the projector in the ballroom | v013 | correct_room | v013 | **correct_room** | 19,413/26,627 | 144.64/197.25 s |
+| where is the exit sign in the lobby | — | miss | — | **miss** | 5,257/26,647 | 39.66/197.41 s |
 
 ### Why this matters for the product
 
@@ -153,23 +153,19 @@ Queries where the same object exists in **multiple rooms**. Flat search scans al
 - Target room: Conference room / stage (presentation end)
 - Same room constraint with natural phrasing ('located'). Tests whether filler words break matching and whether graph still scopes correctly.
 
-### Demo video
-
-[Download / play `failure_case_demo.mp4`](benchmark_results/failure_case_demo.mp4) — flat vs graph side-by-side.
-
 ### Reasoning traces
 
-[Open run dashboard](project_log/runs/2026-06-11_1745/README.md) — all cases with links.
+[Open run dashboard](project_log/runs/2026-06-12_1714/README.md) — all cases with links.
 
 ### Reasoning traces
 
 Auto-generated traversal reasoning (graph + flat) for each failure case:
 
-- [where is the screen in the conference room](project_log/runs/2026-06-11_1745/reasoning/01_where_is_the_screen_in_the_c.md)
-- [where is the screen in the conference room located](project_log/runs/2026-06-11_1745/reasoning/02_where_is_the_screen_in_the_c.md)
-- [where is the projection screen in the ballroom](project_log/runs/2026-06-11_1745/reasoning/03_where_is_the_projection_scre.md)
-- [find the projector in the ballroom](project_log/runs/2026-06-11_1745/reasoning/04_find_the_projector_in_the_ba.md)
-- [where is the exit sign in the lobby](project_log/runs/2026-06-11_1745/reasoning/05_where_is_the_exit_sign_in_th.md)
+- [where is the screen in the conference room](project_log\runs\2026-06-12_1714\reasoning\01_where_is_the_screen_in_the_c.md)
+- [where is the screen in the conference room located](project_log\runs\2026-06-12_1714\reasoning\02_where_is_the_screen_in_the_c.md)
+- [where is the projection screen in the ballroom](project_log\runs\2026-06-12_1714\reasoning\03_where_is_the_projection_scre.md)
+- [find the projector in the ballroom](project_log\runs\2026-06-12_1714\reasoning\04_find_the_projector_in_the_ba.md)
+- [where is the exit sign in the lobby](project_log\runs\2026-06-12_1714\reasoning\05_where_is_the_exit_sign_in_th.md)
 
 Session JSON: `backend/data/scenes/default/queries/auto_*_graph.json`
 
