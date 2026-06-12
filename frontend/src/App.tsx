@@ -48,7 +48,11 @@ export default function App() {
       </header>
 
       {/* ── Control Panel ────────────────────────────────────────────── */}
-      <ControlPanel plyUrl={plyUrl} onPlyUrlChange={setPlyUrl} />
+      <ControlPanel
+        plyUrl={plyUrl}
+        onPlyUrlChange={setPlyUrl}
+        onQuerySubmitted={() => setActiveTab('query')}
+      />
 
       {/* ── Main content ─────────────────────────────────────────────── */}
       <main className="flex-1 min-h-0 overflow-hidden">
@@ -62,11 +66,10 @@ export default function App() {
           </div>
         )}
 
-        {activeTab === 'query' && (
-          <div className="h-full p-4">
-            <QueryFlow sceneId={sceneId} />
-          </div>
-        )}
+        {/* Keep mounted so polling + session state survive tab switches */}
+        <div className={activeTab === 'query' ? 'h-full p-4' : 'hidden'}>
+          <QueryFlow sceneId={sceneId} />
+        </div>
       </main>
     </div>
   )

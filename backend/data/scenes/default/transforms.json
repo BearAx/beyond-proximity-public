@@ -504,37 +504,6 @@
       "depth_file_path": "depths/v019_depth.npy"
     },
     {
-      "file_path": "images/v001.png",
-      "transform_matrix": [
-        [
-          0.9987502603949663,
-          0.007962591616274314,
-          -0.04934079950446246,
-          0.0
-        ],
-        [
-          0.0,
-          0.9872272833756269,
-          0.15931820661424598,
-          0.0
-        ],
-        [
-          0.049979169270678414,
-          -0.1591191003416372,
-          0.9859935063404226,
-          3.0
-        ],
-        [
-          0.0,
-          0.0,
-          0.0,
-          1.0
-        ]
-      ],
-      "view_id": "v001",
-      "depth_file_path": "depths/v001_depth.npy"
-    },
-    {
       "file_path": "images/v002.png",
       "transform_matrix": [
         [
@@ -595,6 +564,37 @@
       ],
       "view_id": "v003",
       "depth_file_path": "depths/v003_depth.npy"
+    },
+    {
+      "file_path": "images/v001.png",
+      "transform_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.1
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          3.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "view_id": "v001",
+      "depth_file_path": "depths/v001_depth.npy"
     }
   ]
 }

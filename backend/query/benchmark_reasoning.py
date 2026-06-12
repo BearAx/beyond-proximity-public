@@ -405,21 +405,23 @@ def write_benchmark_reasoning(
         sid = hashlib.sha1(f"{run_slug}:{query}".encode()).hexdigest()[:8]
         session_id = f"auto_{sid}"
 
+        graph_key = f"{session_id}_graph"
+        flat_key = f"{session_id}_flat"
         graph_session = _session_json(
             scene_id, query, graph_steps,
             {"found": g.get("found"), "view_id": g.get("view_id"), "mode": "graph_auto",
              "explanation": graph_steps[-1].get("explanation", "") if graph_steps else ""},
-            session_id + "_g", "benchmark_auto_graph",
+            graph_key, "benchmark_auto_graph",
         )
         flat_session = _session_json(
             scene_id, query, flat_steps,
             {"found": f.get("found"), "view_id": f.get("view_id"), "mode": "flat",
              "explanation": flat_steps[-1].get("explanation", "") if flat_steps else ""},
-            session_id + "_f", "benchmark_auto_flat",
+            flat_key, "benchmark_auto_flat",
         )
 
-        gpath = queries_dir / f"{session_id}_graph.json"
-        fpath = queries_dir / f"{session_id}_flat.json"
+        gpath = queries_dir / f"{graph_key}.json"
+        fpath = queries_dir / f"{flat_key}.json"
         with open(gpath, "w", encoding="utf-8") as fh:
             json.dump(graph_session, fh, indent=2, ensure_ascii=False)
         with open(fpath, "w", encoding="utf-8") as fh:

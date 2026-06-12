@@ -12,13 +12,14 @@ import type { D3TreeNode } from '../../types'
 interface ControlPanelProps {
   onPlyUrlChange: (url: string) => void
   plyUrl: string
+  onQuerySubmitted?: (sessionId: string) => void
 }
 
-export function ControlPanel({ onPlyUrlChange, plyUrl }: ControlPanelProps) {
+export function ControlPanel({ onPlyUrlChange, plyUrl, onQuerySubmitted }: ControlPanelProps) {
   const { sceneId, setSceneId } = useSceneStore()
   const { setTreeData, setLoading } = useTreeStore()
   const { setQuery, setRunning, setResult, reset: resetQuery } = useQueryStore()
-  const { setPollingSessionId, setSessions } = useQueryLogStore()
+  const { setPollingSessionId, setSessions, setPendingOpenSessionId } = useQueryLogStore()
 
   const [inputScene, setInputScene]   = useState(sceneId)
   const [inputPly,   setInputPly]     = useState(plyUrl)
@@ -97,37 +98,62 @@ export function ControlPanel({ onPlyUrlChange, plyUrl }: ControlPanelProps) {
     const q = queryText.trim()
     setQuery(q)
     setRunning(true)
-    setStatus(`Creating query session for "${q}"…`)
+    setStatus(`Running query: "${q}"…`)
     try {
-      // Create a log session immediately so the Query Flow tab can track live progress
-      const sessRes = await queryLogApi.createSession(sceneId, q)
+      const sessRes = await queryLogApi.runSession(sceneId, q)
       const sessionId = sessRes.data.session_id
       setPollingSessionId(sessionId)
+      setPendingOpenSessionId(sessionId)
+      onQuerySubmitted?.(sessionId)
 
-      // Refresh session list in store
       try {
         const listRes = await queryLogApi.listSessions(sceneId)
         setSessions(listRes.data.sessions)
       } catch { /* not critical */ }
 
-      setStatus(`Session ${sessionId} created — ask Cursor IDE to run the §7 pipeline`)
-      setResult({
-        query: q,
-        found: false,
-        view_id: null,
-        bbox_3d: null,
-        camera_pose: null,
-        confidence: 0,
-        pipeline_phase: 'decomposition',
-        explanation:
-          `Session created: ${sessionId}\n` +
-          `Open the Query Flow tab — it will update live as Cursor runs each pipeline step.\n\n` +
-          `In Cursor, say: "Run the query pipeline for '${q}' on scene ${sceneId}, session ${sessionId}"`,
-      })
+      setStatus(`Session ${sessionId} — pipeline running…`)
+
+      const poll = async (): Promise<void> => {
+        try {
+          for (let i = 0; i < 120; i += 1) {
+            await new Promise((r) => setTimeout(r, 800))
+            const res = await queryLogApi.getSession(sceneId, sessionId)
+            if (!res.data.finished_at) continue
+
+            const r = res.data.result
+            setResult({
+              query: q,
+              found: r?.found ?? false,
+              view_id: r?.view_id ?? null,
+              bbox_3d: r?.bbox_3d ?? null,
+              camera_pose: null,
+              confidence: r?.confidence ?? 0,
+              pipeline_phase: r?.found ? 'found' : 'not_found',
+              explanation: r?.explanation ?? 'No result.',
+            })
+            setStatus(
+              r?.found
+                ? `Found in ${r.view_id} (session ${sessionId})`
+                : `Not found (session ${sessionId})`,
+            )
+            try {
+              const listRes = await queryLogApi.listSessions(sceneId)
+              setSessions(listRes.data.sessions)
+            } catch { /* not critical */ }
+            return
+          }
+          setStatus(`Session ${sessionId} timed out — open Query Flow tab`)
+        } catch {
+          setStatus('Lost connection to session — check backend')
+        } finally {
+          setRunning(false)
+        }
+      }
+
+      void poll()
     } catch {
       setResult(null)
-      setStatus('Session creation failed — check backend')
-    } finally {
+      setStatus('Query failed — check backend is running')
       setRunning(false)
     }
   }
