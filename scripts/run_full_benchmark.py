@@ -218,6 +218,7 @@ def main() -> None:
     json_path = OUT_DIR / f"benchmark_{args.scene}.json"
 
     video_path = OUT_DIR / "failure_case_demo.mp4"
+    e2e_path = OUT_DIR / "e2e_product_demo.mp4"
     try:
         import subprocess
         subprocess.run(
@@ -229,6 +230,17 @@ def main() -> None:
     except Exception as exc:
         print(f"  video: skipped ({exc})")
         video_path = None
+
+    try:
+        import subprocess
+        subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "render_e2e_product_demo.py"), "--output", str(e2e_path)],
+            check=True,
+            env={**os.environ, "PYTHONPATH": str(ROOT), "MPLCONFIGDIR": str(_mpl_dir)},
+        )
+        report["e2e_demo_video"] = "benchmark_results/e2e_product_demo.mp4"
+    except Exception as exc:
+        print(f"  e2e video: skipped ({exc})")
 
     reasoning_report = write_benchmark_reasoning(
         args.scene, failure_report, docs_dir=DOCS_DIR, run_slug=run_slug,

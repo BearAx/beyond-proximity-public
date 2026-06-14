@@ -102,15 +102,24 @@ Timing model (fast LLM, no extended thinking): `total_sec ≈ infra + llm_calls�
 
 ## Demo
 
+**End-to-end product walkthrough** (~30 s) — navigate, capture, query, pipeline, found location:
+
+**[e2e_product_demo.mp4](docs/benchmark_results/e2e_product_demo.mp4)**
+
+```bash
+PYTHONPATH=. python scripts/render_e2e_product_demo.py --query "Find the sofa"
+```
+
 **Failure-case video** — conference-room screen disambiguation (graph vs flat):
 
-**[Download / watch: failure_case_demo.mp4](docs/benchmark_results/failure_case_demo.mp4)**
+**[failure_case_demo.mp4](docs/benchmark_results/failure_case_demo.mp4)**
 
 | Resource | Link |
 |:---------|:-----|
-| Demo MP4 | [`docs/benchmark_results/failure_case_demo.mp4`](docs/benchmark_results/failure_case_demo.mp4) |
+| E2E demo | [`docs/benchmark_results/e2e_product_demo.mp4`](docs/benchmark_results/e2e_product_demo.mp4) |
+| Failure demo | [`docs/benchmark_results/failure_case_demo.mp4`](docs/benchmark_results/failure_case_demo.mp4) |
 | Reasoning traces | [`docs/project_log/runs/2026-06-12_1829/reasoning/`](docs/project_log/runs/2026-06-12_1829/reasoning/) |
-| Live UI | `./start_all.sh` → tab **Query Flow** |
+| Live UI | `./start_all.sh` → **Ask** → **Query Flow** |
 
 ---
 
