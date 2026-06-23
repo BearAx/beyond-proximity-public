@@ -1,0 +1,626 @@
+{
+  "schema_version": "semanticsplat.metrics_record.v1",
+  "run_id": "phase1_evaluator_smoke",
+  "benchmark_id": "default_semantic_index_v1",
+  "generated_at": "2026-06-21T16:14:10.969022+00:00",
+  "coverage": {
+    "benchmark_query_count": 50,
+    "result_count": 6,
+    "missing_result_count": 44,
+    "schema_valid_result_count": 6
+  },
+  "mode_counts": {
+    "stub": 6
+  },
+  "metrics": {
+    "retrieval_success": {
+      "value": 1.0,
+      "numerator": 6,
+      "denominator": 6
+    },
+    "expected_view_hit": {
+      "value": 0.8,
+      "numerator": 4,
+      "denominator": 5
+    },
+    "expected_node_hit": {
+      "value": 1.0,
+      "numerator": 5,
+      "denominator": 5
+    },
+    "expected_zone_hit": {
+      "value": 1.0,
+      "numerator": 5,
+      "denominator": 5
+    },
+    "not_found_correctness": {
+      "value": 1.0,
+      "numerator": 1,
+      "denominator": 1
+    },
+    "runtime_seconds": {
+      "mean": null,
+      "total": null,
+      "denominator": 0
+    },
+    "token_usage": {
+      "input": null,
+      "output": null,
+      "total": null,
+      "denominator": 0
+    },
+    "checked_view_count": {
+      "mean": 0.8333,
+      "total": 5,
+      "denominator": 6
+    },
+    "visited_node_count": {
+      "mean": 3.0,
+      "total": 18,
+      "denominator": 6
+    },
+    "bbox_3d_iou": {
+      "value": null,
+      "status": "N/A",
+      "denominator": 0,
+      "reason": "Reliable depth and reliable GT 3D boxes were not both available"
+    }
+  },
+  "failure_categories": {
+    "wrong room / zone": 0,
+    "wrong object": 1,
+    "wrong view": 1,
+    "missing object in semantic description": 0,
+    "bad query parsing": 0,
+    "bad traversal": 0,
+    "bad bbox": 0,
+    "invalid depth": 6,
+    "ambiguous ground truth": 0,
+    "baseline adapter issue": 0,
+    "missing GT": 0
+  },
+  "missing_query_ids": [
+    "q002",
+    "q003",
+    "q004",
+    "q005",
+    "q006",
+    "q007",
+    "q008",
+    "q009",
+    "q010",
+    "q012",
+    "q013",
+    "q014",
+    "q015",
+    "q016",
+    "q017",
+    "q018",
+    "q020",
+    "q021",
+    "q022",
+    "q023",
+    "q024",
+    "q025",
+    "q026",
+    "q027",
+    "q028",
+    "q030",
+    "q031",
+    "q032",
+    "q033",
+    "q034",
+    "q035",
+    "q037",
+    "q038",
+    "q039",
+    "q040",
+    "q041",
+    "q042",
+    "q043",
+    "q045",
+    "q046",
+    "q047",
+    "q048",
+    "q049",
+    "q050"
+  ],
+  "per_query": [
+    {
+      "query_id": "q001",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "mode": "stub",
+      "status": "evaluated",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": true,
+      "expected_zone_hit": true,
+      "not_found_correct": null,
+      "runtime_seconds": null,
+      "token_usage": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 3.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "invalid depth"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/q001.json"
+    },
+    {
+      "query_id": "q002",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q003",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q004",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q005",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q006",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q007",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q008",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q009",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q010",
+      "scene_id": "default",
+      "query_type": "simple_object",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q011",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "mode": "stub",
+      "status": "evaluated",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": true,
+      "expected_zone_hit": true,
+      "not_found_correct": null,
+      "runtime_seconds": null,
+      "token_usage": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 3.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "invalid depth"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/q011.json"
+    },
+    {
+      "query_id": "q012",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q013",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q014",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q015",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q016",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q017",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q018",
+      "scene_id": "default",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q019",
+      "scene_id": "default",
+      "query_type": "relational",
+      "mode": "stub",
+      "status": "evaluated",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": true,
+      "expected_zone_hit": true,
+      "not_found_correct": null,
+      "runtime_seconds": null,
+      "token_usage": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 3.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "invalid depth",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/q019.json"
+    },
+    {
+      "query_id": "q020",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q021",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q022",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q023",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q024",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q025",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q026",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q027",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q028",
+      "scene_id": "default",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q029",
+      "scene_id": "default",
+      "query_type": "multi_hop",
+      "mode": "stub",
+      "status": "evaluated",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": true,
+      "expected_zone_hit": true,
+      "not_found_correct": null,
+      "runtime_seconds": null,
+      "token_usage": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 3.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "invalid depth"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/q029.json"
+    },
+    {
+      "query_id": "q030",
+      "scene_id": "default",
+      "query_type": "multi_hop",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q031",
+      "scene_id": "default",
+      "query_type": "multi_hop",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q032",
+      "scene_id": "default",
+      "query_type": "multi_hop",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q033",
+      "scene_id": "default",
+      "query_type": "multi_hop",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q034",
+      "scene_id": "default",
+      "query_type": "multi_hop",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q035",
+      "scene_id": "default",
+      "query_type": "multi_hop",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q036",
+      "scene_id": "default",
+      "query_type": "functional",
+      "mode": "stub",
+      "status": "evaluated",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": true,
+      "expected_zone_hit": true,
+      "not_found_correct": null,
+      "runtime_seconds": null,
+      "token_usage": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 3.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "invalid depth"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/q036.json"
+    },
+    {
+      "query_id": "q037",
+      "scene_id": "default",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q038",
+      "scene_id": "default",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q039",
+      "scene_id": "default",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q040",
+      "scene_id": "default",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q041",
+      "scene_id": "default",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q042",
+      "scene_id": "default",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q043",
+      "scene_id": "default",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q044",
+      "scene_id": "default",
+      "query_type": "negative",
+      "mode": "stub",
+      "status": "evaluated",
+      "retrieval_success": true,
+      "expected_view_hit": null,
+      "expected_node_hit": null,
+      "expected_zone_hit": null,
+      "not_found_correct": true,
+      "runtime_seconds": null,
+      "token_usage": null,
+      "checked_view_count": 0.0,
+      "visited_node_count": 3.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "invalid depth"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/q044.json"
+    },
+    {
+      "query_id": "q045",
+      "scene_id": "default",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q046",
+      "scene_id": "default",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q047",
+      "scene_id": "default",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q048",
+      "scene_id": "default",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q049",
+      "scene_id": "default",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q050",
+      "scene_id": "default",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    }
+  ],
+  "warnings": [
+    "44 benchmark queries have no saved result",
+    "3D IoU is N/A because run_config does not confirm reliable depth"
+  ]
+}

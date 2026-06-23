@@ -1,0 +1,37 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "phase1_evaluator_smoke",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "scene_id": "default",
+  "query_id": "q001",
+  "query": "Find the grand piano",
+  "query_type": "simple_object",
+  "structured_plan": {"target": "grand piano", "query_type": "simple_object"},
+  "visited_nodes": ["root_conference_hall", "zone_lobby_reception", "leaf_lobby_foyer_prefunction"],
+  "selected_views": ["v006"],
+  "result": {
+    "found": true,
+    "matched_object": "grand piano",
+    "selected_node_id": "leaf_lobby_foyer_prefunction",
+    "selected_view_id": "v006",
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic fixture selects the indexed foyer piano view."
+  },
+  "metrics_log": {
+    "runtime_seconds": null,
+    "stage_runtime_seconds": {},
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 1,
+    "construction_cost": null
+  },
+  "warnings": ["Stub evaluator fixture; no model call occurred.", "Unreliable depth; 3D IoU is N/A."]
+}

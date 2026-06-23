@@ -22,8 +22,22 @@ export const useSceneStore = create<SceneState>((set) => ({
   nextViewId: 1,
   isCapturing: false,
 
-  setSceneId: (id) => set({ sceneId: id }),
-  setSceneInfo: (info) => set({ sceneInfo: info }),
+  setSceneId: (id) => set({
+    sceneId: id,
+    sceneInfo: null,
+    capturedViews: [],
+    nextViewId: 1,
+  }),
+  setSceneInfo: (info) => set(() => {
+    const existingIds = info?.frames
+      .map((frame) => /^v(\d+)$/.exec(frame.view_id)?.[1])
+      .filter((value): value is string => value !== undefined)
+      .map(Number) ?? []
+    return {
+      sceneInfo: info,
+      nextViewId: existingIds.length > 0 ? Math.max(...existingIds) + 1 : 1,
+    }
+  }),
   addCapturedView: (view) =>
     set((s) => ({
       capturedViews: [...s.capturedViews, view],

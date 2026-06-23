@@ -1,0 +1,175 @@
+{
+  "schema_version": "semanticsplat.view_selection.v1",
+  "generated_at": "2026-06-22T11:49:13.669208+00:00",
+  "scene_id": "outdoor-drone",
+  "scene_path": "backend/data/scenes/outdoor-drone",
+  "layout": "ply_backend",
+  "candidate_view_count": 0,
+  "comparison_available": false,
+  "coverage_proxy": {
+    "name": "pose_space_distance_and_orientation",
+    "status": "not_available",
+    "description": "A candidate is covered when a selected camera is spatially nearby and has a similar forward direction. This is not NoField, voxel coverage, object coverage, or rendered-surface visibility.",
+    "distance_threshold": null,
+    "angle_threshold_degrees": 75.0
+  },
+  "coverage_statistics": {
+    "candidate_view_count": 0,
+    "requested_k_values": [
+      10,
+      20,
+      50,
+      100
+    ],
+    "effective_k_values": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "comparison_run_count": 0,
+    "maximum_coverage_ratio": {
+      "coverage_greedy": null,
+      "random": null,
+      "trajectory": null
+    }
+  },
+  "seed": 42,
+  "results": [
+    {
+      "requested_k": 10,
+      "effective_k": 0,
+      "comparison_status": "not_available",
+      "coverage_greedy": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "random": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "trajectory": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      }
+    },
+    {
+      "requested_k": 20,
+      "effective_k": 0,
+      "comparison_status": "not_available",
+      "coverage_greedy": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "random": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "trajectory": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      }
+    },
+    {
+      "requested_k": 50,
+      "effective_k": 0,
+      "comparison_status": "not_available",
+      "coverage_greedy": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "random": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "trajectory": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      }
+    },
+    {
+      "requested_k": 100,
+      "effective_k": 0,
+      "comparison_status": "not_available",
+      "coverage_greedy": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "random": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      },
+      "trajectory": {
+        "status": "not_available",
+        "reason": "No camera poses or frame records are available for view selection.",
+        "selected_count": 0,
+        "selected_view_ids": [],
+        "covered_candidate_count": 0,
+        "uncovered_candidate_count": 0,
+        "coverage_ratio": null
+      }
+    }
+  ],
+  "warnings": [
+    "No camera poses or frame records are available for view selection.",
+    "Requested K=10, but only 0 candidate views exist; used K=0.",
+    "Requested K=100, but only 0 candidate views exist; used K=0.",
+    "Requested K=20, but only 0 candidate views exist; used K=0.",
+    "Requested K=50, but only 0 candidate views exist; used K=0."
+  ]
+}

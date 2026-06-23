@@ -17,6 +17,14 @@
 | Need | Open |
 |:-----|:-----|
 | Full benchmark (metrics, charts, failure cases) | [benchmark_graph_vs_flat.md](benchmark_graph_vs_flat.md) |
+| Headless Week 2/3 evaluation | [headless_evaluation.md](headless_evaluation.md) |
+| Canonical evaluation protocol | [evaluation_protocol.md](evaluation_protocol.md) |
+| Dataset validation and scene inventory | [dataset_validation_report.md](dataset_validation_report.md) |
+| Baseline contracts and feasibility | [baseline_adapter_contracts.md](baseline_adapter_contracts.md) |
+| Query fairness review | [query_fairness_review.md](query_fairness_review.md) |
+| Reproducibility mode definitions | [repo_reproducibility_notes.md](repo_reproducibility_notes.md) |
+| Week 2/3 publication timeline | [publication_timeline.md](publication_timeline.md) |
+| Week 2/3 delivery verification | [week2_week3_delivery_verification.md](week2_week3_delivery_verification.md) |
 | Latest run dashboard | [project_log/runs/2026-06-12_1829/README.md](project_log/runs/2026-06-12_1829/README.md) |
 | Demo video | [failure_case_demo.mp4](benchmark_results/failure_case_demo.mp4) |
 | Run history | [project_log/README.md](project_log/README.md) |

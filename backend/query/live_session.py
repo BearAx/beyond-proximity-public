@@ -2,9 +2,16 @@
 from __future__ import annotations
 
 import time
+from pathlib import Path
 from typing import Optional
 
 from backend.config import DATA_DIR
+from backend.io.captured_semantic_index import (
+    QUERY_RUNNER_SCHEMA_COMPATIBLE,
+    TREE_MANIFEST_SCHEMA_VERSION,
+    load_captured_scene_index,
+    load_json,
+)
 from backend.mcp.tools.query_tools import unproject_bbox_tool
 from backend.query.benchmark import (
     _leaf_match_candidate,
@@ -15,8 +22,93 @@ from backend.query.benchmark import (
 from backend.query.benchmark_reasoning import _extract_room, _extract_target
 from backend.query.log import QuerySession, get_session, _queries_dir
 from backend.query.pipeline import build_decomposition_prompt
+from backend.query.model_client import StubModelClient
 from backend.io.view_store import load_view_analysis
 from backend.tree.storage import load_all_nodes
+
+
+def _is_captured_semantic_index(scene_dir: Path) -> bool:
+    manifest_path = scene_dir / "tree" / "manifest.json"
+    if not manifest_path.is_file():
+        return False
+    try:
+        return load_json(manifest_path).get("schema_version") == TREE_MANIFEST_SCHEMA_VERSION
+    except (OSError, ValueError):
+        return False
+
+
+def _run_captured_query_session(
+    sess: QuerySession,
+    query: str,
+    scene_dir: Path,
+    *,
+    step_delay_sec: float,
+) -> QuerySession:
+    if not QUERY_RUNNER_SCHEMA_COMPATIBLE:
+        raise ValueError("Captured ViewJSON query adapter is unavailable")
+    index = load_captured_scene_index(scene_dir, require_complete=True)
+    client = StubModelClient()
+    answer = client.answer_query(
+        {"query": query, "query_type": "object_finding"},
+        index["tree"],
+        index["views"],
+    )
+    plan = answer.get("structured_plan", {})
+    decomposition = build_decomposition_prompt(query)
+    sess.log_decomposition(plan, decomposition["prompt"])
+    if step_delay_sec:
+        time.sleep(step_delay_sec)
+
+    visited = [str(item) for item in answer.get("visited_nodes", [])]
+    for position, node_id in enumerate(visited[:-1]):
+        node = index["tree"].get(node_id)
+        if not node:
+            continue
+        children = [
+            index["tree"][child_id]
+            for child_id in node.get("children_ids", [])
+            if child_id in index["tree"]
+        ]
+        next_id = visited[position + 1]
+        sess.log_traversal(
+            node_id,
+            str(node.get("name", node_id)),
+            [{"node_id": child["node_id"], "name": child.get("name", child["node_id"])} for child in children],
+            [next_id],
+            "[stub] Deterministic lexical traversal over the saved captured semantic index.",
+        )
+        if step_delay_sec:
+            time.sleep(step_delay_sec)
+
+    result = answer.get("result", {}) if isinstance(answer.get("result"), dict) else {}
+    selected_view = result.get("selected_view_id")
+    if selected_view:
+        selected_node = str(result.get("selected_node_id") or "root")
+        node = index["tree"].get(selected_node, {})
+        sess.log_leaf_check(
+            selected_node,
+            str(node.get("name", selected_node)),
+            str(selected_view),
+            found=bool(result.get("found")),
+            confidence="stub",
+            bbox_2d=result.get("bbox_2d"),
+            matched_object=result.get("matched_object"),
+            explanation="[stub] " + str(result.get("explanation", "")),
+        )
+
+    final = {
+        "found": bool(result.get("found")),
+        "view_id": selected_view,
+        "explanation": "[stub] " + str(result.get("explanation", "")),
+        "confidence": float(result.get("confidence", 0.0)),
+        "bbox_3d": None,
+        "query": query,
+        "mode": "stub",
+        "semantic_index_mode": index["manifest"].get("semantic_index_mode"),
+        "warnings": answer.get("warnings", []),
+    }
+    sess.log_result(final)
+    return sess
 
 
 def load_session_for_update(scene_id: str, session_id: str) -> QuerySession:
@@ -46,7 +138,16 @@ def run_query_session(
     """Execute graph search and persist steps to disk for Query Flow polling."""
     sess = load_session_for_update(scene_id, session_id)
     q = (query or sess.original_query).strip()
-    scene_dir = str(DATA_DIR / scene_id)
+    scene_path = DATA_DIR / scene_id
+    if _is_captured_semantic_index(scene_path):
+        return _run_captured_query_session(
+            sess,
+            q,
+            scene_path,
+            step_delay_sec=step_delay_sec,
+        )
+
+    scene_dir = str(scene_path)
     nodes = load_all_nodes(scene_dir)
 
     plan = {

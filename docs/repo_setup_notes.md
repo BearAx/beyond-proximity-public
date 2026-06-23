@@ -162,7 +162,7 @@ The MCP tools deliberately return prompts/instructions for Cursor/LLM. For the W
 
 | Option | Description |
 |---|---|
-| Direct model client in `scripts/run_pipeline.py` | Script calls a VLM/LLM provider and then calls backend functions/tools. |
+| Headless runner in `scripts/run_experiment.py` | Canonical config-driven runner; `scripts/run_pipeline.py` is a compatibility alias. |
 | Local stub mode for smoke test | Script uses deterministic view descriptions on a pilot scene to prove end-to-end I/O before model integration. |
 | MCP client orchestration | Script talks to MCP tools, but still needs a model client outside Cursor. |
 
@@ -200,7 +200,7 @@ The README mentions 29 passing backend tests, but this should be re-run on the c
 
 | Priority | Item | Why |
 |---:|---|---|
-| P0 | Add `scripts/run_pipeline.py` | Required Week 1 exit criterion. |
+| P0 | Add a headless pipeline entry point | Complete for deterministic stub mode through `scripts/run_experiment.py`; live provider execution remains blocked. |
 | P0 | Decide final scene format adapter | Dataset Lead and Pipeline Lead need one contract. |
 | P0 | Remove Cursor/manual viewer dependency from smoke path | The Week 1 criterion explicitly forbids human-in-the-loop. |
 | P1 | Add cross-platform launch docs/scripts | Existing helper scripts are Windows-specific. |
@@ -214,10 +214,7 @@ The README mentions 29 passing backend tests, but this should be re-run on the c
 The launch command should be:
 
 ```bash
-python scripts/run_pipeline.py \
-  --scene data/replica/pilot_scene_001 \
-  --query "find the chair near the table" \
-  --out outputs/week1_smoke_test
+python scripts/run_pipeline.py --config configs/week2_replica.yaml
 ```
 
 Expected files:

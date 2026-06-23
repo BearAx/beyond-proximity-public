@@ -1,0 +1,17 @@
+{
+  "run_id": "phase1_evaluator_smoke",
+  "purpose": "Phase 1 evaluator smoke fixture; not an experiment result",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "benchmark": "docs/benchmark_queries_v1.json",
+  "scene_ids": ["default"],
+  "depth_validation": {
+    "status": "unreliable",
+    "reason": "The default pilot depth maps are constant-valued at 0.1."
+  },
+  "model": null,
+  "warnings": [
+    "Static canonical result fixtures are used to validate the evaluator.",
+    "Generated metrics must not be reported as Week 2 model accuracy."
+  ]
+}

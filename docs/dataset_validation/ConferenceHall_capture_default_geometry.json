@@ -1,0 +1,715 @@
+{
+  "schema_version": "semanticsplat.geometry_validation.v1",
+  "generated_at": "2026-06-22T18:15:36.778510+00:00",
+  "scene_id": "default",
+  "scene_path": "backend/data/scenes/default",
+  "layout": "backend",
+  "frame_count": 22,
+  "rgb_count": 22,
+  "depth_count": 22,
+  "pose_count": 22,
+  "valid_pose_count": 22,
+  "intrinsics": {
+    "w": 800,
+    "h": 600,
+    "fl_x": 800.0,
+    "fl_y": 800.0,
+    "cx": 400.0,
+    "cy": 300.0,
+    "present": true
+  },
+  "metadata": {
+    "status": "missing",
+    "present": false,
+    "consistent": null,
+    "files_checked": [],
+    "checks_performed": 0,
+    "issues": [
+      "No metadata sidecar was found."
+    ]
+  },
+  "semantic_index": {
+    "view_json_count": 19,
+    "tree_valid": true,
+    "complete": false
+  },
+  "ground_truth": {
+    "bbox_3d_available": false
+  },
+  "checks": {
+    "missing_frames": 0,
+    "missing_rgb": 0,
+    "missing_depth": 0,
+    "constant_depth": 19,
+    "excessive_zero_depth": 0,
+    "rgb_depth_resolution_mismatch": 0,
+    "intrinsics_resolution_mismatch": 22,
+    "invalid_pose": 0,
+    "metadata_missing": 1,
+    "metadata_inconsistency": 0
+  },
+  "check_availability": {
+    "rgb_count": "measured",
+    "depth_count": "measured",
+    "pose_count": "measured",
+    "rgb_depth_resolution_match": "measured",
+    "intrinsics_resolution_match": "measured",
+    "constant_depth": "measured",
+    "zero_depth_ratio": "measured",
+    "invalid_pose_matrices": "measured",
+    "missing_frames": "measured",
+    "metadata_consistency": "missing"
+  },
+  "semantic_evaluation_allowed": false,
+  "geometry_inputs_valid": false,
+  "three_d_localization_allowed": false,
+  "metrics_eligibility": {
+    "semantic_retrieval": "not_allowed",
+    "expected_view_node_zone": "not_allowed",
+    "bbox_3d": "N/A",
+    "iou_3d": "N/A"
+  },
+  "warnings": [
+    "Constant depth detected in 19 frame(s).",
+    "Intrinsics/RGB resolution mismatch in 22 frame(s).",
+    "Metadata consistency is unavailable because no metadata file exists.",
+    "ViewJSON/tree semantic index is incomplete or missing."
+  ],
+  "per_frame": [
+    {
+      "view_id": "v007",
+      "rgb_path": "images/v007.png",
+      "depth_path": "depths/v007_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v008",
+      "rgb_path": "images/v008.png",
+      "depth_path": "depths/v008_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v009",
+      "rgb_path": "images/v009.png",
+      "depth_path": "depths/v009_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v010",
+      "rgb_path": "images/v010.png",
+      "depth_path": "depths/v010_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v011",
+      "rgb_path": "images/v011.png",
+      "depth_path": "depths/v011_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v012",
+      "rgb_path": "images/v012.png",
+      "depth_path": "depths/v012_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v013",
+      "rgb_path": "images/v013.png",
+      "depth_path": "depths/v013_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v014",
+      "rgb_path": "images/v014.png",
+      "depth_path": "depths/v014_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v015",
+      "rgb_path": "images/v015.png",
+      "depth_path": "depths/v015_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v016",
+      "rgb_path": "images/v016.png",
+      "depth_path": "depths/v016_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v017",
+      "rgb_path": "images/v017.png",
+      "depth_path": "depths/v017_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v018",
+      "rgb_path": "images/v018.png",
+      "depth_path": "depths/v018_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v019",
+      "rgb_path": "images/v019.png",
+      "depth_path": "depths/v019_depth.npy",
+      "rgb_size": [
+        1722,
+        733
+      ],
+      "depth_size": [
+        1722,
+        733
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v001",
+      "rgb_path": "images/v001.png",
+      "depth_path": "depths/v001_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v002",
+      "rgb_path": "images/v002.png",
+      "depth_path": "depths/v002_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v003",
+      "rgb_path": "images/v003.png",
+      "depth_path": "depths/v003_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v004",
+      "rgb_path": "images/v004.png",
+      "depth_path": "depths/v004_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v005",
+      "rgb_path": "images/v005.png",
+      "depth_path": "depths/v005_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v006",
+      "rgb_path": "images/v006.png",
+      "depth_path": "depths/v006_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.10000000149011612,
+      "depth_max": 0.10000000149011612,
+      "zero_fraction": 0.0,
+      "depth_constant": true,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "constant depth value 0.1",
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v020",
+      "rgb_path": "images/v020.png",
+      "depth_path": "depths/v020_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.13969384133815765,
+      "depth_max": 94.20552825927734,
+      "zero_fraction": 0.0,
+      "depth_constant": false,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v021",
+      "rgb_path": "images/v021.png",
+      "depth_path": "depths/v021_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.0,
+      "depth_max": 100.0,
+      "zero_fraction": 0.000955,
+      "depth_constant": false,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    },
+    {
+      "view_id": "v022",
+      "rgb_path": "images/v022.png",
+      "depth_path": "depths/v022_depth.npy",
+      "rgb_size": [
+        2340,
+        1170
+      ],
+      "depth_size": [
+        2340,
+        1170
+      ],
+      "depth_min": 0.0,
+      "depth_max": 100.0,
+      "zero_fraction": 0.002461,
+      "depth_constant": false,
+      "pose": {
+        "valid": true,
+        "shape_valid": true,
+        "finite": true,
+        "homogeneous_row_valid": true,
+        "rotation_orthonormal": true,
+        "rotation_determinant": 1.0
+      },
+      "warnings": [
+        "intrinsics resolution 800x600 does not match RGB"
+      ]
+    }
+  ]
+}

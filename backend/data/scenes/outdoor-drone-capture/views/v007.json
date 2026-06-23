@@ -1,0 +1,18 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v007",
+  "scene_id": "outdoor-drone-capture",
+  "image_path": "images/v007.png",
+  "depth_path": "depths/v007_depth.npy",
+  "pose_ref": "transforms.json#/frames/6/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "",
+  "visible_regions": [],
+  "visible_objects": [],
+  "landmarks": [],
+  "free_text_notes": "",
+  "warnings": [
+    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+  ]
+}

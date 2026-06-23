@@ -16,7 +16,7 @@ interface ControlPanelProps {
 }
 
 export function ControlPanel({ onPlyUrlChange, plyUrl, onQuerySubmitted }: ControlPanelProps) {
-  const { sceneId, setSceneId } = useSceneStore()
+  const { sceneId, setSceneId, setSceneInfo } = useSceneStore()
   const { setTreeData, setLoading } = useTreeStore()
   const { setQuery, setRunning, setResult, reset: resetQuery } = useQueryStore()
   const { setPollingSessionId, setSessions, setPendingOpenSessionId } = useQueryLogStore()
@@ -68,6 +68,8 @@ export function ControlPanel({ onPlyUrlChange, plyUrl, onQuerySubmitted }: Contr
     setStatus('Initialising scene…')
     try {
       await scenesApi.init(inputScene)
+      const info = await scenesApi.get(inputScene)
+      setSceneInfo(info.data)
       setStatus(`Scene "${inputScene}" ready`)
     } catch {
       setStatus('Scene init failed — check backend')

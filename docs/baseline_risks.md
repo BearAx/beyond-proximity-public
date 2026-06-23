@@ -9,7 +9,7 @@ Purpose: list risks that could make baseline comparisons unfair, slow, or unrepr
 |---|---:|---|---|
 | Baseline output mismatch | High | LangSplat outputs language-field relevancy, ConceptGraphs outputs object graphs, SemanticSplat outputs a tree/query answer. Direct metric comparison will be ambiguous. | Define shared `query_result.json` schema before running baselines. Track missing fields explicitly. |
 | Dataset format mismatch | High | Week 1 target format is `rgb/depth/poses/intrinsics`, while current backend uses `images/depths/transforms.json`; baselines may expect COLMAP/Nerfstudio/Replica-specific layouts. | Create one canonical scene manifest and per-method adapters. |
-| Human-in-the-loop prototype path | High | Current README workflow relies on manual viewer capture and Cursor-mediated MCP reasoning. This blocks reproducibility. | Prioritize `scripts/run_pipeline.py`; model calls must happen from the script or deterministic smoke-test stubs. |
+| Human-in-the-loop prototype path | High | The UI query flow remains simulated and does not provide reproducible model evaluation. | Use canonical `scripts/run_experiment.py`; `scripts/run_pipeline.py` is a compatibility alias. Keep deterministic stub and real model modes separate. |
 | Unfair query selection | High | Simple object queries favor LangSplat; relational graph queries favor ConceptGraphs; hierarchy queries favor SemanticSplat. | Use query buckets: simple object, attribute, spatial relation, zone, functional, aggregation. Report per bucket. |
 | Missing ground truth for 3D IoU | High | Retrieval accuracy with IoU > 0.5 requires object annotations or a reliable proxy. | For Week 1, report qualitative smoke result. For experiments, choose scenes with labels or manually annotate a small query set. |
 
@@ -76,7 +76,7 @@ The paper and Week 1 status should be honest about:
 
 | Limitation | Reason |
 |---|---|
-| Current system is not yet fully automatic until `run_pipeline.py` lands. | The prototype was designed around interactive capture and Cursor MCP use. |
+| The headless runner exists, but the UI query flow remains simulated and live provider execution is not installed. | Stub orchestration is reproducible; it is not live VLM/LLM reasoning. |
 | Baselines may require adapters that affect measured outputs. | LangSplat, ConceptGraphs, and SemanticSplat do not share a native output format. |
 | VLM descriptions can hallucinate or miss small objects. | Errors propagate into the tree and query answers. |
 | 3D bbox quality depends on depth quality and 2D bbox quality. | Thin, reflective, or occluded objects may fail IoU even when the semantic answer is right. |

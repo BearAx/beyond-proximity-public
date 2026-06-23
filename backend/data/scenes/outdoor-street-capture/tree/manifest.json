@@ -1,0 +1,20 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_manifest.v1",
+  "scene_id": "outdoor-street-capture",
+  "root_node_id": "root",
+  "root_id": "root",
+  "semantic_index_mode": "manual",
+  "node_ids": [
+    "root"
+  ],
+  "node_count": 1,
+  "view_count": 20,
+  "annotated_view_count": 0,
+  "semantic_item_count": 0,
+  "complete": false,
+  "query_runner_schema_compatible": true,
+  "warnings": [
+    "Tree is incomplete: ViewJSON files contain no semantic objects, regions, or landmarks.",
+    "Tree is incomplete: 20 ViewJSON files have empty summaries."
+  ]
+}

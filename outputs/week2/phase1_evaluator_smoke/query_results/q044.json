@@ -1,0 +1,37 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "phase1_evaluator_smoke",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "scene_id": "default",
+  "query_id": "q044",
+  "query": "Find the swimming pool",
+  "query_type": "negative",
+  "structured_plan": {"target": "swimming pool", "query_type": "negative"},
+  "visited_nodes": ["root_conference_hall", "zone_lobby_reception", "zone_ballroom"],
+  "selected_views": [],
+  "result": {
+    "found": false,
+    "matched_object": null,
+    "selected_node_id": null,
+    "selected_view_id": null,
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 0.0,
+    "explanation": "No indexed view contains the requested label."
+  },
+  "metrics_log": {
+    "runtime_seconds": null,
+    "stage_runtime_seconds": {},
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 0,
+    "construction_cost": null
+  },
+  "warnings": ["Stub evaluator fixture; absence is verified only against ViewJSON, not visual scene GT.", "Unreliable depth; 3D IoU is N/A."]
+}

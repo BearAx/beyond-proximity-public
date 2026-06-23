@@ -5,6 +5,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
+.pytest_tmp/
 .env
 venv/
 .venv/
@@ -28,6 +30,14 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+
+# Incoming archives and generated evaluation runs
+*.zip
+outputs/**
+!outputs/week2/
+outputs/week2/**
+!outputs/week2/phase1_evaluator_smoke/
+!outputs/week2/phase1_evaluator_smoke/**
 
 # Matplotlib cache (benchmark charts)
 .matplotlib/

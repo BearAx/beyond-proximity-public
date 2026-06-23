@@ -1,0 +1,18 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v016",
+  "scene_id": "outdoor-street-capture",
+  "image_path": "images/v016.png",
+  "depth_path": "depths/v016_depth.npy",
+  "pose_ref": "transforms.json#/frames/15/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "",
+  "visible_regions": [],
+  "visible_objects": [],
+  "landmarks": [],
+  "free_text_notes": "",
+  "warnings": [
+    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+  ]
+}

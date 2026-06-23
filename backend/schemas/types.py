@@ -60,8 +60,8 @@ class ViewJSON(BaseModel):
 # ── Capture payload (browser → API) ──────────────────────────────────────────
 
 class CapturePayload(BaseModel):
-    scene_id: str
-    view_id: str
+    scene_id: str = Field(pattern=r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
+    view_id: str = Field(pattern=r"^v[0-9]+$")
     rgb_b64: str          # base64-encoded PNG
     depth_b64: str        # base64-encoded 32-bit float raw bytes (little-endian)
     transform_matrix: List[List[float]]   # 4×4 camera-to-world
@@ -69,8 +69,17 @@ class CapturePayload(BaseModel):
     fl_y: float
     cx: float
     cy: float
-    width: int
-    height: int
+    width: int = Field(gt=0)
+    height: int = Field(gt=0)
+    source_ply_url: Optional[str] = None
+    captured_at_utc: Optional[str] = None
+    pose_coordinate_convention: str = "threejs_world_camera_to_world_rh_y_up_camera_forward_minus_z"
+    depth_source: str = "unknown"
+    depth_near: float = 0.1
+    depth_far: float = 100.0
+    depth_valid_pixel_count: Optional[int] = None
+    depth_min: Optional[float] = None
+    depth_max: Optional[float] = None
 
 
 # ── 3-D bounding box ─────────────────────────────────────────────────────────

@@ -111,3 +111,22 @@ Before running any baseline, define:
 ## Week 1 Recommendation
 
 Do not try to run LangSplat or ConceptGraphs during Week 1 unless the headless SemanticSplat smoke test is already done. The useful Week 1 deliverable is the adapter plan above plus a saved baseline-risk list. Running baselines fairly requires normalized data, normalized queries, and normalized output JSON; otherwise results will be hard to defend.
+
+## Week 2/3 Feasibility
+
+| Baseline | Can run Week 2? | Can run Week 3? | Required input | Output type | Main blocker | Required adapter | Owner |
+|---|---|---|---|---|---|---|---|
+| LangSplat | No | Conditional smoke only | Calibrated RGB views, poses, compatible 3DGS, language features/checkpoints | Language-field relevancy and semantic localization | No local checkout/checkpoint, compatible 3DGS, or official Replica scene | Scene format, text query, relevancy-to-canonical localization | Literature / Baselines / Repo Notes Lead |
+| ConceptGraphs | No | Conditional smoke only | Reliable posed RGB-D, intrinsics, segmentation/features/checkpoints | Object-centric 3D graph and geometry | `default` depth is constant; intrinsics mismatch; no local checkout/checkpoints or official Replica | RGB-D loader, graph export, query, canonical output | Literature / Baselines / Repo Notes Lead |
+| LERF | No | No, optional only | Nerfstudio scene and trained language NeRF | Text relevancy field | Optional scope; no environment/checkpoint or validated scene | Nerfstudio data and relevancy-to-canonical localization | Literature / Baselines / Repo Notes Lead |
+| Semantic Gaussians | No | No, optional only | Validated 3DGS and supported semantic features/models | Semantic Gaussians and segmentation/localization | Optional scope; no code/checkpoint or validated 3DGS | 3DGS/feature preparation and canonical output | Literature / Baselines / Repo Notes Lead |
+| BBQ | No | No, optional only | Reliable posed RGB-D and model dependencies | Object graph, relations, selected target | Optional scope; no code/checkpoints and invalid pilot geometry | RGB-D loader, graph export, reasoning provenance, canonical output | Literature / Baselines / Repo Notes Lead |
+| LEGS | No | No, optional only | Mobile robot streams/calibration and online mapping stack | Incremental language Gaussian map and localization | Different acquisition assumptions; no code/checkpoint or stream data | Stream adapter and canonical localization output | Literature / Baselines / Repo Notes Lead |
+
+Dataset and pipeline owners support the baseline owner at their respective data and execution gates. Ownership of the comparison protocol remains with Team Lead / Metrics.
+
+## Baseline Smoke Status
+
+No baseline smoke result is claimed. Repository audit found local paper copies and planning notes, but no runnable baseline checkout, pinned environment, checkpoint, or official Replica scene. The available `backend/data/scenes/default` scene is suitable for semantic plumbing only: its depth is constant `0.1` and its intrinsics do not match RGB resolution, so it cannot support a valid 3D baseline smoke comparison.
+
+Week 3 may run one compatible smoke subset only after prerequisites exist. It must save native output, canonical adapter output, source revision, config, and measured timing. Heavy setup must not block the main pipeline. ScanNet is explicitly postponed beyond Week 3.

@@ -13,13 +13,16 @@ type Tab = 'navigator' | 'tree' | 'query'
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('navigator')
   const [plyUrl, setPlyUrl] = useState<string>(DEFAULT_PLY)
-  const { sceneId } = useSceneStore()
+  const { sceneId, setSceneInfo } = useSceneStore()
 
   useEffect(() => {
-    scenesApi.init('default').catch(() => {
-      /* backend may still be starting */
-    })
-  }, [])
+    scenesApi.init('default')
+      .then(() => scenesApi.get('default'))
+      .then((response) => setSceneInfo(response.data))
+      .catch(() => {
+        /* backend may still be starting */
+      })
+  }, [setSceneInfo])
 
   const tabs: { id: Tab; label: string }[] = [
     { id: 'navigator', label: '🧭 Navigator' },
