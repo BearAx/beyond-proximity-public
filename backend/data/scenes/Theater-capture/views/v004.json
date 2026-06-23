@@ -7,12 +7,127 @@
   "pose_ref": "transforms.json#/frames/3/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Theater lobby or waiting area with red upholstered seating, black wall panels, notices, a doorway, and a green exit sign.",
+  "visible_regions": [
+    {
+      "label": "lobby seating area",
+      "description": "waiting area with red seats and black walls",
+      "approx_location": "left and center",
+      "source": "manual"
+    },
+    {
+      "label": "notice wall",
+      "description": "wall with posters, papers, and information boards",
+      "approx_location": "center and right",
+      "source": "manual"
+    },
+    {
+      "label": "doorway area",
+      "description": "door or passage near the exit sign",
+      "approx_location": "right side",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "red upholstered seats",
+      "attributes": [
+        "bright red",
+        "visitor seating"
+      ],
+      "approx_location": "left and center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "black wall panels",
+      "attributes": [
+        "dark",
+        "decorative or acoustic"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "notice papers",
+      "attributes": [
+        "white",
+        "posted"
+      ],
+      "approx_location": "center wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "green exit sign",
+      "attributes": [
+        "illuminated",
+        "above doorway"
+      ],
+      "approx_location": "upper right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "doorway",
+      "attributes": [
+        "dark opening",
+        "passage"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "framed posters or pictures",
+      "attributes": [
+        "small",
+        "wall mounted"
+      ],
+      "approx_location": "center wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "red seating area",
+      "description": "bright red seats that identify this lobby corner",
+      "approx_location": "left and center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "green exit sign",
+      "description": "illuminated sign above the doorway",
+      "approx_location": "upper right",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "notice wall",
+      "description": "wall section with multiple posted papers",
+      "approx_location": "center wall",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Good for queries about lobby seating, exit sign, notice wall, and doorway.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

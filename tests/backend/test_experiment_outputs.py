@@ -3,6 +3,7 @@ from pathlib import Path
 
 import numpy as np
 
+from backend.query.model_client import OpenAIModelClient
 from scripts.run_experiment import run_experiment
 
 
@@ -152,6 +153,105 @@ def test_no_stub_result_is_marked_live(tmp_path):
     assert result["mode"] == "stub"
     assert result["metrics_log"]["cache_hits"] == 0
     assert result["metrics_log"]["model_call_count"] == 0
+
+
+def test_query_limit_and_output_directory_overrides(tmp_path):
+    scene_root = tmp_path / "scenes"
+    benchmark = tmp_path / "benchmark.json"
+    configured_output = tmp_path / "configured_outputs"
+    override_output = tmp_path / "overridden" / "live_gate_shape"
+    _prepare_scene(scene_root)
+    _prepare_benchmark(benchmark)
+    config = tmp_path / "config.yaml"
+    _write_json(config, {
+        "run_id": "configured_run",
+        "method": "semantic_splat",
+        "mode": "stub",
+        "scene_root": str(scene_root),
+        "scene_ids": ["fixture_scene"],
+        "benchmark_path": str(benchmark),
+        "output_root": str(configured_output),
+        "resume": True,
+        "view_selection": {"strategy": "existing"},
+        "model": {"temperature": 0.0},
+    })
+
+    run_dir = run_experiment(
+        config,
+        query_limit_override=1,
+        output_override=override_output,
+    )
+    run_config = json.loads((run_dir / "run_config.json").read_text(encoding="utf-8"))
+    results = list((run_dir / "query_results").glob("*.json"))
+
+    assert run_dir == override_output
+    assert run_config["run_id"] == "live_gate_shape"
+    assert run_config["query_limit"] == 1
+    assert run_config["output_dir"] == str(override_output)
+    assert [path.name for path in results] == ["q001.json"]
+
+
+def test_live_experiment_records_provider_calls_usage_and_cache(tmp_path, monkeypatch):
+    scene_root = tmp_path / "scenes"
+    benchmark = tmp_path / "benchmark.json"
+    output_root = tmp_path / "outputs"
+    _prepare_scene(scene_root)
+    _prepare_benchmark(benchmark)
+    config = tmp_path / "config.yaml"
+    _write_json(config, {
+        "run_id": "live_fixture",
+        "method": "semantic_splat",
+        "mode": "live",
+        "scene_root": str(scene_root),
+        "scene_ids": ["fixture_scene"],
+        "benchmark_path": str(benchmark),
+        "output_root": str(output_root),
+        "resume": True,
+        "view_selection": {"strategy": "existing"},
+        "model": {"temperature": 0.0},
+    })
+    answer = {
+        "structured_plan": {"target": "chair"},
+        "visited_nodes": ["root", "leaf_lounge"],
+        "selected_views": ["v001"],
+        "checked_view_ids": ["v001"],
+        "result": {
+            "found": True,
+            "matched_object": "chair",
+            "selected_node_id": "leaf_lounge",
+            "selected_view_id": "v001",
+            "bbox_2d": None,
+            "bbox_3d": None,
+            "camera_pose": None,
+            "confidence": 0.9,
+            "explanation": "Fixture provider response.",
+        },
+        "warnings": [],
+    }
+    raw_response = {
+        "id": "resp_fixture",
+        "model": "fixture-model",
+        "output": [{"type": "message", "content": [{"type": "output_text", "text": json.dumps(answer)}]}],
+        "usage": {"input_tokens": 12, "output_tokens": 8, "total_tokens": 20},
+    }
+    monkeypatch.setenv("SEMANTICSPLAT_PROVIDER", "openai")
+    monkeypatch.setenv("SEMANTICSPLAT_MODEL", "fixture-model")
+    monkeypatch.setenv("SEMANTICSPLAT_API_KEY", "secret-fixture")
+    monkeypatch.setattr(OpenAIModelClient, "_request_provider", lambda self, payload: raw_response)
+
+    run_dir = run_experiment(config, mode_override="live", query_limit_override=1)
+    result = json.loads((run_dir / "query_results" / "q001.json").read_text(encoding="utf-8"))
+    run_config = json.loads((run_dir / "run_config.json").read_text(encoding="utf-8"))
+    cache_files = list((run_dir / "model_cache" / "answer_query").glob("*.json"))
+
+    assert result["mode"] == "live"
+    assert result["metrics_log"]["model_call_count"] == 1
+    assert result["metrics_log"]["token_usage"]["total_tokens"] == 20
+    assert run_config["model"]["provider"] == "openai"
+    assert run_config["model"]["model"] == "fixture-model"
+    assert len(cache_files) == 1
+    assert json.loads(cache_files[0].read_text(encoding="utf-8"))["source_mode"] == "live"
+    assert "secret-fixture" not in cache_files[0].read_text(encoding="utf-8")
 
 
 def test_structured_ineligible_scene_batch_is_logged_and_skipped(tmp_path):
@@ -317,9 +417,15 @@ def test_captured_scene_schema_and_benchmark_alias_are_loaded(tmp_path):
     run_dir = run_experiment(config)
     result = json.loads((run_dir / "query_results" / "q001.json").read_text(encoding="utf-8"))
     run_config = json.loads((run_dir / "run_config.json").read_text(encoding="utf-8"))
+    metrics = json.loads((run_dir / "metrics_summary.json").read_text(encoding="utf-8"))
 
     assert result["scene_id"] == "fixture-capture"
     assert result["result"]["found"] is True
     assert result["result"]["selected_view_id"] == "v001"
     assert run_config["scenes"][0]["benchmark_scene_id"] == "fixture_scene"
     assert run_config["scene_status"]["fixture-capture"]["semantic_index_format"] == "captured_viewjson_v1"
+    assert metrics["coverage"]["benchmark_query_count"] == 2
+    assert metrics["coverage"]["result_count"] == 1
+    assert metrics["coverage"]["missing_result_count"] == 1
+    assert metrics["coverage"]["schema_valid_result_count"] == 1
+    assert metrics["coverage"]["ground_truth_unavailable_result_count"] == 0

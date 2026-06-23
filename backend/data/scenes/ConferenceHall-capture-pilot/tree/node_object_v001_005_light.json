@@ -1,0 +1,25 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "object_v001_005_light",
+  "node_type": "object",
+  "name": "light",
+  "summary": "Object observation from v001.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v001"
+  ],
+  "attributes": [
+    "white",
+    "yellow",
+    "near table",
+    "near sofa"
+  ],
+  "approx_location": "top side of the conference hall",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

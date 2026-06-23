@@ -13,43 +13,43 @@
       "path": "backend/data/scenes/ConferenceHall",
       "semantic_eval_allowed": false,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/ConferenceHall_geometry.json",
-      "view_selection_report": "docs/dataset_validation/ConferenceHall_view_selection.json"
+      "validation_report": "docs/validation/geometry/ConferenceHall_geometry.json",
+      "view_selection_report": "docs/validation/geometry/ConferenceHall_view_selection.json"
     },
     {
       "scene_id": "Museume",
       "path": "backend/data/scenes/Museume",
       "semantic_eval_allowed": false,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/Museume_geometry.json",
-      "view_selection_report": "docs/dataset_validation/Museume_view_selection.json"
+      "validation_report": "docs/validation/geometry/Museume_geometry.json",
+      "view_selection_report": "docs/validation/geometry/Museume_view_selection.json"
     },
     {
       "scene_id": "outdoor-drone",
       "path": "backend/data/scenes/outdoor-drone",
       "semantic_eval_allowed": false,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/outdoor-drone_geometry.json",
-      "view_selection_report": "docs/dataset_validation/outdoor-drone_view_selection.json"
+      "validation_report": "docs/validation/geometry/outdoor-drone_geometry.json",
+      "view_selection_report": "docs/validation/geometry/outdoor-drone_view_selection.json"
     },
     {
       "scene_id": "outdoor-street",
       "path": "backend/data/scenes/outdoor-street",
       "semantic_eval_allowed": false,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/outdoor-street_geometry.json",
-      "view_selection_report": "docs/dataset_validation/outdoor-street_view_selection.json"
+      "validation_report": "docs/validation/geometry/outdoor-street_geometry.json",
+      "view_selection_report": "docs/validation/geometry/outdoor-street_view_selection.json"
     },
     {
       "scene_id": "Theater",
       "path": "backend/data/scenes/Theater",
       "semantic_eval_allowed": false,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/Theater_geometry.json",
-      "view_selection_report": "docs/dataset_validation/Theater_view_selection.json"
+      "validation_report": "docs/validation/geometry/Theater_geometry.json",
+      "view_selection_report": "docs/validation/geometry/Theater_view_selection.json"
     }
   ],
-  "benchmark_path": "docs/benchmark_queries_v1.json",
+  "benchmark_path": "docs/benchmarks/benchmark_queries_v1.json",
   "output_root": "outputs/week2",
   "resume": true,
   "query_limit": 50,
@@ -57,7 +57,7 @@
   "view_selection": {
     "strategy": "existing",
     "max_views": null,
-    "coverage_report_dir": "docs/dataset_validation"
+    "coverage_report_dir": "docs/validation/geometry"
   },
   "model": {
     "temperature": 0.0,

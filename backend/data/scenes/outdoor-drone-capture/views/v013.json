@@ -7,12 +7,126 @@
   "pose_ref": "transforms.json#/frames/12/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Close aerial view of the fortress island with white buildings, rocky coastline, vegetation, and surrounding water.",
+  "visible_regions": [
+    {
+      "label": "fortress island close-up",
+      "description": "close view of island buildings and rocky shore",
+      "approx_location": "left and center",
+      "source": "manual"
+    },
+    {
+      "label": "surrounding sea",
+      "description": "water around the island",
+      "approx_location": "right and foreground",
+      "source": "manual"
+    },
+    {
+      "label": "rocky shoreline",
+      "description": "edge of the island where rocks meet the water",
+      "approx_location": "left foreground",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "white fortress buildings",
+      "attributes": [
+        "large",
+        "on island"
+      ],
+      "approx_location": "left-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "tower or lighthouse",
+      "attributes": [
+        "vertical",
+        "on island"
+      ],
+      "approx_location": "upper left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "rocky coastline",
+      "attributes": [
+        "rough",
+        "island edge"
+      ],
+      "approx_location": "left foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "vegetation",
+      "attributes": [
+        "green",
+        "on island"
+      ],
+      "approx_location": "left and center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "sea water",
+      "attributes": [
+        "green-blue"
+      ],
+      "approx_location": "right and foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "small pier or wall",
+      "attributes": [
+        "linear",
+        "near island"
+      ],
+      "approx_location": "left/center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "fortress building complex",
+      "description": "white building complex on the island",
+      "approx_location": "left-center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "island tower",
+      "description": "tower/lighthouse-like feature above the buildings",
+      "approx_location": "upper left",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "rocky island shore",
+      "description": "rocky coastline around the island",
+      "approx_location": "left foreground",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Best close-up for island landmark and fortress queries.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

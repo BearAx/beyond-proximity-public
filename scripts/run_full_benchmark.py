@@ -24,7 +24,7 @@ os.environ.setdefault("MPLCONFIGDIR", str(_mpl_dir))
 
 OUT_DIR = ROOT / "docs" / "benchmark_results"
 DOCS_DIR = ROOT / "docs"
-MD_PATH = DOCS_DIR / "benchmark_graph_vs_flat.md"
+MD_PATH = DOCS_DIR / "benchmarks" / "benchmark_graph_vs_flat.md"
 
 
 def _short_label(query: str, max_len: int = 27) -> str:
@@ -260,7 +260,9 @@ def main() -> None:
     )
     run_dash_path = write_run_dashboard(
         DOCS_DIR, run_slug, report, failure_report, reasoning_report,
-        log_rel=str(log_path.relative_to(DOCS_DIR / "project_log")),
+        log_rel=str(
+            log_path.relative_to(DOCS_DIR / "experiments" / "stub" / "demo_runs")
+        ),
     )
     report["docs_hub"] = str(hub_path.relative_to(ROOT))
     report["run_dashboard"] = str(run_dash_path.relative_to(ROOT))

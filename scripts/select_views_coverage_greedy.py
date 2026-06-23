@@ -289,7 +289,11 @@ def main() -> None:
     inputs.add_argument("--scene", type=Path)
     inputs.add_argument("--scenes", type=Path, nargs="+")
     parser.add_argument("--output", type=Path, help="Single-scene report path")
-    parser.add_argument("--out", type=Path, help="Batch report directory; defaults to docs/dataset_validation")
+    parser.add_argument(
+        "--out",
+        type=Path,
+        help="Batch report directory; defaults to docs/validation/geometry",
+    )
     parser.add_argument("--k", type=int, nargs="+", default=[10, 20, 50, 100])
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--distance-threshold", type=float)
@@ -315,7 +319,7 @@ def main() -> None:
 
     if args.output is not None:
         parser.error("--output is only valid with --scene")
-    output_dir = args.out or Path("docs/dataset_validation")
+    output_dir = args.out or Path("docs/validation/geometry")
     reports = write_batch_reports(
         args.scenes,
         output_dir,

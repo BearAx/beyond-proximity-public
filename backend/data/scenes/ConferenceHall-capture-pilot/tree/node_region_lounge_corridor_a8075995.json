@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "region_lounge_corridor_a8075995",
+  "node_type": "region",
+  "name": "lounge corridor",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v012"
+  ],
+  "observations": [
+    {
+      "view_id": "v012",
+      "approx_location": "center",
+      "source": "manual"
+    }
+  ]
+}

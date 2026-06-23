@@ -1,0 +1,33 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "region_backstage_corridor_e22a4511",
+  "node_type": "region",
+  "name": "backstage corridor",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v001",
+    "v006",
+    "v007"
+  ],
+  "observations": [
+    {
+      "view_id": "v001",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "view_id": "v006",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "view_id": "v007",
+      "approx_location": "center",
+      "source": "manual"
+    }
+  ]
+}

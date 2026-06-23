@@ -1,0 +1,24 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "object_v002_001_black_stage_curtain",
+  "node_type": "object",
+  "name": "black stage curtain",
+  "summary": "Object observation from v002.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v002"
+  ],
+  "attributes": [
+    "large",
+    "dark",
+    "backdrop"
+  ],
+  "approx_location": "center background",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

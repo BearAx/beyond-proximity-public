@@ -1,0 +1,22 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "object_v015_005_sidewalk_or_curb",
+  "node_type": "object",
+  "name": "sidewalk or curb",
+  "summary": "Object observation from v015.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v015"
+  ],
+  "attributes": [
+    "street edge"
+  ],
+  "approx_location": "foreground",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

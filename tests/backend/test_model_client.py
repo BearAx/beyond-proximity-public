@@ -7,6 +7,8 @@ from backend.query.model_client import (
     CachedModelClient,
     ModelCacheError,
     ModelConfigurationError,
+    ModelProviderError,
+    OpenAIModelClient,
     StubModelClient,
     create_model_client,
 )
@@ -170,6 +172,165 @@ def test_live_mode_fails_gracefully_without_credentials(monkeypatch):
 
     with pytest.raises(ModelConfigurationError, match="missing environment variables"):
         create_model_client("live")
+
+
+def _openai_response(answer: dict) -> dict:
+    return {
+        "id": "resp_fixture",
+        "model": "fixture-model",
+        "output": [
+            {
+                "type": "message",
+                "content": [{"type": "output_text", "text": json.dumps(answer)}],
+            }
+        ],
+        "usage": {"input_tokens": 20, "output_tokens": 10, "total_tokens": 30},
+    }
+
+
+def _live_answer() -> dict:
+    return {
+        "structured_plan": {"target": "chair", "strategy": "semantic_index"},
+        "visited_nodes": ["root", "leaf"],
+        "selected_views": ["v001"],
+        "checked_view_ids": ["v001"],
+        "result": {
+            "found": True,
+            "matched_object": "chair",
+            "selected_node_id": "leaf",
+            "selected_view_id": "v001",
+            "bbox_2d": None,
+            "bbox_3d": None,
+            "camera_pose": None,
+            "confidence": 0.8,
+            "explanation": "The manual semantic index identifies a red chair.",
+        },
+        "warnings": [],
+    }
+
+
+def test_openai_live_client_caches_raw_response_and_real_usage(tmp_path, monkeypatch):
+    client = OpenAIModelClient(api_key="secret-fixture", model="fixture-model", cache_dir=tmp_path)
+    raw_response = _openai_response(_live_answer())
+    monkeypatch.setattr(client, "_request_provider", lambda payload: raw_response)
+
+    assert client.describe_view("unused.png", {"existing_analysis": _views()["v001"]}) == _views()["v001"]
+    assert client.build_tree(_views(), {"existing_tree": _tree()}) == _tree()
+    answer = client.answer_query(
+        {"query": "Find the red chair", "query_type": "attribute"},
+        _tree(),
+        _views(),
+    )
+
+    payload = {
+        "query": {"query": "Find the red chair", "query_type": "attribute"},
+        "tree": _tree(),
+        "views": _views(),
+    }
+    cache_path = CachedModelClient(tmp_path).cache_path("answer_query", payload)
+    envelope = json.loads(cache_path.read_text(encoding="utf-8"))
+    assert answer["result"]["found"] is True
+    assert answer["result"]["selected_view_id"] == "v001"
+    assert client.stats_snapshot()["model_call_count"] == 1
+    assert client.stats_snapshot()["total_tokens"] == 30
+    assert envelope["source_mode"] == "live"
+    assert envelope["raw_response"] == raw_response
+    assert "secret-fixture" not in cache_path.read_text(encoding="utf-8")
+
+
+def test_openai_live_client_retries_transport_failure(tmp_path, monkeypatch):
+    client = OpenAIModelClient(api_key="secret", model="fixture-model", cache_dir=tmp_path)
+    responses = iter([ModelProviderError("temporary"), _openai_response(_live_answer())])
+
+    def request(_payload):
+        value = next(responses)
+        if isinstance(value, Exception):
+            raise value
+        return value
+
+    monkeypatch.setattr(client, "_request_provider", request)
+    monkeypatch.setattr("backend.query.model_client.time.sleep", lambda _seconds: None)
+    client.answer_query("Find the chair", _tree(), _views())
+
+    assert client.stats_snapshot()["model_call_count"] == 2
+    assert client.stats_snapshot()["retry_count"] == 1
+    assert client.stats_snapshot()["failure_count"] == 0
+
+
+@pytest.mark.parametrize("model", ["gpt-5", "gpt-5.5", "o1", "o3-mini", "o4-mini"])
+def test_reasoning_models_omit_unsupported_sampling_parameters(tmp_path, monkeypatch, model):
+    client = OpenAIModelClient(api_key="secret", model=model, cache_dir=tmp_path)
+    captured = {}
+
+    def request(payload):
+        captured.update(payload)
+        return _openai_response(_live_answer())
+
+    monkeypatch.setattr(client, "_request_provider", request)
+    client.answer_query("Find the chair", _tree(), _views())
+
+    assert captured["model"] == model
+    assert captured["input"]
+    for parameter in OpenAIModelClient.unsupported_reasoning_sampling_parameters:
+        assert parameter not in captured
+
+
+def test_older_models_keep_zero_temperature(tmp_path, monkeypatch):
+    client = OpenAIModelClient(api_key="secret", model="gpt-4.1-mini", cache_dir=tmp_path)
+    captured = {}
+
+    def request(payload):
+        captured.update(payload)
+        return _openai_response(_live_answer())
+
+    monkeypatch.setattr(client, "_request_provider", request)
+    client.answer_query("Find the chair", _tree(), _views())
+
+    assert captured["temperature"] == 0.0
+
+
+def test_non_retryable_provider_error_stops_immediately(tmp_path, monkeypatch):
+    client = OpenAIModelClient(api_key="secret", model="gpt-5.5", cache_dir=tmp_path)
+    calls = 0
+
+    def request(_payload):
+        nonlocal calls
+        calls += 1
+        raise ModelProviderError("bad request", retryable=False)
+
+    monkeypatch.setattr(client, "_request_provider", request)
+    with pytest.raises(ModelProviderError, match="bad request"):
+        client.answer_query("Find the chair", _tree(), _views())
+
+    assert calls == 1
+    assert client.stats_snapshot()["retry_count"] == 0
+    assert client.stats_snapshot()["failure_count"] == 1
+
+
+def test_live_mode_builds_openai_adapter_from_environment(tmp_path, monkeypatch):
+    monkeypatch.setenv("SEMANTICSPLAT_PROVIDER", "openai")
+    monkeypatch.setenv("SEMANTICSPLAT_MODEL", "fixture-model")
+    monkeypatch.setenv("SEMANTICSPLAT_API_KEY", "secret")
+
+    client = create_model_client("live", cache_dir=tmp_path)
+
+    assert isinstance(client, OpenAIModelClient)
+    assert client.provenance() == {
+        "mode": "live",
+        "provider": "openai",
+        "model": "fixture-model",
+        "version": "responses_api_v1",
+        "temperature": 0.0,
+    }
+
+
+def test_live_mode_rejects_unsupported_provider(tmp_path, monkeypatch):
+    monkeypatch.setenv("SEMANTICSPLAT_PROVIDER", "unknown")
+    monkeypatch.setenv("SEMANTICSPLAT_MODEL", "fixture-model")
+    monkeypatch.setenv("SEMANTICSPLAT_API_KEY", "secret")
+
+    with pytest.raises(ModelConfigurationError, match="supported providers: openai"):
+        create_model_client("live", cache_dir=tmp_path)
 
 
 def test_nonzero_temperature_is_rejected():

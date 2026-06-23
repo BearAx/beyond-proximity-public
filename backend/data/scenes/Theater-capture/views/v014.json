@@ -7,12 +7,126 @@
   "pose_ref": "transforms.json#/frames/13/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Grand staircase or balcony area with decorative black railings, marble or stone steps, wall lamps, and staircases going up and down.",
+  "visible_regions": [
+    {
+      "label": "stairwell balcony",
+      "description": "open balcony area overlooking or connecting staircases",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "upper staircase",
+      "description": "stairs leading upward at the back",
+      "approx_location": "back center",
+      "source": "manual"
+    },
+    {
+      "label": "lower stair opening",
+      "description": "opening or stairs descending in the foreground",
+      "approx_location": "foreground",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "decorative black railings",
+      "attributes": [
+        "metal",
+        "ornate"
+      ],
+      "approx_location": "foreground and sides",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "staircase",
+      "attributes": [
+        "stone or marble",
+        "ascending"
+      ],
+      "approx_location": "back center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "lower stair opening",
+      "attributes": [
+        "descending",
+        "railed"
+      ],
+      "approx_location": "foreground center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "wall lamps",
+      "attributes": [
+        "warm",
+        "mounted"
+      ],
+      "approx_location": "left and right walls",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "pale green walls",
+      "attributes": [
+        "decorative",
+        "historic interior"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "tile or stone floor",
+      "attributes": [
+        "light colored"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "decorative staircase railings",
+      "description": "ornate black railings defining the stairwell",
+      "approx_location": "foreground and sides",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "main staircase",
+      "description": "central staircase leading upward",
+      "approx_location": "back center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "wall lamps",
+      "description": "paired lamps on the stairwell walls",
+      "approx_location": "left and right",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Strong landmark view for stairwell, balcony, and railing queries.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

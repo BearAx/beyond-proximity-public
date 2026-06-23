@@ -7,12 +7,121 @@
   "pose_ref": "transforms.json#/frames/5/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Gallery corridor with a large red exhibition panel, printed historical images, a window wall, and dark metal mesh partitions.",
+  "visible_regions": [
+    {
+      "label": "red information panel area",
+      "description": "large red panel with text and historical images",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "window side",
+      "description": "tall windows along the left side",
+      "approx_location": "left side",
+      "source": "manual"
+    },
+    {
+      "label": "mesh partition gallery",
+      "description": "black metal mesh partitions forming the exhibit path",
+      "approx_location": "right and rear",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "red exhibition panel",
+      "attributes": [
+        "large",
+        "text",
+        "historical images"
+      ],
+      "approx_location": "center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "historical photographs",
+      "attributes": [
+        "black and white",
+        "printed"
+      ],
+      "approx_location": "right side of red panel",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "tall windows",
+      "attributes": [
+        "large",
+        "outside view"
+      ],
+      "approx_location": "left side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "metal mesh partitions",
+      "attributes": [
+        "black",
+        "grid"
+      ],
+      "approx_location": "right and rear",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "gray wall panel",
+      "attributes": [
+        "plain",
+        "exhibit wall"
+      ],
+      "approx_location": "left-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "ceiling lights",
+      "attributes": [
+        "small",
+        "gallery lighting"
+      ],
+      "approx_location": "ceiling",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "large red exhibition panel",
+      "description": "dominant red panel with historical content",
+      "approx_location": "center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "tall window wall",
+      "description": "windows along one side of the gallery",
+      "approx_location": "left side",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for queries about red text panels, historical images, and windows.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

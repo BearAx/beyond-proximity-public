@@ -12,44 +12,44 @@
       "scene_id": "ConferenceHall-capture-pilot",
       "benchmark_scene_id": "ConferenceHall",
       "path": "backend/data/scenes/ConferenceHall-capture-pilot",
-      "semantic_eval_allowed": false,
+      "semantic_eval_allowed": true,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/ConferenceHall-capture-pilot_semantic_index.json"
+      "validation_report": "docs/validation/semantic_index/ConferenceHall-capture-pilot_semantic_index.json"
     },
     {
       "scene_id": "Museume-capture",
       "benchmark_scene_id": "Museume",
       "path": "backend/data/scenes/Museume-capture",
-      "semantic_eval_allowed": false,
+      "semantic_eval_allowed": true,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/Museume-capture_semantic_index.json"
+      "validation_report": "docs/validation/semantic_index/Museume-capture_semantic_index.json"
     },
     {
       "scene_id": "outdoor-drone-capture",
       "benchmark_scene_id": "outdoor-drone",
       "path": "backend/data/scenes/outdoor-drone-capture",
-      "semantic_eval_allowed": false,
+      "semantic_eval_allowed": true,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/outdoor-drone-capture_semantic_index.json"
+      "validation_report": "docs/validation/semantic_index/outdoor-drone-capture_semantic_index.json"
     },
     {
       "scene_id": "outdoor-street-capture",
       "benchmark_scene_id": "outdoor-street",
       "path": "backend/data/scenes/outdoor-street-capture",
-      "semantic_eval_allowed": false,
+      "semantic_eval_allowed": true,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/outdoor-street-capture_semantic_index.json"
+      "validation_report": "docs/validation/semantic_index/outdoor-street-capture_semantic_index.json"
     },
     {
       "scene_id": "Theater-capture",
       "benchmark_scene_id": "Theater",
       "path": "backend/data/scenes/Theater-capture",
-      "semantic_eval_allowed": false,
+      "semantic_eval_allowed": true,
       "geometry_eval_allowed": false,
-      "validation_report": "docs/dataset_validation/Theater-capture_semantic_index.json"
+      "validation_report": "docs/validation/semantic_index/Theater-capture_semantic_index.json"
     }
   ],
-  "benchmark_path": "docs/benchmark_queries_v1.json",
+  "benchmark_path": "docs/benchmarks/benchmark_queries_v1.json",
   "output_root": "outputs/week3",
   "resume": true,
   "query_limit": 50,
@@ -57,7 +57,7 @@
   "view_selection": {
     "strategy": "existing",
     "max_views": null,
-    "coverage_report_dir": "docs/dataset_validation"
+    "coverage_report_dir": "docs/validation/geometry"
   },
   "model": {
     "temperature": 0.0,
@@ -65,11 +65,12 @@
     "provider_env": ["SEMANTICSPLAT_PROVIDER", "SEMANTICSPLAT_MODEL", "SEMANTICSPLAT_API_KEY"]
   },
   "notes": [
-    "The five captured scenes are configured but remain skipped while semantic_eval_allowed=false.",
+    "The five captured scenes passed semantic-index validation after manual image-based annotation.",
     "benchmark_scene_id maps existing benchmark scopes to their captured scene directories.",
-    "Do not run the semantic gate until manual ViewJSON is filled, trees validate, and reports/config flags are updated together.",
+    "Manual annotations are semantic-index inputs, not independent semantic ground truth; accuracy metrics remain unavailable.",
+    "geometry_eval_allowed remains false because independent GT and predicted 3D boxes are unavailable.",
     "Change mode to cached_live only after verified live cache entries are available.",
-    "Live mode requires provider environment variables and an installed provider adapter.",
+    "Live mode supports the OpenAI Responses API when the three provider environment variables are configured.",
     "Scenes that remain ineligible are logged and skipped rather than assigned fabricated results."
   ]
 }

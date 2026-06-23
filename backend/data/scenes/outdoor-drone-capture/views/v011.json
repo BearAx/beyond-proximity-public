@@ -7,12 +7,118 @@
   "pose_ref": "transforms.json#/frames/10/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Aerial waterfront panorama with dense coastal city, marina or harbor area, open water, and distant hills.",
+  "visible_regions": [
+    {
+      "label": "coastal urban waterfront",
+      "description": "dense city buildings along water",
+      "approx_location": "center and right",
+      "source": "manual"
+    },
+    {
+      "label": "harbor or marina",
+      "description": "clustered waterfront structures near the shoreline",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "open bay water",
+      "description": "water surface in the foreground",
+      "approx_location": "foreground",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "city buildings",
+      "attributes": [
+        "dense",
+        "coastal"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "marina or harbor cluster",
+      "attributes": [
+        "small structures",
+        "waterfront"
+      ],
+      "approx_location": "center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "open water",
+      "attributes": [
+        "blue-green"
+      ],
+      "approx_location": "foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "shoreline",
+      "attributes": [
+        "curved",
+        "urban edge"
+      ],
+      "approx_location": "center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "distant hills",
+      "attributes": [
+        "background"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "roads or bridge lines",
+      "attributes": [
+        "thin",
+        "linear"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "coastal city waterfront",
+      "description": "dense urban waterfront area",
+      "approx_location": "center-right",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "marina cluster",
+      "description": "cluster of harbor/boat-like structures near the shore",
+      "approx_location": "center",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for city, waterfront, marina, and bay queries.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

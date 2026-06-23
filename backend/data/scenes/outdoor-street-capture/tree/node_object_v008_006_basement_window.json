@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "object_v008_006_basement_window",
+  "node_type": "object",
+  "name": "basement window",
+  "summary": "Object observation from v008.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v008"
+  ],
+  "attributes": [
+    "small",
+    "low"
+  ],
+  "approx_location": "left side",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

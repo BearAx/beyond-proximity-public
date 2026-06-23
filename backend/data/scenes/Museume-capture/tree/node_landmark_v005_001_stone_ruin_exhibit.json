@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "landmark_v005_001_stone_ruin_exhibit",
+  "node_type": "landmark",
+  "name": "stone ruin exhibit",
+  "summary": "Landmark observation from v005.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v005"
+  ],
+  "approx_location": "right side",
+  "source": "manual"
+}

@@ -7,12 +7,121 @@
   "pose_ref": "transforms.json#/frames/3/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Archaeological exhibition area with a large rough stone wall or ruin fragment, glass or metal barriers, and a row of information labels.",
+  "visible_regions": [
+    {
+      "label": "ruin display area",
+      "description": "main exhibit area with a large stone structure",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "label rail area",
+      "description": "row of small informational labels along the exhibit",
+      "approx_location": "right and foreground",
+      "source": "manual"
+    },
+    {
+      "label": "gallery walkway",
+      "description": "visitor walkway around the stone exhibit",
+      "approx_location": "left and rear",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "stone wall ruin",
+      "attributes": [
+        "large",
+        "rough",
+        "archaeological"
+      ],
+      "approx_location": "center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "information labels",
+      "attributes": [
+        "small",
+        "row",
+        "museum captions"
+      ],
+      "approx_location": "right foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "protective barrier",
+      "attributes": [
+        "metal or glass",
+        "around exhibit"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "red exhibition panel",
+      "attributes": [
+        "bright",
+        "text panel"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "metal mesh wall",
+      "attributes": [
+        "black",
+        "grid"
+      ],
+      "approx_location": "left rear",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "concrete floor",
+      "attributes": [
+        "gray"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "stone wall ruin",
+      "description": "large archaeological wall fragment, strongest landmark in this view",
+      "approx_location": "center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "label rail",
+      "description": "continuous row of exhibit labels beside the ruin",
+      "approx_location": "right foreground",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for locating the main ruin fragment and exhibit labels.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

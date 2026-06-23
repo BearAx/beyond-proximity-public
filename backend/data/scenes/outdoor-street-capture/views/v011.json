@@ -7,12 +7,118 @@
   "pose_ref": "transforms.json#/frames/10/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Outdoor service corner with a beige building wall, cobblestone ground, a small recessed door or utility panel, and grass growing along the base.",
+  "visible_regions": [
+    {
+      "label": "service corner",
+      "description": "plain utility-like building corner",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "cobblestone ground",
+      "description": "paved ground in front of the wall",
+      "approx_location": "foreground",
+      "source": "manual"
+    },
+    {
+      "label": "wall base vegetation",
+      "description": "small plants growing along the wall base",
+      "approx_location": "lower center",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "small utility door or panel",
+      "attributes": [
+        "light colored",
+        "recessed"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "beige stone wall",
+      "attributes": [
+        "plain",
+        "facade"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "cobblestone pavement",
+      "attributes": [
+        "outdoor ground"
+      ],
+      "approx_location": "foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "grass and weeds",
+      "attributes": [
+        "green",
+        "along wall base"
+      ],
+      "approx_location": "lower center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "wall pipe or cable",
+      "attributes": [
+        "thin",
+        "utility"
+      ],
+      "approx_location": "left or center wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "shadowed corner",
+      "attributes": [
+        "building recess"
+      ],
+      "approx_location": "left side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "small utility panel",
+      "description": "light utility door/panel on the otherwise plain wall",
+      "approx_location": "center-right",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "cobblestone service corner",
+      "description": "quiet paved service corner beside the facade",
+      "approx_location": "foreground",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Sparse service-area view; useful for utility panel and wall-base vegetation queries.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

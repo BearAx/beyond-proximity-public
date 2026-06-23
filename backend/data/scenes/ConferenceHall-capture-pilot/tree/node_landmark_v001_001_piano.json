@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v001_001_piano",
+  "node_type": "landmark",
+  "name": "piano",
+  "summary": "Landmark observation from v001.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v001"
+  ],
+  "approx_location": "behind the column on the right",
+  "source": "manual"
+}

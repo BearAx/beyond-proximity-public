@@ -5,8 +5,12 @@ import hashlib
 import json
 import os
 import re
+import time
+import urllib.error
+import urllib.request
 from abc import ABC, abstractmethod
 from copy import deepcopy
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +29,14 @@ class ModelConfigurationError(ModelClientError):
 
 class ModelCacheError(ModelClientError):
     """Raised when cached-live data is missing or has invalid provenance."""
+
+
+class ModelProviderError(ModelClientError):
+    """Raised when a configured live provider request fails."""
+
+    def __init__(self, message: str, *, retryable: bool = True) -> None:
+        super().__init__(message)
+        self.retryable = retryable
 
 
 class ModelClient(ABC):
@@ -418,6 +430,7 @@ class CachedModelClient(ModelClient):
         model: str,
         version: str | None = None,
         token_usage: dict[str, Any] | None = None,
+        raw_response: dict[str, Any] | None = None,
     ) -> Path:
         client = CachedModelClient(cache_dir)
         path = client.cache_path(method, payload)
@@ -432,6 +445,8 @@ class CachedModelClient(ModelClient):
             "method": method,
             "token_usage": token_usage,
             "response": response,
+            "raw_response": raw_response,
+            "cached_at": datetime.now(timezone.utc).isoformat(),
         }
         path.write_text(json.dumps(envelope, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         return path
@@ -464,6 +479,9 @@ class CachedModelClient(ModelClient):
         return deepcopy(response)
 
     def describe_view(self, image_path: str | Path, metadata: dict[str, Any]) -> dict[str, Any]:
+        existing = metadata.get("existing_analysis")
+        if isinstance(existing, dict):
+            return deepcopy(existing)
         payload = {"image_path": str(image_path), "metadata": metadata}
         return self._replay("describe_view", payload)
 
@@ -472,6 +490,9 @@ class CachedModelClient(ModelClient):
         view_summaries: dict[str, dict[str, Any]],
         scene_context: dict[str, Any],
     ) -> dict[str, dict[str, Any]]:
+        existing = scene_context.get("existing_tree")
+        if isinstance(existing, dict) and existing:
+            return deepcopy(existing)
         payload = {"view_summaries": view_summaries, "scene_context": scene_context}
         response = self._replay("build_tree", payload)
         return response
@@ -484,6 +505,272 @@ class CachedModelClient(ModelClient):
     ) -> dict[str, Any]:
         payload = {"query": query, "tree": tree, "views": views}
         return self._replay("answer_query", payload)
+
+
+class OpenAIModelClient(ModelClient):
+    """Live query reasoning through the OpenAI Responses API."""
+
+    endpoint = "https://api.openai.com/v1/responses"
+    reasoning_model_prefixes = ("gpt-5", "o1", "o3", "o4")
+    unsupported_reasoning_sampling_parameters = (
+        "temperature",
+        "top_p",
+        "presence_penalty",
+        "frequency_penalty",
+        "logprobs",
+        "top_logprobs",
+        "logit_bias",
+    )
+
+    def __init__(
+        self,
+        *,
+        api_key: str,
+        model: str,
+        cache_dir: str | Path,
+        temperature: float = 0.0,
+        max_retries: int = 2,
+        timeout_seconds: float = 120.0,
+    ) -> None:
+        super().__init__(
+            mode="live",
+            provider="openai",
+            model=model,
+            version="responses_api_v1",
+            temperature=temperature,
+        )
+        self._api_key = api_key
+        self.cache_dir = Path(cache_dir)
+        self.max_retries = max(0, int(max_retries))
+        self.timeout_seconds = float(timeout_seconds)
+
+    def describe_view(self, image_path: str | Path, metadata: dict[str, Any]) -> dict[str, Any]:
+        existing = metadata.get("existing_analysis")
+        if isinstance(existing, dict):
+            return deepcopy(existing)
+        raise ModelConfigurationError(
+            "OpenAI live evaluation requires an existing semantic description for every selected view"
+        )
+
+    def build_tree(
+        self,
+        view_summaries: dict[str, dict[str, Any]],
+        scene_context: dict[str, Any],
+    ) -> dict[str, dict[str, Any]]:
+        existing = scene_context.get("existing_tree")
+        if isinstance(existing, dict) and existing:
+            return deepcopy(existing)
+        raise ModelConfigurationError(
+            "OpenAI live evaluation requires an existing validated semantic tree"
+        )
+
+    def answer_query(
+        self,
+        query: str | dict[str, Any],
+        tree: dict[str, dict[str, Any]],
+        views: dict[str, dict[str, Any]],
+    ) -> dict[str, Any]:
+        payload = {"query": query, "tree": tree, "views": views}
+        request_payload = self._request_payload(query, tree, views)
+        raw_response = self._call_provider(request_payload)
+        answer = self._parse_answer(raw_response, tree=tree, views=views)
+        usage = raw_response.get("usage") if isinstance(raw_response.get("usage"), dict) else None
+        self._record_usage(usage)
+        CachedModelClient.write_cache_entry(
+            self.cache_dir,
+            "answer_query",
+            payload,
+            answer,
+            provider="openai",
+            model=str(self.model),
+            version=self.version,
+            token_usage=usage,
+            raw_response=raw_response,
+        )
+        return answer
+
+    def _request_payload(
+        self,
+        query: str | dict[str, Any],
+        tree: dict[str, dict[str, Any]],
+        views: dict[str, dict[str, Any]],
+    ) -> dict[str, Any]:
+        payload: dict[str, Any] = {
+            "model": self.model,
+            "input": self._query_prompt(query, tree, views),
+        }
+        model = str(self.model or "").strip().lower()
+        if not model.startswith(self.reasoning_model_prefixes):
+            payload["temperature"] = self.temperature
+        else:
+            for parameter in self.unsupported_reasoning_sampling_parameters:
+                payload.pop(parameter, None)
+        return payload
+
+    @staticmethod
+    def _compact_tree(tree: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+        return [
+            {
+                "node_id": _node_id(node, key),
+                "node_type": _node_type(node),
+                "name": node.get("name"),
+                "summary": node.get("summary"),
+                "view_ids": as_string_ids(node.get("view_ids")),
+                "children_ids": as_string_ids(node.get("children_ids")),
+            }
+            for key, node in sorted(tree.items())
+        ]
+
+    @staticmethod
+    def _compact_views(views: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
+        fields = (
+            "summary",
+            "scene_summary",
+            "room_type",
+            "visible_regions",
+            "visible_objects",
+            "objects",
+            "landmarks",
+            "free_text_notes",
+        )
+        return {
+            view_id: {field: view[field] for field in fields if field in view}
+            for view_id, view in sorted(views.items())
+        }
+
+    @classmethod
+    def _query_prompt(
+        cls,
+        query: str | dict[str, Any],
+        tree: dict[str, dict[str, Any]],
+        views: dict[str, dict[str, Any]],
+    ) -> str:
+        context = {
+            "query": query,
+            "tree": cls._compact_tree(tree),
+            "views": cls._compact_views(views),
+        }
+        return (
+            "Answer the scene query using only the supplied manual semantic index. "
+            "Do not invent objects, views, nodes, geometry, or ground truth. Return one JSON object only with "
+            "structured_plan (object), visited_nodes (array), selected_views (array), checked_view_ids (array), "
+            "result (object with found, matched_object, selected_node_id, selected_view_id, bbox_2d, bbox_3d, "
+            "camera_pose, confidence, explanation), and warnings (array). Use null for unavailable boxes and pose. "
+            "Confidence must be a number from 0 to 1. The manual index is not independent ground truth.\n\n"
+            + json.dumps(context, ensure_ascii=False, separators=(",", ":"), default=str)
+        )
+
+    def _call_provider(self, payload: dict[str, Any]) -> dict[str, Any]:
+        last_error: Exception | None = None
+        for attempt in range(self.max_retries + 1):
+            self._stats["model_call_count"] += 1
+            try:
+                response = self._request_provider(payload)
+                if not isinstance(response, dict):
+                    raise ModelProviderError("OpenAI response must be a JSON object")
+                return response
+            except (ModelProviderError, OSError, ValueError) as exc:
+                last_error = exc
+                retryable = not isinstance(exc, ModelProviderError) or exc.retryable
+                if not retryable or attempt >= self.max_retries:
+                    self._stats["failure_count"] += 1
+                    break
+                self._stats["retry_count"] += 1
+                time.sleep(min(2 ** attempt, 4))
+        raise ModelProviderError(f"OpenAI request failed after retries: {last_error}") from last_error
+
+    def _request_provider(self, payload: dict[str, Any]) -> dict[str, Any]:
+        request = urllib.request.Request(
+            self.endpoint,
+            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+            headers={
+                "Authorization": f"Bearer {self._api_key}",
+                "Content-Type": "application/json",
+                "User-Agent": "SemanticSplat-evaluation/1",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=self.timeout_seconds) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")[:1000]
+            retryable = exc.code in {408, 409, 425, 429, 500, 502, 503, 504}
+            raise ModelProviderError(
+                f"OpenAI HTTP {exc.code}: {detail}",
+                retryable=retryable,
+            ) from exc
+        except urllib.error.URLError as exc:
+            raise ModelProviderError(f"OpenAI network error: {exc.reason}") from exc
+        except json.JSONDecodeError as exc:
+            raise ModelProviderError("OpenAI returned invalid JSON", retryable=False) from exc
+
+    @staticmethod
+    def _output_text(response: dict[str, Any]) -> str:
+        direct = response.get("output_text")
+        if isinstance(direct, str) and direct.strip():
+            return direct.strip()
+        pieces: list[str] = []
+        for item in response.get("output", []):
+            if not isinstance(item, dict):
+                continue
+            for content in item.get("content", []):
+                if isinstance(content, dict) and content.get("type") == "output_text":
+                    text = content.get("text")
+                    if isinstance(text, str):
+                        pieces.append(text)
+        if not pieces:
+            raise ModelProviderError("OpenAI response did not contain output text")
+        return "\n".join(pieces).strip()
+
+    @classmethod
+    def _parse_answer(
+        cls,
+        response: dict[str, Any],
+        *,
+        tree: dict[str, dict[str, Any]],
+        views: dict[str, dict[str, Any]],
+    ) -> dict[str, Any]:
+        text = cls._output_text(response)
+        if text.startswith("```"):
+            text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text, flags=re.IGNORECASE)
+        try:
+            answer = json.loads(text)
+        except json.JSONDecodeError as exc:
+            raise ModelProviderError("OpenAI output was not valid JSON") from exc
+        if not isinstance(answer, dict):
+            raise ModelProviderError("OpenAI answer must be a JSON object")
+        result = answer.get("result")
+        if not isinstance(result, dict) or not isinstance(result.get("found"), bool):
+            raise ModelProviderError("OpenAI answer requires result.found as a boolean")
+        confidence = result.get("confidence")
+        if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
+            raise ModelProviderError("OpenAI answer requires numeric result.confidence")
+        result["confidence"] = max(0.0, min(1.0, float(confidence)))
+
+        warnings = [str(item) for item in answer.get("warnings", []) if item is not None]
+        valid_nodes = set(tree)
+        valid_views = set(views)
+        answer["visited_nodes"] = [str(item) for item in answer.get("visited_nodes", []) if str(item) in valid_nodes]
+        answer["selected_views"] = [str(item) for item in answer.get("selected_views", []) if str(item) in valid_views]
+        answer["checked_view_ids"] = [
+            str(item) for item in answer.get("checked_view_ids", []) if str(item) in valid_views
+        ]
+        if result.get("selected_node_id") not in valid_nodes:
+            if result.get("selected_node_id") is not None:
+                warnings.append("Provider-selected node was absent from the semantic index and was cleared.")
+            result["selected_node_id"] = None
+        if result.get("selected_view_id") not in valid_views:
+            if result.get("selected_view_id") is not None:
+                warnings.append("Provider-selected view was absent from the semantic index and was cleared.")
+            result["selected_view_id"] = None
+        for field in ("matched_object", "bbox_2d", "bbox_3d", "camera_pose"):
+            result.setdefault(field, None)
+        result.setdefault("explanation", "")
+        answer["structured_plan"] = answer.get("structured_plan") if isinstance(answer.get("structured_plan"), dict) else {}
+        warnings.append("Live provider reasoning used a manual semantic index, not independent ground truth.")
+        answer["warnings"] = sorted(set(warnings))
+        return answer
 
 
 def create_model_client(
@@ -518,7 +805,16 @@ def create_model_client(
             raise ModelConfigurationError(
                 "live mode is unavailable; missing environment variables: " + ", ".join(missing)
             )
-        raise ModelConfigurationError(
-            f"live credentials are configured for provider '{provider}', but no provider adapter is installed"
+        if cache_dir is None:
+            raise ModelConfigurationError("live mode requires a model_cache directory")
+        if str(provider).strip().lower() != "openai":
+            raise ModelConfigurationError(
+                f"unsupported live provider '{provider}'; supported providers: openai"
+            )
+        return OpenAIModelClient(
+            api_key=str(api_key),
+            model=str(model),
+            cache_dir=cache_dir,
+            temperature=temperature,
         )
     raise ModelConfigurationError(f"Unsupported mode: {mode}")

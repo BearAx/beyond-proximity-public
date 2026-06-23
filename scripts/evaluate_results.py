@@ -416,16 +416,35 @@ def evaluate(
 
     run_config_path = run_dir / "run_config.json"
     run_config = load_json(run_config_path) if run_config_path.exists() else {}
-    configured_scene_ids = {
-        str(scene_id)
-        for scene_id in run_config.get("scene_ids", [])
-        if scene_id is not None
-    }
-    query_by_id = {
-        query_id: query
-        for query_id, query in all_query_by_id.items()
-        if not configured_scene_ids or str(query.get("scene_id")) in configured_scene_ids
-    }
+    benchmark_to_scene_id: dict[str, str] = {}
+    configured_scenes = run_config.get("scenes")
+    if isinstance(configured_scenes, list):
+        for scene in configured_scenes:
+            if not isinstance(scene, dict) or scene.get("scene_id") is None:
+                continue
+            scene_id = str(scene["scene_id"])
+            benchmark_scene_id = str(scene.get("benchmark_scene_id") or scene_id)
+            benchmark_to_scene_id[benchmark_scene_id] = scene_id
+
+    configured_benchmark_scene_ids = set(benchmark_to_scene_id)
+    if not configured_benchmark_scene_ids:
+        configured_benchmark_scene_ids = {
+            str(scene_id)
+            for scene_id in run_config.get("scene_ids", [])
+            if scene_id is not None
+        }
+
+    query_by_id: dict[str, dict[str, Any]] = {}
+    for query_id, query in all_query_by_id.items():
+        benchmark_scene_id = str(query.get("scene_id"))
+        if configured_benchmark_scene_ids and benchmark_scene_id not in configured_benchmark_scene_ids:
+            continue
+        effective_query = dict(query)
+        scene_id = benchmark_to_scene_id.get(benchmark_scene_id)
+        if scene_id is not None and scene_id != benchmark_scene_id:
+            effective_query["benchmark_scene_id"] = benchmark_scene_id
+            effective_query["scene_id"] = scene_id
+        query_by_id[query_id] = effective_query
     excluded_query_count = len(all_query_by_id) - len(query_by_id)
     depth_reliable = run_depth_reliable(run_config)
     results_dir = results_dir or run_dir / "query_results"
@@ -660,7 +679,11 @@ def failure_markdown(summary: dict[str, Any]) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate canonical SemanticSplat query results")
-    parser.add_argument("--benchmark", type=Path, default=Path("docs/benchmark_queries_v1.json"))
+    parser.add_argument(
+        "--benchmark",
+        type=Path,
+        default=Path("docs/benchmarks/benchmark_queries_v1.json"),
+    )
     parser.add_argument("--run-dir", type=Path)
     parser.add_argument("--results", type=Path, help="Explicit query_results directory")
     parser.add_argument("--out", type=Path, help="Output directory containing run_config.json")

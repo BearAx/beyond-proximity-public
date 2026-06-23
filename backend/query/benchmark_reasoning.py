@@ -1,8 +1,8 @@
 """Auto-write LLM-style reasoning logs from benchmark / failure-case runs.
 
 Outputs (all created by one `./run_all_docs.sh` call):
-  docs/project_log/runs/{run_slug}/reasoning/01_*.md   — human-readable traces
-  docs/project_log/runs/{run_slug}/README.md           — run dashboard
+  docs/experiments/stub/demo_runs/runs/{run_slug}/reasoning/01_*.md
+  docs/experiments/stub/demo_runs/runs/{run_slug}/README.md
   docs/benchmark_results/reasoning_{scene}.json        — bundled metadata
   backend/data/scenes/{scene}/queries/auto_*.json    — session-compatible JSON
 """
@@ -379,7 +379,9 @@ def write_benchmark_reasoning(
     run_slug: str,
 ) -> Dict[str, Any]:
     """Write reasoning MD + JSON session files for all failure cases."""
-    reasoning_dir = docs_dir / "project_log" / "runs" / run_slug / "reasoning"
+    reasoning_dir = (
+        docs_dir / "experiments" / "stub" / "demo_runs" / "runs" / run_slug / "reasoning"
+    )
     reasoning_dir.mkdir(parents=True, exist_ok=True)
     queries_dir = DATA_DIR / scene_id / "queries"
     queries_dir.mkdir(parents=True, exist_ok=True)
@@ -461,7 +463,7 @@ def write_benchmark_reasoning(
         "run_slug": run_slug,
         "cases": cases_out,
         "reasoning_md_dir": str(reasoning_dir.relative_to(docs_dir)),
-        "run_dashboard": f"project_log/runs/{run_slug}/README.md",
+        "run_dashboard": f"experiments/stub/demo_runs/runs/{run_slug}/README.md",
     }
     bundle_path = docs_dir / "benchmark_results" / f"reasoning_{scene_id}.json"
     with open(bundle_path, "w", encoding="utf-8") as fh:
@@ -473,5 +475,5 @@ def write_benchmark_reasoning(
         "session_paths": session_paths,
         "cases": cases_out,
         "run_slug": run_slug,
-        "run_dashboard": f"project_log/runs/{run_slug}/README.md",
+        "run_dashboard": f"experiments/stub/demo_runs/runs/{run_slug}/README.md",
     }

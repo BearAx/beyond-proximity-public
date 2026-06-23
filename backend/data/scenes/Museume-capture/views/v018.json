@@ -7,12 +7,127 @@
   "pose_ref": "transforms.json#/frames/17/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Museum gallery with display tables, a red information panel, white display wall, historical text panels, and metal mesh partitions.",
+  "visible_regions": [
+    {
+      "label": "display table area",
+      "description": "tables and cases holding museum objects or information",
+      "approx_location": "center and foreground",
+      "source": "manual"
+    },
+    {
+      "label": "red panel area",
+      "description": "large red text panel at the back",
+      "approx_location": "center-right",
+      "source": "manual"
+    },
+    {
+      "label": "white panel area",
+      "description": "large white wall display with historical content",
+      "approx_location": "left and center",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "display tables",
+      "attributes": [
+        "black frames",
+        "glass or flat tops"
+      ],
+      "approx_location": "center and foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "red exhibition panel",
+      "attributes": [
+        "large",
+        "text"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "white display panel",
+      "attributes": [
+        "large",
+        "text/images"
+      ],
+      "approx_location": "left-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "metal mesh partitions",
+      "attributes": [
+        "black",
+        "grid"
+      ],
+      "approx_location": "right and rear",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "small artifact displays",
+      "attributes": [
+        "low",
+        "inside or on tables"
+      ],
+      "approx_location": "foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "yellow floor marker",
+      "attributes": [
+        "small",
+        "circular"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "red exhibition panel",
+      "description": "large red panel anchoring the rear of the gallery",
+      "approx_location": "center-right",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "display tables",
+      "description": "cluster of black-framed tables in the gallery",
+      "approx_location": "center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "white historical panel",
+      "description": "large white exhibit panel on the left/center wall",
+      "approx_location": "left-center",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for queries about display tables, red panel, white panel, and gallery layout.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

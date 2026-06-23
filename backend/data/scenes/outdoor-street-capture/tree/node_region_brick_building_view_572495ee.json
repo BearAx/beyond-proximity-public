@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "region_brick_building_view_572495ee",
+  "node_type": "region",
+  "name": "brick building view",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v004"
+  ],
+  "observations": [
+    {
+      "view_id": "v004",
+      "approx_location": "background",
+      "source": "manual"
+    }
+  ]
+}

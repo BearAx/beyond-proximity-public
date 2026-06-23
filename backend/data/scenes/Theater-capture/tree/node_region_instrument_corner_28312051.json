@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "region_instrument_corner_28312051",
+  "node_type": "region",
+  "name": "instrument corner",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v011"
+  ],
+  "observations": [
+    {
+      "view_id": "v011",
+      "approx_location": "right side",
+      "source": "manual"
+    }
+  ]
+}

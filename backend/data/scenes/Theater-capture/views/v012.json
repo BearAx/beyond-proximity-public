@@ -7,12 +7,118 @@
   "pose_ref": "transforms.json#/frames/11/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Theater lounge corner with a large framed painting or mirror, small tables, chairs, wall lamps, and a staircase visible on the right.",
+  "visible_regions": [
+    {
+      "label": "lounge corner",
+      "description": "seating and table corner beneath the large frame",
+      "approx_location": "left and center",
+      "source": "manual"
+    },
+    {
+      "label": "stair area",
+      "description": "staircase or steps leading upward",
+      "approx_location": "right side",
+      "source": "manual"
+    },
+    {
+      "label": "wall art area",
+      "description": "large framed picture or mirror mounted on the wall",
+      "approx_location": "center-left",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "large framed painting or mirror",
+      "attributes": [
+        "large",
+        "wall-mounted"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "small tables",
+      "attributes": [
+        "round",
+        "white cloth or light top"
+      ],
+      "approx_location": "lower center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "chairs",
+      "attributes": [
+        "lounge seating"
+      ],
+      "approx_location": "lower center and left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "wall lamps",
+      "attributes": [
+        "decorative",
+        "two"
+      ],
+      "approx_location": "left and right of frame",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "staircase",
+      "attributes": [
+        "steps",
+        "ascending"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "curtains or wall panels",
+      "attributes": [
+        "light colored"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "large framed painting or mirror",
+      "description": "dominant wall feature in this lounge corner",
+      "approx_location": "center-left",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "staircase",
+      "description": "stairs visible on the right side of the room",
+      "approx_location": "right side",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for locating the lounge corner, wall frame, tables, and staircase.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

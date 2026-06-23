@@ -7,12 +7,119 @@
   "pose_ref": "transforms.json#/frames/5/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Backstage corridor section with dark walls, a white door, printed schedules or notices, and wall-mounted information boards.",
+  "visible_regions": [
+    {
+      "label": "backstage corridor",
+      "description": "dark service corridor with doors and notices",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "white door area",
+      "description": "door on the right side of the corridor",
+      "approx_location": "right-center",
+      "source": "manual"
+    },
+    {
+      "label": "notice wall area",
+      "description": "wall with printed schedules and notices",
+      "approx_location": "center and right",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "white door",
+      "attributes": [
+        "closed",
+        "simple"
+      ],
+      "approx_location": "right-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "printed schedules",
+      "attributes": [
+        "white",
+        "grid-like"
+      ],
+      "approx_location": "center wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "yellow notice board",
+      "attributes": [
+        "small",
+        "mounted"
+      ],
+      "approx_location": "left wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "black wall panels",
+      "attributes": [
+        "dark",
+        "background"
+      ],
+      "approx_location": "walls",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "corridor floor",
+      "attributes": [
+        "light wood or laminate"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "red emergency button or sign",
+      "attributes": [
+        "small",
+        "red"
+      ],
+      "approx_location": "right wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "white door",
+      "description": "closed white door beside the notice wall",
+      "approx_location": "right-center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "printed schedule boards",
+      "description": "cluster of white printed schedules on the dark wall",
+      "approx_location": "center wall",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for locating the backstage door and notice/schedule wall.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

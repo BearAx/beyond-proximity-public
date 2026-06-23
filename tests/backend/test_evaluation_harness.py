@@ -204,7 +204,11 @@ def test_unavailable_result_is_schema_valid_but_not_measured(tmp_path):
 
 def test_repository_benchmark_is_balanced_and_five_scene_gt_is_empty():
     root = Path(__file__).resolve().parents[2]
-    benchmark = json.loads((root / "docs" / "benchmark_queries_v1.json").read_text(encoding="utf-8"))
+    benchmark = json.loads(
+        (root / "docs" / "benchmarks" / "benchmark_queries_v1.json").read_text(
+            encoding="utf-8"
+        )
+    )
     queries = benchmark["queries"]
     five_scenes = {"ConferenceHall", "Museume", "outdoor-drone", "outdoor-street", "Theater"}
     expected_types = {"simple_object", "attribute", "relational", "multi_hop", "functional", "negative"}

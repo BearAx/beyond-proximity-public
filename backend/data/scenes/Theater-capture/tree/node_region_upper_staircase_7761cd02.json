@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "region_upper_staircase_7761cd02",
+  "node_type": "region",
+  "name": "upper staircase",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v014"
+  ],
+  "observations": [
+    {
+      "view_id": "v014",
+      "approx_location": "back center",
+      "source": "manual"
+    }
+  ]
+}

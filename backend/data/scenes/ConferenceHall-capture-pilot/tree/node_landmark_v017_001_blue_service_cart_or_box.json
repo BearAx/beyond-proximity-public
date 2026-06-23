@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v017_001_blue_service_cart_or_box",
+  "node_type": "landmark",
+  "name": "blue service cart or box",
+  "summary": "Landmark observation from v017.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v017"
+  ],
+  "approx_location": "right side",
+  "source": "manual"
+}

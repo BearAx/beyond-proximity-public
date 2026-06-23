@@ -437,7 +437,13 @@ def write_evaluation(benchmark_path: Path, run_dir: Path) -> dict[str, Any]:
     return summary
 
 
-def run_experiment(config_path: str | Path, *, mode_override: str | None = None) -> Path:
+def run_experiment(
+    config_path: str | Path,
+    *,
+    mode_override: str | None = None,
+    query_limit_override: int | None = None,
+    output_override: str | Path | None = None,
+) -> Path:
     config_path = Path(config_path).resolve()
     config = load_config(config_path)
     run_id = str(config.get("run_id") or "").strip()
@@ -446,10 +452,19 @@ def run_experiment(config_path: str | Path, *, mode_override: str | None = None)
     mode = str(mode_override or config.get("mode", "stub"))
     method = str(config.get("method", "semantic_splat"))
     temperature = float(config.get("model", {}).get("temperature", 0.0))
-    benchmark_path = resolve_path(config.get("benchmark_path", "docs/benchmark_queries_v1.json"))
+    benchmark_path = resolve_path(
+        config.get("benchmark_path", "docs/benchmarks/benchmark_queries_v1.json")
+    )
     output_root = resolve_path(config.get("output_root", "outputs/week2"))
     scene_root = resolve_path(config.get("scene_root", "backend/data/scenes"))
-    run_dir = output_root / run_id
+    run_dir = resolve_path(output_override) if output_override is not None else output_root / run_id
+    if output_override is not None:
+        run_id = run_dir.name
+        if not run_id:
+            raise ValueError("Output override must identify a run directory")
+    query_limit = query_limit_override if query_limit_override is not None else config.get("query_limit")
+    if query_limit is not None and (isinstance(query_limit, bool) or not isinstance(query_limit, int) or query_limit < 1):
+        raise ValueError("query limit must be a positive integer")
     resume = bool(config.get("resume", True))
 
     if run_dir.exists() and not resume:
@@ -478,6 +493,8 @@ def run_experiment(config_path: str | Path, *, mode_override: str | None = None)
         "git_revision": git_revision(),
         "config_source": str(config_path),
         "benchmark_path": str(benchmark_path),
+        "query_limit": query_limit,
+        "output_dir": str(run_dir),
         "scene_ids": config.get("scene_ids", []),
         "scenes": config.get("scenes", []),
         "scene_status": {},
@@ -497,6 +514,7 @@ def run_experiment(config_path: str | Path, *, mode_override: str | None = None)
         model_settings = config.get("model", {})
         cache_setting = model_settings.get("cache_dir") if isinstance(model_settings, dict) else None
         cache_dir = resolve_path(cache_setting) if cache_setting else run_dir / "model_cache"
+        run_config["model_cache_dir"] = str(cache_dir)
         client = create_model_client(mode, cache_dir=cache_dir, temperature=temperature)
         run_config["model"] = client.provenance()
         log_event(logs, "model_client", "complete", **client.provenance())
@@ -522,6 +540,21 @@ def run_experiment(config_path: str | Path, *, mode_override: str | None = None)
             entry["benchmark_scene_id"]: entry["scene_id"] for entry in scene_entries
         }
 
+        active_scene_ids: set[str] | None = None
+        if isinstance(query_limit, int):
+            active_scene_ids = set()
+            scoped_count = 0
+            for query in benchmark_queries:
+                if not isinstance(query, dict):
+                    continue
+                scene_id = benchmark_to_scene_id.get(str(query.get("scene_id")))
+                if scene_id is None:
+                    continue
+                active_scene_ids.add(scene_id)
+                scoped_count += 1
+                if scoped_count >= query_limit:
+                    break
+
         scene_bundles: dict[str, dict[str, Any]] = {}
         unavailable_scenes: dict[str, str] = {}
         all_depth: dict[str, dict[str, Any]] = {}
@@ -529,6 +562,12 @@ def run_experiment(config_path: str | Path, *, mode_override: str | None = None)
         tree_runtime = 0.0
         for scene_entry in scene_entries:
             scene_id = scene_entry["scene_id"]
+            if active_scene_ids is not None and scene_id not in active_scene_ids:
+                run_config["scene_status"][scene_id] = {
+                    "status": "skipped_query_limit",
+                    "reason": "No query for this scene is inside the active query limit.",
+                }
+                continue
             scene_path = scene_entry["path"]
             scene, _ = timed_stage(logs, f"scene_loading:{scene_id}", lambda path=scene_path: load_scene(path))
             depth, _ = timed_stage(
@@ -623,7 +662,6 @@ def run_experiment(config_path: str | Path, *, mode_override: str | None = None)
         }
         write_json(run_dir / "run_config.json", run_config)
 
-        query_limit = config.get("query_limit")
         query_count = 0
         for query in benchmark_queries:
             if not isinstance(query, dict):
@@ -723,8 +761,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run a headless SemanticSplat experiment")
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--mode", choices=("stub", "live", "cached_live"), help="Override config mode")
+    parser.add_argument("--limit", type=int, help="Override the maximum number of scoped benchmark queries")
+    parser.add_argument("--out", type=Path, help="Override the complete run output directory")
     args = parser.parse_args()
-    run_dir = run_experiment(args.config, mode_override=args.mode)
+    run_dir = run_experiment(
+        args.config,
+        mode_override=args.mode,
+        query_limit_override=args.limit,
+        output_override=args.out,
+    )
     print(f"Experiment complete: {run_dir}")
 
 

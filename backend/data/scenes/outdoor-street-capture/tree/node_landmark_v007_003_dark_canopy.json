@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v007_003_dark_canopy",
+  "node_type": "landmark",
+  "name": "dark canopy",
+  "summary": "Landmark observation from v007.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v007"
+  ],
+  "approx_location": "right-center",
+  "source": "manual"
+}

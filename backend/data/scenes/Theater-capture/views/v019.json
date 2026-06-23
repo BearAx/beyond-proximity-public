@@ -7,12 +7,119 @@
   "pose_ref": "transforms.json#/frames/18/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Theater corridor with railing, wall posters or photo display at the end, pale green walls, and open passage space.",
+  "visible_regions": [
+    {
+      "label": "corridor passage",
+      "description": "long open theater corridor or balcony passage",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "railing side",
+      "description": "open side of corridor with black railing",
+      "approx_location": "right side",
+      "source": "manual"
+    },
+    {
+      "label": "poster wall end",
+      "description": "end area with posters or notices",
+      "approx_location": "back center",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "black railing",
+      "attributes": [
+        "metal",
+        "decorative"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "poster or photo display",
+      "attributes": [
+        "multiple images",
+        "wall-mounted"
+      ],
+      "approx_location": "back center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "pale green walls",
+      "attributes": [
+        "corridor"
+      ],
+      "approx_location": "left and right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "tile floor",
+      "attributes": [
+        "light",
+        "corridor"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "wall lamps",
+      "attributes": [
+        "small",
+        "mounted"
+      ],
+      "approx_location": "side walls",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "open doorway or passage",
+      "attributes": [
+        "dark",
+        "side opening"
+      ],
+      "approx_location": "right/back area",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "poster wall",
+      "description": "wall with multiple posters/photos at the corridor end",
+      "approx_location": "back center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "black corridor railing",
+      "description": "decorative railing along the corridor side",
+      "approx_location": "right side",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Good for corridor, railing, and poster wall queries.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
   ]
 }

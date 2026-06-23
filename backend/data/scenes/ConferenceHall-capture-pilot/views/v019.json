@@ -7,12 +7,121 @@
   "pose_ref": "transforms.json#/frames/18/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Close view of a doorway or exit area with a green exit sign, trash bin, black mat or low platform, wall panels, and carpet.",
+  "visible_regions": [
+    {
+      "label": "exit or doorway area",
+      "description": "area around the door with green exit sign",
+      "approx_location": "left and center",
+      "source": "manual"
+    },
+    {
+      "label": "wall corner area",
+      "description": "corner with wall panels and black mat/platform",
+      "approx_location": "right side",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "green exit sign",
+      "attributes": [
+        "illuminated",
+        "above or near doorway"
+      ],
+      "approx_location": "upper left/center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "doorway",
+      "attributes": [
+        "golden frame",
+        "left side"
+      ],
+      "approx_location": "left side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "trash bin",
+      "attributes": [
+        "black",
+        "near doorway"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "black mat or low platform",
+      "attributes": [
+        "dark",
+        "floor-level"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "wall panels",
+      "attributes": [
+        "beige",
+        "decorative"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "blue patterned carpet",
+      "attributes": [
+        "floor covering"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "green exit sign",
+      "description": "clear navigation sign indicating exit direction",
+      "approx_location": "upper left/center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "doorway",
+      "description": "door or passage next to the exit sign",
+      "approx_location": "left side",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "trash bin",
+      "description": "black bin near the door that helps localize the exit area",
+      "approx_location": "center-left",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Strong view for exit sign, doorway, trash bin, and navigation queries.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual visual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated.",
+    "Depth, pose, and intrinsics references are assumed from the captured scene naming convention."
   ]
 }

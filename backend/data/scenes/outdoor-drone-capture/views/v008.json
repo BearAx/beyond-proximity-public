@@ -7,12 +7,107 @@
   "pose_ref": "transforms.json#/frames/7/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Blurred aerial coastal city view with water, shoreline, buildings, and a strong overexposed sky or glare area.",
+  "visible_regions": [
+    {
+      "label": "coastal city area",
+      "description": "urban shoreline visible through blur",
+      "approx_location": "center-right",
+      "source": "manual"
+    },
+    {
+      "label": "waterfront",
+      "description": "transition between water and city",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "open water",
+      "description": "bay or sea water",
+      "approx_location": "foreground and left",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "city buildings",
+      "attributes": [
+        "blurred",
+        "dense"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "shoreline",
+      "attributes": [
+        "curved",
+        "blurred"
+      ],
+      "approx_location": "center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "open water",
+      "attributes": [
+        "blue-green"
+      ],
+      "approx_location": "foreground and left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "bright sky glare",
+      "attributes": [
+        "overexposed",
+        "white"
+      ],
+      "approx_location": "upper right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "distant hills",
+      "attributes": [
+        "faint"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "coastal city mass",
+      "description": "dense city region along the shoreline",
+      "approx_location": "center-right",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "bright overexposed sky area",
+      "description": "large glare area marking the right side of the view",
+      "approx_location": "upper right",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Blurred image; use as low-confidence city/coast orientation view.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated.",
+    "Image is blurry or overexposed; annotation should be reviewed before semantic execution."
   ]
 }

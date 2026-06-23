@@ -8,7 +8,7 @@
 [![Python](https://img.shields.io/badge/python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](backend/requirements.txt)
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](backend/api/server.py)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](frontend/package.json)
-[![Docs](https://img.shields.io/badge/docs-benchmark-0ea5e9?style=flat-square)](docs/benchmark_graph_vs_flat.md)
+[![Docs](https://img.shields.io/badge/docs-index-0ea5e9?style=flat-square)](docs/README.md)
 
 [Quick Start](#quick-start) · [Results](#results) · [Method](#method) · [Demo](#demo) · [Docs](#documentation) · [Citation](#citation)
 
@@ -29,7 +29,7 @@ Compared to a flat exhaustive baseline on scene `default` (19 views, 15 tree nod
 | Views checked | **4.0** | 19.0 |
 | Wrong-room failures (5 cases) | **0** | 2 |
 
-Full report: [`docs/benchmark_graph_vs_flat.md`](docs/benchmark_graph_vs_flat.md)
+Legacy simulated-demo report: [`docs/benchmarks/benchmark_graph_vs_flat.md`](docs/benchmarks/benchmark_graph_vs_flat.md). Current evaluation status: [`docs/project/final_week3_acceptance.md`](docs/project/final_week3_acceptance.md).
 
 ---
 
@@ -96,7 +96,7 @@ flowchart TB
 </table>
 </div>
 
-Timing model (fast LLM, no extended thinking): `total_sec ≈ infra + llm_calls×0.35 + tokens/140`. See [methodology](docs/benchmark_graph_vs_flat.md#methodology).
+Timing model (fast LLM, no extended thinking): `total_sec ≈ infra + llm_calls×0.35 + tokens/140`. These are estimates from the legacy simulated demo; see its [methodology](docs/benchmarks/benchmark_graph_vs_flat.md#methodology).
 
 ---
 
@@ -118,7 +118,7 @@ PYTHONPATH=. python scripts/render_e2e_product_demo.py --query "Find the sofa"
 |:---------|:-----|
 | E2E demo | [`docs/benchmark_results/e2e_product_demo.mp4`](docs/benchmark_results/e2e_product_demo.mp4) |
 | Failure demo | [`docs/benchmark_results/failure_case_demo.mp4`](docs/benchmark_results/failure_case_demo.mp4) |
-| Reasoning traces | [`docs/project_log/runs/2026-06-12_1829/reasoning/`](docs/project_log/runs/2026-06-12_1829/reasoning/) |
+| Reasoning traces | [`docs/archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/`](docs/archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/) |
 | Live UI | `./start_all.sh` → **Ask** → **Query Flow** |
 
 ---
@@ -157,7 +157,7 @@ Place `.ply` files in [`scenes/`](scenes/) (gitignored — not shipped with the 
 <details>
 <summary><strong>Cursor MCP configuration</strong></summary>
 
-Create [`.cursor/mcp.json`](.cursor/mcp.json):
+Create `.cursor/mcp.json`:
 
 ```json
 {
@@ -180,7 +180,7 @@ Enable **semantic-splat** in Cursor → Settings → MCP after starting `./start
 ./run_all_docs.sh
 ```
 
-Outputs charts, reasoning markdown, demo video, and updates [`docs/README.md`](docs/README.md).
+Outputs charts, reasoning markdown, and demo media. New run logs are written under `docs/experiments/stub/demo_runs/`; the curated [`docs/README.md`](docs/README.md) index is preserved.
 
 </details>
 
@@ -191,10 +191,11 @@ Outputs charts, reasoning markdown, demo video, and updates [`docs/README.md`](d
 | Document | Description |
 |:---------|:------------|
 | [Docs hub](docs/README.md) | Index of reports and runs |
-| [Benchmark report](docs/benchmark_graph_vs_flat.md) | Graph vs flat — full analysis |
-| [Launch guide (RU)](docs/launch_guide_ru.md) | Step-by-step setup and Query Flow |
-| [Design spec §7](docs/superpowers/specs/2026-04-05-semantic-3dgs-navigator-design.md) | System architecture |
-| [Project log](docs/project_log/) | Experiment history |
+| [Current Week 3 status](docs/project/final_week3_acceptance.md) | Measured results, blocked work, and claim boundaries |
+| [Benchmark report](docs/benchmarks/benchmark_graph_vs_flat.md) | Legacy simulated graph-vs-flat analysis |
+| [Launch guide (RU)](docs/project/launch_guide_ru.md) | Step-by-step setup and Query Flow |
+| [Design spec §7](docs/project/design/specs/2026-04-05-semantic-3dgs-navigator-design.md) | System architecture |
+| [Archived demo logs](docs/archive/old_notes/project_log/) | Historical experiment evidence |
 
 ---
 
@@ -210,7 +211,7 @@ beyond-proximity/
 │   ├── query/                # Pipeline, benchmark, live_session
 │   └── data/scenes/default/  # Views, tree, query sessions
 ├── frontend/                 # React + Spark.js viewer
-├── docs/                     # Reports, assets, project log
+├── docs/                     # Project, evaluation, validation, reports, archive
 └── scenes/                   # Local .ply files (gitignored)
 ```
 

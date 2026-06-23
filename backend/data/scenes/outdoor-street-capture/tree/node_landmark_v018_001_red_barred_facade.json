@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v018_001_red_barred_facade",
+  "node_type": "landmark",
+  "name": "red barred facade",
+  "summary": "Landmark observation from v018.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v018"
+  ],
+  "approx_location": "center",
+  "source": "manual"
+}

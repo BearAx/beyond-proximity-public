@@ -1,5 +1,6 @@
-# 3D Data
-*.ply
+# Large local 3D data. Review these paths before any git clean operation.
+scenes/*.ply
+backend/data/scenes/*/geometry/*.ply
 
 # Python
 __pycache__/
@@ -7,6 +8,8 @@ __pycache__/
 *$py.class
 .pytest_cache/
 .pytest_tmp/
+.mypy_cache/
+.ruff_cache/
 .env
 venv/
 .venv/
@@ -30,6 +33,10 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+coverage/
+htmlcov/
+*.tmp
+*.bak
 
 # Incoming archives and generated evaluation runs
 *.zip

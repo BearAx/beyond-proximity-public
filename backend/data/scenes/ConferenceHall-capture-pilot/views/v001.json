@@ -7,12 +7,114 @@
   "pose_ref": "transforms.json#/frames/0/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
+  "summary": "Conference main hall with chairs, piano, tables, pictures, doors, lights and columns",
+  "visible_regions": [
+    {
+      "label": "conference hall area",
+      "approx_location": "center of the room",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "sofas",
+      "attributes": [
+        "multiple",
+        "white",
+        "near table",
+        "near column"
+      ],
+      "approx_location": "right side of the conference hall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "chairs",
+      "attributes": [
+        "multiple",
+        "grey",
+        "near table",
+        "near wall"
+      ],
+      "approx_location": "left side of the conference hall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "column",
+      "attributes": [
+        "white",
+        "long",
+        "near wall",
+        "near table",
+        "near chair",
+        "near sofa",
+        "near piano"
+      ],
+      "approx_location": "right and left side of the conference hall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "piano",
+      "attributes": [
+        "black",
+        "long",
+        "near wall",
+        "near chair",
+        "near column"
+      ],
+      "approx_location": "right side of the conference hall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "light",
+      "attributes": [
+        "white",
+        "yellow",
+        "near table",
+        "near sofa"
+      ],
+      "approx_location": "top side of the conference hall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "picture",
+      "attributes": [
+        "white",
+        "central",
+        "blue",
+        "near wall",
+        "near column",
+        "near piano"
+      ],
+      "approx_location": "right and left side of the conference hall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "piano",
+      "kind": "landmark",
+      "approx_location": "behind the column on the right",
+      "source": "manual"
+    }
+  ],
   "free_text_notes": "",
-  "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
-  ]
+  "warnings": []
 }

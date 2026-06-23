@@ -7,12 +7,125 @@
   "pose_ref": "transforms.json#/frames/7/transform_matrix",
   "intrinsics_ref": "transforms.json",
   "semantic_index_mode": "manual",
-  "summary": "",
-  "visible_regions": [],
-  "visible_objects": [],
-  "landmarks": [],
-  "free_text_notes": "",
+  "summary": "Lobby reception area with a long dark counter, chandelier lights, framed wall artwork, red wall panels, and a wide carpeted floor.",
+  "visible_regions": [
+    {
+      "label": "reception lobby",
+      "description": "open lobby area near the counter",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "counter area",
+      "description": "service counter area",
+      "approx_location": "center-left",
+      "source": "manual"
+    },
+    {
+      "label": "red wall area",
+      "description": "decorative red wall section",
+      "approx_location": "right side",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "reception counter",
+      "attributes": [
+        "long",
+        "dark"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "chandeliers",
+      "attributes": [
+        "ceiling",
+        "multiple lights"
+      ],
+      "approx_location": "upper left and center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "framed painting",
+      "attributes": [
+        "wall art"
+      ],
+      "approx_location": "left wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "red wall panels",
+      "attributes": [
+        "dark red",
+        "decorative"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "blue patterned carpet",
+      "attributes": [
+        "floor covering"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "flower vase",
+      "attributes": [
+        "decorative"
+      ],
+      "approx_location": "on or near counter",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "reception counter",
+      "description": "main counter and orientation anchor for this lobby area",
+      "approx_location": "center-left",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "chandeliers",
+      "description": "distinct ceiling lights above the lobby",
+      "approx_location": "ceiling",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "red wall panels",
+      "description": "decorative red wall section",
+      "approx_location": "right side",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Good wide lobby view for reception counter, chandelier, and red wall queries.",
   "warnings": [
-    "Manual annotation template only; semantic content must be filled from the referenced image before semantic execution."
+    "Manual visual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated.",
+    "Depth, pose, and intrinsics references are assumed from the captured scene naming convention."
   ]
 }

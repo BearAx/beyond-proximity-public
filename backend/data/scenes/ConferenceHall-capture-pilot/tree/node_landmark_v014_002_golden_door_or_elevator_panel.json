@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v014_002_golden_door_or_elevator_panel",
+  "node_type": "landmark",
+  "name": "golden door or elevator panel",
+  "summary": "Landmark observation from v014.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v014"
+  ],
+  "approx_location": "left side",
+  "source": "manual"
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "object_v019_006_small_door_or_service_opening",
+  "node_type": "object",
+  "name": "small door or service opening",
+  "summary": "Object observation from v019.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v019"
+  ],
+  "attributes": [
+    "partly visible"
+  ],
+  "approx_location": "left side",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

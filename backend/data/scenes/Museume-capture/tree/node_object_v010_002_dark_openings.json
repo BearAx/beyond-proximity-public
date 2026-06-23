@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "object_v010_002_dark_openings",
+  "node_type": "object",
+  "name": "dark openings",
+  "summary": "Object observation from v010.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v010"
+  ],
+  "attributes": [
+    "cavities",
+    "niches"
+  ],
+  "approx_location": "center and right",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

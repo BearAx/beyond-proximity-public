@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "landmark_v011_003_keyboard_corner",
+  "node_type": "landmark",
+  "name": "keyboard corner",
+  "summary": "Landmark observation from v011.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v011"
+  ],
+  "approx_location": "right side",
+  "source": "manual"
+}
