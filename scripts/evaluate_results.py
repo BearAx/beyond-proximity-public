@@ -14,6 +14,12 @@ from typing import Any, Iterable
 METRICS_SCHEMA = "semanticsplat.metrics_record.v1"
 QUERY_RESULT_SCHEMA = "semanticsplat.query_result.v1"
 VALID_MODES = {"stub", "live", "cached_live"}
+QUERY_TYPE_STRATA = ("simple", "compound", "relational", "multi_hop", "functional")
+QUERY_TYPE_ALIASES = {
+    "simple_object": "simple",
+    "attribute": "compound",
+    "negative": "simple",
+}
 FAILURE_CATEGORIES = (
     "wrong room / zone",
     "wrong object",
@@ -236,6 +242,11 @@ def query_has_accuracy_gt(query: dict[str, Any]) -> bool:
     return str(query.get("verification_status", "")).startswith("verified_")
 
 
+def normalized_query_type(query_type: Any) -> str:
+    value = str(query_type or "unknown")
+    return QUERY_TYPE_ALIASES.get(value, value)
+
+
 def evaluate_one(
     query: dict[str, Any],
     data: dict[str, Any],
@@ -399,6 +410,47 @@ def aggregate_tokens(rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def compact_metrics(
+    queries: Iterable[dict[str, Any]],
+    per_query: list[dict[str, Any]],
+) -> dict[str, Any]:
+    query_list = list(queries)
+    rows_by_id = {str(row.get("query_id")): row for row in per_query if row.get("query_id") is not None}
+    per_type: dict[str, dict[str, Any]] = {}
+
+    for query_type in QUERY_TYPE_STRATA:
+        typed_queries = [
+            query for query in query_list if normalized_query_type(query.get("query_type")) == query_type
+        ]
+        typed_ids = {str(query.get("query_id")) for query in typed_queries if query.get("query_id") is not None}
+        typed_rows = [row for query_id, row in rows_by_id.items() if query_id in typed_ids]
+        schema_valid_rows = [
+            row for row in typed_rows if row.get("status") in {"evaluated", "unavailable"}
+        ]
+        evaluated_rows = [row for row in typed_rows if row.get("status") == "evaluated"]
+        per_type[query_type] = {
+            "total_queries": len(typed_queries),
+            "runnable_queries": sum(row.get("status") != "missing_result" for row in typed_rows),
+            "gt_eligible_queries": sum(query_has_accuracy_gt(query) for query in typed_queries),
+            "schema_valid_count": len(schema_valid_rows),
+            "retrieval_success": aggregate_metric(evaluated_rows, "retrieval_success"),
+            "expected_view_hit": aggregate_metric(evaluated_rows, "expected_view_hit"),
+            "expected_node_hit": aggregate_metric(evaluated_rows, "expected_node_hit"),
+            "expected_zone_hit": aggregate_metric(evaluated_rows, "expected_zone_hit"),
+        }
+
+    return {
+        "total_queries": len(query_list),
+        "runnable_queries": sum(row.get("status") != "missing_result" for row in per_query),
+        "gt_eligible_queries": sum(query_has_accuracy_gt(query) for query in query_list),
+        "schema_valid_count": sum(
+            row.get("status") in {"evaluated", "unavailable"} for row in per_query
+        ),
+        "query_type_normalization": QUERY_TYPE_ALIASES,
+        "per_query_type": per_type,
+    }
+
+
 def evaluate(
     benchmark_path: Path,
     run_dir: Path,
@@ -543,6 +595,7 @@ def evaluate(
             "ground_truth_unavailable_result_count": unavailable_gt_count,
         },
         "mode_counts": dict(sorted(mode_counts.items())),
+        "compact_metrics": compact_metrics(query_by_id.values(), per_query),
         "metrics": {
             "retrieval_success": aggregate_metric(evaluated_rows, "retrieval_success"),
             "expected_view_hit": aggregate_metric(evaluated_rows, "expected_view_hit"),
@@ -593,6 +646,7 @@ def format_value(value: Any) -> str:
 
 def summary_markdown(summary: dict[str, Any]) -> str:
     coverage = summary["coverage"]
+    compact = summary.get("compact_metrics", {})
     metrics = summary["metrics"]
     lines = [
         "# Metrics Summary",
@@ -614,13 +668,31 @@ def summary_markdown(summary: dict[str, Any]) -> str:
         f"| result output coverage | measured | {coverage['result_count']} / {coverage['benchmark_query_count']} |",
         f"| canonical schema validity | measured | {coverage['schema_valid_result_count']} / {coverage['result_count']} |",
         "",
+        "## Query Type Coverage",
+        "",
+        "| Query type | Total | Runnable | GT-eligible | Schema-valid | Retrieval hit rate |",
+        "|---|---:|---:|---:|---:|---:|",
+    ]
+    per_query_type = compact.get("per_query_type", {}) if isinstance(compact, dict) else {}
+    for query_type in QUERY_TYPE_STRATA:
+        record = per_query_type.get(query_type, {}) if isinstance(per_query_type, dict) else {}
+        hit_rate = record.get("retrieval_success", {}) if isinstance(record, dict) else {}
+        lines.append(
+            f"| {query_type} | {record.get('total_queries', 0)} | "
+            f"{record.get('runnable_queries', 0)} | "
+            f"{record.get('gt_eligible_queries', 0)} | "
+            f"{record.get('schema_valid_count', 0)} | "
+            f"{format_value(hit_rate.get('value'))} |"
+        )
+    lines.extend([
+        "",
         "## Metrics",
         "",
         "`measured` means the denominator contains applicable records. `unavailable` means no executable or GT-eligible record exists. `N/A` is reserved for metrics whose required modality or GT is absent.",
         "",
         "| Metric | Status | Value | Numerator / denominator |",
         "|---|---|---:|---:|",
-    ]
+    ])
     for key in ("retrieval_success", "expected_view_hit", "expected_node_hit", "expected_zone_hit", "not_found_correctness"):
         record = metrics[key]
         lines.append(

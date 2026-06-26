@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential git libgl1 libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python -m pip install --upgrade pip setuptools wheel ninja && \
+RUN python -m pip install --upgrade pip "setuptools<81" wheel ninja && \
     python -m pip install \
         "numpy<2" \
         jaxtyping matplotlib open-clip-torch==2.20.0 \
@@ -23,6 +23,6 @@ RUN git clone https://github.com/minghanqin/LangSplat.git /opt/langsplat && \
     cd /opt/langsplat && \
     git checkout "${LANGSPLAT_REV}" && \
     git submodule update --init --recursive && \
-    python -m pip install ./submodules/langsplat-rasterization ./submodules/simple-knn
+    python -m pip install --no-build-isolation ./submodules/langsplat-rasterization ./submodules/simple-knn
 
 WORKDIR /opt/langsplat

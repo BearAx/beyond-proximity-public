@@ -9,7 +9,14 @@ $repo = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $assetRoot = (Resolve-Path $AssetRoot).Path
 $out = Join-Path $repo "outputs\baselines\langsplat_smoke_v1"
 $revision = "d70edb86df0fcbda19dc0d9739a3e5140a5e65fc"
-$renderedFeature = Join-Path $assetRoot "output\sofa_1\train\ours_30000\renders_npy\00000.npy"
+$renderedFeatureCandidates = @(
+    (Join-Path $assetRoot "output\sofa_1\train\ours_30000\renders_npy\00000.npy"),
+    (Join-Path $assetRoot "output\sofa_1\train\ours_None\renders_npy\00000.npy")
+)
+$renderedFeature = $renderedFeatureCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+if (-not $renderedFeature) {
+    $renderedFeature = $renderedFeatureCandidates[0]
+}
 $aeCheckpoint = Join-Path $assetRoot "ckpt\sofa\best_ckpt.pth"
 $modelCheckpoint = Join-Path $assetRoot "output\sofa_1\chkpnt30000.pth"
 
@@ -32,11 +39,16 @@ if (-not (Test-Path -LiteralPath $renderedFeature)) {
         "python", "render.py", "-s", "/assets/data/sofa", "-m", "/assets/output/sofa_1",
         "--feature_level", "1", "--include_feature", "--skip_test"
     )
+    $previousErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
     & docker @renderArgs 2>&1 | Tee-Object -FilePath (Join-Path $out "native_render.log")
-    if ($LASTEXITCODE -ne 0) { throw "LangSplat native render failed" }
+    $renderExitCode = $LASTEXITCODE
+    $ErrorActionPreference = $previousErrorActionPreference
+    if ($renderExitCode -ne 0) { throw "LangSplat native render failed" }
+    $renderedFeature = $renderedFeatureCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 }
 if (-not (Test-Path -LiteralPath $renderedFeature)) {
-    throw "LangSplat render completed without the expected feature map: $renderedFeature"
+    throw "LangSplat render completed without an expected feature map: $($renderedFeatureCandidates -join ', ')"
 }
 
 $featureRecord = $renderedFeature.Replace("\", "/")
@@ -49,7 +61,7 @@ $queryArgs = @(
     "-v", "${cacheMount}:/models",
     $Image,
     "python", "/workspace/baselines/langsplat/native_query.py",
-    "--feature-map", "/assets/output/sofa_1/train/ours_30000/renders_npy/00000.npy",
+    "--feature-map", ($featureRecord -replace [regex]::Escape($assetMount), "/assets"),
     "--ae-checkpoint", "/assets/ckpt/sofa/best_ckpt.pth",
     "--out", "/workspace/outputs/baselines/langsplat_smoke_v1/native_results.json",
     "--scene-id", "langsplat-sofa-official", "--query-id", "ls001",
@@ -59,8 +71,12 @@ $queryArgs = @(
     "--artifact-record", $aeRecord,
     "--artifact-record", $modelRecord
 )
+$previousErrorActionPreference = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
 & docker @queryArgs 2>&1 | Tee-Object -FilePath (Join-Path $out "native_query.log")
-if ($LASTEXITCODE -ne 0) { throw "LangSplat native query failed" }
+$queryExitCode = $LASTEXITCODE
+$ErrorActionPreference = $previousErrorActionPreference
+if ($queryExitCode -ne 0) { throw "LangSplat native query failed" }
 
 python -B (Join-Path $repo "scripts\adapt_langsplat_output.py") `
     --native (Join-Path $out "native_results.json") `

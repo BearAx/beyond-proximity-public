@@ -13,7 +13,7 @@ Status date: 2026-06-23. Final credential-independent Week 3 status.
 | Stub semantic gate | measured | 40/40 available schema-valid results; 0 model calls |
 | Live model evaluation | blocked by missing provider credentials | 0 successful live results |
 | Cached-live replay | blocked because no verified live response cache exists | 0 cached-live results |
-| Baseline smoke | blocked with exact setup errors | 0 ConceptGraphs and 0 LangSplat results |
+| Baseline smoke | partial | 0 ConceptGraphs results; 1 LangSplat official-sofa native result and 1 canonical result, with no GT-backed accuracy |
 | Semantic accuracy | unavailable | no independent semantic GT |
 | 3D IoU | `N/A` | no independent GT/predicted 3D boxes |
 
@@ -51,7 +51,8 @@ python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode c
 
 - Configure provider credentials and complete at least one genuine live query.
 - Replay its verified cache without provider calls.
-- Install and prepare one baseline environment/checkpoint/native scene package.
+- Prepare a ConceptGraphs executable environment and convert captured scenes into baseline-native packages.
+- Convert/train/load the five captured scenes in LangSplat native SfM/3DGS format before any fair comparison.
 - Add independent semantic GT before reporting accuracy.
 - Add independent and predicted 3D boxes before reporting 3D IoU.
 - Keep ScanNet postponed.

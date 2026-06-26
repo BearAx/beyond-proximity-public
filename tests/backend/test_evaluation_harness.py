@@ -101,6 +101,9 @@ def test_evaluator_reports_hits_and_unavailable_3d_iou(tmp_path):
     assert summary["metrics"]["runtime_seconds"]["mean"] == 0.25
     assert summary["metrics"]["token_usage"]["total"] is None
     assert summary["metrics"]["bbox_3d_iou"]["status"] == "N/A"
+    assert summary["compact_metrics"]["total_queries"] == 1
+    assert summary["compact_metrics"]["gt_eligible_queries"] == 1
+    assert summary["compact_metrics"]["per_query_type"]["simple"]["retrieval_success"]["value"] == 1.0
 
 
 def test_3d_iou_requires_reliable_depth_and_gt(tmp_path):

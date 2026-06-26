@@ -41,6 +41,8 @@ Week 3 uses the same layout under `outputs/week3/<run_id>/`.
 - Record absent runtime or token data as `null`, not zero and not an estimate.
 - Keep construction cost separate from per-query cost.
 - Preserve per-query warnings and schema errors in the report.
+- Report compact per-query-type coverage using Week 3 complexity strata: `simple`, `compound`, `relational`, `multi_hop`, and `functional`.
+- Legacy benchmark labels are normalized for aggregation only: `simple_object -> simple`, `attribute -> compound`, and `negative -> simple`. Negative correctness still requires `expected_output_type: not_found` and verified GT.
 
 ## 3D IoU Rule
 

@@ -45,6 +45,15 @@ outputs/**
 outputs/week2/**
 !outputs/week2/phase1_evaluator_smoke/
 !outputs/week2/phase1_evaluator_smoke/**
+!outputs/baselines/
+outputs/baselines/**
+!outputs/baselines/langsplat_smoke_v1/
+outputs/baselines/langsplat_smoke_v1/**
+!outputs/baselines/langsplat_smoke_v1/*.json
+!outputs/baselines/langsplat_smoke_v1/*.md
+!outputs/baselines/langsplat_smoke_v1/*.log
+!outputs/baselines/langsplat_smoke_v1/query_results/
+!outputs/baselines/langsplat_smoke_v1/query_results/*.json
 
 # Matplotlib cache (benchmark charts)
 .matplotlib/
