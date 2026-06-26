@@ -11,7 +11,7 @@ Status date: 2026-06-23. Final credential-independent gate complete. Live and ca
 | Stub semantic gate | measured | 40/40 available and schema-valid results, eight per scene |
 | Live model evaluation | blocked by missing provider credentials | Requires `SEMANTICSPLAT_PROVIDER`, `SEMANTICSPLAT_MODEL`, `SEMANTICSPLAT_API_KEY` |
 | Cached-live replay | blocked because no verified live response cache exists | Zero verified project cache entries |
-| ConceptGraphs smoke | blocked with attempted command | Missing checkout, Conda environment, checkpoints, preprocessing outputs, and native dataset layout |
+| ConceptGraphs smoke | one-frame smoke executed with warning | `outputs/baselines/conceptgraphs_smoke_v1/native_results.json` and `query_results/q051.json`; five-scene comparison still blocked |
 | LangSplat smoke | official sofa smoke executed | `outputs/baselines/langsplat_smoke_v1/native_results.json` and `query_results/ls001.json`; five-scene comparison still blocked |
 | 3D IoU | `N/A` | Independent GT and predicted 3D boxes are unavailable |
 | ScanNet | postponed | Excluded from Week 3 |
@@ -58,7 +58,7 @@ Do not run cached-live until the live command produces a `source_mode=live` cach
 
 ## Baseline Smoke
 
-ConceptGraphs was attempted using the official entrypoint shape and stopped before baseline execution. Exact commands and errors are recorded in `docs/baselines/conceptgraphs/conceptgraphs_smoke_result.md`; no ConceptGraphs native or canonical result is claimed.
+ConceptGraphs executed a minimal Docker smoke on one captured `ConferenceHall-capture-pilot` frame. It produced one native result and one canonical schema-valid result under `outputs/baselines/conceptgraphs_smoke_v1/`. This is not a five-scene comparison and not an accuracy result because `q051` has `verification_status: missing_gt`.
 
 LangSplat executed a minimal Docker smoke on the official pretrained sofa assets. It produced one native result and one canonical schema-valid result under `outputs/baselines/langsplat_smoke_v1/`. This is not a five-scene SemanticSplat comparison and not an accuracy result because the smoke query has `verification_status: missing_gt`.
 

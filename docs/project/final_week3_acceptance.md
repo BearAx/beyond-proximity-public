@@ -8,7 +8,7 @@ Status date: 2026-06-23.
 - cached_live replay: blocked because no verified live response cache exists;
 - stub semantic gate: measured;
 - manual semantic index: manual, not independent ground truth;
-- baseline smoke: ConceptGraphs blocked before execution; LangSplat official sofa smoke executed without GT-backed accuracy;
+- baseline smoke: ConceptGraphs one-frame smoke executed with warning; LangSplat official sofa smoke executed without GT-backed accuracy;
 - ScanNet: postponed.
 
 ## Acceptance Table
@@ -21,7 +21,7 @@ Status date: 2026-06-23.
 | Stub semantic gate | measured | `outputs/week3/final_stub_semantic_gate_v1/` |
 | Live model evaluation | blocked by missing provider credentials | Missing `SEMANTICSPLAT_PROVIDER`, `SEMANTICSPLAT_MODEL`, `SEMANTICSPLAT_API_KEY` |
 | Cached-live replay | blocked because no verified live response cache exists | No project cache with verified live provenance |
-| ConceptGraphs smoke | blocked with exact error | Environment and checkout missing |
+| ConceptGraphs smoke | one-frame smoke executed with warning | One native and one canonical result under `outputs/baselines/conceptgraphs_smoke_v1/`; five-scene comparison still blocked |
 | LangSplat smoke | official sofa smoke executed | One native and one canonical result under `outputs/baselines/langsplat_smoke_v1/`; five-scene comparison still blocked |
 | Semantic accuracy | unavailable | Manual index is not independent ground truth |
 | 3D localization | `N/A` | Independent GT/predicted boxes missing |
@@ -36,7 +36,7 @@ five-scene benchmark queries = 40
 stub results = 40
 live results = 0
 cached_live results = 0
-ConceptGraphs results = 0
+ConceptGraphs results = 1 canonical one-frame smoke result
 LangSplat results = 1 canonical official-sofa smoke result
 accuracy-eligible results = 0
 3D-IoU-eligible results = 0
@@ -53,12 +53,12 @@ accuracy-eligible results = 0
 | How many live results exist? | 0; live model evaluation is blocked by missing provider credentials. |
 | How many cached_live results exist? | 0; no verified live response cache exists. |
 | Did cached_live replay avoid provider calls? | `N/A`; replay did not run, so provider-call avoidance is not measured. |
-| Did ConceptGraphs run? | No. The checkout and `conceptgraph` environment are missing; checkpoints, preprocessing outputs, and native input layout are also missing. Official entrypoint and adapter attempts are documented with errors. |
+| Did ConceptGraphs run? | Yes, as a minimal Docker smoke on one captured ConferenceHall frame. It produced one native result and one canonical schema-valid result. It did not run as a five-scene comparison and has no GT-backed accuracy. |
 | Did LangSplat run? | Yes, as a minimal Docker smoke on official pretrained sofa assets. It produced one native result and one canonical schema-valid result. It did not run on the five captured SemanticSplat scenes and has no GT-backed accuracy. |
-| Which metrics are measured? | Capture/frame counts, semantic-index counts, result/schema/availability coverage, stub runtime, model-call count, and cache-hit count for the stub gate. |
-| Which metrics are `N/A`? | Semantic accuracy, negative correctness, 3D IoU, live token/latency/cost, cached replay equivalence, ConceptGraphs quality/runtime, and LangSplat accuracy/3D IoU. |
+| Which metrics are measured? | Capture/frame counts, semantic-index counts, result/schema/availability coverage, stub runtime, model-call count, cache-hit count for the stub gate, and one-query baseline runtimes for ConceptGraphs/LangSplat smoke runs. |
+| Which metrics are `N/A`? | Semantic accuracy, negative correctness, 3D IoU, live token/latency/cost, cached replay equivalence, ConceptGraphs accuracy/3D IoU, and LangSplat accuracy/3D IoU. |
 | Which claims are not made? | No live reasoning, cached replay, semantic accuracy, 3D localization, baseline comparison, or superiority claim. |
-| What remains for next week? | Credentialed live/cached gates, one pinned baseline setup with native outputs, independent semantic/3D GT, and stronger query verification. ScanNet remains postponed. |
+| What remains for next week? | Credentialed live/cached gates, expanding baselines beyond one-query smoke runs, independent semantic/3D GT, and stronger query verification. ScanNet remains postponed. |
 
 ## Commands To Clear Blocked Phases
 
@@ -76,7 +76,7 @@ python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode c
 
 ## Final Decision
 
-The credential-independent Week 3 pipeline gate passes: five scenes are capture-valid and semantically executable, and the full stub batch is reproducible. Week 3 is not complete as a live evaluation milestone because live and cached-live remain blocked, ConceptGraphs remains blocked, and LangSplat only has an official-sofa smoke rather than a fair five-scene comparison. No stub, manual annotation, or setup error is reported as live/model accuracy evidence.
+The credential-independent Week 3 pipeline gate passes: five scenes are capture-valid and semantically executable, and the full stub batch is reproducible. Week 3 is not complete as a live evaluation milestone because live and cached-live remain blocked, ConceptGraphs only has a one-frame smoke, and LangSplat only has an official-sofa smoke rather than a fair five-scene comparison. No stub, manual annotation, or setup error is reported as live/model accuracy evidence.
 
 ## Verification
 

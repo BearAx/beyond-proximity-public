@@ -1,35 +1,51 @@
 # ConceptGraphs Smoke Result
 
-Status date: 2026-06-23. Result: blocked before baseline execution.
+Status date: 2026-06-26. Result: native one-frame smoke executed with warnings.
 
-Commands attempted:
+## Commands Run
 
 ```powershell
-conda run -n conceptgraph python slam/cfslam_pipeline_batch.py --help
-python -B slam\cfslam_pipeline_batch.py --help
-
-python -B scripts\adapt_conceptgraphs_output.py --native outputs\baselines\conceptgraphs_smoke_v1\native_results.json --benchmark docs\benchmarks\benchmark_queries_v1.json --scene-id ConferenceHall-capture-pilot --benchmark-scene-id ConferenceHall --mode live --out outputs\baselines\conceptgraphs_smoke_v1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_conceptgraphs_smoke.ps1
+python -B scripts\evaluate_results.py --benchmark docs\benchmarks\benchmark_queries_v1.json --run-dir outputs\baselines\conceptgraphs_smoke_v1
 ```
 
-Errors:
+## Compatibility Fixes Required
+
+- `scripts/augment_conceptgraphs_detections.py` adds `captions` and `detection_class_labels` to the native detection pickle because the pinned detection script does not emit them but the pinned mapping script requires them.
+- `scripts/run_conceptgraphs_smoke.ps1` now continues past the native mapping report crash only when `pcd_semanticsplat_mapping_v1.pkl.gz` exists.
+
+## Evidence
+
+| Artifact | Status |
+|---|---|
+| Docker image | `semanticsplat-conceptgraphs:72f5962` available |
+| Native detection log | `outputs/baselines/conceptgraphs_smoke_v1/native_detection.log` |
+| Native mapping log | `outputs/baselines/conceptgraphs_smoke_v1/native_mapping.log` |
+| Native query log | `outputs/baselines/conceptgraphs_smoke_v1/native_query.log` |
+| Native result | `outputs/baselines/conceptgraphs_smoke_v1/native_results.json` |
+| Canonical result | `outputs/baselines/conceptgraphs_smoke_v1/query_results/q051.json` |
+| Metrics summary | `outputs/baselines/conceptgraphs_smoke_v1/metrics_summary.json` |
+
+## Result
 
 ```text
-EnvironmentLocationNotFound: Not a conda environment: C:\Users\bear_\miniconda3\envs\conceptgraph
-
-can't open file 'C:\GitProjects\beyond-proximity\slam\cfslam_pipeline_batch.py': [Errno 2] No such file or directory
-
-ConceptGraphs adapter blocked: Missing native input: outputs\baselines\conceptgraphs_smoke_v1\native_results.json
+baseline process executed = true
+native outputs = 1
+canonical query results = 1
+schema-valid results = 1
+matched object = sofa chair
+native object count = 16
+native query runtime = 65.4509 seconds
+confidence = 0.2810319662094116
+accuracy = N/A, no GT
+3D IoU = N/A, no reliable GT 3D box
 ```
 
-Outcome:
+## Warning
 
 ```text
-baseline process executed = false
-native outputs = 0
-canonical query results = 0
-output directory created = false
-measured baseline latency = N/A
-baseline accuracy = N/A
+streamlined_mapping.py writes the map artifact, then exits non-zero during internal metrics report generation:
+KeyError: 'Sort Key'
 ```
 
-The next action is to create a separate pinned ConceptGraphs checkout/environment, acquire required checkpoints, and implement a documented captured-scene-to-native data adapter. No result was fabricated.
+The wrapper records this warning and continues only when the expected native map artifact exists. This run is not an accuracy result because `q051` has `verification_status: missing_gt`.

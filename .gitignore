@@ -54,6 +54,14 @@ outputs/baselines/langsplat_smoke_v1/**
 !outputs/baselines/langsplat_smoke_v1/*.log
 !outputs/baselines/langsplat_smoke_v1/query_results/
 !outputs/baselines/langsplat_smoke_v1/query_results/*.json
+!outputs/baselines/conceptgraphs_smoke_v1/
+outputs/baselines/conceptgraphs_smoke_v1/**
+!outputs/baselines/conceptgraphs_smoke_v1/*.json
+!outputs/baselines/conceptgraphs_smoke_v1/*.md
+!outputs/baselines/conceptgraphs_smoke_v1/native_mapping.log
+!outputs/baselines/conceptgraphs_smoke_v1/native_query.log
+!outputs/baselines/conceptgraphs_smoke_v1/query_results/
+!outputs/baselines/conceptgraphs_smoke_v1/query_results/*.json
 
 # Matplotlib cache (benchmark charts)
 .matplotlib/

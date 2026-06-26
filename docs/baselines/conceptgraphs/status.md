@@ -1,43 +1,59 @@
 # ConceptGraphs Status
 
-Status date: 2026-06-26. Status: `PARTIAL`.
+Status date: 2026-06-26. Status: `READY_WITH_WARNINGS`.
 
 ## Evidence
 
 | Check | Status | Evidence |
 |---|---|---|
-| In-repo checkout | missing | `external/baselines/concept-graphs/` does not exist |
-| External checkout | present but not trusted in this sandbox | `C:/GitProjects/baseline-deps/concept-graphs` exists; `git rev-parse` is blocked by Git `safe.directory` ownership protection |
-| Conda env | missing | `conda env list` shows `base`, `pcg`, `semanticsplat`; no `conceptgraph` env |
-| Docker runtime | available for LangSplat, not verified for ConceptGraphs | Docker Desktop was available during the LangSplat smoke; no ConceptGraphs container/image has been built or run |
-| Checkpoints/assets | partial | `C:/GitProjects/baseline-deps/model-cache/yolov8l-world.pt` and `mobile_sam.pt` exist |
-| Official smoke entrypoint | partially known | `docs/baselines/conceptgraphs/conceptgraphs_smoke_setup.md` and `scripts/run_conceptgraphs_smoke.ps1` |
-| Native output | missing | `outputs/baselines/conceptgraphs_smoke_v1/native_results.json` does not exist |
+| In-repo checkout | not used | Smoke uses Docker image `semanticsplat-conceptgraphs:72f5962` built from the official repository revision |
+| External checkout | present but not required for smoke | `C:/GitProjects/baseline-deps/concept-graphs` exists; Docker image is the execution evidence |
+| Conda env | not required | Smoke runs in Docker, not the missing local `conceptgraph` Conda env |
+| Docker runtime | available | Docker Desktop and GPU passthrough were used for ConceptGraphs |
+| Checkpoints/assets | present for smoke | `C:/GitProjects/baseline-deps/model-cache/yolov8l-world.pt`, `mobile_sam.pt`, and HF CLIP cache were used |
+| Official smoke entrypoint | present | `scripts/run_conceptgraphs_smoke.ps1` |
+| Native output | present | `outputs/baselines/conceptgraphs_smoke_v1/native_results.json` |
+| Canonical output | present | `outputs/baselines/conceptgraphs_smoke_v1/query_results/q051.json` |
+| Metrics summary | present | `outputs/baselines/conceptgraphs_smoke_v1/metrics_summary.json` |
 | Canonical adapter | present | `scripts/adapt_conceptgraphs_output.py` |
 | Adapter tests | present | `tests/backend/test_baseline_adapters.py` |
 
-## Exact Missing Item
+## Smoke Result
 
-ConceptGraphs is not run yet because there is no verified executable environment in the current repo context and no native smoke output. The ConceptGraphs checkout is outside the project, Git revision evidence is blocked by ownership checks, the `conceptgraph` Conda environment is missing, and no `native_results.json` exists for the adapter.
+ConceptGraphs executed a one-frame native smoke on `ConferenceHall-capture-pilot`. The run converted one captured RGB-D frame to the ConceptGraphs Azure-style layout, ran native detection, augmented missing caption metadata required by the pinned mapping script, wrote a ConceptGraphs map, queried it with CLIP retrieval, and adapted one canonical result.
 
-## Next Command
+Observed canonical result:
 
-After the external checkout is intentionally trusted by the user/team and the ConceptGraphs environment is created, run:
+```text
+query_id = q051
+mode = live
+schema_valid_result_count = 1
+native object count = 16
+matched_object = sofa chair
+confidence = 0.2810319662094116
+accuracy_eligible_result_count = 0
+```
+
+This is a baseline smoke, not a fair five-scene comparison. Query `q051` has `verification_status: missing_gt`, so accuracy, retrieval success, and 3D IoU are unavailable.
+
+Known warning: `streamlined_mapping.py` writes the map artifact and then exits non-zero while generating its internal report (`KeyError: 'Sort Key'`). The wrapper continues only when the expected native map file exists.
+
+## Reproduction Command
+
+Run:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_conceptgraphs_smoke.ps1
 ```
 
-If native output is produced, adapt it with:
+Then evaluate:
 
 ```powershell
-python -B scripts\adapt_conceptgraphs_output.py `
-  --native outputs\baselines\conceptgraphs_smoke_v1\native_results.json `
+python -B scripts\evaluate_results.py `
   --benchmark docs\benchmarks\benchmark_queries_v1.json `
-  --scene-id ConferenceHall-capture-pilot `
-  --benchmark-scene-id ConferenceHall `
-  --mode live `
-  --out outputs\week3\baselines\conceptgraphs
+  --run-dir outputs\baselines\conceptgraphs_smoke_v1
 ```
 
-Do not mark this baseline as executed until native logs and at least one canonical query result exist.
+## Remaining Gap
+
+The smoke proves native ConceptGraphs execution and canonical adaptation for one captured frame/query. It does not prove fair multi-query or five-scene performance. That still requires running more frames/queries, resolving the internal mapping report crash cleanly, and adding independent GT.

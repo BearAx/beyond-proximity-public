@@ -24,11 +24,31 @@ Accuracy-style hit rates remain unavailable for `missing_gt` queries. 3D IoU rem
 
 ## 3. ConceptGraphs Status
 
-Status: `PARTIAL`, not run.
+Status: `READY_WITH_WARNINGS`, one-frame smoke executed.
 
-External checkout/checkpoint evidence exists outside the repo, but the in-repo checkout is missing, the `conceptgraph` Conda environment is missing, Git revision verification is blocked by `safe.directory`, and no native `native_results.json` exists. The adapter and adapter tests exist.
+ConceptGraphs was run through Docker image `semanticsplat-conceptgraphs:72f5962` against one captured `ConferenceHall-capture-pilot` RGB-D frame. The run wrote native evidence, adapted one canonical result, and generated a metrics summary.
 
-Next command after Docker/env readiness:
+Evidence:
+
+- `outputs/baselines/conceptgraphs_smoke_v1/native_results.json`
+- `outputs/baselines/conceptgraphs_smoke_v1/query_results/q051.json`
+- `outputs/baselines/conceptgraphs_smoke_v1/metrics_summary.json`
+- `docs/baselines/conceptgraphs/conceptgraphs_smoke_result.md`
+
+Result summary:
+
+```text
+native outputs = 1
+canonical outputs = 1
+schema-valid results = 1
+accuracy-eligible results = 0
+matched_object = sofa chair
+confidence = 0.2810319662094116
+```
+
+This is not a five-scene SemanticSplat comparison and not an accuracy result. Query `q051` has `verification_status: missing_gt`.
+
+Re-run command:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_conceptgraphs_smoke.ps1
@@ -71,7 +91,7 @@ Details: `docs/baselines/langsplat/status.md`.
 
 ## 5. What Is Blocked
 
-- ConceptGraphs native smoke: blocked by executable environment/Docker and missing native output evidence.
+- ConceptGraphs five-scene comparison: blocked by missing multi-frame/multi-query baseline run and independent GT.
 - LangSplat five-scene comparison: blocked by missing conversion/training/loading of captured scenes into LangSplat native SfM/3DGS format.
 - Verified benchmark expansion: blocked by manual GT verification.
 - Independent accuracy and 3D IoU: blocked by independent GT and reliable boxes/predictions.

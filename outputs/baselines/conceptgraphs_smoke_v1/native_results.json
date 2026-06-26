@@ -1,0 +1,66 @@
+{
+  "provenance": {
+    "native_execution": true,
+    "baseline": "conceptgraphs",
+    "scene_id": "ConferenceHall-capture-pilot",
+    "repository": "https://github.com/concept-graphs/concept-graphs",
+    "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+    "command": "streamlined_detections.py end=1; streamlined_mapping.py end=1; native_query.py q051",
+    "checkpoints": [
+      "ultralytics/yolov8l-world.pt",
+      "ultralytics/mobile_sam.pt",
+      "laion/CLIP-ViT-H-14-laion2b_s32b_b79k"
+    ],
+    "native_artifacts": [
+      "native_data/ConferenceHall-capture-pilot/exps/semanticsplat_mapping_v1/pcd_semanticsplat_mapping_v1.pkl.gz",
+      "native_data/ConferenceHall-capture-pilot/exps/semanticsplat_detections_v1/detections/v001.pkl.gz"
+    ]
+  },
+  "predictions": [
+    {
+      "query_id": "q051",
+      "found": true,
+      "matched_object": "sofa chair",
+      "selected_object_id": "22821609-8ca4-4823-9173-6ec5d58543c6",
+      "selected_view_ids": [
+        "v001"
+      ],
+      "trace_node_ids": [
+        "22821609-8ca4-4823-9173-6ec5d58543c6"
+      ],
+      "confidence": 0.2810319662094116,
+      "bbox_2d": null,
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -37.53236350449368,
+          -2.662695815181562,
+          -4.187341817018206
+        ],
+        "maximum": [
+          5.516395547217213,
+          30.489831506275912,
+          65.05082135944319
+        ]
+      },
+      "native_query_type": "clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 2 with class 'sofa chair' and cosine similarity 0.281032.",
+      "metrics": {
+        "runtime_seconds": 65.45093827000005,
+        "stage_runtime_seconds": {
+          "native_map_query": 65.45093827000005
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 16
+        }
+      },
+      "warnings": [
+        "The captured scene has no independent semantic GT; this smoke proves native execution, not accuracy."
+      ]
+    }
+  ]
+}

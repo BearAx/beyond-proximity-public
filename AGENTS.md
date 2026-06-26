@@ -90,7 +90,7 @@ Important: `Museume-capture` is intentionally spelled this way in current data/d
 ```text
 live model evaluation = blocked by OpenAI API quota/billing, latest error: 429 insufficient_quota
 cached_live = blocked because no verified live cache exists
-ConceptGraphs = blocked / not executed unless checkout/env/smoke logs prove otherwise
+ConceptGraphs = one-frame Docker smoke executed; five-scene comparison still blocked
 LangSplat = official sofa smoke executed; five-scene comparison still blocked
 Replica = not official / not completed
 ScanNet = postponed
@@ -199,7 +199,7 @@ Actual status:
 ```text
 PARTIAL.
 Five manual captured scenes + semantic indexes + 40 stub outputs exist.
-Live/cached are blocked; ConceptGraphs is blocked; LangSplat has only an official-sofa smoke result.
+Live/cached are blocked; ConceptGraphs has a one-frame smoke result; LangSplat has only an official-sofa smoke result.
 ScanNet postponed.
 ```
 
@@ -542,7 +542,7 @@ docs/archive/review_required/
 Use this when generating reports/status summaries:
 
 ```text
-SemanticSplat currently provides a reproducible, test-backed evaluation prototype over five manually captured and manually annotated RGB-D pilot scenes. It includes canonical schemas, semantic indexes, generated trees, benchmark queries, and stub-mode query evaluation. Live model evaluation was attempted but produced no successful result because the provider returned insufficient quota. cached_live replay is blocked because no verified live cache exists. ConceptGraphs is not yet a successful baseline; it requires external repo/env/checkpoint/native-layout setup. LangSplat has an official-sofa smoke result, but no five-scene SemanticSplat comparison or GT-backed accuracy. The project does not yet provide official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or baseline head-to-head comparison.
+SemanticSplat currently provides a reproducible, test-backed evaluation prototype over five manually captured and manually annotated RGB-D pilot scenes. It includes canonical schemas, semantic indexes, generated trees, benchmark queries, and stub-mode query evaluation. Live model evaluation was attempted but produced no successful result because the provider returned insufficient quota. cached_live replay is blocked because no verified live cache exists. ConceptGraphs has a one-frame smoke result and LangSplat has an official-sofa smoke result, but neither is a fair five-scene comparison or GT-backed accuracy result. The project does not yet provide official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or baseline head-to-head comparison.
 ```
 
 ---

@@ -1,0 +1,37 @@
+{
+  "schema_version": "semanticsplat.run_config.v1",
+  "run_id": "conceptgraphs_smoke_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "status": "complete",
+  "scene_ids": [
+    "ConferenceHall-capture-pilot"
+  ],
+  "scenes": [
+    {
+      "scene_id": "ConferenceHall-capture-pilot",
+      "benchmark_scene_id": "ConferenceHall"
+    }
+  ],
+  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\benchmark_queries_v1.json",
+  "native_input": "C:\\GitProjects\\beyond-proximity\\outputs\\baselines\\conceptgraphs_smoke_v1\\native_results.json",
+  "provenance": {
+    "native_execution": true,
+    "baseline": "conceptgraphs",
+    "scene_id": "ConferenceHall-capture-pilot",
+    "repository": "https://github.com/concept-graphs/concept-graphs",
+    "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+    "command": "streamlined_detections.py end=1; streamlined_mapping.py end=1; native_query.py q051",
+    "checkpoints": [
+      "ultralytics/yolov8l-world.pt",
+      "ultralytics/mobile_sam.pt",
+      "laion/CLIP-ViT-H-14-laion2b_s32b_b79k"
+    ],
+    "native_artifacts": [
+      "native_data/ConferenceHall-capture-pilot/exps/semanticsplat_mapping_v1/pcd_semanticsplat_mapping_v1.pkl.gz",
+      "native_data/ConferenceHall-capture-pilot/exps/semanticsplat_detections_v1/detections/v001.pkl.gz"
+    ]
+  },
+  "result_count": 1,
+  "finished_at": "2026-06-26T16:42:39.665290+00:00"
+}

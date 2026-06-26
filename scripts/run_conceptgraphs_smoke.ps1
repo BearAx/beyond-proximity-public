@@ -11,6 +11,7 @@ $sceneId = "ConferenceHall-capture-pilot"
 $revision = "72f5962822b5e8678a446f367a06df1a977d2a4d"
 $detectionsSuffix = "semanticsplat_detections_v1"
 $mappingSuffix = "semanticsplat_mapping_v1"
+$mapRelative = "native_data/$sceneId/exps/$mappingSuffix/pcd_$mappingSuffix.pkl.gz"
 
 New-Item -ItemType Directory -Force -Path $out,$ModelCache | Out-Null
 
@@ -44,6 +45,11 @@ $dockerExit = $LASTEXITCODE
 $ErrorActionPreference = "Stop"
 if ($dockerExit -ne 0) { throw "ConceptGraphs native detection failed" }
 
+$detectionsDir = Join-Path $nativeData "$sceneId\exps\$detectionsSuffix\detections"
+python -B (Join-Path $repo "scripts\augment_conceptgraphs_detections.py") `
+    --detections $detectionsDir
+if ($LASTEXITCODE -ne 0) { throw "ConceptGraphs detection augmentation failed" }
+
 $mappingArgs = @(
     "run", "--rm", "--gpus", "all",
     "-v", "${repoMount}:/workspace",
@@ -61,9 +67,14 @@ $ErrorActionPreference = "Continue"
 & docker @mappingArgs 2>&1 | Tee-Object -FilePath (Join-Path $out "native_mapping.log")
 $dockerExit = $LASTEXITCODE
 $ErrorActionPreference = "Stop"
-if ($dockerExit -ne 0) { throw "ConceptGraphs native mapping failed" }
+if ($dockerExit -ne 0) {
+    $mapArtifact = Join-Path $out ($mapRelative.Replace("/", "\"))
+    if (-not (Test-Path -LiteralPath $mapArtifact)) {
+        throw "ConceptGraphs native mapping failed"
+    }
+    Write-Warning "ConceptGraphs mapping exited non-zero after writing $mapRelative; continuing with native query."
+}
 
-$mapRelative = "native_data/$sceneId/exps/$mappingSuffix/pcd_$mappingSuffix.pkl.gz"
 $detectionRelative = "native_data/$sceneId/exps/$detectionsSuffix/detections/v001.pkl.gz"
 $nativeCommand = "streamlined_detections.py end=1; streamlined_mapping.py end=1; native_query.py q051"
 $queryArgs = @(
