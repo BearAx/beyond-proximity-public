@@ -20,6 +20,7 @@ Step types: decomposition | traversal | leaf_check | found | not_found | error
 from __future__ import annotations
 
 import json
+import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -136,10 +137,23 @@ class QuerySession:
         self._flush()
 
     def _flush(self) -> None:
-        tmp = self._path.with_suffix(".tmp")
+        tmp = self._path.with_name(f".{self._path.stem}.{uuid.uuid4().hex}.tmp")
         with open(tmp, "w", encoding="utf-8") as fh:
             json.dump(self.to_dict(), fh, indent=2, ensure_ascii=False)
-        tmp.replace(self._path)
+        last_error: PermissionError | None = None
+        for attempt in range(8):
+            try:
+                tmp.replace(self._path)
+                return
+            except PermissionError as exc:
+                # Windows can deny replacing a JSON file while the UI is polling it.
+                last_error = exc
+                time.sleep(0.025 * (attempt + 1))
+        try:
+            tmp.unlink(missing_ok=True)
+        finally:
+            if last_error is not None:
+                raise last_error
 
 
 # ── Module-level helpers ───────────────────────────────────────────────────────

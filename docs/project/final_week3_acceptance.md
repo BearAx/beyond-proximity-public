@@ -1,11 +1,11 @@
 # Final Week 3 Acceptance
 
-Status date: 2026-06-23.
+Status date: 2026-06-28.
 
 ## Required Final Wording
 
-- live model evaluation: blocked by missing provider credentials;
-- cached_live replay: blocked because no verified live response cache exists;
+- live model evaluation: out of scope for the next phase;
+- cached_live replay: out of scope for the next phase because no verified live response cache exists;
 - stub semantic gate: measured;
 - manual semantic index: manual, not independent ground truth;
 - baseline smoke: ConceptGraphs one-frame smoke executed with warning; LangSplat official sofa smoke executed without GT-backed accuracy;
@@ -19,8 +19,8 @@ Status date: 2026-06-23.
 | Five semantic indexes | pass | 5/5 reports have `semantic_eval_allowed=true` |
 | Executable semantic queries | pass for stub | 40/40 available schema-valid outputs |
 | Stub semantic gate | measured | `outputs/week3/final_stub_semantic_gate_v1/` |
-| Live model evaluation | blocked by missing provider credentials | Missing `SEMANTICSPLAT_PROVIDER`, `SEMANTICSPLAT_MODEL`, `SEMANTICSPLAT_API_KEY` |
-| Cached-live replay | blocked because no verified live response cache exists | No project cache with verified live provenance |
+| Live model evaluation | out of scope | 0 successful provider-backed results; not planned for the next phase |
+| Cached-live replay | out of scope | No project cache with verified live provenance; not planned for the next phase |
 | ConceptGraphs smoke | one-frame smoke executed with warning | One native and one canonical result under `outputs/baselines/conceptgraphs_smoke_v1/`; five-scene comparison still blocked |
 | LangSplat smoke | official sofa smoke executed | One native and one canonical result under `outputs/baselines/langsplat_smoke_v1/`; five-scene comparison still blocked |
 | Semantic accuracy | unavailable | Manual index is not independent ground truth |
@@ -50,33 +50,23 @@ accuracy-eligible results = 0
 | How many scenes have semantic index? | 5, with 96 annotated views and 1,046 semantic items. |
 | How many executable semantic queries exist? | 40 in the five-scene benchmark scope. |
 | How many stub results exist? | 40 final-gate results. |
-| How many live results exist? | 0; live model evaluation is blocked by missing provider credentials. |
-| How many cached_live results exist? | 0; no verified live response cache exists. |
-| Did cached_live replay avoid provider calls? | `N/A`; replay did not run, so provider-call avoidance is not measured. |
+| How many live results exist? | 0; live model evaluation is out of scope for the next phase. |
+| How many cached_live results exist? | 0; no verified live response cache exists and cached-live is out of scope. |
+| Did cached_live replay avoid provider calls? | `N/A`; replay is not part of the next plan. |
 | Did ConceptGraphs run? | Yes, as a minimal Docker smoke on one captured ConferenceHall frame. It produced one native result and one canonical schema-valid result. It did not run as a five-scene comparison and has no GT-backed accuracy. |
 | Did LangSplat run? | Yes, as a minimal Docker smoke on official pretrained sofa assets. It produced one native result and one canonical schema-valid result. It did not run on the five captured SemanticSplat scenes and has no GT-backed accuracy. |
 | Which metrics are measured? | Capture/frame counts, semantic-index counts, result/schema/availability coverage, stub runtime, model-call count, cache-hit count for the stub gate, and one-query baseline runtimes for ConceptGraphs/LangSplat smoke runs. |
-| Which metrics are `N/A`? | Semantic accuracy, negative correctness, 3D IoU, live token/latency/cost, cached replay equivalence, ConceptGraphs accuracy/3D IoU, and LangSplat accuracy/3D IoU. |
-| Which claims are not made? | No live reasoning, cached replay, semantic accuracy, 3D localization, baseline comparison, or superiority claim. |
-| What remains for next week? | Credentialed live/cached gates, expanding baselines beyond one-query smoke runs, independent semantic/3D GT, and stronger query verification. ScanNet remains postponed. |
+| Which metrics are `N/A`? | Semantic accuracy, negative correctness, 3D IoU, ConceptGraphs accuracy/3D IoU, and LangSplat accuracy/3D IoU. |
+| Which claims are not made? | No provider-backed live reasoning, cached replay, semantic accuracy, 3D localization, baseline comparison, or superiority claim. |
+| What remains for next week? | Expanding baselines beyond one-query smoke runs, independent semantic/3D GT, stronger query verification, and ScanNet preparation after GT tooling is stable. |
 
-## Commands To Clear Blocked Phases
+## Scope Decision
 
-Configure all three provider variables, then run:
-
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode live --limit 1 --out outputs\week3\live_gate_v1
-```
-
-Only after that produces a verified live cache:
-
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode cached_live --limit 1 --out outputs\week3\cached_live_gate_v1
-```
+Live and cached-live gates are not part of the next phase. Keep existing code paths honest if they remain in the repository, but do not spend project time on provider credentials, live calls, or cached-live replay.
 
 ## Final Decision
 
-The credential-independent Week 3 pipeline gate passes: five scenes are capture-valid and semantically executable, and the full stub batch is reproducible. Week 3 is not complete as a live evaluation milestone because live and cached-live remain blocked, ConceptGraphs only has a one-frame smoke, and LangSplat only has an official-sofa smoke rather than a fair five-scene comparison. No stub, manual annotation, or setup error is reported as live/model accuracy evidence.
+The credential-independent Week 3 pipeline gate passes: five scenes are capture-valid and semantically executable, and the full stub batch is reproducible. Live and cached-live are out of scope for the next phase. ConceptGraphs only has a one-frame smoke, and LangSplat only has an official-sofa smoke rather than a fair five-scene comparison. No stub, manual annotation, or setup error is reported as provider-backed model accuracy evidence.
 
 ## Verification
 

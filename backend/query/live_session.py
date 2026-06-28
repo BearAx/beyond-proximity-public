@@ -46,7 +46,11 @@ def _run_captured_query_session(
 ) -> QuerySession:
     if not QUERY_RUNNER_SCHEMA_COMPATIBLE:
         raise ValueError("Captured ViewJSON query adapter is unavailable")
-    index = load_captured_scene_index(scene_dir, require_complete=True)
+    index = load_captured_scene_index(
+        scene_dir,
+        require_complete=True,
+        allow_unindexed_frames=True,
+    )
     client = StubModelClient()
     answer = client.answer_query(
         {"query": query, "query_type": "object_finding"},
@@ -105,7 +109,7 @@ def _run_captured_query_session(
         "query": query,
         "mode": "stub",
         "semantic_index_mode": index["manifest"].get("semantic_index_mode"),
-        "warnings": answer.get("warnings", []),
+        "warnings": [*answer.get("warnings", []), *index.get("warnings", [])],
     }
     sess.log_result(final)
     return sess

@@ -113,6 +113,44 @@ def test_stub_client_searches_captured_viewjson_fields():
     assert answer["visited_nodes"] == ["root", "object_v001_001_chair"]
 
 
+def test_stub_client_normalizes_column_typo_and_aliases():
+    client = StubModelClient()
+    views = {
+        "v001": {
+            "view_id": "v001",
+            "summary": "Lobby with marble columns beside the piano.",
+            "visible_objects": [
+                {"label": "columns", "bbox_2d": None},
+            ],
+            "landmarks": [],
+        }
+    }
+    tree = {
+        "root": {
+            "node_id": "root",
+            "node_type": "root",
+            "name": "Root",
+            "summary": "Captured scene",
+            "view_ids": ["v001"],
+            "children_ids": ["object_v001_001_columns"],
+        },
+        "object_v001_001_columns": {
+            "node_id": "object_v001_001_columns",
+            "node_type": "object",
+            "name": "columns",
+            "summary": "Marble columns",
+            "view_ids": ["v001"],
+            "children_ids": [],
+        },
+    }
+
+    answer = client.answer_query("Find a collumn", tree, views)
+
+    assert answer["result"]["found"] is True
+    assert answer["result"]["matched_object"] == "columns"
+    assert answer["result"]["selected_view_id"] == "v001"
+
+
 def test_cached_client_replays_only_verified_live_entry(tmp_path):
     query = {"query": "Find the red chair", "query_type": "attribute"}
     payload = {"query": query, "tree": _tree(), "views": _views()}

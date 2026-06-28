@@ -1,6 +1,6 @@
 # Real Evaluation Status
 
-Status date: 2026-06-23. Final credential-independent Week 3 status.
+Status date: 2026-06-28. Final credential-independent Week 3 status.
 
 ## Evidence Summary
 
@@ -11,8 +11,8 @@ Status date: 2026-06-23. Final credential-independent Week 3 status.
 | Depth variation | measured | non-constant for all five scenes |
 | Manual semantic index | measured validation | 5/5 executable; 96 views and 1,046 items; manual, not independent ground truth |
 | Stub semantic gate | measured | 40/40 available schema-valid results; 0 model calls |
-| Live model evaluation | blocked by missing provider credentials | 0 successful live results |
-| Cached-live replay | blocked because no verified live response cache exists | 0 cached-live results |
+| Live model evaluation | out of scope | 0 successful live results; not planned for the next phase |
+| Cached-live replay | out of scope | 0 cached-live results; no verified live cache exists |
 | Baseline smoke | partial | 1 ConceptGraphs one-frame native/canonical result and 1 LangSplat official-sofa native/canonical result, both with no GT-backed accuracy |
 | Semantic accuracy | unavailable | no independent semantic GT |
 | 3D IoU | `N/A` | no independent GT/predicted 3D boxes |
@@ -35,22 +35,10 @@ Status date: 2026-06-23. Final credential-independent Week 3 status.
 python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode stub --out outputs\week3\final_stub_semantic_gate_v1
 ```
 
-Live model evaluation is `blocked: missing SEMANTICSPLAT_PROVIDER, SEMANTICSPLAT_MODEL, SEMANTICSPLAT_API_KEY`:
-
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode live --limit 1 --out outputs\week3\live_gate_v1
-```
-
-Cached-live replay is blocked because no verified live response cache exists:
-
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode cached_live --limit 1 --out outputs\week3\cached_live_gate_v1
-```
+Live and cached-live are no longer part of the next evaluation plan. No provider-backed result or verified live cache exists, so no live/cached-live metric is reported.
 
 ## Remaining Work
 
-- Configure provider credentials and complete at least one genuine live query.
-- Replay its verified cache without provider calls.
 - Resolve ConceptGraphs' post-map internal report crash, then expand from one-frame smoke to multi-frame/multi-query captured-scene runs.
 - Convert/train/load the five captured scenes in LangSplat native SfM/3DGS format before any fair comparison.
 - Add independent semantic GT before reporting accuracy.

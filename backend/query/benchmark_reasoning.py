@@ -177,12 +177,54 @@ def build_flat_reasoning_steps(
     return steps
 
 
+_TARGET_STOPWORDS = {
+    "a", "an", "the", "to", "is", "in", "on", "at", "for", "of", "and", "or",
+    "find", "where", "what", "which", "how", "me", "my", "can", "could", "please",
+    "show", "get", "locate", "look", "take", "go",
+}
+
+_TARGET_ALIASES = {
+    "collumn": "column",
+    "collumns": "columns",
+    "pillar": "column",
+    "pillars": "columns",
+}
+
+
+def _normalise_target_token(token: str) -> str:
+    token = _TARGET_ALIASES.get(token.lower(), token.lower())
+    if len(token) > 3 and token.endswith("s") and token not in {"stairs"}:
+        token = token[:-1]
+    return token
+
+
 def _extract_target(query: str) -> str:
     q = query.lower()
-    for obj in ("screen", "projector", "sofa", "bar", "piano", "exit sign", "exit"):
-        if obj in q:
-            return obj
-    return query.split()[0] if query.split() else query
+    for phrase in (
+        "exit sign",
+        "projection screen",
+        "screen",
+        "projector",
+        "red sofa",
+        "sofa",
+        "chair",
+        "bar",
+        "piano",
+        "column",
+        "columns",
+        "pillar",
+        "pillars",
+        "exit",
+    ):
+        if phrase in q:
+            return _normalise_target_token(phrase.split()[-1]) if phrase in {"columns", "pillar", "pillars"} else phrase
+
+    tokens = [
+        _normalise_target_token(token)
+        for token in re.findall(r"[a-z0-9]+", q)
+        if token not in _TARGET_STOPWORDS
+    ]
+    return tokens[0] if tokens else (query.split()[0] if query.split() else query)
 
 
 def _extract_room(query: str) -> Optional[str]:

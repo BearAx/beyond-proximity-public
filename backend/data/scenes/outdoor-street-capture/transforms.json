@@ -626,6 +626,37 @@
       ],
       "view_id": "v020",
       "depth_file_path": "depths/v020_depth.npy"
+    },
+    {
+      "file_path": "images/v021.png",
+      "transform_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.6
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          3.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "view_id": "v021",
+      "depth_file_path": "depths/v021_depth.npy"
     }
   ]
 }

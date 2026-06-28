@@ -1,6 +1,6 @@
 # Week 3 Failure Modes
 
-Status date: 2026-06-23. Final credential-independent gate.
+Status date: 2026-06-28. Final credential-independent gate.
 
 ## Evaluator Outcome
 
@@ -20,8 +20,8 @@ Status date: 2026-06-23. Final credential-independent gate.
 
 | Phase | Status | Exact blocker |
 |---|---|---|
-| Phase C live | blocked | Missing `SEMANTICSPLAT_PROVIDER`, `SEMANTICSPLAT_MODEL`, and `SEMANTICSPLAT_API_KEY`. |
-| Phase D cached-live | blocked | No verified `source_mode=live` response cache exists. |
+| Phase C live | out of scope | No successful provider-backed result exists; live work is not part of the next phase. |
+| Phase D cached-live | out of scope | No verified `source_mode=live` response cache exists; cached-live work is not part of the next phase. |
 | ConceptGraphs | one-frame smoke executed with warning | Native detection/map/query produced one canonical result; mapping writes the map then exits non-zero in internal report generation (`KeyError: 'Sort Key'`). |
 | LangSplat | official sofa smoke executed | One native and one canonical result exist under `outputs/baselines/langsplat_smoke_v1/`; five-scene comparison remains blocked by missing LangSplat-native scene packages and GT. |
 | Geometry | blocked | Independent GT and predicted 3D boxes are absent. |

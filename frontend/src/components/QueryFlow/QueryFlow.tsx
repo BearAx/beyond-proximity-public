@@ -106,6 +106,8 @@ function LeafCard({ step, sceneId }: { step: QueryStepLeafCheck; sceneId: string
 
   const [annotatedImg, setAnnotatedImg] = useState<string | null>(step.annotated_image ?? null)
   const [imgLoading, setImgLoading] = useState(false)
+  const [rawImgFailed, setRawImgFailed] = useState(false)
+  const rawImageUrl = `/scenes/${encodeURIComponent(sceneId)}/images/${encodeURIComponent(step.view_id)}.png`
 
   // Auto-fetch annotated image when the card first renders with a bbox and found=true
   useEffect(() => {
@@ -161,6 +163,19 @@ function LeafCard({ step, sceneId }: { step: QueryStepLeafCheck; sceneId: string
             alt={`${step.view_id} annotated`}
             className="w-full object-contain max-h-72"
           />
+        </div>
+      )}
+      {step.found && !step.bbox_2d && !annotatedImg && !rawImgFailed && (
+        <div className="mt-2 rounded overflow-hidden border border-gray-700">
+          <img
+            src={rawImageUrl}
+            alt={`${step.view_id} raw`}
+            className="w-full object-contain max-h-72"
+            onError={() => setRawImgFailed(true)}
+          />
+          <div className="bg-gray-900 px-2 py-1 text-[10px] text-gray-400">
+            Raw view shown because this match has no bbox_2d annotation.
+          </div>
         </div>
       )}
     </div>

@@ -5,6 +5,7 @@ import pytest
 
 from backend.query import live_session, log as query_log
 from backend.query.log import QuerySession
+from backend.io.captured_semantic_index import load_captured_scene_index
 from scripts.build_scene_tree_from_viewjson import build_scene_tree
 from scripts.create_manual_viewjson_templates import create_templates
 
@@ -92,3 +93,36 @@ def test_live_session_rejects_empty_templates_instead_of_negative_result(tmp_pat
 
     with pytest.raises(ValueError, match="incomplete; manual annotation is required"):
         live_session.run_query_session("captured", session.session_id, step_delay_sec=0)
+
+
+def test_live_session_ignores_new_capture_until_viewjson_exists(tmp_path, monkeypatch):
+    data_dir = tmp_path / "scenes"
+    scene = prepare_scene(data_dir, annotate=True)
+    transforms_path = scene / "transforms.json"
+    transforms = json.loads(transforms_path.read_text(encoding="utf-8"))
+    (scene / "images" / "v002.png").write_bytes(b"new-rgb")
+    (scene / "depths" / "v002_depth.npy").write_bytes(b"new-depth")
+    transforms["frames"].append(
+        {
+            "view_id": "v002",
+            "file_path": "images/v002.png",
+            "depth_file_path": "depths/v002_depth.npy",
+            "transform_matrix": IDENTITY,
+        }
+    )
+    transforms_path.write_text(json.dumps(transforms), encoding="utf-8")
+
+    monkeypatch.setattr(live_session, "DATA_DIR", data_dir)
+    monkeypatch.setattr(query_log, "DATA_DIR", data_dir)
+
+    with pytest.raises(ValueError, match="missing ViewJSON: v002"):
+        load_captured_scene_index(scene, require_complete=True)
+
+    session = QuerySession("captured", "Find a chair")
+    result = live_session.run_query_session(
+        "captured", session.session_id, step_delay_sec=0
+    )
+
+    assert result.result["found"] is True
+    assert result.result["view_id"] == "v001"
+    assert any("v002" in warning for warning in result.result["warnings"])

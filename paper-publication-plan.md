@@ -1,231 +1,635 @@
-# Paper Publication Plan — SemanticSplat
-### Hierarchical VLM Scene Understanding over 3D Gaussian Splatting
+# Revised Project Plan — SemanticSplat / Beyond Proximity
 
-**Planning window:** June 5, 2026 → July 14, 2026 (≈ 6 working weeks)
-**Owner:** Project team
-**Canonical references:**
-- Design: `docs/superpowers/specs/2026-04-05-semantic-3dgs-navigator-design.md`
-- Paper outline: `docs/superpowers/specs/2026-04-05-paper-design.md`
-- Implementation: `backend/` (FastAPI + MCP) and `frontend/` (Spark.js viewer)
+## 0. Main Goal
 
----
+Build a system that helps a computer understand indoor 3D environments and use that understanding for semantic search, orientation, intent navigation, and map freshness.
 
-## 0. Goal
+Core idea:
 
-Produce a **submission-ready research paper** with:
-1. A **reproducible, scriptable pipeline** (no human/Cursor-in-the-loop in the eval path).
-2. **Quantitative results** vs. published baselines on standard datasets.
-3. The **core ablation** (Geometry vs. Pure-LLM vs. Hybrid) proving each component contributes.
-4. A **public repository** (clean, documented, reproducible) and a **project website** with very creative and highly professional interactive demos.
-5. An **arXiv preprint** + submission to a target venue.
+```text
+Visual observations / 3D scene
+  -> semantic understanding
+  -> semantic map / graph
+  -> graph-based reasoning
+  -> search, orientation, intent navigation, freshness
+```
 
-**Deliverables by July 14:** paper PDF (camera-ready-quality draft), public GitHub repo, project website, arXiv submission, and a packaged demo.
+The project does not replace VPS.
+It adds a semantic understanding layer around VPS/map context.
 
 ---
 
-## 1. Current State Assessment (Honest Baseline)
+## 1. Main Claim
 
-### What already exists (prototype)
-| Area | Status | Files |
-|---|---|---|
-| 3DGS viewer + manual view capture | Built | `frontend/src/components/Navigator/*` (Spark.js, FPS controls, depth capture) |
-| Nerfstudio I/O, view store | Built | `backend/io/*` |
-| Spatial proximity graph | Built | `backend/geometry/spatial_graph.py` |
-| Depth → 3D bbox unprojection | Built + tested | `backend/geometry/unprojector.py`, `tests/backend/test_unprojector.py` |
-| Tree nodes + storage | Built | `backend/tree/*` |
-| Query pipeline + logging | Built | `backend/query/*` |
-| MCP tools (scene/view/tree/query) | Built | `backend/mcp/tools/*` |
-| Frontend tree visualizer + query flow | Built | `frontend/src/components/TreeVisualizer/*`, `QueryFlow/*` |
+Primary claim:
 
-### What is missing for a publishable paper (the real work)
-1. **Automatic view selection:** design claims **NoField** (automatic, coverage-optimal); implementation uses **manual R-press capture**. Must implement an automatic selection (NoField or a defensible coverage-greedy substitute) — it is a stated novelty. (Mahmoud is already working on it, will finish by mid of June)
-3. **No quantitative experiments**, no benchmark query sets, no baselines run.
-4. **No evaluation harness** for the metrics defined in the design (zone accuracy, retrieval IoU, tree coherence, scalability, context efficiency).
+```text
+SemanticSplat enables computer understanding of indoor environments by converting visual/3D observations into a structured semantic map that can be searched and reasoned over.
+```
 
-> **Implication:** Weeks 1–2 are dominated by turning the demo into a *scriptable experimental system*. This is the critical path; everything else depends on it.
+Secondary technical claim:
 
----
+```text
+Graph-based reasoning over the semantic map is faster and more targeted than flat semantic search.
+```
 
-## 2. Scope Decisions (to fit 6 weeks)
+Partner value claim:
 
-To stay realistic, we **fix scope now** and treat extras as stretch goals.
-
-| Dimension | Committed scope | Stretch (if time) |
-|---|---|---|
-| Datasets | **Replica** (clean, GT rooms) + **ScanNet** (real, GT labels) | **HM3D** (scalability), 1 custom large scan |
-| Baselines | **LangSplat** + **ConceptGraphs** (+ **LERF** if cheap) | Semantic Gaussians, BBQ |
-| Core results | **Ablation A/B/C**, retrieval accuracy, query-type breakdown | Full scalability curve 15→2000 views |
-| Query benchmark | **Auto-generated + human-verified** (~150–300 queries) | Crowd eval, inter-annotator study |
-| Output types | 3D bbox + camera pose | Text-answer / count VQA |
-
-**Target venue (decide Week 1):** arXiv preprint + submission to next open CV/ML deadline (e.g., **WACV 2027** round / **CVPR 2027** / a strong workshop). Pick based on deadline calendar in Day 1–2.
+```text
+The semantic layer helps indoor systems answer not only “where am I?”, but also “what is around me?”, “where should I go?”, and “what changed?”.
+```
 
 ---
 
-## 3. Timeline Overview
+## 2. Correct Scope
 
-| Week | Dates | Theme | Primary exit criterion |
-|---|---|---|---|
-| **1** | Jun 5 – Jun 11 | Scope, scriptable pipeline foundation, datasets, metrics | Programmatic VLM pipeline runs end-to-end on 1 scene |
-| **2** | Jun 12 – Jun 18 | First experiments + automatic view selection | First quantitative numbers on Replica; NoField/auto-select working |
-| **3** | Jun 19 – Jun 25 | Baselines + benchmark + scale up | Baselines reproduced; full query benchmark; results on 2 datasets |
-| **4** | Jun 26 – Jul 2 | Ablations, final experiments, freeze results | All core + ablation results frozen; figures generated |
-| **5** | Jul 3 – Jul 9 | Paper writing, repo hardening | Full paper draft v1 + clean public repo |
-| **6** | Jul 10 – Jul 14 | Polish, website, arXiv, submit | Final PDF + website live + arXiv posted |
+### Core
 
----
+```text
+semantic scene understanding
+semantic map construction
+hierarchical graph representation
+semantic search
+intent navigation
+map freshness / update detection
+graph vs flat search evaluation
+final ScanNet validation
+```
 
-## 4. Week-by-Week Plan
+### Temporary / Pilot Only
 
-### Week 1 — Foundation & Reproducibility (Jun 5 – Jun 11)
-**Theme:** Convert the demo into a scriptable research system; lock the experimental design.
+```text
+manual scene loading
+manual ViewJSON / semantic annotation
+manual semantic graph construction
+```
 
-**Tasks**
-- Finalize **research questions, claims, and target venue/deadline**; write a 1-page claims sheet.
-- Define **experimental design**: datasets, metrics, baselines, ablation matrix (lift directly from design §10, prune to committed scope).
-- Define **evaluation metrics + protocols**: example zone boundary accuracy, retrieval accuracy (3D IoU > 0.5), tree coherence (LLM-judge rubric), context efficiency, scalability.
-- Stand up **dataset ingestion**: Replica + ScanNet → posed RGB(-D); decide 3DGS-render vs. dataset-native-frame path; reconstruct 1–2 pilot scenes.
-- Reproduce the **existing pipeline on one scene fully unattended** (capture → view JSON → tree → query) as the smoke test.
+Manual annotation is temporary scaffolding.
+The final direction is full automation through VLM/AI scene analysis.
 
-**Deliverables:** claims sheet; experiment-design doc; working headless pipeline on 1 scene; dataset loaders; literature/related-work notes.
-**Exit criterion:** one large scene runs end-to-end with zero human-in-the-loop and emits a tree + query answer.
+### Not Core Right Now
 
----
-
-### Week 2 — First Experiments & Automatic View Selection (Jun 12 – Jun 18)
-**Theme:** Get the first real numbers; remove the manual-capture dependency.
-
-**Tasks**
-- Implement **automatic view selection** (NoField integration or coverage-greedy substitute); validate coverage on pilot scenes.
-- Run **first experiment batch** on a **Replica subset** (5–10 scenes): build trees, run a small query set, log retrieval accuracy + tree coherence.
-- Build the **evaluation harness** (metrics computed automatically from logged outputs + ground truth).
-- **Fallback review #1:** inspect failure cases (VLM hallucination, bad zones, depth/bbox errors). Decide mitigations (multi-view confirmation, confidence gating, deterministic LLM settings).
-- **Construct the query benchmark v1**: auto-generate queries from tree/GT + human verification; target ~100 queries across query types.
-- Plan next dev stage (baselines + scale) based on observed bottlenecks.
-
-**Deliverables:** auto view-selection module; first Replica metrics table; eval harness; query benchmark v1; failure-mode log.
-**Exit criterion:** reproducible quantitative result on ≥5 Replica scenes with the automatic pipeline.
+```text
+phone deployment constraints
+full VPS replacement
+continuous AR tracking
+real-time production system
+full automatic pipeline from day one
+```
 
 ---
 
-### Week 3 — Baselines, Benchmark & Scale-Up (Jun 19 – Jun 25)
-**Theme:** Make results comparable and broader.
+## 3. Project Stages
 
-**Tasks**
-- **Reproduce baselines:** LangSplat + ConceptGraphs (LERF if time) on the same scenes/queries; align evaluation protocol for fairness.
-- **Enhance metrics & benchmark:** finalize query benchmark to ~150–300 verified queries; add query-complexity strata (simple/compound/relational/multi-hop/functional).
-- **Scale to ScanNet** (real-world scenes); run our pipeline + baselines.
-- **Second experiment batch:** full retrieval + zone accuracy on Replica **and** ScanNet; begin scalability probe (vary K).
-- Refine prompts / tree construction from Week-2 failures; re-run affected scenes.
-- Plan final ablation runs.
+## Stage 1 — Manual Pilot: Build the Understanding Format
 
-**Deliverables:** baseline results reproduced; finalized benchmark; cross-dataset results table; scalability pilot.
-**Exit criterion:** head-to-head numbers (ours vs. ≥2 baselines) on 2 datasets.
+Goal:
 
----
+```text
+Define what “understanding the environment” means in our project.
+```
 
-### Week 4 — Ablations, Final Experiments & Result Freeze (Jun 26 – Jul 2)
-**Theme:** Prove the contribution; lock numbers.
+Tasks:
 
-**Tasks**
-- Run the **core ablation A/B/C** (Pure-Geometry vs. Pure-LLM vs. Hybrid) — the central claim.
-- Run **secondary ablations:** tree-depth vs. accuracy; VLM description quality (rendered vs. raw); query-complexity breakdown.
-- Complete **scalability curve** (stretch: toward HM3D / large scene).
-- **Final experiment pass**; fix any reproducibility gaps; set random seeds / temperature=0; log everything.
-- **Freeze results**; generate all **figures and tables** (qualitative tree visualizations, retrieved 3D bboxes, comparison charts).
-- Start **paper writing**: methods + experiments sections from frozen results.
+```text
+load/capture 5–10 indoor scenes manually
+create semantic annotations manually
+define semantic entities:
+- zones
+- rooms
+- corridors
+- signs
+- exits
+- POIs
+- facilities
+- landmarks
+- objects
+- regions
+- relations
+build semantic tree / graph
+```
 
-**Deliverables:** complete results (main + ablations); all final figures/tables; methods + experiments draft.
-**Exit criterion:** **results frozen** — no further experiment changes barring fatal bugs.
+Output:
 
----
+```text
+fixed semantic map dataset
+manual semantic indexes
+scene graphs
+validation report
+```
 
-### Week 5 — Paper Writing & Repository Hardening (Jul 3 – Jul 9)
-**Theme:** Turn results into a paper; make the code public-quality.
+Why this matters:
 
-**Tasks**
-- Write **full paper draft v1**: abstract, intro, related work, method, experiments, ablations, limitations, conclusion (use `paper-design.md` as skeleton).
-- Internal **review pass**; tighten novelty statement and claims to match evidence; add limitations honestly.
-- **Repository hardening:** clean structure, README, install/repro instructions, config files, scripts to reproduce each table/figure, license.
-- Prepare **reproducibility package** (configs, seeds, prompts, eval scripts, sample data).
-- Begin **website scaffold** (hero, abstract, method figure, video/demo, results, BibTeX).
-
-**Deliverables:** paper draft v1; public-ready repo; reproducibility scripts; website scaffold.
-**Exit criterion:** a complete, self-consistent paper draft and a repo a stranger could run.
-
----
-
-### Week 6 — Polish, Website, arXiv & Submit (Jul 10 – Jul 14)
-**Theme:** Ship.
-
-**Tasks**
-- Incorporate review feedback; **finalize paper** (proofread, figures, formatting to venue template).
-- **Build the project website** (epic): interactive tree-viz demo, query examples, qualitative galleries, paper/PDF/arXiv/code links.
-- **Finalize public repo:** tag release, archive (Zenodo DOI optional), demo notebook.
-- **Post arXiv preprint**; prepare and submit to the chosen venue (or schedule for its deadline).
-- Prepare **launch assets** (social thread, short demo video via the Spark.js viewer).
-
-**Deliverables:** final paper PDF; live website; tagged public repo; arXiv ID; submission package.
-**Exit criterion:** arXiv live + website live + repo public + submission filed/scheduled.
+```text
+Before automating understanding, we need a clear target representation.
+```
 
 ---
 
-## 5. Milestones & Gates
+## Stage 2 — Search and Orientation over the Semantic Map
 
-| Milestone | Target date | Gate |
-|---|---|---|
-| M1 — Headless pipeline on 1 scene | Jun 11 | No human-in-loop |
-| M2 — First quantitative result (Replica) | Jun 18 | Auto view-selection + eval harness work |
-| M3 — Baselines + cross-dataset results | Jun 25 | Fair head-to-head numbers |
-| M4 — Results frozen + figures | Jul 2 | All ablations done |
-| M5 — Paper draft v1 + repo | Jul 9 | Reproducible by a stranger |
-| M6 — Submit + website + arXiv | Jul 14 | Public + filed |
+Goal:
 
----
+```text
+Show that the system can use semantic understanding to orient and search.
+```
 
-## 6. Risks & Contingencies
+Tasks:
 
-| Risk | Likelihood | Impact | Mitigation / Fallback |
-|---|---|---|---|
-| Headless VLM pipeline slips | Med | High (critical path) | Start Day 1; keep model adapter simple; fall back to one hosted VLM |
-| Baseline reproduction is slow | High | High | Cap at 2 baselines; cite published numbers where protocols match; clearly scope comparison |
-| 3DGS reconstruction per scene too costly | Med | Med | Use dataset-native posed RGB-D frames instead of rendering; reserve 3DGS for a qualitative subset |
-| Query benchmark labor-heavy | Med | Med | Auto-generate + spot-verify; reduce to 150 queries |
-| Real-image / hard-scene accuracy weak | Med | Med | Report honestly as limitation; emphasize Replica clean-render strength |
-| VLM cost/rate limits | Med | Med | Batch + cache all VLM outputs; temperature=0 for determinism |
-| Venue deadline mismatch | Low | Low | Default to arXiv now; submit to next open deadline |
+```text
+create 100–150 verified queries
+label query types:
+- simple search
+- relational search
+- multi-hop search
+- intent navigation
+- POI search
+- freshness/update queries
+- ambiguity queries
+```
 
-**Global fallback:** if experiments compress, prioritize **arXiv preprint + strong workshop** with the **core ablation + one solid dataset**, and frame full benchmark as ongoing.
+Examples:
 
----
+```text
+Where is the nearest exit?
+How do I find the reception desk?
+Where can I charge my phone?
+Which sign is near the elevator?
+What changed in this corridor?
+Find the seating area near the lobby.
+```
 
-## 7. Deliverables Checklist
+GT for now:
 
-- [ ] Claims sheet + experimental-design doc
-- [ ] Automatic view-selection module
-- [ ] Evaluation harness (all committed metrics)
-- [ ] Query benchmark (versioned, verified)
-- [ ] Main results + ablations (frozen)
-- [ ] All figures and tables
-- [ ] Paper PDF (venue-formatted)
-- [ ] Public GitHub repo + README + repro scripts
-- [ ] Project website with interactive demo
-- [ ] arXiv preprint posted
-- [ ] Submission filed / scheduled
+```text
+expected object
+expected region
+expected zone
+expected view
+expected POI
+```
 
----
-
-## 8. Notes on Further Development & Design (Paper-Relevant)
-
-These emerged from reviewing the design + implementation and should be reflected in the paper's *method* and *future work*:
-
-1. **Reproducible intelligence path** — the headless VLM pipeline is not just plumbing; it is required for scientific validity and should be described as the experimental system. (important to check this)
-2. **Automatic view selection** — NoField (or substitute) must be real to support the novelty claim of coverage-optimal, scene-agnostic input.
-3. **Determinism & hallucination control** — temperature=0, multi-view confirmation, confidence gating; report consistency (tree edit distance across runs) as in design §14.1.
-4. **Depth-reliability handling** — glass/thin-surface depth noise (design §14.4); report 3D-bbox confidence and fallbacks.
-5. **Incremental re-indexing** — position as future work (design §14.6): change-localized updates rather than full rebuilds.
-6. **Downstream applications** — change detection, accessibility descriptions, VQA-data generation, embodied navigation (design §12) make strong "impact"/future-work content.
+GT boxes are optional and only needed for 3D IoU.
 
 ---
 
-*End of plan.*
+## Stage 3 — Main Experiment: Graph Search vs Flat Search
+
+Goal:
+
+```text
+Prove that graph-based reasoning uses semantic understanding more efficiently than flat search.
+```
+
+Compare:
+
+```text
+flat search over all semantic entries
+flat embedding search
+graph search
+graph search + pruning/top-k
+```
+
+Metrics:
+
+```text
+latency_ms
+objects_checked
+views_checked
+semantic_entries_scanned
+context_size / tokens
+hit@1
+hit@3
+wrong_zone_rate
+wrong_room_rate
+```
+
+Expected result:
+
+```text
+Graph search checks fewer candidates, uses less context, and makes fewer wrong-zone mistakes than flat search.
+```
+
+This is the main quantitative proof.
+
+---
+
+## Stage 4 — Partner-Focused Capabilities
+
+Goal:
+
+```text
+Show that environment understanding is useful for real indoor systems.
+```
+
+Experiments:
+
+### 4.1 Intent Navigation
+
+Queries like:
+
+```text
+I need to exit.
+I want to find reception.
+I need a charging point.
+Where should I go for the elevator?
+```
+
+Metrics:
+
+```text
+intent_resolution_success
+correct_target_region
+wrong_zone_rate
+```
+
+### 4.2 Map Freshness
+
+Use two versions of the same scene:
+
+```text
+version A = old semantic map
+version B = changed semantic map
+```
+
+Changes:
+
+```text
+POI added
+POI removed
+sign changed
+facility blocked
+seating moved
+```
+
+Metrics:
+
+```text
+changed_items_detected
+missed_updates
+false_update_flags
+operator_review_items
+```
+
+### 4.3 Repetitive-Space Ambiguity
+
+Cases:
+
+```text
+similar corridors
+similar columns
+similar doors
+similar parking/basement areas
+similar signs
+```
+
+Metric:
+
+```text
+wrong-zone / wrong-region failures
+```
+
+---
+
+## Stage 5 — Move from Manual to Automatic Understanding
+
+Goal:
+
+```text
+Replace manual annotation with automatic VLM-based semantic extraction.
+```
+
+Tasks:
+
+```text
+take a subset of manually annotated scenes
+run automatic VLM/AI scene analysis
+produce ViewJSON automatically
+compare automatic semantic map against manual reference
+```
+
+Metrics:
+
+```text
+object coverage
+region coverage
+relation correctness
+missing important landmarks
+wrong semantic labels
+query performance drop vs manual semantic map
+```
+
+Important framing:
+
+```text
+Manual semantic maps are the reference.
+Automatic VLM output is evaluated against them.
+```
+
+This connects the current prototype to the final claim: computer understanding of the environment.
+
+---
+
+## Stage 6 — External Baselines
+
+Goal:
+
+```text
+Show compatibility and comparison with known semantic mapping approaches.
+```
+
+Use:
+
+```text
+ConceptGraphs
+LangSplat
+```
+
+Role:
+
+```text
+secondary baselines / external validation
+```
+
+They are not the only measure of success.
+
+Minimum acceptable result:
+
+```text
+native smoke run
+canonical output
+documented limitations
+```
+
+Strong result:
+
+```text
+same scene/query subset comparison
+```
+
+---
+
+## Stage 7 — ScanNet Validation
+
+Goal:
+
+```text
+Check that the approach is not only a custom-scene demo.
+```
+
+ScanNet is mandatory, but late-stage.
+
+Tasks:
+
+```text
+select small ScanNet subset
+ingest RGB-D / poses / labels
+convert to project semantic format
+run automatic or semi-automatic semantic map construction
+run benchmark queries
+compare graph vs flat
+report limitations
+```
+
+Minimum ScanNet success:
+
+```text
+1–3 ScanNet scenes
+working ingestion
+semantic map generated
+queries run
+graph vs flat metrics reported
+```
+
+Better ScanNet success:
+
+```text
+5+ scenes
+verified queries
+object/region GT comparison
+baseline comparison
+```
+
+---
+
+## 8. Revised Timeline
+
+### Week 1 — Define Understanding Target
+
+```text
+claims sheet
+semantic schema
+scene/entity taxonomy
+benchmark schema
+manual dataset plan
+```
+
+Exit:
+
+```text
+clear definition of environment understanding
+```
+
+---
+
+### Week 2 — Manual Semantic Maps
+
+```text
+5–10 scenes
+manual semantic annotations
+semantic graph/tree
+scene validation
+```
+
+Exit:
+
+```text
+manual semantic understanding dataset ready
+```
+
+---
+
+### Week 3 — Search, Orientation, and Benchmark
+
+```text
+100–150 verified queries
+query types
+GT labels
+flat search
+graph search
+first graph vs flat result
+```
+
+Exit:
+
+```text
+main graph-vs-flat evidence exists
+```
+
+---
+
+### Week 4 — Partner Capabilities
+
+```text
+intent navigation experiment
+map freshness pilot
+repetitive-space ambiguity cases
+```
+
+Exit:
+
+```text
+semantic understanding shown useful for partner problems
+```
+
+---
+
+### Week 5 — Automation Transition + Baselines
+
+```text
+automatic VLM semantic extraction on subset
+compare automatic output vs manual reference
+ConceptGraphs smoke
+LangSplat smoke
+prepare ScanNet ingestion
+```
+
+Exit:
+
+```text
+manual-to-automatic path demonstrated
+```
+
+---
+
+### Week 6 — ScanNet + Final Report
+
+```text
+ScanNet small-subset run
+final graph vs flat table
+automatic vs manual comparison
+limitations
+paper/report/demo
+```
+
+Exit:
+
+```text
+final report supports the claim:
+computer understands indoor environments and uses graph reasoning for efficient semantic orientation/search
+```
+
+---
+
+## 9. Main Metrics
+
+### Environment Understanding
+
+```text
+object coverage
+region coverage
+landmark coverage
+relation correctness
+semantic map completeness
+manual-vs-automatic agreement
+```
+
+### Search / Orientation
+
+```text
+hit@1
+hit@3
+expected region hit
+expected object hit
+intent resolution success
+wrong-zone rate
+wrong-room rate
+```
+
+### Efficiency
+
+```text
+latency
+views checked
+objects checked
+semantic entries scanned
+context size / tokens
+speedup vs flat
+```
+
+### Freshness
+
+```text
+changed items detected
+missed updates
+false update flags
+```
+
+---
+
+## 10. Correct Final Story
+
+The paper/report should tell this story:
+
+```text
+1. Indoor positioning gives coordinates, but not meaning.
+2. We build a semantic understanding layer for indoor 3D scenes.
+3. This layer represents rooms, zones, objects, signs, landmarks, POIs, and relations as a graph.
+4. The graph lets the system orient itself semantically and answer user intent queries.
+5. Compared with flat search, graph-based reasoning is faster and more targeted.
+6. Manual annotation is used first as a reference representation.
+7. Automatic VLM-based understanding is introduced later and compared against the manual reference.
+8. ScanNet validates that the approach can move beyond custom scenes.
+```
+
+---
+
+## 11. Claims Allowed
+
+```text
+The system builds a structured semantic representation of indoor environments.
+```
+
+```text
+The semantic graph supports search, orientation, intent navigation, and map freshness.
+```
+
+```text
+Graph-based retrieval is more efficient than flat search over the same semantic map.
+```
+
+```text
+Manual annotations serve as a reference for evaluating automatic VLM-based semantic understanding.
+```
+
+```text
+ScanNet is used as final validation for generalization beyond custom scenes.
+```
+
+---
+
+## 12. Claims Not Allowed Yet
+
+```text
+fully automatic production-ready environment understanding
+```
+
+```text
+VPS replacement
+```
+
+```text
+phone-deployable real-time system
+```
+
+```text
+complete ScanNet-scale benchmark superiority
+```
+
+```text
+3D IoU localization accuracy unless GT boxes are implemented
+```
+
+```text
+full ConceptGraphs/LangSplat superiority unless fair comparison is completed
+```

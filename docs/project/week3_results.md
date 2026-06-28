@@ -1,6 +1,6 @@
 # Week 3 Results
 
-Status date: 2026-06-23. Final credential-independent gate complete. Live and cached-live remain blocked.
+Status date: 2026-06-28. Final credential-independent gate complete. Live and cached-live are out of scope for the next phase.
 
 ## Final Status
 
@@ -9,8 +9,8 @@ Status date: 2026-06-23. Final credential-independent gate complete. Live and ca
 | Captured scenes | measured | 5 scenes, 96 RGB-D frames/poses with matching intrinsics |
 | Manual semantic index | measured validation | 5/5 scenes, 96/96 views, 1,046 semantic items; manual, not independent ground truth |
 | Stub semantic gate | measured | 40/40 available and schema-valid results, eight per scene |
-| Live model evaluation | blocked by missing provider credentials | Requires `SEMANTICSPLAT_PROVIDER`, `SEMANTICSPLAT_MODEL`, `SEMANTICSPLAT_API_KEY` |
-| Cached-live replay | blocked because no verified live response cache exists | Zero verified project cache entries |
+| Live model evaluation | out of scope | No successful result exists; not planned for the next phase |
+| Cached-live replay | out of scope | No verified live cache exists; not planned for the next phase |
 | ConceptGraphs smoke | one-frame smoke executed with warning | `outputs/baselines/conceptgraphs_smoke_v1/native_results.json` and `query_results/q051.json`; five-scene comparison still blocked |
 | LangSplat smoke | official sofa smoke executed | `outputs/baselines/langsplat_smoke_v1/native_results.json` and `query_results/ls001.json`; five-scene comparison still blocked |
 | 3D IoU | `N/A` | Independent GT and predicted 3D boxes are unavailable |
@@ -40,21 +40,9 @@ python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode s
 
 The `found` split is measured stub behavior, not correctness. Every five-scene benchmark query has `verification_status: missing_gt`, so no retrieval, negative-query, object, view, node, or zone accuracy is claimed.
 
-## Live And Cached-Live
+## Out-Of-Scope: Live And Cached-Live
 
-Phase C is `blocked: missing SEMANTICSPLAT_PROVIDER, SEMANTICSPLAT_MODEL, SEMANTICSPLAT_API_KEY`.
-
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode live --limit 1 --out outputs\week3\live_gate_v1
-```
-
-GPT-5/o-series payload compatibility is implemented and tested, but no successful credentialed project result exists. Phase D is blocked because no verified live response cache exists.
-
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode cached_live --limit 1 --out outputs\week3\cached_live_gate_v1
-```
-
-Do not run cached-live until the live command produces a `source_mode=live` cache entry.
+No successful provider-backed live result exists, and no verified live cache exists. The current plan intentionally drops live and cached-live work; the next phase should focus on independent GT, verified benchmark expansion, stronger baseline comparisons, and 3D box evaluation.
 
 ## Baseline Smoke
 
@@ -65,8 +53,8 @@ LangSplat executed a minimal Docker smoke on the official pretrained sofa assets
 ## Claims Not Made
 
 - Manual annotations are not independent semantic ground truth.
-- Stub outputs are not live model outputs.
-- No live or cached-live evaluation result exists.
+- Stub outputs are not provider-backed model outputs.
+- No live or cached-live evaluation result exists or is planned for the next phase.
 - No five-scene baseline comparison or superiority result exists.
 - No 3D localization metric is available.
 - ScanNet was not evaluated.

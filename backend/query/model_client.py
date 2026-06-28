@@ -139,11 +139,26 @@ _SYNONYMS = {
     "catering": {"service", "prep", "plates"},
     "play": {"piano", "performance"},
     "av": {"projector", "equipment", "presentation"},
+    "column": {"columns", "pillar", "pillars"},
+    "columns": {"column", "pillar", "pillars"},
+    "pillar": {"column", "columns", "pillars"},
+    "pillars": {"column", "columns", "pillar"},
+    "sofa": {"sofas", "couch", "couches"},
+    "sofas": {"sofa", "couch", "couches"},
+}
+
+_TOKEN_ALIASES = {
+    "collumn": "column",
+    "collumns": "columns",
 }
 
 
 def _tokens(text: str) -> set[str]:
-    values = {token for token in re.findall(r"[a-z0-9]+", text.lower()) if token not in _STOPWORDS}
+    values = {
+        _TOKEN_ALIASES.get(token, token)
+        for token in re.findall(r"[a-z0-9]+", text.lower())
+        if token not in _STOPWORDS
+    }
     expanded = set(values)
     for value in values:
         expanded.update(_SYNONYMS.get(value, set()))

@@ -267,12 +267,18 @@ def semantic_counts(views: list[dict[str, Any]]) -> dict[str, int]:
     }
 
 
-def load_captured_scene_index(scene_dir: Path, *, require_complete: bool = True) -> dict[str, Any]:
+def load_captured_scene_index(
+    scene_dir: Path,
+    *,
+    require_complete: bool = True,
+    allow_unindexed_frames: bool = False,
+) -> dict[str, Any]:
     """Load a captured ViewJSON/tree index without routing through legacy schemas."""
     scene_dir = scene_dir.resolve()
     inspection = inspect_view_index(scene_dir, scene_dir / "views")
     problems = [f"{item['file']}: {item['error']}" for item in inspection["invalid_files"]]
-    if inspection["missing_view_ids"]:
+    missing_view_ids = inspection["missing_view_ids"]
+    if missing_view_ids and not allow_unindexed_frames:
         problems.append("missing ViewJSON: " + ", ".join(inspection["missing_view_ids"]))
     if inspection["unexpected_view_ids"]:
         problems.append("unexpected ViewJSON: " + ", ".join(inspection["unexpected_view_ids"]))
@@ -308,16 +314,28 @@ def load_captured_scene_index(scene_dir: Path, *, require_complete: bool = True)
     if root_id not in nodes or nodes[str(root_id)].get("node_type") != "root":
         raise ValueError("Captured semantic tree root is missing or invalid")
     counts = semantic_counts(inspection["valid_views"])
+    indexed_view_ids = {view["view_id"] for view in inspection["valid_views"]}
     if require_complete:
         if not manifest.get("complete"):
             raise ValueError("Captured semantic index is incomplete; manual annotation is required")
         if counts["semantic_item_count"] == 0:
             raise ValueError("Captured semantic index has no semantic items")
-        if counts["annotated_view_count"] != len(inspection["expected_view_ids"]):
+        if counts["annotated_view_count"] != len(indexed_view_ids):
             raise ValueError("Captured semantic index contains empty view summaries")
+        manifest_view_count = manifest.get("view_count")
+        if isinstance(manifest_view_count, int) and manifest_view_count != len(indexed_view_ids):
+            raise ValueError("Captured semantic tree manifest view_count does not match indexed ViewJSON files")
+    warnings: list[str] = []
+    if missing_view_ids and allow_unindexed_frames:
+        warnings.append(
+            "Unindexed captured frames are excluded from semantic query search: "
+            + ", ".join(missing_view_ids)
+        )
     return {
         "manifest": manifest,
         "views": {view["view_id"]: view for view in inspection["valid_views"]},
         "tree": nodes,
         "counts": counts,
+        "unindexed_frame_ids": missing_view_ids,
+        "warnings": warnings,
     }

@@ -8,7 +8,7 @@ Goal: reduce repeated context loading, avoid repeated explanations, and make eve
 ## 1. Project identity
 
 **Working name:** SemanticSplat / Beyond Proximity
-**Current role of the system:** reproducible semantic-map evaluation prototype, not a completed live/baseline research result.
+**Current role of the system:** reproducible semantic-map evaluation prototype, not a completed quantitative/baseline research result.
 
 The project builds a semantic layer over captured 3D/visual scenes:
 
@@ -25,7 +25,7 @@ Current safest honest claim:
 
 ```text
 The project has a reproducible, test-backed manual semantic-index + stub evaluation prototype on five captured scenes.
-It does not yet have official Replica/ScanNet evaluation, successful live model results, baseline comparisons, independent accuracy, or 3D IoU.
+It does not yet have official Replica/ScanNet evaluation, fair baseline comparisons, independent accuracy, or 3D IoU.
 ```
 
 ---
@@ -43,6 +43,7 @@ Do not fake or overclaim results.
 - 3D IoU/localization unless GT boxes/masks and predicted boxes exist;
 - Replica/ScanNet results unless official dataset scenes are actually ingested and evaluated;
 - automatic/headless pipeline if manual browser capture, manual ViewJSON, or manual tree building was required.
+- that live/cached_live is in scope unless the user explicitly reopens that scope.
 
 ### Use these labels exactly
 
@@ -88,8 +89,8 @@ Important: `Museume-capture` is intentionally spelled this way in current data/d
 ### Current blocked work
 
 ```text
-live model evaluation = blocked by OpenAI API quota/billing, latest error: 429 insufficient_quota
-cached_live = blocked because no verified live cache exists
+live model evaluation = out of scope for the next phase
+cached_live = out of scope for the next phase; no verified live cache exists
 ConceptGraphs = one-frame Docker smoke executed; five-scene comparison still blocked
 LangSplat = official sofa smoke executed; five-scene comparison still blocked
 Replica = not official / not completed
@@ -191,7 +192,7 @@ No independent GT accuracy.
 ### Week 3 original goal
 
 ```text
-Live/cached/baseline evaluation, ConceptGraphs + LangSplat, 2 datasets.
+Baseline evaluation, ConceptGraphs + LangSplat, and broader dataset readiness.
 ```
 
 Actual status:
@@ -199,7 +200,7 @@ Actual status:
 ```text
 PARTIAL.
 Five manual captured scenes + semantic indexes + 40 stub outputs exist.
-Live/cached are blocked; ConceptGraphs has a one-frame smoke result; LangSplat has only an official-sofa smoke result.
+Live/cached are out of scope; ConceptGraphs has a one-frame smoke result; LangSplat has only an official-sofa smoke result.
 ScanNet postponed.
 ```
 
@@ -245,15 +246,17 @@ Use `N/A` for:
 semantic accuracy
 negative correctness
 3D IoU
-live token/latency/cost
+provider-backed token/latency/cost
 baseline quality comparison
 ```
 
 ---
 
-## 8. Modes and provider rules
+## 8. Modes and provider scope
 
-### Environment variables for live mode
+Live and cached-live are not part of the next phase. Do not ask for provider keys, quota, or billing work unless the user explicitly reopens live/cached-live scope.
+
+### Legacy environment variables for live mode
 
 ```powershell
 $env:SEMANTICSPLAT_PROVIDER = "openai"
@@ -266,7 +269,7 @@ Do not print full keys in logs.
 Do not ask the user to paste keys into chat/code.
 Read keys only from environment variables.
 
-### Known live issue
+### Legacy live issue
 
 Latest live attempt reached OpenAI but failed with:
 
@@ -277,7 +280,7 @@ OpenAI HTTP 429 insufficient_quota
 Therefore the correct status is:
 
 ```text
-Live attempted but produced 0 successful results; blocked by API quota/billing.
+Live attempted historically but produced 0 successful results; live/cached-live are now out of scope.
 ```
 
 Not:
@@ -330,17 +333,9 @@ python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode s
 python -B scripts\evaluate_results.py --benchmark docs\benchmarks\benchmark_queries_v1.json --results outputs\week3\final_stub_semantic_gate_v1\query_results --out outputs\week3\final_stub_semantic_gate_v1
 ```
 
-### Run live gate after quota is available
+### Live/cached-live scope
 
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode live --limit 1 --out outputs\week3\live_gate_v1
-```
-
-### Run cached_live only after a verified live cache exists
-
-```powershell
-python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode cached_live --limit 1 --out outputs\week3\cached_live_gate_v1
-```
+Do not run live or cached_live gates in the current plan. Prioritize verified GT, baseline expansion, 3D boxes, and ScanNet readiness.
 
 ### Validate scene geometry
 
@@ -424,8 +419,7 @@ manual semantic index
 stub semantic gate
 schema-valid outputs
 credential-independent pipeline gate
-blocked by provider quota/billing
-blocked because no verified live cache exists
+live/cached-live out of scope for next phase
 baseline smoke attempted / blocked with exact error
 not independent GT
 accuracy unavailable
@@ -481,7 +475,6 @@ Keep answers short unless asked for a report.
 Ask the user only for decisions that cannot be solved from code:
 
 ```text
-API billing/quota available? -> needed for live/cached_live
 Allow external repo clone? -> needed for ConceptGraphs/LangSplat
 GPU/CUDA available? -> may be needed for baselines
 Official Replica/ScanNet data available? -> needed for original dataset plan
@@ -542,7 +535,7 @@ docs/archive/review_required/
 Use this when generating reports/status summaries:
 
 ```text
-SemanticSplat currently provides a reproducible, test-backed evaluation prototype over five manually captured and manually annotated RGB-D pilot scenes. It includes canonical schemas, semantic indexes, generated trees, benchmark queries, and stub-mode query evaluation. Live model evaluation was attempted but produced no successful result because the provider returned insufficient quota. cached_live replay is blocked because no verified live cache exists. ConceptGraphs has a one-frame smoke result and LangSplat has an official-sofa smoke result, but neither is a fair five-scene comparison or GT-backed accuracy result. The project does not yet provide official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or baseline head-to-head comparison.
+SemanticSplat currently provides a reproducible, test-backed evaluation prototype over five manually captured and manually annotated RGB-D pilot scenes. It includes canonical schemas, semantic indexes, generated trees, benchmark queries, and stub-mode query evaluation. Live and cached-live evaluation are out of scope for the next phase. ConceptGraphs has a one-frame smoke result and LangSplat has an official-sofa smoke result, but neither is a fair five-scene comparison or GT-backed accuracy result. The project does not yet provide official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or baseline head-to-head comparison.
 ```
 
 ---
