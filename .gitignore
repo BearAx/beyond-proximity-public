@@ -77,3 +77,6 @@ outputs/baselines/conceptgraphs_smoke_v1/**
 /leo-fork/
 local_backup*.zip
 graphify-out/
+
+# Person 4 private sprint journal (thoughts, WIP notes)
+worklog/
