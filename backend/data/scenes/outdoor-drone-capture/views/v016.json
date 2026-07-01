@@ -37,8 +37,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          29.130203989669166,
+          6.821736627343239,
+          13.42730501988316
+        ],
+        "size": [
+          49.93465614273871,
+          19.641302947728423,
+          20.93316481891965
+        ],
+        "label": "open water"
+      },
       "source": "manual"
     },
     {
@@ -61,8 +78,25 @@
       ],
       "approx_location": "right side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.52,
+        0.18,
+        0.96,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          36.03678303214762,
+          1.4162389595997027,
+          7.439169568924523
+        ],
+        "size": [
+          29.516452407812494,
+          16.6907131006421,
+          18.871279721629186
+        ],
+        "label": "bright glare"
+      },
       "source": "manual"
     },
     {

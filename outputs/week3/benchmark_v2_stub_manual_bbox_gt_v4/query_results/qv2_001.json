@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_001",
+  "query": "Find the piano",
+  "query_type": "simple_object",
+  "structured_plan": {
+    "target": "piano",
+    "query_type": "simple_object",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_conferencehall_elevator_access",
+    "object_v011_001_piano"
+  ],
+  "selected_views": [
+    "v011"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "piano",
+    "selected_node_id": "object_v011_001_piano",
+    "selected_view_id": "v011",
+    "bbox_2d": [
+      0.04,
+      0.18,
+      0.48,
+      0.86
+    ],
+    "bbox_3d": {
+      "center": [
+        24.009989351627258,
+        12.571171141478484,
+        -49.21525154281468
+      ],
+      "size": [
+        42.94269267656828,
+        27.69561953599068,
+        56.55871926205863
+      ],
+      "label": "piano"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v011 with 1 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001765,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001765
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

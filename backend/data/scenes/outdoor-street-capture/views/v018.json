@@ -37,8 +37,25 @@
       ],
       "approx_location": "center and background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.44,
+        1.0,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -58.97522012746641,
+          24.278340438394785,
+          28.263110044950846
+        ],
+        "size": [
+          69.77315104342846,
+          21.803218115386656,
+          43.46516951921246
+        ],
+        "label": "red building facade"
+      },
       "source": "manual"
     },
     {
@@ -84,8 +101,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -27.32002533450503,
+          16.070564470962623,
+          37.90859829141303
+        ],
+        "size": [
+          9.52375575613926,
+          5.895695342577952,
+          15.468633590505199
+        ],
+        "label": "cobblestone pavement"
+      },
       "source": "manual"
     },
     {

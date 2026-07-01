@@ -6,16 +6,25 @@
   "name": "Reichenstein information area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_reichenstein_media",
   "children_ids": [],
   "view_ids": [
     "v017"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v017",
       "approx_location": "center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_museume_reichenstein_media",
+    "manual_zone_museume_window_mesh_side"
+  ],
+  "zone_labels": [
+    "Reichenstein and media station",
+    "window and mesh side"
   ]
 }

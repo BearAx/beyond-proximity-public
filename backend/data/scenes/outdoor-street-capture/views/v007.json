@@ -37,8 +37,25 @@
       ],
       "approx_location": "center-right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.42,
+        0.18,
+        0.82,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          -11.183094387887776,
+          3.439878677778099,
+          -0.89709795737385
+        ],
+        "size": [
+          9.268923769394167,
+          7.336141246093395,
+          6.324118877661359
+        ],
+        "label": "turquoise supports"
+      },
       "source": "manual"
     },
     {
@@ -49,8 +66,25 @@
       ],
       "approx_location": "right side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.04,
+        1.0,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -18.082545639299095,
+          9.01691059720008,
+          -1.7646434171848027
+        ],
+        "size": [
+          23.966078195093687,
+          17.599360273902455,
+          21.26196796765086
+        ],
+        "label": "glass-block wall"
+      },
       "source": "manual"
     },
     {
@@ -84,8 +118,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -6.816806452852818,
+          4.714076488448574,
+          -8.741696030550496
+        ],
+        "size": [
+          7.480915481562064,
+          4.8993174927213605,
+          23.179396446795124
+        ],
+        "label": "paved walkway"
+      },
       "source": "manual"
     },
     {

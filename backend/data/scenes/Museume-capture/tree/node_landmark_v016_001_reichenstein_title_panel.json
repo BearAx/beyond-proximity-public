@@ -6,11 +6,18 @@
   "name": "Reichenstein title panel",
   "summary": "Landmark observation from v016.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_reichenstein_media",
   "children_ids": [],
   "view_ids": [
     "v016"
   ],
+  "depth": 2,
   "approx_location": "left-center",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_museume_reichenstein_media"
+  ],
+  "zone_labels": [
+    "Reichenstein and media station"
+  ]
 }

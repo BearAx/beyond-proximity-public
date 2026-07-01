@@ -16,6 +16,8 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+ZONE_GT_PATH = ROOT / "docs" / "benchmarks" / "manual_zone_gt_v2.json"
+
 from backend.io.captured_semantic_index import (  # noqa: E402
     QUERY_RUNNER_SCHEMA_COMPATIBLE,
     TREE_MANIFEST_SCHEMA_VERSION,
@@ -64,6 +66,7 @@ def base_node(
         "parent_id": "root" if node_type != "root" else None,
         "children_ids": [],
         "view_ids": sorted(set(view_ids)),
+        "depth": 0 if node_type == "root" else 1,
     }
 
 
@@ -145,6 +148,83 @@ def semantic_nodes(scene_id: str, views: list[dict[str, Any]], mode: str) -> lis
     return sorted([*regions.values(), *nodes], key=lambda node: node["node_id"])
 
 
+def load_manual_zones(scene_id: str) -> list[dict[str, Any]]:
+    if not ZONE_GT_PATH.is_file():
+        return []
+    data = json.loads(ZONE_GT_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        return []
+    for scene in data.get("scenes", []):
+        if not isinstance(scene, dict):
+            continue
+        if scene.get("captured_scene_id") != scene_id:
+            continue
+        zones = scene.get("zones", [])
+        return [zone for zone in zones if isinstance(zone, dict)]
+    return []
+
+
+def zone_nodes(scene_id: str, zones: list[dict[str, Any]], mode: str) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for zone in zones:
+        view_ids = [str(view_id) for view_id in zone.get("view_ids", [])]
+        node = base_node(
+            scene_id=scene_id,
+            node_id=str(zone["zone_id"]),
+            node_type="zone",
+            name=str(zone["zone_label"]),
+            summary=str(zone.get("description") or "Manual zone reference from captured-scene review."),
+            mode=mode,
+            view_ids=view_ids,
+        )
+        node["depth"] = 1
+        node["zone_source"] = "docs/benchmarks/manual_zone_gt_v2.json"
+        out.append(node)
+    return sorted(out, key=lambda node: node["node_id"])
+
+
+def assign_nodes_to_zones(nodes: list[dict[str, Any]], zones: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[str]]:
+    if not zones:
+        return nodes, [node["node_id"] for node in nodes]
+
+    zone_by_id = {str(zone.get("zone_id") or zone.get("node_id")): zone for zone in zones}
+    zone_children: dict[str, list[str]] = {zone_id: [] for zone_id in zone_by_id}
+    root_children: list[str] = []
+
+    for node in nodes:
+        node_views = {str(view_id) for view_id in node.get("view_ids", [])}
+        matches: list[tuple[int, int, str]] = []
+        all_zone_ids: list[str] = []
+        all_zone_labels: list[str] = []
+        for zone_id, zone in zone_by_id.items():
+            zone_views = {str(view_id) for view_id in zone.get("view_ids", [])}
+            overlap = len(node_views & zone_views)
+            if overlap <= 0:
+                continue
+            all_zone_ids.append(zone_id)
+            all_zone_labels.append(str(zone.get("zone_label") or zone.get("name") or zone_id))
+            matches.append((overlap, -len(zone_views), zone_id))
+        if not matches:
+            node["parent_id"] = "root"
+            node["depth"] = 1
+            root_children.append(str(node["node_id"]))
+            continue
+
+        matches.sort(reverse=True)
+        best_zone_id = matches[0][2]
+        node["parent_id"] = best_zone_id
+        node["depth"] = 2
+        node["zone_ids"] = sorted(all_zone_ids)
+        node["zone_labels"] = sorted(set(all_zone_labels))
+        zone_children[best_zone_id].append(str(node["node_id"]))
+
+    for zone in zones:
+        zone_id = str(zone.get("zone_id") or zone.get("node_id"))
+        zone["children_ids"] = sorted(zone_children[zone_id])
+
+    return nodes, root_children
+
+
 def _prepare_output(out_dir: Path) -> set[str]:
     existing_json = list(out_dir.glob("*.json")) if out_dir.exists() else []
     if not existing_json:
@@ -183,6 +263,10 @@ def build_scene_tree(scene_dir: Path, views_dir: Path, out_dir: Path) -> dict[st
     mode = next(iter(modes))
     counts = semantic_counts(views)
     nodes = semantic_nodes(scene_dir.name, views, mode)
+    zones = zone_nodes(scene_dir.name, load_manual_zones(scene_dir.name), mode)
+    nodes, root_unzoned_children = assign_nodes_to_zones(nodes, zones)
+    for zone in zones:
+        zone["children_ids"] = list(zone.get("children_ids", []))
     root = base_node(
         scene_id=scene_dir.name,
         node_id="root",
@@ -192,8 +276,8 @@ def build_scene_tree(scene_dir: Path, views_dir: Path, out_dir: Path) -> dict[st
         mode=mode,
         view_ids=[view["view_id"] for view in views],
     )
-    root["children_ids"] = [node["node_id"] for node in nodes]
-    all_nodes = [root, *nodes]
+    root["children_ids"] = [node["node_id"] for node in zones] + root_unzoned_children
+    all_nodes = [root, *zones, *nodes]
 
     warnings: list[str] = []
     empty_summary_count = len(views) - counts["annotated_view_count"]
@@ -203,6 +287,8 @@ def build_scene_tree(scene_dir: Path, views_dir: Path, out_dir: Path) -> dict[st
         warnings.append(f"Tree is incomplete: {empty_summary_count} ViewJSON files have empty summaries.")
     if counts["bbox_3d_count"]:
         warnings.append("ViewJSON bbox_3d values are predictions/annotations, not independent 3D ground truth.")
+    if zones:
+        warnings.append("Manual zone nodes are reference labels from docs/benchmarks/manual_zone_gt_v2.json, not independent dataset GT.")
     if mode == "stub":
         warnings.append("Stub semantic content must not be reported as manual or live model output.")
     if not QUERY_RUNNER_SCHEMA_COMPATIBLE:
@@ -224,6 +310,8 @@ def build_scene_tree(scene_dir: Path, views_dir: Path, out_dir: Path) -> dict[st
         "view_count": len(views),
         "annotated_view_count": counts["annotated_view_count"],
         "semantic_item_count": counts["semantic_item_count"],
+        "manual_zone_node_count": len(zones),
+        "tree_native_zone_nodes": bool(zones),
         "complete": complete,
         "query_runner_schema_compatible": QUERY_RUNNER_SCHEMA_COMPATIBLE,
         "warnings": warnings,

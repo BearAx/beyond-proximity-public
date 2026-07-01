@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_005",
+  "query": "Find the round tables",
+  "query_type": "simple_object",
+  "structured_plan": {
+    "target": "round tables",
+    "query_type": "simple_object",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_conferencehall_banquet_hall",
+    "object_v018_001_round_tables"
+  ],
+  "selected_views": [
+    "v018"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "round tables",
+    "selected_node_id": "object_v018_001_round_tables",
+    "selected_view_id": "v018",
+    "bbox_2d": [
+      0.22,
+      0.44,
+      0.78,
+      1.0
+    ],
+    "bbox_3d": {
+      "center": [
+        41.828710563298024,
+        8.16929722599019,
+        -21.76128212672689
+      ],
+      "size": [
+        6.52801996366955,
+        13.0111995644674,
+        21.72187696285535
+      ],
+      "label": "round tables"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v018 with 2 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001485,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001485
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

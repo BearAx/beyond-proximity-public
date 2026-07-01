@@ -6,11 +6,18 @@
   "name": "glass-block corner",
   "summary": "Landmark observation from v009.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_facade_entrance_glassblock",
   "children_ids": [],
   "view_ids": [
     "v009"
   ],
+  "depth": 2,
   "approx_location": "left-center",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_street_facade_entrance_glassblock"
+  ],
+  "zone_labels": [
+    "facade entrances and glass-block wall"
+  ]
 }

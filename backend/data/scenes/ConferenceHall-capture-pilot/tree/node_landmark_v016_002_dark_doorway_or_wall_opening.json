@@ -6,11 +6,18 @@
   "name": "dark doorway or wall opening",
   "summary": "Landmark observation from v016.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_lounge_corridor",
   "children_ids": [],
   "view_ids": [
     "v016"
   ],
+  "depth": 2,
   "approx_location": "center-left",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "lounge seating and corridor"
+  ]
 }

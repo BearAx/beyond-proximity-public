@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-drone-capture",
+  "query_id": "qv2_127",
+  "query": "Find the green-blue sea water",
+  "query_type": "attribute",
+  "structured_plan": {
+    "target": "blue green sea water",
+    "query_type": "attribute",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_outdoor_drone_fortress_island",
+    "object_v013_005_sea_water"
+  ],
+  "selected_views": [
+    "v013"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "sea water",
+    "selected_node_id": "object_v013_005_sea_water",
+    "selected_view_id": "v013",
+    "bbox_2d": [
+      0.47,
+      0.44,
+      1.0,
+      1.0
+    ],
+    "bbox_3d": {
+      "center": [
+        21.829698807776353,
+        5.746455916541982,
+        -2.040066468621543
+      ],
+      "size": [
+        7.856811206864265,
+        12.860815527638119,
+        21.000132358183283
+      ],
+      "label": "sea water"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v013 with 4 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001236,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001236
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 16,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

@@ -32,8 +32,25 @@
       ],
       "approx_location": "left-center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.1544,
+        0.3096,
+        0.3656,
+        0.6704
+      ],
+      "bbox_3d": {
+        "center": [
+          22.1181071670422,
+          -0.49988764489455706,
+          14.194601090712068
+        ],
+        "size": [
+          11.439263758166916,
+          2.098036723336929,
+          25.080101068954665
+        ],
+        "label": "Reichenstein information panel"
+      },
       "source": "manual"
     },
     {
@@ -69,8 +86,25 @@
       ],
       "approx_location": "foreground and right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.52,
+        0.48,
+        0.96,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          51.512087630191154,
+          10.017379240217315,
+          21.18510309657419
+        ],
+        "size": [
+          46.78614065405971,
+          20.80148353182265,
+          38.16911482960259
+        ],
+        "label": "metal mesh partitions"
+      },
       "source": "manual"
     },
     {
@@ -81,8 +115,25 @@
       ],
       "approx_location": "floor",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.2964,
+        0.58,
+        0.7036,
+        0.88
+      ],
+      "bbox_3d": {
+        "center": [
+          42.27690686258879,
+          7.679975170561427,
+          39.983032478520634
+        ],
+        "size": [
+          57.685769734174094,
+          14.682532560819837,
+          74.48158834682879
+        ],
+        "label": "yellow floor marker"
+      },
       "source": "manual"
     },
     {

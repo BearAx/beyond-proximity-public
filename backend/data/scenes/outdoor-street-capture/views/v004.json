@@ -37,8 +37,25 @@
       ],
       "approx_location": "center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.22,
+        0.44,
+        0.78,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -6.0010787220981,
+          1.5193728269806401,
+          -12.762407955394103
+        ],
+        "size": [
+          9.020682733933288,
+          6.0856567721733015,
+          5.285449272271633
+        ],
+        "label": "covered walkway"
+      },
       "source": "manual"
     },
     {

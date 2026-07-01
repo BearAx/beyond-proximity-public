@@ -6,11 +6,12 @@
   "name": "storage shelves",
   "summary": "Object observation from v002.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_entrance_information",
   "children_ids": [],
   "view_ids": [
     "v002"
   ],
+  "depth": 2,
   "attributes": [
     "white",
     "open"
@@ -19,5 +20,13 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_museume_entrance_information",
+    "manual_zone_museume_visitor_seating_workshop"
+  ],
+  "zone_labels": [
+    "entrance and information",
+    "visitor seating and workshop"
+  ]
 }

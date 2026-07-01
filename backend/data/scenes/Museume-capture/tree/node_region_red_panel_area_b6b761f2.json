@@ -6,12 +6,13 @@
   "name": "red panel area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_red_panel_gallery",
   "children_ids": [],
   "view_ids": [
     "v003",
     "v018"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v003",
@@ -23,5 +24,11 @@
       "approx_location": "center-right",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_museume_red_panel_gallery"
+  ],
+  "zone_labels": [
+    "red-panel exhibition gallery"
   ]
 }

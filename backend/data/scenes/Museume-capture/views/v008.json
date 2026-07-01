@@ -37,8 +37,25 @@
       ],
       "approx_location": "left side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.04,
+        0.53,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          4.03751070366595,
+          3.5810721637478258,
+          11.785763848787418
+        ],
+        "size": [
+          25.207666803736597,
+          20.791983415354494,
+          16.234351087084256
+        ],
+        "label": "tall windows"
+      },
       "source": "manual"
     },
     {
@@ -61,8 +78,25 @@
       ],
       "approx_location": "center-right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.524,
+        0.3096,
+        0.716,
+        0.6704
+      ],
+      "bbox_3d": {
+        "center": [
+          4.251199405501389,
+          6.964762072718262,
+          34.43431345351662
+        ],
+        "size": [
+          27.64110583595722,
+          14.530816531411407,
+          54.14400001582026
+        ],
+        "label": "red exhibition panel"
+      },
       "source": "manual"
     },
     {

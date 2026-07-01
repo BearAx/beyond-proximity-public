@@ -32,8 +32,25 @@
       ],
       "approx_location": "center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.3896,
+        0.3096,
+        0.6104,
+        0.6704
+      ],
+      "bbox_3d": {
+        "center": [
+          20.086527696277212,
+          -1.5664298354204274,
+          6.392404176407438
+        ],
+        "size": [
+          4.12067075947099,
+          4.5641910329415385,
+          10.337270826569716
+        ],
+        "label": "Reichenstein information panel"
+      },
       "source": "manual"
     },
     {
@@ -56,8 +73,25 @@
       ],
       "approx_location": "left and right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.04,
+        1.0,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          28.207409654771187,
+          0.7259462267252115,
+          13.500721758092062
+        ],
+        "size": [
+          45.45651689872897,
+          17.809501576712325,
+          19.426378587491868
+        ],
+        "label": "tall windows"
+      },
       "source": "manual"
     },
     {

@@ -6,11 +6,12 @@
   "name": "distant hills",
   "summary": "Object observation from v016.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_city_shoreline",
   "children_ids": [],
   "view_ids": [
     "v016"
   ],
+  "depth": 2,
   "attributes": [
     "faint"
   ],
@@ -18,5 +19,13 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_drone_city_shoreline",
+    "manual_zone_outdoor_drone_open_water_bay"
+  ],
+  "zone_labels": [
+    "city shoreline and hills",
+    "open water and bay"
+  ]
 }

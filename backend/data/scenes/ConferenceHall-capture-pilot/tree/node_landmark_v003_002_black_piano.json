@@ -6,11 +6,20 @@
   "name": "black piano",
   "summary": "Landmark observation from v003.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_elevator_access",
   "children_ids": [],
   "view_ids": [
     "v003"
   ],
+  "depth": 2,
   "approx_location": "center-right",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_elevator_access",
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "elevator and doorway access",
+    "lounge seating and corridor"
+  ]
 }

@@ -49,8 +49,25 @@
       ],
       "approx_location": "left-center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.04,
+        0.53,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          10.032874952324862,
+          31.013413714026054,
+          35.15044902115808
+        ],
+        "size": [
+          49.299147577537624,
+          56.568832932565506,
+          20.468318693038498
+        ],
+        "label": "glass-block wall"
+      },
       "source": "manual"
     },
     {

@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-drone-capture",
+  "query_id": "qv2_144",
+  "query": "Find the distant city orientation landmark",
+  "query_type": "functional",
+  "structured_plan": {
+    "target": "city distant landmark orientation",
+    "query_type": "functional",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_outdoor_drone_bridge_crossing",
+    "landmark_v015_001_distant_city_shoreline"
+  ],
+  "selected_views": [
+    "v015"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "distant city",
+    "selected_node_id": "landmark_v015_001_distant_city_shoreline",
+    "selected_view_id": "v015",
+    "bbox_2d": [
+      0.18,
+      0.48,
+      0.82,
+      0.98
+    ],
+    "bbox_3d": {
+      "center": [
+        7.842699447129734,
+        4.417094101262509,
+        5.701755830084773
+      ],
+      "size": [
+        10.09374906274184,
+        9.125056381366344,
+        23.761407714044804
+      ],
+      "label": "distant city"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v015 with 4 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001141,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001141
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 16,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

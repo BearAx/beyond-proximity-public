@@ -71,8 +71,25 @@
       ],
       "approx_location": "right-center upper area",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.6344,
+        0.1208,
+        0.8456,
+        0.2792
+      ],
+      "bbox_3d": {
+        "center": [
+          -2.231462163404645,
+          -1.5240093422600711,
+          -30.002223582187007
+        ],
+        "size": [
+          5.070519865799879,
+          3.2763811050599636,
+          8.42200370069018
+        ],
+        "label": "green exit sign"
+      },
       "source": "manual"
     },
     {

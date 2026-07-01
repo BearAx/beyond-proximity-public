@@ -37,8 +37,25 @@
       ],
       "approx_location": "left and center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.14,
+        1.0,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -4.9140046240880295,
+          7.0256625325000766,
+          -15.395367985678202
+        ],
+        "size": [
+          32.86648912093971,
+          14.454115470549656,
+          38.152046929927984
+        ],
+        "label": "red upholstered seats"
+      },
       "source": "manual"
     },
     {
@@ -73,8 +90,25 @@
       ],
       "approx_location": "upper right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.6344,
+        0.1208,
+        0.8456,
+        0.2792
+      ],
+      "bbox_3d": {
+        "center": [
+          -11.549188933662267,
+          0.9942783292921047,
+          -6.412477607243428
+        ],
+        "size": [
+          8.77737957909418,
+          1.9833426654227226,
+          17.91682300884358
+        ],
+        "label": "green exit sign"
+      },
       "source": "manual"
     },
     {
@@ -85,8 +119,25 @@
       ],
       "approx_location": "right side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.52,
+        0.08,
+        0.96,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -15.639831628930386,
+          11.29717287996858,
+          -12.92996190871637
+        ],
+        "size": [
+          25.982106044417247,
+          29.380244032601606,
+          22.42659473112312
+        ],
+        "label": "doorway"
+      },
       "source": "manual"
     },
     {

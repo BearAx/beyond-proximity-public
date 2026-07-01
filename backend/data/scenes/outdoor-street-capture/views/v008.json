@@ -37,8 +37,25 @@
       ],
       "approx_location": "center-right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.37,
+        0.04,
+        0.87,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -6.9149390530208485,
+          3.705228417185013,
+          2.7145721172408748
+        ],
+        "size": [
+          4.856567817427687,
+          7.862830640422026,
+          9.944781748990337
+        ],
+        "label": "glass entrance doors"
+      },
       "source": "manual"
     },
     {
@@ -49,8 +66,25 @@
       ],
       "approx_location": "right door",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.04,
+        1.0,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -42.658917135268496,
+          -4.914144204313222,
+          -0.0643938246611091
+        ],
+        "size": [
+          75.48568435578287,
+          39.21690262645376,
+          11.9891553680578
+        ],
+        "label": "building number 8"
+      },
       "source": "manual"
     },
     {
@@ -61,8 +95,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -7.317973092022418,
+          5.41023469204957,
+          0.6582988061561643
+        ],
+        "size": [
+          7.745862353187245,
+          6.508783367685831,
+          13.776166860261235
+        ],
+        "label": "metal handrails"
+      },
       "source": "manual"
     },
     {

@@ -32,8 +32,25 @@
       ],
       "approx_location": "center and right side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.14,
+        1.0,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -16.043859269641633,
+          8.48140539676856,
+          -0.9157818706431984
+        ],
+        "size": [
+          26.495763972504257,
+          17.87129737109603,
+          21.190391305034282
+        ],
+        "label": "sofas"
+      },
       "source": "manual"
     },
     {
@@ -44,8 +61,25 @@
       ],
       "approx_location": "left foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.04,
+        0.48,
+        0.48,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -7.208075637706957,
+          9.814423298699898,
+          -12.377996365828004
+        ],
+        "size": [
+          14.594136870905015,
+          14.834734226930653,
+          6.2946999195696325
+        ],
+        "label": "armchair"
+      },
       "source": "manual"
     },
     {
@@ -69,8 +103,25 @@
       ],
       "approx_location": "left and right sides near sofas",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.05,
+        0.42,
+        0.95,
+        0.96
+      ],
+      "bbox_3d": {
+        "center": [
+          -10.184991333484957,
+          7.9343062013230465,
+          -6.853652573165102
+        ],
+        "size": [
+          21.06406786371532,
+          11.64520114257586,
+          19.785523775585673
+        ],
+        "label": "table lamps"
+      },
       "source": "manual"
     },
     {

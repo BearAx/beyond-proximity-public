@@ -1,0 +1,161 @@
+{
+  "schema_version": "semanticsplat.run_config.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "week": "week3",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "status": "complete",
+  "started_at": "2026-07-01T19:59:05.488900+00:00",
+  "finished_at": "2026-07-01T19:59:15.125667+00:00",
+  "git_revision": "d017960dcac652bbd8caf2c3cdc91806ffbc9cd1",
+  "config_source": "C:\\GitProjects\\beyond-proximity\\configs\\week3_benchmark_v2_bbox_gt.yaml",
+  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\benchmark_queries_v2.json",
+  "query_limit": null,
+  "output_dir": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4",
+  "scene_ids": [
+    "ConferenceHall-capture-pilot",
+    "Museume-capture",
+    "Theater-capture",
+    "outdoor-street-capture",
+    "outdoor-drone-capture"
+  ],
+  "scenes": [
+    {
+      "scene_id": "ConferenceHall-capture-pilot",
+      "benchmark_scene_id": "ConferenceHall",
+      "path": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\ConferenceHall-capture-pilot",
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": false,
+      "validation_report": "C:\\GitProjects\\beyond-proximity\\docs\\validation\\semantic_index\\ConferenceHall-capture-pilot_semantic_index.json"
+    },
+    {
+      "scene_id": "Museume-capture",
+      "benchmark_scene_id": "Museume",
+      "path": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\Museume-capture",
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": false,
+      "validation_report": "C:\\GitProjects\\beyond-proximity\\docs\\validation\\semantic_index\\Museume-capture_semantic_index.json"
+    },
+    {
+      "scene_id": "Theater-capture",
+      "benchmark_scene_id": "Theater",
+      "path": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\Theater-capture",
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": false,
+      "validation_report": "C:\\GitProjects\\beyond-proximity\\docs\\validation\\semantic_index\\Theater-capture_semantic_index.json"
+    },
+    {
+      "scene_id": "outdoor-street-capture",
+      "benchmark_scene_id": "outdoor-street",
+      "path": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\outdoor-street-capture",
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": false,
+      "validation_report": "C:\\GitProjects\\beyond-proximity\\docs\\validation\\semantic_index\\outdoor-street-capture_semantic_index.json"
+    },
+    {
+      "scene_id": "outdoor-drone-capture",
+      "benchmark_scene_id": "outdoor-drone",
+      "path": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\outdoor-drone-capture",
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": false,
+      "validation_report": "C:\\GitProjects\\beyond-proximity\\docs\\validation\\semantic_index\\outdoor-drone-capture_semantic_index.json"
+    }
+  ],
+  "scene_status": {
+    "ConferenceHall-capture-pilot": {
+      "status": "ready",
+      "candidate_view_count": 20,
+      "semantic_index_format": "captured_viewjson_v1"
+    },
+    "Museume-capture": {
+      "status": "ready",
+      "candidate_view_count": 20,
+      "semantic_index_format": "captured_viewjson_v1"
+    },
+    "Theater-capture": {
+      "status": "ready",
+      "candidate_view_count": 20,
+      "semantic_index_format": "captured_viewjson_v1"
+    },
+    "outdoor-street-capture": {
+      "status": "ready",
+      "candidate_view_count": 21,
+      "semantic_index_format": "captured_viewjson_v1"
+    },
+    "outdoor-drone-capture": {
+      "status": "ready",
+      "candidate_view_count": 16,
+      "semantic_index_format": "captured_viewjson_v1"
+    }
+  },
+  "model": {
+    "mode": "stub",
+    "provider": "deterministic_local",
+    "model": "semantic_index_lexical_v1",
+    "version": "1",
+    "temperature": 0.0
+  },
+  "depth_validation": {
+    "status": "reliable",
+    "scenes": {
+      "ConferenceHall-capture-pilot": {
+        "status": "reliable",
+        "checked_frame_count": 3,
+        "constant_frame_count": 0,
+        "invalid_frame_count": 0,
+        "reason": "Sampled depth maps are finite and non-constant."
+      },
+      "Museume-capture": {
+        "status": "reliable",
+        "checked_frame_count": 3,
+        "constant_frame_count": 0,
+        "invalid_frame_count": 0,
+        "reason": "Sampled depth maps are finite and non-constant."
+      },
+      "Theater-capture": {
+        "status": "reliable",
+        "checked_frame_count": 3,
+        "constant_frame_count": 0,
+        "invalid_frame_count": 0,
+        "reason": "Sampled depth maps are finite and non-constant."
+      },
+      "outdoor-street-capture": {
+        "status": "reliable",
+        "checked_frame_count": 3,
+        "constant_frame_count": 0,
+        "invalid_frame_count": 0,
+        "reason": "Sampled depth maps are finite and non-constant."
+      },
+      "outdoor-drone-capture": {
+        "status": "reliable",
+        "checked_frame_count": 3,
+        "constant_frame_count": 0,
+        "invalid_frame_count": 0,
+        "reason": "Sampled depth maps are finite and non-constant."
+      }
+    },
+    "reason": "All scenes must be reliable for aggregate 3D metrics."
+  },
+  "warnings": [
+    "Stub mode uses deterministic semantic-index fallback, not model reasoning."
+  ],
+  "model_cache_dir": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\model_cache",
+  "construction_cost": {
+    "runtime_seconds": 0.027034,
+    "view_descriptions_runtime_seconds": 0.008403,
+    "tree_runtime_seconds": 0.018631,
+    "token_usage": null
+  },
+  "result_coverage": {
+    "benchmark_total_query_count": 150,
+    "benchmark_query_count": 150,
+    "excluded_scene_query_count": 0,
+    "result_count": 150,
+    "missing_result_count": 0,
+    "schema_valid_result_count": 150,
+    "evaluated_result_count": 150,
+    "unavailable_result_count": 0,
+    "accuracy_eligible_result_count": 150,
+    "ground_truth_unavailable_result_count": 0
+  }
+}

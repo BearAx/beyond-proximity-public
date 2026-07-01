@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Theater-capture",
+  "query_id": "qv2_069",
+  "query": "Find the pale green corridor walls",
+  "query_type": "attribute",
+  "structured_plan": {
+    "target": "corridor green pale walls",
+    "query_type": "attribute",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_theater_stage_backstage",
+    "object_v019_003_pale_green_walls"
+  ],
+  "selected_views": [
+    "v019"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "pale green walls",
+    "selected_node_id": "object_v019_003_pale_green_walls",
+    "selected_view_id": "v019",
+    "bbox_2d": [
+      0.05,
+      0.08,
+      0.95,
+      0.9
+    ],
+    "bbox_3d": {
+      "center": [
+        -10.279571588623366,
+        3.319663091614191,
+        -18.26324495890807
+      ],
+      "size": [
+        21.55025884351779,
+        9.382513972434277,
+        6.6686493025414535
+      ],
+      "label": "pale green walls"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v019 with 4 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001626,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001626
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-street-capture",
+  "query_id": "qv2_098",
+  "query": "Find the metal turquoise supports",
+  "query_type": "attribute",
+  "structured_plan": {
+    "target": "metal supports turquoise",
+    "query_type": "attribute",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_outdoor_street_facade_entrance_glassblock",
+    "object_v007_001_turquoise_supports"
+  ],
+  "selected_views": [
+    "v007"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "turquoise supports",
+    "selected_node_id": "object_v007_001_turquoise_supports",
+    "selected_view_id": "v007",
+    "bbox_2d": [
+      0.42,
+      0.18,
+      0.82,
+      0.86
+    ],
+    "bbox_3d": {
+      "center": [
+        -11.183094387887776,
+        3.439878677778099,
+        -0.89709795737385
+      ],
+      "size": [
+        9.268923769394167,
+        7.336141246093395,
+        6.324118877661359
+      ],
+      "label": "turquoise supports"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v007 with 3 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001735,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001735
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 21,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

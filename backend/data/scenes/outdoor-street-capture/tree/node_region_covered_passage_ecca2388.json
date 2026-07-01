@@ -6,12 +6,13 @@
   "name": "covered passage",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_covered_passage_graffiti",
   "children_ids": [],
   "view_ids": [
     "v003",
     "v004"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v003",
@@ -23,5 +24,11 @@
       "approx_location": "center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_outdoor_street_covered_passage_graffiti"
+  ],
+  "zone_labels": [
+    "covered passage and graffiti wall"
   ]
 }

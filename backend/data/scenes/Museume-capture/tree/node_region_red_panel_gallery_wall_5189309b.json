@@ -6,16 +6,25 @@
   "name": "red panel gallery wall",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_ruin_label_gallery",
   "children_ids": [],
   "view_ids": [
     "v005"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v005",
       "approx_location": "left and rear",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_museume_red_panel_gallery",
+    "manual_zone_museume_ruin_label_gallery"
+  ],
+  "zone_labels": [
+    "red-panel exhibition gallery",
+    "ruin and label gallery"
   ]
 }

@@ -6,16 +6,23 @@
   "name": "banquet seating side",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_banquet_hall",
   "children_ids": [],
   "view_ids": [
     "v017"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v017",
       "approx_location": "left and center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_conferencehall_banquet_hall"
+  ],
+  "zone_labels": [
+    "conference and banquet hall"
   ]
 }

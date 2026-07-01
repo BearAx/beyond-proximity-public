@@ -6,11 +6,18 @@
   "name": "small utility panel",
   "summary": "Landmark observation from v011.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_walkway_road",
   "children_ids": [],
   "view_ids": [
     "v011"
   ],
+  "depth": 2,
   "approx_location": "center-right",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_street_walkway_road"
+  ],
+  "zone_labels": [
+    "street walkway and roadway"
+  ]
 }

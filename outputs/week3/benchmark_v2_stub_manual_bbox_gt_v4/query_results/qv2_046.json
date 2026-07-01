@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_046",
+  "query": "Find the information counter in the information counter area",
+  "query_type": "multi_hop",
+  "structured_plan": {
+    "target": "counter information",
+    "query_type": "multi_hop",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_museume_entrance_information",
+    "object_v001_001_information_counter"
+  ],
+  "selected_views": [
+    "v001"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "information counter",
+    "selected_node_id": "object_v001_001_information_counter",
+    "selected_view_id": "v001",
+    "bbox_2d": [
+      0.18,
+      0.18,
+      0.58,
+      0.86
+    ],
+    "bbox_3d": {
+      "center": [
+        38.820238149943,
+        5.303076782763266,
+        -3.2404938227875757
+      ],
+      "size": [
+        62.77845711043322,
+        25.62134553259503,
+        12.09606685326914
+      ],
+      "label": "information counter"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v001 with 2 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001614,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001614
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

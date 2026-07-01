@@ -62,8 +62,25 @@
       ],
       "approx_location": "center foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.27,
+        0.48,
+        0.73,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          19.796453091807876,
+          7.537204032700657,
+          -16.87686397357554
+        ],
+        "size": [
+          14.473418661899032,
+          10.639090679496991,
+          20.111974652501743
+        ],
+        "label": "metal bench"
+      },
       "source": "manual"
     },
     {
@@ -86,8 +103,25 @@
       ],
       "approx_location": "rear and sides",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.18,
+        0.82,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          32.200055742136485,
+          11.935039164518617,
+          -20.3465980595407
+        ],
+        "size": [
+          54.842968182094054,
+          32.29126539916552,
+          44.792999861816305
+        ],
+        "label": "metal mesh partitions"
+      },
       "source": "manual"
     },
     {

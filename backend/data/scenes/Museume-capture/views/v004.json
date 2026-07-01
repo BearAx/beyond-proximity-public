@@ -38,8 +38,25 @@
       ],
       "approx_location": "center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.22,
+        0.04,
+        0.78,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -5.50374753327349,
+          6.079035014527672,
+          2.314464751978629
+        ],
+        "size": [
+          18.598737749405366,
+          11.392151943646626,
+          13.494495477384255
+        ],
+        "label": "stone wall ruin"
+      },
       "source": "manual"
     },
     {
@@ -51,8 +68,25 @@
       ],
       "approx_location": "right foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.52,
+        0.48,
+        0.96,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -7.545613963778933,
+          10.899521525395393,
+          11.32429641461528
+        ],
+        "size": [
+          16.12341927950954,
+          16.116938277857578,
+          19.501408939943865
+        ],
+        "label": "information labels"
+      },
       "source": "manual"
     },
     {
@@ -75,8 +109,25 @@
       ],
       "approx_location": "background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.6344,
+        0.62,
+        0.8456,
+        0.84
+      ],
+      "bbox_3d": {
+        "center": [
+          -13.18021303791878,
+          13.99518492630995,
+          13.510785818111005
+        ],
+        "size": [
+          33.64494373044096,
+          23.30522066772361,
+          19.895940511963527
+        ],
+        "label": "red exhibition panel"
+      },
       "source": "manual"
     },
     {

@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_008",
+  "query": "Find the golden elevator doors",
+  "query_type": "attribute",
+  "structured_plan": {
+    "target": "doors elevator golden",
+    "query_type": "attribute",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_conferencehall_reception_service",
+    "object_v013_002_elevator_doors"
+  ],
+  "selected_views": [
+    "v013"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "elevator doors",
+    "selected_node_id": "object_v013_002_elevator_doors",
+    "selected_view_id": "v013",
+    "bbox_2d": [
+      0.13,
+      0.04,
+      0.63,
+      0.94
+    ],
+    "bbox_3d": {
+      "center": [
+        -7.838097973573335,
+        -0.032177032358161384,
+        1.1070458712642608
+      ],
+      "size": [
+        2.550409418774888,
+        9.90118749047451,
+        9.832945837147028
+      ],
+      "label": "elevator doors"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v013 with 3 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.00146,
+    "stage_runtime_seconds": {
+      "answer_query": 0.00146
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

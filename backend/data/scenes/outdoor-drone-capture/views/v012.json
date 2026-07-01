@@ -61,8 +61,25 @@
       ],
       "approx_location": "upper island area",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.02,
+        0.82,
+        0.38
+      ],
+      "bbox_3d": {
+        "center": [
+          1.0713056085799377,
+          -0.7038808673277895,
+          9.26758318518951
+        ],
+        "size": [
+          7.822527580815355,
+          1.6382885154127973,
+          8.418806132567237
+        ],
+        "label": "tower or lighthouse"
+      },
       "source": "manual"
     },
     {
@@ -73,8 +90,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          9.701325770957151,
+          9.85530483761596,
+          21.182863904048812
+        ],
+        "size": [
+          43.359477752735195,
+          18.343903854340496,
+          18.364839390201034
+        ],
+        "label": "sea water"
+      },
       "source": "manual"
     },
     {

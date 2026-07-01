@@ -49,8 +49,25 @@
       ],
       "approx_location": "back center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.22,
+        0.14,
+        0.78,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -3.127056500837034,
+          7.999840557775175,
+          -16.804837787838494
+        ],
+        "size": [
+          17.600225163691388,
+          13.74854597586848,
+          9.701263708476436
+        ],
+        "label": "staircase"
+      },
       "source": "manual"
     },
     {
@@ -73,8 +90,25 @@
       ],
       "approx_location": "left and right walls",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.04,
+        1.0,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -1.083878105018874,
+          5.4872006884632345,
+          -19.232120517680016
+        ],
+        "size": [
+          21.647952499440414,
+          10.186370750593024,
+          6.125090424693401
+        ],
+        "label": "wall lamps"
+      },
       "source": "manual"
     },
     {

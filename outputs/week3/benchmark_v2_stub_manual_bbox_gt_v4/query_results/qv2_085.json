@@ -1,0 +1,54 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Theater-capture",
+  "query_id": "qv2_085",
+  "query": "Find a theater lounge seating area",
+  "query_type": "functional",
+  "structured_plan": {
+    "target": "lounge seating theater",
+    "query_type": "functional",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_theater_lounge_green_room",
+    "object_v012_001_large_framed_painting_or_mirror"
+  ],
+  "selected_views": [
+    "v012"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "large framed painting or mirror",
+    "selected_node_id": "object_v012_001_large_framed_painting_or_mirror",
+    "selected_view_id": "v012",
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v012 with 3 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001655,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001655
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

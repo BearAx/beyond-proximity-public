@@ -6,11 +6,12 @@
   "name": "light",
   "summary": "Object observation from v001.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_banquet_hall",
   "children_ids": [],
   "view_ids": [
     "v001"
   ],
+  "depth": 2,
   "attributes": [
     "white",
     "yellow",
@@ -21,5 +22,13 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_banquet_hall",
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "conference and banquet hall",
+    "lounge seating and corridor"
+  ]
 }

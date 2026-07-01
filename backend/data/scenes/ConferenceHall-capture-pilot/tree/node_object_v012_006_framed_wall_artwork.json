@@ -6,11 +6,12 @@
   "name": "framed wall artwork",
   "summary": "Object observation from v012.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_elevator_access",
   "children_ids": [],
   "view_ids": [
     "v012"
   ],
+  "depth": 2,
   "attributes": [
     "right wall"
   ],
@@ -18,5 +19,13 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_elevator_access",
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "elevator and doorway access",
+    "lounge seating and corridor"
+  ]
 }

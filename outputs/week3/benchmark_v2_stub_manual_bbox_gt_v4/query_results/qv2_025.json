@@ -1,0 +1,54 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_025",
+  "query": "Find the elevator access area",
+  "query_type": "functional",
+  "structured_plan": {
+    "target": "access elevator",
+    "query_type": "functional",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_conferencehall_elevator_access",
+    "object_v014_004_golden_door_or_elevator_panel"
+  ],
+  "selected_views": [
+    "v014"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "golden door or elevator panel",
+    "selected_node_id": "object_v014_004_golden_door_or_elevator_panel",
+    "selected_view_id": "v014",
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 0.5,
+    "explanation": "Deterministic lexical fallback selected v014 with 1 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001505,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001505
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

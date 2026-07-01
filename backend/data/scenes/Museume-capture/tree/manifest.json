@@ -6,6 +6,12 @@
   "semantic_index_mode": "manual",
   "node_ids": [
     "root",
+    "manual_zone_museume_entrance_information",
+    "manual_zone_museume_red_panel_gallery",
+    "manual_zone_museume_reichenstein_media",
+    "manual_zone_museume_ruin_label_gallery",
+    "manual_zone_museume_visitor_seating_workshop",
+    "manual_zone_museume_window_mesh_side",
     "landmark_v001_001_green_information_screens",
     "landmark_v001_002_information_counter",
     "landmark_v001_003_staircase",
@@ -228,11 +234,16 @@
     "region_window_side_49a755e3",
     "region_workshop_reconstruction_dbe57531"
   ],
-  "node_count": 222,
+  "node_count": 228,
   "view_count": 20,
   "annotated_view_count": 20,
   "semantic_item_count": 225,
+  "manual_zone_node_count": 6,
+  "tree_native_zone_nodes": true,
   "complete": true,
   "query_runner_schema_compatible": true,
-  "warnings": []
+  "warnings": [
+    "ViewJSON bbox_3d values are predictions/annotations, not independent 3D ground truth.",
+    "Manual zone nodes are reference labels from docs/benchmarks/manual_zone_gt_v2.json, not independent dataset GT."
+  ]
 }

@@ -60,8 +60,25 @@
       ],
       "approx_location": "lower center and left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.38,
+        0.53,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -21.013833597816436,
+          26.396807910656737,
+          18.22890611119167
+        ],
+        "size": [
+          58.27420776079458,
+          43.067046021035274,
+          46.84192719971216
+        ],
+        "label": "chairs"
+      },
       "source": "manual"
     },
     {
@@ -84,8 +101,25 @@
       ],
       "approx_location": "right side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.14,
+        1.0,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          9.227270628932164,
+          9.716007688327872,
+          -4.301621525190417
+        ],
+        "size": [
+          20.280753814232874,
+          16.54085160731847,
+          23.097878308438403
+        ],
+        "label": "staircase"
+      },
       "source": "manual"
     },
     {

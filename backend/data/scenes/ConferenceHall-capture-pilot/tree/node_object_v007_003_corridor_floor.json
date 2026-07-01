@@ -6,11 +6,12 @@
   "name": "corridor floor",
   "summary": "Object observation from v007.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_lounge_corridor",
   "children_ids": [],
   "view_ids": [
     "v007"
   ],
+  "depth": 2,
   "attributes": [
     "light colored"
   ],
@@ -18,5 +19,11 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "lounge seating and corridor"
+  ]
 }

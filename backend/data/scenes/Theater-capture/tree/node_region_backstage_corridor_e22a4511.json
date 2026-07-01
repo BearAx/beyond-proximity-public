@@ -6,13 +6,14 @@
   "name": "backstage corridor",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_stage_backstage",
   "children_ids": [],
   "view_ids": [
     "v001",
     "v006",
     "v007"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v001",
@@ -29,5 +30,15 @@
       "approx_location": "center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_theater_lobby_notice",
+    "manual_zone_theater_stage_backstage",
+    "manual_zone_theater_stairs_foyer_balcony"
+  ],
+  "zone_labels": [
+    "lobby and notice wall",
+    "stage and backstage corridor",
+    "stairs, foyer, and balcony"
   ]
 }

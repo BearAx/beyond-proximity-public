@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_044",
+  "query": "Find the display labels near the stone ruin",
+  "query_type": "relational",
+  "structured_plan": {
+    "target": "display labels near ruin stone",
+    "query_type": "relational",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_museume_ruin_label_gallery",
+    "object_v005_001_stone_ruin"
+  ],
+  "selected_views": [
+    "v005"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "stone ruin",
+    "selected_node_id": "object_v005_001_stone_ruin",
+    "selected_view_id": "v005",
+    "bbox_2d": [
+      0.52,
+      0.18,
+      0.96,
+      0.86
+    ],
+    "bbox_3d": {
+      "center": [
+        0.7054777335050746,
+        2.4521723525423598,
+        -4.377782133019014
+      ],
+      "size": [
+        16.52538740471502,
+        6.711749386811345,
+        9.539050234410716
+      ],
+      "label": "stone ruin"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v005 with 5 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.002883,
+    "stage_runtime_seconds": {
+      "answer_query": 0.002883
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

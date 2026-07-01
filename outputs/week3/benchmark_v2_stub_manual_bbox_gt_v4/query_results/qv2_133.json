@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-drone-capture",
+  "query_id": "qv2_133",
+  "query": "Find the coastal city buildings",
+  "query_type": "relational",
+  "structured_plan": {
+    "target": "buildings city coastal",
+    "query_type": "relational",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_outdoor_drone_harbor_marina",
+    "object_v011_001_city_buildings"
+  ],
+  "selected_views": [
+    "v011"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "city buildings",
+    "selected_node_id": "object_v011_001_city_buildings",
+    "selected_view_id": "v011",
+    "bbox_2d": [
+      0.42,
+      0.18,
+      0.82,
+      0.86
+    ],
+    "bbox_3d": {
+      "center": [
+        -15.677026228556416,
+        13.317360588770484,
+        3.837820998098791
+      ],
+      "size": [
+        29.25794192411818,
+        22.098850776391316,
+        15.73733822732468
+      ],
+      "label": "city buildings"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v011 with 3 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001203,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001203
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 16,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_024",
+  "query": "Find a wayfinding or exit area",
+  "query_type": "functional",
+  "structured_plan": {
+    "target": "exit wayfinding",
+    "query_type": "functional",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_conferencehall_exit_wayfinding",
+    "object_v019_001_green_exit_sign"
+  ],
+  "selected_views": [
+    "v019"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "green exit sign",
+    "selected_node_id": "object_v019_001_green_exit_sign",
+    "selected_view_id": "v019",
+    "bbox_2d": [
+      0.1544,
+      0.1208,
+      0.3656,
+      0.2792
+    ],
+    "bbox_3d": {
+      "center": [
+        14.228997891553206,
+        5.586447109183743,
+        -9.0500995314494
+      ],
+      "size": [
+        2.5852319254220166,
+        3.8226189047363386,
+        20.521312251922662
+      ],
+      "label": "green exit sign"
+    },
+    "camera_pose": null,
+    "confidence": 0.5,
+    "explanation": "Deterministic lexical fallback selected v019 with 1 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001449,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001449
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

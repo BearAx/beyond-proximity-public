@@ -60,8 +60,25 @@
       ],
       "approx_location": "center-left background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.63,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -28.60156021161191,
+          -2.0552690167755587,
+          -3.520506425895822
+        ],
+        "size": [
+          34.08010059642069,
+          7.576583930890708,
+          12.048418698633702
+        ],
+        "label": "staircase"
+      },
       "source": "manual"
     },
     {

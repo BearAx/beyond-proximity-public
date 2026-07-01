@@ -6,11 +6,20 @@
   "name": "bridge or roadway line",
   "summary": "Landmark observation from v015.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_bridge_crossing",
   "children_ids": [],
   "view_ids": [
     "v015"
   ],
+  "depth": 2,
   "approx_location": "center-left",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_drone_bridge_crossing",
+    "manual_zone_outdoor_drone_city_shoreline"
+  ],
+  "zone_labels": [
+    "bridge and linear crossing",
+    "city shoreline and hills"
+  ]
 }

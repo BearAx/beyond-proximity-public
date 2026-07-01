@@ -1,0 +1,54 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_016",
+  "query": "Find the reception counter in the reception area",
+  "query_type": "multi_hop",
+  "structured_plan": {
+    "target": "counter reception",
+    "query_type": "multi_hop",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_conferencehall_reception_service",
+    "object_v013_006_blue_patterned_carpet"
+  ],
+  "selected_views": [
+    "v013"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "service counter",
+    "selected_node_id": "object_v013_006_blue_patterned_carpet",
+    "selected_view_id": "v013",
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v013 with 2 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001521,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001521
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

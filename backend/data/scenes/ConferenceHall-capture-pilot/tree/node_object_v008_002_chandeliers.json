@@ -6,11 +6,12 @@
   "name": "chandeliers",
   "summary": "Object observation from v008.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_reception_service",
   "children_ids": [],
   "view_ids": [
     "v008"
   ],
+  "depth": 2,
   "attributes": [
     "ceiling",
     "multiple lights"
@@ -19,5 +20,11 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_reception_service"
+  ],
+  "zone_labels": [
+    "reception and service counter"
+  ]
 }

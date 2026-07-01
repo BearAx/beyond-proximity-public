@@ -6,11 +6,18 @@
   "name": "water expanse",
   "summary": "Landmark observation from v005.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_city_shoreline",
   "children_ids": [],
   "view_ids": [
     "v005"
   ],
+  "depth": 2,
   "approx_location": "center",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_drone_city_shoreline"
+  ],
+  "zone_labels": [
+    "city shoreline and hills"
+  ]
 }

@@ -74,7 +74,7 @@ def validate_tree(scene_dir: Path, expected_view_ids: set[str]) -> dict[str, Any
             if node.get("scene_id") != scene_dir.name or node.get("node_id") != node_id:
                 raise ValueError(f"{path.name} scene_id/node_id mismatch")
             node_type = node.get("node_type")
-            if node_type not in {"root", "region", "object", "landmark", "sign", "facility", "unknown"}:
+            if node_type not in {"root", "zone", "region", "object", "landmark", "sign", "facility", "unknown"}:
                 raise ValueError(f"{path.name} has unsupported node_type={node_type!r}")
             children = node.get("children_ids")
             views = node.get("view_ids")

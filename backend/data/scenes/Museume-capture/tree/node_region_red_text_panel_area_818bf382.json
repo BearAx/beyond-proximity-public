@@ -6,16 +6,25 @@
   "name": "red text panel area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_visitor_seating_workshop",
   "children_ids": [],
   "view_ids": [
     "v007"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v007",
       "approx_location": "left side",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_museume_red_panel_gallery",
+    "manual_zone_museume_visitor_seating_workshop"
+  ],
+  "zone_labels": [
+    "red-panel exhibition gallery",
+    "visitor seating and workshop"
   ]
 }

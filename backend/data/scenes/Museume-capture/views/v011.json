@@ -50,8 +50,25 @@
       ],
       "approx_location": "foreground and right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.52,
+        0.48,
+        0.96,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -0.6327102166033036,
+          26.981343063415796,
+          26.342096505947907
+        ],
+        "size": [
+          59.89414142828566,
+          42.66713347999933,
+          55.761554924013524
+        ],
+        "label": "metal mesh partitions"
+      },
       "source": "manual"
     },
     {

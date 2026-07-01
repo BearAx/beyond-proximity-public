@@ -1,65 +1,64 @@
-# AGENTS.md — SemanticSplat / Beyond Proximity
+# AGENTS.md - SemanticSplat / Beyond Proximity
 
-This file is the operating guide for Codex/Cursor agents working in this repository.
-Goal: reduce repeated context loading, avoid repeated explanations, and make every change evidence-based.
+This is the operating guide for Codex, Cursor, and future agents working in this
+repository. The goal is to keep every change evidence-based, reproducible, and
+honest about what the project has actually proven.
+
+Status date: 2026-06-30.
 
 ---
 
-## 1. Project identity
+## 1. Project Identity
 
-**Working name:** SemanticSplat / Beyond Proximity
-**Current role of the system:** reproducible semantic-map evaluation prototype, not a completed quantitative/baseline research result.
+Working name: SemanticSplat / Beyond Proximity.
 
-The project builds a semantic layer over captured 3D/visual scenes:
+Current role of the system: a reproducible semantic-map evaluation prototype,
+not a completed quantitative research result.
+
+Basic idea:
 
 ```text
-captured RGB-D views
-  -> ViewJSON annotations
-  -> scene tree / semantic index
+captured RGB-D views / visual observations
+  -> ViewJSON annotations or automatic semantic extraction
+  -> semantic index
+  -> scene tree / semantic graph
   -> query pipeline
   -> result JSON
   -> evaluation reports
 ```
 
-Current safest honest claim:
+The project adds a semantic understanding layer over captured 3D/visual scenes.
+It should help a system answer:
 
 ```text
-The project has a reproducible, test-backed manual semantic-index + stub evaluation prototype on five captured scenes.
-It does not yet have official Replica/ScanNet evaluation, fair baseline comparisons, independent accuracy, or 3D IoU.
+What is around me?
+Where should I go?
+What does this place mean?
+What changed in the environment?
+```
+
+It does not replace VPS, localization, AR tracking, or reconstruction. It adds
+meaning, hierarchy, and query-time reasoning above existing map context.
+
+Safest current claim:
+
+```text
+SemanticSplat currently provides a reproducible, test-backed evaluation
+prototype over five manually captured and manually annotated RGB-D pilot scenes.
+It includes canonical schemas, semantic indexes, generated trees, benchmark
+queries, and stub-mode query evaluation. Live and cached-live evaluation are out
+of scope for the next phase. ConceptGraphs has a one-frame smoke result and
+LangSplat has an official-sofa smoke result, but neither is a fair five-scene
+comparison or GT-backed accuracy result. The project does not yet provide
+official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or
+baseline head-to-head comparison.
 ```
 
 ---
 
-## 2. Critical truth rules
+## 2. Current Evidence
 
-Do not fake or overclaim results.
-
-### Never claim
-
-- live model evaluation succeeded unless there is at least one real `mode: live` output;
-- `cached_live` succeeded unless replay used a verified live cache and avoided provider calls;
-- ConceptGraphs or LangSplat ran unless their official/native command produced output or a logged execution attempt exists;
-- semantic accuracy unless there is independent Ground Truth;
-- 3D IoU/localization unless GT boxes/masks and predicted boxes exist;
-- Replica/ScanNet results unless official dataset scenes are actually ingested and evaluated;
-- automatic/headless pipeline if manual browser capture, manual ViewJSON, or manual tree building was required.
-- that live/cached_live is in scope unless the user explicitly reopens that scope.
-
-### Use these labels exactly
-
-```text
-stub = deterministic local mode, no real model call
-live = real provider/API model call
-cached_live = replay of verified real live output
-manual semantic index = human/Cursor-assisted annotation, not independent GT
-GT = Ground Truth, expected correct answer used for accuracy
-```
-
----
-
-## 3. Current project status
-
-### Strong completed evidence
+Strong completed evidence:
 
 ```text
 5 captured scenes
@@ -71,10 +70,10 @@ GT = Ground Truth, expected correct answer used for accuracy
 40 five-scene stub benchmark outputs
 50 default-scene stub benchmark outputs
 90 total benchmark queries
-87 passing backend tests
+91 passing backend tests as of the 2026-06-30 local check
 ```
 
-### Current scene set
+Current scene set:
 
 ```text
 backend/data/scenes/ConferenceHall-capture-pilot
@@ -84,38 +83,73 @@ backend/data/scenes/outdoor-street-capture
 backend/data/scenes/outdoor-drone-capture
 ```
 
-Important: `Museume-capture` is intentionally spelled this way in current data/docs unless renamed globally.
+Important: `Museume-capture` is intentionally spelled this way in current data
+and docs unless the project renames it globally.
 
-### Current blocked work
+Current blocked or out-of-scope work:
 
 ```text
 live model evaluation = out of scope for the next phase
 cached_live = out of scope for the next phase; no verified live cache exists
-ConceptGraphs = one-frame Docker smoke executed; five-scene comparison still blocked
-LangSplat = official sofa smoke executed; five-scene comparison still blocked
+ConceptGraphs = one-frame Docker smoke executed; five-scene comparison blocked
+LangSplat = official sofa smoke executed; five-scene comparison blocked
 Replica = not official / not completed
 ScanNet = postponed
 semantic accuracy = unavailable without GT
-3D IoU = unavailable without GT boxes/predicted boxes
+3D IoU = unavailable without GT boxes and predicted boxes
 ```
 
 ---
 
-## 4. Repository map
+## 3. Next-Phase Direction
 
-Expected high-value paths:
+Do not rebuild the project from scratch. The repo already has:
+
+- legacy graph-vs-flat benchmark code on `default`;
+- a query pipeline and Query Flow UI;
+- spatial graph helpers;
+- five captured semantic indexes with 1,046 semantic items;
+- stub evaluation infrastructure and baseline adapters.
+
+The next technical milestone is:
+
+```text
+Adapt the existing legacy graph/search pipeline to the five captured scenes,
+enrich captured semantic items with zone-region-object-affordance relations,
+and run a fair same-input graph-vs-flat benchmark on verified queries.
+```
+
+The main target claim to prove next is:
+
+```text
+Graph-based semantic reasoning scans fewer entries, uses less context/tokens,
+and answers faster than flat search over the same semantic map while preserving
+useful target quality.
+```
+
+This claim is not proven until saved benchmark outputs include matching methods,
+matching scenes, matching queries, context/token counts, runtime metrics, and GT
+or manually verified expected IDs for quality metrics.
+
+---
+
+## 4. Repository Map
+
+High-value paths:
 
 ```text
 backend/                  backend API, query code, scene data
-backend/query/            model client, live/cached/stub query logic
-backend/data/scenes/      captured scenes, images, depths, poses, views, trees
+backend/query/            model client, stub/live/cached query logic
+backend/geometry/         spatial graph and clustering helpers
+backend/tree/             tree node/storage types
+backend/data/scenes/      captured scenes, images, depths, views, trees
 
-frontend/                 UI / viewer
+frontend/                 React UI / viewer / Query Flow
 scripts/                  experiment, validation, import, adapters
 configs/                  experiment configs
 tests/                    backend tests
 
-docs/project/             high-level status, final acceptance, real evaluation status
+docs/project/             status, acceptance, plans, final project claims
 docs/benchmarks/          benchmark queries, evaluation protocol/design
 docs/schemas/             result/ViewJSON/schema docs
 docs/datasets/            scene inventory, capture/annotation docs
@@ -127,90 +161,97 @@ docs/maintenance/         cleanup/audit docs
 
 outputs/week2/            Week 2 stub/evaluation outputs
 outputs/week3/            Week 3 final gate, live attempts, baseline logs
-external/baselines/       optional external baseline repos; do not commit heavy repos/checkpoints
+outputs/baselines/        baseline smoke outputs
+papers/                   local PDFs and article/presentation assets
+papers/beyond-proximity/  current LaTeX article draft
 ```
 
 ---
 
-## 5. Important docs to read first
+## 5. Read First
 
-Before making substantial changes, inspect these if present:
+Before substantial changes, inspect these if present:
 
 ```text
 docs/maintenance/plan_vs_project_audit.md
 docs/project/final_week3_acceptance.md
 docs/project/week3_results.md
 docs/project/real_evaluation_status.md
+docs/project/chatgpt_project_description.md
 docs/benchmarks/evaluation_protocol.md
 docs/benchmarks/benchmark_queries_v1.json
 docs/datasets/scene_inventory.md
 docs/baselines/baseline_status.md
-docs/validation/semantic_index/
-docs/validation/capture_quality/
+semantic_splat_research_direction(1).md
+plan2.md
+paper-publication-plan.md
 ```
 
-If files moved, search by name/keywords rather than guessing.
+If a file moved, search by name or keywords with `rg` rather than guessing.
 
 ---
 
-## 6. Original plan vs actual status
+## 6. Truth Rules
 
-### Week 1 original goal
+Do not fake or overclaim results.
+
+Never claim:
+
+- live model evaluation succeeded unless there is at least one real `mode: live`
+  output;
+- `cached_live` succeeded unless replay used a verified live cache and avoided
+  provider calls;
+- ConceptGraphs or LangSplat ran unless their official/native command produced
+  output or a logged execution attempt exists;
+- semantic accuracy unless there is independent Ground Truth;
+- 3D IoU/localization unless GT boxes/masks and predicted boxes exist;
+- Replica/ScanNet results unless official dataset scenes are ingested and
+  evaluated;
+- automatic/headless pipeline if manual browser capture, manual ViewJSON, or
+  manual tree building was required;
+- live/cached_live is in scope unless the user explicitly reopens that scope;
+- algorithm superiority without a fair same-input benchmark.
+
+Use these labels exactly:
 
 ```text
-Foundation + reproducibility.
-Exit: one large scene runs end-to-end with zero human-in-the-loop and emits tree + query answer.
+stub = deterministic local mode, no real model call
+live = real provider/API model call
+cached_live = replay of verified real live output
+manual semantic index = human/Cursor-assisted annotation, not independent GT
+GT = Ground Truth, expected correct answer used for accuracy
 ```
 
-Actual status:
+Without GT, report only:
 
 ```text
-PARTIAL.
-Design docs and stub CLI exist.
-Full unattended capture -> index -> tree -> query is not complete.
-Manual capture and manual annotation are still required.
+schema validity
+availability
+coverage
+runtime
+mode
+model_call_count
+cache_hit_count
+context/token counts if measured
 ```
 
-### Week 2 original goal
+Use `N/A` for:
 
 ```text
-First experiments + automatic view selection.
-Exit: quantitative result on >=5 Replica scenes with automatic pipeline.
-```
-
-Actual status:
-
-```text
-PARTIAL.
-Evaluation harness and benchmark exist.
-Coverage-greedy view selection script exists.
-But eval configs still use existing/manual views.
-No official Replica >=5 scene automatic quantitative run.
-No independent GT accuracy.
-```
-
-### Week 3 original goal
-
-```text
-Baseline evaluation, ConceptGraphs + LangSplat, and broader dataset readiness.
-```
-
-Actual status:
-
-```text
-PARTIAL.
-Five manual captured scenes + semantic indexes + 40 stub outputs exist.
-Live/cached are out of scope; ConceptGraphs has a one-frame smoke result; LangSplat has only an official-sofa smoke result.
-ScanNet postponed.
+semantic accuracy
+negative correctness
+3D IoU
+provider-backed token/latency/cost
+baseline quality comparison
 ```
 
 ---
 
-## 7. Ground Truth / metrics rules
+## 7. Metrics And Benchmark Rules
 
 GT means expected correct answer.
 
-For a query like:
+For a query such as:
 
 ```text
 Where is the staircase?
@@ -227,36 +268,47 @@ GT should include at least:
 }
 ```
 
-Without GT, do not report accuracy.
-Report only:
+For graph-vs-flat, compare methods on the same scenes, same semantic items, same
+query strings, and same GT labels.
+
+Required efficiency metrics:
 
 ```text
-schema validity
-availability
-coverage
-runtime
-mode
-model_call_count
-cache_hit_count
+latency_ms
+semantic_entries_scanned
+objects_checked
+regions_checked
+views_checked
+context_size_chars
+estimated_input_tokens or actual_input_tokens
+speedup_vs_flat
+token_reduction_vs_flat
 ```
 
-Use `N/A` for:
+Quality metrics are valid only with verified GT:
 
 ```text
-semantic accuracy
-negative correctness
-3D IoU
-provider-backed token/latency/cost
-baseline quality comparison
+hit@1
+hit@3
+expected_object_hit
+expected_region_hit
+expected_zone_hit
+expected_view_hit
+wrong_zone_rate
+wrong_room_rate
 ```
+
+Construction/map-building cost must be reported separately from per-query cost.
 
 ---
 
-## 8. Modes and provider scope
+## 8. Modes And Provider Scope
 
-Live and cached-live are not part of the next phase. Do not ask for provider keys, quota, or billing work unless the user explicitly reopens live/cached-live scope.
+Live and cached-live are not part of the next phase. Do not ask for provider
+keys, quota, or billing work unless the user explicitly reopens live/cached-live
+scope.
 
-### Legacy environment variables for live mode
+Legacy live environment variables:
 
 ```powershell
 $env:SEMANTICSPLAT_PROVIDER = "openai"
@@ -264,37 +316,19 @@ $env:SEMANTICSPLAT_MODEL = "gpt-5.5"
 $env:SEMANTICSPLAT_API_KEY = "sk-..."
 ```
 
-Do not commit keys.
-Do not print full keys in logs.
-Do not ask the user to paste keys into chat/code.
-Read keys only from environment variables.
+Do not commit keys. Do not print full keys in logs. Do not ask the user to paste
+keys into chat/code. Read keys only from environment variables.
 
-### Legacy live issue
-
-Latest live attempt reached OpenAI but failed with:
+Historical live issue:
 
 ```text
-OpenAI HTTP 429 insufficient_quota
+Latest live attempt reached OpenAI but failed with HTTP 429 insufficient_quota.
+Correct status: live attempted historically but produced 0 successful results;
+live/cached-live are now out of scope.
 ```
 
-Therefore the correct status is:
-
-```text
-Live attempted historically but produced 0 successful results; live/cached-live are now out of scope.
-```
-
-Not:
-
-```text
-missing credentials
-```
-
-unless the current run actually lacks env variables.
-
-### GPT-5-style model note
-
-Some models do not support `temperature`.
-For `gpt-5*`, `o1*`, `o3*`, `o4*`, do not send unsupported sampling params unless explicitly verified.
+For `gpt-5*`, `o1*`, `o3*`, and `o4*`, do not send unsupported sampling params
+unless explicitly verified.
 
 Avoid sending unless supported:
 
@@ -310,40 +344,37 @@ logit_bias
 
 ---
 
-## 9. Common commands
+## 9. Common Commands
 
-### Run tests
+Run tests:
 
 ```powershell
 python -B -m pytest -q
 ```
 
-If Windows temp permissions fail, use workspace-local or user AppData temp as documented in reports, but record the workaround.
+If Windows temp permissions fail, use workspace-local or user AppData temp and
+record the workaround.
 
-### Check formatting / whitespace
+Check formatting / whitespace:
 
 ```powershell
 git diff --check
 ```
 
-### Run Week 3 stub gate
+Run Week 3 stub gate:
 
 ```powershell
 python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode stub --out outputs\week3\final_stub_semantic_gate_v1
 python -B scripts\evaluate_results.py --benchmark docs\benchmarks\benchmark_queries_v1.json --results outputs\week3\final_stub_semantic_gate_v1\query_results --out outputs\week3\final_stub_semantic_gate_v1
 ```
 
-### Live/cached-live scope
-
-Do not run live or cached_live gates in the current plan. Prioritize verified GT, baseline expansion, 3D boxes, and ScanNet readiness.
-
-### Validate scene geometry
+Validate scene geometry:
 
 ```powershell
 python -B scripts\validate_scene_geometry.py --scene backend\data\scenes\<scene_id> --output docs\validation\geometry\<scene_id>_geometry.json
 ```
 
-### Validate semantic index
+Validate semantic index:
 
 ```powershell
 python -B scripts\validate_semantic_index.py --scene backend\data\scenes\<scene_id> --out docs\validation\semantic_index\<scene_id>_semantic_index.json
@@ -351,14 +382,12 @@ python -B scripts\validate_semantic_index.py --scene backend\data\scenes\<scene_
 
 ---
 
-## 10. Baseline rules
+## 10. Baseline Rules
 
-### ConceptGraphs
-
-Do not mark as executed unless there is evidence of:
+ConceptGraphs is not a fair executed baseline unless evidence includes:
 
 ```text
-repo checkout
+repo checkout or Docker/image provenance
 environment setup attempt
 official/demo entrypoint identified
 smoke command attempted
@@ -369,17 +398,15 @@ native or canonical output produced, or exact blocker logged
 Expected places:
 
 ```text
-external/baselines/concept-graphs/
 docs/baselines/conceptgraphs/
-outputs/week3/baselines/conceptgraphs/
+outputs/baselines/conceptgraphs_smoke_v1/
+external/baselines/concept-graphs/ only if external repos are allowed
 ```
 
-### LangSplat
-
-Do not mark as executed unless there is evidence of:
+LangSplat is not a fair executed baseline unless evidence includes:
 
 ```text
-repo checkout
+repo checkout or Docker/image provenance
 environment setup attempt
 official/demo entrypoint identified
 smoke command attempted
@@ -390,9 +417,9 @@ native or canonical output produced, or exact blocker logged
 Expected places:
 
 ```text
-external/baselines/LangSplat/
 docs/baselines/langsplat/
-outputs/week3/baselines/langsplat/
+outputs/baselines/langsplat_smoke_v1/
+external/baselines/LangSplat/ only if external repos are allowed
 ```
 
 If checkout/env/checkpoints/native layout are missing, status is:
@@ -401,7 +428,7 @@ If checkout/env/checkpoints/native layout are missing, status is:
 blocked before successful smoke execution
 ```
 
-Not:
+not:
 
 ```text
 baseline ran
@@ -409,9 +436,9 @@ baseline ran
 
 ---
 
-## 11. Documentation wording rules
+## 11. Documentation Wording
 
-### Prefer
+Prefer:
 
 ```text
 manual captured scenes
@@ -419,6 +446,8 @@ manual semantic index
 stub semantic gate
 schema-valid outputs
 credential-independent pipeline gate
+same-input graph-vs-flat benchmark
+verified GT labels
 live/cached-live out of scope for next phase
 baseline smoke attempted / blocked with exact error
 not independent GT
@@ -426,7 +455,7 @@ accuracy unavailable
 3D IoU unavailable
 ```
 
-### Avoid unless proven
+Avoid unless proven:
 
 ```text
 fully automatic
@@ -443,11 +472,7 @@ production-ready
 publication-ready result
 ```
 
----
-
-## 12. Expected audit / reporting style
-
-When asked “what is done?”, classify requirements as:
+When asked "what is done?", classify requirements as:
 
 ```text
 DONE
@@ -460,35 +485,35 @@ UNCLEAR_NEEDS_REVIEW
 
 Use evidence paths.
 
-Preferred response format:
+Preferred audit format:
 
 ```text
 Requirement | Status | Evidence | Gap | Needed from user
 ```
 
-Keep answers short unless asked for a report.
-
 ---
 
-## 13. User-dependent decisions
+## 12. User-Dependent Decisions
 
 Ask the user only for decisions that cannot be solved from code:
 
 ```text
-Allow external repo clone? -> needed for ConceptGraphs/LangSplat
+Allow external repo clone? -> needed for ConceptGraphs/LangSplat expansion
 GPU/CUDA available? -> may be needed for baselines
 Official Replica/ScanNet data available? -> needed for original dataset plan
 Manual GT annotation allowed? -> needed for accuracy
 Should scope remain manual/stub? -> needed for honest final wording
+Target venue/deadline? -> needed for final article format
 ```
 
-Do not ask the user to do code-level work unless it requires credentials, external downloads, licensing, or manual annotation.
+Do not ask the user to do code-level work unless it requires credentials,
+external downloads, licensing, or manual annotation.
 
 ---
 
-## 14. Cleanup rules
+## 13. Cleanup Rules
 
-Keep docs organized. Do not leave 40 unrelated files flat under `docs/`.
+Keep docs organized. Do not leave unrelated files flat under `docs/`.
 
 Preferred layout:
 
@@ -505,6 +530,7 @@ docs/baselines/langsplat/
 docs/experiments/stub/
 docs/experiments/live/
 docs/experiments/cached_live/
+docs/experiments/graph_vs_flat/
 docs/reports/week1/
 docs/reports/week2/
 docs/reports/week3/
@@ -513,16 +539,15 @@ docs/maintenance/
 docs/archive/
 ```
 
-Before deleting:
+Before deleting generated or ignored files, inspect first:
 
 ```powershell
 git clean -ndX
 git clean -nd
 ```
 
-Do not delete evidence files, validation reports, benchmark queries, final docs, scene data, or outputs needed for reproducibility.
-
-Move uncertain old docs to:
+Do not delete evidence files, validation reports, benchmark queries, final docs,
+scene data, or outputs needed for reproducibility. Move uncertain old docs to:
 
 ```text
 docs/archive/review_required/
@@ -530,17 +555,7 @@ docs/archive/review_required/
 
 ---
 
-## 15. Final safe project claim
-
-Use this when generating reports/status summaries:
-
-```text
-SemanticSplat currently provides a reproducible, test-backed evaluation prototype over five manually captured and manually annotated RGB-D pilot scenes. It includes canonical schemas, semantic indexes, generated trees, benchmark queries, and stub-mode query evaluation. Live and cached-live evaluation are out of scope for the next phase. ConceptGraphs has a one-frame smoke result and LangSplat has an official-sofa smoke result, but neither is a fair five-scene comparison or GT-backed accuracy result. The project does not yet provide official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or baseline head-to-head comparison.
-```
-
----
-
-## 16. Before finishing any agent task
+## 14. Before Finishing Any Agent Task
 
 Run or document why you cannot run:
 

@@ -6,11 +6,12 @@
   "name": "wall lamps",
   "summary": "Object observation from v019.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_stage_backstage",
   "children_ids": [],
   "view_ids": [
     "v019"
   ],
+  "depth": 2,
   "attributes": [
     "small",
     "mounted"
@@ -19,5 +20,13 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_theater_stage_backstage",
+    "manual_zone_theater_stairs_foyer_balcony"
+  ],
+  "zone_labels": [
+    "stage and backstage corridor",
+    "stairs, foyer, and balcony"
+  ]
 }

@@ -6,11 +6,20 @@
   "name": "bright passage opening",
   "summary": "Landmark observation from v016.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_red_facade_alley",
   "children_ids": [],
   "view_ids": [
     "v016"
   ],
+  "depth": 2,
   "approx_location": "back center",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_street_covered_passage_graffiti",
+    "manual_zone_outdoor_street_red_facade_alley"
+  ],
+  "zone_labels": [
+    "covered passage and graffiti wall",
+    "red facade and side alley"
+  ]
 }

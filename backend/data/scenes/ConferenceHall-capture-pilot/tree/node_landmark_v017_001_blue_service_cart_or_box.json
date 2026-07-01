@@ -6,11 +6,18 @@
   "name": "blue service cart or box",
   "summary": "Landmark observation from v017.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_banquet_hall",
   "children_ids": [],
   "view_ids": [
     "v017"
   ],
+  "depth": 2,
   "approx_location": "right side",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_banquet_hall"
+  ],
+  "zone_labels": [
+    "conference and banquet hall"
+  ]
 }
