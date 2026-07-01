@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "object_v011_004_grass_and_weeds",
+  "node_type": "object",
+  "name": "grass and weeds",
+  "summary": "Object observation from v011.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v011"
+  ],
+  "attributes": [
+    "green",
+    "along wall base"
+  ],
+  "approx_location": "lower center",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

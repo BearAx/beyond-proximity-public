@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "object_v017_001_red_carpeted_stairs",
+  "node_type": "object",
+  "name": "red-carpeted stairs",
+  "summary": "Object observation from v017.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v017"
+  ],
+  "attributes": [
+    "red",
+    "ascending"
+  ],
+  "approx_location": "center",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v001",
+  "scene_id": "Museume-capture",
+  "image_path": "images/v001.png",
+  "depth_path": "depths/v001_depth.npy",
+  "pose_ref": "transforms.json#/frames/0/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "Museum entrance or lobby area with an information counter, green digital information screens, stairs, display items, and a glass doorway.",
+  "visible_regions": [
+    {
+      "label": "entrance lobby",
+      "description": "open museum entry area with counter and visitor information screens",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "stair area",
+      "description": "stairs leading upward beside the lobby",
+      "approx_location": "left side",
+      "source": "manual"
+    },
+    {
+      "label": "information counter area",
+      "description": "white counter or reception point with colored museum logo",
+      "approx_location": "center-left",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "information counter",
+      "attributes": [
+        "white",
+        "visitor service",
+        "museum logo"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "green information screens",
+      "attributes": [
+        "large",
+        "digital",
+        "bright"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "stairs",
+      "attributes": [
+        "ascending",
+        "metal railing"
+      ],
+      "approx_location": "left side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "glass entrance door",
+      "attributes": [
+        "transparent",
+        "exit or entrance"
+      ],
+      "approx_location": "back center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "display items",
+      "attributes": [
+        "small",
+        "on tables or shelves"
+      ],
+      "approx_location": "foreground and left side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "museum signage",
+      "attributes": [
+        "green",
+        "vertical"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "green information screens",
+      "description": "large bright digital screens useful as a main lobby landmark",
+      "approx_location": "center-right",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "information counter",
+      "description": "white visitor counter near the entrance",
+      "approx_location": "center-left",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "staircase",
+      "description": "stairs beside the lobby that mark the vertical circulation area",
+      "approx_location": "left side",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Good overview for entrance, information desk, screens, and stairs.",
+  "warnings": [
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
+  ]
+}

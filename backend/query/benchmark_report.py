@@ -258,9 +258,9 @@ def generate_markdown(
         "> Semantic tree traversal (graph) compared to exhaustive view search (flat).",
         f"> **Scene:** `{scene}` · **Generated:** {date_str}",
         "",
-        "**Navigation:** [Docs hub](README.md) · "
-        f"[Run dashboard](project_log/runs/{report.get('run_slug', 'latest')}/README.md) · "
-        "[Project log](project_log/README.md)",
+        "**Navigation:** [Docs hub](../README.md) · "
+        f"[Run dashboard](../experiments/stub/demo_runs/runs/{report.get('run_slug', 'latest')}/README.md) · "
+        "[Demo run history](../experiments/stub/demo_runs/README.md)",
         "",
         "## Contents",
         "",
@@ -542,9 +542,10 @@ def generate_markdown(
         "./run_all_docs.sh",
         "```",
         "",
-        f"Raw data: [`benchmark_results/benchmark_{scene}.json`](benchmark_results/benchmark_{scene}.json)",
+        f"Raw data: [`benchmark_results/benchmark_{scene}.json`](../benchmark_results/benchmark_{scene}.json)",
         "",
-        "Session log: [`project_log/README.md`](project_log/README.md) (auto-updated each run)",
+        "Session log: [`demo_runs/README.md`](../experiments/stub/demo_runs/README.md) "
+        "(auto-updated each run)",
         "",
     ]
 
@@ -560,11 +561,17 @@ def write_report(
     docs_dir: Path,
     *,
     failure_report: Optional[dict] = None,
-    md_filename: str = "benchmark_graph_vs_flat.md",
+    md_filename: str = "benchmarks/benchmark_graph_vs_flat.md",
 ) -> Tuple[Path, Dict[str, str]]:
     """Generate charts + markdown in one call."""
     results_dir = docs_dir / "benchmark_results"
     chart_paths = generate_charts(report, results_dir, failure_report=failure_report)
     md_path = docs_dir / md_filename
-    generate_markdown(report, chart_paths, failure_report=failure_report, md_path=md_path)
+    markdown_chart_paths = {key: f"../{value}" for key, value in chart_paths.items()}
+    generate_markdown(
+        report,
+        markdown_chart_paths,
+        failure_report=failure_report,
+        md_path=md_path,
+    )
     return md_path, chart_paths

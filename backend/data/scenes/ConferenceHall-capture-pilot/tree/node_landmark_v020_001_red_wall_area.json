@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v020_001_red_wall_area",
+  "node_type": "landmark",
+  "name": "red wall area",
+  "summary": "Landmark observation from v020.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v020"
+  ],
+  "approx_location": "back center",
+  "source": "manual"
+}

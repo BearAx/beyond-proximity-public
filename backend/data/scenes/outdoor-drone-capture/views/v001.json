@@ -1,0 +1,127 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v001",
+  "scene_id": "outdoor-drone-capture",
+  "image_path": "images/v001.png",
+  "depth_path": "depths/v001_depth.npy",
+  "pose_ref": "transforms.json#/frames/0/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "Aerial coastal view with a small rocky island, a fortress-like white building complex, surrounding sea water, and distant shoreline.",
+  "visible_regions": [
+    {
+      "label": "small island",
+      "description": "rocky island surrounded by water",
+      "approx_location": "left-center",
+      "source": "manual"
+    },
+    {
+      "label": "open sea",
+      "description": "wide water area around the island",
+      "approx_location": "center and foreground",
+      "source": "manual"
+    },
+    {
+      "label": "distant coastline",
+      "description": "far shoreline and landmass on the horizon",
+      "approx_location": "background",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "rocky island",
+      "attributes": [
+        "small",
+        "surrounded by water"
+      ],
+      "approx_location": "left-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "white fortress-like building",
+      "attributes": [
+        "large",
+        "historic-looking",
+        "on island"
+      ],
+      "approx_location": "left-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "tower or lighthouse",
+      "attributes": [
+        "vertical",
+        "on island"
+      ],
+      "approx_location": "upper-left island area",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "sea water",
+      "attributes": [
+        "green-blue",
+        "calm"
+      ],
+      "approx_location": "foreground and center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "distant shoreline",
+      "attributes": [
+        "low",
+        "far"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "breakwater or pier",
+      "attributes": [
+        "linear",
+        "near island"
+      ],
+      "approx_location": "left side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "fortress island",
+      "description": "distinct small island with white fortress-like buildings",
+      "approx_location": "left-center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "tower on island",
+      "description": "vertical tower/lighthouse-like feature on the island",
+      "approx_location": "upper-left island area",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Good for queries about the island, fortress, tower, and surrounding water.",
+  "warnings": [
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
+  ]
+}

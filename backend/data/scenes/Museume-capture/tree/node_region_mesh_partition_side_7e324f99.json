@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "region_mesh_partition_side_7e324f99",
+  "node_type": "region",
+  "name": "mesh partition side",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v017"
+  ],
+  "observations": [
+    {
+      "view_id": "v017",
+      "approx_location": "left-center",
+      "source": "manual"
+    }
+  ]
+}

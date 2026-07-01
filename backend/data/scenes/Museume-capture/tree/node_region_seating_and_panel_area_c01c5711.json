@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "region_seating_and_panel_area_c01c5711",
+  "node_type": "region",
+  "name": "seating and panel area",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v008"
+  ],
+  "observations": [
+    {
+      "view_id": "v008",
+      "approx_location": "center-right",
+      "source": "manual"
+    }
+  ]
+}

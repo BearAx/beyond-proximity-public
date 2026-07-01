@@ -1,0 +1,382 @@
+{
+  "schema_version": "semanticsplat.metrics_record.v1",
+  "run_id": "conceptgraphs_smoke_v1",
+  "benchmark_id": "six_scene_mixed_gt_v1",
+  "generated_at": "2026-06-26T16:43:12.000055+00:00",
+  "coverage": {
+    "benchmark_total_query_count": 90,
+    "benchmark_query_count": 8,
+    "excluded_scene_query_count": 82,
+    "result_count": 1,
+    "missing_result_count": 7,
+    "schema_valid_result_count": 1,
+    "evaluated_result_count": 1,
+    "unavailable_result_count": 0,
+    "accuracy_eligible_result_count": 0,
+    "ground_truth_unavailable_result_count": 1
+  },
+  "mode_counts": {
+    "live": 1
+  },
+  "compact_metrics": {
+    "total_queries": 8,
+    "runnable_queries": 1,
+    "gt_eligible_queries": 0,
+    "schema_valid_count": 1,
+    "query_type_normalization": {
+      "simple_object": "simple",
+      "attribute": "compound",
+      "negative": "simple"
+    },
+    "per_query_type": {
+      "simple": {
+        "total_queries": 3,
+        "runnable_queries": 1,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 1,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "compound": {
+        "total_queries": 2,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "relational": {
+        "total_queries": 1,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "multi_hop": {
+        "total_queries": 1,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "functional": {
+        "total_queries": 1,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      }
+    }
+  },
+  "metrics": {
+    "retrieval_success": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_view_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_node_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_zone_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "not_found_correctness": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "runtime_seconds": {
+      "mean": 65.4509,
+      "total": 65.4509,
+      "denominator": 1,
+      "status": "measured"
+    },
+    "token_usage": {
+      "input": null,
+      "output": null,
+      "total": null,
+      "denominator": 0,
+      "status": "unavailable"
+    },
+    "checked_view_count": {
+      "mean": 1.0,
+      "total": 1,
+      "denominator": 1,
+      "status": "measured"
+    },
+    "visited_node_count": {
+      "mean": 1.0,
+      "total": 1,
+      "denominator": 1,
+      "status": "measured"
+    },
+    "bbox_3d_iou": {
+      "value": null,
+      "status": "N/A",
+      "denominator": 0,
+      "reason": "Reliable depth and reliable GT 3D boxes were not both available"
+    }
+  },
+  "failure_categories": {
+    "wrong room / zone": 0,
+    "wrong object": 0,
+    "wrong view": 0,
+    "missing object in semantic description": 0,
+    "bad query parsing": 0,
+    "bad traversal": 0,
+    "bad bbox": 0,
+    "invalid depth": 0,
+    "ambiguous ground truth": 0,
+    "baseline adapter issue": 0,
+    "missing GT": 1
+  },
+  "missing_query_ids": [
+    "q052",
+    "q053",
+    "q054",
+    "q055",
+    "q056",
+    "q057",
+    "q058"
+  ],
+  "per_query": [
+    {
+      "query_id": "q051",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": false,
+      "accuracy_metrics_status": "unavailable_gt",
+      "retrieval_success": null,
+      "expected_view_hit": null,
+      "expected_node_hit": null,
+      "expected_zone_hit": null,
+      "not_found_correct": null,
+      "runtime_seconds": 65.45093827000005,
+      "token_usage": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "missing GT"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/q051.json"
+    },
+    {
+      "query_id": "q052",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q053",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "attribute",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q054",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "relational",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q055",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "multi_hop",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q056",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "functional",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q057",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    },
+    {
+      "query_id": "q058",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "query_type": "negative",
+      "status": "missing_result",
+      "failure_categories": [],
+      "schema_errors": []
+    }
+  ],
+  "warnings": [
+    "7 benchmark queries have no saved result",
+    "3D IoU is N/A because run_config does not confirm reliable depth",
+    "1 query results lack GT and are excluded from accuracy metrics"
+  ]
+}

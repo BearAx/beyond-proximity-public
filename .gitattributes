@@ -1,0 +1,2 @@
+backend/data/scenes/**/images/*.png filter=lfs diff=lfs merge=lfs -text
+backend/data/scenes/**/depths/*.npy filter=lfs diff=lfs merge=lfs -text

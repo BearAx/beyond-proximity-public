@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "object_v002_003_small_drawers_cabinet",
+  "node_type": "object",
+  "name": "small drawers cabinet",
+  "summary": "Object observation from v002.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v002"
+  ],
+  "attributes": [
+    "wooden",
+    "many drawers"
+  ],
+  "approx_location": "left-center",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

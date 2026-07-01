@@ -69,6 +69,15 @@ export interface CapturePayload {
   cy: number;
   width: number;
   height: number;
+  source_ply_url?: string | null;
+  captured_at_utc: string;
+  pose_coordinate_convention: string;
+  depth_source: string;
+  depth_near: number;
+  depth_far: number;
+  depth_valid_pixel_count: number;
+  depth_min: number;
+  depth_max: number;
 }
 
 export interface BBox3D {
@@ -86,7 +95,7 @@ export interface QueryResult {
   confidence: number;
   explanation: string;
   /** §7 step 1 — show info panel, not "not found". */
-  pipeline_phase?: 'decomposition';
+  pipeline_phase?: 'decomposition' | 'found' | 'not_found';
   /** base64 data URL of the annotated image (bbox drawn) */
   annotated_image?: string | null;
 }

@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "landmark_v007_002_horn_like_wall_object",
+  "node_type": "landmark",
+  "name": "horn-like wall object",
+  "summary": "Landmark observation from v007.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v007"
+  ],
+  "approx_location": "right side",
+  "source": "manual"
+}

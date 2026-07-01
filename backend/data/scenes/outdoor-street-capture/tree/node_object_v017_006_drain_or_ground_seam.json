@@ -1,0 +1,22 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "object_v017_006_drain_or_ground_seam",
+  "node_type": "object",
+  "name": "drain or ground seam",
+  "summary": "Object observation from v017.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v017"
+  ],
+  "attributes": [
+    "along path"
+  ],
+  "approx_location": "foreground",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

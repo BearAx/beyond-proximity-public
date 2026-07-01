@@ -1,0 +1,22 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "object_v010_005_protective_display_edge",
+  "node_type": "object",
+  "name": "protective display edge",
+  "summary": "Object observation from v010.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v010"
+  ],
+  "attributes": [
+    "museum exhibit boundary"
+  ],
+  "approx_location": "lower foreground",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "object_v014_003_dark_wall_panel",
+  "node_type": "object",
+  "name": "dark wall panel",
+  "summary": "Object observation from v014.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v014"
+  ],
+  "attributes": [
+    "plain",
+    "black or dark gray"
+  ],
+  "approx_location": "left side",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

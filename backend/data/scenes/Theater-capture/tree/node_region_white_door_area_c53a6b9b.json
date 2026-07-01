@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "region_white_door_area_c53a6b9b",
+  "node_type": "region",
+  "name": "white door area",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v006"
+  ],
+  "observations": [
+    {
+      "view_id": "v006",
+      "approx_location": "right-center",
+      "source": "manual"
+    }
+  ]
+}

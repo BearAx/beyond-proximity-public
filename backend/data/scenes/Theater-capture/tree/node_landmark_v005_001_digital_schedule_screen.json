@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "landmark_v005_001_digital_schedule_screen",
+  "node_type": "landmark",
+  "name": "digital schedule screen",
+  "summary": "Landmark observation from v005.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v005"
+  ],
+  "approx_location": "left-center",
+  "source": "manual"
+}

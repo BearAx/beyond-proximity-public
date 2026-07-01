@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v005_001_banquet_table_cluster",
+  "node_type": "landmark",
+  "name": "banquet table cluster",
+  "summary": "Landmark observation from v005.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v005"
+  ],
+  "approx_location": "center",
+  "source": "manual"
+}

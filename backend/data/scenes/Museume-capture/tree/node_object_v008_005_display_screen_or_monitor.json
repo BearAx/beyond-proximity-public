@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "object_v008_005_display_screen_or_monitor",
+  "node_type": "object",
+  "name": "display screen or monitor",
+  "summary": "Object observation from v008.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v008"
+  ],
+  "attributes": [
+    "dark",
+    "rectangular"
+  ],
+  "approx_location": "right side",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

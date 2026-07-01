@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v005_002_recessed_doorway",
+  "node_type": "landmark",
+  "name": "recessed doorway",
+  "summary": "Landmark observation from v005.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v005"
+  ],
+  "approx_location": "center",
+  "source": "manual"
+}

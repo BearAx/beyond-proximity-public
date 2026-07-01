@@ -1,0 +1,61 @@
+{
+  "structured_plan": {
+    "adapter": "langsplat_native_export_v1",
+    "feature_level": 1
+  },
+  "visited_nodes": [
+    "language_field",
+    "feature_level_1"
+  ],
+  "selected_views": [
+    "sofa_train_00000"
+  ],
+  "result": {
+    "found": false,
+    "matched_object": "Find the sofa",
+    "selected_node_id": null,
+    "selected_view_id": "sofa_train_00000",
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 0.4495883882045746,
+    "explanation": "Native LangSplat feature query peaked at pixel (1073, 682) with official relevancy score 0.449588."
+  },
+  "metrics_log": {
+    "runtime_seconds": 106.70921081699998,
+    "stage_runtime_seconds": {
+      "native_language_field_query": 106.70921081699998
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 2,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "feature_map_shape": [
+        1080,
+        1440,
+        3
+      ],
+      "peak_pixel": [
+        1073,
+        682
+      ]
+    }
+  },
+  "warnings": [
+    "Official pretrained sofa smoke scene is separate from the SemanticSplat five-scene benchmark."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "langsplat_smoke_v1",
+  "method": "langsplat",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "langsplat-sofa-official",
+  "query_id": "ls001",
+  "query": "Find the sofa",
+  "query_type": "simple_object"
+}

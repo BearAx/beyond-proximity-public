@@ -2256,11 +2256,11 @@
   "reasoning": {
     "bundle_path": "benchmark_results/reasoning_default.json",
     "reasoning_md_paths": [
-      "project_log/runs/2026-06-12_1829/reasoning/01_where_is_the_screen_in_the_c.md",
-      "project_log/runs/2026-06-12_1829/reasoning/02_where_is_the_screen_in_the_c.md",
-      "project_log/runs/2026-06-12_1829/reasoning/03_where_is_the_projection_scre.md",
-      "project_log/runs/2026-06-12_1829/reasoning/04_find_the_projector_in_the_ba.md",
-      "project_log/runs/2026-06-12_1829/reasoning/05_where_is_the_exit_sign_in_th.md"
+      "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/01_where_is_the_screen_in_the_c.md",
+      "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/02_where_is_the_screen_in_the_c.md",
+      "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/03_where_is_the_projection_scre.md",
+      "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/04_find_the_projector_in_the_ba.md",
+      "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/05_where_is_the_exit_sign_in_th.md"
     ],
     "session_paths": [
       "backend/data/scenes/default/queries/auto_a1c7ca80_graph.json",
@@ -2280,7 +2280,7 @@
         "query": "where is the screen in the conference room",
         "graph_verdict": "correct_room",
         "flat_verdict": "wrong_room",
-        "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/01_where_is_the_screen_in_the_c.md",
+        "reasoning_md": "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/01_where_is_the_screen_in_the_c.md",
         "session_graph": "auto_a1c7ca80_graph.json",
         "session_flat": "auto_a1c7ca80_flat.json"
       },
@@ -2289,7 +2289,7 @@
         "query": "where is the screen in the conference room located",
         "graph_verdict": "correct_room",
         "flat_verdict": "wrong_room",
-        "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/02_where_is_the_screen_in_the_c.md",
+        "reasoning_md": "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/02_where_is_the_screen_in_the_c.md",
         "session_graph": "auto_8ac3faa5_graph.json",
         "session_flat": "auto_8ac3faa5_flat.json"
       },
@@ -2298,7 +2298,7 @@
         "query": "where is the projection screen in the ballroom",
         "graph_verdict": "correct_room",
         "flat_verdict": "correct_room",
-        "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/03_where_is_the_projection_scre.md",
+        "reasoning_md": "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/03_where_is_the_projection_scre.md",
         "session_graph": "auto_4565d5ce_graph.json",
         "session_flat": "auto_4565d5ce_flat.json"
       },
@@ -2307,7 +2307,7 @@
         "query": "find the projector in the ballroom",
         "graph_verdict": "correct_room",
         "flat_verdict": "correct_room",
-        "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/04_find_the_projector_in_the_ba.md",
+        "reasoning_md": "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/04_find_the_projector_in_the_ba.md",
         "session_graph": "auto_647ee43a_graph.json",
         "session_flat": "auto_647ee43a_flat.json"
       },
@@ -2316,13 +2316,13 @@
         "query": "where is the exit sign in the lobby",
         "graph_verdict": "miss",
         "flat_verdict": "miss",
-        "reasoning_md": "project_log/runs/2026-06-12_1829/reasoning/05_where_is_the_exit_sign_in_th.md",
+        "reasoning_md": "archive/old_notes/project_log/runs/2026-06-12_1829/reasoning/05_where_is_the_exit_sign_in_th.md",
         "session_graph": "auto_00910838_graph.json",
         "session_flat": "auto_00910838_flat.json"
       }
     ],
     "run_slug": "2026-06-12_1829",
-    "run_dashboard": "project_log/runs/2026-06-12_1829/README.md"
+    "run_dashboard": "archive/old_notes/project_log/runs/2026-06-12_1829/README.md"
   },
   "charts": {
     "tokens": "benchmark_results/tokens_comparison.png",
@@ -2333,5 +2333,5 @@
     "failure": "benchmark_results/failure_room_accuracy.png"
   },
   "docs_hub": "docs/README.md",
-  "run_dashboard": "docs/project_log/runs/2026-06-12_1829/README.md"
+  "run_dashboard": "docs/archive/old_notes/project_log/runs/2026-06-12_1829/README.md"
 }

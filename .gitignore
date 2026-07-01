@@ -1,6 +1,6 @@
-# 3D Data
-*.ply
-scenes/
+# Large local 3D data. Review these paths before any git clean operation.
+scenes/*.ply
+backend/data/scenes/*/geometry/*.ply
 
 # Pipeline outputs and large archives
 outputs/
@@ -14,6 +14,10 @@ data/replica/**/depth/
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
+.pytest_tmp/
+.mypy_cache/
+.ruff_cache/
 .env
 venv/
 .venv/
@@ -37,6 +41,34 @@ Thumbs.db
 dist/
 build/
 *.egg-info/
+coverage/
+htmlcov/
+*.tmp
+*.bak
+
+# Incoming archives and generated evaluation runs
+outputs/**
+!outputs/week2/
+outputs/week2/**
+!outputs/week2/phase1_evaluator_smoke/
+!outputs/week2/phase1_evaluator_smoke/**
+!outputs/baselines/
+outputs/baselines/**
+!outputs/baselines/langsplat_smoke_v1/
+outputs/baselines/langsplat_smoke_v1/**
+!outputs/baselines/langsplat_smoke_v1/*.json
+!outputs/baselines/langsplat_smoke_v1/*.md
+!outputs/baselines/langsplat_smoke_v1/*.log
+!outputs/baselines/langsplat_smoke_v1/query_results/
+!outputs/baselines/langsplat_smoke_v1/query_results/*.json
+!outputs/baselines/conceptgraphs_smoke_v1/
+outputs/baselines/conceptgraphs_smoke_v1/**
+!outputs/baselines/conceptgraphs_smoke_v1/*.json
+!outputs/baselines/conceptgraphs_smoke_v1/*.md
+!outputs/baselines/conceptgraphs_smoke_v1/native_mapping.log
+!outputs/baselines/conceptgraphs_smoke_v1/native_query.log
+!outputs/baselines/conceptgraphs_smoke_v1/query_results/
+!outputs/baselines/conceptgraphs_smoke_v1/query_results/*.json
 
 # Matplotlib cache (benchmark charts)
 .matplotlib/
@@ -44,3 +76,4 @@ build/
 # Local merge clones / backups (if copied into repo root)
 /leo-fork/
 local_backup*.zip
+graphify-out/

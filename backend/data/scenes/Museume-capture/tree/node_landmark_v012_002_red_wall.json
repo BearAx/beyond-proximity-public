@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "landmark_v012_002_red_wall",
+  "node_type": "landmark",
+  "name": "red wall",
+  "summary": "Landmark observation from v012.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v012"
+  ],
+  "approx_location": "right and back",
+  "source": "manual"
+}

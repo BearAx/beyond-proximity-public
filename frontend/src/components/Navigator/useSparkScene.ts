@@ -8,7 +8,7 @@
  */
 import type * as THREETypes from 'three'
 import { useEffect, useRef, useState } from 'react'
-import { CAMERA_NEAR, CAMERA_FAR } from './DepthCapture'
+import { CAMERA_NEAR, CAMERA_FAR, type SparkDepthSource } from './DepthCapture'
 
 // CDN URLs — must match exactly so the browser module cache gives one shared instance.
 // CDN Spark.js imports "three" via the importmap in index.html, which points to the
@@ -20,6 +20,7 @@ interface SparkSceneResult {
   renderer: THREETypes.WebGLRenderer | null
   scene: THREETypes.Scene | null
   camera: THREETypes.PerspectiveCamera | null
+  depthSource: SparkDepthSource | null
   ready: boolean
   error: string | null
 }
@@ -40,6 +41,7 @@ export function useSparkScene({
   const cameraRef   = useRef<THREETypes.PerspectiveCamera | null>(null)
   const sparkRef    = useRef<unknown>(null)
   const splatRef    = useRef<unknown>(null)
+  const depthSourceRef = useRef<SparkDepthSource | null>(null)
   const rafRef      = useRef<number>(0)
 
   const [ready, setReady] = useState(false)
@@ -89,7 +91,7 @@ export function useSparkScene({
         // with Spark.js (which registers splatDefines and other custom chunks).
         // preserveDrawingBuffer: true is required so canvas.toDataURL() in useViewCapture
         // captures a non-empty image — without it, WebGL clears the buffer after compositing.
-        const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, preserveDrawingBuffer: true })
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, preserveDrawingBuffer: true })
         renderer.setPixelRatio(window.devicePixelRatio)
         renderer.setSize(w, h)
         rendererRef.current = renderer
@@ -108,13 +110,19 @@ export function useSparkScene({
         // @ts-ignore
         const SparkModule = await import(/* @vite-ignore */ SPARK_CDN) as unknown as typeof import('@sparkjsdev/spark')
 
-        const { SparkRenderer, SplatMesh } = SparkModule as {
+        const { SparkRenderer, SplatMesh, modifiers } = SparkModule as unknown as {
           SparkRenderer: new (opts: { renderer: THREETypes.WebGLRenderer }) => THREETypes.Mesh & {
             update: (opts: { scene: THREETypes.Scene }) => void
             autoUpdate: boolean
           }
           SplatMesh: new (opts: { url?: string }) => THREETypes.Object3D & {
             initialized: Promise<unknown>
+            worldModifier?: unknown
+            enableWorldToView: boolean
+            updateGenerator: () => void
+          }
+          modifiers: {
+            setDepthColor: SparkDepthSource['setDepthColor']
           }
         }
 
@@ -136,6 +144,10 @@ export function useSparkScene({
           ;(splat as THREETypes.Object3D & { rotation: { x: number } }).rotation.x = Math.PI
           scene.add(splat)
           splatRef.current = splat
+          depthSourceRef.current = {
+            splat,
+            setDepthColor: modifiers.setDepthColor,
+          }
 
           try {
             await splat.initialized
@@ -164,6 +176,7 @@ export function useSparkScene({
       cameraRef.current   = null
       sparkRef.current    = null
       splatRef.current    = null
+      depthSourceRef.current = null
     }
   }, [canvasRef, plyUrl, fov])
 
@@ -171,6 +184,7 @@ export function useSparkScene({
     renderer: rendererRef.current,
     scene:    sceneRef.current,
     camera:   cameraRef.current,
+    depthSource: depthSourceRef.current,
     ready,
     error,
   }

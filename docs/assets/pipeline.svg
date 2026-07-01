@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="140" viewBox="0 0 1100 140" role="img">
+  <rect width="1100" height="140" rx="8" fill="#0f172a"/>
+  <g font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="13" fill="#e2e8f0" text-anchor="middle">
+    <rect x="20" y="40" width="130" height="60" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="85" y="76">Query</text>
+    <rect x="190" y="40" width="130" height="60" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="255" y="76">Decompose</text>
+    <rect x="360" y="40" width="130" height="60" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="425" y="76">Traverse</text>
+    <rect x="530" y="40" width="130" height="60" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="595" y="76">Leaf VLM</text>
+    <rect x="700" y="40" width="130" height="60" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="765" y="76">2D bbox</text>
+    <rect x="870" y="40" width="130" height="60" rx="8" fill="#14532d" stroke="#4ade80"/>
+    <text x="935" y="76" fill="#bbf7d0">3D bbox</text>
+  </g>
+  <g stroke="#4ade80" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M150 70 H190 M320 70 H360 M490 70 H530 M660 70 H700 M830 70 H870"/>
+  </g>
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#4ade80"/>
+    </marker>
+  </defs>
+  <text x="550" y="125" fill="#64748b" font-family="ui-monospace,Menlo,monospace" font-size="12" text-anchor="middle">Graph: ~4 views checked  |  Flat: 19 views  |  scene default</text>
+</svg>

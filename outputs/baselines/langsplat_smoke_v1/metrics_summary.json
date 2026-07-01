@@ -1,0 +1,317 @@
+{
+  "schema_version": "semanticsplat.metrics_record.v1",
+  "run_id": "langsplat_smoke_v1",
+  "benchmark_id": "external_baseline_smoke_v1",
+  "generated_at": "2026-06-26T13:04:42.959413+00:00",
+  "coverage": {
+    "benchmark_total_query_count": 1,
+    "benchmark_query_count": 1,
+    "excluded_scene_query_count": 0,
+    "result_count": 1,
+    "missing_result_count": 0,
+    "schema_valid_result_count": 1,
+    "evaluated_result_count": 1,
+    "unavailable_result_count": 0,
+    "accuracy_eligible_result_count": 0,
+    "ground_truth_unavailable_result_count": 1
+  },
+  "mode_counts": {
+    "live": 1
+  },
+  "compact_metrics": {
+    "total_queries": 1,
+    "runnable_queries": 1,
+    "gt_eligible_queries": 0,
+    "schema_valid_count": 1,
+    "query_type_normalization": {
+      "simple_object": "simple",
+      "attribute": "compound",
+      "negative": "simple"
+    },
+    "per_query_type": {
+      "simple": {
+        "total_queries": 1,
+        "runnable_queries": 1,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 1,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "compound": {
+        "total_queries": 0,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "relational": {
+        "total_queries": 0,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "multi_hop": {
+        "total_queries": 0,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "functional": {
+        "total_queries": 0,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      }
+    }
+  },
+  "metrics": {
+    "retrieval_success": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_view_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_node_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_zone_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "not_found_correctness": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "runtime_seconds": {
+      "mean": 106.7092,
+      "total": 106.7092,
+      "denominator": 1,
+      "status": "measured"
+    },
+    "token_usage": {
+      "input": null,
+      "output": null,
+      "total": null,
+      "denominator": 0,
+      "status": "unavailable"
+    },
+    "checked_view_count": {
+      "mean": 1.0,
+      "total": 1,
+      "denominator": 1,
+      "status": "measured"
+    },
+    "visited_node_count": {
+      "mean": 2.0,
+      "total": 2,
+      "denominator": 1,
+      "status": "measured"
+    },
+    "bbox_3d_iou": {
+      "value": null,
+      "status": "N/A",
+      "denominator": 0,
+      "reason": "Reliable depth and reliable GT 3D boxes were not both available"
+    }
+  },
+  "failure_categories": {
+    "wrong room / zone": 0,
+    "wrong object": 0,
+    "wrong view": 0,
+    "missing object in semantic description": 0,
+    "bad query parsing": 0,
+    "bad traversal": 0,
+    "bad bbox": 0,
+    "invalid depth": 0,
+    "ambiguous ground truth": 0,
+    "baseline adapter issue": 0,
+    "missing GT": 1
+  },
+  "missing_query_ids": [],
+  "per_query": [
+    {
+      "query_id": "ls001",
+      "scene_id": "langsplat-sofa-official",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": false,
+      "accuracy_metrics_status": "unavailable_gt",
+      "retrieval_success": null,
+      "expected_view_hit": null,
+      "expected_node_hit": null,
+      "expected_zone_hit": null,
+      "not_found_correct": null,
+      "runtime_seconds": 106.70921081699998,
+      "token_usage": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 2.0,
+      "bbox_3d_iou": null,
+      "bbox_3d_iou_eligible": false,
+      "failure_categories": [
+        "missing GT"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/ls001.json"
+    }
+  ],
+  "warnings": [
+    "3D IoU is N/A because run_config does not confirm reliable depth",
+    "1 query results lack GT and are excluded from accuracy metrics"
+  ]
+}

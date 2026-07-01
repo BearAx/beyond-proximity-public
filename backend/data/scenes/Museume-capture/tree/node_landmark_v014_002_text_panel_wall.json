@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "landmark_v014_002_text_panel_wall",
+  "node_type": "landmark",
+  "name": "text panel wall",
+  "summary": "Landmark observation from v014.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v014"
+  ],
+  "approx_location": "right side",
+  "source": "manual"
+}

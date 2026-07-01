@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Museume-capture",
+  "node_id": "landmark_v020_003_metal_ladder_or_rack",
+  "node_type": "landmark",
+  "name": "metal ladder or rack",
+  "summary": "Landmark observation from v020.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v020"
+  ],
+  "approx_location": "left side",
+  "source": "manual"
+}

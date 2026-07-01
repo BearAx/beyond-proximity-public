@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "object_v012_001_large_framed_painting_or_mirror",
+  "node_type": "object",
+  "name": "large framed painting or mirror",
+  "summary": "Object observation from v012.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v012"
+  ],
+  "attributes": [
+    "large",
+    "wall-mounted"
+  ],
+  "approx_location": "center-left",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "region_covered_passage_ecca2388",
+  "node_type": "region",
+  "name": "covered passage",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v003",
+    "v004"
+  ],
+  "observations": [
+    {
+      "view_id": "v003",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "view_id": "v004",
+      "approx_location": "center",
+      "source": "manual"
+    }
+  ]
+}

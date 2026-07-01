@@ -31,7 +31,7 @@ os.environ.setdefault("MPLCONFIGDIR", str(_mpl_dir))
 
 OUT_DIR = ROOT / "docs" / "benchmark_results"
 DOCS_DIR = ROOT / "docs"
-MD_PATH = DOCS_DIR / "benchmark_graph_vs_flat.md"
+MD_PATH = DOCS_DIR / "benchmarks" / "benchmark_graph_vs_flat.md"
 
 
 def _short_label(query: str, max_len: int = 27) -> str:
@@ -226,6 +226,7 @@ def main() -> None:
     json_path = OUT_DIR / f"benchmark_{args.scene}.json"
 
     video_path = OUT_DIR / "failure_case_demo.mp4"
+    e2e_path = OUT_DIR / "e2e_product_demo.mp4"
     try:
         import subprocess
         subprocess.run(
@@ -237,6 +238,17 @@ def main() -> None:
     except Exception as exc:
         print(f"  video: skipped ({exc})")
         video_path = None
+
+    try:
+        import subprocess
+        subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "render_e2e_product_demo.py"), "--output", str(e2e_path)],
+            check=True,
+            env={**os.environ, "PYTHONPATH": str(ROOT), "MPLCONFIGDIR": str(_mpl_dir)},
+        )
+        report["e2e_demo_video"] = "benchmark_results/e2e_product_demo.mp4"
+    except Exception as exc:
+        print(f"  e2e video: skipped ({exc})")
 
     reasoning_report = write_benchmark_reasoning(
         args.scene, failure_report, docs_dir=DOCS_DIR, run_slug=run_slug,
@@ -256,7 +268,9 @@ def main() -> None:
     )
     run_dash_path = write_run_dashboard(
         DOCS_DIR, run_slug, report, failure_report, reasoning_report,
-        log_rel=str(log_path.relative_to(DOCS_DIR / "project_log")),
+        log_rel=str(
+            log_path.relative_to(DOCS_DIR / "experiments" / "stub" / "demo_runs")
+        ),
     )
     report["docs_hub"] = str(hub_path.relative_to(ROOT))
     report["run_dashboard"] = str(run_dash_path.relative_to(ROOT))

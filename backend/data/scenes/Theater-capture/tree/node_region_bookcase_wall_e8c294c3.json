@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "region_bookcase_wall_e8c294c3",
+  "node_type": "region",
+  "name": "bookcase wall",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v010"
+  ],
+  "observations": [
+    {
+      "view_id": "v010",
+      "approx_location": "back center",
+      "source": "manual"
+    }
+  ]
+}

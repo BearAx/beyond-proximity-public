@@ -1,0 +1,65 @@
+{
+  "scene": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\Museume-capture",
+  "rgb_count": 20,
+  "depth_count": 20,
+  "pose_count": 20,
+  "intrinsics_status": "valid",
+  "metadata_status": "complete",
+  "rgb_resolution": [
+    2340,
+    1170
+  ],
+  "depth_resolution": [
+    2340,
+    1170
+  ],
+  "depth_min": 0.10000000149011612,
+  "depth_max": 100.0,
+  "depth_mean": 16.786828994750977,
+  "depth_is_constant": false,
+  "zero_depth_ratio": 0.0,
+  "pose_validity": {
+    "valid_count": 20,
+    "pose_count": 20,
+    "all_valid": true
+  },
+  "intrinsics_match_canvas": true,
+  "semantic_index": {
+    "view_json_count": 0,
+    "invalid_view_json_count": 0,
+    "missing_view_ids": [
+      "v001",
+      "v002",
+      "v003",
+      "v004",
+      "v005",
+      "v006",
+      "v007",
+      "v008",
+      "v009",
+      "v010",
+      "v011",
+      "v012",
+      "v013",
+      "v014",
+      "v015",
+      "v016",
+      "v017",
+      "v018",
+      "v019",
+      "v020"
+    ],
+    "tree_node_count": 0,
+    "tree_valid": false,
+    "tree_covers_all_views": false,
+    "complete": false
+  },
+  "semantic_eval_allowed": false,
+  "geometry_eval_allowed": false,
+  "scaling_allowed": true,
+  "warnings": [
+    "Independent GT 3D boxes/masks are missing.",
+    "Independent semantic ground truth is missing.",
+    "ViewJSON/tree semantic index is incomplete or missing."
+  ]
+}

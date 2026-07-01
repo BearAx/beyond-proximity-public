@@ -6,6 +6,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 
+_DEMO_RUNS_REL = Path("experiments/stub/demo_runs")
+
+
 def _verdict_icon(verdict: str) -> str:
     return {
         "correct_room": "✅",
@@ -24,11 +27,11 @@ def write_run_dashboard(
     reasoning_report: dict,
     *,
     log_rel: str,
-    report_rel: str = "benchmark_graph_vs_flat.md",
+    report_rel: str = "benchmarks/benchmark_graph_vs_flat.md",
     video_rel: Optional[str] = "benchmark_results/failure_case_demo.mp4",
 ) -> Path:
-    """Per-run hub: docs/project_log/runs/{run_slug}/README.md"""
-    run_dir = docs_dir / "project_log" / "runs" / run_slug
+    """Write a dashboard below docs/experiments/stub/demo_runs/."""
+    run_dir = docs_dir / _DEMO_RUNS_REL / "runs" / run_slug
     run_dir.mkdir(parents=True, exist_ok=True)
     path = run_dir / "README.md"
 
@@ -47,14 +50,14 @@ def write_run_dashboard(
         "",
         "| | Link |",
         "|--|------|",
-        f"| 🏠 Docs hub | [../../README.md](../../README.md) |",
-        f"| 📊 Benchmark report | [{report_rel}](../../../{report_rel}) |",
+        f"| 🏠 Docs hub | [../../../../../README.md](../../../../../README.md) |",
+        f"| 📊 Benchmark report | [{report_rel}](../../../../../{report_rel}) |",
         f"| 📝 Project log | [{log_rel}](../../{log_rel}) |",
     ]
     if video_rel:
-        lines.append(f"| 🎬 Demo video | [{video_rel}](../../../{video_rel}) |")
+        lines.append(f"| 🎬 Demo video | [{video_rel}](../../../../../{video_rel}) |")
     lines += [
-        f"| 📦 Raw JSON | [benchmark_results/benchmark_{scene}.json](../../../benchmark_results/benchmark_{scene}.json) |",
+        f"| 📦 Raw JSON | [benchmark_results/benchmark_{scene}.json](../../../../../benchmark_results/benchmark_{scene}.json) |",
         "",
         "## Results summary",
         "",
@@ -92,10 +95,10 @@ def write_run_dashboard(
         "",
         "| Chart | |",
         "|-------|---|",
-        "| Tokens | [tokens_comparison.png](../../../benchmark_results/tokens_comparison.png) |",
-        "| Time | [time_seconds.png](../../../benchmark_results/time_seconds.png) |",
-        "| Failure cases | [failure_room_accuracy.png](../../../benchmark_results/failure_room_accuracy.png) |",
-        "| Scaling | [scaling_curve.png](../../../benchmark_results/scaling_curve.png) |",
+        "| Tokens | [tokens_comparison.png](../../../../../benchmark_results/tokens_comparison.png) |",
+        "| Time | [time_seconds.png](../../../../../benchmark_results/time_seconds.png) |",
+        "| Failure cases | [failure_room_accuracy.png](../../../../../benchmark_results/failure_room_accuracy.png) |",
+        "| Scaling | [scaling_curve.png](../../../../../benchmark_results/scaling_curve.png) |",
         "",
     ]
 
@@ -112,8 +115,9 @@ def write_docs_hub(
     run_slug: str,
     log_path: Path,
 ) -> Path:
-    """Master navigation: docs/README.md — start here."""
-    path = docs_dir / "README.md"
+    """Write the latest simulated-demo run summary without replacing docs/README.md."""
+    path = docs_dir / _DEMO_RUNS_REL / "latest.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
     s = report.get("summary", {})
     fs = failure_report.get("summary", {})
     scene = report.get("scene_id", "default")
@@ -124,8 +128,8 @@ def write_docs_hub(
     except Exception:
         date_str = "—"
 
-    log_rel = log_path.relative_to(docs_dir / "project_log")
-    run_dash = f"project_log/runs/{run_slug}/README.md"
+    log_rel = log_path.relative_to(docs_dir / _DEMO_RUNS_REL)
+    run_dash = f"runs/{run_slug}/README.md"
 
     lines = [
         "# SemanticSplat — Documentation Hub",
@@ -138,11 +142,11 @@ def write_docs_hub(
         "",
         "| What you need | Open |",
         "|---------------|------|",
-        f"| **Latest full report** (metrics, charts, failure cases) | [benchmark_graph_vs_flat.md](benchmark_graph_vs_flat.md) |",
+        f"| **Latest full report** (metrics, charts, failure cases) | [benchmark_graph_vs_flat.md](../../../benchmarks/benchmark_graph_vs_flat.md) |",
         f"| **Latest run dashboard** (one page, all links) | [{run_dash}]({run_dash}) |",
-        f"| **Latest project log** (tokens, decisions, next steps) | [project_log/{log_rel}](project_log/{log_rel}) |",
-        f"| **Demo video** (conference room screen failure) | [failure_case_demo.mp4](benchmark_results/failure_case_demo.mp4) |",
-        f"| **All past runs** | [project_log/README.md](project_log/README.md) |",
+        f"| **Latest project log** (tokens, decisions, next steps) | [{log_rel}]({log_rel}) |",
+        f"| **Demo video** (conference room screen failure) | [failure_case_demo.mp4](../../../benchmark_results/failure_case_demo.mp4) |",
+        f"| **All past runs** | [README.md](README.md) |",
         "",
         "---",
         "",
@@ -171,7 +175,7 @@ def write_docs_hub(
         g, f = case.get("graph_verdict", "?"), case.get("flat_verdict", "?")
         lines.append(
             f"| {i} | {short} | {_verdict_icon(g)} | {_verdict_icon(f)} | "
-            f"[trace]({md}) |"
+            f"[trace](../../../{md}) |"
         )
 
     lines += [
@@ -183,9 +187,9 @@ def write_docs_hub(
         "```",
         "docs/",
         "├── README.md                    ← you are here",
-        "├── benchmark_graph_vs_flat.md   ← main report + charts",
+        "├── benchmarks/benchmark_graph_vs_flat.md",
         "├── benchmark_results/           ← JSON, PNG, MP4",
-        "└── project_log/",
+        "└── experiments/stub/demo_runs/",
         "    ├── README.md                ← history of all runs",
         "    └── runs/{timestamp}/",
         "        ├── README.md            ← run dashboard",
@@ -215,7 +219,7 @@ def update_project_log_index(
     report: dict,
     failure_report: dict,
 ) -> None:
-    """Rewrite project_log/README.md with run dashboards linked."""
+    """Rewrite the simulated-demo run index with dashboard links."""
     index_path = log_dir / "README.md"
     fs = failure_report.get("summary", {})
     s = report.get("summary", {})
@@ -232,7 +236,7 @@ def update_project_log_index(
         "# Project log",
         "",
         "History of benchmark runs. For the latest overview, start at "
-        "[**docs/README.md**](../README.md).",
+        "[**docs/README.md**](../../../README.md).",
         "",
         "## Runs (newest first)",
         "",

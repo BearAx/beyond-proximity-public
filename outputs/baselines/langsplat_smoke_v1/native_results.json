@@ -1,0 +1,60 @@
+{
+  "provenance": {
+    "native_execution": true,
+    "baseline": "langsplat",
+    "scene_id": "langsplat-sofa-official",
+    "repository": "https://github.com/minghanqin/LangSplat",
+    "revision": "d70edb86df0fcbda19dc0d9739a3e5140a5e65fc",
+    "command": "python render.py -s /assets/data/sofa -m /assets/output/sofa_1 --feature_level 1 --include_feature --skip_test; native_query.py ls001",
+    "checkpoints": [
+      "official LangSplat sofa pretrained output",
+      "official LangSplat sofa autoencoder checkpoint",
+      "laion/CLIP-ViT-B-16-laion2b_s34b_b88k"
+    ],
+    "native_artifacts": [
+      "C:/GitProjects/baseline-deps/LangSplat-assets/output/sofa_1/train/ours_None/renders_npy/00000.npy",
+      "C:/GitProjects/baseline-deps/LangSplat-assets/ckpt/sofa/best_ckpt.pth",
+      "C:/GitProjects/baseline-deps/LangSplat-assets/output/sofa_1/chkpnt30000.pth"
+    ]
+  },
+  "predictions": [
+    {
+      "query_id": "ls001",
+      "found": false,
+      "matched_label": "Find the sofa",
+      "selected_view_id": "sofa_train_00000",
+      "trace": [
+        "language_field",
+        "feature_level_1"
+      ],
+      "relevancy_score": 0.4495883882045746,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "feature_level": 1,
+      "explanation": "Native LangSplat feature query peaked at pixel (1073, 682) with official relevancy score 0.449588.",
+      "metrics": {
+        "runtime_seconds": 106.70921081699998,
+        "stage_runtime_seconds": {
+          "native_language_field_query": 106.70921081699998
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "feature_map_shape": [
+            1080,
+            1440,
+            3
+          ],
+          "peak_pixel": [
+            1073,
+            682
+          ]
+        }
+      },
+      "warnings": [
+        "Official pretrained sofa smoke scene is separate from the SemanticSplat five-scene benchmark."
+      ]
+    }
+  ]
+}

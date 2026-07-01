@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v016_001_bright_passage_opening",
+  "node_type": "landmark",
+  "name": "bright passage opening",
+  "summary": "Landmark observation from v016.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v016"
+  ],
+  "approx_location": "back center",
+  "source": "manual"
+}

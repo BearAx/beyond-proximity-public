@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v010_002_two_table_lamps",
+  "node_type": "landmark",
+  "name": "two table lamps",
+  "summary": "Landmark observation from v010.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v010"
+  ],
+  "approx_location": "left and right sides",
+  "source": "manual"
+}

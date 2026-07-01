@@ -1,0 +1,41 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.06kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM docker.io/pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel@sha256:58d848c38665fd3ed20bee65918255cb083637c860eb4fae67face2fb2ff5702
+#4 resolve docker.io/pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel@sha256:58d848c38665fd3ed20bee65918255cb083637c860eb4fae67face2fb2ff5702 0.0s done
+#4 DONE 0.0s
+
+#5 [2/5] RUN apt-get update && apt-get install -y --no-install-recommends         build-essential git libgl1 libglib2.0-0     && rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [3/5] RUN python -m pip install --upgrade pip "setuptools<81" wheel ninja &&     python -m pip install         "numpy<2"         jaxtyping matplotlib open-clip-torch==2.20.0         opencv-python-headless pillow plyfile==0.8.1 tensorboard tqdm
+#6 CACHED
+
+#7 [4/5] RUN git clone https://github.com/minghanqin/LangSplat.git /opt/langsplat &&     cd /opt/langsplat &&     git checkout "d70edb86df0fcbda19dc0d9739a3e5140a5e65fc" &&     git submodule update --init --recursive &&     python -m pip install --no-build-isolation ./submodules/langsplat-rasterization ./submodules/simple-knn
+#7 CACHED
+
+#8 [5/5] WORKDIR /opt/langsplat
+#8 CACHED
+
+#9 exporting to image
+#9 exporting layers done
+#9 exporting manifest sha256:501351931950375f1a265223b8eeae2ff57ae364a90b142dc44386c55a2de306 done
+#9 exporting config sha256:3d1b7a1e316c3d2bae34ab039c98a1129fc6330927fe93ee4b4513eba0e51f62 done
+#9 exporting attestation manifest sha256:b255c905ca3efaf41612c9fd56699525b8e25b3ed9c988520ad214701c1804a5 0.0s done
+#9 exporting manifest list sha256:7eec9b8c4a13d021cdb6554bf96a0a4f982b6e8b4716c52bb2bf79aa0865e8d8
+#9 exporting manifest list sha256:7eec9b8c4a13d021cdb6554bf96a0a4f982b6e8b4716c52bb2bf79aa0865e8d8 0.0s done
+#9 naming to docker.io/library/semanticsplat-langsplat:d70edb8 done
+#9 unpacking to docker.io/library/semanticsplat-langsplat:d70edb8 0.0s done
+#9 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/j46pvn7k424vi3wj76qgpxaim

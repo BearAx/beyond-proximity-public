@@ -1,0 +1,128 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v016",
+  "scene_id": "Museume-capture",
+  "image_path": "images/v016.png",
+  "depth_path": "depths/v016_depth.npy",
+  "pose_ref": "transforms.json#/frames/15/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "Exhibit wall with the Reichenstein title panel, a display case or monitor, and three arched historical illustrations behind mesh partitions.",
+  "visible_regions": [
+    {
+      "label": "Reichenstein exhibit wall",
+      "description": "wall section with Reichenstein title and illustrations",
+      "approx_location": "center and right",
+      "source": "manual"
+    },
+    {
+      "label": "display monitor area",
+      "description": "small monitor or display case near the title panel",
+      "approx_location": "center-left",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "Reichenstein information panel",
+      "attributes": [
+        "large",
+        "white",
+        "title text"
+      ],
+      "approx_location": "left-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "display monitor or case",
+      "attributes": [
+        "black",
+        "rectangular"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "arched historical illustrations",
+      "attributes": [
+        "three",
+        "large",
+        "black and white"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "metal mesh partitions",
+      "attributes": [
+        "black",
+        "grid"
+      ],
+      "approx_location": "foreground and right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "yellow floor marker",
+      "attributes": [
+        "small",
+        "circular"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "gray gallery wall",
+      "attributes": [
+        "plain"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "Reichenstein title panel",
+      "description": "large titled exhibit panel useful as a section marker",
+      "approx_location": "left-center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "three arched illustrations",
+      "description": "distinct group of three arched images on the wall",
+      "approx_location": "right side",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "display monitor",
+      "description": "black monitor/display near the title panel",
+      "approx_location": "center-left",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for queries about the Reichenstein panel, monitor, and arched illustrations.",
+  "warnings": [
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
+  ]
+}

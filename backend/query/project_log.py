@@ -18,8 +18,8 @@ def write_project_log(
     run_label: str = "benchmark",
     reasoning_report: Optional[dict] = None,
 ) -> Path:
-    """Write timestamped MD log under docs/project_log/."""
-    log_dir = docs_dir / "project_log"
+    """Write timestamped simulated-demo logs under docs/experiments/stub/."""
+    log_dir = docs_dir / "experiments" / "stub" / "demo_runs"
     log_dir.mkdir(parents=True, exist_ok=True)
 
     gen_at = report.get("generated_at", "")
@@ -44,9 +44,9 @@ def write_project_log(
         f"**Run:** `{report.get('run_slug', '—')}`  ",
         "",
         "**Navigation:** "
-        "[Docs hub](../README.md) · "
+        "[Docs hub](../../../README.md) · "
         f"[Run dashboard](runs/{report.get('run_slug', '')}/README.md) · "
-        "[Benchmark report](../benchmark_graph_vs_flat.md)",
+        "[Benchmark report](../../../benchmarks/benchmark_graph_vs_flat.md)",
         "",
         "---",
         "",
@@ -159,8 +159,12 @@ def write_project_log(
             "",
         ]
         for case in reasoning_report.get("cases", []):
-            md = case.get("reasoning_md", "")
-            lines.append(f"- Case {case.get('case_index', '?')}: [{case.get('query', '?')}](../{md})")
+            md = Path(case.get("reasoning_md", ""))
+            trace = f"runs/{report.get('run_slug', '')}/reasoning/{md.name}"
+            lines.append(
+                f"- Case {case.get('case_index', '?')}: "
+                f"[{case.get('query', '?')}]({trace})"
+            )
         lines.append("")
 
     if reasoning_report and reasoning_report.get("reasoning_md_paths"):
@@ -187,10 +191,10 @@ def write_project_log(
         "",
         "## Files produced this run",
         "",
-        f"- [`benchmark_results/benchmark_{report.get('scene_id', 'default')}.json`](../benchmark_results/benchmark_{report.get('scene_id', 'default')}.json)",
-        "- [`benchmark_graph_vs_flat.md`](../benchmark_graph_vs_flat.md)",
-        "- [`benchmark_results/failure_case_demo.mp4`](../benchmark_results/failure_case_demo.mp4)",
-        f"- This log: `project_log/{path.name}`",
+        f"- [`benchmark_results/benchmark_{report.get('scene_id', 'default')}.json`](../../../benchmark_results/benchmark_{report.get('scene_id', 'default')}.json)",
+        "- [`benchmark_graph_vs_flat.md`](../../../benchmarks/benchmark_graph_vs_flat.md)",
+        "- [`benchmark_results/failure_case_demo.mp4`](../../../benchmark_results/failure_case_demo.mp4)",
+        f"- This log: `experiments/stub/demo_runs/{path.name}`",
         "",
     ]
 

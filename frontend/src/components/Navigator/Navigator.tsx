@@ -20,7 +20,7 @@ export function Navigator({ plyUrl, showSidebar = true }: NavigatorProps) {
   const canvasRef     = useRef<HTMLCanvasElement>(null)
   const containerRef  = useRef<HTMLDivElement>(null)
 
-  const { renderer, scene, camera, ready, error } = useSparkScene({
+  const { renderer, scene, camera, depthSource, ready, error } = useSparkScene({
     canvasRef,
     plyUrl,
   })
@@ -43,11 +43,13 @@ export function Navigator({ plyUrl, showSidebar = true }: NavigatorProps) {
     return () => cancelAnimationFrame(raf)
   }, [renderer, camera, updateFPS])
 
-  useViewCapture({
+  const { captureError } = useViewCapture({
     renderer,
     scene,
     camera,
     canvas: canvasRef.current,
+    depthSource,
+    plyUrl,
     enabled: ready,
   })
 
@@ -81,6 +83,12 @@ export function Navigator({ plyUrl, showSidebar = true }: NavigatorProps) {
               <p className="text-gray-400 break-all">{error}</p>
               <p className="mt-2 text-gray-500">Navigator still active — fly around and capture anyway.</p>
             </div>
+          </div>
+        )}
+
+        {captureError && (
+          <div className="absolute bottom-14 right-3 max-w-md rounded bg-red-950/90 px-3 py-2 text-xs text-red-200 z-20">
+            Capture rejected: {captureError}
           </div>
         )}
 

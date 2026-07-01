@@ -1,0 +1,65 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "22821609-8ca4-4823-9173-6ec5d58543c6"
+  ],
+  "selected_views": [
+    "v001"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "sofa chair",
+    "selected_node_id": "22821609-8ca4-4823-9173-6ec5d58543c6",
+    "selected_view_id": "v001",
+    "bbox_2d": null,
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -37.53236350449368,
+        -2.662695815181562,
+        -4.187341817018206
+      ],
+      "maximum": [
+        5.516395547217213,
+        30.489831506275912,
+        65.05082135944319
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2810319662094116,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 2 with class 'sofa chair' and cosine similarity 0.281032."
+  },
+  "metrics_log": {
+    "runtime_seconds": 65.45093827000005,
+    "stage_runtime_seconds": {
+      "native_map_query": 65.45093827000005
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 16
+    }
+  },
+  "warnings": [
+    "The captured scene has no independent semantic GT; this smoke proves native execution, not accuracy."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_smoke_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "q051",
+  "query": "Find a chair",
+  "query_type": "simple_object"
+}

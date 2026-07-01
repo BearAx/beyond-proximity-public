@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-drone-capture",
+  "node_id": "landmark_v015_001_distant_city_shoreline",
+  "node_type": "landmark",
+  "name": "distant city shoreline",
+  "summary": "Landmark observation from v015.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v015"
+  ],
+  "approx_location": "background",
+  "source": "manual"
+}

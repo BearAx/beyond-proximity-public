@@ -1,0 +1,123 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v014",
+  "scene_id": "outdoor-street-capture",
+  "image_path": "images/v014.png",
+  "depth_path": "depths/v014_depth.npy",
+  "pose_ref": "transforms.json#/frames/13/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "Street-side building corner with a red facade, sidewalk, metal handrail, and view toward another building across the street.",
+  "visible_regions": [
+    {
+      "label": "street corner",
+      "description": "open street-side corner near a red building",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "red facade side",
+      "description": "red building wall along the sidewalk",
+      "approx_location": "left and center",
+      "source": "manual"
+    },
+    {
+      "label": "street view",
+      "description": "view outward toward neighboring buildings",
+      "approx_location": "back center",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "red building facade",
+      "attributes": [
+        "bright red",
+        "street-facing"
+      ],
+      "approx_location": "left and center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "sidewalk or pavement",
+      "attributes": [
+        "outdoor walkway"
+      ],
+      "approx_location": "foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "metal handrail",
+      "attributes": [
+        "black",
+        "along steps or ramp"
+      ],
+      "approx_location": "right foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "neighboring building",
+      "attributes": [
+        "visible across street"
+      ],
+      "approx_location": "back center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "window openings",
+      "attributes": [
+        "small",
+        "on red facade"
+      ],
+      "approx_location": "left wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "street curb or road edge",
+      "attributes": [
+        "outdoor street"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "red street facade",
+      "description": "bright red exterior wall marking this street corner",
+      "approx_location": "left and center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "black metal handrail",
+      "description": "railing beside the sidewalk/stairs at the corner",
+      "approx_location": "right foreground",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Useful for street-corner, red facade, sidewalk, and railing queries.",
+  "warnings": [
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
+  ]
+}

@@ -35,9 +35,20 @@ _QUERY_STOPWORDS = frozenset({
     "take", "go", "located", "location", "situated", "positioned",
 })
 
+_QUERY_ALIASES = {
+    "collumn": "column",
+    "collumns": "columns",
+    "pillar": "column",
+    "pillars": "columns",
+}
+
 
 def _keywords(query: str) -> List[str]:
-    tokens = [t for t in re.split(r"[^\w]+", query.lower()) if len(t) >= 2]
+    tokens = [
+        _QUERY_ALIASES.get(t, t)
+        for t in re.split(r"[^\w]+", query.lower())
+        if len(t) >= 2
+    ]
     kws = [t for t in tokens if t not in _QUERY_STOPWORDS]
     return kws or tokens
 
