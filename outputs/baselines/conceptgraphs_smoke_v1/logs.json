@@ -1,0 +1,15 @@
+{
+  "run_id": "conceptgraphs_smoke_v1",
+  "mode": "live",
+  "finished_at": "2026-06-26T16:42:39.665290+00:00",
+  "events": [
+    {
+      "stage": "native_output_adaptation",
+      "status": "complete",
+      "count": 1
+    }
+  ],
+  "warnings": [
+    "Adapter output is valid only with the preserved native artifacts and provenance."
+  ]
+}

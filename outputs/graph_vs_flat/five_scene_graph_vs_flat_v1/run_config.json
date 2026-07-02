@@ -1,0 +1,12 @@
+{
+  "benchmark_path": "/Users/leo/beyond-proximity/docs/benchmarks/benchmark_queries_v1.json",
+  "scene_root": "/Users/leo/beyond-proximity/backend/data/scenes",
+  "scene_map": {
+    "ConferenceHall": "ConferenceHall-capture-pilot",
+    "Museume": "Museume-capture",
+    "outdoor-drone": "outdoor-drone-capture",
+    "outdoor-street": "outdoor-street-capture",
+    "Theater": "Theater-capture"
+  },
+  "generated_at": "2026-07-02T14:51:36.023282+00:00"
+}

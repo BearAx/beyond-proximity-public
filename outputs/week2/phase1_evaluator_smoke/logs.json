@@ -1,0 +1,14 @@
+{
+  "run_id": "phase1_evaluator_smoke",
+  "mode": "stub",
+  "events": [
+    {
+      "stage": "fixture_setup",
+      "status": "complete",
+      "message": "Six static canonical query results prepared for evaluator validation."
+    }
+  ],
+  "warnings": [
+    "No live or cached-live model response is present."
+  ]
+}

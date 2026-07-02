@@ -1,0 +1,133 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v015",
+  "scene_id": "Museume-capture",
+  "image_path": "images/v015.png",
+  "depth_path": "depths/v015_depth.npy",
+  "pose_ref": "transforms.json#/frames/14/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "Long gallery corridor with stone ruin on the left, large historical image panels on the wall, mesh partitions, and a red panel in the distance.",
+  "visible_regions": [
+    {
+      "label": "long exhibition corridor",
+      "description": "extended gallery passage",
+      "approx_location": "center",
+      "source": "manual"
+    },
+    {
+      "label": "stone ruin side",
+      "description": "side with archaeological stone remains",
+      "approx_location": "left side",
+      "source": "manual"
+    },
+    {
+      "label": "historical panel wall",
+      "description": "wall with large printed historical images",
+      "approx_location": "center-left and center",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "stone ruin",
+      "attributes": [
+        "rough",
+        "archaeological"
+      ],
+      "approx_location": "left side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "historical image panels",
+      "attributes": [
+        "large",
+        "black and white"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "red exhibition panel",
+      "attributes": [
+        "distant",
+        "bright"
+      ],
+      "approx_location": "far center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "metal mesh partitions",
+      "attributes": [
+        "black",
+        "grid"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "bench or display rail",
+      "attributes": [
+        "black",
+        "low"
+      ],
+      "approx_location": "near wall",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "yellow floor marker",
+      "attributes": [
+        "small",
+        "circular"
+      ],
+      "approx_location": "floor",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "long corridor axis",
+      "description": "long open gallery direction with exhibits on both sides",
+      "approx_location": "center",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "stone ruin side",
+      "description": "rough stone exhibit along the left side",
+      "approx_location": "left side",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "distant red panel",
+      "description": "bright red panel at the far end of the corridor",
+      "approx_location": "far center",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Good overview for long corridor navigation and stone/panel queries.",
+  "warnings": [
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
+  ]
+}

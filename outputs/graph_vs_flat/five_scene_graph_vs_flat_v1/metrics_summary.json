@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "query_count": 40,
+    "gt_query_count": 0,
+    "averages": {
+      "flat_views_checked": 19.2,
+      "graph_views_checked": 4.35,
+      "flat_input_tokens": 3104.0,
+      "graph_input_tokens": 853.52,
+      "flat_context_chars": 12444.4,
+      "graph_context_chars": 3435.38,
+      "flat_elapsed_ms": 16.08,
+      "graph_elapsed_ms": 10.71,
+      "graph_nodes_visited": 9.2,
+      "savings_views_pct": 77.1,
+      "savings_tokens_pct": 72.2
+    },
+    "quality": {
+      "hit_at_1_graph": null,
+      "hit_at_1_flat": null,
+      "denominator_note": "Quality metrics use only queries with verified expected_view_ids."
+    }
+  },
+  "generated_at": "2026-07-02T14:51:36.023282+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v007_001_colorful_floral_artwork",
+  "node_type": "landmark",
+  "name": "colorful floral artwork",
+  "summary": "Landmark observation from v007.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v007"
+  ],
+  "approx_location": "right wall",
+  "source": "manual"
+}

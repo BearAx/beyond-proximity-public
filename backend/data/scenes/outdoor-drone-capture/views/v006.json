@@ -1,0 +1,116 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v006",
+  "scene_id": "outdoor-drone-capture",
+  "image_path": "images/v006.png",
+  "depth_path": "depths/v006_depth.npy",
+  "pose_ref": "transforms.json#/frames/5/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "Blurred aerial view over a bay with a bridge or long linear structure, distant city, coastline, and water.",
+  "visible_regions": [
+    {
+      "label": "bay water",
+      "description": "wide water body with motion blur",
+      "approx_location": "center and foreground",
+      "source": "manual"
+    },
+    {
+      "label": "bridge or linear crossing",
+      "description": "long line crossing the water or shoreline",
+      "approx_location": "center-left",
+      "source": "manual"
+    },
+    {
+      "label": "distant urban coast",
+      "description": "far city and shoreline",
+      "approx_location": "background",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "bridge or long roadway",
+      "attributes": [
+        "thin",
+        "linear",
+        "blurred"
+      ],
+      "approx_location": "center-left",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "bay water",
+      "attributes": [
+        "blue",
+        "blurred"
+      ],
+      "approx_location": "foreground and center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "distant city",
+      "attributes": [
+        "far",
+        "urban"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "coastline",
+      "attributes": [
+        "faint",
+        "curved"
+      ],
+      "approx_location": "background",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "bright glare",
+      "attributes": [
+        "white",
+        "overexposed"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "long bridge or roadway",
+      "description": "linear structure across the water, useful despite blur",
+      "approx_location": "center-left",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "distant city coastline",
+      "description": "city shoreline on the far side of the bay",
+      "approx_location": "background",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Blurred/overexposed image; semantic labels should be reviewed before use.",
+  "warnings": [
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated.",
+    "Image is blurry or overexposed; annotation should be reviewed before semantic execution."
+  ]
+}

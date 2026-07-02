@@ -1,0 +1,23 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-drone-capture",
+  "node_id": "object_v004_006_roads_or_waterfront_lines",
+  "node_type": "object",
+  "name": "roads or waterfront lines",
+  "summary": "Object observation from v004.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v004"
+  ],
+  "attributes": [
+    "thin",
+    "linear"
+  ],
+  "approx_location": "right side",
+  "confidence": null,
+  "bbox_2d": null,
+  "bbox_3d": null,
+  "source": "manual"
+}

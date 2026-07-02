@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v004_002_red_brick_building",
+  "node_type": "landmark",
+  "name": "red brick building",
+  "summary": "Landmark observation from v004.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v004"
+  ],
+  "approx_location": "background",
+  "source": "manual"
+}

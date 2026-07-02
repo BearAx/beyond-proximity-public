@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v001_002_long_beige_window_facade",
+  "node_type": "landmark",
+  "name": "long beige window facade",
+  "summary": "Landmark observation from v001.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v001"
+  ],
+  "approx_location": "right side",
+  "source": "manual"
+}

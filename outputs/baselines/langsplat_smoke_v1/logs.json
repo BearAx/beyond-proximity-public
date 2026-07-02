@@ -1,0 +1,15 @@
+{
+  "run_id": "langsplat_smoke_v1",
+  "mode": "live",
+  "finished_at": "2026-06-26T13:04:19.807643+00:00",
+  "events": [
+    {
+      "stage": "native_output_adaptation",
+      "status": "complete",
+      "count": 1
+    }
+  ],
+  "warnings": [
+    "Adapter output is valid only with the preserved native artifacts and provenance."
+  ]
+}

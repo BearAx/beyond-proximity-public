@@ -1,0 +1,132 @@
+{
+  "schema_version": "semanticsplat.captured_view_json.v1",
+  "view_id": "v007",
+  "scene_id": "outdoor-street-capture",
+  "image_path": "images/v007.png",
+  "depth_path": "depths/v007_depth.npy",
+  "pose_ref": "transforms.json#/frames/6/transform_matrix",
+  "intrinsics_ref": "transforms.json",
+  "semantic_index_mode": "manual",
+  "summary": "Modern building entrance corner with turquoise metal supports, glass-block wall, dark entrance canopy, windows, and a small paved walkway.",
+  "visible_regions": [
+    {
+      "label": "modern entrance corner",
+      "description": "entrance area with glass block wall and canopy",
+      "approx_location": "center-right",
+      "source": "manual"
+    },
+    {
+      "label": "facade side",
+      "description": "stone facade with windows and utilities",
+      "approx_location": "left and center",
+      "source": "manual"
+    },
+    {
+      "label": "paved walkway",
+      "description": "small outdoor walkway along the building",
+      "approx_location": "foreground",
+      "source": "manual"
+    }
+  ],
+  "visible_objects": [
+    {
+      "label": "turquoise supports",
+      "attributes": [
+        "metal",
+        "diagonal and vertical"
+      ],
+      "approx_location": "center-right",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "glass-block wall",
+      "attributes": [
+        "translucent",
+        "curved or vertical"
+      ],
+      "approx_location": "right side",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "dark entrance canopy",
+      "attributes": [
+        "black",
+        "above doorway"
+      ],
+      "approx_location": "right-center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "windows",
+      "attributes": [
+        "rectangular",
+        "on facade"
+      ],
+      "approx_location": "left and center",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "paved walkway",
+      "attributes": [
+        "cobblestone"
+      ],
+      "approx_location": "foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    },
+    {
+      "label": "small grass patch",
+      "attributes": [
+        "green",
+        "near wall"
+      ],
+      "approx_location": "right foreground",
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "source": "manual"
+    }
+  ],
+  "landmarks": [
+    {
+      "label": "turquoise entrance structure",
+      "description": "blue-green support frame around the entrance",
+      "approx_location": "center-right",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "glass-block wall",
+      "description": "translucent glass-block entrance wall",
+      "approx_location": "right side",
+      "source": "manual",
+      "kind": "landmark"
+    },
+    {
+      "label": "dark canopy",
+      "description": "black canopy above the entrance",
+      "approx_location": "right-center",
+      "source": "manual",
+      "kind": "landmark"
+    }
+  ],
+  "free_text_notes": "Strong landmark view for modern entrance, turquoise supports, and glass-block wall.",
+  "warnings": [
+    "Manual annotation from uploaded RGB image; not independent ground truth.",
+    "bbox_2d and bbox_3d are not annotated."
+  ]
+}

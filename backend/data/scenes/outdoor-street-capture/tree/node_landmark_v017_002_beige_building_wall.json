@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v017_002_beige_building_wall",
+  "node_type": "landmark",
+  "name": "beige building wall",
+  "summary": "Landmark observation from v017.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v017"
+  ],
+  "approx_location": "left side",
+  "source": "manual"
+}

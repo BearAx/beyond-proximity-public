@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-street-capture",
+  "node_id": "landmark_v011_001_small_utility_panel",
+  "node_type": "landmark",
+  "name": "small utility panel",
+  "summary": "Landmark observation from v011.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v011"
+  ],
+  "approx_location": "center-right",
+  "source": "manual"
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "region_dark_board_wall_96691a29",
+  "node_type": "region",
+  "name": "dark board wall",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v020"
+  ],
+  "observations": [
+    {
+      "view_id": "v020",
+      "approx_location": "right wall",
+      "source": "manual"
+    }
+  ]
+}

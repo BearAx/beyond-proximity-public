@@ -1,0 +1,8 @@
+1.13.1-cuda11.6-cudnn8-devel: Pulling from pytorch/pytorch
+67657873c2d7: Pulling fs layer
+d9d8ce8de3c3: Pulling fs layer
+67657873c2d7: Already exists
+d9d8ce8de3c3: Download complete
+Digest: sha256:58d848c38665fd3ed20bee65918255cb083637c860eb4fae67face2fb2ff5702
+Status: Downloaded newer image for pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel
+docker.io/pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel

@@ -1,0 +1,21 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "Theater-capture",
+  "node_id": "region_display_board_area_626ad08d",
+  "node_type": "region",
+  "name": "display board area",
+  "summary": "Region indexed from manual view annotations.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v016"
+  ],
+  "observations": [
+    {
+      "view_id": "v016",
+      "approx_location": "back wall",
+      "source": "manual"
+    }
+  ]
+}

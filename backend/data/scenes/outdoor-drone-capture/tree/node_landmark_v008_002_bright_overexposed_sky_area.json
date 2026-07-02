@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "outdoor-drone-capture",
+  "node_id": "landmark_v008_002_bright_overexposed_sky_area",
+  "node_type": "landmark",
+  "name": "bright overexposed sky area",
+  "summary": "Landmark observation from v008.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v008"
+  ],
+  "approx_location": "upper right",
+  "source": "manual"
+}

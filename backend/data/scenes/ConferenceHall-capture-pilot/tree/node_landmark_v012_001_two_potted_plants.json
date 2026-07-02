@@ -1,0 +1,16 @@
+{
+  "schema_version": "semanticsplat.semantic_tree_node.v1",
+  "scene_id": "ConferenceHall-capture-pilot",
+  "node_id": "landmark_v012_001_two_potted_plants",
+  "node_type": "landmark",
+  "name": "two potted plants",
+  "summary": "Landmark observation from v012.",
+  "semantic_index_mode": "manual",
+  "parent_id": "root",
+  "children_ids": [],
+  "view_ids": [
+    "v012"
+  ],
+  "approx_location": "back center",
+  "source": "manual"
+}
