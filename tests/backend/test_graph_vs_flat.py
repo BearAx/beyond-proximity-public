@@ -16,6 +16,7 @@ from backend.query.graph_vs_flat import (
 ROOT = Path(__file__).resolve().parents[2]
 SCENE_ROOT = ROOT / "backend" / "data" / "scenes"
 BENCHMARK = ROOT / "docs" / "benchmarks" / "benchmark_queries_v1.json"
+BENCHMARK_V2 = ROOT / "docs" / "benchmarks" / "benchmark_queries_v2.json"
 
 
 @pytest.mark.skipif(
@@ -64,3 +65,23 @@ def test_run_five_scene_benchmark_summary():
     assert run["summary"]["query_count"] == 40
     assert run["summary"]["averages"]["flat_views_checked"] > 0
     assert "savings_views_pct" in run["summary"]["averages"]
+
+
+@pytest.mark.skipif(
+    not all((SCENE_ROOT / path).exists() for path in DEFAULT_SCENE_MAP.values())
+    or not BENCHMARK_V2.exists(),
+    reason="All five captured scenes or benchmark_queries_v2.json missing",
+)
+def test_run_v2_benchmark_has_gt_quality_metrics():
+    run = run_five_scene_benchmark(
+        benchmark_path=BENCHMARK_V2,
+        scene_root=SCENE_ROOT,
+        include_affordance=True,
+    )
+    summary = run["summary"]
+    assert summary["query_count"] == 150
+    assert summary["gt_query_count"] == 125
+    assert summary["quality"]["hit_at_1_graph"] is not None
+    assert summary["quality"]["hit_at_3_flat"] is not None
+    gt_rows = [row for row in run["queries"] if row["quality_graph"]["gt_available"]]
+    assert len(gt_rows) == 125

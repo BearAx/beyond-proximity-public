@@ -315,10 +315,12 @@ python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode s
 Add the new graph-vs-flat command here once Person 1 implements it.
 
 ```powershell
-python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_five_scenes.yaml
+python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_v2.yaml
 ```
 
 Outputs: `outputs/graph_vs_flat/<run_id>/` (`metrics_summary.json`, `.md`, `.csv`, `per_query_results.json`).
+
+v1 config (`graph_vs_flat_five_scenes.yaml`) remains for the 40-query efficiency baseline.
 
 ## Decisions Needed From User
 

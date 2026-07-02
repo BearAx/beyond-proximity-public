@@ -38,7 +38,7 @@ Status date: 2026-06-30.
 | Affordance map | `backend/query/affordance.py` |
 | Runners + metrics | `backend/query/graph_vs_flat.py` |
 | CLI | `scripts/run_graph_vs_flat.py` |
-| Config | `configs/graph_vs_flat_five_scenes.yaml` |
+| Config | `configs/graph_vs_flat_five_scenes.yaml`, `configs/graph_vs_flat_v2.yaml` |
 | Tests | `tests/backend/test_affordance.py`, `tests/backend/test_graph_vs_flat.py` |
 
 ## Commands
@@ -46,6 +46,7 @@ Status date: 2026-06-30.
 ```bash
 python -B -m pytest -q tests/backend/test_affordance.py tests/backend/test_graph_vs_flat.py
 python -B scripts/run_graph_vs_flat.py --config configs/graph_vs_flat_five_scenes.yaml
+python -B scripts/run_graph_vs_flat.py --config configs/graph_vs_flat_v2.yaml
 ```
 
 Outputs land in `outputs/graph_vs_flat/<run_id>/`:
@@ -58,6 +59,8 @@ Outputs land in `outputs/graph_vs_flat/<run_id>/`:
 
 ## Known limits
 
-- Five-scene queries in `benchmark_queries_v1.json` have empty GT; hit@1 / hit@3 remain `N/A` until `benchmark_queries_v2.json` from Person 2.
+- v1 (`benchmark_queries_v1.json`): 40-query efficiency baseline; no view GT.
+- v2 (`benchmark_queries_v2.json`): hit@1 / hit@3 on 125 queries with verified `expected_view_ids` (25 excluded).
+- GT labels are manual semantic-index reference labels from Person 2, not independent dataset GT.
 - Captured tree is shallow/wide (root → many object/landmark nodes); graph savings come from branch pruning, not deep zone hierarchy yet.
 - No live/cached-live LLM calls in this benchmark — lexical same-input efficiency only.

@@ -54,10 +54,17 @@ class SearchMetrics:
     context_chars: int = 0
     input_tokens: int = 0
     elapsed_ms: float = 0.0
+    ranked_view_ids: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+def _top_ranked_views(scored: list[tuple[int, float, str]], *, k: int = 3) -> list[str]:
+    """Return up to k view ids ordered by lexical score (overlap, ratio)."""
+    ordered = sorted(scored, key=lambda item: (item[0], item[1]), reverse=True)
+    return [view_id for overlap, _, view_id in ordered[:k] if overlap > 0]
 
 
 def _utc_now() -> str:
@@ -164,6 +171,7 @@ def simulate_flat_search(
     )
 
     best_overlap, best_ratio, best_view, best_object = 0, 0.0, None, None
+    scored_views: list[tuple[int, float, str]] = []
     for view_id in sorted(views):
         view = views[view_id]
         regions, objects, landmarks = _count_semantic_items(view)
@@ -176,6 +184,7 @@ def simulate_flat_search(
         view_text = _view_text(view)
         _add_context(metrics, view_text)
         overlap, ratio = score_text_with_tokens(view_text, query_tokens)
+        scored_views.append((overlap, ratio, view_id))
         if (overlap, ratio) > (best_overlap, best_ratio):
             best_overlap, best_ratio = overlap, ratio
             best_view = view_id
@@ -186,6 +195,7 @@ def simulate_flat_search(
                     best_object = str(obj.get("label"))
                     break
 
+    metrics.ranked_view_ids = _top_ranked_views(scored_views)
     if best_overlap > 0 and best_view:
         metrics.found = True
         metrics.selected_view_id = best_view
@@ -232,6 +242,7 @@ def simulate_graph_search(
     best_view: str | None = None
     best_node: str | None = None
     best_object: str | None = None
+    scored_views: list[tuple[int, float, str]] = []
 
     while stack:
         node_id = stack.pop()
@@ -246,6 +257,8 @@ def simulate_graph_search(
 
         if _is_leaf_node(node):
             overlap, ratio, view_id, matched = _best_view_for_node(node, views, query_tokens, metrics)
+            if view_id:
+                scored_views.append((overlap, ratio, view_id))
             if view_id and (overlap, ratio) > (best_overlap, best_ratio):
                 best_overlap, best_ratio = overlap, ratio
                 best_view, best_node, best_object = view_id, node_id, matched
@@ -266,6 +279,7 @@ def simulate_graph_search(
         for child_id in reversed(chosen):
             stack.append(child_id)
 
+    metrics.ranked_view_ids = _top_ranked_views(scored_views)
     if best_overlap > 0 and best_view:
         metrics.found = True
         metrics.selected_view_id = best_view
@@ -359,11 +373,12 @@ def compare_modes_for_query(
     gt_available = query_has_view_gt(query)
 
     def _quality(metrics: SearchMetrics) -> dict[str, Any]:
-        selected = [metrics.selected_view_id] if metrics.selected_view_id else []
+        ranked = metrics.ranked_view_ids or ([metrics.selected_view_id] if metrics.selected_view_id else [])
         return {
-            "hit_at_1": hit_at_k(selected, gt_views, 1) if gt_available else None,
-            "hit_at_3": hit_at_k(selected, gt_views, 3) if gt_available else None,
+            "hit_at_1": hit_at_k(ranked, gt_views, 1) if gt_available else None,
+            "hit_at_3": hit_at_k(ranked, gt_views, 3) if gt_available else None,
             "gt_available": gt_available,
+            "ranked_view_ids": ranked,
         }
 
     savings = {
@@ -404,10 +419,13 @@ def summarize_results(rows: list[dict[str, Any]]) -> dict[str, Any]:
     gt_rows = [row for row in rows if row.get("quality_graph", {}).get("gt_available")]
     hit1_graph = [row["quality_graph"]["hit_at_1"] for row in gt_rows if row["quality_graph"]["hit_at_1"] is not None]
     hit1_flat = [row["quality_flat"]["hit_at_1"] for row in gt_rows if row["quality_flat"]["hit_at_1"] is not None]
+    hit3_graph = [row["quality_graph"]["hit_at_3"] for row in gt_rows if row["quality_graph"]["hit_at_3"] is not None]
+    hit3_flat = [row["quality_flat"]["hit_at_3"] for row in gt_rows if row["quality_flat"]["hit_at_3"] is not None]
 
     return {
         "query_count": len(rows),
         "gt_query_count": len(gt_rows),
+        "gt_excluded_no_view_ids": len(rows) - len(gt_rows),
         "averages": {
             "flat_views_checked": _avg("flat", "views_checked"),
             "graph_views_checked": _avg("graph", "views_checked"),
@@ -428,7 +446,12 @@ def summarize_results(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "quality": {
             "hit_at_1_graph": round(sum(hit1_graph) / len(hit1_graph), 4) if hit1_graph else None,
             "hit_at_1_flat": round(sum(hit1_flat) / len(hit1_flat), 4) if hit1_flat else None,
-            "denominator_note": "Quality metrics use only queries with verified expected_view_ids.",
+            "hit_at_3_graph": round(sum(hit3_graph) / len(hit3_graph), 4) if hit3_graph else None,
+            "hit_at_3_flat": round(sum(hit3_flat) / len(hit3_flat), 4) if hit3_flat else None,
+            "denominator_note": (
+                "Quality metrics use only queries with verified expected_view_ids "
+                f"({len(gt_rows)} of {len(rows)} queries)."
+            ),
         },
     }
 
@@ -522,6 +545,9 @@ def write_run_outputs(run: dict[str, Any], out_dir: Path) -> None:
                 "",
                 f"- hit@1 graph: {quality.get('hit_at_1_graph')}",
                 f"- hit@1 flat: {quality.get('hit_at_1_flat')}",
+                f"- hit@3 graph: {quality.get('hit_at_3_graph')}",
+                f"- hit@3 flat: {quality.get('hit_at_3_flat')}",
+                f"- {quality.get('denominator_note', '')}",
             ]
         )
     else:
@@ -571,7 +597,8 @@ def _write_csv_tables(out_dir: Path, run: dict[str, Any]) -> None:
             writer.writerow([
                 "query_id", "scene_id", "query_type", "flat_views", "graph_views",
                 "flat_tokens", "graph_tokens", "savings_views_pct", "savings_tokens_pct",
-                "graph_found", "flat_found", "hit_at_1_graph", "hit_at_1_flat",
+                "graph_found", "flat_found",
+                "hit_at_1_graph", "hit_at_1_flat", "hit_at_3_graph", "hit_at_3_flat",
             ])
             for row in rows:
                 savings = row.get("savings_graph_vs_flat", {})
@@ -591,4 +618,6 @@ def _write_csv_tables(out_dir: Path, run: dict[str, Any]) -> None:
                     row.get("flat", {}).get("found"),
                     qg.get("hit_at_1"),
                     qf.get("hit_at_1"),
+                    qg.get("hit_at_3"),
+                    qf.get("hit_at_3"),
                 ])
