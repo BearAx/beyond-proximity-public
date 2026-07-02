@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T14:51:36.023282+00:00",
+  "generated_at": "2026-07-02T14:53:58.673850+00:00",
   "benchmark_path": "/Users/leo/beyond-proximity/docs/benchmarks/benchmark_queries_v1.json",
   "scene_root": "/Users/leo/beyond-proximity/backend/data/scenes",
   "scene_map": {
@@ -59,7 +59,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 57.92345800000476,
+        "elapsed_ms": 59.48879200150259,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -92,7 +92,7 @@
         "landmarks_scanned": 1,
         "context_chars": 951,
         "input_tokens": 236,
-        "elapsed_ms": 3.797582998231519,
+        "elapsed_ms": 3.9902079952298664,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -101,7 +101,7 @@
         "views_pct": 95.0,
         "tokens_pct": 92.4,
         "context_chars_pct": 92.4,
-        "runtime_pct": 93.4
+        "runtime_pct": 93.3
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -141,7 +141,7 @@
         "landmarks_scanned": 1,
         "context_chars": 951,
         "input_tokens": 236,
-        "elapsed_ms": 3.8557080042664893,
+        "elapsed_ms": 3.8165410005603917,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -201,7 +201,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 16.687458999513183,
+        "elapsed_ms": 17.008375005389098,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -236,7 +236,7 @@
         "landmarks_scanned": 3,
         "context_chars": 1606,
         "input_tokens": 399,
-        "elapsed_ms": 4.908499999146443,
+        "elapsed_ms": 5.084416996396612,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -245,7 +245,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.2,
         "context_chars_pct": 87.1,
-        "runtime_pct": 70.6
+        "runtime_pct": 70.1
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -287,7 +287,7 @@
         "landmarks_scanned": 3,
         "context_chars": 1606,
         "input_tokens": 399,
-        "elapsed_ms": 5.38191700616153,
+        "elapsed_ms": 5.658624999341555,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -347,7 +347,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 16.27787499455735,
+        "elapsed_ms": 16.344375006156042,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -397,7 +397,7 @@
         "landmarks_scanned": 15,
         "context_chars": 5804,
         "input_tokens": 1442,
-        "elapsed_ms": 17.328207999526057,
+        "elapsed_ms": 17.51854200119851,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -406,7 +406,7 @@
         "views_pct": 60.0,
         "tokens_pct": 53.6,
         "context_chars_pct": 53.4,
-        "runtime_pct": -6.5
+        "runtime_pct": -7.2
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -463,7 +463,7 @@
         "landmarks_scanned": 15,
         "context_chars": 5804,
         "input_tokens": 1442,
-        "elapsed_ms": 17.790582998713944,
+        "elapsed_ms": 17.544999995152466,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -523,7 +523,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 16.71629100019345,
+        "elapsed_ms": 16.245292004896328,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -574,7 +574,7 @@
         "landmarks_scanned": 11,
         "context_chars": 4123,
         "input_tokens": 1021,
-        "elapsed_ms": 17.971749999560416,
+        "elapsed_ms": 17.61629099928541,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -583,7 +583,7 @@
         "views_pct": 75.0,
         "tokens_pct": 67.2,
         "context_chars_pct": 66.9,
-        "runtime_pct": -7.5
+        "runtime_pct": -8.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -641,7 +641,7 @@
         "landmarks_scanned": 11,
         "context_chars": 4123,
         "input_tokens": 1021,
-        "elapsed_ms": 18.648334000317845,
+        "elapsed_ms": 18.613250002090354,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -701,7 +701,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 16.757249999500345,
+        "elapsed_ms": 16.497915996296797,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -756,7 +756,7 @@
         "landmarks_scanned": 25,
         "context_chars": 8255,
         "input_tokens": 2055,
-        "elapsed_ms": 21.38641600322444,
+        "elapsed_ms": 22.179250001499895,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -765,7 +765,7 @@
         "views_pct": 40.0,
         "tokens_pct": 33.9,
         "context_chars_pct": 33.8,
-        "runtime_pct": -27.6
+        "runtime_pct": -34.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -827,7 +827,7 @@
         "landmarks_scanned": 25,
         "context_chars": 8255,
         "input_tokens": 2055,
-        "elapsed_ms": 21.430624998174608,
+        "elapsed_ms": 24.550166999688372,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -887,7 +887,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 16.475958000228275,
+        "elapsed_ms": 20.714666999992914,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -922,7 +922,7 @@
         "landmarks_scanned": 3,
         "context_chars": 1606,
         "input_tokens": 399,
-        "elapsed_ms": 5.394459003582597,
+        "elapsed_ms": 5.087707999336999,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -931,7 +931,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.2,
         "context_chars_pct": 87.1,
-        "runtime_pct": 67.3
+        "runtime_pct": 75.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -1010,7 +1010,7 @@
         "landmarks_scanned": 28,
         "context_chars": 10350,
         "input_tokens": 2572,
-        "elapsed_ms": 33.082500005548354,
+        "elapsed_ms": 33.2018750050338,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1070,7 +1070,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 15.926666994346306,
+        "elapsed_ms": 16.004249999241438,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -1105,7 +1105,7 @@
         "landmarks_scanned": 3,
         "context_chars": 1606,
         "input_tokens": 399,
-        "elapsed_ms": 5.018250005377922,
+        "elapsed_ms": 5.084208001790103,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1114,7 +1114,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.2,
         "context_chars_pct": 87.1,
-        "runtime_pct": 68.5
+        "runtime_pct": 68.2
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -1156,7 +1156,7 @@
         "landmarks_scanned": 3,
         "context_chars": 1606,
         "input_tokens": 399,
-        "elapsed_ms": 5.394166997575667,
+        "elapsed_ms": 5.441083005280234,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1216,7 +1216,7 @@
         "landmarks_scanned": 44,
         "context_chars": 12465,
         "input_tokens": 3110,
-        "elapsed_ms": 15.934582996123936,
+        "elapsed_ms": 15.929250002955087,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -1251,7 +1251,7 @@
         "landmarks_scanned": 3,
         "context_chars": 1606,
         "input_tokens": 399,
-        "elapsed_ms": 5.1261249973322265,
+        "elapsed_ms": 5.166540999198332,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1260,7 +1260,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.2,
         "context_chars_pct": 87.1,
-        "runtime_pct": 67.8
+        "runtime_pct": 67.6
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -1302,7 +1302,7 @@
         "landmarks_scanned": 3,
         "context_chars": 1606,
         "input_tokens": 399,
-        "elapsed_ms": 5.336792004527524,
+        "elapsed_ms": 5.302333003783133,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1362,7 +1362,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 17.105749997426756,
+        "elapsed_ms": 16.699541003617924,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -1425,7 +1425,7 @@
         "landmarks_scanned": 32,
         "context_chars": 9793,
         "input_tokens": 2434,
-        "elapsed_ms": 27.02754199708579,
+        "elapsed_ms": 28.611624999030028,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1434,7 +1434,7 @@
         "views_pct": 40.0,
         "tokens_pct": 27.8,
         "context_chars_pct": 27.5,
-        "runtime_pct": -58.0
+        "runtime_pct": -71.3
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -1519,7 +1519,7 @@
         "landmarks_scanned": 39,
         "context_chars": 12272,
         "input_tokens": 3048,
-        "elapsed_ms": 34.25404200243065,
+        "elapsed_ms": 38.56395799812162,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1579,7 +1579,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 15.543375004199333,
+        "elapsed_ms": 16.198375000385568,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -1613,7 +1613,7 @@
         "landmarks_scanned": 3,
         "context_chars": 950,
         "input_tokens": 235,
-        "elapsed_ms": 4.308625000703614,
+        "elapsed_ms": 4.392167000332847,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1622,7 +1622,7 @@
         "views_pct": 95.0,
         "tokens_pct": 93.0,
         "context_chars_pct": 93.0,
-        "runtime_pct": 72.3
+        "runtime_pct": 72.9
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -1663,7 +1663,7 @@
         "landmarks_scanned": 3,
         "context_chars": 950,
         "input_tokens": 235,
-        "elapsed_ms": 4.7330419984064065,
+        "elapsed_ms": 4.757957998663187,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1723,7 +1723,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 15.216416002658661,
+        "elapsed_ms": 16.112208999402355,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -1773,7 +1773,7 @@
         "landmarks_scanned": 18,
         "context_chars": 5315,
         "input_tokens": 1323,
-        "elapsed_ms": 15.711207997810561,
+        "elapsed_ms": 17.143957993539516,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1782,7 +1782,7 @@
         "views_pct": 65.0,
         "tokens_pct": 60.8,
         "context_chars_pct": 60.7,
-        "runtime_pct": -3.3
+        "runtime_pct": -6.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -1839,7 +1839,7 @@
         "landmarks_scanned": 18,
         "context_chars": 5315,
         "input_tokens": 1323,
-        "elapsed_ms": 16.071375001047272,
+        "elapsed_ms": 17.789541998354252,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1899,7 +1899,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 14.547541002684738,
+        "elapsed_ms": 16.36145799420774,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -1975,7 +1975,7 @@
         "landmarks_scanned": 34,
         "context_chars": 11148,
         "input_tokens": 2769,
-        "elapsed_ms": 33.87341699999524,
+        "elapsed_ms": 36.24566600046819,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -1984,7 +1984,7 @@
         "views_pct": 30.0,
         "tokens_pct": 17.9,
         "context_chars_pct": 17.5,
-        "runtime_pct": -132.8
+        "runtime_pct": -121.5
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -2067,7 +2067,7 @@
         "landmarks_scanned": 34,
         "context_chars": 11148,
         "input_tokens": 2769,
-        "elapsed_ms": 34.086999999999534,
+        "elapsed_ms": 34.435999994457234,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2127,7 +2127,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 14.73591700050747,
+        "elapsed_ms": 14.510667002468836,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -2190,7 +2190,7 @@
         "landmarks_scanned": 32,
         "context_chars": 9793,
         "input_tokens": 2434,
-        "elapsed_ms": 24.663166994287167,
+        "elapsed_ms": 24.87420899706194,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2199,7 +2199,7 @@
         "views_pct": 40.0,
         "tokens_pct": 27.8,
         "context_chars_pct": 27.5,
-        "runtime_pct": -67.4
+        "runtime_pct": -71.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -2284,7 +2284,7 @@
         "landmarks_scanned": 39,
         "context_chars": 12272,
         "input_tokens": 3048,
-        "elapsed_ms": 34.15791699808324,
+        "elapsed_ms": 36.28841699537588,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2344,7 +2344,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 14.620499998272862,
+        "elapsed_ms": 14.78299999871524,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -2378,7 +2378,7 @@
         "landmarks_scanned": 3,
         "context_chars": 950,
         "input_tokens": 235,
-        "elapsed_ms": 4.285415998310782,
+        "elapsed_ms": 4.484500001126435,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2387,7 +2387,7 @@
         "views_pct": 95.0,
         "tokens_pct": 93.0,
         "context_chars_pct": 93.0,
-        "runtime_pct": 70.7
+        "runtime_pct": 69.7
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -2428,7 +2428,7 @@
         "landmarks_scanned": 3,
         "context_chars": 950,
         "input_tokens": 235,
-        "elapsed_ms": 4.023082998173777,
+        "elapsed_ms": 4.079666003235616,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2488,7 +2488,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 14.462125000136439,
+        "elapsed_ms": 15.813792000699323,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -2522,7 +2522,7 @@
         "landmarks_scanned": 3,
         "context_chars": 950,
         "input_tokens": 235,
-        "elapsed_ms": 4.364874999737367,
+        "elapsed_ms": 4.422958998475224,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2531,7 +2531,7 @@
         "views_pct": 95.0,
         "tokens_pct": 93.0,
         "context_chars_pct": 93.0,
-        "runtime_pct": 69.8
+        "runtime_pct": 72.0
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -2572,7 +2572,7 @@
         "landmarks_scanned": 3,
         "context_chars": 950,
         "input_tokens": 235,
-        "elapsed_ms": 4.005415998108219,
+        "elapsed_ms": 4.285499999241438,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2632,7 +2632,7 @@
         "landmarks_scanned": 51,
         "context_chars": 13516,
         "input_tokens": 3371,
-        "elapsed_ms": 14.66499999514781,
+        "elapsed_ms": 17.274749996431638,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -2665,7 +2665,7 @@
         "landmarks_scanned": 3,
         "context_chars": 839,
         "input_tokens": 208,
-        "elapsed_ms": 3.399583001737483,
+        "elapsed_ms": 3.8063329993747175,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2674,7 +2674,7 @@
         "views_pct": 95.0,
         "tokens_pct": 93.8,
         "context_chars_pct": 93.8,
-        "runtime_pct": 76.8
+        "runtime_pct": 78.0
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -2714,7 +2714,7 @@
         "landmarks_scanned": 3,
         "context_chars": 839,
         "input_tokens": 208,
-        "elapsed_ms": 3.499916994769592,
+        "elapsed_ms": 4.07324999832781,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2770,7 +2770,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 12.43129100475926,
+        "elapsed_ms": 17.030666997015942,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -2805,7 +2805,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.6610420031356625,
+        "elapsed_ms": 4.905832996882964,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2814,7 +2814,7 @@
         "views_pct": 87.5,
         "tokens_pct": 83.5,
         "context_chars_pct": 83.4,
-        "runtime_pct": 62.5
+        "runtime_pct": 71.2
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -2856,7 +2856,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.769374994793907,
+        "elapsed_ms": 4.935624994686805,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2912,7 +2912,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 12.477042000682559,
+        "elapsed_ms": 11.709958002029452,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -2947,7 +2947,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.703375001554377,
+        "elapsed_ms": 4.568374999507796,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -2956,7 +2956,7 @@
         "views_pct": 87.5,
         "tokens_pct": 83.5,
         "context_chars_pct": 83.4,
-        "runtime_pct": 62.3
+        "runtime_pct": 61.0
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -2998,7 +2998,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 5.048917002568487,
+        "elapsed_ms": 5.064625001978129,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3054,7 +3054,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 11.545000001206063,
+        "elapsed_ms": 11.940832999243867,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -3087,7 +3087,7 @@
         "landmarks_scanned": 2,
         "context_chars": 759,
         "input_tokens": 189,
-        "elapsed_ms": 3.329833001771476,
+        "elapsed_ms": 3.20287499926053,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3096,7 +3096,7 @@
         "views_pct": 93.8,
         "tokens_pct": 92.3,
         "context_chars_pct": 92.3,
-        "runtime_pct": 71.2
+        "runtime_pct": 73.2
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -3136,7 +3136,7 @@
         "landmarks_scanned": 2,
         "context_chars": 759,
         "input_tokens": 189,
-        "elapsed_ms": 3.166124995914288,
+        "elapsed_ms": 3.1180829973891377,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3192,7 +3192,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 11.580708000110462,
+        "elapsed_ms": 12.300542002776638,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -3242,7 +3242,7 @@
         "landmarks_scanned": 18,
         "context_chars": 6145,
         "input_tokens": 1528,
-        "elapsed_ms": 15.388833002361935,
+        "elapsed_ms": 15.672707995690871,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3251,7 +3251,7 @@
         "views_pct": 43.8,
         "tokens_pct": 37.5,
         "context_chars_pct": 37.3,
-        "runtime_pct": -32.9
+        "runtime_pct": -27.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -3308,7 +3308,7 @@
         "landmarks_scanned": 18,
         "context_chars": 6145,
         "input_tokens": 1528,
-        "elapsed_ms": 15.733000000182074,
+        "elapsed_ms": 16.21000000159256,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3364,7 +3364,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 11.70516599813709,
+        "elapsed_ms": 12.0203339974978,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -3449,7 +3449,7 @@
         "landmarks_scanned": 33,
         "context_chars": 12272,
         "input_tokens": 3049,
-        "elapsed_ms": 42.08325000217883,
+        "elapsed_ms": 42.07016700092936,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3458,7 +3458,7 @@
         "views_pct": 0.0,
         "tokens_pct": -24.8,
         "context_chars_pct": -25.3,
-        "runtime_pct": -259.5
+        "runtime_pct": -250.0
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -3550,7 +3550,7 @@
         "landmarks_scanned": 33,
         "context_chars": 12272,
         "input_tokens": 3049,
-        "elapsed_ms": 40.68350000306964,
+        "elapsed_ms": 40.90262499812525,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3606,7 +3606,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 11.619833996519446,
+        "elapsed_ms": 11.683332995744422,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -3641,7 +3641,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.622334003215656,
+        "elapsed_ms": 4.628125003364403,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3650,7 +3650,7 @@
         "views_pct": 87.5,
         "tokens_pct": 83.5,
         "context_chars_pct": 83.4,
-        "runtime_pct": 60.2
+        "runtime_pct": 60.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -3692,7 +3692,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.706082996563055,
+        "elapsed_ms": 4.859500004386064,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3748,7 +3748,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 12.086583999916911,
+        "elapsed_ms": 12.879875001090113,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -3783,7 +3783,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.6421670049312524,
+        "elapsed_ms": 5.5693340036668815,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3792,7 +3792,7 @@
         "views_pct": 87.5,
         "tokens_pct": 83.5,
         "context_chars_pct": 83.4,
-        "runtime_pct": 61.6
+        "runtime_pct": 56.8
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -3834,7 +3834,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.545875002804678,
+        "elapsed_ms": 5.487583999638446,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3890,7 +3890,7 @@
         "landmarks_scanned": 33,
         "context_chars": 9795,
         "input_tokens": 2444,
-        "elapsed_ms": 11.825041998235974,
+        "elapsed_ms": 13.888665998820215,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -3925,7 +3925,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.7703329983050935,
+        "elapsed_ms": 5.455875005281996,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -3934,7 +3934,7 @@
         "views_pct": 87.5,
         "tokens_pct": 83.5,
         "context_chars_pct": 83.4,
-        "runtime_pct": 59.7
+        "runtime_pct": 60.7
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -3976,7 +3976,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1623,
         "input_tokens": 403,
-        "elapsed_ms": 4.485583005589433,
+        "elapsed_ms": 4.70337499427842,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4036,7 +4036,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 19.870042000547983,
+        "elapsed_ms": 15.202249996946193,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -4084,7 +4084,7 @@
         "landmarks_scanned": 8,
         "context_chars": 3527,
         "input_tokens": 875,
-        "elapsed_ms": 15.785542003868613,
+        "elapsed_ms": 14.995707999332808,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4093,7 +4093,7 @@
         "views_pct": 80.0,
         "tokens_pct": 73.4,
         "context_chars_pct": 73.2,
-        "runtime_pct": 20.6
+        "runtime_pct": 1.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -4148,7 +4148,7 @@
         "landmarks_scanned": 8,
         "context_chars": 3527,
         "input_tokens": 875,
-        "elapsed_ms": 15.80308400298236,
+        "elapsed_ms": 14.297957997769117,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4208,7 +4208,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 16.83716700063087,
+        "elapsed_ms": 15.149082995776553,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -4255,7 +4255,7 @@
         "landmarks_scanned": 18,
         "context_chars": 6206,
         "input_tokens": 1545,
-        "elapsed_ms": 15.028207999421284,
+        "elapsed_ms": 13.495667000825051,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4264,7 +4264,7 @@
         "views_pct": 60.0,
         "tokens_pct": 53.0,
         "context_chars_pct": 52.9,
-        "runtime_pct": 10.7
+        "runtime_pct": 10.9
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -4318,7 +4318,7 @@
         "landmarks_scanned": 18,
         "context_chars": 6206,
         "input_tokens": 1545,
-        "elapsed_ms": 14.9920830008341,
+        "elapsed_ms": 14.294833003077656,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4378,7 +4378,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 15.919666999252513,
+        "elapsed_ms": 14.713707998453174,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -4413,7 +4413,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1614,
         "input_tokens": 401,
-        "elapsed_ms": 5.304541999066714,
+        "elapsed_ms": 4.559542001516093,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4422,7 +4422,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.8,
         "context_chars_pct": 87.8,
-        "runtime_pct": 66.7
+        "runtime_pct": 69.0
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -4464,7 +4464,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1614,
         "input_tokens": 401,
-        "elapsed_ms": 5.665999997290783,
+        "elapsed_ms": 5.047500002547167,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4524,7 +4524,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 16.132790995470714,
+        "elapsed_ms": 14.492833004624117,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -4593,7 +4593,7 @@
         "landmarks_scanned": 30,
         "context_chars": 11361,
         "input_tokens": 2825,
-        "elapsed_ms": 32.30325000185985,
+        "elapsed_ms": 29.402457999822218,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4602,7 +4602,7 @@
         "views_pct": 25.0,
         "tokens_pct": 14.1,
         "context_chars_pct": 13.8,
-        "runtime_pct": -100.2
+        "runtime_pct": -102.9
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -4678,7 +4678,7 @@
         "landmarks_scanned": 30,
         "context_chars": 11361,
         "input_tokens": 2825,
-        "elapsed_ms": 31.014832995424513,
+        "elapsed_ms": 29.120582999894395,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4738,7 +4738,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 15.07770799798891,
+        "elapsed_ms": 14.223582998965867,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -4776,7 +4776,7 @@
         "landmarks_scanned": 6,
         "context_chars": 2264,
         "input_tokens": 563,
-        "elapsed_ms": 7.858750002924353,
+        "elapsed_ms": 7.124625000869855,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4785,7 +4785,7 @@
         "views_pct": 85.0,
         "tokens_pct": 82.9,
         "context_chars_pct": 82.8,
-        "runtime_pct": 47.9
+        "runtime_pct": 49.9
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -4830,7 +4830,7 @@
         "landmarks_scanned": 6,
         "context_chars": 2264,
         "input_tokens": 563,
-        "elapsed_ms": 7.078333001118153,
+        "elapsed_ms": 7.082000003720168,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4890,7 +4890,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 14.647292002337053,
+        "elapsed_ms": 14.432459000090603,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -4938,7 +4938,7 @@
         "landmarks_scanned": 8,
         "context_chars": 3527,
         "input_tokens": 875,
-        "elapsed_ms": 13.668208994204178,
+        "elapsed_ms": 13.87783300015144,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -4947,7 +4947,7 @@
         "views_pct": 80.0,
         "tokens_pct": 73.4,
         "context_chars_pct": 73.2,
-        "runtime_pct": 6.7
+        "runtime_pct": 3.8
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -5002,7 +5002,7 @@
         "landmarks_scanned": 8,
         "context_chars": 3527,
         "input_tokens": 875,
-        "elapsed_ms": 14.762291000806727,
+        "elapsed_ms": 13.905084000725765,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5062,7 +5062,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 14.535666996380314,
+        "elapsed_ms": 14.329916004498955,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -5097,7 +5097,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1614,
         "input_tokens": 401,
-        "elapsed_ms": 5.089833997772075,
+        "elapsed_ms": 4.912165997666307,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5106,7 +5106,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.8,
         "context_chars_pct": 87.8,
-        "runtime_pct": 65.0
+        "runtime_pct": 65.7
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -5148,7 +5148,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1614,
         "input_tokens": 401,
-        "elapsed_ms": 4.756125003041234,
+        "elapsed_ms": 4.673124996770639,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5208,7 +5208,7 @@
         "landmarks_scanned": 42,
         "context_chars": 13181,
         "input_tokens": 3288,
-        "elapsed_ms": 14.289375001681037,
+        "elapsed_ms": 14.768583998375107,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -5243,7 +5243,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1614,
         "input_tokens": 401,
-        "elapsed_ms": 4.921667001326568,
+        "elapsed_ms": 5.438416999822948,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5252,7 +5252,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.8,
         "context_chars_pct": 87.8,
-        "runtime_pct": 65.6
+        "runtime_pct": 63.2
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -5294,7 +5294,7 @@
         "landmarks_scanned": 4,
         "context_chars": 1614,
         "input_tokens": 401,
-        "elapsed_ms": 4.60525000380585,
+        "elapsed_ms": 5.3123750039958395,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5354,7 +5354,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 14.739792000909802,
+        "elapsed_ms": 15.145249999477528,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -5388,7 +5388,7 @@
         "landmarks_scanned": 3,
         "context_chars": 966,
         "input_tokens": 239,
-        "elapsed_ms": 4.147624997131061,
+        "elapsed_ms": 4.187500002444722,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5397,7 +5397,7 @@
         "views_pct": 95.0,
         "tokens_pct": 92.8,
         "context_chars_pct": 92.7,
-        "runtime_pct": 71.9
+        "runtime_pct": 72.4
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -5452,7 +5452,7 @@
         "landmarks_scanned": 17,
         "context_chars": 4784,
         "input_tokens": 1189,
-        "elapsed_ms": 13.150417005817872,
+        "elapsed_ms": 13.30325000162702,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5512,7 +5512,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 17.758499998308253,
+        "elapsed_ms": 18.024875003902707,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -5546,7 +5546,7 @@
         "landmarks_scanned": 3,
         "context_chars": 966,
         "input_tokens": 239,
-        "elapsed_ms": 4.011375000118278,
+        "elapsed_ms": 3.92820800334448,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5555,7 +5555,7 @@
         "views_pct": 95.0,
         "tokens_pct": 92.8,
         "context_chars_pct": 92.7,
-        "runtime_pct": 77.4
+        "runtime_pct": 78.2
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -5610,7 +5610,7 @@
         "landmarks_scanned": 17,
         "context_chars": 4784,
         "input_tokens": 1189,
-        "elapsed_ms": 12.786291001248173,
+        "elapsed_ms": 13.02166700043017,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5670,7 +5670,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 14.380583001184277,
+        "elapsed_ms": 14.686458001961,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -5706,7 +5706,7 @@
         "landmarks_scanned": 2,
         "context_chars": 1076,
         "input_tokens": 266,
-        "elapsed_ms": 5.355708999559283,
+        "elapsed_ms": 5.2976250008214265,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5715,7 +5715,7 @@
         "views_pct": 95.0,
         "tokens_pct": 92.0,
         "context_chars_pct": 91.9,
-        "runtime_pct": 62.8
+        "runtime_pct": 63.9
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -5758,7 +5758,7 @@
         "landmarks_scanned": 2,
         "context_chars": 1076,
         "input_tokens": 266,
-        "elapsed_ms": 5.492999996931758,
+        "elapsed_ms": 5.553917006182019,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5818,7 +5818,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 16.069166995293926,
+        "elapsed_ms": 15.249875003064517,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -5852,7 +5852,7 @@
         "landmarks_scanned": 5,
         "context_chars": 1631,
         "input_tokens": 406,
-        "elapsed_ms": 4.431291999935638,
+        "elapsed_ms": 4.022334003821015,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5861,7 +5861,7 @@
         "views_pct": 90.0,
         "tokens_pct": 87.7,
         "context_chars_pct": 87.7,
-        "runtime_pct": 72.4
+        "runtime_pct": 73.6
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -5902,7 +5902,7 @@
         "landmarks_scanned": 5,
         "context_chars": 1631,
         "input_tokens": 406,
-        "elapsed_ms": 4.705915998783894,
+        "elapsed_ms": 4.3983340001432225,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -5962,7 +5962,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 15.036333999887574,
+        "elapsed_ms": 14.368458003445994,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -6012,7 +6012,7 @@
         "landmarks_scanned": 19,
         "context_chars": 5691,
         "input_tokens": 1414,
-        "elapsed_ms": 15.591791001497768,
+        "elapsed_ms": 15.5652920002467,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6021,7 +6021,7 @@
         "views_pct": 65.0,
         "tokens_pct": 57.2,
         "context_chars_pct": 57.1,
-        "runtime_pct": -3.7
+        "runtime_pct": -8.3
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -6078,7 +6078,7 @@
         "landmarks_scanned": 19,
         "context_chars": 5691,
         "input_tokens": 1414,
-        "elapsed_ms": 15.371125002275221,
+        "elapsed_ms": 15.553375000308733,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6138,7 +6138,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 15.21024999965448,
+        "elapsed_ms": 14.527874998748302,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -6170,7 +6170,7 @@
         "landmarks_scanned": 2,
         "context_chars": 840,
         "input_tokens": 209,
-        "elapsed_ms": 2.72483399749035,
+        "elapsed_ms": 2.8109170016250573,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6179,7 +6179,7 @@
         "views_pct": 95.0,
         "tokens_pct": 93.7,
         "context_chars_pct": 93.7,
-        "runtime_pct": 82.1
+        "runtime_pct": 80.7
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -6218,7 +6218,7 @@
         "landmarks_scanned": 2,
         "context_chars": 840,
         "input_tokens": 209,
-        "elapsed_ms": 2.5925000009010546,
+        "elapsed_ms": 2.603624998300802,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6278,7 +6278,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 16.275000001769513,
+        "elapsed_ms": 14.934291997633409,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -6312,7 +6312,7 @@
         "landmarks_scanned": 3,
         "context_chars": 966,
         "input_tokens": 239,
-        "elapsed_ms": 4.594915997586213,
+        "elapsed_ms": 4.155167000135407,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6321,7 +6321,7 @@
         "views_pct": 95.0,
         "tokens_pct": 92.8,
         "context_chars_pct": 92.7,
-        "runtime_pct": 71.8
+        "runtime_pct": 72.2
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -6362,7 +6362,7 @@
         "landmarks_scanned": 3,
         "context_chars": 966,
         "input_tokens": 239,
-        "elapsed_ms": 4.44916700507747,
+        "elapsed_ms": 4.001708002761006,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6422,7 +6422,7 @@
         "landmarks_scanned": 50,
         "context_chars": 13265,
         "input_tokens": 3307,
-        "elapsed_ms": 17.648124994593672,
+        "elapsed_ms": 14.688584000396077,
         "warnings": [
           "Flat mode scanned every indexed view with the same lexical scorer."
         ]
@@ -6456,7 +6456,7 @@
         "landmarks_scanned": 3,
         "context_chars": 966,
         "input_tokens": 239,
-        "elapsed_ms": 4.832041995541658,
+        "elapsed_ms": 4.261458998371381,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6465,7 +6465,7 @@
         "views_pct": 95.0,
         "tokens_pct": 92.8,
         "context_chars_pct": 92.7,
-        "runtime_pct": 72.6
+        "runtime_pct": 71.0
       },
       "quality_graph": {
         "hit_at_1": null,
@@ -6506,7 +6506,7 @@
         "landmarks_scanned": 3,
         "context_chars": 966,
         "input_tokens": 239,
-        "elapsed_ms": 4.460208001546562,
+        "elapsed_ms": 3.9486250025220215,
         "warnings": [
           "Graph mode prunes sibling branches using the same lexical scorer as flat mode."
         ]
@@ -6528,8 +6528,8 @@
       "graph_input_tokens": 853.52,
       "flat_context_chars": 12444.4,
       "graph_context_chars": 3435.38,
-      "flat_elapsed_ms": 16.08,
-      "graph_elapsed_ms": 10.71,
+      "flat_elapsed_ms": 16.21,
+      "graph_elapsed_ms": 10.75,
       "graph_nodes_visited": 9.2,
       "savings_views_pct": 77.1,
       "savings_tokens_pct": 72.2
@@ -6541,6 +6541,6 @@
     }
   },
   "run_id": "five_scene_graph_vs_flat_v1",
-  "git_revision": "0634cc7054d04a1d117456cb824e15813201c8ce",
+  "git_revision": "6a2157de26eec86a2b334612ec92483914a9cd7d",
   "config_path": "/Users/leo/beyond-proximity/configs/graph_vs_flat_five_scenes.yaml"
 }

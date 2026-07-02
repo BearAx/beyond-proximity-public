@@ -534,3 +534,61 @@ def write_run_outputs(run: dict[str, Any], out_dir: Path) -> None:
             ]
         )
     (out_dir / "metrics_summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _write_csv_tables(out_dir, run)
+
+
+def _write_csv_tables(out_dir: Path, run: dict[str, Any]) -> None:
+    """Export paper-ready CSV tables (Person 1 day 9-10)."""
+    import csv
+
+    summary = run.get("summary", {})
+    averages = summary.get("averages", {})
+
+    with (out_dir / "metrics_summary.csv").open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)
+        writer.writerow(["metric", "flat_avg", "graph_avg", "savings_pct"])
+        pairs = [
+            ("views_checked", "flat_views_checked", "graph_views_checked", "savings_views_pct"),
+            ("input_tokens", "flat_input_tokens", "graph_input_tokens", "savings_tokens_pct"),
+            ("context_chars", "flat_context_chars", "graph_context_chars", None),
+            ("elapsed_ms", "flat_elapsed_ms", "graph_elapsed_ms", None),
+        ]
+        for label, flat_key, graph_key, savings_key in pairs:
+            flat_val = averages.get(flat_key, "")
+            graph_val = averages.get(graph_key, "")
+            savings = averages.get(savings_key, "") if savings_key else ""
+            if savings_key is None and flat_val and graph_val:
+                try:
+                    savings = round(100 * (1 - float(graph_val) / float(flat_val)), 1)
+                except (TypeError, ZeroDivisionError):
+                    savings = ""
+            writer.writerow([label, flat_val, graph_val, savings])
+
+    rows = run.get("queries", [])
+    if rows:
+        with (out_dir / "per_query_summary.csv").open("w", encoding="utf-8", newline="") as fh:
+            writer = csv.writer(fh)
+            writer.writerow([
+                "query_id", "scene_id", "query_type", "flat_views", "graph_views",
+                "flat_tokens", "graph_tokens", "savings_views_pct", "savings_tokens_pct",
+                "graph_found", "flat_found", "hit_at_1_graph", "hit_at_1_flat",
+            ])
+            for row in rows:
+                savings = row.get("savings_graph_vs_flat", {})
+                qg = row.get("quality_graph", {})
+                qf = row.get("quality_flat", {})
+                writer.writerow([
+                    row.get("query_id"),
+                    row.get("benchmark_scene_id"),
+                    row.get("query_type"),
+                    row.get("flat", {}).get("views_checked"),
+                    row.get("graph", {}).get("views_checked"),
+                    row.get("flat", {}).get("input_tokens"),
+                    row.get("graph", {}).get("input_tokens"),
+                    savings.get("views_pct"),
+                    savings.get("tokens_pct"),
+                    row.get("graph", {}).get("found"),
+                    row.get("flat", {}).get("found"),
+                    qg.get("hit_at_1"),
+                    qf.get("hit_at_1"),
+                ])

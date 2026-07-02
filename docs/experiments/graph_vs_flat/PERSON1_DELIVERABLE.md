@@ -6,7 +6,7 @@
 - Implemented same-input runners: `flat_lexical`, `graph_lexical`, `graph_affordance` over five captured scenes.
 - Added affordance/intent expansion (`sit`, `exit`, `reception`, `restroom`, …).
 - Ran 40 five-scene queries from `benchmark_queries_v1.json`.
-- Exported paper-ready tables to `outputs/graph_vs_flat/five_scene_graph_vs_flat_v1/`.
+- Exported paper-ready tables to `outputs/graph_vs_flat/five_scene_graph_vs_flat_v1/` (JSON, MD, CSV).
 
 ## Results (efficiency only — no verified GT on five-scene v1 queries)
 

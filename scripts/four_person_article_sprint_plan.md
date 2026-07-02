@@ -310,8 +310,15 @@ Recommended evidence commands after implementation:
 ```powershell
 python -B scripts\validate_semantic_index.py --scenes backend\data\scenes\ConferenceHall-capture-pilot backend\data\scenes\Museume-capture backend\data\scenes\Theater-capture backend\data\scenes\outdoor-drone-capture backend\data\scenes\outdoor-street-capture --out docs\validation\semantic_index
 python -B scripts\run_experiment.py --config configs\week3_replica.yaml --mode stub --out outputs\week3\final_stub_semantic_gate_v1
-python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_five_scenes.yaml --run-id five_scene_graph_vs_flat_v1
 ```
+
+Add the new graph-vs-flat command here once Person 1 implements it.
+
+```powershell
+python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_five_scenes.yaml
+```
+
+Outputs: `outputs/graph_vs_flat/<run_id>/` (`metrics_summary.json`, `.md`, `.csv`, `per_query_results.json`).
 
 ## Decisions Needed From User
 

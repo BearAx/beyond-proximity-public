@@ -52,6 +52,7 @@ Outputs land in `outputs/graph_vs_flat/<run_id>/`:
 
 - `metrics_summary.json`
 - `metrics_summary.md`
+- `metrics_summary.csv`, `per_query_summary.csv`
 - `per_query_results.json`
 - `run_config.json`
 

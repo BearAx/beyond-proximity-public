@@ -9,8 +9,8 @@
       "graph_input_tokens": 853.52,
       "flat_context_chars": 12444.4,
       "graph_context_chars": 3435.38,
-      "flat_elapsed_ms": 16.08,
-      "graph_elapsed_ms": 10.71,
+      "flat_elapsed_ms": 16.21,
+      "graph_elapsed_ms": 10.75,
       "graph_nodes_visited": 9.2,
       "savings_views_pct": 77.1,
       "savings_tokens_pct": 72.2
@@ -21,5 +21,5 @@
       "denominator_note": "Quality metrics use only queries with verified expected_view_ids."
     }
   },
-  "generated_at": "2026-07-02T14:51:36.023282+00:00"
+  "generated_at": "2026-07-02T14:53:58.673850+00:00"
 }

@@ -1,6 +1,6 @@
 # Graph vs flat — five-scene run
 
-- Generated: 2026-07-02T14:51:36.023282+00:00
+- Generated: 2026-07-02T14:53:58.673850+00:00
 - Queries: 40
 - GT queries with view labels: 0
 
@@ -12,8 +12,8 @@
 - `flat_input_tokens`: 3104.0
 - `graph_input_tokens`: 853.52
 - `savings_tokens_pct`: 72.2
-- `flat_elapsed_ms`: 16.08
-- `graph_elapsed_ms`: 10.71
+- `flat_elapsed_ms`: 16.21
+- `graph_elapsed_ms`: 10.75
 
 ## Quality
 
