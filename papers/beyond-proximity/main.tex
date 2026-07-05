@@ -1,9 +1,9 @@
 % papers/beyond-proximity/main.tex
 \documentclass[10pt,twocolumn,letterpaper]{article}
 \usepackage{cvpr}
-\usepackage{lipsum}
+\usepackage{booktabs}
 
-\title{Beyond Proximity: Two-Pass Geometric-Semantic Clustering for \\ Hierarchical 3D Scene Understanding}
+\title{SemanticSplat: Graph-Pruned Semantic Search over \\ Captured 3D Gaussian Splatting Scenes}
 
 \author{}
 \date{}
@@ -12,89 +12,93 @@
 \maketitle
 
 \begin{abstract}
-3D Gaussian Splatting (3DGS) provides photorealistic rendering but inherently lacks semantic structure. Current methods either rely on noisy 3D feature distillation or fail to construct meaningful room-level hierarchies because they rely solely on camera geometry (which falsely splits large rooms) or solely on visual semantics (which falsely merges identical but distant rooms). We introduce a novel two-pass framework for building hierarchical semantic trees directly from 2D Vision-Language Model (VLM) analyses of rendered 3DGS views. First, our geometric pass clusters views based on camera proximity to prevent cross-room hallucination. Second, a semantic merge pass uses the VLM to extract facing directions and visible landmarks, successfully merging geometrically disjoint clusters that share complementary physical space. Furthermore, we introduce a Two-Stage Crop-and-Requery refinement pipeline with spatial Chain-of-Thought to correct inherent VLM bounding box inaccuracies during natural language querying. Our results show that this two-pass method builds significantly more accurate scene hierarchies than pure geometry or pure semantics, and that crop-and-requery drastically improves 2D localization precision.
+3D Gaussian Splatting (3DGS) provides photorealistic rendering but weak semantic structure for natural-language environment queries. We present SemanticSplat, a rendering-first pipeline that builds a hierarchical semantic index from captured views and answers queries via top-down graph traversal instead of exhaustive flat search over the same semantic items. On five manually captured indoor and outdoor scenes (96 views, 1,046 semantic items) and a legacy Conference Hall demo scene, we compare graph-pruned lexical search against a flat lexical baseline under a documented same-input protocol. Across 150 benchmark queries, graph traversal reduces average views checked by 71.4\% and input tokens by 65.1\% relative to flat search, while hit@1 on 125 queries with verified view labels is 0.792 (graph) vs.\ 0.768 (flat). We report limitations honestly: manual reference labels rather than independent ground truth, stub lexical matching rather than live provider-backed VLM evaluation, and no metric 3D localization benchmark.
 \end{abstract}
 
 \section{Introduction}
-The advent of 3D Gaussian Splatting (3DGS)~\cite{kerbl20233dgs} has catalyzed real-time, photorealistic novel view synthesis. However, 3DGS models are purely geometric and photometric point clouds lacking semantic structure. Bridging this semantic gap is crucial for downstream tasks such as robotic navigation, virtual reality interactions, and natural language querying of 3D spaces.
+3DGS~\cite{kerbl20233dgs} enables real-time novel view synthesis, but the representation itself does not encode room structure, affordances, or object-level semantics needed for queries such as ``find a place where I can sit'' or ``where is the screen in the conference room?'' Existing semantic 3D approaches either distill language features into radiance fields~\cite{kerr2023lerf}, which struggle with compositional reasoning, or build explicit 3D object graphs from segmentation~\cite{gu2023conceptgraphs}, which can be fragile for open-vocabulary hierarchy construction.
 
-Existing approaches to semantic 3D scene understanding typically fall into two categories: 3D feature distillation and explicit 3D segmentation. Feature distillation methods, such as Language Embedded Radiance Fields (LERF)~\cite{kerr2023lerf}, embed low-resolution Vision-Language Model (VLM) features directly into the 3D representation. While effective for simple keyword searches, they struggle with compositional reasoning and lack explicit object boundaries. Conversely, explicit 3D graph building methods like ConceptGraphs~\cite{gu2023conceptgraphs} rely on segmenting 3D point clouds, which scale poorly to open-vocabulary queries and struggle to formulate high-level architectural hierarchies. Furthermore, when these methods attempt to build scene hierarchies, they either rely exclusively on geometric clustering---which arbitrarily splits large open spaces like a ballroom stage and its audience---or semantic clustering---which falsely merges visually identical but physically separate spaces.
+SemanticSplat takes a rendering-first approach: capture posed RGB views from a 3DGS scene, annotate them with structured ViewJSON records, organize them into a hierarchical semantic tree, and answer queries by traversing that tree top-down. A flat baseline scans the same semantic items exhaustively. Our research question is whether graph pruning reduces search cost without sacrificing useful retrieval quality when both methods operate on identical inputs.
 
-To overcome these limitations, we propose a rendering-first paradigm. Rather than forcing semantics into 3D primitives, we treat 3DGS as an ideal rendering engine to generate noise-free viewpoints for state-of-the-art 2D VLMs. We introduce a novel Two-Pass Geometric-Semantic Clustering framework. Pass 1 applies adaptive thresholding on camera proximity to form conservative spatial clusters. Pass 2 introduces a VLM-driven semantic merge, extracting architectural \textit{facing} directions and \textit{visible landmarks} to stitch geometrically disjoint clusters that share complementary physical space. Additionally, we address the spatial inaccuracies inherent to off-the-shelf VLMs during object retrieval by proposing a Two-Stage Crop-and-Requery Bounding Box Refinement pipeline guided by spatial Chain-of-Thought (CoT).
-
-Our primary contributions are threefold:
+\paragraph{Contributions.}
 \begin{itemize}
-    \item A novel Two-Pass Geometric-Semantic clustering algorithm that prevents both cross-room hallucination and geometric over-segmentation.
-    \item A purely LLM-driven hierarchical reasoning framework that dynamically determines scene tree depth without hardcoded heuristics.
-    \item A Two-Stage Crop-and-Requery refinement pipeline that significantly improves 2D localization precision for natural language queries.
+    \item A prototype semantic-map layer above captured 3DGS views with MCP-backed infrastructure and Query Flow logging.
+    \item A same-input graph-vs-flat benchmark over five captured scenes plus a legacy demo scene, measuring views checked, tokens, and GT-aware hit@k where verified labels exist.
+    \item An affordance expansion layer for intent-style queries (e.g.\ sit, exit, charge phone).
+    \item Honest reporting of scope: manual reference labels, stub evaluation mode, and baseline smokes without superiority claims.
 \end{itemize}
 
 \section{Related Work}
-\paragraph{Semantic 3D Scene Understanding.} Recent works have explored linking language to 3D representations. Methods like LERF~\cite{kerr2023lerf} distill CLIP embeddings into continuous radiance fields. While powerful for point-wise querying, distillation smooths out sharp semantic boundaries and loses compositional structure. OpenScene and ConceptGraphs~\cite{gu2023conceptgraphs} build explicit 3D scene graphs by lifting 2D segmentations to 3D. In contrast, our method avoids the fragility of 3D segmentation entirely, operating purely on 2D renders synthesized from the 3DGS model.
+\paragraph{Language fields and 3DGS semantics.}
+LERF~\cite{kerr2023lerf} and related methods embed vision-language features into radiance fields or Gaussians for open-vocabulary pointing, but typically lack explicit hierarchical structure for context control.
 
-\paragraph{Hierarchical Scene Graphs.} Constructing hierarchical scene graphs (objects $\rightarrow$ regions $\rightarrow$ rooms) has traditionally relied on rigid heuristics and distance thresholds. We propose a flexible, LLM-driven approach where an LLM determines the optimal hierarchy and naming conventions dynamically based on aggregated view summaries, corrected by our two-pass geometric-semantic constraints.
+\paragraph{Open-vocabulary 3D scene graphs.}
+ConceptGraphs~\cite{gu2023conceptgraphs}, OpenScene, and BBQ build explicit graphs from lifted 2D detections or point clouds. These methods target object graphs and relational reasoning; our work instead evaluates whether a manually curated hierarchical semantic index can reduce traversal cost for environment-understanding queries.
 
-\paragraph{VLM Spatial Reasoning.} Large Vision-Language Models demonstrate remarkable reasoning capabilities but consistently struggle with precise spatial localization (e.g., yielding inaccurate bounding boxes). We explicitly address this through a spatial Chain-of-Thought and an automated crop-and-requery loop, shifting the burden of precision from a single VLM pass to an iterative refinement process.
+\paragraph{Hierarchical scene graphs.}
+Robotics-oriented systems such as Hydra construct multi-level spatial graphs with stronger geometric priors. SemanticSplat uses a lighter-weight tree built from captured views and manual or VLM-assisted ViewJSON annotations.
 
-\section{Methodology}
+\paragraph{Positioning.}
+We do not claim superiority over ConceptGraphs or LangSplat. Repository evidence includes one-frame ConceptGraphs smoke and official LangSplat sofa smoke only; fair same-scene comparison remains future work. See \texttt{docs/baselines/related\_work\_article\_matrix.md} for the full matrix.
 
-\subsection{System Overview}
-Our system operates in two phases. In the offline construction phase, we sample camera poses within the 3DGS scene, render RGB images, and analyze each view using a VLM. These analyses fuel our Two-Pass Geometric-Semantic clustering to build a hierarchical semantic tree. In the online query phase, natural language queries are decomposed into structured plans, traversing the tree top-down to identify relevant views. A spatial Chain-of-Thought (CoT) combined with a Crop-and-Requery pipeline then extracts precise bounding boxes.
+\section{Method}
 
-\subsection{VLM View Analysis}
-For each rendered viewpoint, we extract rich semantics via a VLM. Rather than merely listing objects, we mandate the extraction of specific architectural metadata crucial for scene graph construction: \textit{room type}, camera \textit{facing} (e.g., stage, audience, entrance), and prominent \textit{visible landmarks} (e.g., projection screen, crystal chandelier). The VLM also produces a 10-15 word summary of the entire view, which acts as the atomic unit of reasoning during tree construction to minimize token costs.
+\subsection{Capture and semantic index}
+Users navigate a 3DGS \texttt{.ply} scene in the browser, capture views (RGB, depth, pose), and produce ViewJSON records listing objects, landmarks, room cues, and summaries. Five captured scenes contain 96 annotated views and 1,046 semantic items. Trees are stored per scene under \texttt{backend/data/scenes/<scene\_id>/tree/}.
 
-\subsection{Two-Pass Hierarchical Tree Construction}
-Standard clustering algorithms struggle with large 3D environments. We propose a two-pass approach.
+\subsection{Hierarchical tree and query traversal}
+Queries are decomposed into structured constraints, then the semantic tree is traversed top-down. Irrelevant zones and regions are pruned before leaf-level confirmation. The flat baseline scans the same semantic items without hierarchy.
 
-\paragraph{Phase 1: Geometric Proximity Graph.}
-We construct a $K \times K$ distance matrix from the $K$ camera positions. Using an adaptive threshold based on the median nearest-neighbor distance, we build a proximity graph and extract connected components. This prevents the VLM from mistakenly merging visually identical but physically distant spaces (e.g., two identical bedrooms in different wings).
+\subsection{Affordance-aware expansion}
+Intent queries map to affordance categories (e.g.\ \textit{sittable} $\rightarrow$ chair, sofa, bench) before candidate ranking. This is implemented as a deterministic expansion layer (\texttt{backend/query/affordance.py}).
 
-\paragraph{Phase 2: Semantic Merge Pass.}
-Geometric clustering alone artificially splits large contiguous rooms (like a ballroom) when cameras are placed far apart. We apply a semantic merge pass to correct this over-segmentation. Two geometrically disjoint clusters are merged if they share complementary physical space. Specifically, a merge is triggered if: (1) one cluster has a facing of ``stage'' and the other ``audience'', or (2) both clusters share the same dominant room type and contain at least one identical visible landmark.
+\subsection{Evaluation protocol}
+Graph and flat methods share scenes, semantic items, query strings, and benchmark labels. Efficiency metrics include views checked, input tokens, context size, and infrastructure elapsed time. Quality metrics (hit@1, hit@3) are computed only for queries with verified \texttt{expected\_view\_ids}. Manual ViewJSON labels are reference labels, not independent ground truth.
 
-\paragraph{Phase 3: LLM Tree Grouping.}
-The finalized clusters are passed to an LLM. In ``Step 0'', the LLM performs a final sanity check to merge any remaining clusters that describe the same room. It then assigns human-readable names (e.g., ``Lobby \& Bar'') and determines whether large zones require sub-region nodes. Because the LLM only reads view summaries rather than raw images, this top-down grouping is extremely computationally efficient.
+\section{Experiments}
 
-\subsection{Top-Down Semantic Query Traversal}
-Given a natural language query, an LLM decomposes it into structured constraints (target object, spatial relations, query type). We traverse the semantic tree top-down, passing the node summaries to the LLM to selectively prune irrelevant branches.
+\subsection{Five-scene graph vs flat (primary result)}
+We evaluate 150 queries from \texttt{benchmark\_queries\_v2.json} across five captured scenes using stub lexical matching (\texttt{outputs/graph\_vs\_flat/five\_scene\_graph\_vs\_flat\_v2/}). Table~\ref{tab:five-scene} summarizes averages.
 
-Once leaf views are reached, standard VLMs often struggle to output precise 2D bounding boxes. We resolve this via a Two-Stage Refinement Pipeline.
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+Metric & Flat & Graph \\
+\midrule
+Views checked & 19.2 & 5.39 \\
+Input tokens & 3104.0 & 1061.6 \\
+Elapsed (ms, infra) & 14.1 & 12.5 \\
+\midrule
+hit@1 (125 GT queries) & 0.768 & 0.792 \\
+hit@3 (125 GT queries) & 0.928 & 0.904 \\
+\bottomrule
+\end{tabular}
+\caption{Same-input graph vs flat on five captured scenes. Savings: 71.4\% fewer views, 65.1\% fewer tokens. Quality denominator excludes 25 queries without verified view labels.}
+\label{tab:five-scene}
+\end{table}
 
-\paragraph{Stage 1: Spatial Chain-of-Thought (CoT).}
-We force the VLM to derive the bounding box using explicit spatial reasoning. The prompt requires the VLM to divide the image into horizontal and vertical thirds, estimate coordinates to the nearest 0.05, and sanity-check the coordinates against extracted spatial relations (e.g., if an object is ``above the door'', its maximum Y-coordinate must be less than the door's minimum Y-coordinate).
+\subsection{Legacy demo scene (\texttt{default})}
+On the Conference Hall demo scene (19 views, hierarchical tree with 15 nodes), an earlier benchmark reports larger token reductions (8.5$\times$) and estimated latency speedups (4.1$\times$) under a documented timing model. This scene motivated room-disambiguation failure analysis: flat search can return a screen in the wrong room while graph traversal reaches the ballroom stage screen.
 
-\paragraph{Stage 2: Crop-and-Requery Refinement.}
-Even with CoT, small objects are frequently mislocalized. If Stage 1 returns a positive match, we aggressively crop the original high-resolution image around the rough bounding box (with a padding factor). This cropped image, inherently zoomed in on the target region, is passed back to the VLM to generate a refined bounding box relative to the crop dimensions. Finally, we map the crop-relative coordinates back to the original image space.
+\subsection{Baselines and scope boundaries}
+ConceptGraphs and LangSplat smoke tests confirm adapter feasibility but do not provide five-scene accuracy or efficiency comparison. Live and cached-live provider evaluation are out of scope for this sprint. ScanNet evaluation is postponed.
 
-\paragraph{Best-View Ranking.}
-When a query results in multiple positive views, we score each match based on VLM confidence (weight 0.5), bounding box area (weight 0.3, penalizing tiny boxes), and centrality (weight 0.2). The highest-scoring view is returned to the user, ensuring optimal visual quality and unobstructed perspectives.
-
-\section{Experimental Setup and Ablations}
-
-\subsection{Implementation Details}
-Our system is implemented using a decoupled architecture. The 3DGS rendering, spatial graph computations, and image cropping run locally via Model Context Protocol (MCP) tools, while an LLM agent orchestrates the pipeline. This ensures that the heavy geometric lifting is performed deterministically, reserving the LLM strictly for semantic reasoning. We evaluate on a challenging ``Conference Hall'' 3DGS scene containing visually diverse but interconnected spaces (ballroom, stage, lobby, corridors).
-
-\subsection{Hierarchy Construction Accuracy}
-We ablated the tree construction algorithm against two baselines:
+\section{Limitations}
 \begin{itemize}
-    \item \textbf{Baseline A (Pure Geometric):} Relies exclusively on camera proximity. In our tests, this split a single contiguous ballroom into multiple independent zones (e.g., separating the stage cameras from the audience cameras) due to the sheer physical distance across the room.
-    \item \textbf{Baseline B (Pure Semantic):} Ignores proximity and relies solely on VLM semantic similarity. This falsely merged a distinct reception area with a secondary bar corridor because they shared visually identical carpeting and lighting.
-    \item \textbf{Ours (Two-Pass Hybrid):} The geometric pass cleanly separated the reception from the distant bar, while the semantic merge pass correctly fused the stage and audience clusters by recognizing complementary facings and shared projection screen landmarks. Our approach achieved 100\% room-level topological accuracy on the test scene.
+    \item \textbf{Manual reference labels:} Expected objects and views are verified from ViewJSON, not independent annotators.
+    \item \textbf{Stub evaluation mode:} Reported five-scene runs use lexical stub matching, not live VLM API calls.
+    \item \textbf{No metric 3D localization:} Predicted and ground-truth 3D boxes are unavailable; 3D IoU is not reported.
+    \item \textbf{Uneven graph benefit:} Some queries still require many graph view checks; savings vary by query type and tree shape.
+    \item \textbf{Baseline comparison:} External baselines are literature context plus minimal smokes, not head-to-head same-input benchmarks.
 \end{itemize}
-
-\subsection{2D Localization Precision}
-To evaluate bounding box accuracy, we tested 50 challenging ``find'' queries.
-\begin{itemize}
-    \item \textbf{Baseline (Single-Pass VLM):} Often misaligned coordinates by 10-20\% of the image height, especially on the Y-axis for small objects like ``exit signs'' or ``fire extinguishers''.
-    \item \textbf{Ours (CoT + Crop-and-Requery):} The Stage 1 CoT eliminated egregious sanity-check failures, while the Stage 2 crop-and-requery successfully tightened the bounding boxes around the actual pixel boundaries of the objects. Average Intersection-over-Union (IoU) improved by a margin of 34\% over the baseline.
-\end{itemize}
-
-\section{Limitations and Future Work}
-Currently, the retrieval pipeline outputs refined 2D bounding boxes on specific views. While highly accurate in 2D, a true 3D spatial query system should output exact 3D world coordinates. Future work involves utilizing the continuous depth maps generated by 3DGS to unproject our refined 2D bounding boxes directly into 3D bounding boxes. Additionally, while view selection is currently manual, integrating automated optimal camera placement algorithms (e.g., NoField) would eliminate the need for human capture entirely.
 
 \section{Conclusion}
-We introduced a rendering-first paradigm for semantic 3D scene understanding over Gaussian Splatting models. By recognizing that pure geometry over-segments and pure semantics over-merges, our Two-Pass Geometric-Semantic clustering algorithm builds highly accurate, human-interpretable scene hierarchies. Coupled with our Two-Stage Crop-and-Requery pipeline to correct VLM spatial inaccuracies, our framework demonstrates that off-the-shelf 2D VLMs can be robustly harnessed for precise, open-vocabulary 3D scene reasoning without the need for complex 3D feature distillation.
+SemanticSplat shows that hierarchical graph pruning can reduce semantic search cost over captured 3DGS scenes when graph and flat methods share the same semantic index. On five scenes and 150 queries, graph traversal cuts views checked and tokens substantially while maintaining comparable hit@1 on verified view labels. Future work includes live VLM evaluation, richer zone-region-object graphs, independent GT, and fair external baseline comparison.
+
+\section*{Reproducibility}
+Windows commands: \texttt{docs/reports/final/reproducibility\_windows.md}. Evidence notebook: \texttt{notebooks/graph\_vs\_flat\_evidence.ipynb}. Run ID: \texttt{five\_scene\_graph\_vs\_flat\_v2}.
 
 {\small
 \bibliographystyle{plain}
