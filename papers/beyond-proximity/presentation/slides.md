@@ -1,3 +1,7 @@
+<!--
+STALE — do not use for the article sprint. Overclaims on results slides.
+Source of truth: papers/beyond-proximity/main.tex
+-->
 ---
 theme: seriph
 background: https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop

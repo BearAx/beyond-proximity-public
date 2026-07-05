@@ -25,21 +25,50 @@ Source: `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json`
 
 Mode: **stub lexical** — not live VLM.
 
-## Claim status (updated)
+Legacy `default` scene: separate subsection only (8.5× token reduction under documented timing model — not merged into five-scene averages).
 
-| Claim | Verdict |
-|-------|---------|
-| Graph reduces views/tokens on five scenes | **supported** (same-input v2 run) |
-| hit@1 comparable or slightly better | **supported_with_caveat** (manual GT, stub mode) |
-| 8.5× token reduction | **default scene only** — separate subsection |
-| 100% room accuracy / 34% IoU | **removed** from tex |
-| ConceptGraphs/LangSplat superiority | **unsupported** — smokes only |
-| Live VLM evaluation | **out of scope** |
+## Claim status
 
-## Article artifacts
+| Claim | Verdict | Where in tex |
+|-------|---------|--------------|
+| Graph reduces views/tokens on five scenes | **supported** | Table 1, abstract |
+| hit@1 comparable or slightly better | **supported_with_caveat** | Table 1 (manual GT, stub mode) |
+| 8.5× token reduction on demo scene | **supported** (scene-specific) | §5.2 legacy demo |
+| 100% room accuracy | **removed** | — |
+| 50 challenging find queries | **removed** | — |
+| 34% IoU improvement | **removed** | — |
+| "Significantly more accurate" hierarchy | **removed** | — |
+| ConceptGraphs/LangSplat superiority | **unsupported** | §5.3 smokes only |
+| Live VLM evaluation | **out of scope** | Limitations |
 
-- [x] `main.tex` rewritten (honest abstract + Table 1)
-- [x] Notebook: default + five-scene sections
-- [x] `reproducibility_windows.md`
-- [ ] PDF build (needs LaTeX env)
-- [ ] Related work full prose from P3 matrix (partial in tex)
+## Stale materials (not article source of truth)
+
+| File | Issue | Action |
+|------|-------|--------|
+| `speaker-script.md` | Overclaims topology/IoU | STALE banner added; use `main.tex` |
+| `presentation/slides.md` | Same | STALE banner added |
+| `presentation-slides.md` | Same | STALE banner added |
+
+## Person 4 artifact checklist
+
+- [x] `main.tex` — honest abstract, Table 1, expanded Related Work
+- [x] `refs.bib` — key P3 citations added
+- [x] `claim_audit.md` — this file
+- [x] `paper_outline.md` — updated post five-scene merge
+- [x] `reproducibility_windows.md` — runner commands, no "pending"
+- [x] `article_readiness_checklist.md` — sprint gate
+- [x] `notebooks/graph_vs_flat_evidence.ipynb` — Part A + Part B
+- [x] Presentation stale notices
+- [ ] `main.pdf` — blocked: LaTeX not installed on dev machine (see `BUILD.md`)
+- [ ] PR to `main` — team decision (Leo remote ready)
+
+## Reviewer FAQ
+
+**Q: Is five-scene graph-vs-flat missing?**  
+A: No. Results are in `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/` and Table 1.
+
+**Q: Is the runner pending?**  
+A: No. `scripts/run_graph_vs_flat.py` with `configs/graph_vs_flat_v2.yaml`.
+
+**Q: Can we call ViewJSON labels "ground truth"?**  
+A: Use "reference labels" or "verified view labels" — not independent annotator GT.

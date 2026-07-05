@@ -1,8 +1,8 @@
 # Reproducibility — Windows (SemanticSplat / Beyond Proximity)
 
-Status date: 2026-07-01. Maintainer: Person 4.
+Status date: 2026-07-05. Maintainer: Person 4 (Telman).
 
-This appendix documents **commands that were verified or aligned with repo scripts** on Windows. It does not claim full five-scene graph-vs-flat reproduction until Person 1 lands the runner.
+This appendix documents **commands verified or aligned with repo scripts** on Windows. Five-scene graph-vs-flat reproduction is supported via `scripts/run_graph_vs_flat.py` (Person 1, merged on `week4/integration-article-sprint`).
 
 ## Prerequisites
 
@@ -16,6 +16,13 @@ cd ..
 ```
 
 Optional: `winget install ffmpeg` (MP4 generation in benchmark docs pipeline).
+
+For graph-vs-flat runner only (no frontend):
+
+```powershell
+$env:PYTHONPATH = "."
+python -B -m pytest -q tests\backend\test_affordance.py tests\backend\test_graph_vs_flat.py
+```
 
 ## Launch demo UI (3 services)
 
@@ -55,6 +62,28 @@ Outputs: `docs/benchmarks/benchmark_graph_vs_flat.md`, `docs/benchmark_results/*
 
 Raw JSON: `docs/benchmark_results/benchmark_default.json`.
 
+## Five-scene graph-vs-flat (primary paper evidence)
+
+Checked-in results: `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/`.
+
+```powershell
+$env:PYTHONPATH = "."
+
+# v1 efficiency baseline (40 queries)
+python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_five_scenes.yaml
+
+# v2 with Person 2 GT (150 queries, hit@1 / hit@3) — matches Table 1 in main.tex
+python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_v2.yaml
+```
+
+Expected console summary (v2): ~71% view savings, ~65% token savings. Outputs land under `outputs/graph_vs_flat/<run_id>/` (`metrics_summary.json`, CSV, MD).
+
+Gate tests:
+
+```powershell
+python -B -m pytest -q tests\backend\test_affordance.py tests\backend\test_graph_vs_flat.py
+```
+
 ## Week 3 stub semantic gate (five captured scenes)
 
 ```powershell
@@ -76,13 +105,27 @@ python -B scripts\run_experiment.py `
 ## Evidence notebook (Person 4)
 
 ```powershell
-.\.venv\Scripts\pip install jupyter matplotlib pandas
+.\.venv\Scripts\pip install -r notebooks\requirements.txt
 .\.venv\Scripts\jupyter notebook notebooks\graph_vs_flat_evidence.ipynb
 ```
 
-Notebook reads only checked-in JSON; no live API calls.
+Notebook reads only checked-in JSON; no live API calls. Part A: `default` scene. Part B: five-scene v2.
 
-## Tests (sprint gate)
+## Article PDF (LaTeX)
+
+LaTeX is not bundled with this repo. On a machine with TeX Live or MiKTeX:
+
+```powershell
+cd papers\beyond-proximity
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+```
+
+See `papers/beyond-proximity/BUILD.md` for details.
+
+## Full test suite (sprint gate)
 
 ```powershell
 $env:PYTHONPATH = "."
@@ -96,12 +139,11 @@ python -B -m pytest -q
 
 | Item | Reason |
 |------|--------|
-| Graph-vs-flat on 5 captured scenes | Runner pending (Person 1) |
-| Semantic accuracy metrics | No independent GT at scale |
-| Live / cached-live VLM runs | Out of scope |
+| Semantic accuracy at ScanNet scale | No independent GT at scale |
+| Live / cached-live VLM runs | Out of scope for sprint |
 | ConceptGraphs five-scene comparison | Smoke = 1 frame only |
 | Full captured-scene LFS assets | Some LFS objects 404 on remote; use `GIT_LFS_SKIP_SMUDGE=1` for code-only checkout |
 
 ## Code revision
 
-Record `git rev-parse HEAD` in every paper table footnote when freezing results.
+Record `git rev-parse HEAD` in every paper table footnote when freezing results. Frozen run ID for article: `five_scene_graph_vs_flat_v2`.

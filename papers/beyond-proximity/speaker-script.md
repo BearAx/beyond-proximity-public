@@ -1,5 +1,7 @@
 # Speaker Script: Beyond Proximity
 
+> **STALE — do not use for the article sprint.** This script contains unsupported claims (100% room accuracy, 34% IoU, 50 find queries). Source of truth: `main.tex`, `docs/reports/final/claim_audit.md`.
+
 *(Note: This script is designed to sound natural, enthusiastic, and slightly improvised. Pause at the commas and ellipses to let the points land.)*
 
 ## Slide 1: Title Slide

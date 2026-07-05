@@ -1,5 +1,7 @@
 # Presentation Slides: Beyond Proximity
 
+> **STALE — do not use for the article sprint.** Slides 10–11 overclaim topology and IoU. Use `main.tex` and `docs/reports/final/claim_audit.md` instead.
+
 ## Slide 1: Title Slide
 **Title:** Beyond Proximity: Two-Pass Geometric-Semantic Clustering for Hierarchical 3D Scene Understanding
 **Subtitle:** A Rendering-First Paradigm for 3D Gaussian Splatting

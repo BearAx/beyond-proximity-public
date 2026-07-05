@@ -30,16 +30,19 @@ SemanticSplat takes a rendering-first approach: capture posed RGB views from a 3
 
 \section{Related Work}
 \paragraph{Language fields and 3DGS semantics.}
-LERF~\cite{kerr2023lerf} and related methods embed vision-language features into radiance fields or Gaussians for open-vocabulary pointing, but typically lack explicit hierarchical structure for context control.
+LERF~\cite{kerr2023lerf}, LangSplat~\cite{langsplat2024}, Semantic Gaussians~\cite{semanticgaussians2024}, and LEGS~\cite{legs2024} embed or distill vision-language features into radiance fields or Gaussians for open-vocabulary pointing and robot-scale mapping. Their native outputs are relevancy maps or semantic Gaussians rather than explicit traversal traces; they typically lack zone--region--object hierarchy for context pruning.
 
 \paragraph{Open-vocabulary 3D scene graphs.}
-ConceptGraphs~\cite{gu2023conceptgraphs}, OpenScene, and BBQ build explicit graphs from lifted 2D detections or point clouds. These methods target object graphs and relational reasoning; our work instead evaluates whether a manually curated hierarchical semantic index can reduce traversal cost for environment-understanding queries.
+ConceptGraphs~\cite{gu2023conceptgraphs}, OpenScene~\cite{openscene2023}, ConceptFusion~\cite{conceptfusion2023}, and BBQ~\cite{bbq2024} build explicit graphs from lifted 2D detections, point clouds, or RGB-D association. These methods target object graphs, relational grounding, and planning; our work evaluates whether a manually curated hierarchical semantic index over captured views can reduce same-input search cost for environment-understanding queries.
 
-\paragraph{Hierarchical scene graphs.}
-Robotics-oriented systems such as Hydra construct multi-level spatial graphs with stronger geometric priors. SemanticSplat uses a lighter-weight tree built from captured views and manual or VLM-assisted ViewJSON annotations.
+\paragraph{Hierarchical scene graphs and benchmarks.}
+HOV-SG~\cite{hovsg2024} and Hydra~\cite{hydra2022} construct multi-level spatial graphs with stronger geometric priors for navigation and robotics. OpenLex3D~\cite{openlex3d2025} and ScanRefer~\cite{scanrefer2020} define tiered open-vocabulary and referring-expression benchmarks with 3D IoU and localization metrics on RGB-D scans. Our captured scenes lack independent object boxes or masks at that scale, so we report internal efficiency and GT-aware hit@k on verified view labels instead.
+
+\paragraph{Token and context efficiency.}
+Prompt compression~\cite{promptcompression2024}, AttentionRAG~\cite{attentionrag2025}, Provence~\cite{provence2025}, TeaRAG~\cite{tearag2026}, and S-Path-RAG~\cite{spathrag2026} study pruning retrieved LLM context and graph-derived evidence. Token count is not a standard 3D scene-understanding metric; we cite this line to frame views checked and input tokens as internal graph-vs-flat efficiency measures, not claims of superiority over RAG systems.
 
 \paragraph{Positioning.}
-We do not claim superiority over ConceptGraphs or LangSplat. Repository evidence includes one-frame ConceptGraphs smoke and official LangSplat sofa smoke only; fair same-scene comparison remains future work. See \texttt{docs/baselines/related\_work\_article\_matrix.md} for the full matrix.
+We do not claim superiority over ConceptGraphs, LangSplat, or external graph builders. Repository evidence includes one-frame ConceptGraphs smoke and official LangSplat sofa smoke only; fair same-scene comparison remains future work. Measured results compare internal \texttt{flat\_lexical} vs.\ \texttt{graph\_traversal} on identical scenes, semantic items, and query strings (see \texttt{docs/baselines/related\_work\_article\_matrix.md}).
 
 \section{Method}
 
