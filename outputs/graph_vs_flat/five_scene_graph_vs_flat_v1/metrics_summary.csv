@@ -1,0 +1,5 @@
+metric,flat_avg,graph_avg,savings_pct
+views_checked,19.2,4.35,77.1
+input_tokens,3104.0,853.52,72.2
+context_chars,12444.4,3435.38,72.4
+elapsed_ms,16.21,10.75,33.7
