@@ -1,0 +1,22 @@
+{
+  "camera_model": "OPENCV",
+  "width": 1722,
+  "height": 733,
+  "fx": 1722.0,
+  "fy": 977.3333333333334,
+  "cx": 861.0,
+  "cy": 366.5,
+  "source": "transforms.json scaled to actual RGB resolution",
+  "original_intrinsics": {
+    "width": 800,
+    "height": 600,
+    "fx": 800.0,
+    "fy": 800.0,
+    "cx": 400.0,
+    "cy": 300.0
+  },
+  "scale": {
+    "x": 2.1525,
+    "y": 1.2216666666666667
+  }
+}

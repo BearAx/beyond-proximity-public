@@ -28,6 +28,13 @@ from PIL import Image  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+
+def _fix_windows_console() -> None:
+    if sys.platform == "win32":
+        for stream in (sys.stdout, sys.stderr):
+            if hasattr(stream, "reconfigure"):
+                stream.reconfigure(encoding="utf-8", errors="replace")
+
 OUT_PATH = ROOT / "docs" / "benchmark_results" / "failure_case_demo.mp4"
 SCENE_DIR = ROOT / "backend" / "data" / "scenes" / "default"
 IMAGES_DIR = SCENE_DIR / "images"
@@ -283,6 +290,7 @@ def write_mp4(frames: List[np.ndarray], path: Path, fps: int) -> None:
 
 
 def main() -> None:
+    _fix_windows_console()
     parser = argparse.ArgumentParser(description="Record failure-case demo MP4")
     parser.add_argument("--query", default=DEMO_QUERY)
     parser.add_argument("--output", type=Path, default=OUT_PATH)

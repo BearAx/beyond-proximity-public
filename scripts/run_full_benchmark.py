@@ -17,6 +17,13 @@ from typing import Optional
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+
+def _fix_windows_console() -> None:
+    if sys.platform == "win32":
+        for stream in (sys.stdout, sys.stderr):
+            if hasattr(stream, "reconfigure"):
+                stream.reconfigure(encoding="utf-8", errors="replace")
+
 # Writable matplotlib cache (avoids font-cache errors in CI/sandbox)
 _mpl_dir = ROOT / ".matplotlib"
 _mpl_dir.mkdir(exist_ok=True)
@@ -197,6 +204,7 @@ def print_output_links(
 
 
 def main() -> None:
+    _fix_windows_console()
     parser = argparse.ArgumentParser(description="Graph vs flat — resources & speed only")
     parser.add_argument("--scene", default="default")
     args = parser.parse_args()

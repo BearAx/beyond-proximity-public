@@ -2,6 +2,14 @@
 scenes/*.ply
 backend/data/scenes/*/geometry/*.ply
 
+# Pipeline outputs and large archives
+outputs/
+*.zip
+
+# Large pilot scene binaries (keep json/scripts in git)
+data/replica/**/rgb/
+data/replica/**/depth/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -39,7 +47,6 @@ htmlcov/
 *.bak
 
 # Incoming archives and generated evaluation runs
-*.zip
 outputs/**
 !outputs/week2/
 outputs/week2/**
@@ -65,3 +72,11 @@ outputs/baselines/conceptgraphs_smoke_v1/**
 
 # Matplotlib cache (benchmark charts)
 .matplotlib/
+
+# Local merge clones / backups (if copied into repo root)
+/leo-fork/
+local_backup*.zip
+graphify-out/
+
+# Person 4 private sprint journal (thoughts, WIP notes)
+worklog/
