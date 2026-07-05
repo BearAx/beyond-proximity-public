@@ -37,8 +37,25 @@
       ],
       "approx_location": "left-center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.04,
+        0.18,
+        0.48,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          15.589706213624385,
+          2.059240230874001,
+          16.78279753725111
+        ],
+        "size": [
+          16.491513077045532,
+          17.141159341555895,
+          18.08796442985572
+        ],
+        "label": "white fortress buildings"
+      },
       "source": "manual"
     },
     {
@@ -49,7 +66,12 @@
       ],
       "approx_location": "upper left",
       "confidence": null,
-      "bbox_2d": null,
+      "bbox_2d": [
+        0.04,
+        0.02,
+        0.48,
+        0.38
+      ],
       "bbox_3d": null,
       "source": "manual"
     },
@@ -84,8 +106,25 @@
       ],
       "approx_location": "right and foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.44,
+        1.0,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          21.829698807776353,
+          5.746455916541982,
+          -2.040066468621543
+        ],
+        "size": [
+          7.856811206864265,
+          12.860815527638119,
+          21.000132358183283
+        ],
+        "label": "sea water"
+      },
       "source": "manual"
     },
     {

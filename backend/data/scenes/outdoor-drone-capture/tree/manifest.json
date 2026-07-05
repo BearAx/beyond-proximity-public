@@ -6,6 +6,11 @@
   "semantic_index_mode": "manual",
   "node_ids": [
     "root",
+    "manual_zone_outdoor_drone_bridge_crossing",
+    "manual_zone_outdoor_drone_city_shoreline",
+    "manual_zone_outdoor_drone_fortress_island",
+    "manual_zone_outdoor_drone_harbor_marina",
+    "manual_zone_outdoor_drone_open_water_bay",
     "landmark_v001_001_fortress_island",
     "landmark_v001_002_tower_on_island",
     "landmark_v002_001_waterfront_building_cluster",
@@ -165,11 +170,16 @@
     "region_waterfront_district_8aa0ce02",
     "region_waterfront_transition_89605f6e"
   ],
-  "node_count": 159,
+  "node_count": 164,
   "view_count": 16,
   "annotated_view_count": 16,
   "semantic_item_count": 169,
+  "manual_zone_node_count": 5,
+  "tree_native_zone_nodes": true,
   "complete": true,
   "query_runner_schema_compatible": true,
-  "warnings": []
+  "warnings": [
+    "ViewJSON bbox_3d values are predictions/annotations, not independent 3D ground truth.",
+    "Manual zone nodes are reference labels from docs/benchmarks/manual_zone_gt_v2.json, not independent dataset GT."
+  ]
 }

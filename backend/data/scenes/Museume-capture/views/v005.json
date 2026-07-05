@@ -38,8 +38,25 @@
       ],
       "approx_location": "right side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.52,
+        0.18,
+        0.96,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          0.7054777335050746,
+          2.4521723525423598,
+          -4.377782133019014
+        ],
+        "size": [
+          16.52538740471502,
+          6.711749386811345,
+          9.539050234410716
+        ],
+        "label": "stone ruin"
+      },
       "source": "manual"
     },
     {
@@ -86,8 +103,25 @@
       ],
       "approx_location": "near the ruin",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.42,
+        0.82,
+        0.96
+      ],
+      "bbox_3d": {
+        "center": [
+          -4.830845109613183,
+          10.382276561696038,
+          -13.771847758855428
+        ],
+        "size": [
+          27.563340877054507,
+          18.217301949656402,
+          26.262553775027538
+        ],
+        "label": "display labels"
+      },
       "source": "manual"
     },
     {

@@ -6,11 +6,18 @@
   "name": "white podium",
   "summary": "Landmark observation from v002.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_stage_backstage",
   "children_ids": [],
   "view_ids": [
     "v002"
   ],
+  "depth": 2,
   "approx_location": "center-left",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_theater_stage_backstage"
+  ],
+  "zone_labels": [
+    "stage and backstage corridor"
+  ]
 }

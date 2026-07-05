@@ -6,18 +6,46 @@
   "name": "hills",
   "summary": "Object observation from v002.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_harbor_marina",
   "children_ids": [],
   "view_ids": [
     "v002"
   ],
+  "depth": 2,
   "attributes": [
     "mountainous",
     "distant"
   ],
   "approx_location": "background",
   "confidence": null,
-  "bbox_2d": null,
-  "bbox_3d": null,
-  "source": "manual"
+  "bbox_2d": [
+    0.18,
+    0.48,
+    0.82,
+    0.98
+  ],
+  "bbox_3d": {
+    "center": [
+      -16.456786609574632,
+      8.621126853061138,
+      -15.660362508192396
+    ],
+    "size": [
+      20.914360246207814,
+      15.480552934128063,
+      27.364239674003038
+    ],
+    "label": "hills"
+  },
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_drone_city_shoreline",
+    "manual_zone_outdoor_drone_harbor_marina",
+    "manual_zone_outdoor_drone_open_water_bay"
+  ],
+  "zone_labels": [
+    "city shoreline and hills",
+    "harbor and marina",
+    "open water and bay"
+  ]
 }

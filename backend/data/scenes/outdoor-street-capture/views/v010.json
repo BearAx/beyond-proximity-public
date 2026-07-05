@@ -84,8 +84,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -33.52783983566576,
+          10.04906346460038,
+          26.278005967754293
+        ],
+        "size": [
+          18.7771397080956,
+          6.6120322281411035,
+          18.086911231995977
+        ],
+        "label": "cobblestone pavement"
+      },
       "source": "manual"
     },
     {
@@ -96,8 +113,25 @@
       ],
       "approx_location": "lower left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.38,
+        0.53,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -35.18167113717972,
+          6.953349311994151,
+          26.830233601268525
+        ],
+        "size": [
+          21.828464566618695,
+          9.72947011075707,
+          11.667852698293188
+        ],
+        "label": "barred window"
+      },
       "source": "manual"
     }
   ],

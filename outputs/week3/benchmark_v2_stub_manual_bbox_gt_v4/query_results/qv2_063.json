@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Theater-capture",
+  "query_id": "qv2_063",
+  "query": "Find the green exit sign",
+  "query_type": "simple_object",
+  "structured_plan": {
+    "target": "exit green sign",
+    "query_type": "simple_object",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_theater_lobby_notice",
+    "object_v004_004_green_exit_sign"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "green exit sign",
+    "selected_node_id": "object_v004_004_green_exit_sign",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.6344,
+      0.1208,
+      0.8456,
+      0.2792
+    ],
+    "bbox_3d": {
+      "center": [
+        -11.549188933662267,
+        0.9942783292921047,
+        -6.412477607243428
+      ],
+      "size": [
+        8.77737957909418,
+        1.9833426654227226,
+        17.91682300884358
+      ],
+      "label": "green exit sign"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v004 with 3 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001687,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001687
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

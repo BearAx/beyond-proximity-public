@@ -31,8 +31,25 @@
       ],
       "approx_location": "center and foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.22,
+        0.44,
+        0.78,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -7.894486684880384,
+          9.245953320318947,
+          -17.115598075721465
+        ],
+        "size": [
+          24.3977932564526,
+          15.251439580494912,
+          24.415319004884413
+        ],
+        "label": "round tables"
+      },
       "source": "manual"
     },
     {
@@ -44,8 +61,25 @@
       ],
       "approx_location": "around tables",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.14,
+        0.87,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -11.466495825794473,
+          9.83284769971641,
+          -27.927336341622578
+        ],
+        "size": [
+          40.96609551721515,
+          22.22461646787471,
+          42.89634651981484
+        ],
+        "label": "chairs"
+      },
       "source": "manual"
     },
     {

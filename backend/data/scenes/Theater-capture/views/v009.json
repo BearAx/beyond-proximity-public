@@ -49,8 +49,25 @@
       ],
       "approx_location": "center and right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.14,
+        1.0,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -27.40348012881776,
+          11.75545403211872,
+          16.979512368070907
+        ],
+        "size": [
+          39.34474784637985,
+          28.317969228154595,
+          68.31477846163833
+        ],
+        "label": "chairs"
+      },
       "source": "manual"
     },
     {

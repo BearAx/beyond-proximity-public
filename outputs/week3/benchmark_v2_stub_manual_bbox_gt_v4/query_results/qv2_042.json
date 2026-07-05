@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_042",
+  "query": "Find the historical photographs on the red panel",
+  "query_type": "relational",
+  "structured_plan": {
+    "target": "historical panel photographs red",
+    "query_type": "relational",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_museume_window_mesh_side",
+    "object_v006_002_historical_photographs"
+  ],
+  "selected_views": [
+    "v006"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "red exhibition panel",
+    "selected_node_id": "object_v006_002_historical_photographs",
+    "selected_view_id": "v006",
+    "bbox_2d": [
+      0.3896,
+      0.3096,
+      0.6104,
+      0.6704
+    ],
+    "bbox_3d": {
+      "center": [
+        -19.600340156668924,
+        2.04202425179061,
+        -11.406153275250029
+      ],
+      "size": [
+        68.00474093619653,
+        17.845885366754764,
+        23.295715342704018
+      ],
+      "label": "red exhibition panel"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v006 with 4 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.002144,
+    "stage_runtime_seconds": {
+      "answer_query": 0.002144
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

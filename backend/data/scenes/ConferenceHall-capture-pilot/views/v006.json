@@ -31,8 +31,25 @@
       ],
       "approx_location": "center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.22,
+        0.14,
+        0.78,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          37.96952320461848,
+          6.365966546856494,
+          -19.41382921621341
+        ],
+        "size": [
+          28.26783569864833,
+          20.386966901009444,
+          29.023759377355013
+        ],
+        "label": "round tables"
+      },
       "source": "manual"
     },
     {
@@ -43,8 +60,25 @@
       ],
       "approx_location": "around tables",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.14,
+        0.87,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          38.342310139445296,
+          3.3645034956816997,
+          -23.48860113037626
+        ],
+        "size": [
+          27.5222618289947,
+          19.576237243973374,
+          37.87884721534708
+        ],
+        "label": "covered chairs"
+      },
       "source": "manual"
     },
     {
@@ -66,8 +100,25 @@
       ],
       "approx_location": "back center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.27,
+        0.06,
+        0.73,
+        0.62
+      ],
+      "bbox_3d": {
+        "center": [
+          30.985374480314533,
+          0.6337584379282621,
+          -26.912929327716988
+        ],
+        "size": [
+          16.393901453007235,
+          8.196642364584482,
+          15.874113835432198
+        ],
+        "label": "doorway"
+      },
       "source": "manual"
     },
     {

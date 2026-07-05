@@ -1,0 +1,1377 @@
+{
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "mode": "stub",
+  "started_at": "2026-07-01T19:59:05.488900+00:00",
+  "finished_at": "2026-07-01T19:59:15.125667+00:00",
+  "events": [
+    {
+      "at": "2026-07-01T19:59:05.543054+00:00",
+      "stage": "model_client",
+      "status": "complete",
+      "mode": "stub",
+      "provider": "deterministic_local",
+      "model": "semantic_index_lexical_v1",
+      "version": "1",
+      "temperature": 0.0
+    },
+    {
+      "at": "2026-07-01T19:59:06.969606+00:00",
+      "stage": "scene_loading:ConferenceHall-capture-pilot",
+      "status": "complete",
+      "runtime_seconds": 1.411128
+    },
+    {
+      "at": "2026-07-01T19:59:07.095968+00:00",
+      "stage": "depth_validation:ConferenceHall-capture-pilot",
+      "status": "complete",
+      "runtime_seconds": 0.126334
+    },
+    {
+      "at": "2026-07-01T19:59:07.096045+00:00",
+      "stage": "view_selection:ConferenceHall-capture-pilot",
+      "status": "complete",
+      "runtime_seconds": 4.1e-05
+    },
+    {
+      "at": "2026-07-01T19:59:07.097964+00:00",
+      "stage": "view_descriptions:ConferenceHall-capture-pilot",
+      "status": "complete",
+      "runtime_seconds": 0.001907
+    },
+    {
+      "at": "2026-07-01T19:59:07.101370+00:00",
+      "stage": "tree_loading_or_construction:ConferenceHall-capture-pilot",
+      "status": "complete",
+      "runtime_seconds": 0.003396
+    },
+    {
+      "at": "2026-07-01T19:59:08.788935+00:00",
+      "stage": "scene_loading:Museume-capture",
+      "status": "complete",
+      "runtime_seconds": 1.687702
+    },
+    {
+      "at": "2026-07-01T19:59:08.822576+00:00",
+      "stage": "depth_validation:Museume-capture",
+      "status": "complete",
+      "runtime_seconds": 0.033596
+    },
+    {
+      "at": "2026-07-01T19:59:08.822694+00:00",
+      "stage": "view_selection:Museume-capture",
+      "status": "complete",
+      "runtime_seconds": 6.2e-05
+    },
+    {
+      "at": "2026-07-01T19:59:08.824575+00:00",
+      "stage": "view_descriptions:Museume-capture",
+      "status": "complete",
+      "runtime_seconds": 0.001848
+    },
+    {
+      "at": "2026-07-01T19:59:08.828930+00:00",
+      "stage": "tree_loading_or_construction:Museume-capture",
+      "status": "complete",
+      "runtime_seconds": 0.004331
+    },
+    {
+      "at": "2026-07-01T19:59:10.427211+00:00",
+      "stage": "scene_loading:Theater-capture",
+      "status": "complete",
+      "runtime_seconds": 1.5984
+    },
+    {
+      "at": "2026-07-01T19:59:10.451880+00:00",
+      "stage": "depth_validation:Theater-capture",
+      "status": "complete",
+      "runtime_seconds": 0.024636
+    },
+    {
+      "at": "2026-07-01T19:59:10.451940+00:00",
+      "stage": "view_selection:Theater-capture",
+      "status": "complete",
+      "runtime_seconds": 3e-05
+    },
+    {
+      "at": "2026-07-01T19:59:10.453552+00:00",
+      "stage": "view_descriptions:Theater-capture",
+      "status": "complete",
+      "runtime_seconds": 0.001601
+    },
+    {
+      "at": "2026-07-01T19:59:10.457208+00:00",
+      "stage": "tree_loading_or_construction:Theater-capture",
+      "status": "complete",
+      "runtime_seconds": 0.003649
+    },
+    {
+      "at": "2026-07-01T19:59:12.135459+00:00",
+      "stage": "scene_loading:outdoor-street-capture",
+      "status": "complete",
+      "runtime_seconds": 1.67839
+    },
+    {
+      "at": "2026-07-01T19:59:12.163567+00:00",
+      "stage": "depth_validation:outdoor-street-capture",
+      "status": "complete",
+      "runtime_seconds": 0.028073
+    },
+    {
+      "at": "2026-07-01T19:59:12.163627+00:00",
+      "stage": "view_selection:outdoor-street-capture",
+      "status": "complete",
+      "runtime_seconds": 3.3e-05
+    },
+    {
+      "at": "2026-07-01T19:59:12.165333+00:00",
+      "stage": "view_descriptions:outdoor-street-capture",
+      "status": "complete",
+      "runtime_seconds": 0.001692
+    },
+    {
+      "at": "2026-07-01T19:59:12.169581+00:00",
+      "stage": "tree_loading_or_construction:outdoor-street-capture",
+      "status": "complete",
+      "runtime_seconds": 0.004225
+    },
+    {
+      "at": "2026-07-01T19:59:13.300522+00:00",
+      "stage": "scene_loading:outdoor-drone-capture",
+      "status": "complete",
+      "runtime_seconds": 1.131018
+    },
+    {
+      "at": "2026-07-01T19:59:13.327621+00:00",
+      "stage": "depth_validation:outdoor-drone-capture",
+      "status": "complete",
+      "runtime_seconds": 0.027056
+    },
+    {
+      "at": "2026-07-01T19:59:13.327683+00:00",
+      "stage": "view_selection:outdoor-drone-capture",
+      "status": "complete",
+      "runtime_seconds": 2.9e-05
+    },
+    {
+      "at": "2026-07-01T19:59:13.329049+00:00",
+      "stage": "view_descriptions:outdoor-drone-capture",
+      "status": "complete",
+      "runtime_seconds": 0.001355
+    },
+    {
+      "at": "2026-07-01T19:59:13.332091+00:00",
+      "stage": "tree_loading_or_construction:outdoor-drone-capture",
+      "status": "complete",
+      "runtime_seconds": 0.00303
+    },
+    {
+      "at": "2026-07-01T19:59:13.335701+00:00",
+      "stage": "query:qv2_001",
+      "status": "complete",
+      "runtime_seconds": 0.001765,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_001.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.339226+00:00",
+      "stage": "query:qv2_002",
+      "status": "complete",
+      "runtime_seconds": 0.001614,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_002.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.342536+00:00",
+      "stage": "query:qv2_003",
+      "status": "complete",
+      "runtime_seconds": 0.00145,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_003.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.345701+00:00",
+      "stage": "query:qv2_004",
+      "status": "complete",
+      "runtime_seconds": 0.001555,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_004.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.348774+00:00",
+      "stage": "query:qv2_005",
+      "status": "complete",
+      "runtime_seconds": 0.001485,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_005.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.352026+00:00",
+      "stage": "query:qv2_006",
+      "status": "complete",
+      "runtime_seconds": 0.001489,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_006.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.355319+00:00",
+      "stage": "query:qv2_007",
+      "status": "complete",
+      "runtime_seconds": 0.001473,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_007.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.358437+00:00",
+      "stage": "query:qv2_008",
+      "status": "complete",
+      "runtime_seconds": 0.00146,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_008.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.361533+00:00",
+      "stage": "query:qv2_009",
+      "status": "complete",
+      "runtime_seconds": 0.001455,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_009.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.364643+00:00",
+      "stage": "query:qv2_010",
+      "status": "complete",
+      "runtime_seconds": 0.001371,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_010.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.367614+00:00",
+      "stage": "query:qv2_011",
+      "status": "complete",
+      "runtime_seconds": 0.001415,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_011.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.370934+00:00",
+      "stage": "query:qv2_012",
+      "status": "complete",
+      "runtime_seconds": 0.00142,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_012.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.373962+00:00",
+      "stage": "query:qv2_013",
+      "status": "complete",
+      "runtime_seconds": 0.001397,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_013.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.377312+00:00",
+      "stage": "query:qv2_014",
+      "status": "complete",
+      "runtime_seconds": 0.00154,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_014.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.380903+00:00",
+      "stage": "query:qv2_015",
+      "status": "complete",
+      "runtime_seconds": 0.001568,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_015.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.384178+00:00",
+      "stage": "query:qv2_016",
+      "status": "complete",
+      "runtime_seconds": 0.001521,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_016.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.387526+00:00",
+      "stage": "query:qv2_017",
+      "status": "complete",
+      "runtime_seconds": 0.001566,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_017.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.390885+00:00",
+      "stage": "query:qv2_018",
+      "status": "complete",
+      "runtime_seconds": 0.001505,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_018.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.394448+00:00",
+      "stage": "query:qv2_019",
+      "status": "complete",
+      "runtime_seconds": 0.00154,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_019.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.397923+00:00",
+      "stage": "query:qv2_020",
+      "status": "complete",
+      "runtime_seconds": 0.001566,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_020.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.400970+00:00",
+      "stage": "query:qv2_021",
+      "status": "complete",
+      "runtime_seconds": 0.001066,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_021.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.403832+00:00",
+      "stage": "query:qv2_022",
+      "status": "complete",
+      "runtime_seconds": 0.00107,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_022.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.407366+00:00",
+      "stage": "query:qv2_023",
+      "status": "complete",
+      "runtime_seconds": 0.001547,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_023.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.411035+00:00",
+      "stage": "query:qv2_024",
+      "status": "complete",
+      "runtime_seconds": 0.001449,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_024.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.414559+00:00",
+      "stage": "query:qv2_025",
+      "status": "complete",
+      "runtime_seconds": 0.001505,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_025.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.417894+00:00",
+      "stage": "query:qv2_026",
+      "status": "complete",
+      "runtime_seconds": 0.001081,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_026.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.421241+00:00",
+      "stage": "query:qv2_027",
+      "status": "complete",
+      "runtime_seconds": 0.001094,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_027.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.424869+00:00",
+      "stage": "query:qv2_028",
+      "status": "complete",
+      "runtime_seconds": 0.001091,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_028.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.428199+00:00",
+      "stage": "query:qv2_029",
+      "status": "complete",
+      "runtime_seconds": 0.001154,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_029.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.431621+00:00",
+      "stage": "query:qv2_030",
+      "status": "complete",
+      "runtime_seconds": 0.001077,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_030.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.435455+00:00",
+      "stage": "query:qv2_031",
+      "status": "complete",
+      "runtime_seconds": 0.001674,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_031.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.439680+00:00",
+      "stage": "query:qv2_032",
+      "status": "complete",
+      "runtime_seconds": 0.00198,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_032.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.444104+00:00",
+      "stage": "query:qv2_033",
+      "status": "complete",
+      "runtime_seconds": 0.001786,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_033.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.448960+00:00",
+      "stage": "query:qv2_034",
+      "status": "complete",
+      "runtime_seconds": 0.001935,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_034.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.453264+00:00",
+      "stage": "query:qv2_035",
+      "status": "complete",
+      "runtime_seconds": 0.001852,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_035.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.458021+00:00",
+      "stage": "query:qv2_036",
+      "status": "complete",
+      "runtime_seconds": 0.001997,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_036.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.463245+00:00",
+      "stage": "query:qv2_037",
+      "status": "complete",
+      "runtime_seconds": 0.00241,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_037.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.467459+00:00",
+      "stage": "query:qv2_038",
+      "status": "complete",
+      "runtime_seconds": 0.001731,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_038.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.472378+00:00",
+      "stage": "query:qv2_039",
+      "status": "complete",
+      "runtime_seconds": 0.001778,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_039.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.476987+00:00",
+      "stage": "query:qv2_040",
+      "status": "complete",
+      "runtime_seconds": 0.001912,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_040.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.481211+00:00",
+      "stage": "query:qv2_041",
+      "status": "complete",
+      "runtime_seconds": 0.001619,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_041.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.486020+00:00",
+      "stage": "query:qv2_042",
+      "status": "complete",
+      "runtime_seconds": 0.002144,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_042.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.492277+00:00",
+      "stage": "query:qv2_043",
+      "status": "complete",
+      "runtime_seconds": 0.002915,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_043.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.498644+00:00",
+      "stage": "query:qv2_044",
+      "status": "complete",
+      "runtime_seconds": 0.002883,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_044.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.502980+00:00",
+      "stage": "query:qv2_045",
+      "status": "complete",
+      "runtime_seconds": 0.001797,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_045.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.507040+00:00",
+      "stage": "query:qv2_046",
+      "status": "complete",
+      "runtime_seconds": 0.001614,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_046.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.511395+00:00",
+      "stage": "query:qv2_047",
+      "status": "complete",
+      "runtime_seconds": 0.00166,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_047.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.516127+00:00",
+      "stage": "query:qv2_048",
+      "status": "complete",
+      "runtime_seconds": 0.002006,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_048.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.520469+00:00",
+      "stage": "query:qv2_049",
+      "status": "complete",
+      "runtime_seconds": 0.001704,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_049.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.524689+00:00",
+      "stage": "query:qv2_050",
+      "status": "complete",
+      "runtime_seconds": 0.001662,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_050.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.529333+00:00",
+      "stage": "query:qv2_051",
+      "status": "complete",
+      "runtime_seconds": 0.001632,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_051.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.533183+00:00",
+      "stage": "query:qv2_052",
+      "status": "complete",
+      "runtime_seconds": 0.001175,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_052.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.537315+00:00",
+      "stage": "query:qv2_053",
+      "status": "complete",
+      "runtime_seconds": 0.001756,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_053.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.541224+00:00",
+      "stage": "query:qv2_054",
+      "status": "complete",
+      "runtime_seconds": 0.001548,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_054.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.545076+00:00",
+      "stage": "query:qv2_055",
+      "status": "complete",
+      "runtime_seconds": 0.001629,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_055.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.548637+00:00",
+      "stage": "query:qv2_056",
+      "status": "complete",
+      "runtime_seconds": 0.001131,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_056.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.552054+00:00",
+      "stage": "query:qv2_057",
+      "status": "complete",
+      "runtime_seconds": 0.00112,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_057.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.555725+00:00",
+      "stage": "query:qv2_058",
+      "status": "complete",
+      "runtime_seconds": 0.001108,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_058.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.562846+00:00",
+      "stage": "query:qv2_059",
+      "status": "complete",
+      "runtime_seconds": 0.001123,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_059.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.567075+00:00",
+      "stage": "query:qv2_060",
+      "status": "complete",
+      "runtime_seconds": 0.001635,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_060.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.571257+00:00",
+      "stage": "query:qv2_061",
+      "status": "complete",
+      "runtime_seconds": 0.001586,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_061.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.575419+00:00",
+      "stage": "query:qv2_062",
+      "status": "complete",
+      "runtime_seconds": 0.001638,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_062.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.579728+00:00",
+      "stage": "query:qv2_063",
+      "status": "complete",
+      "runtime_seconds": 0.001687,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_063.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.583953+00:00",
+      "stage": "query:qv2_064",
+      "status": "complete",
+      "runtime_seconds": 0.001625,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_064.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.587992+00:00",
+      "stage": "query:qv2_065",
+      "status": "complete",
+      "runtime_seconds": 0.001663,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_065.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.591982+00:00",
+      "stage": "query:qv2_066",
+      "status": "complete",
+      "runtime_seconds": 0.0016,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_066.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.596038+00:00",
+      "stage": "query:qv2_067",
+      "status": "complete",
+      "runtime_seconds": 0.001561,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_067.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.599927+00:00",
+      "stage": "query:qv2_068",
+      "status": "complete",
+      "runtime_seconds": 0.001535,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_068.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.604524+00:00",
+      "stage": "query:qv2_069",
+      "status": "complete",
+      "runtime_seconds": 0.001626,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_069.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.608881+00:00",
+      "stage": "query:qv2_070",
+      "status": "complete",
+      "runtime_seconds": 0.001593,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_070.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.612987+00:00",
+      "stage": "query:qv2_071",
+      "status": "complete",
+      "runtime_seconds": 0.00159,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_071.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.617072+00:00",
+      "stage": "query:qv2_072",
+      "status": "complete",
+      "runtime_seconds": 0.00156,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_072.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.621558+00:00",
+      "stage": "query:qv2_073",
+      "status": "complete",
+      "runtime_seconds": 0.001593,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_073.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.626065+00:00",
+      "stage": "query:qv2_074",
+      "status": "complete",
+      "runtime_seconds": 0.001674,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_074.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.630265+00:00",
+      "stage": "query:qv2_075",
+      "status": "complete",
+      "runtime_seconds": 0.001584,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_075.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.634283+00:00",
+      "stage": "query:qv2_076",
+      "status": "complete",
+      "runtime_seconds": 0.001519,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_076.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.638339+00:00",
+      "stage": "query:qv2_077",
+      "status": "complete",
+      "runtime_seconds": 0.001556,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_077.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.642639+00:00",
+      "stage": "query:qv2_078",
+      "status": "complete",
+      "runtime_seconds": 0.001509,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_078.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.647420+00:00",
+      "stage": "query:qv2_079",
+      "status": "complete",
+      "runtime_seconds": 0.00161,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_079.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.651523+00:00",
+      "stage": "query:qv2_080",
+      "status": "complete",
+      "runtime_seconds": 0.001536,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_080.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.655564+00:00",
+      "stage": "query:qv2_081",
+      "status": "complete",
+      "runtime_seconds": 0.001551,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_081.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.659347+00:00",
+      "stage": "query:qv2_082",
+      "status": "complete",
+      "runtime_seconds": 0.001079,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_082.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.663594+00:00",
+      "stage": "query:qv2_083",
+      "status": "complete",
+      "runtime_seconds": 0.001632,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_083.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.667920+00:00",
+      "stage": "query:qv2_084",
+      "status": "complete",
+      "runtime_seconds": 0.001633,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_084.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.672313+00:00",
+      "stage": "query:qv2_085",
+      "status": "complete",
+      "runtime_seconds": 0.001655,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_085.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.676182+00:00",
+      "stage": "query:qv2_086",
+      "status": "complete",
+      "runtime_seconds": 0.001097,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_086.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.679913+00:00",
+      "stage": "query:qv2_087",
+      "status": "complete",
+      "runtime_seconds": 0.001136,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_087.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.683602+00:00",
+      "stage": "query:qv2_088",
+      "status": "complete",
+      "runtime_seconds": 0.001113,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_088.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.687530+00:00",
+      "stage": "query:qv2_089",
+      "status": "complete",
+      "runtime_seconds": 0.0011,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_089.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.692091+00:00",
+      "stage": "query:qv2_090",
+      "status": "complete",
+      "runtime_seconds": 0.001274,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_090.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.696840+00:00",
+      "stage": "query:qv2_091",
+      "status": "complete",
+      "runtime_seconds": 0.001802,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_091.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.701732+00:00",
+      "stage": "query:qv2_092",
+      "status": "complete",
+      "runtime_seconds": 0.002032,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_092.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.706453+00:00",
+      "stage": "query:qv2_093",
+      "status": "complete",
+      "runtime_seconds": 0.00171,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_093.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.711270+00:00",
+      "stage": "query:qv2_094",
+      "status": "complete",
+      "runtime_seconds": 0.001745,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_094.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.715973+00:00",
+      "stage": "query:qv2_095",
+      "status": "complete",
+      "runtime_seconds": 0.001781,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_095.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.720814+00:00",
+      "stage": "query:qv2_096",
+      "status": "complete",
+      "runtime_seconds": 0.00177,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_096.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.725478+00:00",
+      "stage": "query:qv2_097",
+      "status": "complete",
+      "runtime_seconds": 0.00175,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_097.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.730351+00:00",
+      "stage": "query:qv2_098",
+      "status": "complete",
+      "runtime_seconds": 0.001735,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_098.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.735237+00:00",
+      "stage": "query:qv2_099",
+      "status": "complete",
+      "runtime_seconds": 0.00178,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_099.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.740504+00:00",
+      "stage": "query:qv2_100",
+      "status": "complete",
+      "runtime_seconds": 0.001809,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_100.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.745433+00:00",
+      "stage": "query:qv2_101",
+      "status": "complete",
+      "runtime_seconds": 0.001726,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_101.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.750547+00:00",
+      "stage": "query:qv2_102",
+      "status": "complete",
+      "runtime_seconds": 0.001705,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_102.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.755141+00:00",
+      "stage": "query:qv2_103",
+      "status": "complete",
+      "runtime_seconds": 0.001688,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_103.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.759886+00:00",
+      "stage": "query:qv2_104",
+      "status": "complete",
+      "runtime_seconds": 0.001721,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_104.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.764805+00:00",
+      "stage": "query:qv2_105",
+      "status": "complete",
+      "runtime_seconds": 0.002005,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_105.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.769778+00:00",
+      "stage": "query:qv2_106",
+      "status": "complete",
+      "runtime_seconds": 0.001757,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_106.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.774672+00:00",
+      "stage": "query:qv2_107",
+      "status": "complete",
+      "runtime_seconds": 0.001996,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_107.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.779177+00:00",
+      "stage": "query:qv2_108",
+      "status": "complete",
+      "runtime_seconds": 0.001651,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_108.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.783598+00:00",
+      "stage": "query:qv2_109",
+      "status": "complete",
+      "runtime_seconds": 0.001561,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_109.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.788238+00:00",
+      "stage": "query:qv2_110",
+      "status": "complete",
+      "runtime_seconds": 0.001559,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_110.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.792112+00:00",
+      "stage": "query:qv2_111",
+      "status": "complete",
+      "runtime_seconds": 0.00108,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_111.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.796345+00:00",
+      "stage": "query:qv2_112",
+      "status": "complete",
+      "runtime_seconds": 0.001511,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_112.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.800432+00:00",
+      "stage": "query:qv2_113",
+      "status": "complete",
+      "runtime_seconds": 0.001513,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_113.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.804939+00:00",
+      "stage": "query:qv2_114",
+      "status": "complete",
+      "runtime_seconds": 0.001505,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_114.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.809191+00:00",
+      "stage": "query:qv2_115",
+      "status": "complete",
+      "runtime_seconds": 0.001545,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_115.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.813445+00:00",
+      "stage": "query:qv2_116",
+      "status": "complete",
+      "runtime_seconds": 0.001094,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_116.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.817366+00:00",
+      "stage": "query:qv2_117",
+      "status": "complete",
+      "runtime_seconds": 0.001077,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_117.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.822251+00:00",
+      "stage": "query:qv2_118",
+      "status": "complete",
+      "runtime_seconds": 0.001758,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_118.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.826183+00:00",
+      "stage": "query:qv2_119",
+      "status": "complete",
+      "runtime_seconds": 0.001051,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_119.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.830405+00:00",
+      "stage": "query:qv2_120",
+      "status": "complete",
+      "runtime_seconds": 0.001468,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_120.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.834673+00:00",
+      "stage": "query:qv2_121",
+      "status": "complete",
+      "runtime_seconds": 0.001382,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_121.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.839137+00:00",
+      "stage": "query:qv2_122",
+      "status": "complete",
+      "runtime_seconds": 0.001283,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_122.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.843133+00:00",
+      "stage": "query:qv2_123",
+      "status": "complete",
+      "runtime_seconds": 0.001226,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_123.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.847478+00:00",
+      "stage": "query:qv2_124",
+      "status": "complete",
+      "runtime_seconds": 0.00127,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_124.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.851843+00:00",
+      "stage": "query:qv2_125",
+      "status": "complete",
+      "runtime_seconds": 0.001331,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_125.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.856206+00:00",
+      "stage": "query:qv2_126",
+      "status": "complete",
+      "runtime_seconds": 0.001226,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_126.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.860520+00:00",
+      "stage": "query:qv2_127",
+      "status": "complete",
+      "runtime_seconds": 0.001236,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_127.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.864717+00:00",
+      "stage": "query:qv2_128",
+      "status": "complete",
+      "runtime_seconds": 0.001193,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_128.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.868816+00:00",
+      "stage": "query:qv2_129",
+      "status": "complete",
+      "runtime_seconds": 0.001193,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_129.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.873069+00:00",
+      "stage": "query:qv2_130",
+      "status": "complete",
+      "runtime_seconds": 0.001227,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_130.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.877223+00:00",
+      "stage": "query:qv2_131",
+      "status": "complete",
+      "runtime_seconds": 0.001254,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_131.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.881499+00:00",
+      "stage": "query:qv2_132",
+      "status": "complete",
+      "runtime_seconds": 0.001163,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_132.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.885606+00:00",
+      "stage": "query:qv2_133",
+      "status": "complete",
+      "runtime_seconds": 0.001203,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_133.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.889919+00:00",
+      "stage": "query:qv2_134",
+      "status": "complete",
+      "runtime_seconds": 0.00121,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_134.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.893977+00:00",
+      "stage": "query:qv2_135",
+      "status": "complete",
+      "runtime_seconds": 0.001185,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_135.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.898204+00:00",
+      "stage": "query:qv2_136",
+      "status": "complete",
+      "runtime_seconds": 0.001216,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_136.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.902344+00:00",
+      "stage": "query:qv2_137",
+      "status": "complete",
+      "runtime_seconds": 0.00117,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_137.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.906917+00:00",
+      "stage": "query:qv2_138",
+      "status": "complete",
+      "runtime_seconds": 0.001194,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_138.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.911232+00:00",
+      "stage": "query:qv2_139",
+      "status": "complete",
+      "runtime_seconds": 0.001208,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_139.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.915674+00:00",
+      "stage": "query:qv2_140",
+      "status": "complete",
+      "runtime_seconds": 0.001181,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_140.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.919932+00:00",
+      "stage": "query:qv2_141",
+      "status": "complete",
+      "runtime_seconds": 0.001226,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_141.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.924326+00:00",
+      "stage": "query:qv2_142",
+      "status": "complete",
+      "runtime_seconds": 0.001186,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_142.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.928700+00:00",
+      "stage": "query:qv2_143",
+      "status": "complete",
+      "runtime_seconds": 0.001198,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_143.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.932922+00:00",
+      "stage": "query:qv2_144",
+      "status": "complete",
+      "runtime_seconds": 0.001141,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_144.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.937236+00:00",
+      "stage": "query:qv2_145",
+      "status": "complete",
+      "runtime_seconds": 0.001151,
+      "found": true,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_145.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.941295+00:00",
+      "stage": "query:qv2_146",
+      "status": "complete",
+      "runtime_seconds": 0.000738,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_146.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.945060+00:00",
+      "stage": "query:qv2_147",
+      "status": "complete",
+      "runtime_seconds": 0.00074,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_147.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.948859+00:00",
+      "stage": "query:qv2_148",
+      "status": "complete",
+      "runtime_seconds": 0.000732,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_148.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.952687+00:00",
+      "stage": "query:qv2_149",
+      "status": "complete",
+      "runtime_seconds": 0.000738,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_149.json"
+    },
+    {
+      "at": "2026-07-01T19:59:13.956722+00:00",
+      "stage": "query:qv2_150",
+      "status": "complete",
+      "runtime_seconds": 0.000735,
+      "found": false,
+      "result_file": "C:\\GitProjects\\beyond-proximity\\outputs\\week3\\benchmark_v2_stub_manual_bbox_gt_v4\\query_results\\qv2_150.json"
+    },
+    {
+      "at": "2026-07-01T19:59:15.125655+00:00",
+      "stage": "metrics_evaluation",
+      "status": "complete",
+      "runtime_seconds": 1.166622
+    }
+  ],
+  "warnings": [
+    "Stub mode uses deterministic semantic-index fallback, not model reasoning."
+  ]
+}

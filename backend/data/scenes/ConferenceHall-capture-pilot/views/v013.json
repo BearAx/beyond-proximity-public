@@ -49,8 +49,25 @@
       ],
       "approx_location": "center-left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.04,
+        0.63,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -7.838097973573335,
+          -0.032177032358161384,
+          1.1070458712642608
+        ],
+        "size": [
+          2.550409418774888,
+          9.90118749047451,
+          9.832945837147028
+        ],
+        "label": "elevator doors"
+      },
       "source": "manual"
     },
     {

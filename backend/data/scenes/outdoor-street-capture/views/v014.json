@@ -37,8 +37,25 @@
       ],
       "approx_location": "left and center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.04,
+        1.0,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -55.871292339235765,
+          13.615770976402569,
+          54.68425235303962
+        ],
+        "size": [
+          54.194220174729516,
+          19.683926433106556,
+          38.944600083219555
+        ],
+        "label": "red building facade"
+      },
       "source": "manual"
     },
     {
@@ -48,8 +65,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -32.047454316987235,
+          15.107307109074453,
+          55.82428279877454
+        ],
+        "size": [
+          7.233006904927905,
+          6.007104223442877,
+          9.010033681062495
+        ],
+        "label": "sidewalk or pavement"
+      },
       "source": "manual"
     },
     {

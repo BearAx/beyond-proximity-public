@@ -6,16 +6,23 @@
   "name": "red wall distant area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_lounge_corridor",
   "children_ids": [],
   "view_ids": [
     "v020"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v020",
       "approx_location": "back center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "lounge seating and corridor"
   ]
 }

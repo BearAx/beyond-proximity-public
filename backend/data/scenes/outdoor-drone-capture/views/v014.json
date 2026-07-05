@@ -37,8 +37,25 @@
       ],
       "approx_location": "center-left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.14,
+        0.63,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -19.38441809021616,
+          -2.381440417997716,
+          -6.764084667722571
+        ],
+        "size": [
+          5.680143676405336,
+          14.258620081963421,
+          18.738091322056846
+        ],
+        "label": "fortress island"
+      },
       "source": "manual"
     },
     {
@@ -49,8 +66,25 @@
       ],
       "approx_location": "center-left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.18,
+        0.58,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          -20.09370062591418,
+          -2.1465154630517844,
+          -7.401421683222962
+        ],
+        "size": [
+          6.828482920713352,
+          12.928028983260333,
+          16.188616175033975
+        ],
+        "label": "tower or lighthouse"
+      },
       "source": "manual"
     },
     {
@@ -72,8 +106,25 @@
       ],
       "approx_location": "right background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.44,
+        1.0,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -19.711755988308802,
+          2.9396929979806377,
+          3.146900657492547
+        ],
+        "size": [
+          14.841186702092713,
+          11.199014805658589,
+          16.05684015598623
+        ],
+        "label": "distant city skyline"
+      },
       "source": "manual"
     },
     {
@@ -84,8 +135,25 @@
       ],
       "approx_location": "background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -24.747513822017787,
+          1.9095392705048664,
+          -3.7423148314675796
+        ],
+        "size": [
+          15.097170641980927,
+          9.862284318065393,
+          25.556948948189156
+        ],
+        "label": "hills"
+      },
       "source": "manual"
     },
     {

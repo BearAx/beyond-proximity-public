@@ -37,8 +37,25 @@
       ],
       "approx_location": "left-center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.44,
+        0.53,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -22.39455829842084,
+          7.995624771508717,
+          11.465089718366734
+        ],
+        "size": [
+          27.170780781498127,
+          14.957162109673588,
+          16.398489861845896
+        ],
+        "label": "rocky island"
+      },
       "source": "manual"
     },
     {
@@ -50,8 +67,25 @@
       ],
       "approx_location": "left-center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.14,
+        0.53,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -23.56517864938909,
+          2.90519971392432,
+          11.396462418442498
+        ],
+        "size": [
+          21.39610174189335,
+          18.505299175133608,
+          16.068522617486554
+        ],
+        "label": "white fortress-like building"
+      },
       "source": "manual"
     },
     {
@@ -62,7 +96,12 @@
       ],
       "approx_location": "upper-left island area",
       "confidence": null,
-      "bbox_2d": null,
+      "bbox_2d": [
+        0.04,
+        0.02,
+        0.48,
+        0.38
+      ],
       "bbox_3d": null,
       "source": "manual"
     },
@@ -74,8 +113,25 @@
       ],
       "approx_location": "foreground and center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.22,
+        0.44,
+        0.78,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -13.799057818745535,
+          8.722680759820129,
+          19.64220139478398
+        ],
+        "size": [
+          22.720001837667937,
+          16.644740512766262,
+          21.918140490865923
+        ],
+        "label": "sea water"
+      },
       "source": "manual"
     },
     {

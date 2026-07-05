@@ -49,8 +49,25 @@
       ],
       "approx_location": "center-left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.04,
+        0.63,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          7.802187674414387,
+          12.065968701082115,
+          3.536890142413883
+        ],
+        "size": [
+          7.997653034151067,
+          16.336722778820825,
+          12.720709609597158
+        ],
+        "label": "utility door"
+      },
       "source": "manual"
     },
     {

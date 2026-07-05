@@ -37,8 +37,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          3.8451787061892766,
+          16.248100144415208,
+          -13.579160444807778
+        ],
+        "size": [
+          46.21452138872212,
+          26.95640041232032,
+          32.60397922346921
+        ],
+        "label": "bay water"
+      },
       "source": "manual"
     },
     {
@@ -49,8 +66,25 @@
       ],
       "approx_location": "background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -8.86930015813255,
+          9.506364123011624,
+          -17.957470106180917
+        ],
+        "size": [
+          13.484394203577773,
+          13.06940628812129,
+          29.865371803047047
+        ],
+        "label": "distant city"
+      },
       "source": "manual"
     },
     {
@@ -61,8 +95,25 @@
       ],
       "approx_location": "center-left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.42,
+        0.58,
+        0.96
+      ],
+      "bbox_3d": {
+        "center": [
+          0.5384140411822722,
+          18.238528293042144,
+          -20.51115075466896
+        ],
+        "size": [
+          18.72924648609522,
+          31.268543628908322,
+          34.86646617294896
+        ],
+        "label": "bridge or road lines"
+      },
       "source": "manual"
     },
     {
@@ -84,8 +135,25 @@
       ],
       "approx_location": "background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -8.86930015813255,
+          9.506364123011624,
+          -17.957470106180917
+        ],
+        "size": [
+          13.484394203577773,
+          13.06940628812129,
+          29.865371803047047
+        ],
+        "label": "hills"
+      },
       "source": "manual"
     },
     {

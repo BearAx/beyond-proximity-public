@@ -50,8 +50,25 @@
       ],
       "approx_location": "center-right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.524,
+        0.5712,
+        0.716,
+        0.8088
+      ],
+      "bbox_3d": {
+        "center": [
+          -10.873975525475874,
+          20.72461189696669,
+          34.17143300066388
+        ],
+        "size": [
+          34.18636144322283,
+          39.34722906168361,
+          67.49733712675314
+        ],
+        "label": "yellow circular graphic"
+      },
       "source": "manual"
     },
     {
@@ -74,8 +91,25 @@
       ],
       "approx_location": "left and rear",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.04,
+        0.18,
+        0.48,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          -43.8298347353069,
+          18.838488897821474,
+          -10.076794083510851
+        ],
+        "size": [
+          90.66855022244567,
+          49.39434612549372,
+          31.175449205636916
+        ],
+        "label": "metal mesh partitions"
+      },
       "source": "manual"
     },
     {
@@ -86,8 +120,25 @@
       ],
       "approx_location": "center-left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.284,
+        0.3704,
+        0.476,
+        0.6696
+      ],
+      "bbox_3d": {
+        "center": [
+          -32.907241107348845,
+          18.412816516040458,
+          23.135232827565016
+        ],
+        "size": [
+          66.52081837552619,
+          33.7714660512834,
+          41.80753571037328
+        ],
+        "label": "display stand"
+      },
       "source": "manual"
     },
     {
@@ -98,8 +149,25 @@
       ],
       "approx_location": "far right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.52,
+        0.42,
+        0.96,
+        0.96
+      ],
+      "bbox_3d": {
+        "center": [
+          -8.835661202364898,
+          16.430215988060205,
+          26.5268217484304
+        ],
+        "size": [
+          29.293383209764155,
+          29.88895041336686,
+          50.06601155764922
+        ],
+        "label": "bench or low seating"
+      },
       "source": "manual"
     }
   ],

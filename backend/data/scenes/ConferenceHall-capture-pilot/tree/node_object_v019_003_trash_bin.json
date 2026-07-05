@@ -6,11 +6,12 @@
   "name": "trash bin",
   "summary": "Object observation from v019.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_exit_wayfinding",
   "children_ids": [],
   "view_ids": [
     "v019"
   ],
+  "depth": 2,
   "attributes": [
     "black",
     "near doorway"
@@ -19,5 +20,11 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_exit_wayfinding"
+  ],
+  "zone_labels": [
+    "exit and wayfinding"
+  ]
 }

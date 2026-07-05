@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-drone-capture",
+  "query_id": "qv2_123",
+  "query": "Find the open water",
+  "query_type": "simple_object",
+  "structured_plan": {
+    "target": "open water",
+    "query_type": "simple_object",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_outdoor_drone_city_shoreline",
+    "object_v016_005_small_dark_landform"
+  ],
+  "selected_views": [
+    "v016"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "open water",
+    "selected_node_id": "object_v016_005_small_dark_landform",
+    "selected_view_id": "v016",
+    "bbox_2d": [
+      0.13,
+      0.44,
+      0.87,
+      1.0
+    ],
+    "bbox_3d": {
+      "center": [
+        29.130203989669166,
+        6.821736627343239,
+        13.42730501988316
+      ],
+      "size": [
+        49.93465614273871,
+        19.641302947728423,
+        20.93316481891965
+      ],
+      "label": "open water"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v016 with 2 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001226,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001226
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 16,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

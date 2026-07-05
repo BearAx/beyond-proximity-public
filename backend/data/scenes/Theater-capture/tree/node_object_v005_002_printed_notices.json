@@ -6,11 +6,12 @@
   "name": "printed notices",
   "summary": "Object observation from v005.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_lobby_notice",
   "children_ids": [],
   "view_ids": [
     "v005"
   ],
+  "depth": 2,
   "attributes": [
     "white papers",
     "posted"
@@ -19,5 +20,11 @@
   "confidence": null,
   "bbox_2d": null,
   "bbox_3d": null,
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_theater_lobby_notice"
+  ],
+  "zone_labels": [
+    "lobby and notice wall"
+  ]
 }

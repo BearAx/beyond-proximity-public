@@ -6,18 +6,42 @@
   "name": "small utility panels",
   "summary": "Object observation from v006.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_facade_entrance_glassblock",
   "children_ids": [],
   "view_ids": [
     "v006"
   ],
+  "depth": 2,
   "attributes": [
     "dark",
     "wall-mounted"
   ],
   "approx_location": "center",
   "confidence": null,
-  "bbox_2d": null,
-  "bbox_3d": null,
-  "source": "manual"
+  "bbox_2d": [
+    0.27,
+    0.08,
+    0.73,
+    0.9
+  ],
+  "bbox_3d": {
+    "center": [
+      -2.355396532830479,
+      -1.4488457181323107,
+      -7.391625962774738
+    ],
+    "size": [
+      5.294043063662386,
+      5.478403991014073,
+      5.760783297084526
+    ],
+    "label": "small utility panels"
+  },
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_street_facade_entrance_glassblock"
+  ],
+  "zone_labels": [
+    "facade entrances and glass-block wall"
+  ]
 }

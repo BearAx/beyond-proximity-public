@@ -6,16 +6,23 @@
   "name": "stair area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_courtyard_stair_service",
   "children_ids": [],
   "view_ids": [
     "v020"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v020",
       "approx_location": "left side",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_outdoor_street_courtyard_stair_service"
+  ],
+  "zone_labels": [
+    "courtyard stairs and service facade"
   ]
 }

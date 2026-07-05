@@ -6,16 +6,25 @@
   "name": "doorway area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_exit_wayfinding",
   "children_ids": [],
   "view_ids": [
     "v006"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v006",
       "approx_location": "back center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_conferencehall_banquet_hall",
+    "manual_zone_conferencehall_exit_wayfinding"
+  ],
+  "zone_labels": [
+    "conference and banquet hall",
+    "exit and wayfinding"
   ]
 }

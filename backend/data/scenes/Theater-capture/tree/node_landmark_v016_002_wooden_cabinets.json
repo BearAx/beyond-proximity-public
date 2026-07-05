@@ -6,11 +6,18 @@
   "name": "wooden cabinets",
   "summary": "Landmark observation from v016.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_stairs_foyer_balcony",
   "children_ids": [],
   "view_ids": [
     "v016"
   ],
+  "depth": 2,
   "approx_location": "back wall",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_theater_stairs_foyer_balcony"
+  ],
+  "zone_labels": [
+    "stairs, foyer, and balcony"
+  ]
 }

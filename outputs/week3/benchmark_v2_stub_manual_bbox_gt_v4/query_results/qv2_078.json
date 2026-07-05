@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Theater-capture",
+  "query_id": "qv2_078",
+  "query": "Find the digital schedule screen on the notice wall",
+  "query_type": "multi_hop",
+  "structured_plan": {
+    "target": "digital notice schedule screen wall",
+    "query_type": "multi_hop",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_theater_lobby_notice",
+    "object_v005_001_digital_schedule_screen"
+  ],
+  "selected_views": [
+    "v005"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "digital schedule screen",
+    "selected_node_id": "object_v005_001_digital_schedule_screen",
+    "selected_view_id": "v005",
+    "bbox_2d": [
+      0.1544,
+      0.3704,
+      0.3656,
+      0.6696
+    ],
+    "bbox_3d": {
+      "center": [
+        -26.64098469416703,
+        10.046763756404253,
+        -9.435141636056422
+      ],
+      "size": [
+        32.12863145040055,
+        16.65709162431913,
+        17.198763298896907
+      ],
+      "label": "digital schedule screen"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v005 with 5 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001509,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001509
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_038",
+  "query": "Find the black metal mesh partitions",
+  "query_type": "attribute",
+  "structured_plan": {
+    "target": "black mesh metal partitions",
+    "query_type": "attribute",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_museume_red_panel_gallery",
+    "object_v018_004_metal_mesh_partitions"
+  ],
+  "selected_views": [
+    "v018"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "metal mesh partitions",
+    "selected_node_id": "object_v018_004_metal_mesh_partitions",
+    "selected_view_id": "v018",
+    "bbox_2d": [
+      0.52,
+      0.18,
+      0.96,
+      0.86
+    ],
+    "bbox_3d": {
+      "center": [
+        54.82492382388884,
+        11.008558786105704,
+        -12.769067272573476
+      ],
+      "size": [
+        55.588117916456895,
+        28.839007678726045,
+        21.251725443429926
+      ],
+      "label": "metal mesh partitions"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v018 with 4 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001731,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001731
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

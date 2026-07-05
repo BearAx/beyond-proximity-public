@@ -6,6 +6,11 @@
   "semantic_index_mode": "manual",
   "node_ids": [
     "root",
+    "manual_zone_theater_lobby_notice",
+    "manual_zone_theater_lounge_green_room",
+    "manual_zone_theater_performance_seating",
+    "manual_zone_theater_stage_backstage",
+    "manual_zone_theater_stairs_foyer_balcony",
     "landmark_v001_001_photo_collage_wall",
     "landmark_v001_002_stair_doorway",
     "landmark_v001_003_wall_information_board",
@@ -227,11 +232,16 @@
     "region_white_door_area_c53a6b9b",
     "region_window_side_49a755e3"
   ],
-  "node_count": 221,
+  "node_count": 226,
   "view_count": 20,
   "annotated_view_count": 20,
   "semantic_item_count": 226,
+  "manual_zone_node_count": 5,
+  "tree_native_zone_nodes": true,
   "complete": true,
   "query_runner_schema_compatible": true,
-  "warnings": []
+  "warnings": [
+    "ViewJSON bbox_3d values are predictions/annotations, not independent 3D ground truth.",
+    "Manual zone nodes are reference labels from docs/benchmarks/manual_zone_gt_v2.json, not independent dataset GT."
+  ]
 }

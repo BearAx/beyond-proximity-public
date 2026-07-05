@@ -6,11 +6,20 @@
   "name": "red seating area",
   "summary": "Landmark observation from v004.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_lobby_notice",
   "children_ids": [],
   "view_ids": [
     "v004"
   ],
+  "depth": 2,
   "approx_location": "left and center",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_theater_lobby_notice",
+    "manual_zone_theater_performance_seating"
+  ],
+  "zone_labels": [
+    "lobby and notice wall",
+    "performance seating"
+  ]
 }

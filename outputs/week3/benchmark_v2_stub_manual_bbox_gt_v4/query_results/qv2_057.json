@@ -1,0 +1,56 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_057",
+  "query": "Find swimming pool",
+  "query_type": "negative",
+  "structured_plan": {
+    "target": "pool swimming",
+    "query_type": "negative",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_museume_entrance_information",
+    "manual_zone_museume_red_panel_gallery",
+    "manual_zone_museume_reichenstein_media",
+    "manual_zone_museume_ruin_label_gallery",
+    "manual_zone_museume_visitor_seating_workshop",
+    "manual_zone_museume_window_mesh_side"
+  ],
+  "selected_views": [],
+  "result": {
+    "found": false,
+    "matched_object": null,
+    "selected_node_id": null,
+    "selected_view_id": null,
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 0.0,
+    "explanation": "Deterministic lexical fallback found no matching semantic-index tokens."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.00112,
+    "stage_runtime_seconds": {
+      "answer_query": 0.00112
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 7,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

@@ -6,11 +6,18 @@
   "name": "two table lamps",
   "summary": "Landmark observation from v010.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_lounge_corridor",
   "children_ids": [],
   "view_ids": [
     "v010"
   ],
+  "depth": 2,
   "approx_location": "left and right sides",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "lounge seating and corridor"
+  ]
 }

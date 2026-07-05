@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_045",
+  "query": "Find the yellow floor marker on the gallery floor",
+  "query_type": "relational",
+  "structured_plan": {
+    "target": "floor gallery marker yellow",
+    "query_type": "relational",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_museume_red_panel_gallery",
+    "object_v018_006_yellow_floor_marker"
+  ],
+  "selected_views": [
+    "v018"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "yellow floor marker",
+    "selected_node_id": "object_v018_006_yellow_floor_marker",
+    "selected_view_id": "v018",
+    "bbox_2d": [
+      0.2964,
+      0.58,
+      0.7036,
+      0.88
+    ],
+    "bbox_3d": {
+      "center": [
+        35.202680411738285,
+        2.3507436652553477,
+        -10.779192434470039
+      ],
+      "size": [
+        19.972905286671434,
+        3.2006218027747284,
+        23.16619466342296
+      ],
+      "label": "yellow floor marker"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v018 with 4 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001797,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001797
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

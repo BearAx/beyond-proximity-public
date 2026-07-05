@@ -31,8 +31,25 @@
       ],
       "approx_location": "center and right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.14,
+        1.0,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -10.82394929455057,
+          5.962644812593633,
+          -13.221282036806468
+        ],
+        "size": [
+          14.59237099940097,
+          15.400653997150338,
+          11.086116417748173
+        ],
+        "label": "sofas"
+      },
       "source": "manual"
     },
     {
@@ -42,8 +59,25 @@
       ],
       "approx_location": "left foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.04,
+        0.48,
+        0.48,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -28.81026428194583,
+          6.321756545371785,
+          -40.61031220738715
+        ],
+        "size": [
+          43.94715848764965,
+          8.00414914748894,
+          44.00597406764011
+        ],
+        "label": "armchair"
+      },
       "source": "manual"
     },
     {

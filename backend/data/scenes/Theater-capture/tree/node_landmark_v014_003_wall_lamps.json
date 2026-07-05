@@ -6,11 +6,18 @@
   "name": "wall lamps",
   "summary": "Landmark observation from v014.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_stairs_foyer_balcony",
   "children_ids": [],
   "view_ids": [
     "v014"
   ],
+  "depth": 2,
   "approx_location": "left and right",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_theater_stairs_foyer_balcony"
+  ],
+  "zone_labels": [
+    "stairs, foyer, and balcony"
+  ]
 }

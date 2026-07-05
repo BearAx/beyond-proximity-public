@@ -214,6 +214,21 @@ def _score(text: str, query_tokens: set[str]) -> tuple[int, float]:
     return overlap, ratio
 
 
+def _node_text(node: dict[str, Any]) -> str:
+    pieces = [
+        str(node.get("name", "")),
+        str(node.get("summary", "")),
+        str(node.get("approx_location", "")),
+    ]
+    for key in ("attributes", "zone_labels", "observations"):
+        value = node.get(key)
+        if isinstance(value, dict):
+            pieces.extend(str(item) for item in value.values() if item is not None)
+        elif isinstance(value, list):
+            pieces.extend(json.dumps(item, ensure_ascii=False) if isinstance(item, dict) else str(item) for item in value if item is not None)
+    return " ".join(pieces)
+
+
 def _node_type(node: dict[str, Any]) -> str:
     return str(node.get("node_type", node.get("type", "")))
 
@@ -335,14 +350,23 @@ class StubModelClient(ModelClient):
         found = best_overlap > 0
         matched_object: str | None = None
         bbox_2d: Any = None
+        bbox_3d: Any = None
         if found:
             object_candidates = []
             for obj in _view_objects(best_view):
                 overlap, ratio = _score(str(obj.get("label", "")), query_tokens)
-                object_candidates.append((overlap, ratio, str(obj.get("label", "")), obj.get("bbox_2d")))
+                object_candidates.append(
+                    (
+                        overlap,
+                        ratio,
+                        str(obj.get("label", "")),
+                        obj.get("bbox_2d"),
+                        obj.get("bbox_3d"),
+                    )
+                )
             object_candidates.sort(reverse=True)
             if object_candidates and object_candidates[0][0] > 0:
-                _, _, matched_object, bbox_2d = object_candidates[0]
+                _, _, matched_object, bbox_2d, bbox_3d = object_candidates[0]
             else:
                 matched_object = next(
                     (str(obj.get("label")) for obj in _view_objects(best_view) if obj.get("label")),
@@ -353,15 +377,35 @@ class StubModelClient(ModelClient):
         selected_node_id = None
         if found:
             candidates = []
+            matched_tokens = _tokens(matched_object or "")
             for key, node in tree.items():
                 node_id = _node_id(node, key)
                 if node_id not in reachable or best_view_id not in as_string_ids(node.get("view_ids")):
                     continue
+                node_text = _node_text(node)
+                match_overlap, match_ratio = _score(node_text, matched_tokens)
+                query_overlap, query_ratio = _score(node_text, query_tokens)
                 depth = len(_path_to(root_id, node_id, parents))
-                candidates.append((depth, node_id))
+                node_type = _node_type(node)
+                type_priority = {
+                    "object": 4,
+                    "landmark": 3,
+                    "region": 2,
+                    "zone": 1,
+                    "root": 0,
+                }.get(node_type, 0)
+                candidates.append((
+                    match_overlap,
+                    match_ratio,
+                    query_overlap,
+                    query_ratio,
+                    type_priority,
+                    depth,
+                    node_id,
+                ))
             if candidates:
                 candidates.sort(reverse=True)
-                selected_node_id = candidates[0][1]
+                selected_node_id = candidates[0][-1]
         visited_nodes = _path_to(root_id, selected_node_id, parents)
         if not found and root_id:
             visited_nodes = [root_id]
@@ -385,7 +429,7 @@ class StubModelClient(ModelClient):
                 "selected_node_id": selected_node_id,
                 "selected_view_id": best_view_id if found else None,
                 "bbox_2d": bbox_2d,
-                "bbox_3d": None,
+                "bbox_3d": bbox_3d,
                 "camera_pose": None,
                 "confidence": round(best_ratio, 4) if found else 0.0,
                 "explanation": (

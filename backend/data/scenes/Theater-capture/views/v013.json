@@ -49,8 +49,25 @@
       ],
       "approx_location": "left and right walls",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.04,
+        1.0,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -1.7289755077724376,
+          3.1568504919902645,
+          -20.053414799913067
+        ],
+        "size": [
+          18.325883844305075,
+          8.226858866120605,
+          7.307572794915167
+        ],
+        "label": "wall lamps"
+      },
       "source": "manual"
     },
     {
@@ -61,8 +78,25 @@
       ],
       "approx_location": "left side",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.1544,
+        0.3704,
+        0.3656,
+        0.6696
+      ],
+      "bbox_3d": {
+        "center": [
+          -5.97884823382503,
+          3.7694460093342403,
+          -15.571573046677834
+        ],
+        "size": [
+          4.486564158778464,
+          3.1196206591469386,
+          2.489861408695644
+        ],
+        "label": "black railing"
+      },
       "source": "manual"
     },
     {
@@ -73,8 +107,25 @@
       ],
       "approx_location": "walls",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.08,
+        0.82,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -1.164975375891451,
+          3.6244580419711774,
+          -16.862314224708236
+        ],
+        "size": [
+          15.6016524336329,
+          9.955592895482457,
+          5.350949110556357
+        ],
+        "label": "pale green walls"
+      },
       "source": "manual"
     },
     {

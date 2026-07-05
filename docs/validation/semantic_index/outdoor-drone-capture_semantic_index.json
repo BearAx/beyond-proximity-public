@@ -16,10 +16,10 @@
   "facility_count": 0,
   "semantic_item_count": 169,
   "annotated_view_count": 16,
-  "bbox_3d_count": 0,
+  "bbox_3d_count": 40,
   "tree_manifest_exists": true,
   "root_node_exists": true,
-  "node_count": 159,
+  "node_count": 164,
   "semantic_node_count": 158,
   "tree_complete": true,
   "tree_valid": true,
@@ -29,6 +29,7 @@
   "geometry_eval_allowed": false,
   "errors": [],
   "warnings": [
+    "Annotated/predicted bbox_3d values are not independent ground truth.",
     "Independent GT 3D boxes/masks and validated predicted boxes are unavailable."
   ]
 }

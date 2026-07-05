@@ -6,11 +6,20 @@
   "name": "round table cluster",
   "summary": "Landmark observation from v006.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_exit_wayfinding",
   "children_ids": [],
   "view_ids": [
     "v006"
   ],
+  "depth": 2,
   "approx_location": "center",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_banquet_hall",
+    "manual_zone_conferencehall_exit_wayfinding"
+  ],
+  "zone_labels": [
+    "conference and banquet hall",
+    "exit and wayfinding"
+  ]
 }

@@ -6,7 +6,7 @@
   "name": "bay water",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_city_shoreline",
   "children_ids": [],
   "view_ids": [
     "v002",
@@ -14,6 +14,7 @@
     "v009",
     "v014"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v002",
@@ -35,5 +36,19 @@
       "approx_location": "foreground and center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_outdoor_drone_bridge_crossing",
+    "manual_zone_outdoor_drone_city_shoreline",
+    "manual_zone_outdoor_drone_fortress_island",
+    "manual_zone_outdoor_drone_harbor_marina",
+    "manual_zone_outdoor_drone_open_water_bay"
+  ],
+  "zone_labels": [
+    "bridge and linear crossing",
+    "city shoreline and hills",
+    "fortress island landmark",
+    "harbor and marina",
+    "open water and bay"
   ]
 }

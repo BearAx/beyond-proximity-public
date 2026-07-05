@@ -6,11 +6,12 @@
   "name": "Reichenstein information panel",
   "summary": "Object observation from v016.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_reichenstein_media",
   "children_ids": [],
   "view_ids": [
     "v016"
   ],
+  "depth": 2,
   "attributes": [
     "large",
     "white",
@@ -18,7 +19,30 @@
   ],
   "approx_location": "left-center",
   "confidence": null,
-  "bbox_2d": null,
-  "bbox_3d": null,
-  "source": "manual"
+  "bbox_2d": [
+    0.1544,
+    0.3096,
+    0.3656,
+    0.6704
+  ],
+  "bbox_3d": {
+    "center": [
+      22.1181071670422,
+      -0.49988764489455706,
+      14.194601090712068
+    ],
+    "size": [
+      11.439263758166916,
+      2.098036723336929,
+      25.080101068954665
+    ],
+    "label": "Reichenstein information panel"
+  },
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_museume_reichenstein_media"
+  ],
+  "zone_labels": [
+    "Reichenstein and media station"
+  ]
 }

@@ -6,11 +6,22 @@
   "name": "distant city coastline",
   "summary": "Landmark observation from v009.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_bridge_crossing",
   "children_ids": [],
   "view_ids": [
     "v009"
   ],
+  "depth": 2,
   "approx_location": "background",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_outdoor_drone_bridge_crossing",
+    "manual_zone_outdoor_drone_city_shoreline",
+    "manual_zone_outdoor_drone_open_water_bay"
+  ],
+  "zone_labels": [
+    "bridge and linear crossing",
+    "city shoreline and hills",
+    "open water and bay"
+  ]
 }

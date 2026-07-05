@@ -37,8 +37,25 @@
       ],
       "approx_location": "center-right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.42,
+        0.18,
+        0.82,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          -15.677026228556416,
+          13.317360588770484,
+          3.837820998098791
+        ],
+        "size": [
+          29.25794192411818,
+          22.098850776391316,
+          15.73733822732468
+        ],
+        "label": "city buildings"
+      },
       "source": "manual"
     },
     {
@@ -49,8 +66,25 @@
       ],
       "approx_location": "center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.27,
+        0.48,
+        0.73,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -10.99746947752886,
+          14.312627556971378,
+          0.34117525840924134
+        ],
+        "size": [
+          16.326547930854396,
+          16.069935906659055,
+          14.65205137508566
+        ],
+        "label": "marina or harbor cluster"
+      },
       "source": "manual"
     },
     {
@@ -60,8 +94,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -13.274652844299654,
+          12.512781006014894,
+          -2.01297062622187
+        ],
+        "size": [
+          27.24967099127431,
+          15.408625712663465,
+          25.3470185851798
+        ],
+        "label": "open water"
+      },
       "source": "manual"
     },
     {

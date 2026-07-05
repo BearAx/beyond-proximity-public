@@ -6,16 +6,23 @@
   "name": "tree-lined side",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_walkway_road",
   "children_ids": [],
   "view_ids": [
     "v015"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v015",
       "approx_location": "left and center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_outdoor_street_walkway_road"
+  ],
+  "zone_labels": [
+    "street walkway and roadway"
   ]
 }

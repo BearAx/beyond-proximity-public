@@ -6,16 +6,23 @@
   "name": "distant lit area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_stage_backstage",
   "children_ids": [],
   "view_ids": [
     "v003"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v003",
       "approx_location": "back center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_theater_stage_backstage"
+  ],
+  "zone_labels": [
+    "stage and backstage corridor"
   ]
 }

@@ -6,11 +6,18 @@
   "name": "green information screens",
   "summary": "Landmark observation from v001.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_museume_entrance_information",
   "children_ids": [],
   "view_ids": [
     "v001"
   ],
+  "depth": 2,
   "approx_location": "center-right",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_museume_entrance_information"
+  ],
+  "zone_labels": [
+    "entrance and information"
+  ]
 }

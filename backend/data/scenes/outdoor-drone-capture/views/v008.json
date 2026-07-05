@@ -37,8 +37,25 @@
       ],
       "approx_location": "center-right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.42,
+        0.18,
+        0.82,
+        0.86
+      ],
+      "bbox_3d": {
+        "center": [
+          20.636893563491057,
+          20.62709557668903,
+          -2.453836902644757
+        ],
+        "size": [
+          64.77960532217753,
+          38.962059186636466,
+          18.639516782873585
+        ],
+        "label": "city buildings"
+      },
       "source": "manual"
     },
     {
@@ -60,8 +77,25 @@
       ],
       "approx_location": "foreground and left",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.0,
+        0.44,
+        0.53,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -4.918823876700271,
+          11.16663219470855,
+          7.572626597518388
+        ],
+        "size": [
+          23.911693055425058,
+          8.501134801256772,
+          20.4207382523177
+        ],
+        "label": "open water"
+      },
       "source": "manual"
     },
     {

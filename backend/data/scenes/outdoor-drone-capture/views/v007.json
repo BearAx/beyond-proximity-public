@@ -50,8 +50,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          10.982545937762655,
+          5.237873133898838,
+          -0.47874859746799103
+        ],
+        "size": [
+          16.825435621532527,
+          12.568964131315914,
+          27.968910815184366
+        ],
+        "label": "open water"
+      },
       "source": "manual"
     },
     {

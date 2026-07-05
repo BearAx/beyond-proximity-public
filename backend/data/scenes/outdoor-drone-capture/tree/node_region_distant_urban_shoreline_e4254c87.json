@@ -6,16 +6,25 @@
   "name": "distant urban shoreline",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_bridge_crossing",
   "children_ids": [],
   "view_ids": [
     "v015"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v015",
       "approx_location": "background",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_outdoor_drone_bridge_crossing",
+    "manual_zone_outdoor_drone_city_shoreline"
+  ],
+  "zone_labels": [
+    "bridge and linear crossing",
+    "city shoreline and hills"
   ]
 }

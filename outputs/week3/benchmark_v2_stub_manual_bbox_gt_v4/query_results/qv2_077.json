@@ -1,0 +1,71 @@
+{
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "benchmark_v2_stub_manual_bbox_gt_v4",
+  "method": "semantic_splat",
+  "mode": "stub",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Theater-capture",
+  "query_id": "qv2_077",
+  "query": "Find the red upholstered seats in the lobby seating area",
+  "query_type": "multi_hop",
+  "structured_plan": {
+    "target": "lobby red seating seats upholstered",
+    "query_type": "multi_hop",
+    "parser": "deterministic_tokenizer_v1"
+  },
+  "visited_nodes": [
+    "root",
+    "manual_zone_theater_lobby_notice",
+    "object_v004_001_red_upholstered_seats"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "red upholstered seats",
+    "selected_node_id": "object_v004_001_red_upholstered_seats",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.0,
+      0.14,
+      1.0,
+      0.9
+    ],
+    "bbox_3d": {
+      "center": [
+        -4.9140046240880295,
+        7.0256625325000766,
+        -15.395367985678202
+      ],
+      "size": [
+        32.86648912093971,
+        14.454115470549656,
+        38.152046929927984
+      ],
+      "label": "red upholstered seats"
+    },
+    "camera_pose": null,
+    "confidence": 1.0,
+    "explanation": "Deterministic lexical fallback selected v004 with 5 token matches."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.001556,
+    "stage_runtime_seconds": {
+      "answer_query": 0.001556
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 20,
+    "construction_cost": null
+  },
+  "warnings": [
+    "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+    "This result is not live or cached-live model reasoning."
+  ]
+}

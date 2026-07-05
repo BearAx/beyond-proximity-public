@@ -6,11 +6,18 @@
   "name": "lounge seating cluster",
   "summary": "Landmark observation from v002.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_conferencehall_lounge_corridor",
   "children_ids": [],
   "view_ids": [
     "v002"
   ],
+  "depth": 2,
   "approx_location": "center",
-  "source": "manual"
+  "source": "manual",
+  "zone_ids": [
+    "manual_zone_conferencehall_lounge_corridor"
+  ],
+  "zone_labels": [
+    "lounge seating and corridor"
+  ]
 }

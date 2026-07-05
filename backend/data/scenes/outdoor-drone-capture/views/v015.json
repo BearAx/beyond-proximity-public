@@ -37,8 +37,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          5.838581855164991,
+          4.994087260811115,
+          4.792860954697829
+        ],
+        "size": [
+          16.51495493750279,
+          11.876873265086335,
+          26.961793795012007
+        ],
+        "label": "bay water"
+      },
       "source": "manual"
     },
     {
@@ -49,8 +66,25 @@
       ],
       "approx_location": "background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          7.842699447129734,
+          4.417094101262509,
+          5.701755830084773
+        ],
+        "size": [
+          10.09374906274184,
+          9.125056381366344,
+          23.761407714044804
+        ],
+        "label": "distant city"
+      },
       "source": "manual"
     },
     {
@@ -73,8 +107,25 @@
       ],
       "approx_location": "background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          7.842699447129734,
+          4.417094101262509,
+          5.701755830084773
+        ],
+        "size": [
+          10.09374906274184,
+          9.125056381366344,
+          23.761407714044804
+        ],
+        "label": "hills"
+      },
       "source": "manual"
     },
     {

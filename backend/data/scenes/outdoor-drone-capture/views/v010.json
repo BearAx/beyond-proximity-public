@@ -49,8 +49,25 @@
       ],
       "approx_location": "center background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.22,
+        0.44,
+        0.78,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -11.879717709338593,
+          7.396945948910489,
+          -1.9825749516311735
+        ],
+        "size": [
+          13.089061456202598,
+          10.06198679975237,
+          19.898432003623647
+        ],
+        "label": "distant city skyline"
+      },
       "source": "manual"
     },
     {

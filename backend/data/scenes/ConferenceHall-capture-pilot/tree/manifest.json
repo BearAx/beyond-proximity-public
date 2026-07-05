@@ -6,6 +6,11 @@
   "semantic_index_mode": "manual",
   "node_ids": [
     "root",
+    "manual_zone_conferencehall_banquet_hall",
+    "manual_zone_conferencehall_elevator_access",
+    "manual_zone_conferencehall_exit_wayfinding",
+    "manual_zone_conferencehall_lounge_corridor",
+    "manual_zone_conferencehall_reception_service",
     "landmark_v001_001_piano",
     "landmark_v002_001_lounge_seating_cluster",
     "landmark_v002_002_marble_columns",
@@ -207,11 +212,16 @@
     "region_wall_seating_area_214c8bee",
     "region_window_side_49a755e3"
   ],
-  "node_count": 201,
+  "node_count": 206,
   "view_count": 20,
   "annotated_view_count": 20,
   "semantic_item_count": 207,
+  "manual_zone_node_count": 5,
+  "tree_native_zone_nodes": true,
   "complete": true,
   "query_runner_schema_compatible": true,
-  "warnings": []
+  "warnings": [
+    "ViewJSON bbox_3d values are predictions/annotations, not independent 3D ground truth.",
+    "Manual zone nodes are reference labels from docs/benchmarks/manual_zone_gt_v2.json, not independent dataset GT."
+  ]
 }

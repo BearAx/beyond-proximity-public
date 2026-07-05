@@ -6,16 +6,23 @@
   "name": "numbered entrance",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_street_facade_entrance_glassblock",
   "children_ids": [],
   "view_ids": [
     "v008"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v008",
       "approx_location": "center-right",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_outdoor_street_facade_entrance_glassblock"
+  ],
+  "zone_labels": [
+    "facade entrances and glass-block wall"
   ]
 }

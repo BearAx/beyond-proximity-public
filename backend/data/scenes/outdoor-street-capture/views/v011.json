@@ -60,8 +60,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          0.9024859718793934,
+          26.425152808768456,
+          41.09021127455078
+        ],
+        "size": [
+          36.285509921656065,
+          26.70179298546436,
+          60.65698682123133
+        ],
+        "label": "cobblestone pavement"
+      },
       "source": "manual"
     },
     {

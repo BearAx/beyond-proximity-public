@@ -6,16 +6,23 @@
   "name": "display board area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_stairs_foyer_balcony",
   "children_ids": [],
   "view_ids": [
     "v016"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v016",
       "approx_location": "back wall",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_theater_stairs_foyer_balcony"
+  ],
+  "zone_labels": [
+    "stairs, foyer, and balcony"
   ]
 }

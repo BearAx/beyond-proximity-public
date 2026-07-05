@@ -37,8 +37,25 @@
       ],
       "approx_location": "right-center",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.04,
+        1.0,
+        0.94
+      ],
+      "bbox_3d": {
+        "center": [
+          -30.826242928287652,
+          11.077953422628728,
+          30.686887708387303
+        ],
+        "size": [
+          24.949301606239807,
+          47.689375626696254,
+          60.76880377217394
+        ],
+        "label": "white door"
+      },
       "source": "manual"
     },
     {
@@ -49,8 +66,25 @@
       ],
       "approx_location": "center wall",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.27,
+        0.08,
+        0.73,
+        0.9
+      ],
+      "bbox_3d": {
+        "center": [
+          -36.15268283776024,
+          8.726360885025677,
+          12.289690717346582
+        ],
+        "size": [
+          49.22866144170196,
+          45.64823039695895,
+          58.129153705594575
+        ],
+        "label": "printed schedules"
+      },
       "source": "manual"
     },
     {

@@ -6,16 +6,23 @@
   "name": "blurred water area",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_outdoor_drone_city_shoreline",
   "children_ids": [],
   "view_ids": [
     "v005"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v005",
       "approx_location": "foreground and center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_outdoor_drone_city_shoreline"
+  ],
+  "zone_labels": [
+    "city shoreline and hills"
   ]
 }

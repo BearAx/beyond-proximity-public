@@ -49,8 +49,25 @@
       ],
       "approx_location": "center-right",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.42,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -31.302850135852907,
+          11.3535841585811,
+          -31.143812493379976
+        ],
+        "size": [
+          42.6725243936325,
+          20.945467545167986,
+          58.3311396443782
+        ],
+        "label": "harbor edge or pier"
+      },
       "source": "manual"
     },
     {
@@ -61,8 +78,25 @@
       ],
       "approx_location": "foreground",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.13,
+        0.44,
+        0.87,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -27.974469568755705,
+          13.119591935784685,
+          -23.01315698059976
+        ],
+        "size": [
+          46.35815966386945,
+          25.295220885622097,
+          44.46086695476349
+        ],
+        "label": "bay water"
+      },
       "source": "manual"
     },
     {
@@ -73,8 +107,25 @@
       ],
       "approx_location": "right background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.47,
+        0.44,
+        1.0,
+        1.0
+      ],
+      "bbox_3d": {
+        "center": [
+          -39.982993175789716,
+          12.548614130731918,
+          -7.499763816771675
+        ],
+        "size": [
+          65.02623240218446,
+          24.046764185076665,
+          18.437943497555228
+        ],
+        "label": "distant city skyline"
+      },
       "source": "manual"
     },
     {
@@ -85,8 +136,25 @@
       ],
       "approx_location": "background",
       "confidence": null,
-      "bbox_2d": null,
-      "bbox_3d": null,
+      "bbox_2d": [
+        0.18,
+        0.48,
+        0.82,
+        0.98
+      ],
+      "bbox_3d": {
+        "center": [
+          -16.456786609574632,
+          8.621126853061138,
+          -15.660362508192396
+        ],
+        "size": [
+          20.914360246207814,
+          15.480552934128063,
+          27.364239674003038
+        ],
+        "label": "hills"
+      },
       "source": "manual"
     },
     {

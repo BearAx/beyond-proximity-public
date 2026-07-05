@@ -6,16 +6,23 @@
   "name": "long theater hall",
   "summary": "Region indexed from manual view annotations.",
   "semantic_index_mode": "manual",
-  "parent_id": "root",
+  "parent_id": "manual_zone_theater_lobby_notice",
   "children_ids": [],
   "view_ids": [
     "v020"
   ],
+  "depth": 2,
   "observations": [
     {
       "view_id": "v020",
       "approx_location": "center",
       "source": "manual"
     }
+  ],
+  "zone_ids": [
+    "manual_zone_theater_lobby_notice"
+  ],
+  "zone_labels": [
+    "lobby and notice wall"
   ]
 }
