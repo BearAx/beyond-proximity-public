@@ -4,7 +4,7 @@ This is the operating guide for Codex, Cursor, and future agents working in this
 repository. The goal is to keep every change evidence-based, reproducible, and
 honest about what the project has actually proven.
 
-Status date: 2026-06-30.
+Status date: 2026-07-05.
 
 ---
 
@@ -46,12 +46,15 @@ Safest current claim:
 SemanticSplat currently provides a reproducible, test-backed evaluation
 prototype over five manually captured and manually annotated RGB-D pilot scenes.
 It includes canonical schemas, semantic indexes, generated trees, benchmark
-queries, and stub-mode query evaluation. Live and cached-live evaluation are out
-of scope for the next phase. ConceptGraphs has a one-frame smoke result and
-LangSplat has an official-sofa smoke result, but neither is a fair five-scene
-comparison or GT-backed accuracy result. The project does not yet provide
-official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or
-baseline head-to-head comparison.
+queries, stub-mode graph-vs-flat evaluation, ablations, and baseline smoke
+adapters. The current reproducible five-scene run shows strong query-time cost
+reduction (75.5% fewer views checked and 68.2% fewer input tokens), but lower
+hit@k than flat lexical search under the current stub ranker. Live and
+cached-live evaluation are out of scope for the next phase. ConceptGraphs has a
+one-frame smoke result and LangSplat has an official-sofa smoke result, but
+neither is a fair five-scene comparison or GT-backed accuracy result. The
+project does not yet provide official Replica/ScanNet results, independent
+semantic accuracy, 3D IoU, or baseline head-to-head comparison.
 ```
 
 ---
@@ -62,15 +65,19 @@ Strong completed evidence:
 
 ```text
 5 captured scenes
-96 RGB-D captured views
-96 manual ViewJSON annotations
-1,046 semantic items
+97 RGB-D captured views
+97 manual ViewJSON annotations
+1,066 semantic items
 5 semantic indexes
 5 generated trees
-40 five-scene stub benchmark outputs
+150 five-scene graph-vs-flat v2 benchmark queries
+125 verified-view-label quality queries
+graph ablation study outputs
+graph scaling stress outputs
+LangSplat official-sofa smoke output
+ConceptGraphs one-frame captured-scene smoke output
 50 default-scene stub benchmark outputs
-90 total benchmark queries
-91 passing backend tests as of the 2026-06-30 local check
+108 passing backend tests as of the 2026-07-05 local check
 ```
 
 Current scene set:
@@ -95,7 +102,7 @@ ConceptGraphs = one-frame Docker smoke executed; five-scene comparison blocked
 LangSplat = official sofa smoke executed; five-scene comparison blocked
 Replica = not official / not completed
 ScanNet = postponed
-semantic accuracy = unavailable without GT
+independent semantic accuracy = unavailable without independent GT
 3D IoU = unavailable without GT boxes and predicted boxes
 ```
 
@@ -108,23 +115,25 @@ Do not rebuild the project from scratch. The repo already has:
 - legacy graph-vs-flat benchmark code on `default`;
 - a query pipeline and Query Flow UI;
 - spatial graph helpers;
-- five captured semantic indexes with 1,046 semantic items;
+- five captured semantic indexes with 1,066 semantic items;
 - stub evaluation infrastructure and baseline adapters.
 
 The next technical milestone is:
 
 ```text
-Adapt the existing legacy graph/search pipeline to the five captured scenes,
-enrich captured semantic items with zone-region-object-affordance relations,
-and run a fair same-input graph-vs-flat benchmark on verified queries.
+Improve the current graph/search pipeline with calibrated pruning or fallback
+expansion, add an official public-dataset track starting with Replica, and run
+fair same-scene baseline comparisons when external methods can consume the same
+data and queries.
 ```
 
 The main target claim to prove next is:
 
 ```text
-Graph-based semantic reasoning scans fewer entries, uses less context/tokens,
-and answers faster than flat search over the same semantic map while preserving
-useful target quality.
+Graph-based semantic reasoning scans fewer entries and uses less context/tokens
+than flat search over the same semantic map. The current lexical implementation
+does not yet preserve flat-search hit@k; the next research target is to recover
+quality with calibrated pruning while keeping most of the cost reduction.
 ```
 
 This claim is not proven until saved benchmark outputs include matching methods,

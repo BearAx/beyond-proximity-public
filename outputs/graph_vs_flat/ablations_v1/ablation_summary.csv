@@ -1,0 +1,7 @@
+variant,avg_views_checked,view_savings_vs_flat_pct,avg_input_tokens,token_savings_vs_flat_pct,hit_at_1,hit_at_3
+flat_lexical,19.4,0.0,3168.2,0.0,0.768,0.928
+flat_affordance,19.4,0.0,3168.2,0.0,0.784,0.944
+graph_tight,2.0733,89.31,450.9333,85.77,0.6,0.72
+graph_default,4.7667,75.43,1014.26,67.99,0.68,0.808
+graph_broad,19.4,0.0,6346.8,-100.33,0.728,0.92
+graph_affordance,4.9933,74.26,1062.4267,66.47,0.68,0.816

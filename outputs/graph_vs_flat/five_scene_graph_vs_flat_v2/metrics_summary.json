@@ -4,25 +4,25 @@
     "gt_query_count": 125,
     "gt_excluded_no_view_ids": 25,
     "averages": {
-      "flat_views_checked": 19.2,
-      "graph_views_checked": 5.39,
-      "flat_input_tokens": 3104.0,
-      "graph_input_tokens": 1061.6,
-      "flat_context_chars": 12444.4,
-      "graph_context_chars": 4272.66,
-      "flat_elapsed_ms": 14.11,
-      "graph_elapsed_ms": 12.46,
-      "graph_nodes_visited": 11.95,
-      "savings_views_pct": 71.4,
-      "savings_tokens_pct": 65.1
+      "flat_views_checked": 19.4,
+      "graph_views_checked": 4.77,
+      "flat_input_tokens": 3168.2,
+      "graph_input_tokens": 1014.26,
+      "flat_context_chars": 12701.4,
+      "graph_context_chars": 4084.82,
+      "flat_elapsed_ms": 6.61,
+      "graph_elapsed_ms": 6.05,
+      "graph_nodes_visited": 12.76,
+      "savings_views_pct": 75.5,
+      "savings_tokens_pct": 68.2
     },
     "quality": {
-      "hit_at_1_graph": 0.792,
+      "hit_at_1_graph": 0.68,
       "hit_at_1_flat": 0.768,
-      "hit_at_3_graph": 0.904,
+      "hit_at_3_graph": 0.808,
       "hit_at_3_flat": 0.928,
       "denominator_note": "Quality metrics use only queries with verified expected_view_ids (125 of 150 queries)."
     }
   },
-  "generated_at": "2026-07-02T15:09:39.290403+00:00"
+  "generated_at": "2026-07-05T12:43:49.725243+00:00"
 }

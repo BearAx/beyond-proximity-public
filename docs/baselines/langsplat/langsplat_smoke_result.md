@@ -1,6 +1,6 @@
 # LangSplat Smoke Result
 
-Status date: 2026-06-26. Result: native smoke executed.
+Status date: 2026-07-05. Result: native smoke rerun successfully.
 
 ## Commands Run
 
@@ -37,7 +37,7 @@ baseline process executed = true
 native outputs = 1
 canonical query results = 1
 schema-valid results = 1
-measured native query runtime = 106.7092 seconds
+measured native query runtime = 17.4081 seconds
 native relevancy score = 0.4495883882045746
 found = false
 accuracy = N/A, no GT

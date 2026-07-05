@@ -1,74 +1,88 @@
-# Claim Audit — `papers/beyond-proximity/main.tex` vs Repository Evidence
+# Claim Audit - `papers/beyond-proximity/main.tex` vs Repository Evidence
 
-Status date: 2026-07-05 (post integration merge). Owner: Person 4 (Telman).
+Status date: 2026-07-05 (post research-upgrade rerun). Owner: Person 4 (Telman), updated by Codex.
 
-## Integration branch
+## Integration Branch
 
-`week4/integration-article-sprint` merges:
-- `week3/final-changes`
-- `week3/person1` (graph-vs-flat five scenes)
-- `codex/person2-gt-evaluation` (benchmark v2 GT)
-- `feature-person-3-baselines-literature` (related work matrix)
-- `week3/person4-article-evidence` (audit, notebook, reproducibility)
+`week4/integration-article-sprint` merged the four team branches. The current
+research-upgrade work continues from that branch on
+`codex/research-upgrade-baselines-datasets`.
 
-## Primary evidence (five-scene)
+## Primary Evidence
 
-Source: `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json`
+Source:
+
+```text
+outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json
+```
+
+Current reproducible five-scene run:
 
 | Metric | Flat | Graph | Notes |
-|--------|------|-------|-------|
-| Views checked (avg) | 19.2 | 5.39 | 71.4% savings |
-| Input tokens (avg) | 3104 | 1061.6 | 65.1% savings |
-| hit@1 | 0.768 | 0.792 | n=125 GT queries |
-| hit@3 | 0.928 | 0.904 | n=125 GT queries |
-| Queries total | 150 | 150 | 25 excluded from quality denom |
+|---|---:|---:|---|
+| Views checked, average | 19.4 | 4.77 | 75.5% savings |
+| Input tokens, average | 3168.2 | 1014.3 | 68.2% savings |
+| hit@1 | 0.768 | 0.680 | n=125 verified-view queries |
+| hit@3 | 0.928 | 0.808 | n=125 verified-view queries |
+| Queries total | 150 | 150 | 25 excluded from quality denominator |
 
-Mode: **stub lexical** — not live VLM.
+Mode: **stub lexical**, not live VLM.
 
-Legacy `default` scene: separate subsection only (8.5× token reduction under documented timing model — not merged into five-scene averages).
+Dataset count in current repo:
 
-## Claim status
+```text
+5 captured pilot scenes
+97 captured pilot ViewJSON annotations
+1,066 semantic items
+```
 
-| Claim | Verdict | Where in tex |
-|-------|---------|--------------|
-| Graph reduces views/tokens on five scenes | **supported** | Table 1, abstract |
-| hit@1 comparable or slightly better | **supported_with_caveat** | Table 1 (manual GT, stub mode) |
-| 8.5× token reduction on demo scene | **supported** (scene-specific) | §5.2 legacy demo |
-| 100% room accuracy | **removed** | — |
-| 50 challenging find queries | **removed** | — |
-| 34% IoU improvement | **removed** | — |
-| "Significantly more accurate" hierarchy | **removed** | — |
-| ConceptGraphs/LangSplat superiority | **unsupported** | §5.3 smokes only |
-| Live VLM evaluation | **out of scope** | Limitations |
+The legacy `default` scene is separate demo evidence and is not included in the
+five-scene averages.
 
-## Stale materials (not article source of truth)
+## Claim Status
 
-| File | Issue | Action |
-|------|-------|--------|
-| `speaker-script.md` | Overclaims topology/IoU | STALE banner added; use `main.tex` |
-| `presentation/slides.md` | Same | STALE banner added |
-| `presentation-slides.md` | Same | STALE banner added |
+| Claim | Verdict | Evidence |
+|---|---|---|
+| Graph reduces views/tokens on five captured scenes | DONE | `five_scene_graph_vs_flat_v2` |
+| Graph preserves or improves hit@k | NOT_DONE | Current rerun has lower graph hit@1 and hit@3 than flat |
+| Graph exposes a cost/quality trade-off | DONE | Table in `main.tex`, ablations in `outputs/graph_vs_flat/ablations_v1/` |
+| Same-input protocol | DONE | Same scenes, semantic items, query strings |
+| ConceptGraphs superiority | NOT_DONE | Smoke only |
+| LangSplat superiority | NOT_DONE | Official sofa smoke only |
+| Live VLM evaluation | OUT_OF_SCOPE | No successful live outputs in current scope |
+| Replica official evaluation | NOT_DONE | `docs/datasets/public_dataset_readiness.md` |
+| ScanNet evaluation | NOT_DONE | No local ScanNet scene and converter still skeletal |
+| 3D IoU / metric localization | NOT_DONE | No independent GT boxes/masks |
 
-## Person 4 artifact checklist
+## Artifact Checklist
 
-- [x] `main.tex` — honest abstract, Table 1, expanded Related Work
-- [x] `refs.bib` — key P3 citations added
-- [x] `claim_audit.md` — this file
-- [x] `paper_outline.md` — updated post five-scene merge
-- [x] `reproducibility_windows.md` — runner commands, no "pending"
-- [x] Paper figures — `scripts/export_paper_figures.py` → `papers/beyond-proximity/figures/`
-- [x] `notebooks/graph_vs_flat_evidence.ipynb` — Part A + Part B
-- [x] Presentation stale notices
-- [x] `main.pdf` buildable (LaTeX + `scripts/export_paper_figures.py`)
-- [ ] PR to `main` — team decision (not started)
+- [x] `papers/beyond-proximity/main.tex` uses current 97-view numbers.
+- [x] `papers/beyond-proximity/main.pdf` rebuilt from current source.
+- [x] Paper figures regenerated from `five_scene_graph_vs_flat_v2`.
+- [x] LangSplat smoke rerun: `outputs/baselines/langsplat_smoke_v1/`.
+- [x] ConceptGraphs smoke rerun: `outputs/baselines/conceptgraphs_smoke_v1/`.
+- [x] Ablation outputs: `outputs/graph_vs_flat/ablations_v1/`.
+- [x] Scaling stress outputs: `outputs/graph_vs_flat/scaling_stress_v1/`.
+- [x] Public dataset readiness audit: `docs/datasets/public_dataset_readiness.md`.
+- [ ] Official Replica scene imported and evaluated.
+- [ ] ScanNet scene imported and evaluated.
+- [ ] Fair same-scene baseline comparison.
 
 ## Reviewer FAQ
 
-**Q: Is five-scene graph-vs-flat missing?**  
-A: No. Results are in `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/` and Table 1.
+**Q: Can we call ViewJSON labels "ground truth"?**
+A: Use "reference labels" or "verified view labels"; they are not independent
+annotator GT.
 
-**Q: Is the runner pending?**  
-A: No. `scripts/run_graph_vs_flat.py` with `configs/graph_vs_flat_v2.yaml`.
+**Q: Does the current graph preserve quality?**
+A: No. The current reproducible lexical run is a strong cost-reduction result
+with lower hit@k than flat search. The paper should frame this as a cost/quality
+trade-off and motivate calibrated pruning.
 
-**Q: Can we call ViewJSON labels "ground truth"?**  
-A: Use "reference labels" or "verified view labels" — not independent annotator GT.
+**Q: Do LangSplat and ConceptGraphs prove our method is faster or better?**
+A: No. They prove local smoke execution and canonical adapter compatibility.
+They do not provide five-scene accuracy or efficiency comparison.
+
+**Q: Are Replica or ScanNet done?**
+A: No. The local Replica-style pilot is a project proxy, not an official Replica
+scene. ScanNet is absent locally.

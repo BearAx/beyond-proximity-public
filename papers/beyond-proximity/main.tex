@@ -23,7 +23,7 @@ Mahmoud Mousatat, Leo Vizan, Nikita Shankin, Telman Nuruzov, Alexandr Medvedev
 \maketitle
 
 \begin{abstract}
-3D Gaussian Splatting (3DGS) provides photorealistic rendering but no semantic structure for natural-language environment queries such as ``find a place where I can sit'' or ``where is the screen in the conference room?'' We present SemanticSplat, a rendering-first pipeline that builds a hierarchical semantic index from captured views and answers queries by traversing this index top-down, pruning irrelevant regions before leaf-level confirmation. To isolate the effect of hierarchy, we compare graph-pruned search against a flat baseline that scans the \emph{same} semantic items under an identical protocol. On five manually captured indoor and outdoor scenes (96 views, 1{,}046 semantic items) and 150 benchmark queries spanning six query types, graph traversal reduces average views checked by 71.4\% and input tokens by 65.1\% relative to flat search, while retrieval quality stays comparable: hit@1 is 0.792 (graph) vs.\ 0.768 (flat) and hit@3 is 0.904 vs.\ 0.928 on the 125 queries with verified view labels. A per-query-type analysis shows savings ranging from 53\% on multi-hop queries to 90\% on negative queries, revealing where hierarchy helps most. We report the setting honestly: manual reference labels rather than independent ground truth, and lexical stub matching rather than live provider-backed VLM evaluation.
+3D Gaussian Splatting (3DGS) provides photorealistic rendering but no semantic structure for natural-language environment queries such as ``find a place where I can sit'' or ``where is the screen in the conference room?'' We present SemanticSplat, a rendering-first pipeline that builds a hierarchical semantic index from captured views and answers queries by traversing this index top-down, pruning irrelevant regions before leaf-level confirmation. To isolate the effect of hierarchy, we compare graph-pruned search against a flat baseline that scans the \emph{same} semantic items under an identical protocol. On five manually captured indoor and outdoor scenes (97 views, 1{,}066 semantic items) and 150 benchmark queries spanning six query types, graph traversal reduces average views checked by 75.5\% and input tokens by 68.2\% relative to flat search. This cost reduction comes with a measurable retrieval trade-off under the current lexical stub ranker: hit@1 is 0.680 (graph) vs.\ 0.768 (flat) and hit@3 is 0.808 vs.\ 0.928 on the 125 queries with verified view labels. A per-query-type analysis shows savings ranging from 62.6\% on relational queries to 74.1\% on simple-object queries, revealing where hierarchy helps most. We report the setting honestly: manual reference labels rather than independent ground truth, and lexical stub matching rather than live provider-backed VLM evaluation.
 \end{abstract}
 
 \section{Introduction}
@@ -31,12 +31,12 @@ Mahmoud Mousatat, Leo Vizan, Nikita Shankin, Telman Nuruzov, Alexandr Medvedev
 
 A natural approach is exhaustive (\emph{flat}) search: describe every captured view to a language model and let it pick the best match. This is simple but scales poorly---context length and cost grow linearly with the number of views, and unrelated rooms constantly compete for attention. Existing semantic-3D methods take two other routes. Language-field methods distill vision-language features into radiance fields or Gaussians~\cite{kerr2023lerf,langsplat2024}, which support point-wise relevance but lack explicit structure for context control. Explicit 3D scene-graph methods lift 2D detections into object graphs~\cite{gu2023conceptgraphs,bbq2024}, which can be fragile for open-vocabulary hierarchy construction.
 
-SemanticSplat takes a rendering-first, hierarchy-first approach. We capture posed RGB views from a 3DGS scene, annotate them with structured records (objects, landmarks, room cues, and a short summary), organize them into a zone--region--object tree, and answer queries by traversing that tree top-down. Our central research question is deliberately narrow and testable: \emph{when a graph method and a flat method operate on identical semantic items, does hierarchical pruning reduce search cost without sacrificing useful retrieval quality?}
+SemanticSplat takes a rendering-first, hierarchy-first approach. We capture posed RGB views from a 3DGS scene, annotate them with structured records (objects, landmarks, room cues, and a short summary), organize them into a zone--region--object tree, and answer queries by traversing that tree top-down. Our central research question is deliberately narrow and testable: \emph{when a graph method and a flat method operate on identical semantic items, how much query-time cost can hierarchical pruning remove, and what retrieval trade-off does that pruning introduce?}
 
 \paragraph{Contributions.}
 \begin{itemize}
     \item A rendering-first semantic-map layer over captured 3DGS views, with MCP-backed infrastructure and query-flow logging.
-    \item A controlled same-input benchmark comparing graph traversal to flat search over five captured scenes and 150 queries, measuring views checked, input tokens, and GT-aware hit@k.
+    \item A controlled same-input benchmark comparing graph traversal to flat search over five captured scenes and 150 queries, measuring views checked, input tokens, and reference-label hit@k.
     \item A per-scene and per-query-type analysis that quantifies \emph{where} hierarchy helps, plus an affordance-expansion layer for intent-style queries.
     \item Honest scoping: manual reference labels, stub evaluation mode, and baseline smokes reported without superiority claims.
 \end{itemize}
@@ -75,7 +75,7 @@ Intent queries are mapped to affordance categories before ranking---for example 
 Graph and flat methods share scenes, semantic items, query strings, and benchmark labels. Efficiency metrics are views checked, input tokens, context size, and infrastructure elapsed time. Quality metrics (hit@1, hit@3) are computed only for queries with verified expected view IDs. We treat manual annotations as \emph{reference labels}, not independent ground truth, and all reported five-scene runs use lexical stub matching rather than live VLM API calls.
 
 \section{Dataset and Benchmark}
-The evaluation uses five captured scenes---three indoor (Conference Hall, Museum, Theater) and two outdoor (drone, street). Table~\ref{tab:dataset} summarizes their composition: 96 annotated views and 1{,}046 semantic items organized into deterministic trees. The benchmark contains 150 queries evenly split across six query types (simple object, attribute, relational, functional, multi-hop, negative), 25 per type. Of these, 125 carry verified expected view IDs used as the quality denominator; the remaining 25 (mostly negatives with no target view) are excluded from hit@k.
+The evaluation uses five captured scenes---three indoor (Conference Hall, Museum, Theater) and two outdoor (drone, street). Table~\ref{tab:dataset} summarizes their composition: 97 annotated views and 1{,}066 semantic items organized into deterministic trees. The benchmark contains 150 queries evenly split across six query types (simple object, attribute, relational, functional, multi-hop, negative), 25 per type. Of these, 125 carry verified expected view IDs used as the quality denominator; the remaining 25 (mostly negatives with no target view) are excluded from hit@k.
 
 \begin{table}[t]
 \centering
@@ -88,9 +88,9 @@ Conference Hall & 20 & 207 & 200 \\
 Museum & 20 & 225 & 221 \\
 Theater & 20 & 226 & 220 \\
 Outdoor (drone) & 16 & 169 & 158 \\
-Outdoor (street) & 20 & 219 & 216 \\
+Outdoor (street) & 21 & 239 & 234 \\
 \midrule
-Total & 96 & 1{,}046 & 1{,}015 \\
+Total & 97 & 1{,}066 & 1{,}033 \\
 \bottomrule
 \end{tabular}
 \caption{Five-scene dataset composition. Semantic items are the shared search units for both the graph and flat methods.}
@@ -100,7 +100,7 @@ Total & 96 & 1{,}046 & 1{,}015 \\
 \section{Experiments}
 
 \subsection{Main result: graph vs.\ flat}
-Table~\ref{tab:five-scene} and Figure~\ref{fig:five-scene} report averages over all 150 queries. Graph traversal checks 5.39 views on average versus 19.2 for flat search (71.4\% fewer) and consumes 1{,}061.6 input tokens versus 3{,}104 (65.1\% fewer). Retrieval quality is preserved: graph hit@1 is slightly higher (0.792 vs.\ 0.768) while flat retains a small hit@3 edge (0.928 vs.\ 0.904), consistent with hierarchy trading a little recall breadth for large cost reductions. Figure~\ref{fig:cumulative} shows the effect accumulating across the benchmark: over 150 queries flat search consumes 466k input tokens versus 159k for graph traversal.
+Table~\ref{tab:five-scene} and Figure~\ref{fig:five-scene} report averages over all 150 queries. Graph traversal checks 4.77 views on average versus 19.4 for flat search (75.5\% fewer) and consumes 1{,}014.3 input tokens versus 3{,}168.2 (68.2\% fewer). Retrieval quality decreases under the current lexical stub ranker: graph hit@1 is 0.680 vs.\ 0.768 for flat, and graph hit@3 is 0.808 vs.\ 0.928 for flat. This exposes the core trade-off: hierarchy provides strong cost control but can prune correct-but-distant candidates when node summaries are too coarse. Figure~\ref{fig:cumulative} shows the effect accumulating across the benchmark: over 150 queries flat search consumes 475k input tokens versus 152k for graph traversal.
 
 \begin{figure}[t]
 \centering
@@ -112,7 +112,7 @@ Table~\ref{tab:five-scene} and Figure~\ref{fig:five-scene} report averages over 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.82\linewidth]{figures/fig_cumulative.pdf}
-\caption{Cumulative input tokens over the 150-query benchmark. The flat baseline grows almost linearly, while graph traversal stays far below; the shaded region is the accumulated saving (466k vs.\ 159k tokens overall).}
+\caption{Cumulative input tokens over the 150-query benchmark. The flat baseline grows almost linearly, while graph traversal stays far below; the shaded region is the accumulated saving (475k vs.\ 152k tokens overall).}
 \label{fig:cumulative}
 \end{figure}
 
@@ -123,25 +123,25 @@ Table~\ref{tab:five-scene} and Figure~\ref{fig:five-scene} report averages over 
 \toprule
 Metric & Flat & Graph \\
 \midrule
-Views checked & 19.2 & 5.39 \\
-Input tokens & 3{,}104.0 & 1{,}061.6 \\
-Elapsed (ms, infra) & 14.1 & 12.5 \\
+Views checked & 19.4 & 4.77 \\
+Input tokens & 3{,}168.2 & 1{,}014.3 \\
+Elapsed (ms, infra) & 5.7 & 5.2 \\
 \midrule
-hit@1 (125 GT queries) & 0.768 & 0.792 \\
-hit@3 (125 GT queries) & 0.928 & 0.904 \\
+hit@1 (125 GT queries) & 0.768 & 0.680 \\
+hit@3 (125 GT queries) & 0.928 & 0.808 \\
 \bottomrule
 \end{tabular}
-\caption{Same-input graph vs.\ flat on five captured scenes: 71.4\% fewer views and 65.1\% fewer tokens at comparable quality. The quality denominator excludes 25 queries without verified view labels.}
+\caption{Same-input graph vs.\ flat on five captured scenes: 75.5\% fewer views and 68.2\% fewer tokens, with lower hit@k under the current lexical stub ranker. The quality denominator excludes 25 queries without verified view labels.}
 \label{tab:five-scene}
 \end{table}
 
 \subsection{Where does hierarchy help? Per-type analysis}
-Aggregate numbers hide substantial variation. Figure~\ref{fig:by-type} and Table~\ref{tab:by-type} break token savings down by query type. Negative queries (``is there an X?'' when no X exists) benefit most: the tree prunes entire zones early, yielding 89.5\% savings and only 1.6 views checked. Simple-object, attribute, and functional queries land in a 63--67\% band. Multi-hop queries---which reference several entities across regions---show the smallest savings (53.0\%) and the highest graph view count (7.4), because they force the traversal to descend into multiple branches. This is the expected failure mode of hierarchy: it prunes best when a query localizes to one part of the tree.
+Aggregate numbers hide substantial variation. Figure~\ref{fig:by-type} and Table~\ref{tab:by-type} break token savings down by query type. Simple-object and functional queries benefit most because they usually localize to one part of the tree, yielding 74.1\% and 71.2\% token savings respectively. Relational and multi-hop queries show the smallest savings because they force the traversal to compare several entities across branches. This is the expected failure mode of hierarchy: it prunes best when a query localizes to one part of the tree and least when the question itself spans the tree.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figures/fig_by_query_type.pdf}
-\caption{Graph token savings relative to flat, by query type (25 queries each). Hierarchy helps most when a query localizes to a single zone (negatives, simple objects) and least when it spans regions (multi-hop).}
+\caption{Graph token savings relative to flat, by query type (25 queries each). Hierarchy helps most when a query localizes to a single branch and least when it spans entities or relations across branches.}
 \label{fig:by-type}
 \end{figure}
 
@@ -152,25 +152,25 @@ Aggregate numbers hide substantial variation. Figure~\ref{fig:by-type} and Table
 \toprule
 Query type & Graph views & Graph tokens & Savings \\
 \midrule
-Negative & 1.6 & 325 & 89.5\% \\
-Simple object & 5.0 & 1{,}027 & 66.9\% \\
-Functional & 5.9 & 1{,}148 & 63.0\% \\
-Attribute & 6.2 & 1{,}154 & 62.8\% \\
-Relational & 6.2 & 1{,}257 & 59.5\% \\
-Multi-hop & 7.4 & 1{,}459 & 53.0\% \\
+Simple object & 3.7 & 820 & 74.1\% \\
+Functional & 4.4 & 913 & 71.2\% \\
+Negative & 4.9 & 1{,}006 & 68.2\% \\
+Attribute & 4.9 & 1{,}031 & 67.5\% \\
+Multi-hop & 5.3 & 1{,}132 & 64.3\% \\
+Relational & 5.4 & 1{,}184 & 62.6\% \\
 \bottomrule
 \end{tabular}
-\caption{Per-query-type breakdown (flat baseline: 19.2 views, 3{,}104 tokens). Savings decrease as queries span more of the tree.}
+\caption{Per-query-type breakdown (flat baseline: 19.4 views, 3{,}168.2 tokens). Savings decrease as queries span more of the tree.}
 \label{tab:by-type}
 \end{table}
 
 \subsection{Per-scene consistency}
-Figure~\ref{fig:by-scene} shows that the efficiency gain holds across all five scenes for both views and tokens, though its magnitude tracks scene structure. The Theater, with a clean zone layout, yields the largest token savings (80.9\%), while the outdoor drone scene---fewer views and a flatter tree---yields the smallest (50.4\%). No scene regresses, indicating the benefit is a property of the hierarchy rather than of one favorable environment.
+Figure~\ref{fig:by-scene} shows that the efficiency gain holds across all five scenes for both views and tokens, though its magnitude tracks scene structure. Conference Hall yields the largest token savings (73.2\%), while the outdoor street scene---the largest and noisiest current capture---yields the smallest (59.1\%). No scene regresses on cost, indicating that the efficiency benefit is not confined to one favorable environment.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.86\linewidth]{figures/fig_by_scene.pdf}
-\caption{Per-scene efficiency savings (view and token reduction vs.\ flat, darker $=$ larger saving). Graph traversal helps in every scene; the gain is largest where zone structure is clearest (Theater) and smallest for the flatter outdoor drone scene.}
+\caption{Per-scene efficiency savings (view and token reduction vs.\ flat, darker $=$ larger saving). Graph traversal lowers query-time cost in every scene, with smaller savings on the noisier outdoor street capture.}
 \label{fig:by-scene}
 \end{figure}
 
@@ -202,7 +202,7 @@ We note that, on the current scene state, flat search does \emph{not} exhibit wr
 ConceptGraphs and LangSplat smoke tests confirm adapter feasibility but do not provide five-scene accuracy or efficiency comparisons, so we make no head-to-head claim. Live and cached-live provider evaluation, and ScanNet-scale benchmarking, are out of scope for this study.
 
 \section{Discussion}
-Three patterns emerge. First, the savings are driven by \emph{early pruning}: whenever a query can be localized to a zone from its summary, the tree discards the majority of views before any leaf check, which is why negatives and simple objects gain most. Second, the small hit@3 gap in favor of flat search reflects a genuine trade-off---exhaustive search never prunes a correct-but-distant candidate, while the tree occasionally does. In cost terms, however, the graph reaches comparable hit@1 while reading roughly one third of the tokens. Third, because both methods share inputs, these effects are attributable to structure alone, which is the property we set out to isolate. Together this suggests hierarchy is most valuable as a \emph{cost-control} mechanism for environment queries, with quality parity rather than a quality win.
+Three patterns emerge. First, the savings are driven by \emph{early pruning}: whenever a query can be localized from a compact node summary, the tree discards the majority of views before any leaf check. Second, the hit@k gap in favor of flat search reflects a genuine trade-off---exhaustive search never prunes a correct-but-distant candidate, while the tree occasionally does. Third, because both methods share inputs, these effects are attributable to structure alone, which is the property we set out to isolate. Together this suggests hierarchy is most valuable as a \emph{cost-control} mechanism for environment queries, but the current lexical traversal needs a stronger scoring or fallback policy before we can claim quality parity.
 
 \section{Limitations}
 \begin{itemize}
@@ -214,7 +214,7 @@ Three patterns emerge. First, the savings are driven by \emph{early pruning}: wh
 \end{itemize}
 
 \section{Conclusion}
-SemanticSplat shows that hierarchical graph pruning substantially reduces the cost of semantic search over captured 3DGS scenes while preserving retrieval quality, under a controlled protocol where graph and flat methods consume identical semantic items. Across five scenes, six query types, and 150 queries, graph traversal cuts views checked by 71.4\% and tokens by 65.1\% at comparable hit@1, with the largest gains on queries that localize to a single zone. Future work includes live VLM evaluation, richer zone--region--object graphs, independent ground truth, and fair same-input comparison against external scene-graph systems.
+SemanticSplat shows that hierarchical graph pruning substantially reduces the cost of semantic search over captured 3DGS scenes under a controlled protocol where graph and flat methods consume identical semantic items. Across five scenes, six query types, and 150 queries, graph traversal cuts views checked by 75.5\% and tokens by 68.2\%, while exposing a measurable hit@k trade-off under the current lexical stub ranker. Future work includes learned or calibrated pruning, live VLM evaluation, richer zone--region--object graphs, independent ground truth, and fair same-input comparison against external scene-graph systems.
 
 {\small
 \bibliographystyle{plain}

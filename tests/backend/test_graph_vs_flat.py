@@ -10,6 +10,7 @@ from backend.query.graph_vs_flat import (
     load_benchmark_queries,
     load_scene_bundle,
     run_five_scene_benchmark,
+    simulate_graph_search,
 )
 
 
@@ -50,6 +51,29 @@ def test_graph_checks_fewer_views_than_flat_on_chair_query():
     row = compare_modes_for_query(bundle, query)
     assert row["flat"]["views_checked"] >= row["graph"]["views_checked"]
     assert row["flat"]["input_tokens"] >= row["graph"]["input_tokens"]
+
+
+@pytest.mark.skipif(
+    not (SCENE_ROOT / "ConferenceHall-capture-pilot" / "views").exists() or not BENCHMARK.exists(),
+    reason="Captured scene or benchmark missing",
+)
+def test_graph_pruning_knobs_are_recorded():
+    bundle = load_scene_bundle(SCENE_ROOT / "ConferenceHall-capture-pilot")
+    query = next(
+        q for q in filter_five_scene_queries(load_benchmark_queries(BENCHMARK))
+        if q["query_id"] == "q051"
+    )
+    result = simulate_graph_search(
+        bundle,
+        query["query"],
+        query_id=query["query_id"],
+        benchmark_scene_id=query["scene_id"],
+        branch_keep_ratio=1.0,
+        fallback_child_limit=1,
+        mode_suffix="_tight",
+    )
+    assert result.mode == "graph_lexical_tight"
+    assert "branch_keep_ratio=1.0" in result.warnings[-1]
 
 
 @pytest.mark.skipif(

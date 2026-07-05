@@ -13,8 +13,8 @@
       "benchmark_scene_id": "ConferenceHall"
     }
   ],
-  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\benchmark_queries_v1.json",
-  "native_input": "C:\\GitProjects\\beyond-proximity\\outputs\\baselines\\conceptgraphs_smoke_v1\\native_results.json",
+  "benchmark_path": "docs\\benchmarks\\benchmark_queries_v1.json",
+  "native_input": "outputs\\baselines\\conceptgraphs_smoke_v1\\native_results.json",
   "provenance": {
     "native_execution": true,
     "baseline": "conceptgraphs",
@@ -33,5 +33,5 @@
     ]
   },
   "result_count": 1,
-  "finished_at": "2026-06-26T16:42:39.665290+00:00"
+  "finished_at": "2026-07-05T12:44:18.659552+00:00"
 }

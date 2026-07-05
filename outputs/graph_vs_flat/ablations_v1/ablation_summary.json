@@ -1,0 +1,239 @@
+{
+  "generated_at": "2026-07-05T12:44:01.187046+00:00",
+  "summary": {
+    "query_count": 150,
+    "gt_query_count": 125,
+    "variants": {
+      "flat_lexical": {
+        "description": "Exhaustive lexical scan over every view.",
+        "avg_views_checked": 19.4,
+        "avg_input_tokens": 3168.2,
+        "avg_context_chars": 12701.4,
+        "avg_elapsed_ms": 6.3982,
+        "avg_nodes_visited": 0.0,
+        "view_savings_vs_flat_pct": 0.0,
+        "token_savings_vs_flat_pct": 0.0,
+        "hit_at_1": 0.768,
+        "hit_at_3": 0.928
+      },
+      "flat_affordance": {
+        "description": "Exhaustive scan with deterministic affordance expansion.",
+        "avg_views_checked": 19.4,
+        "avg_input_tokens": 3168.2,
+        "avg_context_chars": 12701.4,
+        "avg_elapsed_ms": 6.4291,
+        "avg_nodes_visited": 0.0,
+        "view_savings_vs_flat_pct": 0.0,
+        "token_savings_vs_flat_pct": 0.0,
+        "hit_at_1": 0.784,
+        "hit_at_3": 0.944
+      },
+      "graph_tight": {
+        "description": "Graph traversal with strict pruning: keep only max-score branches.",
+        "avg_views_checked": 2.0733,
+        "avg_input_tokens": 450.9333,
+        "avg_context_chars": 1815.8933,
+        "avg_elapsed_ms": 2.7942,
+        "avg_nodes_visited": 5.64,
+        "view_savings_vs_flat_pct": 89.31,
+        "token_savings_vs_flat_pct": 85.77,
+        "hit_at_1": 0.6,
+        "hit_at_3": 0.72
+      },
+      "graph_default": {
+        "description": "Graph traversal with the paper default pruning policy.",
+        "avg_views_checked": 4.7667,
+        "avg_input_tokens": 1014.26,
+        "avg_context_chars": 4084.82,
+        "avg_elapsed_ms": 5.8073,
+        "avg_nodes_visited": 12.76,
+        "view_savings_vs_flat_pct": 75.43,
+        "token_savings_vs_flat_pct": 67.99,
+        "hit_at_1": 0.68,
+        "hit_at_3": 0.808
+      },
+      "graph_broad": {
+        "description": "Graph traversal with broad recall-oriented branch keeping.",
+        "avg_views_checked": 19.4,
+        "avg_input_tokens": 6346.8,
+        "avg_context_chars": 25751.4,
+        "avg_elapsed_ms": 65.9966,
+        "avg_nodes_visited": 212.8,
+        "view_savings_vs_flat_pct": 0.0,
+        "token_savings_vs_flat_pct": -100.33,
+        "hit_at_1": 0.728,
+        "hit_at_3": 0.92
+      },
+      "graph_affordance": {
+        "description": "Default graph traversal with deterministic affordance expansion.",
+        "avg_views_checked": 4.9933,
+        "avg_input_tokens": 1062.4267,
+        "avg_context_chars": 4278.98,
+        "avg_elapsed_ms": 6.1361,
+        "avg_nodes_visited": 13.56,
+        "view_savings_vs_flat_pct": 74.26,
+        "token_savings_vs_flat_pct": 66.47,
+        "hit_at_1": 0.68,
+        "hit_at_3": 0.816
+      }
+    },
+    "by_query_type": {
+      "attribute": {
+        "flat_lexical": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "flat_affordance": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "graph_tight": {
+          "avg_views_checked": 2.32,
+          "avg_input_tokens": 495.96
+        },
+        "graph_default": {
+          "avg_views_checked": 4.88,
+          "avg_input_tokens": 1030.6
+        },
+        "graph_broad": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 6346.8
+        },
+        "graph_affordance": {
+          "avg_views_checked": 5.32,
+          "avg_input_tokens": 1127.8
+        }
+      },
+      "functional": {
+        "flat_lexical": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "flat_affordance": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "graph_tight": {
+          "avg_views_checked": 2.8,
+          "avg_input_tokens": 583.24
+        },
+        "graph_default": {
+          "avg_views_checked": 4.4,
+          "avg_input_tokens": 912.52
+        },
+        "graph_broad": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 6346.8
+        },
+        "graph_affordance": {
+          "avg_views_checked": 4.64,
+          "avg_input_tokens": 960.32
+        }
+      },
+      "multi_hop": {
+        "flat_lexical": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "flat_affordance": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "graph_tight": {
+          "avg_views_checked": 2.0,
+          "avg_input_tokens": 440.4
+        },
+        "graph_default": {
+          "avg_views_checked": 5.28,
+          "avg_input_tokens": 1132.48
+        },
+        "graph_broad": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 6346.8
+        },
+        "graph_affordance": {
+          "avg_views_checked": 5.36,
+          "avg_input_tokens": 1152.36
+        }
+      },
+      "negative": {
+        "flat_lexical": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "flat_affordance": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "graph_tight": {
+          "avg_views_checked": 1.0,
+          "avg_input_tokens": 232.84
+        },
+        "graph_default": {
+          "avg_views_checked": 4.88,
+          "avg_input_tokens": 1005.96
+        },
+        "graph_broad": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 6346.8
+        },
+        "graph_affordance": {
+          "avg_views_checked": 4.88,
+          "avg_input_tokens": 1005.96
+        }
+      },
+      "relational": {
+        "flat_lexical": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "flat_affordance": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "graph_tight": {
+          "avg_views_checked": 2.48,
+          "avg_input_tokens": 549.64
+        },
+        "graph_default": {
+          "avg_views_checked": 5.44,
+          "avg_input_tokens": 1184.12
+        },
+        "graph_broad": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 6346.8
+        },
+        "graph_affordance": {
+          "avg_views_checked": 5.72,
+          "avg_input_tokens": 1237.96
+        }
+      },
+      "simple_object": {
+        "flat_lexical": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "flat_affordance": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 3168.2
+        },
+        "graph_tight": {
+          "avg_views_checked": 1.84,
+          "avg_input_tokens": 403.52
+        },
+        "graph_default": {
+          "avg_views_checked": 3.72,
+          "avg_input_tokens": 819.88
+        },
+        "graph_broad": {
+          "avg_views_checked": 19.4,
+          "avg_input_tokens": 6346.8
+        },
+        "graph_affordance": {
+          "avg_views_checked": 4.04,
+          "avg_input_tokens": 890.16
+        }
+      }
+    }
+  }
+}

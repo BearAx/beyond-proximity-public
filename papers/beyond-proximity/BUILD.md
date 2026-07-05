@@ -1,11 +1,11 @@
 # Paper PDF
 
-**If your PDF still says "Beyond Proximity" with 100% room accuracy — it is stale.**  
-Current source: `main.tex` → title **SemanticSplat**, with 3 figures in `figures/`.
+Current source: `main.tex`.
 
-`main.pdf` on disk is only updated when you run the build below (last manual check: old PDF from June).
+Current checked PDF: `main.pdf`, rebuilt on 2026-07-05 after regenerating the
+five-scene graph-vs-flat evidence and paper figures.
 
-## Quick build (Windows)
+## Quick Build (Windows)
 
 From repo root:
 
@@ -19,7 +19,9 @@ Or step by step:
 ```powershell
 cd beyond-proximity
 $env:PYTHONPATH = "."
-python -B scripts\export_paper_figures.py
+python -B scripts\export_paper_figures.py `
+  --run-dir outputs\graph_vs_flat\five_scene_graph_vs_flat_v2 `
+  --out-dir papers\beyond-proximity\figures
 cd papers\beyond-proximity
 pdflatex main.tex
 bibtex main
@@ -33,19 +35,29 @@ Requires `pdflatex` on PATH (MiKTeX / TeX Live). If missing:
 winget install MiKTeX.MiKTeX
 ```
 
-Then run `.\build_paper.cmd` again (script auto-finds MiKTeX even before terminal restart).
+The Codex LaTeX plugin can also build with bundled Tectonic:
 
-## Figures included in PDF
+```powershell
+python scripts\compile_latex.py C:\GitProjects\beyond-proximity\papers\beyond-proximity\main.tex `
+  --compiler tectonic `
+  --output-directory C:\GitProjects\beyond-proximity\papers\beyond-proximity `
+  --json
+```
+
+## Figures Included In PDF
 
 | File | Content |
-|------|---------|
+|---|---|
 | `figures/fig_five_scene_summary.pdf` | Views / tokens / runtime + hit@1 / hit@3 |
-| `figures/fig_by_query_type.pdf` | Token savings by query type (6 types) |
-| `figures/fig_by_scene.pdf` | Views checked per scene |
-| `figures/fig_default_average.pdf` | Legacy demo scene (12 queries) |
+| `figures/fig_cumulative.pdf` | Cumulative input-token cost over 150 queries |
+| `figures/fig_by_query_type.pdf` | Token savings by query type |
+| `figures/fig_by_scene.pdf` | Per-scene view/token savings |
+| `figures/fig_failure_cases.pdf` | Legacy demo case studies, if generated |
 
 Regenerate figures only:
 
 ```powershell
-python -B scripts\export_paper_figures.py
+python -B scripts\export_paper_figures.py `
+  --run-dir outputs\graph_vs_flat\five_scene_graph_vs_flat_v2 `
+  --out-dir papers\beyond-proximity\figures
 ```

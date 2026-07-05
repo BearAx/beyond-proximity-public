@@ -203,8 +203,10 @@ def write_adapter_run(
     )
     (output_dir / "baseline_summary.md").write_text(
         f"# {method} Baseline Smoke\n\n"
-        f"Mode: `{mode}`  \nScene: `{scene_id}`  \nCanonical results: {len(canonical)}  \n"
-        f"Native input: `{native_path}`\n",
+        f"- Mode: `{mode}`\n"
+        f"- Scene: `{scene_id}`\n"
+        f"- Canonical results: {len(canonical)}\n"
+        f"- Native input: `{native_path}`\n",
         encoding="utf-8",
     )
     return output_dir

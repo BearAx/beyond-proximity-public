@@ -1,149 +1,179 @@
-# Reproducibility — Windows (SemanticSplat / Beyond Proximity)
+# Reproducibility - Windows
 
-Status date: 2026-07-05. Maintainer: Person 4 (Telman).
+Status date: 2026-07-05. Maintainer: Person 4 (Telman), updated by Codex.
 
-This appendix documents **commands verified or aligned with repo scripts** on Windows. Five-scene graph-vs-flat reproduction is supported via `scripts/run_graph_vs_flat.py` (Person 1, merged on `week4/integration-article-sprint`).
+This appendix documents commands verified or aligned with repository scripts on
+Windows. The primary paper evidence is generated without live API calls.
 
 ## Prerequisites
 
 ```powershell
 cd path\to\beyond-proximity
-python -m venv .venv
-.\.venv\Scripts\pip install -r backend\requirements.txt
-cd frontend
-npm install
-cd ..
-```
-
-Optional: `winget install ffmpeg` (MP4 generation in benchmark docs pipeline).
-
-For graph-vs-flat runner only (no frontend):
-
-```powershell
 $env:PYTHONPATH = "."
 python -B -m pytest -q tests\backend\test_affordance.py tests\backend\test_graph_vs_flat.py
 ```
 
-## Launch demo UI (3 services)
+For figure export, install plotting support if the active Python lacks it:
+
+```powershell
+python -B -m pip install matplotlib
+```
+
+## Launch Demo UI
 
 ```powershell
 .\start_all.cmd
 ```
 
 | Service | URL |
-|---------|-----|
+|---|---|
 | Frontend | http://localhost:5173 |
 | API | http://127.0.0.1:8000 |
 | MCP | http://127.0.0.1:8001/mcp |
 
-Scene: `default` → Set → load `ConferenceHall.ply`.
+## Primary Five-Scene Graph-vs-Flat Run
 
-## MCP in Cursor
+Checked-in results:
 
-Create `.cursor/mcp.json` in workspace root:
-
-```json
-{
-  "mcpServers": {
-    "semantic-splat": {
-      "url": "http://127.0.0.1:8001/mcp"
-    }
-  }
-}
+```text
+outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/
 ```
 
-## Offline benchmark (legacy graph-vs-flat on `default`)
-
-```powershell
-.\run_all_docs.ps1
-```
-
-Outputs: `docs/benchmarks/benchmark_graph_vs_flat.md`, `docs/benchmark_results/*`.
-
-Raw JSON: `docs/benchmark_results/benchmark_default.json`.
-
-## Five-scene graph-vs-flat (primary paper evidence)
-
-Checked-in results: `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/`.
+Regenerate:
 
 ```powershell
 $env:PYTHONPATH = "."
-
-# v1 efficiency baseline (40 queries)
-python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_five_scenes.yaml
-
-# v2 with Person 2 GT (150 queries, hit@1 / hit@3) — matches Table 1 in main.tex
 python -B scripts\run_graph_vs_flat.py --config configs\graph_vs_flat_v2.yaml
 ```
 
-Expected console summary (v2): ~71% view savings, ~65% token savings. Outputs land under `outputs/graph_vs_flat/<run_id>/` (`metrics_summary.json`, CSV, MD).
+Expected current summary:
 
-Gate tests:
-
-```powershell
-python -B -m pytest -q tests\backend\test_affordance.py tests\backend\test_graph_vs_flat.py
+```text
+queries = 150
+verified-view-label queries = 125
+view savings ~= 75.5%
+token savings ~= 68.2%
+hit@1 graph = 0.680, flat = 0.768
+hit@3 graph = 0.808, flat = 0.928
 ```
 
-## Week 3 stub semantic gate (five captured scenes)
+Interpretation: current graph pruning is a cost-control result with a measured
+quality trade-off under lexical stub matching.
+
+## Ablation Study
+
+```powershell
+python -B scripts\run_graph_ablation_study.py `
+  --benchmark docs\benchmarks\benchmark_queries_v2.json `
+  --out outputs\graph_vs_flat\ablations_v1
+```
+
+Outputs:
+
+```text
+outputs/graph_vs_flat/ablations_v1/ablation_summary.md
+outputs/graph_vs_flat/ablations_v1/ablation_summary.csv
+outputs/graph_vs_flat/ablations_v1/ablation_results.json
+```
+
+## Scaling Stress Test
+
+```powershell
+python -B scripts\run_graph_scaling_study.py `
+  --benchmark docs\benchmarks\benchmark_queries_v2.json `
+  --out outputs\graph_vs_flat\scaling_stress_v1 `
+  --multipliers 1,2,5,10 `
+  --limit 60
+```
+
+This duplicates captured semantic indexes in memory. It measures query-time
+scaling behavior, not public-dataset accuracy.
+
+## Public Dataset Readiness
+
+```powershell
+python -B scripts\audit_public_dataset_readiness.py
+```
+
+Outputs:
+
+```text
+docs/datasets/public_dataset_readiness.md
+docs/datasets/public_dataset_readiness.json
+```
+
+Current expected status:
+
+```text
+official Replica scenes ready = 0
+ScanNet scenes ready = 0
+local data/replica/pilot_scene_001 = proxy only
+```
+
+## External Baseline Smokes
+
+Docker Desktop and an NVIDIA GPU are required.
+
+LangSplat:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_langsplat_smoke.ps1
+python -B scripts\evaluate_results.py `
+  --benchmark docs\benchmarks\baseline_smoke_queries_v1.json `
+  --run-dir outputs\baselines\langsplat_smoke_v1
+```
+
+ConceptGraphs:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_conceptgraphs_smoke.ps1
+python -B scripts\evaluate_results.py `
+  --benchmark docs\benchmarks\benchmark_queries_v1.json `
+  --run-dir outputs\baselines\conceptgraphs_smoke_v1
+```
+
+Valid claim: native execution plus canonical adapter compatibility. These are
+not fair five-scene baseline comparisons.
+
+## Article PDF
 
 ```powershell
 $env:PYTHONPATH = "."
-python -B scripts\validate_semantic_index.py `
-  --scenes backend\data\scenes\ConferenceHall-capture-pilot `
-           backend\data\scenes\Museume-capture `
-           backend\data\scenes\Theater-capture `
-           backend\data\scenes\outdoor-drone-capture `
-           backend\data\scenes\outdoor-street-capture `
-  --out docs\validation\semantic_index
-
-python -B scripts\run_experiment.py `
-  --config configs\week3_replica.yaml `
-  --mode stub `
-  --out outputs\week3\final_stub_semantic_gate_v1
-```
-
-## Evidence notebook (Person 4)
-
-```powershell
-.\.venv\Scripts\pip install -r notebooks\requirements.txt
-.\.venv\Scripts\jupyter notebook notebooks\graph_vs_flat_evidence.ipynb
-```
-
-Notebook reads only checked-in JSON; no live API calls. Part A: `default` scene. Part B: five-scene v2.
-
-## Article PDF (LaTeX)
-
-```powershell
-$env:PYTHONPATH = "."
-python -B scripts\export_paper_figures.py
+python -B scripts\export_paper_figures.py `
+  --run-dir outputs\graph_vs_flat\five_scene_graph_vs_flat_v2 `
+  --out-dir papers\beyond-proximity\figures
 cd papers\beyond-proximity
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
+.\build_paper.cmd
 ```
 
-See `papers/beyond-proximity/BUILD.md` for details.
+In this Codex session, the PDF was also rebuilt with bundled Tectonic:
 
-## Full test suite (sprint gate)
+```powershell
+python scripts\compile_latex.py C:\GitProjects\beyond-proximity\papers\beyond-proximity\main.tex `
+  --compiler tectonic `
+  --output-directory C:\GitProjects\beyond-proximity\papers\beyond-proximity `
+  --json
+```
+
+## Full Test Suite
 
 ```powershell
 $env:PYTHONPATH = "."
-$env:TEMP = "$PWD\.pytest_tmp"
-$env:TMP = "$PWD\.pytest_tmp"
-New-Item -ItemType Directory -Force -Path $env:TEMP | Out-Null
-python -B -m pytest -q
+python -B -m pytest -q -p no:cacheprovider
 ```
 
-## What is **not** reproducible yet
+## What Is Not Reproducible Yet
 
 | Item | Reason |
-|------|--------|
-| Semantic accuracy at ScanNet scale | No independent GT at scale |
-| Live / cached-live VLM runs | Out of scope for sprint |
-| ConceptGraphs five-scene comparison | Smoke = 1 frame only |
-| Full captured-scene LFS assets | Some LFS objects 404 on remote; use `GIT_LFS_SKIP_SMUDGE=1` for code-only checkout |
+|---|---|
+| Official Replica evaluation | No official Replica scene is present locally |
+| ScanNet evaluation | No extracted ScanNet scene is present locally |
+| Fair LangSplat five-scene comparison | Requires converting/training compatible 3DGS assets |
+| Fair ConceptGraphs five-scene comparison | Requires multi-frame native run and GT-backed adapter |
+| Live / cached-live VLM runs | Out of current scope |
+| 3D IoU | No independent GT boxes/masks and predicted boxes |
 
-## Code revision
+## Code Revision
 
-Record `git rev-parse HEAD` in every paper table footnote when freezing results. Frozen run ID for article: `five_scene_graph_vs_flat_v2`.
+Record `git rev-parse HEAD` in every paper table footnote when freezing results.
+Frozen run ID for the current article: `five_scene_graph_vs_flat_v2`.

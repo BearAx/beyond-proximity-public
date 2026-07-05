@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-07-05T12:31:27.469928+00:00",
+  "git_revision": "e08978a3d8e2cd11539ad30220d19b94b3a99911",
+  "manual_scenes": [
+    {
+      "scene_id": "ConferenceHall-capture-pilot",
+      "category": "captured_pilot",
+      "view_json_count": 20,
+      "frame_count": 20,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": true
+    },
+    {
+      "scene_id": "default",
+      "category": "legacy_demo",
+      "view_json_count": 19,
+      "frame_count": 22,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "Museume-capture",
+      "category": "captured_pilot",
+      "view_json_count": 20,
+      "frame_count": 20,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": true
+    },
+    {
+      "scene_id": "outdoor-drone-capture",
+      "category": "captured_pilot",
+      "view_json_count": 16,
+      "frame_count": 16,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": true
+    },
+    {
+      "scene_id": "outdoor-street-capture",
+      "category": "captured_pilot",
+      "view_json_count": 21,
+      "frame_count": 21,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": true
+    },
+    {
+      "scene_id": "Theater-capture",
+      "category": "captured_pilot",
+      "view_json_count": 20,
+      "frame_count": 20,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": true
+    }
+  ],
+  "replica": [
+    {
+      "scene_id": "pilot_scene_001",
+      "path": "data\\replica\\pilot_scene_001",
+      "layout": "replica_style",
+      "layout_error": null,
+      "missing_required": [
+        "rgb",
+        "depth"
+      ],
+      "source_dataset": "provided_data_converted_as_replica_pilot",
+      "official_public_dataset": false,
+      "frame_count": 19,
+      "has_independent_gt": false,
+      "status": "PROXY_OR_NOT_READY"
+    }
+  ],
+  "scannet": [],
+  "summary": {
+    "captured_pilot_scene_count": 5,
+    "captured_pilot_view_json_count": 97,
+    "legacy_demo_scene_count": 1,
+    "legacy_demo_view_json_count": 19,
+    "replica_scene_count": 1,
+    "replica_ready_public_count": 0,
+    "scannet_scene_count": 0,
+    "scannet_ready_for_conversion_count": 0,
+    "publication_readiness": {
+      "twinworld_workshop": "READY_WITH_MANUAL_SCENES_PLUS_BASELINE_SMOKES",
+      "aaai_main": "NOT_READY_WITHOUT_PUBLIC_DATASET_GT_AND_FAIR_BASELINES"
+    }
+  }
+}

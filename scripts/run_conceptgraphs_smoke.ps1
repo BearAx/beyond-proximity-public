@@ -1,9 +1,11 @@
 param(
     [string]$Image = "semanticsplat-conceptgraphs:72f5962",
-    [string]$ModelCache = "C:\GitProjects\baseline-deps\model-cache"
+    [string]$ModelCache = "C:\GitProjects\baseline-deps\model-cache",
+    [int]$FrameLimit = 1
 )
 
 $ErrorActionPreference = "Stop"
+if ($FrameLimit -lt 1) { throw "FrameLimit must be at least 1" }
 $repo = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $out = Join-Path $repo "outputs\baselines\conceptgraphs_smoke_v1"
 $nativeData = Join-Path $out "native_data"
@@ -18,7 +20,7 @@ New-Item -ItemType Directory -Force -Path $out,$ModelCache | Out-Null
 python -B (Join-Path $repo "scripts\prepare_conceptgraphs_scene.py") `
     --scene (Join-Path $repo "backend\data\scenes\$sceneId") `
     --out $nativeData `
-    --limit 1
+    --limit $FrameLimit
 if ($LASTEXITCODE -ne 0) { throw "ConceptGraphs scene conversion failed" }
 
 $repoMount = $repo.Replace("\", "/")
@@ -35,7 +37,7 @@ $detectionArgs = @(
     "bash", "-lc",
     "ln -sf /models/yolov8l-world.pt yolov8l-world.pt; ln -sf /models/mobile_sam.pt mobile_sam.pt; python scripts/streamlined_detections.py `"`$@`"", "--",
     "dataset_root=$dataRoot", "dataset_config=$config", "scene_id=$sceneId",
-    "start=0", "end=1", "stride=1", "desired_height=320", "desired_width=640",
+    "start=0", "end=$FrameLimit", "stride=1", "desired_height=320", "desired_width=640",
     "classes_file=$classes", "device=cuda", "save_video=false",
     "exp_suffix=$detectionsSuffix"
 )
@@ -57,7 +59,7 @@ $mappingArgs = @(
     $Image,
     "python", "slam/streamlined_mapping.py",
     "dataset_root=$dataRoot", "dataset_config=$config", "scene_id=$sceneId",
-    "start=0", "end=1", "stride=1", "image_height=320", "image_width=640",
+    "start=0", "end=$FrameLimit", "stride=1", "image_height=320", "image_width=640",
     "detections_exp_suffix=$detectionsSuffix", "exp_suffix=$mappingSuffix",
     "save_video=false", "save_objects_all_frames=false", "vis_render=false",
     "use_rerun=false", "dbscan_remove_noise=false", "run_denoise_final_frame=false",
@@ -76,7 +78,7 @@ if ($dockerExit -ne 0) {
 }
 
 $detectionRelative = "native_data/$sceneId/exps/$detectionsSuffix/detections/v001.pkl.gz"
-$nativeCommand = "streamlined_detections.py end=1; streamlined_mapping.py end=1; native_query.py q051"
+$nativeCommand = "streamlined_detections.py end=$FrameLimit; streamlined_mapping.py end=$FrameLimit; native_query.py q051"
 $queryArgs = @(
     "run", "--rm", "--gpus", "all",
     "-v", "${repoMount}:/workspace",

@@ -21,12 +21,12 @@
       "query_id": "q051",
       "found": true,
       "matched_object": "sofa chair",
-      "selected_object_id": "22821609-8ca4-4823-9173-6ec5d58543c6",
+      "selected_object_id": "f51c4c61-6a55-49eb-be71-21040438ebe2",
       "selected_view_ids": [
         "v001"
       ],
       "trace_node_ids": [
-        "22821609-8ca4-4823-9173-6ec5d58543c6"
+        "f51c4c61-6a55-49eb-be71-21040438ebe2"
       ],
       "confidence": 0.2810319662094116,
       "bbox_2d": null,
@@ -47,9 +47,9 @@
       "native_query_type": "clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 2 with class 'sofa chair' and cosine similarity 0.281032.",
       "metrics": {
-        "runtime_seconds": 65.45093827000005,
+        "runtime_seconds": 69.87446071599999,
         "stage_runtime_seconds": {
-          "native_map_query": 65.45093827000005
+          "native_map_query": 69.87446071599999
         },
         "model_call_count": 1,
         "cache_hits": 0,

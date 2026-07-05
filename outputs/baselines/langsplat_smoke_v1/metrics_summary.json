@@ -2,7 +2,7 @@
   "schema_version": "semanticsplat.metrics_record.v1",
   "run_id": "langsplat_smoke_v1",
   "benchmark_id": "external_baseline_smoke_v1",
-  "generated_at": "2026-06-26T13:04:42.959413+00:00",
+  "generated_at": "2026-07-05T12:44:18.532964+00:00",
   "coverage": {
     "benchmark_total_query_count": 1,
     "benchmark_query_count": 1,
@@ -238,8 +238,8 @@
       "reason": "No schema-valid result with applicable ground truth"
     },
     "runtime_seconds": {
-      "mean": 106.7092,
-      "total": 106.7092,
+      "mean": 17.4081,
+      "total": 17.4081,
       "denominator": 1,
       "status": "measured"
     },
@@ -297,7 +297,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": null,
-      "runtime_seconds": 106.70921081699998,
+      "runtime_seconds": 17.408091032999998,
       "token_usage": null,
       "checked_view_count": 1.0,
       "visited_node_count": 2.0,

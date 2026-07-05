@@ -1,6 +1,6 @@
 {
-  "benchmark_path": "/Users/leo/beyond-proximity/docs/benchmarks/benchmark_queries_v2.json",
-  "scene_root": "/Users/leo/beyond-proximity/backend/data/scenes",
+  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\benchmark_queries_v2.json",
+  "scene_root": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes",
   "scene_map": {
     "ConferenceHall": "ConferenceHall-capture-pilot",
     "Museume": "Museume-capture",
@@ -8,5 +8,5 @@
     "outdoor-street": "outdoor-street-capture",
     "Theater": "Theater-capture"
   },
-  "generated_at": "2026-07-02T15:09:39.290403+00:00"
+  "generated_at": "2026-07-05T12:43:49.725243+00:00"
 }

@@ -1,7 +1,7 @@
 {
   "run_id": "conceptgraphs_smoke_v1",
   "mode": "live",
-  "finished_at": "2026-06-26T16:42:39.665290+00:00",
+  "finished_at": "2026-07-05T12:44:18.659552+00:00",
   "events": [
     {
       "stage": "native_output_adaptation",

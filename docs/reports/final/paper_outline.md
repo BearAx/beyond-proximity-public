@@ -1,67 +1,93 @@
-# Paper Outline (honest scope) — SemanticSplat Sprint
+# Paper Outline - SemanticSplat Sprint
 
-Status date: 2026-07-05. Person 4 draft. Branch: `week4/integration-article-sprint`.
+Status date: 2026-07-05. Branch: `codex/research-upgrade-baselines-datasets`.
 
-## Working title
+## Working Title
 
 **SemanticSplat: Graph-Pruned Semantic Search over Captured 3D Gaussian Splatting Scenes**
 
-Avoid title implying ScanNet-scale validation or baseline superiority.
+This is still a good TwinWorld-style title. Avoid any title implying ScanNet
+scale, live VLM success, or superiority over external baselines.
 
-## One-paragraph story
+## One-Paragraph Story
 
-Indoor and outdoor 3DGS reconstructions provide geometry but weak semantic structure for natural-language queries. SemanticSplat builds a hierarchical semantic index from captured views and answers queries via top-down graph traversal instead of exhaustive flat search over the same semantic items. On five captured scenes (96 views, 1,046 items) and 150 benchmark queries, graph pruning reduces average views checked by 71.4% and input tokens by 65.1% relative to flat search, with hit@1 of 0.792 vs 0.768 on 125 queries with verified view labels. A legacy Conference Hall demo scene motivates room-disambiguation analysis with larger token reductions under a documented timing model.
+Indoor and outdoor 3DGS reconstructions provide geometry but weak semantic
+structure for natural-language queries. SemanticSplat builds a hierarchical
+semantic index from captured views and answers queries via top-down graph
+traversal instead of exhaustive flat search over the same semantic items. On
+five captured scenes (97 views, 1,066 semantic items) and 150 benchmark queries,
+graph pruning reduces average views checked by 75.5% and input tokens by 68.2%
+relative to flat search. The current lexical graph ranker trades off retrieval
+quality: hit@1 is 0.680 (graph) vs 0.768 (flat), and hit@3 is 0.808 vs 0.928
+on 125 queries with verified view labels. This frames the project honestly as a
+cost-control result and motivates calibrated pruning as the next algorithmic
+step.
 
-## Section skeleton (mapped to `main.tex`)
+## Section Skeleton
 
 ### 1. Introduction
-- Motivation: coordinates ≠ meaning.
-- Gap: flat search scales poorly in context.
-- Contribution bullets (supported only — see `claim_audit.md`).
+
+- Motivation: coordinates are not meaning.
+- Gap: flat search scales poorly in context and views checked.
+- Research question: cost removed by hierarchy, and quality trade-off introduced
+  by pruning.
 
 ### 2. Related Work
-- Language fields (LERF, LangSplat, Semantic Gaussians).
-- Open-vocabulary 3D scene graphs (ConceptGraphs, BBQ, HOV-SG, Hydra).
-- Benchmark framing (OpenLex3D, ScanRefer — future metrics).
-- Token/context efficiency (AttentionRAG, Provence, TeaRAG — metric framing only).
-- Source matrix: `docs/baselines/related_work_article_matrix.md`.
+
+- Language fields: LERF, LangSplat, Semantic Gaussians, LEGS.
+- Open-vocabulary 3D scene graphs: ConceptGraphs, BBQ, OpenScene,
+  ConceptFusion.
+- Hierarchical graphs and benchmarks: HOV-SG, Hydra, OpenLex3D, ScanRefer.
+- Token/context efficiency: AttentionRAG, Provence, TeaRAG, S-Path-RAG.
 
 ### 3. Method
-- Capture (browser + 3DGS PLY).
+
+- Capture: browser + 3DGS PLY.
 - ViewJSON semantic index.
-- Tree construction and query traversal.
-- Flat baseline (same semantic items).
+- Hierarchical tree construction and query traversal.
+- Flat baseline over identical semantic items.
 - Affordance expansion layer.
 
-### 4. Benchmark & Metrics
-- Scenes: five captured + legacy `default`.
-- Queries: `benchmark_queries_v2.json` (150 total, 125 with view GT).
-- Efficiency: views, tokens, elapsed ms.
-- Quality: hit@1, hit@3 with GT-aware denominators.
+### 4. Dataset And Benchmark
+
+- Scenes: five captured pilot scenes.
+- Current count: 97 ViewJSON annotations and 1,066 semantic items.
+- Queries: `benchmark_queries_v2.json` (150 total, 125 with verified view
+  labels).
+- Efficiency metrics: views checked, input tokens, elapsed ms.
+- Quality metrics: hit@1, hit@3 with verified-view denominators.
 
 ### 5. Experiments
-- **5.1** Five-scene graph vs flat (Table 1 — primary).
-- **5.2** Legacy demo scene (qualitative room failure + token model).
-- **5.3** Baselines scope (smokes only, no superiority).
+
+- Five-scene graph vs flat from `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/`.
+- Per-query-type and per-scene efficiency analysis.
+- Ablations from `outputs/graph_vs_flat/ablations_v1/`.
+- Scaling stress from `outputs/graph_vs_flat/scaling_stress_v1/`.
+- Baseline smokes for LangSplat and ConceptGraphs, without superiority claims.
 
 ### 6. Limitations
-- Manual reference labels; stub lexical mode; no 3D IoU; uneven graph benefit.
+
+- Manual reference labels, not independent GT.
+- Stub lexical mode, not live VLM.
+- No 3D IoU.
+- Graph hit@k is lower than flat in the current reproducible run.
+- External baselines are smoke/adapted only.
+- Replica/ScanNet are not official yet.
 
 ### 7. Reproducibility
-- `reproducibility_windows.md`, notebook, run ID `five_scene_graph_vs_flat_v2`.
 
-## Figures & tables (status)
+- `docs/reports/final/reproducibility_windows.md`
+- `docs/reports/final/claim_audit.md`
+- `docs/datasets/public_dataset_readiness.md`
 
-| Priority | Asset | Status |
-|----------|-------|--------|
-| P0 | Table 1 five-scene graph vs flat | Done (`main.tex`) |
-| P0 | Graph vs flat tokens (`default`) | Notebook Part A |
-| P0 | Five-scene summary | Notebook Part B + `metrics_summary.json` |
-| P1 | Per-query speedup chart | Notebook |
-| P1 | Failure case diagram | Qualitative in tex; UI capture optional |
-| P2 | Related work comparison table | Matrix in docs; prose in tex |
-| P2 | PDF build | `BUILD.md` + `export_paper_figures.py` |
+## Removed Or Blocked Claims
 
-## Removed / blocked claims
+Do not restore:
 
-Do not restore: 100% room-level topological accuracy, 50 challenging find queries, 34% IoU improvement, "significantly more accurate" hierarchy superiority.
+- 100% room-level topological accuracy.
+- 50 challenging find queries.
+- 34% IoU improvement.
+- "Significantly more accurate" hierarchy superiority.
+- Quality parity with flat search.
+- ConceptGraphs/LangSplat superiority.
+- Official Replica/ScanNet evaluation.

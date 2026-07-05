@@ -1,5 +1,5 @@
 metric,flat_avg,graph_avg,savings_pct
-views_checked,19.2,5.39,71.4
-input_tokens,3104.0,1061.6,65.1
-context_chars,12444.4,4272.66,65.7
-elapsed_ms,14.11,12.46,11.7
+views_checked,19.4,4.77,75.5
+input_tokens,3168.2,1014.26,68.2
+context_chars,12701.4,4084.82,67.8
+elapsed_ms,6.61,6.05,8.5

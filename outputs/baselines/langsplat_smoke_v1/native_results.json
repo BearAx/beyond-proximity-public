@@ -33,9 +33,9 @@
       "feature_level": 1,
       "explanation": "Native LangSplat feature query peaked at pixel (1073, 682) with official relevancy score 0.449588.",
       "metrics": {
-        "runtime_seconds": 106.70921081699998,
+        "runtime_seconds": 17.408091032999998,
         "stage_runtime_seconds": {
-          "native_language_field_query": 106.70921081699998
+          "native_language_field_query": 17.408091032999998
         },
         "model_call_count": 1,
         "cache_hits": 0,

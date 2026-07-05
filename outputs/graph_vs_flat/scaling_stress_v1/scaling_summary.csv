@@ -1,0 +1,5 @@
+multiplier,avg_indexed_views,avg_tree_nodes,flat_avg_views_checked,graph_avg_views_checked,view_savings_pct,flat_avg_input_tokens,graph_avg_input_tokens,token_savings_pct,flat_avg_elapsed_ms,graph_avg_elapsed_ms
+1,20.0,217.0,20.0,4.3167,78.42,3240.5,933.3333,71.2,6.351,5.5936
+2,40.0,433.0,40.0,7.4333,81.42,6481.0,1595.6333,75.38,14.7759,10.7185
+5,100.0,1081.0,100.0,16.7833,83.22,16202.5,3582.5333,77.89,33.1434,21.8698
+10,200.0,2161.0,200.0,32.3667,83.82,32405.0,6894.0333,78.73,63.7005,39.8567

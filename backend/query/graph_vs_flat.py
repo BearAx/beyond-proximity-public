@@ -212,8 +212,16 @@ def simulate_graph_search(
     query_id: str = "",
     benchmark_scene_id: str = "",
     use_affordance: bool = False,
+    branch_keep_ratio: float = 0.5,
+    fallback_child_limit: int = 3,
+    mode_suffix: str = "",
 ) -> SearchMetrics:
     """Tree-guided lexical search with branch pruning over the captured semantic tree."""
+    if branch_keep_ratio < 0:
+        raise ValueError("branch_keep_ratio must be non-negative")
+    if fallback_child_limit < 1:
+        raise ValueError("fallback_child_limit must be at least 1")
+
     t0 = time.perf_counter()
     tree: dict[str, dict[str, Any]] = bundle["tree"]
     views: dict[str, dict[str, Any]] = bundle["views"]
@@ -223,7 +231,7 @@ def simulate_graph_search(
     expanded = query if not use_affordance else f"{query} [{' '.join(sorted(query_tokens - tokenize(query)))}]"
 
     metrics = SearchMetrics(
-        mode="graph_affordance" if use_affordance else "graph_lexical",
+        mode=("graph_affordance" if use_affordance else "graph_lexical") + mode_suffix,
         scene_id=str(bundle["scene_id"]),
         benchmark_scene_id=benchmark_scene_id or str(bundle["scene_id"]),
         query_id=query_id,
@@ -273,9 +281,9 @@ def simulate_graph_search(
         scored.sort(reverse=True)
         if scored and scored[0][0] > 0:
             top = scored[0][0]
-            chosen = [child_id for overlap, _, child_id in scored if overlap >= top * 0.5]
+            chosen = [child_id for overlap, _, child_id in scored if overlap >= top * branch_keep_ratio]
         else:
-            chosen = children[: min(3, len(children))]
+            chosen = children[: min(fallback_child_limit, len(children))]
         for child_id in reversed(chosen):
             stack.append(child_id)
 
@@ -286,7 +294,10 @@ def simulate_graph_search(
         metrics.selected_node_id = best_node
         metrics.matched_object = best_object
     metrics.elapsed_ms = (time.perf_counter() - t0) * 1000
-    metrics.warnings.append("Graph mode prunes sibling branches using the same lexical scorer as flat mode.")
+    metrics.warnings.append(
+        "Graph mode prunes sibling branches using the same lexical scorer as flat mode; "
+        f"branch_keep_ratio={branch_keep_ratio}, fallback_child_limit={fallback_child_limit}."
+    )
     return metrics
 
 
@@ -571,7 +582,7 @@ def _write_csv_tables(out_dir: Path, run: dict[str, Any]) -> None:
     averages = summary.get("averages", {})
 
     with (out_dir / "metrics_summary.csv").open("w", encoding="utf-8", newline="") as fh:
-        writer = csv.writer(fh)
+        writer = csv.writer(fh, lineterminator="\n")
         writer.writerow(["metric", "flat_avg", "graph_avg", "savings_pct"])
         pairs = [
             ("views_checked", "flat_views_checked", "graph_views_checked", "savings_views_pct"),
@@ -593,7 +604,7 @@ def _write_csv_tables(out_dir: Path, run: dict[str, Any]) -> None:
     rows = run.get("queries", [])
     if rows:
         with (out_dir / "per_query_summary.csv").open("w", encoding="utf-8", newline="") as fh:
-            writer = csv.writer(fh)
+            writer = csv.writer(fh, lineterminator="\n")
             writer.writerow([
                 "query_id", "scene_id", "query_type", "flat_views", "graph_views",
                 "flat_tokens", "graph_tokens", "savings_views_pct", "savings_tokens_pct",

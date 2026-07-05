@@ -1,6 +1,6 @@
 # ConceptGraphs Smoke Result
 
-Status date: 2026-06-26. Result: native one-frame smoke executed with warnings.
+Status date: 2026-07-05. Result: native one-frame smoke rerun with warnings.
 
 ## Commands Run
 
@@ -35,7 +35,7 @@ canonical query results = 1
 schema-valid results = 1
 matched object = sofa chair
 native object count = 16
-native query runtime = 65.4509 seconds
+native query runtime = 69.8745 seconds
 confidence = 0.2810319662094116
 accuracy = N/A, no GT
 3D IoU = N/A, no reliable GT 3D box

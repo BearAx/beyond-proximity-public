@@ -38,7 +38,7 @@
 | expected_node_hit | unavailable | N/A | 0 / 0 |
 | expected_zone_hit | unavailable | N/A | 0 / 0 |
 | not_found_correctness | unavailable | N/A | 0 / 0 |
-| runtime_seconds mean | measured | 106.7092 | 1 records |
+| runtime_seconds mean | measured | 17.4081 | 1 records |
 | checked_view_count mean | measured | 1.0000 | 1 records |
 | visited_node_count mean | measured | 2.0000 | 1 records |
 | bbox_3d_iou | N/A | N/A | 0 records |
