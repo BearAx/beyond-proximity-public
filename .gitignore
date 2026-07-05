@@ -73,6 +73,22 @@ outputs/baselines/conceptgraphs_smoke_v1/**
 # Matplotlib cache (benchmark charts)
 .matplotlib/
 
+# LaTeX build artifacts (rebuild via papers/beyond-proximity/build_paper.cmd)
+papers/beyond-proximity/main.aux
+papers/beyond-proximity/main.bbl
+papers/beyond-proximity/main.blg
+papers/beyond-proximity/main.log
+papers/beyond-proximity/main.out
+papers/beyond-proximity/main.fls
+papers/beyond-proximity/main.fdb_latexmk
+papers/beyond-proximity/main.synctex.gz
+
+# Local Query Flow / auto-benchmark session logs (not article evidence)
+backend/data/scenes/*/queries/auto_*.json
+
+# Local WIP scene pilots (not in five-scene benchmark)
+backend/data/scenes/replica_pilot_001/
+
 # Local merge clones / backups (if copied into repo root)
 /leo-fork/
 local_backup*.zip

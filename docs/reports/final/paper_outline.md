@@ -60,7 +60,7 @@ Indoor and outdoor 3DGS reconstructions provide geometry but weak semantic struc
 | P1 | Per-query speedup chart | Notebook |
 | P1 | Failure case diagram | Qualitative in tex; UI capture optional |
 | P2 | Related work comparison table | Matrix in docs; prose in tex |
-| P2 | PDF build | Needs LaTeX env (`BUILD.md`) |
+| P2 | PDF build | `BUILD.md` + `export_paper_figures.py` |
 
 ## Removed / blocked claims
 

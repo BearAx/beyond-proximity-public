@@ -1,13 +1,25 @@
-# Building `main.pdf`
+# Paper PDF
 
-The article source is `main.tex`. LaTeX is not required for repo development but is needed to produce the PDF.
+**If your PDF still says "Beyond Proximity" with 100% room accuracy — it is stale.**  
+Current source: `main.tex` → title **SemanticSplat**, with 3 figures in `figures/`.
 
-## Windows (MiKTeX)
+`main.pdf` on disk is only updated when you run the build below (last manual check: old PDF from June).
 
-1. Install [MiKTeX](https://miktex.org/download) or TeX Live.
-2. From repo root:
+## Quick build (Windows)
+
+From repo root:
 
 ```powershell
+cd papers\beyond-proximity
+.\build_paper.cmd
+```
+
+Or step by step:
+
+```powershell
+cd beyond-proximity
+$env:PYTHONPATH = "."
+python -B scripts\export_paper_figures.py
 cd papers\beyond-proximity
 pdflatex main.tex
 bibtex main
@@ -15,17 +27,25 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
-Output: `main.pdf`.
+Requires `pdflatex` on PATH (MiKTeX / TeX Live). If missing:
 
-## macOS / Linux
-
-```bash
-cd papers/beyond-proximity
-pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+```powershell
+winget install MiKTeX.MiKTeX
 ```
 
-## Notes
+Then run `.\build_paper.cmd` again (script auto-finds MiKTeX even before terminal restart).
 
-- Uses `cvpr.sty` and `refs.bib` in this directory.
-- Frozen evidence run ID for Table 1: `five_scene_graph_vs_flat_v2`.
-- If `bibtex` warns on arXiv-only entries, metadata is draft-quality from Person 3 matrix — verify before submission.
+## Figures included in PDF
+
+| File | Content |
+|------|---------|
+| `figures/fig_five_scene_summary.pdf` | Views / tokens / runtime + hit@1 / hit@3 |
+| `figures/fig_by_query_type.pdf` | Token savings by query type (6 types) |
+| `figures/fig_by_scene.pdf` | Views checked per scene |
+| `figures/fig_default_average.pdf` | Legacy demo scene (12 queries) |
+
+Regenerate figures only:
+
+```powershell
+python -B scripts\export_paper_figures.py
+```

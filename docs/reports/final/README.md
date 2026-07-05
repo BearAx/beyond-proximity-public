@@ -7,7 +7,6 @@ Person 4 artifacts for the four-person sprint. All claims cross-check against re
 | [`claim_audit.md`](claim_audit.md) | Claims vs evidence (updated 2026-07-05) |
 | [`paper_outline.md`](paper_outline.md) | Honest section skeleton and figure checklist |
 | [`reproducibility_windows.md`](reproducibility_windows.md) | Windows commands including five-scene runner |
-| [`article_readiness_checklist.md`](article_readiness_checklist.md) | Pre-PR / pre-PDF gate |
 | [`../../notebooks/graph_vs_flat_evidence.ipynb`](../../notebooks/graph_vs_flat_evidence.ipynb) | Part A: `default` · Part B: five-scene v2 |
 | [`../../papers/beyond-proximity/main.tex`](../../papers/beyond-proximity/main.tex) | Article draft (honest scope) |
 | [`../../papers/beyond-proximity/BUILD.md`](../../papers/beyond-proximity/BUILD.md) | LaTeX PDF build instructions |

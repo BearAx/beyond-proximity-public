@@ -113,9 +113,9 @@ Notebook reads only checked-in JSON; no live API calls. Part A: `default` scene.
 
 ## Article PDF (LaTeX)
 
-LaTeX is not bundled with this repo. On a machine with TeX Live or MiKTeX:
-
 ```powershell
+$env:PYTHONPATH = "."
+python -B scripts\export_paper_figures.py
 cd papers\beyond-proximity
 pdflatex main.tex
 bibtex main

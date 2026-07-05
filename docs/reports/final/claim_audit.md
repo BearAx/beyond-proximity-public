@@ -56,11 +56,11 @@ Legacy `default` scene: separate subsection only (8.5× token reduction under do
 - [x] `claim_audit.md` — this file
 - [x] `paper_outline.md` — updated post five-scene merge
 - [x] `reproducibility_windows.md` — runner commands, no "pending"
-- [x] `article_readiness_checklist.md` — sprint gate
+- [x] Paper figures — `scripts/export_paper_figures.py` → `papers/beyond-proximity/figures/`
 - [x] `notebooks/graph_vs_flat_evidence.ipynb` — Part A + Part B
 - [x] Presentation stale notices
-- [ ] `main.pdf` — blocked: LaTeX not installed on dev machine (see `BUILD.md`)
-- [ ] PR to `main` — team decision (Leo remote ready)
+- [x] `main.pdf` buildable (LaTeX + `scripts/export_paper_figures.py`)
+- [ ] PR to `main` — team decision (not started)
 
 ## Reviewer FAQ
 
