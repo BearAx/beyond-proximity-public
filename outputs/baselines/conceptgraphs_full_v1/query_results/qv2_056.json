@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "447f843f-e5cf-4500-a32f-7c9b305d7197"
+  ],
+  "selected_views": [
+    "v007"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "bench",
+    "selected_node_id": "447f843f-e5cf-4500-a32f-7c9b305d7197",
+    "selected_view_id": "v007",
+    "bbox_2d": [
+      0.41875,
+      0.70625,
+      0.6296875,
+      1.0
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        4.806925394169864,
+        1.1297379360320292,
+        -59.65085194229624
+      ],
+      "maximum": [
+        33.197927107803494,
+        44.196457900813314,
+        2.7800416190114063
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.21033738553524017,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 66 with class 'bench' and cosine similarity 0.210337."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_056",
+  "query": "Find grand piano",
+  "query_type": "negative"
+}

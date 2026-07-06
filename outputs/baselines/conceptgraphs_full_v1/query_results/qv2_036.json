@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "6de1b65f-9c65-4029-b384-a4edcab8da77"
+  ],
+  "selected_views": [
+    "v001"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "projector screen",
+    "selected_node_id": "6de1b65f-9c65-4029-b384-a4edcab8da77",
+    "selected_view_id": "v001",
+    "bbox_2d": [
+      0.825,
+      0.246875,
+      0.98125,
+      0.571875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        3.261119437192022,
+        -2.7464370617753566,
+        -82.634466393528
+      ],
+      "maximum": [
+        27.524086045615874,
+        16.317227496526474,
+        0.20425078821939735
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3475121855735779,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 11 with class 'projector screen' and cosine similarity 0.347512."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_036",
+  "query": "Find the bright green information screens",
+  "query_type": "attribute"
+}

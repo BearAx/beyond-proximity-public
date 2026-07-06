@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "387fd8f8-e601-4a8c-b4a5-f68deae940e1"
+  ],
+  "selected_views": [
+    "v008"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "tv",
+    "selected_node_id": "387fd8f8-e601-4a8c-b4a5-f68deae940e1",
+    "selected_view_id": "v008",
+    "bbox_2d": [
+      0.596875,
+      0.40625,
+      0.6921875,
+      0.60625
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -11.437921291038338,
+        1.3734627174732204,
+        15.535583180207666
+      ],
+      "maximum": [
+        14.336408765210825,
+        16.65911324969372,
+        70.57215376855237
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.270346462726593,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 68 with class 'tv' and cosine similarity 0.270346."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_060",
+  "query": "Find projection screen",
+  "query_type": "negative"
+}

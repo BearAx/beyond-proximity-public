@@ -1,0 +1,52 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "empty_native_object_map"
+  },
+  "visited_nodes": [],
+  "selected_views": [],
+  "result": {
+    "found": false,
+    "matched_object": null,
+    "selected_node_id": null,
+    "selected_view_id": null,
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": null,
+    "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.0,
+    "stage_runtime_seconds": {
+      "native_map_load": 0.04711884999960603,
+      "native_batch_query_total": 0.0,
+      "native_batch_query_per_query": 0.0
+    },
+    "token_usage": null,
+    "model_call_count": 0,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 1,
+    "visited_node_count": 0,
+    "checked_view_count": 0,
+    "construction_cost": {
+      "native_map_object_count": 0,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+    "This is recorded as an explicit baseline miss, not as a semantic answer."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-drone-capture",
+  "query_id": "qv2_137",
+  "query": "Find the sea water in the open water region",
+  "query_type": "multi_hop"
+}

@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "24354410-b6b9-41f5-a37e-c286d5978296"
+  ],
+  "selected_views": [
+    "v015"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "tv",
+    "selected_node_id": "24354410-b6b9-41f5-a37e-c286d5978296",
+    "selected_view_id": "v015",
+    "bbox_2d": [
+      0.584375,
+      0.384375,
+      0.6484375,
+      0.478125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        32.035722415737666,
+        -1.7368549014684591,
+        -38.073288172085526
+      ],
+      "maximum": [
+        89.37332960932447,
+        0.2964674282284411,
+        -0.14006953843515646
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.31319093704223633,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 113 with class 'tv' and cosine similarity 0.313191."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_055",
+  "query": "Find a place with exhibit labels to read",
+  "query_type": "functional"
+}

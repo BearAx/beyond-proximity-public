@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "2c2312e8-043c-4ff6-833a-d201e04b406a"
+  ],
+  "selected_views": [
+    "v019"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "lamp",
+    "selected_node_id": "2c2312e8-043c-4ff6-833a-d201e04b406a",
+    "selected_view_id": "v019",
+    "bbox_2d": [
+      0.1734375,
+      0.0,
+      0.234375,
+      0.08125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        16.799725427404013,
+        -2.7618401517303943,
+        -0.13922122878905968
+      ],
+      "maximum": [
+        19.94885611147936,
+        0.2349827005667331,
+        4.623758827439
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.18260863423347473,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 139 with class 'lamp' and cosine similarity 0.182609."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_057",
+  "query": "Find swimming pool",
+  "query_type": "negative"
+}

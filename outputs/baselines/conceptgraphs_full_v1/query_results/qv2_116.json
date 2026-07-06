@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "7f43363a-b866-4655-b794-095db8b0c30a"
+  ],
+  "selected_views": [
+    "v011"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "paper towel roll",
+    "selected_node_id": "7f43363a-b866-4655-b794-095db8b0c30a",
+    "selected_view_id": "v011",
+    "bbox_2d": [
+      0.56875,
+      0.33125,
+      0.6234375,
+      0.38125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -20.127692416164862,
+        11.568742956758548,
+        23.945758962448963
+      ],
+      "maximum": [
+        34.62188538373377,
+        18.573961614049384,
+        42.340757150775005
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.20558138191699982,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.205581."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09248076846667269,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 69.27211776700005,
+      "native_batch_query_total": 2.774423054000181,
+      "native_batch_query_per_query": 0.09248076846667269
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 43,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-street-capture",
+  "query_id": "qv2_116",
+  "query": "Find grand piano",
+  "query_type": "negative"
+}

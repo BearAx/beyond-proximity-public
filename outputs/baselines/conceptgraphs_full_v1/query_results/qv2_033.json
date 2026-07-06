@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "7125cd72-3758-42f7-95ea-85cf62d7bd4c"
+  ],
+  "selected_views": [
+    "v008"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "bulletin board",
+    "selected_node_id": "7125cd72-3758-42f7-95ea-85cf62d7bd4c",
+    "selected_view_id": "v008",
+    "bbox_2d": [
+      0.40625,
+      0.190625,
+      0.5484375,
+      0.896875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -13.468008969240941,
+        -2.510404575445797,
+        4.085323249457175
+      ],
+      "maximum": [
+        20.842518110430525,
+        26.87058207645222,
+        37.04983221450016
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.35907912254333496,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 71 with class 'bulletin board' and cosine similarity 0.359079."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_033",
+  "query": "Find the red exhibition panel",
+  "query_type": "simple_object"
+}

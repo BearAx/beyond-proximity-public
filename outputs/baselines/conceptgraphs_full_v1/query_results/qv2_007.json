@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "2e8b5922-57dd-4ed9-8c40-78d6d77f8c6d"
+  ],
+  "selected_views": [
+    "v016"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "couch",
+    "selected_node_id": "2e8b5922-57dd-4ed9-8c40-78d6d77f8c6d",
+    "selected_view_id": "v016",
+    "bbox_2d": [
+      0.6671875,
+      0.66875,
+      0.9984375,
+      1.0
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        2.7734551965639263,
+        2.0704001225076922,
+        -43.07776772880929
+      ],
+      "maximum": [
+        65.13485887813033,
+        39.761005107343564,
+        -2.71504861964101
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2953009307384491,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 259 with class 'couch' and cosine similarity 0.295301."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09900079336666749,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 84.08998363,
+      "native_batch_query_total": 2.970023801000025,
+      "native_batch_query_per_query": 0.09900079336666749
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 313,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_007",
+  "query": "Find the cream sofas",
+  "query_type": "attribute"
+}

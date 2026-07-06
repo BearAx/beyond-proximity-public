@@ -1,0 +1,173 @@
+{
+  "schema_version": "semanticsplat.run_config.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "status": "complete",
+  "scene_ids": [
+    "ConferenceHall-capture-pilot",
+    "Museume-capture",
+    "outdoor-drone-capture",
+    "outdoor-street-capture",
+    "Theater-capture"
+  ],
+  "scenes": [
+    {
+      "scene_id": "ConferenceHall-capture-pilot",
+      "benchmark_scene_id": "ConferenceHall"
+    },
+    {
+      "scene_id": "Museume-capture",
+      "benchmark_scene_id": "Museume"
+    },
+    {
+      "scene_id": "outdoor-drone-capture",
+      "benchmark_scene_id": "outdoor-drone"
+    },
+    {
+      "scene_id": "outdoor-street-capture",
+      "benchmark_scene_id": "outdoor-street"
+    },
+    {
+      "scene_id": "Theater-capture",
+      "benchmark_scene_id": "Theater"
+    }
+  ],
+  "scene_stats": [
+    {
+      "scene_id": "ConferenceHall-capture-pilot",
+      "benchmark_scene_id": "ConferenceHall",
+      "query_count": 30,
+      "found_count": 30,
+      "native_map_object_count": 313,
+      "status": "available"
+    },
+    {
+      "scene_id": "Museume-capture",
+      "benchmark_scene_id": "Museume",
+      "query_count": 30,
+      "found_count": 30,
+      "native_map_object_count": 150,
+      "status": "available"
+    },
+    {
+      "scene_id": "outdoor-drone-capture",
+      "benchmark_scene_id": "outdoor-drone",
+      "query_count": 30,
+      "found_count": 0,
+      "native_map_object_count": 0,
+      "status": "native_map_empty"
+    },
+    {
+      "scene_id": "outdoor-street-capture",
+      "benchmark_scene_id": "outdoor-street",
+      "query_count": 30,
+      "found_count": 30,
+      "native_map_object_count": 43,
+      "status": "available"
+    },
+    {
+      "scene_id": "Theater-capture",
+      "benchmark_scene_id": "Theater",
+      "query_count": 30,
+      "found_count": 30,
+      "native_map_object_count": 183,
+      "status": "available"
+    }
+  ],
+  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\benchmark_queries_v2.json",
+  "native_input": "outputs\\baselines\\conceptgraphs_full_v1",
+  "provenance_by_scene": {
+    "ConferenceHall-capture-pilot": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "ConferenceHall-capture-pilot",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "streamlined_detections.py end=20; streamlined_mapping.py end=20; native_batch_query.py ConferenceHall",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/ConferenceHall-capture-pilot/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz",
+        "native_data/ConferenceHall-capture-pilot/conversion_manifest.json"
+      ]
+    },
+    "Museume-capture": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "Museume-capture",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "streamlined_detections.py end=20; streamlined_mapping.py end=20; native_batch_query.py Museume",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/Museume-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz",
+        "native_data/Museume-capture/conversion_manifest.json"
+      ]
+    },
+    "outdoor-drone-capture": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "outdoor-drone-capture",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "streamlined_detections.py end=16; streamlined_mapping.py end=16; native_batch_query.py outdoor-drone",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/outdoor-drone-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz",
+        "native_data/outdoor-drone-capture/conversion_manifest.json"
+      ]
+    },
+    "outdoor-street-capture": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "outdoor-street-capture",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "streamlined_detections.py end=21; streamlined_mapping.py end=21; native_batch_query.py outdoor-street",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/outdoor-street-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz",
+        "native_data/outdoor-street-capture/conversion_manifest.json"
+      ]
+    },
+    "Theater-capture": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "Theater-capture",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "streamlined_detections.py end=20; streamlined_mapping.py end=20; native_batch_query.py Theater",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/Theater-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz",
+        "native_data/Theater-capture/conversion_manifest.json"
+      ]
+    }
+  },
+  "depth_validation": {
+    "status": "unverified_for_native_conceptgraphs_metric_alignment",
+    "reason": "RGB-D was valid for native mapping, but metric alignment and independent 3D GT are not established."
+  },
+  "result_count": 150,
+  "finished_at": "2026-07-06T21:51:10.723014+00:00"
+}

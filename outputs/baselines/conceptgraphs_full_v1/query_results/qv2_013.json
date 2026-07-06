@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "c1780b50-ae3a-4624-ae6d-20c8756b9303"
+  ],
+  "selected_views": [
+    "v011"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "lamp",
+    "selected_node_id": "c1780b50-ae3a-4624-ae6d-20c8756b9303",
+    "selected_view_id": "v011",
+    "bbox_2d": [
+      0.54375,
+      0.459375,
+      0.565625,
+      0.515625
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -9.251581094281013,
+        1.4187911387707546,
+        -51.06713914082467
+      ],
+      "maximum": [
+        4.196537157775994,
+        3.8123260319189933,
+        -16.49751094914948
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.28290584683418274,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 189 with class 'lamp' and cosine similarity 0.282906."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09900079336666749,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 84.08998363,
+      "native_batch_query_total": 2.970023801000025,
+      "native_batch_query_per_query": 0.09900079336666749
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 313,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_013",
+  "query": "Find the table lamps near the sofas",
+  "query_type": "relational"
+}

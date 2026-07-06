@@ -1,0 +1,1011 @@
+{
+  "provenance": {
+    "native_execution": true,
+    "baseline": "conceptgraphs",
+    "scene_id": "outdoor-drone-capture",
+    "repository": "https://github.com/concept-graphs/concept-graphs",
+    "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+    "command": "streamlined_detections.py end=16; streamlined_mapping.py end=16; native_batch_query.py outdoor-drone",
+    "checkpoints": [
+      "ultralytics/yolov8l-world.pt",
+      "ultralytics/mobile_sam.pt",
+      "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+    ],
+    "native_artifacts": [
+      "native_data/outdoor-drone-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz",
+      "native_data/outdoor-drone-capture/conversion_manifest.json"
+    ]
+  },
+  "predictions": [
+    {
+      "query_id": "qv2_121",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_122",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_123",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_124",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_125",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_126",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_127",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_128",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_129",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_130",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_131",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_132",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_133",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_134",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_135",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_136",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_137",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_138",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_139",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_140",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_141",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_142",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_143",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_144",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_145",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_146",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_147",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_148",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_149",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    },
+    {
+      "query_id": "qv2_150",
+      "found": false,
+      "matched_object": null,
+      "selected_object_id": null,
+      "selected_view_ids": [],
+      "trace_node_ids": [],
+      "confidence": null,
+      "bbox_2d": null,
+      "bbox_3d": null,
+      "native_query_type": "empty_native_object_map",
+      "explanation": "Native ConceptGraphs produced a saved map artifact, but the serialized object map contained zero objects for this scene.",
+      "metrics": {
+        "runtime_seconds": 0.0,
+        "stage_runtime_seconds": {
+          "native_map_load": 0.04711884999960603,
+          "native_batch_query_total": 0.0,
+          "native_batch_query_per_query": 0.0
+        },
+        "model_call_count": 0,
+        "cache_hits": 0,
+        "checked_view_count": 0,
+        "failure_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 0,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
+        "This is recorded as an explicit baseline miss, not as a semantic answer."
+      ]
+    }
+  ]
+}

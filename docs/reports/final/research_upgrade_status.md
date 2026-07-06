@@ -10,15 +10,18 @@ submission.
 
 ### External baseline smokes
 
-Both mandatory external baselines were rerun locally:
+Both mandatory external baselines were rerun locally. ConceptGraphs was then
+expanded from smoke scope to all five captured scenes:
 
 | Baseline | Status | Evidence | Valid claim |
 |---|---|---|---|
 | LangSplat | DONE smoke | `outputs/baselines/langsplat_smoke_v1/` | Official sofa smoke executes and adapts to canonical output. |
-| ConceptGraphs | DONE smoke with native warning | `outputs/baselines/conceptgraphs_smoke_v1/` | One-frame captured-scene smoke executes and adapts to canonical output. |
+| ConceptGraphs | DONE five captured scenes with limitations | `outputs/baselines/conceptgraphs_full_v1/` | Native Docker run produces 150 canonical outputs; drone native map is empty. |
 
-These are not fair head-to-head results. They prove setup/adapters only.
-Accuracy, superiority, and five-scene baseline comparison remain unavailable.
+LangSplat remains setup/adapters-only evidence. ConceptGraphs is now a
+same-captured-scene baseline artifact, but it is not an official public-dataset
+result and does not provide 3D IoU, independent semantic accuracy, or superiority
+evidence.
 
 ### Current graph-vs-flat evidence
 

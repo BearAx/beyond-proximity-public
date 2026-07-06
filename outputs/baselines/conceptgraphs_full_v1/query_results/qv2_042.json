@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "1f02c66c-8d51-43ae-8fd7-3296c3773643"
+  ],
+  "selected_views": [
+    "v009"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "whiteboard",
+    "selected_node_id": "1f02c66c-8d51-43ae-8fd7-3296c3773643",
+    "selected_view_id": "v009",
+    "bbox_2d": [
+      0.7171875,
+      0.184375,
+      0.9296875,
+      0.93125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -23.708700858153104,
+        -8.598590115232222,
+        -15.308189974940614
+      ],
+      "maximum": [
+        25.158140230630682,
+        27.4819533540038,
+        2.7324777518908485
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3108508288860321,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 81 with class 'whiteboard' and cosine similarity 0.310851."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_042",
+  "query": "Find the historical photographs on the red panel",
+  "query_type": "relational"
+}

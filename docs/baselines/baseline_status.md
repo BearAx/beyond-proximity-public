@@ -1,10 +1,11 @@
 # Baseline Status
 
-Status date: 2026-06-26. ConceptGraphs and LangSplat smoke runs executed with limited scope.
+Status date: 2026-07-06. ConceptGraphs has a five-captured-scene run with
+limitations; LangSplat remains smoke-only.
 
 | Baseline | Smoke status | Native outputs | Canonical outputs | Main blocker |
 |---|---|---:|---:|---|
-| ConceptGraphs | one-frame smoke executed with warning | 1 | 1 | Not yet a fair multi-frame/five-scene comparison; no GT accuracy |
+| ConceptGraphs | five captured scenes executed with limitations | 5 native result files | 150 | Not official Replica/ScanNet; drone native map is empty; no 3D IoU |
 | LangSplat | official sofa smoke executed | 1 | 1 | Not yet adapted to the five captured SemanticSplat scenes; no GT accuracy |
 
 ## Local Capability Audit
@@ -29,9 +30,15 @@ Exact setup and result evidence:
 
 - `docs/baselines/conceptgraphs/conceptgraphs_smoke_setup.md`
 - `docs/baselines/conceptgraphs/conceptgraphs_smoke_result.md`
+- `docs/baselines/conceptgraphs/conceptgraphs_full_result.md`
 - `docs/baselines/conceptgraphs/status.md`
 - `docs/baselines/langsplat/langsplat_smoke_setup.md`
 - `docs/baselines/langsplat/langsplat_smoke_result.md`
 - `docs/baselines/langsplat/status.md`
 
-LangSplat has native and canonical smoke evidence under `outputs/baselines/langsplat_smoke_v1/`. ConceptGraphs has native and canonical smoke evidence under `outputs/baselines/conceptgraphs_smoke_v1/`. Neither is a fair five-scene comparison, and neither has an accuracy denominator because the smoke queries lack independent GT.
+LangSplat has native and canonical smoke evidence under
+`outputs/baselines/langsplat_smoke_v1/`. ConceptGraphs has native and canonical
+five captured-scene evidence under `outputs/baselines/conceptgraphs_full_v1/`.
+This is not an official public-dataset result and does not provide 3D IoU. The
+drone scene produced a native empty object map, which is recorded as explicit
+`found=false` baseline misses rather than fabricated answers.

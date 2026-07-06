@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "a445d400-52ae-49e9-9565-09a51c15f221"
+  ],
+  "selected_views": [
+    "v017"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "dining table",
+    "selected_node_id": "a445d400-52ae-49e9-9565-09a51c15f221",
+    "selected_view_id": "v017",
+    "bbox_2d": [
+      0.2328125,
+      0.675,
+      0.4421875,
+      0.946875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        12.509618971508026,
+        1.7740190947065546,
+        -51.47353594930085
+      ],
+      "maximum": [
+        19.684683499101745,
+        11.275798734159338,
+        -27.64518465749003
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.30589208006858826,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 270 with class 'dining table' and cosine similarity 0.305892."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09900079336666749,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 84.08998363,
+      "native_batch_query_total": 2.970023801000025,
+      "native_batch_query_per_query": 0.09900079336666749
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 313,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_017",
+  "query": "Find the round tables in the banquet seating area",
+  "query_type": "multi_hop"
+}

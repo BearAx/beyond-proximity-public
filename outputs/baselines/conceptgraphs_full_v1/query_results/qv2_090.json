@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "d33b4d6f-6f6a-4842-bde5-310cd14df0a7"
+  ],
+  "selected_views": [
+    "v013"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "range hood",
+    "selected_node_id": "d33b4d6f-6f6a-4842-bde5-310cd14df0a7",
+    "selected_view_id": "v013",
+    "bbox_2d": [
+      0.9578125,
+      0.309375,
+      1.0,
+      0.49375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        1.684830380606985,
+        2.1316852929293857,
+        -22.62508801007984
+      ],
+      "maximum": [
+        30.687279695972364,
+        4.252079765129677,
+        4.391890063743656
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.23036858439445496,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 125 with class 'range hood' and cosine similarity 0.230369."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.0971182930666752,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 74.45808895299979,
+      "native_batch_query_total": 2.913548792000256,
+      "native_batch_query_per_query": 0.0971182930666752
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 183,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Theater-capture",
+  "query_id": "qv2_090",
+  "query": "Find beach",
+  "query_type": "negative"
+}

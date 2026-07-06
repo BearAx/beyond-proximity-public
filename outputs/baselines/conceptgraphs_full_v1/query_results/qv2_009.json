@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "869dddb2-3f9d-46e2-b98a-a3905067d5c7"
+  ],
+  "selected_views": [
+    "v017"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "desk",
+    "selected_node_id": "869dddb2-3f9d-46e2-b98a-a3905067d5c7",
+    "selected_view_id": "v017",
+    "bbox_2d": [
+      0.8765625,
+      0.615625,
+      1.0,
+      0.85
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -74.07989666696912,
+        1.899454862503866,
+        -77.5481210197763
+      ],
+      "maximum": [
+        11.891380655449694,
+        24.86694054672469,
+        -28.14346512010507
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.31983160972595215,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 276 with class 'desk' and cosine similarity 0.319832."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09900079336666749,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 84.08998363,
+      "native_batch_query_total": 2.970023801000025,
+      "native_batch_query_per_query": 0.09900079336666749
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 313,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_009",
+  "query": "Find the dark reception counter",
+  "query_type": "attribute"
+}

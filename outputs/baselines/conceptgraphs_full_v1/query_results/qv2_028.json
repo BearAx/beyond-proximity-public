@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "5c58e006-75cd-4dc9-85f4-d0eec8763a23"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "end table",
+    "selected_node_id": "5c58e006-75cd-4dc9-85f4-d0eec8763a23",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.0,
+      0.73125,
+      0.075,
+      1.0
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        5.609750772829408,
+        4.939508024640393,
+        -8.736461501770632
+      ],
+      "maximum": [
+        25.5172931061299,
+        24.537860960666112,
+        35.30655209027
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.17758622765541077,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 60 with class 'end table' and cosine similarity 0.177586."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09900079336666749,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 84.08998363,
+      "native_batch_query_total": 2.970023801000025,
+      "native_batch_query_per_query": 0.09900079336666749
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 313,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_028",
+  "query": "Find vehicle",
+  "query_type": "negative"
+}

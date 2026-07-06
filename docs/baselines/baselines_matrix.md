@@ -117,7 +117,7 @@ Do not try to run LangSplat or ConceptGraphs during Week 1 unless the headless S
 | Baseline | Can run Week 2? | Can run Week 3? | Required input | Output type | Main blocker | Required adapter | Owner |
 |---|---|---|---|---|---|---|---|
 | LangSplat | No | Official sofa smoke executed | Calibrated RGB views, poses, compatible 3DGS, language features/checkpoints | Language-field relevancy and semantic localization | Five captured scenes are not converted/trained in LangSplat native format; no GT accuracy for sofa smoke | Scene format, text query, relevancy-to-canonical localization | Literature / Baselines / Repo Notes Lead |
-| ConceptGraphs | No | One-frame smoke executed with warning | Reliable posed RGB-D, intrinsics, segmentation/features/checkpoints | Object-centric 3D graph and geometry | Smoke is not yet multi-frame/five-scene; mapping writes the map then fails its internal report; no GT accuracy | RGB-D loader, graph export, query, canonical output | Literature / Baselines / Repo Notes Lead |
+| ConceptGraphs | No | Five captured scenes executed with limitations | Reliable posed RGB-D, intrinsics, segmentation/features/checkpoints | Object-centric 3D graph and geometry | Not official Replica/ScanNet; drone native map has zero objects; no 3D IoU | RGB-D loader, graph export, query, canonical output | Literature / Baselines / Repo Notes Lead |
 | LERF | No | No, optional only | Nerfstudio scene and trained language NeRF | Text relevancy field | Optional scope; no environment/checkpoint or validated scene | Nerfstudio data and relevancy-to-canonical localization | Literature / Baselines / Repo Notes Lead |
 | Semantic Gaussians | No | No, optional only | Validated 3DGS and supported semantic features/models | Semantic Gaussians and segmentation/localization | Optional scope; no code/checkpoint or validated 3DGS | 3DGS/feature preparation and canonical output | Literature / Baselines / Repo Notes Lead |
 | BBQ | No | No, optional only | Reliable posed RGB-D and model dependencies | Object graph, relations, selected target | Optional scope; no code/checkpoints and invalid pilot geometry | RGB-D loader, graph export, reasoning provenance, canonical output | Literature / Baselines / Repo Notes Lead |
@@ -129,6 +129,10 @@ Dataset and pipeline owners support the baseline owner at their respective data 
 
 LangSplat has a native smoke result on the official pretrained sofa assets, with one canonical schema-valid output under `outputs/baselines/langsplat_smoke_v1/`. This is not a fair five-scene SemanticSplat comparison and has no accuracy denominator because the smoke query has `verification_status: missing_gt`.
 
-ConceptGraphs has a one-frame native smoke result under `outputs/baselines/conceptgraphs_smoke_v1/`, with one canonical schema-valid output for `q051`. This is not a fair five-scene comparison and has no accuracy denominator because the query has `verification_status: missing_gt`. The five capture scenes now have usable RGB-D/camera inputs, but neither baseline has a completed native package for all five captured scenes.
+ConceptGraphs now has a five-captured-scene native run under
+`outputs/baselines/conceptgraphs_full_v1/`, with 150 canonical schema-valid
+outputs for `benchmark_queries_v2.json`. This is not an official Replica/ScanNet
+result and does not provide 3D IoU. The drone scene produced a native empty
+object map and is recorded as explicit `found=false` baseline misses.
 
 Exact commands/errors are recorded under `docs/baselines/`. A future smoke must save native output, canonical adapter output, source revision, config, and measured timing. Heavy setup must not block the main pipeline. ScanNet is explicitly postponed beyond Week 3.

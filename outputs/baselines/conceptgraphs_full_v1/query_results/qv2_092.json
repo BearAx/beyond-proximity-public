@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb"
+  ],
+  "selected_views": [
+    "v013"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "pillar",
+    "selected_node_id": "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb",
+    "selected_view_id": "v013",
+    "bbox_2d": [
+      0.4640625,
+      0.0,
+      0.6109375,
+      0.846875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -24.856679657650574,
+        -34.68382578384201,
+        50.14324948866677
+      ],
+      "maximum": [
+        41.108973074160815,
+        17.890308958924386,
+        64.44848837104013
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2735956311225891,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'pillar' and cosine similarity 0.273596."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09248076846667269,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 69.27211776700005,
+      "native_batch_query_total": 2.774423054000181,
+      "native_batch_query_per_query": 0.09248076846667269
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 43,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-street-capture",
+  "query_id": "qv2_092",
+  "query": "Find the glass-block wall",
+  "query_type": "simple_object"
+}

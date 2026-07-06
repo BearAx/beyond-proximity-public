@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "2b4f7f13-3ff9-47fa-96e9-7db997f90217"
+  ],
+  "selected_views": [
+    "v017"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "bulletin board",
+    "selected_node_id": "2b4f7f13-3ff9-47fa-96e9-7db997f90217",
+    "selected_view_id": "v017",
+    "bbox_2d": [
+      0.0234375,
+      0.2625,
+      0.2078125,
+      0.771875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -11.351783624803456,
+        -17.991044739390784,
+        0.5023937736711588
+      ],
+      "maximum": [
+        23.638931606707924,
+        9.396535376119694,
+        73.53944501648105
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.4131782352924347,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 128 with class 'bulletin board' and cosine similarity 0.413178."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.08492900539999937,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 78.57550455499995,
+      "native_batch_query_total": 2.547870161999981,
+      "native_batch_query_per_query": 0.08492900539999937
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 150,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Museume-capture",
+  "query_id": "qv2_035",
+  "query": "Find the Reichenstein information panel",
+  "query_type": "simple_object"
+}

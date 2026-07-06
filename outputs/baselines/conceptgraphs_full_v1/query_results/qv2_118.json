@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "623844a7-591b-4710-8dde-e85094d91e2a"
+  ],
+  "selected_views": [
+    "v002"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "lamp",
+    "selected_node_id": "623844a7-591b-4710-8dde-e85094d91e2a",
+    "selected_view_id": "v002",
+    "bbox_2d": [
+      0.753125,
+      0.225,
+      0.8,
+      0.28125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        2.083405096689944,
+        4.0025522426136995,
+        -25.326173141584025
+      ],
+      "maximum": [
+        74.77472404169994,
+        22.571104326284196,
+        -0.9405720152715986
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.1860523670911789,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 9 with class 'lamp' and cosine similarity 0.186052."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09248076846667269,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 69.27211776700005,
+      "native_batch_query_total": 2.774423054000181,
+      "native_batch_query_per_query": 0.09248076846667269
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 43,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-street-capture",
+  "query_id": "qv2_118",
+  "query": "Find bed",
+  "query_type": "negative"
+}

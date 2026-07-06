@@ -1,0 +1,1641 @@
+{
+  "provenance": {
+    "native_execution": true,
+    "baseline": "conceptgraphs",
+    "scene_id": "outdoor-street-capture",
+    "repository": "https://github.com/concept-graphs/concept-graphs",
+    "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+    "command": "streamlined_detections.py end=21; streamlined_mapping.py end=21; native_batch_query.py outdoor-street",
+    "checkpoints": [
+      "ultralytics/yolov8l-world.pt",
+      "ultralytics/mobile_sam.pt",
+      "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+    ],
+    "native_artifacts": [
+      "native_data/outdoor-street-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz",
+      "native_data/outdoor-street-capture/conversion_manifest.json"
+    ]
+  },
+  "predictions": [
+    {
+      "query_id": "qv2_091",
+      "found": true,
+      "matched_object": "washing machine",
+      "selected_object_id": "755f46d5-2889-4025-a3c0-a4cb903045b1",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "755f46d5-2889-4025-a3c0-a4cb903045b1"
+      ],
+      "confidence": 0.1888449639081955,
+      "bbox_2d": [
+        0.5328125,
+        0.45,
+        0.6734375,
+        0.78125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          0.8611715890109366,
+          3.9230840832597167,
+          -5.491553121186151
+        ],
+        "maximum": [
+          56.921317201379516,
+          49.517419846980395,
+          4.469577374630426
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.188845.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_092",
+      "found": true,
+      "matched_object": "pillar",
+      "selected_object_id": "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb",
+      "selected_view_ids": [
+        "v013"
+      ],
+      "trace_node_ids": [
+        "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb"
+      ],
+      "confidence": 0.2735956311225891,
+      "bbox_2d": [
+        0.4640625,
+        0.0,
+        0.6109375,
+        0.846875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -24.856679657650574,
+          -34.68382578384201,
+          50.14324948866677
+        ],
+        "maximum": [
+          41.108973074160815,
+          17.890308958924386,
+          64.44848837104013
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'pillar' and cosine similarity 0.273596.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_093",
+      "found": true,
+      "matched_object": "storage bin",
+      "selected_object_id": "a57fbc04-2ca4-4fcb-9104-2b2e7473ca2f",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "a57fbc04-2ca4-4fcb-9104-2b2e7473ca2f"
+      ],
+      "confidence": 0.19562457501888275,
+      "bbox_2d": [
+        0.003125,
+        0.109375,
+        0.0421875,
+        0.1875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          1.350244190463826,
+          3.809070495123869,
+          1.0537953463950913
+        ],
+        "maximum": [
+          46.85800600063145,
+          13.832841726265674,
+          84.80607024326659
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 5 with class 'storage bin' and cosine similarity 0.195625.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_094",
+      "found": true,
+      "matched_object": "wall",
+      "selected_object_id": "726b9013-c227-4a6f-aa97-55018698680d",
+      "selected_view_ids": [
+        "v003"
+      ],
+      "trace_node_ids": [
+        "726b9013-c227-4a6f-aa97-55018698680d"
+      ],
+      "confidence": 0.29144689440727234,
+      "bbox_2d": [
+        0.0,
+        0.0,
+        0.409375,
+        0.996875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          0.843959464390494,
+          -44.83291137485625,
+          -4.376754970434064
+        ],
+        "maximum": [
+          48.584384036788514,
+          24.386546282934628,
+          87.65208858081132
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 10 with class 'wall' and cosine similarity 0.291447.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_095",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "07e8a9b4-ebbb-4387-a4c9-d2e9cce9f445",
+      "selected_view_ids": [
+        "v019"
+      ],
+      "trace_node_ids": [
+        "07e8a9b4-ebbb-4387-a4c9-d2e9cce9f445"
+      ],
+      "confidence": 0.26780256628990173,
+      "bbox_2d": [
+        0.4171875,
+        0.35625,
+        0.55625,
+        0.83125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -70.56550450347483,
+          7.395111172569955,
+          -7.157960536183319
+        ],
+        "maximum": [
+          -14.825484635218928,
+          47.282829677657894,
+          25.250836599017113
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 29 with class 'door' and cosine similarity 0.267803.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_096",
+      "found": true,
+      "matched_object": "column",
+      "selected_object_id": "22249e95-b90f-45c1-84d0-eea5f23226fb",
+      "selected_view_ids": [
+        "v013"
+      ],
+      "trace_node_ids": [
+        "22249e95-b90f-45c1-84d0-eea5f23226fb"
+      ],
+      "confidence": 0.2712041735649109,
+      "bbox_2d": [
+        0.4640625,
+        0.0,
+        0.6109375,
+        0.846875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -24.856679657650574,
+          -34.68382578384201,
+          50.14324948866677
+        ],
+        "maximum": [
+          41.108973074160815,
+          17.890308958924386,
+          64.44848837104013
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 25 with class 'column' and cosine similarity 0.271204.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_097",
+      "found": true,
+      "matched_object": "column",
+      "selected_object_id": "65698808-b679-4d56-855c-a8dfa057779b",
+      "selected_view_ids": [
+        "v004"
+      ],
+      "trace_node_ids": [
+        "65698808-b679-4d56-855c-a8dfa057779b"
+      ],
+      "confidence": 0.19793660938739777,
+      "bbox_2d": [
+        0.084375,
+        0.0,
+        0.296875,
+        0.996875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -53.61978757928181,
+          -15.101275764948277,
+          -15.344303796772778
+        ],
+        "maximum": [
+          -2.311072642022914,
+          21.98453438002104,
+          17.427586635718157
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 11 with class 'column' and cosine similarity 0.197937.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_098",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "5aeef904-8a21-459f-a84c-a8399e0c0947",
+      "selected_view_ids": [
+        "v007"
+      ],
+      "trace_node_ids": [
+        "5aeef904-8a21-459f-a84c-a8399e0c0947"
+      ],
+      "confidence": 0.24969619512557983,
+      "bbox_2d": [
+        0.490625,
+        0.53125,
+        0.56875,
+        0.8625
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -58.65728054700926,
+          2.657746726716944,
+          -35.12202013619387
+        ],
+        "maximum": [
+          -3.1605014930021134,
+          35.264195892487265,
+          0.9336715653627801
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 18 with class 'door' and cosine similarity 0.249696.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_099",
+      "found": true,
+      "matched_object": "bench",
+      "selected_object_id": "f235e7f0-4e30-4783-8027-b947d462af3a",
+      "selected_view_ids": [
+        "v001"
+      ],
+      "trace_node_ids": [
+        "f235e7f0-4e30-4783-8027-b947d462af3a"
+      ],
+      "confidence": 0.29728496074676514,
+      "bbox_2d": [
+        0.6984375,
+        0.9375,
+        0.90625,
+        1.0
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -4.2266519387280646,
+          3.8840800170193823,
+          -60.45401911595659
+        ],
+        "maximum": [
+          18.76173592646312,
+          25.56639195976946,
+          4.239975733660749
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 3 with class 'bench' and cosine similarity 0.297285.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_100",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "49b931e2-fabd-4fc3-a20b-af9bdca40dfb",
+      "selected_view_ids": [
+        "v001"
+      ],
+      "trace_node_ids": [
+        "49b931e2-fabd-4fc3-a20b-af9bdca40dfb"
+      ],
+      "confidence": 0.32777169346809387,
+      "bbox_2d": [
+        0.615625,
+        0.528125,
+        0.6703125,
+        0.76875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -4.201402125830562,
+          -0.41412634844526863,
+          -57.561681533140806
+        ],
+        "maximum": [
+          34.029289211569534,
+          13.316698141925821,
+          4.537694355425849
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 1 with class 'door' and cosine similarity 0.327772.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_101",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "cdda03a9-bfc5-43d9-b0a2-8c4bcdd63b43",
+      "selected_view_ids": [
+        "v021"
+      ],
+      "trace_node_ids": [
+        "cdda03a9-bfc5-43d9-b0a2-8c4bcdd63b43"
+      ],
+      "confidence": 0.2320602536201477,
+      "bbox_2d": [
+        0.0,
+        0.159375,
+        0.1390625,
+        0.70625
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -73.523046875,
+          -14.630607604980469,
+          3.893999993801117
+        ],
+        "maximum": [
+          -0.1968083620071468,
+          13.604857444763184,
+          68.39600372314453
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 42 with class 'door' and cosine similarity 0.232060.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_102",
+      "found": true,
+      "matched_object": "wall",
+      "selected_object_id": "726b9013-c227-4a6f-aa97-55018698680d",
+      "selected_view_ids": [
+        "v003"
+      ],
+      "trace_node_ids": [
+        "726b9013-c227-4a6f-aa97-55018698680d"
+      ],
+      "confidence": 0.2835741341114044,
+      "bbox_2d": [
+        0.0,
+        0.0,
+        0.409375,
+        0.996875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          0.843959464390494,
+          -44.83291137485625,
+          -4.376754970434064
+        ],
+        "maximum": [
+          48.584384036788514,
+          24.386546282934628,
+          87.65208858081132
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 10 with class 'wall' and cosine similarity 0.283574.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_103",
+      "found": true,
+      "matched_object": "window",
+      "selected_object_id": "74471229-b141-4211-8680-ce3eb110301d",
+      "selected_view_ids": [
+        "v008"
+      ],
+      "trace_node_ids": [
+        "74471229-b141-4211-8680-ce3eb110301d"
+      ],
+      "confidence": 0.3660099506378174,
+      "bbox_2d": [
+        0.20625,
+        0.0,
+        0.3546875,
+        0.25
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -19.86018453732713,
+          -29.472743532933777,
+          -65.77568314026686
+        ],
+        "maximum": [
+          -3.728942408846656,
+          1.5658658864654882,
+          6.153808140999406
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 19 with class 'window' and cosine similarity 0.366010.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_104",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "07e8a9b4-ebbb-4387-a4c9-d2e9cce9f445",
+      "selected_view_ids": [
+        "v019"
+      ],
+      "trace_node_ids": [
+        "07e8a9b4-ebbb-4387-a4c9-d2e9cce9f445"
+      ],
+      "confidence": 0.251257985830307,
+      "bbox_2d": [
+        0.4171875,
+        0.35625,
+        0.55625,
+        0.83125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -70.56550450347483,
+          7.395111172569955,
+          -7.157960536183319
+        ],
+        "maximum": [
+          -14.825484635218928,
+          47.282829677657894,
+          25.250836599017113
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 29 with class 'door' and cosine similarity 0.251258.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_105",
+      "found": true,
+      "matched_object": "pillar",
+      "selected_object_id": "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb",
+      "selected_view_ids": [
+        "v013"
+      ],
+      "trace_node_ids": [
+        "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb"
+      ],
+      "confidence": 0.2845967710018158,
+      "bbox_2d": [
+        0.4640625,
+        0.0,
+        0.6109375,
+        0.846875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -24.856679657650574,
+          -34.68382578384201,
+          50.14324948866677
+        ],
+        "maximum": [
+          41.108973074160815,
+          17.890308958924386,
+          64.44848837104013
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'pillar' and cosine similarity 0.284597.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_106",
+      "found": true,
+      "matched_object": "washing machine",
+      "selected_object_id": "755f46d5-2889-4025-a3c0-a4cb903045b1",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "755f46d5-2889-4025-a3c0-a4cb903045b1"
+      ],
+      "confidence": 0.20018863677978516,
+      "bbox_2d": [
+        0.5328125,
+        0.45,
+        0.6734375,
+        0.78125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          0.8611715890109366,
+          3.9230840832597167,
+          -5.491553121186151
+        ],
+        "maximum": [
+          56.921317201379516,
+          49.517419846980395,
+          4.469577374630426
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.200189.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_107",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "49b931e2-fabd-4fc3-a20b-af9bdca40dfb",
+      "selected_view_ids": [
+        "v001"
+      ],
+      "trace_node_ids": [
+        "49b931e2-fabd-4fc3-a20b-af9bdca40dfb"
+      ],
+      "confidence": 0.31946632266044617,
+      "bbox_2d": [
+        0.615625,
+        0.528125,
+        0.6703125,
+        0.76875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -4.201402125830562,
+          -0.41412634844526863,
+          -57.561681533140806
+        ],
+        "maximum": [
+          34.029289211569534,
+          13.316698141925821,
+          4.537694355425849
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 1 with class 'door' and cosine similarity 0.319466.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_108",
+      "found": true,
+      "matched_object": "wall",
+      "selected_object_id": "726b9013-c227-4a6f-aa97-55018698680d",
+      "selected_view_ids": [
+        "v003"
+      ],
+      "trace_node_ids": [
+        "726b9013-c227-4a6f-aa97-55018698680d"
+      ],
+      "confidence": 0.26488760113716125,
+      "bbox_2d": [
+        0.0,
+        0.0,
+        0.409375,
+        0.996875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          0.843959464390494,
+          -44.83291137485625,
+          -4.376754970434064
+        ],
+        "maximum": [
+          48.584384036788514,
+          24.386546282934628,
+          87.65208858081132
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 10 with class 'wall' and cosine similarity 0.264888.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_109",
+      "found": true,
+      "matched_object": "washing machine",
+      "selected_object_id": "755f46d5-2889-4025-a3c0-a4cb903045b1",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "755f46d5-2889-4025-a3c0-a4cb903045b1"
+      ],
+      "confidence": 0.2187877893447876,
+      "bbox_2d": [
+        0.5328125,
+        0.45,
+        0.6734375,
+        0.78125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          0.8611715890109366,
+          3.9230840832597167,
+          -5.491553121186151
+        ],
+        "maximum": [
+          56.921317201379516,
+          49.517419846980395,
+          4.469577374630426
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.218788.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_110",
+      "found": true,
+      "matched_object": "pillar",
+      "selected_object_id": "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb",
+      "selected_view_ids": [
+        "v013"
+      ],
+      "trace_node_ids": [
+        "b6bdb9ec-fe64-4b86-8ecb-0777b35950eb"
+      ],
+      "confidence": 0.2673567235469818,
+      "bbox_2d": [
+        0.4640625,
+        0.0,
+        0.6109375,
+        0.846875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -24.856679657650574,
+          -34.68382578384201,
+          50.14324948866677
+        ],
+        "maximum": [
+          41.108973074160815,
+          17.890308958924386,
+          64.44848837104013
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'pillar' and cosine similarity 0.267357.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_111",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "4ccd1074-e09f-4224-96fd-51e31c4cbe3b",
+      "selected_view_ids": [
+        "v021"
+      ],
+      "trace_node_ids": [
+        "4ccd1074-e09f-4224-96fd-51e31c4cbe3b"
+      ],
+      "confidence": 0.1913520246744156,
+      "bbox_2d": [
+        0.1328125,
+        0.2875,
+        0.2640625,
+        0.7
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -49.00620880126953,
+          -8.480903625488281,
+          4.009999990463257
+        ],
+        "maximum": [
+          0.005942559242249956,
+          13.228317260742188,
+          68.28600311279297
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 40 with class 'door' and cosine similarity 0.191352.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_112",
+      "found": true,
+      "matched_object": "door",
+      "selected_object_id": "4ccd1074-e09f-4224-96fd-51e31c4cbe3b",
+      "selected_view_ids": [
+        "v021"
+      ],
+      "trace_node_ids": [
+        "4ccd1074-e09f-4224-96fd-51e31c4cbe3b"
+      ],
+      "confidence": 0.2868632972240448,
+      "bbox_2d": [
+        0.1328125,
+        0.2875,
+        0.2640625,
+        0.7
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -49.00620880126953,
+          -8.480903625488281,
+          4.009999990463257
+        ],
+        "maximum": [
+          0.005942559242249956,
+          13.228317260742188,
+          68.28600311279297
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 40 with class 'door' and cosine similarity 0.286863.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_113",
+      "found": true,
+      "matched_object": "storage bin",
+      "selected_object_id": "a57fbc04-2ca4-4fcb-9104-2b2e7473ca2f",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "a57fbc04-2ca4-4fcb-9104-2b2e7473ca2f"
+      ],
+      "confidence": 0.21523459255695343,
+      "bbox_2d": [
+        0.003125,
+        0.109375,
+        0.0421875,
+        0.1875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          1.350244190463826,
+          3.809070495123869,
+          1.0537953463950913
+        ],
+        "maximum": [
+          46.85800600063145,
+          13.832841726265674,
+          84.80607024326659
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 5 with class 'storage bin' and cosine similarity 0.215235.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_114",
+      "found": true,
+      "matched_object": "storage bin",
+      "selected_object_id": "a57fbc04-2ca4-4fcb-9104-2b2e7473ca2f",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "a57fbc04-2ca4-4fcb-9104-2b2e7473ca2f"
+      ],
+      "confidence": 0.24410447478294373,
+      "bbox_2d": [
+        0.003125,
+        0.109375,
+        0.0421875,
+        0.1875
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          1.350244190463826,
+          3.809070495123869,
+          1.0537953463950913
+        ],
+        "maximum": [
+          46.85800600063145,
+          13.832841726265674,
+          84.80607024326659
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 5 with class 'storage bin' and cosine similarity 0.244104.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_115",
+      "found": true,
+      "matched_object": "clock",
+      "selected_object_id": "e5b943e3-25a2-4152-bda7-ccbc8a801a23",
+      "selected_view_ids": [
+        "v001"
+      ],
+      "trace_node_ids": [
+        "e5b943e3-25a2-4152-bda7-ccbc8a801a23"
+      ],
+      "confidence": 0.23399147391319275,
+      "bbox_2d": [
+        0.796875,
+        0.625,
+        0.81875,
+        0.6625
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -4.372582451202095,
+          3.6550056050050794,
+          -72.6553955004634
+        ],
+        "maximum": [
+          15.150324160835002,
+          8.477961415061252,
+          4.736919980913768
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 2 with class 'clock' and cosine similarity 0.233991.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_116",
+      "found": true,
+      "matched_object": "paper towel roll",
+      "selected_object_id": "7f43363a-b866-4655-b794-095db8b0c30a",
+      "selected_view_ids": [
+        "v011"
+      ],
+      "trace_node_ids": [
+        "7f43363a-b866-4655-b794-095db8b0c30a"
+      ],
+      "confidence": 0.20558138191699982,
+      "bbox_2d": [
+        0.56875,
+        0.33125,
+        0.6234375,
+        0.38125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -20.127692416164862,
+          11.568742956758548,
+          23.945758962448963
+        ],
+        "maximum": [
+          34.62188538373377,
+          18.573961614049384,
+          42.340757150775005
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.205581.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_117",
+      "found": true,
+      "matched_object": "washing machine",
+      "selected_object_id": "755f46d5-2889-4025-a3c0-a4cb903045b1",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "755f46d5-2889-4025-a3c0-a4cb903045b1"
+      ],
+      "confidence": 0.22805102169513702,
+      "bbox_2d": [
+        0.5328125,
+        0.45,
+        0.6734375,
+        0.78125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          0.8611715890109366,
+          3.9230840832597167,
+          -5.491553121186151
+        ],
+        "maximum": [
+          56.921317201379516,
+          49.517419846980395,
+          4.469577374630426
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.228051.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_118",
+      "found": true,
+      "matched_object": "lamp",
+      "selected_object_id": "623844a7-591b-4710-8dde-e85094d91e2a",
+      "selected_view_ids": [
+        "v002"
+      ],
+      "trace_node_ids": [
+        "623844a7-591b-4710-8dde-e85094d91e2a"
+      ],
+      "confidence": 0.1860523670911789,
+      "bbox_2d": [
+        0.753125,
+        0.225,
+        0.8,
+        0.28125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          2.083405096689944,
+          4.0025522426136995,
+          -25.326173141584025
+        ],
+        "maximum": [
+          74.77472404169994,
+          22.571104326284196,
+          -0.9405720152715986
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 9 with class 'lamp' and cosine similarity 0.186052.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_119",
+      "found": true,
+      "matched_object": "paper towel roll",
+      "selected_object_id": "7f43363a-b866-4655-b794-095db8b0c30a",
+      "selected_view_ids": [
+        "v011"
+      ],
+      "trace_node_ids": [
+        "7f43363a-b866-4655-b794-095db8b0c30a"
+      ],
+      "confidence": 0.15641316771507263,
+      "bbox_2d": [
+        0.56875,
+        0.33125,
+        0.6234375,
+        0.38125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -20.127692416164862,
+          11.568742956758548,
+          23.945758962448963
+        ],
+        "maximum": [
+          34.62188538373377,
+          18.573961614049384,
+          42.340757150775005
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.156413.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    },
+    {
+      "query_id": "qv2_120",
+      "found": true,
+      "matched_object": "paper towel roll",
+      "selected_object_id": "7f43363a-b866-4655-b794-095db8b0c30a",
+      "selected_view_ids": [
+        "v011"
+      ],
+      "trace_node_ids": [
+        "7f43363a-b866-4655-b794-095db8b0c30a"
+      ],
+      "confidence": 0.1818007379770279,
+      "bbox_2d": [
+        0.56875,
+        0.33125,
+        0.6234375,
+        0.38125
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map",
+        "minimum": [
+          -20.127692416164862,
+          11.568742956758548,
+          23.945758962448963
+        ],
+        "maximum": [
+          34.62188538373377,
+          18.573961614049384,
+          42.340757150775005
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.181801.",
+      "metrics": {
+        "runtime_seconds": 0.09248076846667269,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 69.27211776700005,
+          "native_batch_query_total": 2.774423054000181,
+          "native_batch_query_per_query": 0.09248076846667269
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 43,
+          "scene_query_count": 30
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT."
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # ConceptGraphs Status
 
-Status date: 2026-06-26. Status: `READY_WITH_WARNINGS`.
+Status date: 2026-07-06. Status: `FULL_FIVE_SCENE_DONE_WITH_LIMITATIONS`.
 
 ## Evidence
 
@@ -15,6 +15,8 @@ Status date: 2026-06-26. Status: `READY_WITH_WARNINGS`.
 | Native output | present | `outputs/baselines/conceptgraphs_smoke_v1/native_results.json` |
 | Canonical output | present | `outputs/baselines/conceptgraphs_smoke_v1/query_results/q051.json` |
 | Metrics summary | present | `outputs/baselines/conceptgraphs_smoke_v1/metrics_summary.json` |
+| Full five-scene output | present with limitations | `outputs/baselines/conceptgraphs_full_v1/` |
+| Full five-scene result note | present | `docs/baselines/conceptgraphs/conceptgraphs_full_result.md` |
 | Canonical adapter | present | `scripts/adapt_conceptgraphs_output.py` |
 | Adapter tests | present | `tests/backend/test_baseline_adapters.py` |
 
@@ -34,7 +36,41 @@ confidence = 0.2810319662094116
 accuracy_eligible_result_count = 0
 ```
 
-This is a baseline smoke, not a fair five-scene comparison. Query `q051` has `verification_status: missing_gt`, so accuracy, retrieval success, and 3D IoU are unavailable.
+This smoke is superseded by the five-scene captured-scene run below for
+ConceptGraphs execution evidence. Query `q051` has `verification_status:
+missing_gt`, so smoke accuracy, retrieval success, and 3D IoU are unavailable.
+
+## Full Five-Scene Result
+
+ConceptGraphs was run through Docker image `semanticsplat-conceptgraphs:72f5962`
+over the five captured scenes and adapted to the 150-query v2 benchmark.
+
+Observed canonical result:
+
+```text
+run_id = conceptgraphs_full_v1
+canonical results = 150 / 150
+schema-valid results = 150 / 150
+retrieval_success = 0.7000
+expected_view_hit = 0.2240
+expected_node_hit = 0.0000
+expected_zone_hit = 0.0000
+bbox_3d_iou = N/A
+```
+
+Native map object counts:
+
+```text
+ConferenceHall-capture-pilot = 313
+Museume-capture = 150
+Theater-capture = 183
+outdoor-street-capture = 43
+outdoor-drone-capture = 0
+```
+
+The drone scene is an explicit baseline miss case: native detection/mapping
+produced a saved map artifact with zero serialized objects, so all 30 drone
+query outputs are `found=false`.
 
 Known warning: `streamlined_mapping.py` writes the map artifact and then exits non-zero while generating its internal report (`KeyError: 'Sort Key'`). The wrapper continues only when the expected native map file exists.
 
@@ -56,4 +92,7 @@ python -B scripts\evaluate_results.py `
 
 ## Remaining Gap
 
-The smoke proves native ConceptGraphs execution and canonical adaptation for one captured frame/query. It does not prove fair multi-query or five-scene performance. That still requires running more frames/queries, resolving the internal mapping report crash cleanly, and adding independent GT.
+The smoke proves native ConceptGraphs execution and canonical adaptation for one
+captured frame/query. The full run proves five captured-scene native execution
+and canonical adaptation, but it still does not prove official Replica/ScanNet
+performance, independent semantic accuracy, or 3D IoU.

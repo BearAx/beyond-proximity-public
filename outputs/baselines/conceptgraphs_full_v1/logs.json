@@ -1,0 +1,18 @@
+{
+  "run_id": "conceptgraphs_full_v1",
+  "mode": "live",
+  "finished_at": "2026-07-06T21:51:10.723014+00:00",
+  "events": [
+    {
+      "stage": "multi_scene_native_output_adaptation",
+      "status": "complete",
+      "count": 150
+    }
+  ],
+  "warnings": [
+    "outdoor-drone-capture: native ConceptGraphs map contained zero objects; canonical outputs are explicit found=false misses.",
+    "ConceptGraphs full run uses native object-map CLIP retrieval, not SemanticSplat graph traversal.",
+    "Native absence handling is uncalibrated; negative queries are expected to be difficult for this baseline.",
+    "A local empty-detection guard is used for frames where YOLO returns zero boxes before MobileSAM."
+  ]
+}

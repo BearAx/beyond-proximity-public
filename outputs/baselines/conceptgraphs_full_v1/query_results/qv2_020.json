@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "a8cdb335-b50b-4a53-ad14-4ed4f1802b76"
+  ],
+  "selected_views": [
+    "v002"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "picture",
+    "selected_node_id": "a8cdb335-b50b-4a53-ad14-4ed4f1802b76",
+    "selected_view_id": "v002",
+    "bbox_2d": [
+      0.715625,
+      0.31875,
+      0.7390625,
+      0.40625
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -72.63681508918631,
+        1.8720301501538472,
+        -5.691577176064148
+      ],
+      "maximum": [
+        -25.9807122402195,
+        7.672693663441946,
+        -2.09949801015462
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.24045322835445404,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 34 with class 'picture' and cosine similarity 0.240453."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09900079336666749,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 84.08998363,
+      "native_batch_query_total": 2.970023801000025,
+      "native_batch_query_per_query": 0.09900079336666749
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 313,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_020",
+  "query": "Find the green exit sign in the exit or doorway area",
+  "query_type": "multi_hop"
+}

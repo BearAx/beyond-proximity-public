@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "f235e7f0-4e30-4783-8027-b947d462af3a"
+  ],
+  "selected_views": [
+    "v001"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "bench",
+    "selected_node_id": "f235e7f0-4e30-4783-8027-b947d462af3a",
+    "selected_view_id": "v001",
+    "bbox_2d": [
+      0.6984375,
+      0.9375,
+      0.90625,
+      1.0
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        -4.2266519387280646,
+        3.8840800170193823,
+        -60.45401911595659
+      ],
+      "maximum": [
+        18.76173592646312,
+        25.56639195976946,
+        4.239975733660749
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.29728496074676514,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 3 with class 'bench' and cosine similarity 0.297285."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09248076846667269,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 69.27211776700005,
+      "native_batch_query_total": 2.774423054000181,
+      "native_batch_query_per_query": 0.09248076846667269
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 43,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "outdoor-street-capture",
+  "query_id": "qv2_099",
+  "query": "Find the outdoor cobblestone pavement",
+  "query_type": "attribute"
+}

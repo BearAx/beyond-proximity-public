@@ -1,0 +1,440 @@
+=== ConceptGraphs full scene: ConferenceHall-capture-pilot (20 frame(s)) ===
+Prepared 20 ConceptGraphs frame(s) at C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\ConferenceHall-capture-pilot
+Dataset config: C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\captured_scene.yaml
+Reusing 20 existing detection file(s) for ConferenceHall-capture-pilot
+Augmented 0/20 ConceptGraphs detection file(s) under C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\ConferenceHall-capture-pilot\exps\semanticsplat_full_detections_v1\detections
+Reusing existing map for ConferenceHall-capture-pilot: native_data/ConferenceHall-capture-pilot/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz
+Reusing existing native query output for ConferenceHall-capture-pilot: outputs/baselines/conceptgraphs_full_v1/native_results_ConferenceHall-capture-pilot.json
+=== ConceptGraphs full scene: Museume-capture (20 frame(s)) ===
+Prepared 20 ConceptGraphs frame(s) at C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\Museume-capture
+Dataset config: C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\captured_scene.yaml
+Reusing 20 existing detection file(s) for Museume-capture
+Augmented 0/20 ConceptGraphs detection file(s) under C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\Museume-capture\exps\semanticsplat_full_detections_v1\detections
+Reusing existing map for Museume-capture: native_data/Museume-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz
+Reusing existing native query output for Museume-capture: outputs/baselines/conceptgraphs_full_v1/native_results_Museume-capture.json
+=== ConceptGraphs full scene: Theater-capture (20 frame(s)) ===
+Prepared 20 ConceptGraphs frame(s) at C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\Theater-capture
+Dataset config: C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\captured_scene.yaml
+Reusing 20 existing detection file(s) for Theater-capture
+Augmented 0/20 ConceptGraphs detection file(s) under C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\Theater-capture\exps\semanticsplat_full_detections_v1\detections
+Reusing existing map for Theater-capture: native_data/Theater-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz
+Reusing existing native query output for Theater-capture: outputs/baselines/conceptgraphs_full_v1/native_results_Theater-capture.json
+=== ConceptGraphs full scene: outdoor-street-capture (21 frame(s)) ===
+Prepared 21 ConceptGraphs frame(s) at C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\outdoor-street-capture
+Dataset config: C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\captured_scene.yaml
+Reusing 21 existing detection file(s) for outdoor-street-capture
+Augmented 0/21 ConceptGraphs detection file(s) under C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\outdoor-street-capture\exps\semanticsplat_full_detections_v1\detections
+Reusing existing map for outdoor-street-capture: native_data/outdoor-street-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz
+Reusing existing native query output for outdoor-street-capture: outputs/baselines/conceptgraphs_full_v1/native_results_outdoor-street-capture.json
+=== ConceptGraphs full scene: outdoor-drone-capture (16 frame(s)) ===
+Prepared 16 ConceptGraphs frame(s) at C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\outdoor-drone-capture
+Dataset config: C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\captured_scene.yaml
+[2026-07-06 21:41:52,725][HYDRA] Hydra 1.3.2
+[2026-07-06 21:41:52,725][HYDRA] ===========
+[2026-07-06 21:41:52,725][HYDRA] Installed Hydra Plugins
+[2026-07-06 21:41:52,725][HYDRA] ***********************
+[2026-07-06 21:41:52,725][HYDRA] 	ConfigSource:
+[2026-07-06 21:41:52,725][HYDRA] 	-------------
+[2026-07-06 21:41:52,725][HYDRA] 		FileConfigSource
+[2026-07-06 21:41:52,725][HYDRA] 		ImportlibResourcesConfigSource
+[2026-07-06 21:41:52,725][HYDRA] 		StructuredConfigSource
+[2026-07-06 21:41:52,725][HYDRA] 	CompletionPlugin:
+[2026-07-06 21:41:52,725][HYDRA] 	-----------------
+[2026-07-06 21:41:52,725][HYDRA] 		BashCompletion
+[2026-07-06 21:41:52,726][HYDRA] 		FishCompletion
+[2026-07-06 21:41:52,726][HYDRA] 		ZshCompletion
+[2026-07-06 21:41:52,726][HYDRA] 	Launcher:
+[2026-07-06 21:41:52,726][HYDRA] 	---------
+[2026-07-06 21:41:52,726][HYDRA] 		BasicLauncher
+[2026-07-06 21:41:52,726][HYDRA] 	Sweeper:
+[2026-07-06 21:41:52,726][HYDRA] 	--------
+[2026-07-06 21:41:52,726][HYDRA] 		BasicSweeper
+[2026-07-06 21:41:52,726][HYDRA] 
+[2026-07-06 21:41:52,726][HYDRA] Config search path
+[2026-07-06 21:41:52,726][HYDRA] ******************
+[2026-07-06 21:41:52,805][HYDRA] | Provider | Search path                                          |
+[2026-07-06 21:41:52,805][HYDRA] -------------------------------------------------------------------
+[2026-07-06 21:41:52,805][HYDRA] | hydra    | pkg://hydra.conf                                     |
+[2026-07-06 21:41:52,805][HYDRA] | main     | file:///opt/conceptgraphs/conceptgraph/hydra_configs |
+[2026-07-06 21:41:52,805][HYDRA] | schema   | structured://                                        |
+[2026-07-06 21:41:52,805][HYDRA] -------------------------------------------------------------------
+[2026-07-06 21:41:52,847][HYDRA] 
+[2026-07-06 21:41:52,847][HYDRA] Defaults Tree
+[2026-07-06 21:41:52,847][HYDRA] *************
+[2026-07-06 21:41:52,847][HYDRA] <root>:
+[2026-07-06 21:41:52,847][HYDRA]   hydra/config:
+[2026-07-06 21:41:52,847][HYDRA]     hydra/output: default
+[2026-07-06 21:41:52,847][HYDRA]     hydra/launcher: basic
+[2026-07-06 21:41:52,847][HYDRA]     hydra/sweeper: basic
+[2026-07-06 21:41:52,847][HYDRA]     hydra/help: default
+[2026-07-06 21:41:52,847][HYDRA]     hydra/hydra_help: default
+[2026-07-06 21:41:52,847][HYDRA]     hydra/hydra_logging: default
+[2026-07-06 21:41:52,847][HYDRA]     hydra/job_logging: custom_logging_format
+[2026-07-06 21:41:52,847][HYDRA]     hydra/callbacks: null
+[2026-07-06 21:41:52,848][HYDRA]     hydra/env: default
+[2026-07-06 21:41:52,848][HYDRA]     _self_
+[2026-07-06 21:41:52,848][HYDRA]   streamlined_detections:
+[2026-07-06 21:41:52,848][HYDRA]     base
+[2026-07-06 21:41:52,848][HYDRA]     base_detections
+[2026-07-06 21:41:52,848][HYDRA]     record3d:
+[2026-07-06 21:41:52,848][HYDRA]       base_paths
+[2026-07-06 21:41:52,848][HYDRA]       _self_
+[2026-07-06 21:41:52,848][HYDRA]     classes:
+[2026-07-06 21:41:52,848][HYDRA]       base_paths
+[2026-07-06 21:41:52,848][HYDRA]       _self_
+[2026-07-06 21:41:52,848][HYDRA]     logging_level
+[2026-07-06 21:41:52,848][HYDRA]     _self_
+[2026-07-06 21:41:52,888][HYDRA] 
+[2026-07-06 21:41:52,888][HYDRA] Defaults List
+[2026-07-06 21:41:52,888][HYDRA] *************
+[2026-07-06 21:41:52,888][HYDRA] | Config path                             | Package             | _self_ | Parent                 | 
+[2026-07-06 21:41:52,888][HYDRA] ----------------------------------------------------------------------------------------------------
+[2026-07-06 21:41:52,888][HYDRA] | hydra/output/default                    | hydra               | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/launcher/basic                    | hydra.launcher      | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/sweeper/basic                     | hydra.sweeper       | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/help/default                      | hydra.help          | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/hydra_help/default                | hydra.hydra_help    | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/hydra_logging/default             | hydra.hydra_logging | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/job_logging/custom_logging_format | hydra.job_logging   | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/env/default                       | hydra.env           | False  | hydra/config           |
+[2026-07-06 21:41:52,888][HYDRA] | hydra/config                            | hydra               | True   | <root>                 |
+[2026-07-06 21:41:52,888][HYDRA] | base                                    |                     | False  | streamlined_detections |
+[2026-07-06 21:41:52,888][HYDRA] | base_detections                         |                     | False  | streamlined_detections |
+[2026-07-06 21:41:52,888][HYDRA] | base_paths                              |                     | False  | record3d               |
+[2026-07-06 21:41:52,888][HYDRA] | record3d                                |                     | True   | streamlined_detections |
+[2026-07-06 21:41:52,888][HYDRA] | base_paths                              |                     | False  | classes                |
+[2026-07-06 21:41:52,888][HYDRA] | classes                                 |                     | True   | streamlined_detections |
+[2026-07-06 21:41:52,888][HYDRA] | logging_level                           |                     | False  | streamlined_detections |
+[2026-07-06 21:41:52,888][HYDRA] | streamlined_detections                  |                     | True   | <root>                 |
+[2026-07-06 21:41:52,888][HYDRA] ----------------------------------------------------------------------------------------------------
+[2026-07-06 21:41:52,959][HYDRA] Config
+[2026-07-06 21:41:52,959][HYDRA] ******
+[2026-07-06 21:41:52,961][HYDRA] use_wandb: false
+use_rerun: false
+dataset_root: /workspace/outputs/baselines/conceptgraphs_full_v1/native_data
+dataset_config: /workspace/outputs/baselines/conceptgraphs_full_v1/native_data/captured_scene.yaml
+scene_id: outdoor-drone-capture
+start: 0
+end: 16
+stride: 1
+desired_height: 320
+desired_width: 640
+box_threshold: 0.2
+text_threshold: 0.2
+nms_threshold: 0.5
+class_set: null
+add_bg_classes: false
+accumu_classes: false
+sam_variant: sam
+save_video: false
+device: cuda
+use_slow_vis: false
+exp_suffix: semanticsplat_full_detections_v1
+repo_root: /home/kuwajerw/repos/new_conceptgraphs/concept-graphs
+data_root: /home/kuwajerw/new_local_data
+render_camera_path: ${repo_root}/conceptgraph/dataset/dataconfigs/record3d/record_3d_camera.json
+classes_file: /opt/conceptgraphs/conceptgraph/scannet200_classes.txt
+bg_classes:
+- wall
+- floor
+- ceiling
+skip_bg: false
+
+Done! Execution time of get_dataset function: 0.06 seconds
+Done! Execution time of YOLO function: 1.02 seconds
+[2026-07-06 21:41:54,837][INFO][m:factory][fn:create_model][ln:154] - Loaded ViT-H-14 model config.
+[2026-07-06 21:42:04,972][DEBUG][m:_trace][fn:trace][ln:47] - connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+[2026-07-06 21:42:05,127][DEBUG][m:_trace][fn:trace][ln:47] - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7ceb797ea800>
+[2026-07-06 21:42:05,127][DEBUG][m:_trace][fn:trace][ln:47] - start_tls.started ssl_context=<ssl.SSLContext object at 0x7ceb783b30c0> server_hostname='huggingface.co' timeout=10
+[2026-07-06 21:42:05,199][DEBUG][m:_trace][fn:trace][ln:47] - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7ceb797ea890>
+[2026-07-06 21:42:05,200][DEBUG][m:_trace][fn:trace][ln:47] - send_request_headers.started request=<Request [b'HEAD']>
+[2026-07-06 21:42:05,200][DEBUG][m:_trace][fn:trace][ln:47] - send_request_headers.complete
+[2026-07-06 21:42:05,200][DEBUG][m:_trace][fn:trace][ln:47] - send_request_body.started request=<Request [b'HEAD']>
+[2026-07-06 21:42:05,201][DEBUG][m:_trace][fn:trace][ln:47] - send_request_body.complete
+[2026-07-06 21:42:05,201][DEBUG][m:_trace][fn:trace][ln:47] - receive_response_headers.started request=<Request [b'HEAD']>
+[2026-07-06 21:42:05,391][DEBUG][m:_trace][fn:trace][ln:47] - receive_response_headers.complete return_value=(b'HTTP/1.1', 302, b'Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1145'), (b'Connection', b'keep-alive'), (b'Date', b'Mon, 06 Jul 2026 21:42:05 GMT'), (b'Location', b'https://us.aws.cdn.hf.co/xet-bridge-us/63225b2c2c2436c310fcf157/ca13b6933a993c9713cb1d541faa168cb1e93fea83c3368a1719b364515441ce?user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27open_clip_pytorch_model.bin%3B+filename%3D%22open_clip_pytorch_model.bin%22%3B&response-content-type=application%2Foctet-stream&X-Xet-Cas-Uid=public&Expires=1783377725&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNjMyMjViMmMyYzI0MzZjMzEwZmNmMTU3L2NhMTNiNjkzM2E5OTNjOTcxM2NiMWQ1NDFmYWExNjhjYjFlOTNmZWE4M2MzMzY4YTE3MTliMzY0NTE1NDQxY2VcXD91c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3b3Blbl9jbGlwX3B5dG9yY2hfbW9kZWwuYmluJTNCK2ZpbGVuYW1lJTNEJTIyb3Blbl9jbGlwX3B5dG9yY2hfbW9kZWwuYmluJTIyJTNCJnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1hcHBsaWNhdGlvbiUyRm9jdGV0LXN0cmVhbSZYLVhldC1DYXMtVWlkPXB1YmxpYyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiRXBvY2hUaW1lIjoxNzgzMzc3NzI1fX19XX0_&Signature=MEUCID7pKRDNY3sSfgJnA7%7EcaLt8Vu9A6S1gv7J3FtbWV4UGAiEAh6FamL5m5SDq8Xlx%7EFCNuNMvbLTujXCuoDXSoBtO06o_&Key-Pair-Id=01KAYHXK2CBJSW0YZTMNXK9W1M'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a4c212d-3b6191523e58b7b84c253c3d;67e5e89d-155b-42b4-94a9-6ace21073751'), (b'RateLimit', b'"resolvers";r=2999;t=103'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'1c2b8495b28150b8a4922ee1c8edee224c284c0c'), (b'Accept-Ranges', b'bytes'), (b'X-HF-Warning', b'unauthenticated; Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.'), (b'X-Hub-Cache', b'HIT'), (b'X-Linked-Size', b'3944692325'), (b'X-Linked-ETag', b'"9a78ef8e8c73fd0df621682e7a8e8eb36c6916cb3c16b291a082ecd52ab79cc4"'), (b'Cache-Control', b'no-store'), (b'X-Xet-Hash', b'ca13b6933a993c9713cb1d541faa168cb1e93fea83c3368a1719b364515441ce'), (b'Link', b'<https://huggingface.co/api/models/laion/CLIP-ViT-H-14-laion2B-s32B-b79K/xet-read-token/1c2b8495b28150b8a4922ee1c8edee224c284c0c>; rel="xet-auth", <https://cas-server.xethub.hf.co/v1/reconstructions/ca13b6933a993c9713cb1d541faa168cb1e93fea83c3368a1719b364515441ce>; rel="xet-reconstruction-info"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 66d7e9393c389a3d3a640eb4eb01ad4a.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'BUD50-P1'), (b'Alt-Svc', b'h3=":443"; ma=86400'), (b'X-Amz-Cf-Id', b'7xHFA_c1u7hzIc6hr2ekiB05VkZHf60u2ZXaLuj9dTtBLLZ517F8bA==')])
+[2026-07-06 21:42:05,392][INFO][m:_client][fn:_send_single_request][ln:1025] - HTTP Request: HEAD https://huggingface.co/laion/CLIP-ViT-H-14-laion2B-s32B-b79K/resolve/main/open_clip_pytorch_model.bin "HTTP/1.1 302 Found"
+[2026-07-06 21:42:05,392][DEBUG][m:_trace][fn:trace][ln:47] - receive_response_body.started request=<Request [b'HEAD']>
+[2026-07-06 21:42:05,393][DEBUG][m:_trace][fn:trace][ln:47] - receive_response_body.complete
+[2026-07-06 21:42:05,393][DEBUG][m:_trace][fn:trace][ln:47] - response_closed.started
+[2026-07-06 21:42:05,393][DEBUG][m:_trace][fn:trace][ln:47] - response_closed.complete
+[2026-07-06 21:42:05,393][WARNING][m:_http][fn:_warn_on_warning_headers][ln:928] - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-07-06 21:42:05,428][INFO][m:factory][fn:create_model][ln:227] - Loading pretrained ViT-H-14 weights (laion2b_s32b_b79k).
+Done! Execution time of main function: 170.51 seconds
+[2026-07-06 21:44:43,093][DEBUG][m:_trace][fn:trace][ln:47] - close.started
+[2026-07-06 21:44:43,113][DEBUG][m:_trace][fn:trace][ln:47] - close.complete
+Augmented 16/16 ConceptGraphs detection file(s) under C:\GitProjects\beyond-proximity\outputs\baselines\conceptgraphs_full_v1\native_data\outdoor-drone-capture\exps\semanticsplat_full_detections_v1\detections
+[2026-07-06 21:45:05,179][HYDRA] Hydra 1.3.2
+[2026-07-06 21:45:05,179][HYDRA] ===========
+[2026-07-06 21:45:05,179][HYDRA] Installed Hydra Plugins
+[2026-07-06 21:45:05,179][HYDRA] ***********************
+[2026-07-06 21:45:05,179][HYDRA] 	ConfigSource:
+[2026-07-06 21:45:05,179][HYDRA] 	-------------
+[2026-07-06 21:45:05,179][HYDRA] 		FileConfigSource
+[2026-07-06 21:45:05,179][HYDRA] 		ImportlibResourcesConfigSource
+[2026-07-06 21:45:05,179][HYDRA] 		StructuredConfigSource
+[2026-07-06 21:45:05,180][HYDRA] 	CompletionPlugin:
+[2026-07-06 21:45:05,180][HYDRA] 	-----------------
+[2026-07-06 21:45:05,180][HYDRA] 		BashCompletion
+[2026-07-06 21:45:05,180][HYDRA] 		FishCompletion
+[2026-07-06 21:45:05,180][HYDRA] 		ZshCompletion
+[2026-07-06 21:45:05,180][HYDRA] 	Launcher:
+[2026-07-06 21:45:05,180][HYDRA] 	---------
+[2026-07-06 21:45:05,180][HYDRA] 		BasicLauncher
+[2026-07-06 21:45:05,180][HYDRA] 	Sweeper:
+[2026-07-06 21:45:05,180][HYDRA] 	--------
+[2026-07-06 21:45:05,180][HYDRA] 		BasicSweeper
+[2026-07-06 21:45:05,180][HYDRA] 
+[2026-07-06 21:45:05,180][HYDRA] Config search path
+[2026-07-06 21:45:05,180][HYDRA] ******************
+[2026-07-06 21:45:05,271][HYDRA] | Provider | Search path                                          |
+[2026-07-06 21:45:05,271][HYDRA] -------------------------------------------------------------------
+[2026-07-06 21:45:05,271][HYDRA] | hydra    | pkg://hydra.conf                                     |
+[2026-07-06 21:45:05,271][HYDRA] | main     | file:///opt/conceptgraphs/conceptgraph/hydra_configs |
+[2026-07-06 21:45:05,271][HYDRA] | schema   | structured://                                        |
+[2026-07-06 21:45:05,271][HYDRA] -------------------------------------------------------------------
+[2026-07-06 21:45:05,321][HYDRA] 
+[2026-07-06 21:45:05,321][HYDRA] Defaults Tree
+[2026-07-06 21:45:05,321][HYDRA] *************
+[2026-07-06 21:45:05,321][HYDRA] <root>:
+[2026-07-06 21:45:05,321][HYDRA]   hydra/config:
+[2026-07-06 21:45:05,321][HYDRA]     hydra/output: default
+[2026-07-06 21:45:05,321][HYDRA]     hydra/launcher: basic
+[2026-07-06 21:45:05,321][HYDRA]     hydra/sweeper: basic
+[2026-07-06 21:45:05,321][HYDRA]     hydra/help: default
+[2026-07-06 21:45:05,321][HYDRA]     hydra/hydra_help: default
+[2026-07-06 21:45:05,321][HYDRA]     hydra/hydra_logging: default
+[2026-07-06 21:45:05,322][HYDRA]     hydra/job_logging: custom_logging_format
+[2026-07-06 21:45:05,322][HYDRA]     hydra/callbacks: null
+[2026-07-06 21:45:05,322][HYDRA]     hydra/env: default
+[2026-07-06 21:45:05,322][HYDRA]     _self_
+[2026-07-06 21:45:05,322][HYDRA]   streamlined_mapping:
+[2026-07-06 21:45:05,322][HYDRA]     base
+[2026-07-06 21:45:05,322][HYDRA]     base_mapping:
+[2026-07-06 21:45:05,322][HYDRA]       base_paths
+[2026-07-06 21:45:05,322][HYDRA]       _self_
+[2026-07-06 21:45:05,322][HYDRA]     record3d:
+[2026-07-06 21:45:05,322][HYDRA]       base_paths
+[2026-07-06 21:45:05,322][HYDRA]       _self_
+[2026-07-06 21:45:05,322][HYDRA]     sam
+[2026-07-06 21:45:05,322][HYDRA]     classes:
+[2026-07-06 21:45:05,322][HYDRA]       base_paths
+[2026-07-06 21:45:05,322][HYDRA]       _self_
+[2026-07-06 21:45:05,322][HYDRA]     logging_level
+[2026-07-06 21:45:05,322][HYDRA]     _self_
+[2026-07-06 21:45:05,373][HYDRA] 
+[2026-07-06 21:45:05,373][HYDRA] Defaults List
+[2026-07-06 21:45:05,373][HYDRA] *************
+[2026-07-06 21:45:05,373][HYDRA] | Config path                             | Package             | _self_ | Parent              | 
+[2026-07-06 21:45:05,373][HYDRA] -------------------------------------------------------------------------------------------------
+[2026-07-06 21:45:05,373][HYDRA] | hydra/output/default                    | hydra               | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/launcher/basic                    | hydra.launcher      | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/sweeper/basic                     | hydra.sweeper       | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/help/default                      | hydra.help          | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/hydra_help/default                | hydra.hydra_help    | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/hydra_logging/default             | hydra.hydra_logging | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/job_logging/custom_logging_format | hydra.job_logging   | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/env/default                       | hydra.env           | False  | hydra/config        |
+[2026-07-06 21:45:05,373][HYDRA] | hydra/config                            | hydra               | True   | <root>              |
+[2026-07-06 21:45:05,373][HYDRA] | base                                    |                     | False  | streamlined_mapping |
+[2026-07-06 21:45:05,373][HYDRA] | base_paths                              |                     | False  | base_mapping        |
+[2026-07-06 21:45:05,374][HYDRA] | base_mapping                            |                     | True   | streamlined_mapping |
+[2026-07-06 21:45:05,374][HYDRA] | base_paths                              |                     | False  | record3d            |
+[2026-07-06 21:45:05,374][HYDRA] | record3d                                |                     | True   | streamlined_mapping |
+[2026-07-06 21:45:05,374][HYDRA] | sam                                     |                     | False  | streamlined_mapping |
+[2026-07-06 21:45:05,374][HYDRA] | base_paths                              |                     | False  | classes             |
+[2026-07-06 21:45:05,374][HYDRA] | classes                                 |                     | True   | streamlined_mapping |
+[2026-07-06 21:45:05,374][HYDRA] | logging_level                           |                     | False  | streamlined_mapping |
+[2026-07-06 21:45:05,374][HYDRA] | streamlined_mapping                     |                     | True   | <root>              |
+[2026-07-06 21:45:05,374][HYDRA] -------------------------------------------------------------------------------------------------
+[2026-07-06 21:45:05,458][HYDRA] Config
+[2026-07-06 21:45:05,458][HYDRA] ******
+[2026-07-06 21:45:05,462][HYDRA] use_wandb: false
+use_rerun: false
+repo_root: /home/kuwajerw/repos/new_conceptgraphs/concept-graphs
+data_root: /home/kuwajerw/new_local_data
+dataset_root: /workspace/outputs/baselines/conceptgraphs_full_v1/native_data
+dataset_config: /workspace/outputs/baselines/conceptgraphs_full_v1/native_data/captured_scene.yaml
+scene_id: outdoor-drone-capture
+start: 0
+end: 16
+stride: 1
+image_height: 320
+image_width: 640
+make_edges: false
+periodically_save_pcd: false
+periodically_save_pcd_interval: 10
+detections_exp_suffix: semanticsplat_full_detections_v1
+exit_early_file: ${repo_root}/conceptgraph/hydra_configs/early_exit.json
+device: cuda
+use_iou: true
+spatial_sim_type: iou
+phys_bias: 0.0
+match_method: sim_sum
+semantic_threshold: 0.5
+physical_threshold: 0.5
+sim_threshold: 1.2
+use_contain_number: false
+contain_area_thresh: 0.95
+contain_mismatch_penalty: 0.5
+mask_area_threshold: 25
+mask_conf_threshold: 0.25
+max_bbox_area_ratio: 0.5
+min_points_threshold: 16
+obj_pcd_max_points: 10000
+downsample_voxel_size: 0.01
+dbscan_remove_noise: false
+dbscan_eps: 0.1
+dbscan_min_points: 10
+obj_min_points: 0
+obj_min_detections: 1
+merge_overlap_thresh: 0.7
+merge_visual_sim_thresh: 0.7
+merge_text_sim_thresh: 0.7
+denoise_interval: 5
+filter_interval: -1
+merge_interval: -1
+run_denoise_final_frame: false
+run_filter_final_frame: false
+run_merge_final_frame: false
+save_pcd: true
+save_json: true
+save_suffix: exp_streamlined_mapping_base_suffix
+vis_render: false
+debug_render: false
+class_agnostic: false
+save_objects_all_frames: false
+save_rerun: false
+latest_pcd_filepath: ${repo_root}/latest_pcd_save
+render_camera_path: ${repo_root}/conceptgraph/dataset/dataconfigs/record3d/record_3d_camera.json
+sam_variant: sam
+sam_encoder_version: vit_h
+sam_checkpoint_path: /home/kuwajerw/repos/new_segment_anything/Grounded-Segment-Anything/sam_vit_h_4b8939.pth
+mobile_sam_path: /home/kuwajerw/repos/new_segment_anything/Grounded-Segment-Anything/mobile_sam.pt
+classes_file: ${repo_root}/conceptgraph/scannet200_classes.txt
+bg_classes:
+- wall
+- floor
+- ceiling
+skip_bg: false
+exp_suffix: semanticsplat_full_mapping_v1
+save_video: false
+
+Setting image height and width to 320 x 640
+Done! Execution time of get_dataset function: 0.04 seconds
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:05,604][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:05,795][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:05,795][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:05,795][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:05,796][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:05,885][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:05,914][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:05,982][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:05,982][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:05,982][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:05,982][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,056][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,082][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,162][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,162][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,162][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,162][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,231][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,255][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,326][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,326][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,326][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,327][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,406][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,448][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,523][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,523][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,523][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,524][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,581][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,610][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,674][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,674][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,674][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,674][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,742][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,768][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,841][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,842][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,842][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:06,842][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:06,904][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:06,936][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,035][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,035][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,035][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,035][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,091][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,120][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,199][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,199][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,199][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,199][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,261][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,290][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,373][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,374][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,374][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,374][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,465][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,496][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,576][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,576][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,576][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,577][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,664][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,694][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,764][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,765][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,765][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,765][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,830][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,855][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:07,938][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,938][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:07,938][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:07,938][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:08,001][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:08,026][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:08,095][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:08,096][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:08,096][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:08,096][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:08,143][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:08,202][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:08,274][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:08,275][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:08,275][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:08,275][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:08,331][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:08,360][INFO][m:general_utils][fn:should_exit_early][ln:540] - Error reading /home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json: [Errno 2] No such file or directory: '/home/kuwajerw/repos/new_conceptgraphs/concept-graphs/conceptgraph/hydra_configs/early_exit.json'
+[2026-07-06 21:45:08,432][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:08,432][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:08,433][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IHDR' 16 13
+[2026-07-06 21:45:08,433][DEBUG][m:PngImagePlugin][fn:call][ln:204] - STREAM b'IDAT' 41 65536
+[2026-07-06 21:45:08,486][DEBUG][m:Image][fn:close][ln:593] - Error closing: Operation on closed image
+Saved point cloud to /workspace/outputs/baselines/conceptgraphs_full_v1/native_data/outdoor-drone-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz
+WARNING: ConceptGraphs mapping exited non-zero after writing 
+native_data/outdoor-drone-capture/exps/semanticsplat_full_mapping_v1/pcd_semanticsplat_full_mapping_v1.pkl.gz for 
+outdoor-drone-capture; continuing with native query.

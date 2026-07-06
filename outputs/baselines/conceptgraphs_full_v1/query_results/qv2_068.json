@@ -1,0 +1,74 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "8f06615b-c53f-4a9f-9574-c42eb932398b"
+  ],
+  "selected_views": [
+    "v011"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "tv",
+    "selected_node_id": "8f06615b-c53f-4a9f-9574-c42eb932398b",
+    "selected_view_id": "v011",
+    "bbox_2d": [
+      0.271875,
+      0.24375,
+      0.45,
+      0.434375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        3.965737585815949,
+        2.7055528875979,
+        -76.48694608089589
+      ],
+      "maximum": [
+        52.71472442026093,
+        16.697439504884155,
+        -29.38455713499955
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.26055213809013367,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 88 with class 'tv' and cosine similarity 0.260552."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.0971182930666752,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 74.45808895299979,
+      "native_batch_query_total": 2.913548792000256,
+      "native_batch_query_per_query": 0.0971182930666752
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 183,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "Theater-capture",
+  "query_id": "qv2_068",
+  "query": "Find the large black stage curtain",
+  "query_type": "attribute"
+}

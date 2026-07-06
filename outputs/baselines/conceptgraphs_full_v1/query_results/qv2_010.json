@@ -1,0 +1,75 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "ce2870b6-9d58-42e9-9b46-54a43a07d94e"
+  ],
+  "selected_views": [
+    "v006",
+    "v018"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "chair",
+    "selected_node_id": "ce2870b6-9d58-42e9-9b46-54a43a07d94e",
+    "selected_view_id": "v006",
+    "bbox_2d": [
+      0.2609375,
+      0.703125,
+      0.3078125,
+      0.825
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map",
+      "minimum": [
+        23.422383668574422,
+        1.8769190272279612,
+        -24.854021385990215
+      ],
+      "maximum": [
+        60.488511615157265,
+        14.868491853443588,
+        2.0722392236841864
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.38445600867271423,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 107 with class 'chair' and cosine similarity 0.384456."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.09900079336666749,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 84.08998363,
+      "native_batch_query_total": 2.970023801000025,
+      "native_batch_query_per_query": 0.09900079336666749
+    },
+    "token_usage": null,
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 2,
+    "construction_cost": {
+      "native_map_object_count": 313,
+      "scene_query_count": 30
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "ConferenceHall-capture-pilot",
+  "query_id": "qv2_010",
+  "query": "Find the white covered chairs",
+  "query_type": "attribute"
+}
