@@ -183,6 +183,7 @@ def main() -> None:
             "ConceptGraphs full run uses native object-map CLIP retrieval, not SemanticSplat graph traversal.",
             "Native absence handling is uncalibrated; negative queries are expected to be difficult for this baseline.",
             "A local empty-detection guard is used for frames where YOLO returns zero boxes before MobileSAM.",
+            "Token usage is OpenCLIP text-tokenizer usage, not provider/API billing tokens.",
         ],
     })
     scene_rows = "\n".join(
@@ -200,6 +201,8 @@ def main() -> None:
         "- Scope: full five captured scenes with native ConceptGraphs maps and batch CLIP object retrieval.\n"
         "- Important limitation: this is not an official Replica/ScanNet run and has no independent 3D IoU GT.\n"
         "- Empty-scene handling: if a native map has zero objects, outputs are explicit `found=false` misses.\n\n"
+        "Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer tokens, "
+        "not provider/API billing tokens.\n\n"
         "## Per-Scene Native Map Status\n\n"
         "| Scene | Queries | Found outputs | Native map objects | Status |\n"
         "|---|---:|---:|---:|---|\n"

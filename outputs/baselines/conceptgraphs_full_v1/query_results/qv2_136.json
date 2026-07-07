@@ -19,11 +19,19 @@
   "metrics_log": {
     "runtime_seconds": 0.0,
     "stage_runtime_seconds": {
-      "native_map_load": 0.04711884999960603,
+      "native_map_load": 0.07248526600000105,
       "native_batch_query_total": 0.0,
       "native_batch_query_per_query": 0.0
     },
-    "token_usage": null,
+    "token_usage": {
+      "input_tokens": 12,
+      "output_tokens": 0,
+      "total_tokens": 12,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": false
+    },
     "model_call_count": 0,
     "cache_hits": 0,
     "retry_count": 0,
@@ -37,7 +45,8 @@
   },
   "warnings": [
     "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-    "This is recorded as an explicit baseline miss, not as a semantic answer."
+    "This is recorded as an explicit baseline miss, not as a semantic answer.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
   ],
   "schema_version": "semanticsplat.query_result.v1",
   "run_id": "conceptgraphs_full_v1",

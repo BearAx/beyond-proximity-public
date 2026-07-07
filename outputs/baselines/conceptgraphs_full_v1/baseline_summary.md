@@ -8,6 +8,8 @@
 - Important limitation: this is not an official Replica/ScanNet run and has no independent 3D IoU GT.
 - Empty-scene handling: if a native map has zero objects, outputs are explicit `found=false` misses.
 
+Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer tokens, not provider/API billing tokens.
+
 ## Per-Scene Native Map Status
 
 | Scene | Queries | Found outputs | Native map objects | Status |

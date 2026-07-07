@@ -3,7 +3,8 @@ param(
     [string]$ModelCache = "C:\GitProjects\baseline-deps\model-cache",
     [string]$Benchmark = "docs\benchmarks\benchmark_queries_v2.json",
     [string]$Out = "outputs\baselines\conceptgraphs_full_v1",
-    [int]$FrameLimit = 0
+    [int]$FrameLimit = 0,
+    [switch]$ForceQuery
 )
 
 $ErrorActionPreference = "Stop"
@@ -122,7 +123,7 @@ foreach ($pair in $scenePairs) {
     $nativeOutHost = Join-Path $outDir "native_results_$sceneId.json"
     $manifestRelative = "native_data/$sceneId/conversion_manifest.json"
     $nativeCommand = "streamlined_detections.py end=$limit; streamlined_mapping.py end=$limit; native_batch_query.py $benchmarkSceneId"
-    if (Test-Path -LiteralPath $nativeOutHost) {
+    if ((Test-Path -LiteralPath $nativeOutHost) -and -not $ForceQuery) {
         Write-Host "Reusing existing native query output for ${sceneId}: $nativeOutRelative"
     } else {
         $queryArgs = @(

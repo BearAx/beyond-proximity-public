@@ -52,14 +52,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.188845.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -68,7 +77,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -106,14 +116,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'pillar' and cosine similarity 0.273596.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -122,7 +141,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -160,14 +180,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 5 with class 'storage bin' and cosine similarity 0.195625.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "total_tokens": 6,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -176,7 +205,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -214,14 +244,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 10 with class 'wall' and cosine similarity 0.291447.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -230,7 +269,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -268,14 +308,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 29 with class 'door' and cosine similarity 0.267803.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -284,7 +333,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -322,14 +372,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 25 with class 'column' and cosine similarity 0.271204.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -338,7 +397,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -376,14 +436,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 11 with class 'column' and cosine similarity 0.197937.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -392,7 +461,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -430,14 +500,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 18 with class 'door' and cosine similarity 0.249696.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -446,7 +525,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -484,14 +564,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 3 with class 'bench' and cosine similarity 0.297285.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -500,7 +589,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -538,14 +628,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 1 with class 'door' and cosine similarity 0.327772.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 10,
+          "output_tokens": 0,
+          "total_tokens": 10,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -554,7 +653,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -592,14 +692,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 42 with class 'door' and cosine similarity 0.232060.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 11,
+          "output_tokens": 0,
+          "total_tokens": 11,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -608,7 +717,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -646,14 +756,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 10 with class 'wall' and cosine similarity 0.283574.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -662,7 +781,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -700,14 +820,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 19 with class 'window' and cosine similarity 0.366010.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -716,7 +845,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -754,14 +884,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 29 with class 'door' and cosine similarity 0.251258.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 10,
+          "output_tokens": 0,
+          "total_tokens": 10,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -770,7 +909,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -808,14 +948,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'pillar' and cosine similarity 0.284597.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 12,
+          "output_tokens": 0,
+          "total_tokens": 12,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -824,7 +973,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -862,14 +1012,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.200189.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 12,
+          "output_tokens": 0,
+          "total_tokens": 12,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -878,7 +1037,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -916,14 +1076,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 1 with class 'door' and cosine similarity 0.319466.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 13,
+          "output_tokens": 0,
+          "total_tokens": 13,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -932,7 +1101,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -970,14 +1140,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 10 with class 'wall' and cosine similarity 0.264888.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 10,
+          "output_tokens": 0,
+          "total_tokens": 10,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -986,7 +1165,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1024,14 +1204,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.218788.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 10,
+          "output_tokens": 0,
+          "total_tokens": 10,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1040,7 +1229,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1078,14 +1268,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'pillar' and cosine similarity 0.267357.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 11,
+          "output_tokens": 0,
+          "total_tokens": 11,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1094,7 +1293,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1132,14 +1332,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 40 with class 'door' and cosine similarity 0.191352.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1148,7 +1357,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1186,14 +1396,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 40 with class 'door' and cosine similarity 0.286863.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1202,7 +1421,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1240,14 +1460,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 5 with class 'storage bin' and cosine similarity 0.215235.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 11,
+          "output_tokens": 0,
+          "total_tokens": 11,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1256,7 +1485,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1294,14 +1524,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 5 with class 'storage bin' and cosine similarity 0.244104.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1310,7 +1549,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1348,14 +1588,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 2 with class 'clock' and cosine similarity 0.233991.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1364,7 +1613,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1402,14 +1652,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.205581.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1418,7 +1677,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1456,14 +1716,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'washing machine' and cosine similarity 0.228051.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1472,7 +1741,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1510,14 +1780,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 9 with class 'lamp' and cosine similarity 0.186052.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 4,
+          "output_tokens": 0,
+          "total_tokens": 4,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1526,7 +1805,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1564,14 +1844,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.156413.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 4,
+          "output_tokens": 0,
+          "total_tokens": 4,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1580,7 +1869,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -1618,14 +1908,23 @@
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.181801.",
       "metrics": {
-        "runtime_seconds": 0.09248076846667269,
+        "runtime_seconds": 0.08835772659999937,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 69.27211776700005,
-          "native_batch_query_total": 2.774423054000181,
-          "native_batch_query_per_query": 0.09248076846667269
+          "native_map_and_model_load": 63.976605372999984,
+          "native_batch_query_total": 2.650731797999981,
+          "native_batch_query_per_query": 0.08835772659999937
         },
         "model_call_count": 1,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "total_tokens": 6,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
         "checked_view_count": 1,
         "construction_cost": {
           "native_map_object_count": 43,
@@ -1634,7 +1933,8 @@
       },
       "warnings": [
         "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-        "Selected views are derived from native image_idx observations, not independent GT."
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     }
   ]

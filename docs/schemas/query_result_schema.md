@@ -57,7 +57,11 @@ Every saved Week 2 or Week 3 query result must use this shape. Legacy query-sess
 
 - `visited_nodes` and `selected_views` are ordered lists of IDs.
 - `metrics_log.visited_node_count` and `checked_view_count` must match those traces.
-- Missing provider token usage is `null`, never a prompt-length estimate.
+- Missing provider token usage is `null`, never an unlabeled prompt-length
+  estimate.
+- Native non-provider baselines may report tokenizer-counted local model tokens
+  in `token_usage` only when the tokenizer and counting method are labeled, for
+  example `provider_billing_tokens=false` and `tokenizer=open_clip:ViT-H-14`.
 - `runtime_seconds` is measured wall time for this query.
 - `retry_count` and `failure_count` record provider/cache execution attempts for this query.
 - `bbox_2d` uses normalized `[x1, y1, x2, y2]` coordinates when present.

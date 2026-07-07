@@ -75,7 +75,7 @@
       "status": "available"
     }
   ],
-  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\benchmark_queries_v2.json",
+  "benchmark_path": "docs\\benchmarks\\benchmark_queries_v2.json",
   "native_input": "outputs\\baselines\\conceptgraphs_full_v1",
   "provenance_by_scene": {
     "ConferenceHall-capture-pilot": {
@@ -169,5 +169,5 @@
     "reason": "RGB-D was valid for native mapping, but metric alignment and independent 3D GT are not established."
   },
   "result_count": 150,
-  "finished_at": "2026-07-06T21:51:10.723014+00:00"
+  "finished_at": "2026-07-07T09:24:18.443657+00:00"
 }

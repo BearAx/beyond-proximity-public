@@ -32,12 +32,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "total_tokens": 6,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -47,7 +56,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -65,12 +75,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -80,7 +99,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -98,12 +118,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "total_tokens": 6,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -113,7 +142,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -131,12 +161,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -146,7 +185,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -164,12 +204,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -179,7 +228,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -197,12 +247,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -212,7 +271,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -230,12 +290,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 9,
+          "output_tokens": 0,
+          "total_tokens": 9,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -245,7 +314,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -263,12 +333,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -278,7 +357,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -296,12 +376,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -311,7 +400,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -329,12 +419,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 9,
+          "output_tokens": 0,
+          "total_tokens": 9,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -344,7 +443,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -362,12 +462,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 10,
+          "output_tokens": 0,
+          "total_tokens": 10,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -377,7 +486,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -395,12 +505,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 12,
+          "output_tokens": 0,
+          "total_tokens": 12,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -410,7 +529,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -428,12 +548,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -443,7 +572,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -461,12 +591,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 11,
+          "output_tokens": 0,
+          "total_tokens": 11,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -476,7 +615,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -494,12 +634,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -509,7 +658,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -527,12 +677,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 12,
+          "output_tokens": 0,
+          "total_tokens": 12,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -542,7 +701,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -560,12 +720,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 11,
+          "output_tokens": 0,
+          "total_tokens": 11,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -575,7 +744,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -593,12 +763,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 11,
+          "output_tokens": 0,
+          "total_tokens": 11,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -608,7 +787,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -626,12 +806,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 11,
+          "output_tokens": 0,
+          "total_tokens": 11,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -641,7 +830,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -659,12 +849,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 12,
+          "output_tokens": 0,
+          "total_tokens": 12,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -674,7 +873,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -692,12 +892,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "total_tokens": 6,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -707,7 +916,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -725,12 +935,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -740,7 +959,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -758,12 +978,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -773,7 +1002,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -791,12 +1021,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -806,7 +1045,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -824,12 +1064,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -839,7 +1088,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -857,12 +1107,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -872,7 +1131,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -890,12 +1150,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 4,
+          "output_tokens": 0,
+          "total_tokens": 4,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -905,7 +1174,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -923,12 +1193,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 4,
+          "output_tokens": 0,
+          "total_tokens": 4,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -938,7 +1217,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -956,12 +1236,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -971,7 +1260,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     },
     {
@@ -989,12 +1279,21 @@
       "metrics": {
         "runtime_seconds": 0.0,
         "stage_runtime_seconds": {
-          "native_map_load": 0.04711884999960603,
+          "native_map_load": 0.07248526600000105,
           "native_batch_query_total": 0.0,
           "native_batch_query_per_query": 0.0
         },
         "model_call_count": 0,
         "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": false
+        },
         "checked_view_count": 0,
         "failure_count": 1,
         "construction_cost": {
@@ -1004,7 +1303,8 @@
       },
       "warnings": [
         "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
-        "This is recorded as an explicit baseline miss, not as a semantic answer."
+        "This is recorded as an explicit baseline miss, not as a semantic answer.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
       ]
     }
   ]

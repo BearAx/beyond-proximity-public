@@ -39,8 +39,13 @@ canonical benchmark schema and evaluated them against
 | Expected node hit | 0.0000 |
 | Expected zone hit | 0.0000 |
 | Negative not-found correctness | 0.2000 |
+| Token usage | 1,205 OpenCLIP text tokens / 150 queries |
 | 3D IoU | N/A |
-| Token usage | unavailable |
+
+Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer
+tokens. It is not OpenAI/API/provider billing usage. The drone scene has
+`encoded_by_model=false` because its native map contained zero objects, but its
+query text tokenizer counts are still recorded for denominator consistency.
 
 ## Per-Scene Native Map Status
 

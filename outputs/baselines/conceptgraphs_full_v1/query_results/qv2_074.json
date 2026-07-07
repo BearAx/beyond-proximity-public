@@ -39,13 +39,21 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 65 with class 'closet door' and cosine similarity 0.306189."
   },
   "metrics_log": {
-    "runtime_seconds": 0.0971182930666752,
+    "runtime_seconds": 0.08034676509999865,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 74.45808895299979,
-      "native_batch_query_total": 2.913548792000256,
-      "native_batch_query_per_query": 0.0971182930666752
+      "native_map_and_model_load": 66.24117277900001,
+      "native_batch_query_total": 2.4104029529999593,
+      "native_batch_query_per_query": 0.08034676509999865
     },
-    "token_usage": null,
+    "token_usage": {
+      "input_tokens": 8,
+      "output_tokens": 0,
+      "total_tokens": 8,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
     "model_call_count": 1,
     "cache_hits": 0,
     "retry_count": 0,
@@ -59,7 +67,8 @@
   },
   "warnings": [
     "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
-    "Selected views are derived from native image_idx observations, not independent GT."
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
   ],
   "schema_version": "semanticsplat.query_result.v1",
   "run_id": "conceptgraphs_full_v1",

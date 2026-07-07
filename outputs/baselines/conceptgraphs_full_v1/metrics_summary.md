@@ -38,7 +38,7 @@
 | expected_node_hit | measured | 0.0000 | 0 / 125 |
 | expected_zone_hit | measured | 0.0000 | 0 / 125 |
 | not_found_correctness | measured | 0.2000 | 5 / 25 |
-| runtime_seconds mean | measured | 0.0747 | 150 records |
+| runtime_seconds mean | measured | 0.0680 | 150 records |
 | checked_view_count mean | measured | 0.8333 | 150 records |
 | visited_node_count mean | measured | 0.8000 | 150 records |
 | bbox_3d_iou | N/A | N/A | 0 records |
@@ -47,11 +47,11 @@
 
 ```json
 {
-  "input": null,
-  "output": null,
-  "total": null,
-  "denominator": 0,
-  "status": "unavailable"
+  "input": 1205,
+  "output": 0,
+  "total": 1205,
+  "denominator": 150,
+  "status": "measured"
 }
 ```
 

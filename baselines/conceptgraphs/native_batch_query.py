@@ -63,6 +63,23 @@ def _view_ids_for_object(obj: dict[str, Any], manifest: dict[str, Any]) -> list[
     return sorted(set(ids))
 
 
+def _clip_token_count(token_row: torch.Tensor) -> int:
+    # OpenCLIP uses zero padding in its fixed-length text tensor.
+    return int(torch.count_nonzero(token_row).item())
+
+
+def _token_usage_record(token_count: int, *, encoded_by_model: bool) -> dict[str, Any]:
+    return {
+        "input_tokens": token_count,
+        "output_tokens": 0,
+        "total_tokens": token_count,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": False,
+        "encoded_by_model": encoded_by_model,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--map", type=Path, required=True)
@@ -101,10 +118,14 @@ def main() -> None:
     serialized_objects = native_map.get("objects")
     if not isinstance(serialized_objects, list):
         raise SystemExit("ConceptGraphs native map has invalid objects field")
+    query_texts = [str(query["query"]) for query in queries]
     if not serialized_objects:
         load_seconds = time.perf_counter() - load_started
+        tokenizer = open_clip.get_tokenizer("ViT-H-14")
+        tokens = tokenizer(query_texts)
+        token_counts = [_clip_token_count(row) for row in tokens]
         predictions = []
-        for query in queries:
+        for query, token_count in zip(queries, token_counts):
             predictions.append({
                 "query_id": str(query["query_id"]),
                 "found": False,
@@ -129,6 +150,7 @@ def main() -> None:
                     },
                     "model_call_count": 0,
                     "cache_hits": 0,
+                    "token_usage": _token_usage_record(token_count, encoded_by_model=False),
                     "checked_view_count": 0,
                     "failure_count": 1,
                     "construction_cost": {
@@ -139,6 +161,7 @@ def main() -> None:
                 "warnings": [
                     "Native ConceptGraphs detection/mapping completed with a saved map artifact, but no objects were available for retrieval.",
                     "This is recorded as an explicit baseline miss, not as a semantic answer.",
+                    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens.",
                 ],
             })
         output = {
@@ -178,10 +201,10 @@ def main() -> None:
     load_seconds = time.perf_counter() - load_started
 
     query_started = time.perf_counter()
-    query_texts = [str(query["query"]) for query in queries]
     with torch.no_grad():
-        tokens = tokenizer(query_texts).cuda()
-        query_features = model.encode_text(tokens)
+        tokens = tokenizer(query_texts)
+        token_counts = [_clip_token_count(row) for row in tokens]
+        query_features = model.encode_text(tokens.cuda())
         query_features /= query_features.norm(dim=-1, keepdim=True)
         similarities = query_features @ object_features.T
         top_scores, top_indices = similarities.max(dim=1)
@@ -189,7 +212,7 @@ def main() -> None:
     per_query_seconds = total_query_seconds / max(1, len(queries))
 
     predictions = []
-    for query, score, index_tensor in zip(queries, top_scores, top_indices):
+    for query, score, index_tensor, token_count in zip(queries, top_scores, top_indices, token_counts):
         index = int(index_tensor.item())
         selected = objects[index]
         selected_id = str(selected.get("id", f"object_{index}"))
@@ -220,6 +243,7 @@ def main() -> None:
                 },
                 "model_call_count": 1,
                 "cache_hits": 0,
+                "token_usage": _token_usage_record(token_count, encoded_by_model=True),
                 "checked_view_count": len(selected_views),
                 "construction_cost": {
                     "native_map_object_count": len(objects),
@@ -229,6 +253,7 @@ def main() -> None:
             "warnings": [
                 "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
                 "Selected views are derived from native image_idx observations, not independent GT.",
+                "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens.",
             ],
         })
 
