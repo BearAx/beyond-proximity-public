@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -70.22628566697301,
+        1.1581480484695597,
+        -38.82457503494793
+      ],
+      "max": [
+        -8.83460491917485,
+        27.334686558755454,
+        29.99089678330732
+      ],
       "minimum": [
         -70.22628566697301,
         1.1581480484695597,
@@ -32,6 +42,16 @@
         -8.83460491917485,
         27.334686558755454,
         29.99089678330732
+      ],
+      "center": [
+        -39.53044529307393,
+        14.246417303612507,
+        -4.416839125820303
+      ],
+      "size": [
+        61.39168074779816,
+        26.176538510285894,
+        68.81547181825525
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 30 with class 'blackboard' and cosine similarity 0.248541."
   },
   "metrics_log": {
-    "runtime_seconds": 0.08034676509999865,
+    "runtime_seconds": 0.0781800675666697,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 66.24117277900001,
-      "native_batch_query_total": 2.4104029529999593,
-      "native_batch_query_per_query": 0.08034676509999865
+      "native_map_and_model_load": 63.28425349199995,
+      "native_batch_query_total": 2.345402027000091,
+      "native_batch_query_per_query": 0.0781800675666697
     },
     "token_usage": {
       "input_tokens": 10,

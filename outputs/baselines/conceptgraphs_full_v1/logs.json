@@ -1,7 +1,7 @@
 {
   "run_id": "conceptgraphs_full_v1",
   "mode": "live",
-  "finished_at": "2026-07-07T09:24:18.443657+00:00",
+  "finished_at": "2026-07-07T09:34:40.414794+00:00",
   "events": [
     {
       "stage": "multi_scene_native_output_adaptation",

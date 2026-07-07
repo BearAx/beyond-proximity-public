@@ -226,11 +226,30 @@ def run_depth_reliable(run_config: dict[str, Any]) -> bool:
     direct = run_config.get("depth_validation")
     if isinstance(direct, dict) and direct.get("status") == "reliable":
         return True
+    bbox_eval = run_config.get("bbox_3d_evaluation")
+    if isinstance(bbox_eval, dict) and bbox_eval.get("status") in {
+        "coarse_manual_gt_enabled",
+        "reliable",
+    }:
+        return True
     manifest = run_config.get("scene_manifest")
     if isinstance(manifest, dict):
         validation = manifest.get("depth_validation")
         return isinstance(validation, dict) and validation.get("status") == "reliable"
     return False
+
+
+def bbox_evaluation_warning(run_config: dict[str, Any]) -> str | None:
+    bbox_eval = run_config.get("bbox_3d_evaluation")
+    if not isinstance(bbox_eval, dict):
+        return None
+    if bbox_eval.get("status") != "coarse_manual_gt_enabled":
+        return None
+    source = bbox_eval.get("gt_source", "manual bbox GT")
+    return (
+        f"3D IoU uses coarse manual depth-projected GT boxes from {source}; "
+        "this is an internal regression signal, not official dataset GT."
+    )
 
 
 def warning_text(data: dict[str, Any]) -> str:
@@ -563,6 +582,9 @@ def evaluate(
 
     if missing_ids:
         warnings.append(f"{len(missing_ids)} benchmark queries have no saved result")
+    bbox_warning = bbox_evaluation_warning(run_config)
+    if bbox_warning:
+        warnings.append(bbox_warning)
     if not depth_reliable:
         warnings.append("3D IoU is N/A because run_config does not confirm reliable depth")
     if unavailable_rows:

@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        5.198869277640515,
+        -5.29220361025285,
+        -77.4194046951789
+      ],
+      "max": [
+        54.45234487295315,
+        9.999887931762807,
+        -26.499098325177865
+      ],
       "minimum": [
         5.198869277640515,
         -5.29220361025285,
@@ -32,6 +42,16 @@
         54.45234487295315,
         9.999887931762807,
         -26.499098325177865
+      ],
+      "center": [
+        29.82560707529683,
+        2.3538421607549784,
+        -51.95925151017838
+      ],
+      "size": [
+        49.253475595312636,
+        15.292091542015656,
+        50.92030637000103
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 131 with class 'door' and cosine similarity 0.340228."
   },
   "metrics_log": {
-    "runtime_seconds": 0.09415798986666649,
+    "runtime_seconds": 0.08521288716666883,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 102.61661011499999,
-      "native_batch_query_total": 2.8247396959999946,
-      "native_batch_query_per_query": 0.09415798986666649
+      "native_map_and_model_load": 70.17540053599998,
+      "native_batch_query_total": 2.556386615000065,
+      "native_batch_query_per_query": 0.08521288716666883
     },
     "token_usage": {
       "input_tokens": 7,

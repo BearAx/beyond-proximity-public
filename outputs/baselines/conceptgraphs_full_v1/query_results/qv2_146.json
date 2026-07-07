@@ -19,7 +19,7 @@
   "metrics_log": {
     "runtime_seconds": 0.0,
     "stage_runtime_seconds": {
-      "native_map_load": 0.07248526600000105,
+      "native_map_load": 0.07629308399987167,
       "native_batch_query_total": 0.0,
       "native_batch_query_per_query": 0.0
     },

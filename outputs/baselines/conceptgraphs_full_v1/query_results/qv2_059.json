@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -18.46372304113539,
+        0.3920752360945059,
+        0.0977522076719943
+      ],
+      "max": [
+        19.777741765922734,
+        17.168500235829917,
+        57.18178091531358
+      ],
       "minimum": [
         -18.46372304113539,
         0.3920752360945059,
@@ -32,6 +42,16 @@
         19.777741765922734,
         17.168500235829917,
         57.18178091531358
+      ],
+      "center": [
+        0.6570093623936728,
+        8.780287735962212,
+        28.639766561492788
+      ],
+      "size": [
+        38.24146480705812,
+        16.77642499973541,
+        57.084028707641586
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 138 with class 'power outlet' and cosine similarity 0.245990."
   },
   "metrics_log": {
-    "runtime_seconds": 0.07716745830000017,
+    "runtime_seconds": 0.08480656133333468,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 65.793789484,
-      "native_batch_query_total": 2.315023749000005,
-      "native_batch_query_per_query": 0.07716745830000017
+      "native_map_and_model_load": 64.86677443099995,
+      "native_batch_query_total": 2.5441968400000405,
+      "native_batch_query_per_query": 0.08480656133333468
     },
     "token_usage": {
       "input_tokens": 4,

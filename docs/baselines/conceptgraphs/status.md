@@ -56,11 +56,15 @@ expected_view_hit = 0.2240
 expected_node_hit = 0.0000
 expected_zone_hit = 0.0000
 token_usage = 1205 OpenCLIP text tokens / 150 queries
-bbox_3d_iou = N/A
+bbox_3d_iou = 0.0490 over 100 records
 ```
 
 The token usage field is local OpenCLIP `ViT-H-14` text-tokenizer usage, not
 provider/API billing usage.
+
+The 3D IoU field uses Person 2 manual coarse depth-projected boxes from
+`docs/benchmarks/manual_bbox_gt_v2.json`. It is an internal regression signal,
+not official Replica/ScanNet or independent dataset GT.
 
 Native map object counts:
 

@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -62.67469576230653,
+        -4.380753023094003,
+        -91.87188490691709
+      ],
+      "max": [
+        0.716309673218511,
+        1.3930240265671336,
+        -21.504833604070242
+      ],
       "minimum": [
         -62.67469576230653,
         -4.380753023094003,
@@ -32,6 +42,16 @@
         0.716309673218511,
         1.3930240265671336,
         -21.504833604070242
+      ],
+      "center": [
+        -30.979193044544008,
+        -1.4938644982634344,
+        -56.688359255493666
+      ],
+      "size": [
+        63.39100543552504,
+        5.7737770496611365,
+        70.36705130284685
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 156 with class 'potted plant' and cosine similarity 0.296830."
   },
   "metrics_log": {
-    "runtime_seconds": 0.09415798986666649,
+    "runtime_seconds": 0.08521288716666883,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 102.61661011499999,
-      "native_batch_query_total": 2.8247396959999946,
-      "native_batch_query_per_query": 0.09415798986666649
+      "native_map_and_model_load": 70.17540053599998,
+      "native_batch_query_total": 2.556386615000065,
+      "native_batch_query_per_query": 0.08521288716666883
     },
     "token_usage": {
       "input_tokens": 10,

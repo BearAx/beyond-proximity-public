@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -39.23448130666219,
+        -2.8065355002573935,
+        -21.388763453477516
+      ],
+      "max": [
+        -11.269117699241512,
+        3.5811473026002143,
+        -17.520681950457103
+      ],
       "minimum": [
         -39.23448130666219,
         -2.8065355002573935,
@@ -32,6 +42,16 @@
         -11.269117699241512,
         3.5811473026002143,
         -17.520681950457103
+      ],
+      "center": [
+        -25.25179950295185,
+        0.3873059011714104,
+        -19.45472270196731
+      ],
+      "size": [
+        27.965363607420677,
+        6.387682802857608,
+        3.868081503020413
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 65 with class 'closet door' and cosine similarity 0.306189."
   },
   "metrics_log": {
-    "runtime_seconds": 0.08034676509999865,
+    "runtime_seconds": 0.0781800675666697,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 66.24117277900001,
-      "native_batch_query_total": 2.4104029529999593,
-      "native_batch_query_per_query": 0.08034676509999865
+      "native_map_and_model_load": 63.28425349199995,
+      "native_batch_query_total": 2.345402027000091,
+      "native_batch_query_per_query": 0.0781800675666697
     },
     "token_usage": {
       "input_tokens": 8,

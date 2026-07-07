@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -74.17199194031389,
+        -1.5380097683800362,
+        -3.878544173398455
+      ],
+      "max": [
+        20.563688360249344,
+        43.79074335894241,
+        8.371946761813932
+      ],
       "minimum": [
         -74.17199194031389,
         -1.5380097683800362,
@@ -32,6 +42,16 @@
         20.563688360249344,
         43.79074335894241,
         8.371946761813932
+      ],
+      "center": [
+        -26.80415179003227,
+        21.126366795281186,
+        2.246701294207739
+      ],
+      "size": [
+        94.73568030056323,
+        45.32875312732244,
+        12.250490935212387
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 79 with class 'closet wall' and cosine similarity 0.228093."
   },
   "metrics_log": {
-    "runtime_seconds": 0.07716745830000017,
+    "runtime_seconds": 0.08480656133333468,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 65.793789484,
-      "native_batch_query_total": 2.315023749000005,
-      "native_batch_query_per_query": 0.07716745830000017
+      "native_map_and_model_load": 64.86677443099995,
+      "native_batch_query_total": 2.5441968400000405,
+      "native_batch_query_per_query": 0.08480656133333468
     },
     "token_usage": {
       "input_tokens": 10,

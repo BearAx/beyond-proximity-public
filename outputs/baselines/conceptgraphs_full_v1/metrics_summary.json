@@ -2,7 +2,7 @@
   "schema_version": "semanticsplat.metrics_record.v1",
   "run_id": "conceptgraphs_full_v1",
   "benchmark_id": "five_capture_manual_semantic_index_v2",
-  "generated_at": "2026-07-07T09:24:18.728995+00:00",
+  "generated_at": "2026-07-07T09:34:41.690356+00:00",
   "coverage": {
     "benchmark_total_query_count": 150,
     "benchmark_query_count": 150,
@@ -238,8 +238,8 @@
       "reason": null
     },
     "runtime_seconds": {
-      "mean": 0.068,
-      "total": 10.2009,
+      "mean": 0.0666,
+      "total": 9.9853,
       "denominator": 150,
       "status": "measured"
     },
@@ -263,10 +263,10 @@
       "status": "measured"
     },
     "bbox_3d_iou": {
-      "value": null,
-      "status": "N/A",
-      "denominator": 0,
-      "reason": "Reliable depth and reliable GT 3D boxes were not both available"
+      "value": 0.049,
+      "status": "measured",
+      "denominator": 100,
+      "reason": null
     }
   },
   "failure_categories": {
@@ -276,7 +276,7 @@
     "missing object in semantic description": 0,
     "bad query parsing": 0,
     "bad traversal": 25,
-    "bad bbox": 0,
+    "bad bbox": 125,
     "invalid depth": 0,
     "ambiguous ground truth": 0,
     "baseline adapter issue": 0,
@@ -297,7 +297,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -309,9 +309,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.117468,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -331,7 +332,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -343,9 +344,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.273392,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -366,7 +368,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -378,9 +380,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -401,7 +404,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -413,9 +416,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -436,7 +440,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -448,9 +452,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.003731,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -470,7 +475,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -482,9 +487,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.117468,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -504,7 +510,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -516,9 +522,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -539,7 +546,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -551,9 +558,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -574,7 +582,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -586,9 +594,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.006325,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -609,7 +618,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -621,9 +630,10 @@
       },
       "checked_view_count": 2.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.092545,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -643,7 +653,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -655,9 +665,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.355296,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -677,7 +688,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -689,9 +700,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.008524,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -711,7 +723,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -723,9 +735,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.000681,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -746,7 +759,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -758,9 +771,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -781,7 +795,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -793,9 +807,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -816,7 +831,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -828,9 +843,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.363125,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -851,7 +867,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -863,9 +879,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.009607,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -886,7 +903,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -898,9 +915,10 @@
       },
       "checked_view_count": 3.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.082275,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -921,7 +939,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -933,9 +951,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -956,7 +975,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 13,
         "output_tokens": 0,
@@ -968,9 +987,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -991,7 +1011,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -1003,9 +1023,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.002022,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1026,7 +1047,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -1038,9 +1059,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.057795,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1060,7 +1082,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -1072,9 +1094,10 @@
       },
       "checked_view_count": 3.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1095,7 +1118,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -1107,9 +1130,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1130,7 +1154,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -1142,9 +1166,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1165,7 +1190,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -1198,7 +1223,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -1231,7 +1256,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -1264,7 +1289,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -1297,7 +1322,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.09415798986666649,
+      "runtime_seconds": 0.08521288716666883,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -1330,7 +1355,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -1342,9 +1367,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.137739,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1364,7 +1390,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -1376,9 +1402,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1399,7 +1426,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -1411,9 +1438,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.110061,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1433,7 +1461,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -1445,9 +1473,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.030544,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1468,7 +1497,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -1480,9 +1509,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.014469,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1502,7 +1532,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -1514,9 +1544,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.025044,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1536,7 +1567,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -1548,9 +1579,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.147065,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1570,7 +1602,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -1582,9 +1614,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.036887,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1605,7 +1638,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -1617,9 +1650,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.158885,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1639,7 +1673,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -1651,9 +1685,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.094572,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1674,7 +1709,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -1686,9 +1721,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.009634,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1709,7 +1745,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -1721,9 +1757,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.032623,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1744,7 +1781,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -1756,9 +1793,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.061199,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1779,7 +1817,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -1791,9 +1829,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.014859,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1814,7 +1853,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -1826,9 +1865,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.084637,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1848,7 +1888,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -1860,9 +1900,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.067167,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -1882,7 +1923,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -1894,9 +1935,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1917,7 +1959,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 12,
         "output_tokens": 0,
@@ -1929,9 +1971,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1952,7 +1995,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 12,
         "output_tokens": 0,
@@ -1964,9 +2007,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -1987,7 +2031,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -1999,9 +2043,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.094735,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2022,7 +2067,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -2034,9 +2079,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.080628,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -2056,7 +2102,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -2068,9 +2114,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.021655,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2091,7 +2138,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -2103,9 +2150,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.134786,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -2125,7 +2173,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -2137,9 +2185,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.283901,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2160,7 +2209,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -2172,9 +2221,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.010661,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2195,7 +2245,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -2228,7 +2278,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -2261,7 +2311,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -2294,7 +2344,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -2327,7 +2377,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.07716745830000017,
+      "runtime_seconds": 0.08480656133333468,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -2360,7 +2410,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -2372,9 +2422,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2395,7 +2446,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -2407,9 +2458,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.169644,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -2429,7 +2481,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -2441,9 +2493,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2464,7 +2517,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -2476,9 +2529,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2499,7 +2553,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -2511,9 +2565,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2534,7 +2589,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -2546,9 +2601,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.169644,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -2568,7 +2624,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -2580,9 +2636,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2603,7 +2660,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -2615,9 +2672,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2638,7 +2696,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -2650,9 +2708,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.009685,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2673,7 +2732,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -2685,9 +2744,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.005658,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2708,7 +2768,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -2720,9 +2780,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2743,7 +2804,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 9,
         "output_tokens": 0,
@@ -2755,9 +2816,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong room / zone",
         "wrong view"
       ],
@@ -2777,7 +2839,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -2789,9 +2851,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2812,7 +2875,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -2824,9 +2887,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2847,7 +2911,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 12,
         "output_tokens": 0,
@@ -2859,9 +2923,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2882,7 +2947,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -2894,9 +2959,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -2917,7 +2983,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 13,
         "output_tokens": 0,
@@ -2929,9 +2995,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.169644,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -2951,7 +3018,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -2963,9 +3030,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.329189,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -2985,7 +3053,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 12,
         "output_tokens": 0,
@@ -2997,9 +3065,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.000849,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3020,7 +3089,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -3032,9 +3101,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3055,7 +3125,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -3067,9 +3137,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.035572,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -3089,7 +3160,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -3101,9 +3172,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.000857,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3124,7 +3196,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -3136,9 +3208,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3159,7 +3232,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -3171,9 +3244,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.349138,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -3193,7 +3267,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -3205,9 +3279,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.105477,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3228,7 +3303,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -3261,7 +3336,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -3294,7 +3369,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -3327,7 +3402,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -3360,7 +3435,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08034676509999865,
+      "runtime_seconds": 0.0781800675666697,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -3393,7 +3468,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -3405,9 +3480,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.04279,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3428,7 +3504,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -3440,9 +3516,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3463,7 +3540,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -3475,9 +3552,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3498,7 +3576,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -3510,9 +3588,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.023685,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -3532,7 +3611,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -3544,9 +3623,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3567,7 +3647,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -3579,9 +3659,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3602,7 +3683,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -3614,9 +3695,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.02863,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3637,7 +3719,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -3649,9 +3731,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.003146,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -3671,7 +3754,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -3683,9 +3766,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3706,7 +3790,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -3718,9 +3802,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3741,7 +3826,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -3753,9 +3838,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3776,7 +3862,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -3788,9 +3874,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.023685,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -3810,7 +3897,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -3822,9 +3909,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.021711,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3845,7 +3933,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -3857,9 +3945,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3880,7 +3969,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 12,
         "output_tokens": 0,
@@ -3892,9 +3981,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3915,7 +4005,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 12,
         "output_tokens": 0,
@@ -3927,9 +4017,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.04279,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3950,7 +4041,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 13,
         "output_tokens": 0,
@@ -3962,9 +4053,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -3985,7 +4077,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -3997,9 +4089,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.023685,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -4019,7 +4112,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 10,
         "output_tokens": 0,
@@ -4031,9 +4124,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -4054,7 +4148,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -4066,9 +4160,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -4089,7 +4184,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -4101,9 +4196,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.09617,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -4124,7 +4220,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -4136,9 +4232,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.014224,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -4159,7 +4256,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 11,
         "output_tokens": 0,
@@ -4171,9 +4268,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.054887,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -4194,7 +4292,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 7,
         "output_tokens": 0,
@@ -4206,9 +4304,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.020336,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone"
       ],
@@ -4228,7 +4327,7 @@
       "expected_node_hit": false,
       "expected_zone_hit": false,
       "not_found_correct": null,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 8,
         "output_tokens": 0,
@@ -4240,9 +4339,10 @@
       },
       "checked_view_count": 1.0,
       "visited_node_count": 1.0,
-      "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou": 0.016852,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "wrong object",
         "wrong room / zone",
         "wrong view"
@@ -4263,7 +4363,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -4296,7 +4396,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 5,
         "output_tokens": 0,
@@ -4329,7 +4429,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -4362,7 +4462,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 4,
         "output_tokens": 0,
@@ -4395,7 +4495,7 @@
       "expected_node_hit": null,
       "expected_zone_hit": null,
       "not_found_correct": false,
-      "runtime_seconds": 0.08835772659999937,
+      "runtime_seconds": 0.0846430721333339,
       "token_usage": {
         "input_tokens": 6,
         "output_tokens": 0,
@@ -4441,8 +4541,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4476,8 +4577,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4511,8 +4613,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4546,8 +4649,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4581,8 +4685,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4616,8 +4721,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4651,8 +4757,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4686,8 +4793,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4721,8 +4829,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4756,8 +4865,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4791,8 +4901,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4826,8 +4937,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4861,8 +4973,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4896,8 +5009,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4931,8 +5045,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -4966,8 +5081,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5001,8 +5117,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5036,8 +5153,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5071,8 +5189,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5106,8 +5225,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5141,8 +5261,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5176,8 +5297,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5211,8 +5333,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5246,8 +5369,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5281,8 +5405,9 @@
       "checked_view_count": 0.0,
       "visited_node_count": 0.0,
       "bbox_3d_iou": null,
-      "bbox_3d_iou_eligible": false,
+      "bbox_3d_iou_eligible": true,
       "failure_categories": [
+        "bad bbox",
         "bad traversal",
         "wrong room / zone",
         "wrong view"
@@ -5447,6 +5572,6 @@
     }
   ],
   "warnings": [
-    "3D IoU is N/A because run_config does not confirm reliable depth"
+    "3D IoU uses coarse manual depth-projected GT boxes from docs/benchmarks/manual_bbox_gt_v2.json; this is an internal regression signal, not official dataset GT."
   ]
 }

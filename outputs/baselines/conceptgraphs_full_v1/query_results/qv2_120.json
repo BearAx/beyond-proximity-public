@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -20.127692416164862,
+        11.568742956758548,
+        23.945758962448963
+      ],
+      "max": [
+        34.62188538373377,
+        18.573961614049384,
+        42.340757150775005
+      ],
       "minimum": [
         -20.127692416164862,
         11.568742956758548,
@@ -32,6 +42,16 @@
         34.62188538373377,
         18.573961614049384,
         42.340757150775005
+      ],
+      "center": [
+        7.247096483784453,
+        15.071352285403966,
+        33.143258056611984
+      ],
+      "size": [
+        54.74957779989863,
+        7.005218657290836,
+        18.394998188326042
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 23 with class 'paper towel roll' and cosine similarity 0.181801."
   },
   "metrics_log": {
-    "runtime_seconds": 0.08835772659999937,
+    "runtime_seconds": 0.0846430721333339,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 63.976605372999984,
-      "native_batch_query_total": 2.650731797999981,
-      "native_batch_query_per_query": 0.08835772659999937
+      "native_map_and_model_load": 60.35968421300004,
+      "native_batch_query_total": 2.539292164000017,
+      "native_batch_query_per_query": 0.0846430721333339
     },
     "token_usage": {
       "input_tokens": 6,

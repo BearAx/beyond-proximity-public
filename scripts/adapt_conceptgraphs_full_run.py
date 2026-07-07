@@ -166,6 +166,18 @@ def main() -> None:
             "status": "unverified_for_native_conceptgraphs_metric_alignment",
             "reason": "RGB-D was valid for native mapping, but metric alignment and independent 3D GT are not established.",
         },
+        "bbox_3d_evaluation": {
+            "status": "coarse_manual_gt_enabled",
+            "gt_source": "docs/benchmarks/manual_bbox_gt_v2.json",
+            "prediction_coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+            "gt_coordinate_frame": "camera_to_world",
+            "reason": (
+                "ConceptGraphs consumed the captured source camera-to-world poses; "
+                "3D IoU is reported only as a coarse internal regression signal "
+                "against Person 2 manual depth-projected boxes."
+            ),
+            "not_official_dataset_gt": True,
+        },
         "result_count": canonical_count,
         "finished_at": now,
     }
@@ -203,6 +215,9 @@ def main() -> None:
         "- Empty-scene handling: if a native map has zero objects, outputs are explicit `found=false` misses.\n\n"
         "Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer tokens, "
         "not provider/API billing tokens.\n\n"
+        "3D IoU, when evaluated, uses Person 2 manual coarse depth-projected GT boxes "
+        "from `docs/benchmarks/manual_bbox_gt_v2.json`; it is an internal regression "
+        "signal, not official dataset localization GT.\n\n"
         "## Per-Scene Native Map Status\n\n"
         "| Scene | Queries | Found outputs | Native map objects | Status |\n"
         "|---|---:|---:|---:|---|\n"

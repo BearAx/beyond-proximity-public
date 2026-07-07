@@ -38,10 +38,10 @@
 | expected_node_hit | measured | 0.0000 | 0 / 125 |
 | expected_zone_hit | measured | 0.0000 | 0 / 125 |
 | not_found_correctness | measured | 0.2000 | 5 / 25 |
-| runtime_seconds mean | measured | 0.0680 | 150 records |
+| runtime_seconds mean | measured | 0.0666 | 150 records |
 | checked_view_count mean | measured | 0.8333 | 150 records |
 | visited_node_count mean | measured | 0.8000 | 150 records |
-| bbox_3d_iou | N/A | N/A | 0 records |
+| bbox_3d_iou | measured | 0.0490 | 100 records |
 
 ## Token Usage
 
@@ -57,4 +57,4 @@
 
 ## Warnings
 
-- 3D IoU is N/A because run_config does not confirm reliable depth
+- 3D IoU uses coarse manual depth-projected GT boxes from docs/benchmarks/manual_bbox_gt_v2.json; this is an internal regression signal, not official dataset GT.

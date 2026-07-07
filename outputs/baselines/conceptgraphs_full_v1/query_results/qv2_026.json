@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -16.323954792067152,
+        0.9799752845118759,
+        -33.78902414363689
+      ],
+      "max": [
+        1.1948345841394854,
+        3.9829996785372073,
+        -1.7036874570193914
+      ],
       "minimum": [
         -16.323954792067152,
         0.9799752845118759,
@@ -32,6 +42,16 @@
         1.1948345841394854,
         3.9829996785372073,
         -1.7036874570193914
+      ],
+      "center": [
+        -7.564560103963833,
+        2.4814874815245416,
+        -17.74635580032814
+      ],
+      "size": [
+        17.518789376206637,
+        3.0030243940253314,
+        32.085336686617495
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 211 with class 'pillow' and cosine similarity 0.265737."
   },
   "metrics_log": {
-    "runtime_seconds": 0.09415798986666649,
+    "runtime_seconds": 0.08521288716666883,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 102.61661011499999,
-      "native_batch_query_total": 2.8247396959999946,
-      "native_batch_query_per_query": 0.09415798986666649
+      "native_map_and_model_load": 70.17540053599998,
+      "native_batch_query_total": 2.556386615000065,
+      "native_batch_query_per_query": 0.08521288716666883
     },
     "token_usage": {
       "input_tokens": 4,

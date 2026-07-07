@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -2.863112577139592,
+        1.4986887719775592,
+        -85.67815561465265
+      ],
+      "max": [
+        1.2692752164357322,
+        8.6345494202623,
+        -22.128654483554342
+      ],
       "minimum": [
         -2.863112577139592,
         1.4986887719775592,
@@ -32,6 +42,16 @@
         1.2692752164357322,
         8.6345494202623,
         -22.128654483554342
+      ],
+      "center": [
+        -0.79691868035193,
+        5.066619096119929,
+        -53.9034050491035
+      ],
+      "size": [
+        4.132387793575324,
+        7.135860648284741,
+        63.54950113109831
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 152 with class 'sofa chair' and cosine similarity 0.277707."
   },
   "metrics_log": {
-    "runtime_seconds": 0.09415798986666649,
+    "runtime_seconds": 0.08521288716666883,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 102.61661011499999,
-      "native_batch_query_total": 2.8247396959999946,
-      "native_batch_query_per_query": 0.09415798986666649
+      "native_map_and_model_load": 70.17540053599998,
+      "native_batch_query_total": 2.556386615000065,
+      "native_batch_query_per_query": 0.08521288716666883
     },
     "token_usage": {
       "input_tokens": 9,

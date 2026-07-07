@@ -37,7 +37,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.320643380934918,
+          1.020998611395573,
+          -46.33179917119176
+        ],
+        "max": [
+          57.865338425036434,
+          20.18296053953651,
+          0.28648735942978476
+        ],
         "minimum": [
           3.320643380934918,
           1.020998611395573,
@@ -47,16 +57,26 @@
           57.865338425036434,
           20.18296053953651,
           0.28648735942978476
+        ],
+        "center": [
+          30.592990902985676,
+          10.601979575466041,
+          -23.02265590588099
+        ],
+        "size": [
+          54.544695044101516,
+          19.161961928140936,
+          46.618286530621546
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 10 with class 'desk' and cosine similarity 0.278367.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -101,7 +121,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -12.094471164827238,
+          2.20119627167481,
+          3.4650443300798854
+        ],
+        "max": [
+          1.345550388644165,
+          25.321198836060628,
+          41.120501737131406
+        ],
         "minimum": [
           -12.094471164827238,
           2.20119627167481,
@@ -111,16 +141,26 @@
           1.345550388644165,
           25.321198836060628,
           41.120501737131406
+        ],
+        "center": [
+          -5.374460388091537,
+          13.761197553867719,
+          22.292773033605645
+        ],
+        "size": [
+          13.440021553471404,
+          23.120002564385818,
+          37.65545740705152
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 30 with class 'mat' and cosine similarity 0.249447.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -165,7 +205,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -13.468008969240941,
+          -2.510404575445797,
+          4.085323249457175
+        ],
+        "max": [
+          20.842518110430525,
+          26.87058207645222,
+          37.04983221450016
+        ],
         "minimum": [
           -13.468008969240941,
           -2.510404575445797,
@@ -175,16 +225,26 @@
           20.842518110430525,
           26.87058207645222,
           37.04983221450016
+        ],
+        "center": [
+          3.687254570594792,
+          12.180088750503211,
+          20.567577731978666
+        ],
+        "size": [
+          34.310527079671466,
+          29.380986651898017,
+          32.96450896504298
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 71 with class 'bulletin board' and cosine similarity 0.359079.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -229,7 +289,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          4.341560544143327,
+          1.2332899364399843,
+          -54.32123203435553
+        ],
+        "max": [
+          41.87498184878533,
+          20.329811474788176,
+          -1.4088646578316855
+        ],
         "minimum": [
           4.341560544143327,
           1.2332899364399843,
@@ -239,16 +309,26 @@
           41.87498184878533,
           20.329811474788176,
           -1.4088646578316855
+        ],
+        "center": [
+          23.10827119646433,
+          10.78155070561408,
+          -27.86504834609361
+        ],
+        "size": [
+          37.533421304642005,
+          19.096521538348192,
+          52.91236737652385
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 18 with class 'sofa chair' and cosine similarity 0.207098.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -293,7 +373,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -11.351783624803456,
+          -17.991044739390784,
+          0.5023937736711588
+        ],
+        "max": [
+          23.638931606707924,
+          9.396535376119694,
+          73.53944501648105
+        ],
         "minimum": [
           -11.351783624803456,
           -17.991044739390784,
@@ -303,16 +393,26 @@
           23.638931606707924,
           9.396535376119694,
           73.53944501648105
+        ],
+        "center": [
+          6.143573990952234,
+          -4.297254681635545,
+          37.020919395076106
+        ],
+        "size": [
+          34.99071523151138,
+          27.387580115510477,
+          73.0370512428099
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 128 with class 'bulletin board' and cosine similarity 0.413178.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -357,7 +457,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.261119437192022,
+          -2.7464370617753566,
+          -82.634466393528
+        ],
+        "max": [
+          27.524086045615874,
+          16.317227496526474,
+          0.20425078821939735
+        ],
         "minimum": [
           3.261119437192022,
           -2.7464370617753566,
@@ -367,16 +477,26 @@
           27.524086045615874,
           16.317227496526474,
           0.20425078821939735
+        ],
+        "center": [
+          15.392602741403948,
+          6.785395217375559,
+          -41.2151078026543
+        ],
+        "size": [
+          24.262966608423852,
+          19.06366455830183,
+          82.8387171817474
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 11 with class 'projector screen' and cosine similarity 0.347512.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -421,7 +541,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -55.598497215003896,
+          -0.3717243375745731,
+          0.5546936253190324
+        ],
+        "max": [
+          5.550226686959185,
+          15.111481734071095,
+          33.82450442513848
+        ],
         "minimum": [
           -55.598497215003896,
           -0.3717243375745731,
@@ -431,16 +561,26 @@
           5.550226686959185,
           15.111481734071095,
           33.82450442513848
+        ],
+        "center": [
+          -25.024135264022355,
+          7.369878698248261,
+          17.189599025228755
+        ],
+        "size": [
+          61.14872390196308,
+          15.483206071645668,
+          33.269810799819446
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 45 with class 'poster' and cosine similarity 0.226648.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -485,7 +625,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          38.45230085305984,
+          -8.644038253494472,
+          8.733065756510124
+        ],
+        "max": [
+          97.37647410780515,
+          14.870669350328924,
+          76.35878475458942
+        ],
         "minimum": [
           38.45230085305984,
           -8.644038253494472,
@@ -495,16 +645,26 @@
           97.37647410780515,
           14.870669350328924,
           76.35878475458942
+        ],
+        "center": [
+          67.9143874804325,
+          3.1133155484172264,
+          42.545925255549776
+        ],
+        "size": [
+          58.92417325474531,
+          23.514707603823396,
+          67.6257189980793
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 109 with class 'blinds' and cosine similarity 0.291639.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -549,7 +709,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -71.02422725664135,
+          -21.468174815397457,
+          -28.67004630726255
+        ],
+        "max": [
+          25.83020678654964,
+          44.13263589664582,
+          2.829769431630446
+        ],
         "minimum": [
           -71.02422725664135,
           -21.468174815397457,
@@ -559,16 +729,26 @@
           25.83020678654964,
           44.13263589664582,
           2.829769431630446
+        ],
+        "center": [
+          -22.597010235045857,
+          11.332230540624183,
+          -12.920138437816052
+        ],
+        "size": [
+          96.85443404319099,
+          65.60081071204328,
+          31.499815738892995
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 90 with class 'closet wall' and cosine similarity 0.379442.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -613,7 +793,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.184853586872052,
+          0.3079429274076553,
+          3.5277774552417185
+        ],
+        "max": [
+          34.59472175634414,
+          28.959039297442512,
+          67.11262594550884
+        ],
         "minimum": [
           3.184853586872052,
           0.3079429274076553,
@@ -623,16 +813,26 @@
           34.59472175634414,
           28.959039297442512,
           67.11262594550884
+        ],
+        "center": [
+          18.889787671608097,
+          14.633491112425084,
+          35.32020170037528
+        ],
+        "size": [
+          31.40986816947209,
+          28.651096370034857,
+          63.58484849026712
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 107 with class 'refrigerator' and cosine similarity 0.254001.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -677,7 +877,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -74.17199194031389,
+          -1.5380097683800362,
+          -3.878544173398455
+        ],
+        "max": [
+          20.563688360249344,
+          43.79074335894241,
+          8.371946761813932
+        ],
         "minimum": [
           -74.17199194031389,
           -1.5380097683800362,
@@ -687,16 +897,26 @@
           20.563688360249344,
           43.79074335894241,
           8.371946761813932
+        ],
+        "center": [
+          -26.80415179003227,
+          21.126366795281186,
+          2.246701294207739
+        ],
+        "size": [
+          94.73568030056323,
+          45.32875312732244,
+          12.250490935212387
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 79 with class 'closet wall' and cosine similarity 0.228093.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -741,7 +961,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -23.708700858153104,
+          -8.598590115232222,
+          -15.308189974940614
+        ],
+        "max": [
+          25.158140230630682,
+          27.4819533540038,
+          2.7324777518908485
+        ],
         "minimum": [
           -23.708700858153104,
           -8.598590115232222,
@@ -751,16 +981,26 @@
           25.158140230630682,
           27.4819533540038,
           2.7324777518908485
+        ],
+        "center": [
+          0.7247196862387888,
+          9.44168161938579,
+          -6.287856111524883
+        ],
+        "size": [
+          48.86684108878379,
+          36.08054346923602,
+          18.04066772683146
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 81 with class 'whiteboard' and cosine similarity 0.310851.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -805,7 +1045,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -42.7217683281557,
+          1.0346495222582561,
+          0.39800715825798494
+        ],
+        "max": [
+          6.257440354656907,
+          21.48227484524788,
+          42.32622398872965
+        ],
         "minimum": [
           -42.7217683281557,
           1.0346495222582561,
@@ -815,16 +1065,26 @@
           6.257440354656907,
           21.48227484524788,
           42.32622398872965
+        ],
+        "center": [
+          -18.232163986749395,
+          11.258462183753068,
+          21.362115573493817
+        ],
+        "size": [
+          48.979208682812605,
+          20.447625322989623,
+          41.92821683047167
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 44 with class 'chair' and cosine similarity 0.324045.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -869,7 +1129,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          4.511852497041971,
+          0.16825517296754988,
+          -44.605038578415794
+        ],
+        "max": [
+          44.98381396407174,
+          3.75634305831184,
+          -0.9641578281697107
+        ],
         "minimum": [
           4.511852497041971,
           0.16825517296754988,
@@ -879,16 +1149,26 @@
           44.98381396407174,
           3.75634305831184,
           -0.9641578281697107
+        ],
+        "center": [
+          24.747833230556857,
+          1.962299115639695,
+          -22.784598203292752
+        ],
+        "size": [
+          40.47196146702977,
+          3.58808788534429,
+          43.64088075024608
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 15 with class 'tv' and cosine similarity 0.303729.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -933,7 +1213,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          32.433295409343685,
+          0.3572877158947163,
+          -63.383987805735764
+        ],
+        "max": [
+          82.88674514046369,
+          16.048331913208415,
+          -0.574946601415003
+        ],
         "minimum": [
           32.433295409343685,
           0.3572877158947163,
@@ -943,16 +1233,26 @@
           82.88674514046369,
           16.048331913208415,
           -0.574946601415003
+        ],
+        "center": [
+          57.66002027490369,
+          8.202809814551566,
+          -31.979467203575382
+        ],
+        "size": [
+          50.45344973112,
+          15.691044197313698,
+          62.80904120432076
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 116 with class 'desk' and cosine similarity 0.340703.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -997,7 +1297,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.261119437192022,
+          -2.7464370617753566,
+          -82.634466393528
+        ],
+        "max": [
+          27.524086045615874,
+          16.317227496526474,
+          0.20425078821939735
+        ],
         "minimum": [
           3.261119437192022,
           -2.7464370617753566,
@@ -1007,16 +1317,26 @@
           27.524086045615874,
           16.317227496526474,
           0.20425078821939735
+        ],
+        "center": [
+          15.392602741403948,
+          6.785395217375559,
+          -41.2151078026543
+        ],
+        "size": [
+          24.262966608423852,
+          19.06366455830183,
+          82.8387171817474
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 11 with class 'projector screen' and cosine similarity 0.319540.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1061,7 +1381,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          32.433295409343685,
+          0.3572877158947163,
+          -63.383987805735764
+        ],
+        "max": [
+          82.88674514046369,
+          16.048331913208415,
+          -0.574946601415003
+        ],
         "minimum": [
           32.433295409343685,
           0.3572877158947163,
@@ -1071,16 +1401,26 @@
           82.88674514046369,
           16.048331913208415,
           -0.574946601415003
+        ],
+        "center": [
+          57.66002027490369,
+          8.202809814551566,
+          -31.979467203575382
+        ],
+        "size": [
+          50.45344973112,
+          15.691044197313698,
+          62.80904120432076
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 116 with class 'desk' and cosine similarity 0.233267.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1125,7 +1465,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          4.341560544143327,
+          1.2332899364399843,
+          -54.32123203435553
+        ],
+        "max": [
+          41.87498184878533,
+          20.329811474788176,
+          -1.4088646578316855
+        ],
         "minimum": [
           4.341560544143327,
           1.2332899364399843,
@@ -1135,16 +1485,26 @@
           41.87498184878533,
           20.329811474788176,
           -1.4088646578316855
+        ],
+        "center": [
+          23.10827119646433,
+          10.78155070561408,
+          -27.86504834609361
+        ],
+        "size": [
+          37.533421304642005,
+          19.096521538348192,
+          52.91236737652385
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 18 with class 'sofa chair' and cosine similarity 0.311422.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1189,7 +1549,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -13.468008969240941,
+          -2.510404575445797,
+          4.085323249457175
+        ],
+        "max": [
+          20.842518110430525,
+          26.87058207645222,
+          37.04983221450016
+        ],
         "minimum": [
           -13.468008969240941,
           -2.510404575445797,
@@ -1199,16 +1569,26 @@
           20.842518110430525,
           26.87058207645222,
           37.04983221450016
+        ],
+        "center": [
+          3.687254570594792,
+          12.180088750503211,
+          20.567577731978666
+        ],
+        "size": [
+          34.310527079671466,
+          29.380986651898017,
+          32.96450896504298
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 71 with class 'bulletin board' and cosine similarity 0.319666.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1253,7 +1633,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.184853586872052,
+          0.3079429274076553,
+          3.5277774552417185
+        ],
+        "max": [
+          34.59472175634414,
+          28.959039297442512,
+          67.11262594550884
+        ],
         "minimum": [
           3.184853586872052,
           0.3079429274076553,
@@ -1263,16 +1653,26 @@
           34.59472175634414,
           28.959039297442512,
           67.11262594550884
+        ],
+        "center": [
+          18.889787671608097,
+          14.633491112425084,
+          35.32020170037528
+        ],
+        "size": [
+          31.40986816947209,
+          28.651096370034857,
+          63.58484849026712
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 107 with class 'refrigerator' and cosine similarity 0.277822.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1317,7 +1717,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.261119437192022,
+          -2.7464370617753566,
+          -82.634466393528
+        ],
+        "max": [
+          27.524086045615874,
+          16.317227496526474,
+          0.20425078821939735
+        ],
         "minimum": [
           3.261119437192022,
           -2.7464370617753566,
@@ -1327,16 +1737,26 @@
           27.524086045615874,
           16.317227496526474,
           0.20425078821939735
+        ],
+        "center": [
+          15.392602741403948,
+          6.785395217375559,
+          -41.2151078026543
+        ],
+        "size": [
+          24.262966608423852,
+          19.06366455830183,
+          82.8387171817474
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 13 with class 'monitor' and cosine similarity 0.290989.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1381,7 +1801,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.261119437192022,
+          -2.7464370617753566,
+          -82.634466393528
+        ],
+        "max": [
+          27.524086045615874,
+          16.317227496526474,
+          0.20425078821939735
+        ],
         "minimum": [
           3.261119437192022,
           -2.7464370617753566,
@@ -1391,16 +1821,26 @@
           27.524086045615874,
           16.317227496526474,
           0.20425078821939735
+        ],
+        "center": [
+          15.392602741403948,
+          6.785395217375559,
+          -41.2151078026543
+        ],
+        "size": [
+          24.262966608423852,
+          19.06366455830183,
+          82.8387171817474
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 13 with class 'monitor' and cosine similarity 0.304709.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1445,7 +1885,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -42.7217683281557,
+          1.0346495222582561,
+          0.39800715825798494
+        ],
+        "max": [
+          6.257440354656907,
+          21.48227484524788,
+          42.32622398872965
+        ],
         "minimum": [
           -42.7217683281557,
           1.0346495222582561,
@@ -1455,16 +1905,26 @@
           6.257440354656907,
           21.48227484524788,
           42.32622398872965
+        ],
+        "center": [
+          -18.232163986749395,
+          11.258462183753068,
+          21.362115573493817
+        ],
+        "size": [
+          48.979208682812605,
+          20.447625322989623,
+          41.92821683047167
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 44 with class 'chair' and cosine similarity 0.306078.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1509,7 +1969,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -11.351783624803456,
+          -17.991044739390784,
+          0.5023937736711588
+        ],
+        "max": [
+          23.638931606707924,
+          9.02023333166467,
+          73.53944501648105
+        ],
         "minimum": [
           -11.351783624803456,
           -17.991044739390784,
@@ -1519,16 +1989,26 @@
           23.638931606707924,
           9.02023333166467,
           73.53944501648105
+        ],
+        "center": [
+          6.143573990952234,
+          -4.485405703863057,
+          37.020919395076106
+        ],
+        "size": [
+          34.99071523151138,
+          27.011278071055454,
+          73.0370512428099
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 129 with class 'poster' and cosine similarity 0.321216.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1573,7 +2053,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          32.035722415737666,
+          -1.7368549014684591,
+          -38.073288172085526
+        ],
+        "max": [
+          89.37332960932447,
+          0.2964674282284411,
+          -0.14006953843515646
+        ],
         "minimum": [
           32.035722415737666,
           -1.7368549014684591,
@@ -1583,16 +2073,26 @@
           89.37332960932447,
           0.2964674282284411,
           -0.14006953843515646
+        ],
+        "center": [
+          60.70452601253107,
+          -0.7201937366200091,
+          -19.10667885526034
+        ],
+        "size": [
+          57.337607193586805,
+          2.0333223296969,
+          37.93321863365037
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 113 with class 'tv' and cosine similarity 0.313191.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1637,7 +2137,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          4.806925394169864,
+          1.1297379360320292,
+          -59.65085194229624
+        ],
+        "max": [
+          33.197927107803494,
+          44.196457900813314,
+          2.7800416190114063
+        ],
         "minimum": [
           4.806925394169864,
           1.1297379360320292,
@@ -1647,16 +2157,26 @@
           33.197927107803494,
           44.196457900813314,
           2.7800416190114063
+        ],
+        "center": [
+          19.00242625098668,
+          22.66309791842267,
+          -28.435405161642418
+        ],
+        "size": [
+          28.391001713633628,
+          43.066719964781285,
+          62.43089356130765
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 66 with class 'bench' and cosine similarity 0.210337.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1701,7 +2221,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          16.799725427404013,
+          -2.7618401517303943,
+          -0.13922122878905968
+        ],
+        "max": [
+          19.94885611147936,
+          0.2349827005667331,
+          4.623758827439
+        ],
         "minimum": [
           16.799725427404013,
           -2.7618401517303943,
@@ -1711,16 +2241,26 @@
           19.94885611147936,
           0.2349827005667331,
           4.623758827439
+        ],
+        "center": [
+          18.374290769441686,
+          -1.2634287255818306,
+          2.24226879932497
+        ],
+        "size": [
+          3.1491306840753452,
+          2.9968228522971274,
+          4.762980056228059
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 139 with class 'lamp' and cosine similarity 0.182609.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1765,7 +2305,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          32.15575430274496,
+          0.3076718462160768,
+          -37.84229661741789
+        ],
+        "max": [
+          90.19454013616586,
+          4.468023217652994,
+          -0.195248262513516
+        ],
         "minimum": [
           32.15575430274496,
           0.3076718462160768,
@@ -1775,16 +2325,26 @@
           90.19454013616586,
           4.468023217652994,
           -0.195248262513516
+        ],
+        "center": [
+          61.17514721945541,
+          2.3878475319345354,
+          -19.0187724399657
+        ],
+        "size": [
+          58.038785833420896,
+          4.160351371436917,
+          37.64704835490437
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 117 with class 'desk' and cosine similarity 0.232449.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1829,7 +2389,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -18.46372304113539,
+          0.3920752360945059,
+          0.0977522076719943
+        ],
+        "max": [
+          19.777741765922734,
+          17.168500235829917,
+          57.18178091531358
+        ],
         "minimum": [
           -18.46372304113539,
           0.3920752360945059,
@@ -1839,16 +2409,26 @@
           19.777741765922734,
           17.168500235829917,
           57.18178091531358
+        ],
+        "center": [
+          0.6570093623936728,
+          8.780287735962212,
+          28.639766561492788
+        ],
+        "size": [
+          38.24146480705812,
+          16.77642499973541,
+          57.084028707641586
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 138 with class 'power outlet' and cosine similarity 0.245990.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,
@@ -1893,7 +2473,17 @@
       ],
       "bbox_3d": {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -11.437921291038338,
+          1.3734627174732204,
+          15.535583180207666
+        ],
+        "max": [
+          14.336408765210825,
+          16.65911324969372,
+          70.57215376855237
+        ],
         "minimum": [
           -11.437921291038338,
           1.3734627174732204,
@@ -1903,16 +2493,26 @@
           14.336408765210825,
           16.65911324969372,
           70.57215376855237
+        ],
+        "center": [
+          1.4492437370862437,
+          9.01628798358347,
+          43.05386847438002
+        ],
+        "size": [
+          25.774330056249163,
+          15.285650532220501,
+          55.0365705883447
         ]
       },
       "native_query_type": "batch_clip_object_map_retrieval",
       "explanation": "Native ConceptGraphs CLIP retrieval selected object 68 with class 'tv' and cosine similarity 0.270346.",
       "metrics": {
-        "runtime_seconds": 0.07716745830000017,
+        "runtime_seconds": 0.08480656133333468,
         "stage_runtime_seconds": {
-          "native_map_and_model_load": 65.793789484,
-          "native_batch_query_total": 2.315023749000005,
-          "native_batch_query_per_query": 0.07716745830000017
+          "native_map_and_model_load": 64.86677443099995,
+          "native_batch_query_total": 2.5441968400000405,
+          "native_batch_query_per_query": 0.08480656133333468
         },
         "model_call_count": 1,
         "cache_hits": 0,

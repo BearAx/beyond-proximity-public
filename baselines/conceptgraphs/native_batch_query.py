@@ -22,11 +22,19 @@ def _bbox_record(obj: dict[str, Any]) -> dict[str, Any] | None:
     if bbox is None:
         return None
     points = np.asarray(bbox.get_box_points(), dtype=float)
+    minimum = points.min(axis=0)
+    maximum = points.max(axis=0)
+    center = (minimum + maximum) / 2.0
+    size = maximum - minimum
     return {
         "representation": "axis_aligned_min_max",
-        "coordinate_frame": "conceptgraphs_map",
-        "minimum": points.min(axis=0).tolist(),
-        "maximum": points.max(axis=0).tolist(),
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": minimum.tolist(),
+        "max": maximum.tolist(),
+        "minimum": minimum.tolist(),
+        "maximum": maximum.tolist(),
+        "center": center.tolist(),
+        "size": size.tolist(),
     }
 
 

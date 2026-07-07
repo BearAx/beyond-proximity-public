@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        2.7734551965639263,
+        2.0704001225076922,
+        -43.07776772880929
+      ],
+      "max": [
+        65.13485887813033,
+        39.761005107343564,
+        -2.71504861964101
+      ],
       "minimum": [
         2.7734551965639263,
         2.0704001225076922,
@@ -32,6 +42,16 @@
         65.13485887813033,
         39.761005107343564,
         -2.71504861964101
+      ],
+      "center": [
+        33.95415703734713,
+        20.915702614925628,
+        -22.89640817422515
+      ],
+      "size": [
+        62.3614036815664,
+        37.69060498483587,
+        40.36271910916828
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 259 with class 'couch' and cosine similarity 0.295301."
   },
   "metrics_log": {
-    "runtime_seconds": 0.09415798986666649,
+    "runtime_seconds": 0.08521288716666883,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 102.61661011499999,
-      "native_batch_query_total": 2.8247396959999946,
-      "native_batch_query_per_query": 0.09415798986666649
+      "native_map_and_model_load": 70.17540053599998,
+      "native_batch_query_total": 2.556386615000065,
+      "native_batch_query_per_query": 0.08521288716666883
     },
     "token_usage": {
       "input_tokens": 7,

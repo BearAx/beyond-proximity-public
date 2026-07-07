@@ -10,6 +10,8 @@
 
 Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer tokens, not provider/API billing tokens.
 
+3D IoU, when evaluated, uses Person 2 manual coarse depth-projected GT boxes from `docs/benchmarks/manual_bbox_gt_v2.json`; it is an internal regression signal, not official dataset localization GT.
+
 ## Per-Scene Native Map Status
 
 | Scene | Queries | Found outputs | Native map objects | Status |

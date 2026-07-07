@@ -40,7 +40,7 @@ canonical benchmark schema and evaluated them against
 | Expected zone hit | 0.0000 |
 | Negative not-found correctness | 0.2000 |
 | Token usage | 1,205 OpenCLIP text tokens / 150 queries |
-| 3D IoU | N/A |
+| 3D IoU | 0.0490 over 100 records |
 
 Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer
 tokens. It is not OpenAI/API/provider billing usage. The drone scene has
@@ -68,8 +68,8 @@ query text tokenizer counts are still recorded for denominator consistency.
 - The detector wrapper includes a local empty-detection guard for frames where
   YOLO returns zero boxes before MobileSAM. This prevents an empty-tensor crash
   and records the baseline result honestly.
-- `bbox_3d_iou` remains `N/A` because independent 3D GT boxes and verified
-  metric alignment are not available.
+- `bbox_3d_iou` uses Person 2 manual coarse depth-projected GT boxes. Treat it
+  as an internal regression signal, not official dataset localization GT.
 - Negative-query handling is uncalibrated for ConceptGraphs; the native query
   adapter returns top-object matches for non-empty maps and explicit misses only
   for empty maps.

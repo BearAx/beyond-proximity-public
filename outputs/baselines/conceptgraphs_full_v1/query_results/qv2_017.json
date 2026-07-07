@@ -22,7 +22,17 @@
     ],
     "bbox_3d": {
       "representation": "axis_aligned_min_max",
-      "coordinate_frame": "conceptgraphs_map",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        12.509618971508026,
+        1.7740190947065546,
+        -51.47353594930085
+      ],
+      "max": [
+        19.684683499101745,
+        11.275798734159338,
+        -27.64518465749003
+      ],
       "minimum": [
         12.509618971508026,
         1.7740190947065546,
@@ -32,6 +42,16 @@
         19.684683499101745,
         11.275798734159338,
         -27.64518465749003
+      ],
+      "center": [
+        16.097151235304885,
+        6.524908914432946,
+        -39.559360303395444
+      ],
+      "size": [
+        7.175064527593719,
+        9.501779639452783,
+        23.828351291810822
       ]
     },
     "camera_pose": null,
@@ -39,11 +59,11 @@
     "explanation": "Native ConceptGraphs CLIP retrieval selected object 270 with class 'dining table' and cosine similarity 0.305892."
   },
   "metrics_log": {
-    "runtime_seconds": 0.09415798986666649,
+    "runtime_seconds": 0.08521288716666883,
     "stage_runtime_seconds": {
-      "native_map_and_model_load": 102.61661011499999,
-      "native_batch_query_total": 2.8247396959999946,
-      "native_batch_query_per_query": 0.09415798986666649
+      "native_map_and_model_load": 70.17540053599998,
+      "native_batch_query_total": 2.556386615000065,
+      "native_batch_query_per_query": 0.08521288716666883
     },
     "token_usage": {
       "input_tokens": 11,
