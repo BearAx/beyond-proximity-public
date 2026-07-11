@@ -114,11 +114,14 @@ def test_stub_experiment_writes_canonical_outputs_and_resumes(tmp_path):
     assert first["result"]["found"] is True
     assert first["result"]["selected_view_id"] == "v001"
     assert first["metrics_log"]["token_usage"] is None
+    assert first["metrics_log"]["estimated_input_tokens"] > 0
+    assert first["metrics_log"]["context_size_chars"] > 0
     assert first["metrics_log"]["model_call_count"] == 0
     assert any("not live" in warning.lower() for warning in first["warnings"])
     assert negative["result"]["found"] is False
     assert metrics["coverage"]["result_count"] == 2
     assert metrics["mode_counts"] == {"stub": 2}
+    assert metrics["metrics"]["estimated_input_tokens"]["status"] == "measured"
     assert metrics["metrics"]["bbox_3d_iou"]["status"] == "N/A"
 
     run_experiment(config)

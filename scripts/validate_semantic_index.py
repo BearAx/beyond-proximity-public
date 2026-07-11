@@ -150,8 +150,10 @@ def validate_semantic_index(scene_dir: Path) -> dict[str, Any]:
         warnings.append("Current query runner does not yet search captured ViewJSON v1 fields; Phase H is required.")
     if mode == "stub":
         warnings.append("Stub semantic index must not be reported as manual/live/cached-live output.")
-    if counts["bbox_3d_count"]:
+    if counts["bbox_3d_count"] and mode != "official_gt":
         warnings.append("Annotated/predicted bbox_3d values are not independent ground truth.")
+    if mode == "official_gt":
+        warnings.append("Semantic content and bbox_3d values are official dataset ground truth.")
     warnings.append("Independent GT 3D boxes/masks and validated predicted boxes are unavailable.")
 
     semantic_eval_allowed = bool(
@@ -165,6 +167,15 @@ def validate_semantic_index(scene_dir: Path) -> dict[str, Any]:
     errors.extend(tree["errors"])
     if runner_error:
         errors.append(f"query runner load error: {runner_error}")
+
+    if mode == "official_gt" and counts["bbox_3d_count"]:
+        warnings = [
+            warning
+            for warning in warnings
+            if warning != "Independent GT 3D boxes/masks and validated predicted boxes are unavailable."
+        ]
+
+    geometry_eval_allowed = bool(mode == "official_gt" and counts["bbox_3d_count"] > 0 and tree["valid"])
 
     return {
         "schema_version": REPORT_SCHEMA_VERSION,
@@ -187,7 +198,7 @@ def validate_semantic_index(scene_dir: Path) -> dict[str, Any]:
         "query_runner_loadable": runner_loadable,
         "query_runner_schema_compatible": QUERY_RUNNER_SCHEMA_COMPATIBLE,
         "semantic_eval_allowed": semantic_eval_allowed,
-        "geometry_eval_allowed": False,
+        "geometry_eval_allowed": geometry_eval_allowed,
         "errors": errors,
         "warnings": sorted(set(warnings)),
     }

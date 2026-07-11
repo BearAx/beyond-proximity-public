@@ -1,0 +1,230 @@
+{
+  "schema_version": "semanticsplat.replica_official_acquisition.v1",
+  "generated_at": "2026-07-11T10:13:39.755970+00:00",
+  "source": {
+    "release_api": "https://api.github.com/repos/facebookresearch/Replica-Dataset/releases/tags/v1.0",
+    "release_tag": "v1.0",
+    "official_repository": "https://github.com/facebookresearch/Replica-Dataset",
+    "license": "Replica Dataset Research Terms"
+  },
+  "download_dir": "data\\replica_official_downloads",
+  "extract_dir": "data\\replica_official_raw",
+  "expected_asset_count": 17,
+  "expected_total_size_bytes": 33859047808,
+  "downloaded_asset_count": 17,
+  "download_complete": true,
+  "extracted": false,
+  "extraction_error": null,
+  "parts": [
+    {
+      "name": "replica_v1_0.tar.gz.partaa",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partaa",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partaa",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partab",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partab",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partab",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partac",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partac",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partac",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partad",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partad",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partad",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partae",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partae",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partae",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partaf",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partaf",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partaf",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partag",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partag",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partag",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partah",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partah",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partah",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partai",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partai",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partai",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partaj",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partaj",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partaj",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partak",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partak",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partak",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partal",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partal",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partal",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partam",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partam",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partam",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partan",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partan",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partan",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partao",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partao",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partao",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partap",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partap",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partap",
+      "expected_size": 2000000000,
+      "actual_size": 2000000000,
+      "complete": true
+    },
+    {
+      "name": "replica_v1_0.tar.gz.partaq",
+      "path": "data\\replica_official_downloads\\replica_v1_0.tar.gz.partaq",
+      "url": "https://github.com/facebookresearch/Replica-Dataset/releases/download/v1.0/replica_v1_0.tar.gz.partaq",
+      "expected_size": 1859047808,
+      "actual_size": 1859047808,
+      "complete": true
+    }
+  ],
+  "scene_status": [
+    {
+      "scene_id": "room0",
+      "raw_scene_id": "room_0",
+      "path": "data\\replica_official_raw\\room_0",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    },
+    {
+      "scene_id": "room1",
+      "raw_scene_id": "room_1",
+      "path": "data\\replica_official_raw\\room_1",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    },
+    {
+      "scene_id": "room2",
+      "raw_scene_id": "room_2",
+      "path": "data\\replica_official_raw\\room_2",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    },
+    {
+      "scene_id": "office0",
+      "raw_scene_id": "office_0",
+      "path": "data\\replica_official_raw\\office_0",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    },
+    {
+      "scene_id": "office1",
+      "raw_scene_id": "office_1",
+      "path": "data\\replica_official_raw\\office_1",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    },
+    {
+      "scene_id": "office2",
+      "raw_scene_id": "office_2",
+      "path": "data\\replica_official_raw\\office_2",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    },
+    {
+      "scene_id": "office3",
+      "raw_scene_id": "office_3",
+      "path": "data\\replica_official_raw\\office_3",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    },
+    {
+      "scene_id": "office4",
+      "raw_scene_id": "office_4",
+      "path": "data\\replica_official_raw\\office_4",
+      "scene_dir_exists": true,
+      "mesh_semantic_ply": true,
+      "info_semantic_json": true,
+      "raw_mesh_ply": true
+    }
+  ]
+}

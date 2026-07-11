@@ -102,8 +102,8 @@ not yet a strong main-conference algorithmic result because quality decreases.
 | Error/failure analysis | PARTIALLY_DONE | `fig_failure_cases.*`, `main.tex` | Add current five-scene failure cases, not only legacy demo cases. |
 | Flat embedding baseline | NOT_DONE | No evidence found | Add embedding retrieval baseline before WACV/3DV/AAAI. |
 | External baselines | PARTIALLY_DONE | LangSplat/ConceptGraphs smoke outputs | For main conferences, convert to fair same-scene comparisons. |
-| Public dataset evaluation | NOT_DONE | `public_dataset_readiness.md` | Add official Replica first; ScanNet second. |
-| Independent GT / 3D boxes | NOT_DONE | `claim_audit.md` | Need dataset GT or independent annotation. |
+| Public dataset evaluation | PARTIALLY_DONE | `public_dataset_readiness.md`, `replica_official_import_report.md` | Official Replica object-box pilot is ready; add ScanNet and fair baselines next. |
+| Independent GT / 3D boxes | PARTIALLY_DONE | `backend/data/scenes/replica_*/ground_truth/object_boxes_3d.json` | Replica object boxes are official GT; segmentation and ScanNet GT still need work. |
 | 3D visual grounding | PARTIALLY_DONE | Paper figures are mostly metric charts | Add scene screenshots, graph overlays, query-flow figure. |
 | Reproducible code/data package | PARTIALLY_DONE | Tests and scripts exist | Add anonymized submission package and reproduction README. |
 | Venue formatting | NOT_DONE | Current paper uses `cvpr` style | Convert to selected venue template. |
@@ -180,7 +180,7 @@ What currently satisfies the requirements:
 
 What is missing or weak:
 
-- No public dataset result yet.
+- Public dataset evidence is limited to the new official Replica object-box pilot.
 - No flat embedding baseline.
 - No fair five-scene LangSplat or ConceptGraphs comparison.
 - Current benchmark uses manual/reference labels, not independent GT.
@@ -189,7 +189,7 @@ What is missing or weak:
 Required changes before WACV:
 
 1. Add a `flat_embedding` baseline and report it next to `flat_lexical`.
-2. Add official Replica evaluation if possible.
+2. Expand the official Replica evaluation beyond simple object-box pilot queries.
 3. Add an annotation/evaluation protocol section: how labels were created,
    verified, and used.
 4. Add a public release plan for queries, schemas, and semantic JSONs.
@@ -224,8 +224,8 @@ What is missing or weak:
 
 - The current evaluation is mostly semantic-index retrieval, not strong 3D
   vision evidence.
-- No official Replica/ScanNet evaluation.
-- No 3D IoU, object boxes, masks, or metric localization.
+- Official Replica object-box evaluation exists, but ScanNet is not yet available.
+- 3D IoU and object boxes exist for the Replica pilot; masks/segmentation metrics are not yet implemented.
 - External 3D baselines are smokes only.
 - Few visual 3D examples in the article.
 
@@ -234,7 +234,7 @@ Required changes before 3DV:
 1. Add real scene screenshots/renders with semantic overlays.
 2. Add graph-to-view grounding examples: query -> region -> view -> visual
    evidence.
-3. Add official Replica or ScanNet results, even if small.
+3. Expand official Replica results and add ScanNet after official access approval.
 4. Add stronger spatial relations: `visible_from`, `near`, `connected_to`,
    region/zone constraints.
 5. Add fairer comparison to at least one external 3D semantic method, or clearly
@@ -264,7 +264,7 @@ What currently satisfies the requirements:
 What is missing or weak:
 
 - No strong new algorithm beyond deterministic/lexical graph pruning.
-- No public dataset.
+- Public dataset coverage is still too narrow: only the official Replica object-box pilot is ready.
 - No embedding/learned/calibrated retrieval baseline.
 - No formal graph-search objective.
 - No statistical significance or broader generalization.
@@ -384,7 +384,7 @@ Strongly recommended before WACV/3DV/main-conference submission:
 
 1. Add `flat_embedding`.
 2. Add calibrated graph pruning or fallback expansion to recover hit@k.
-3. Add official Replica evaluation.
+3. Expand official Replica evaluation and add fair same-scene baselines.
 4. Add current five-scene failure-case analysis.
 5. Add independent GT or at least independent review of reference labels.
 6. Add a project page/demo video.
@@ -420,7 +420,7 @@ Timeline:
 | Date range | Work |
 |---|---|
 | 2026-07-06 to 2026-07-20 | Add embedding baseline and current failure analysis. |
-| 2026-07-21 to 2026-08-04 | Add Replica scene ingestion/evaluation if data is available. |
+| 2026-07-21 to 2026-08-04 | Expand Replica evaluation, add segmentation metrics, and start ScanNet after official access approval. |
 | 2026-08-05 to 2026-08-14 | Add calibrated graph pruning/fallback and rerun experiments. |
 | 2026-08-15 to 2026-08-21 | Convert to WACV style, anonymize, package supplementary. |
 | 2026-08-21 | Enroll paper. |

@@ -127,6 +127,8 @@ _STOPWORDS = {
     "a", "an", "the", "to", "is", "in", "on", "at", "for", "of", "and", "or",
     "find", "where", "what", "which", "how", "me", "my", "can", "could", "please",
     "there", "all", "inside", "area", "someone", "people", "guests",
+    "place", "visitor", "visitors", "suitable", "around", "near", "by", "with",
+    "between", "behind", "surrounded", "side", "sides",
 }
 
 _SYNONYMS = {
@@ -134,6 +136,9 @@ _SYNONYMS = {
     "presenter": {"presentation", "podium", "lectern", "screen"},
     "drinks": {"bar", "hospitality"},
     "check": {"reception"},
+    "get": {"counter", "desk", "service", "help", "screen", "screens"},
+    "ask": {"counter", "desk", "service", "help", "reception"},
+    "help": {"counter", "desk", "service", "reception"},
     "emergency": {"exit", "egress"},
     "leave": {"exit", "egress"},
     "catering": {"service", "prep", "plates"},
@@ -145,6 +150,20 @@ _SYNONYMS = {
     "pillars": {"column", "columns", "pillar"},
     "sofa": {"sofas", "couch", "couches"},
     "sofas": {"sofa", "couch", "couches"},
+    "sit": {"seat", "seats", "seating", "chair", "chairs", "armchair", "armchairs", "sofa", "sofas", "bench", "benches", "lounge"},
+    "sitting": {"seat", "seats", "seating", "chair", "chairs", "armchair", "armchairs", "sofa", "sofas", "bench", "benches", "lounge"},
+    "seat": {"sit", "seating", "chair", "chairs", "sofa", "sofas", "bench"},
+    "seating": {"sit", "seat", "seats", "chair", "chairs", "sofa", "sofas", "bench", "lounge"},
+    "meeting": {"table", "tables", "chair", "chairs", "seating", "banquet", "conference", "round"},
+    "exhibit": {"exhibits", "exhibition", "display", "panel", "gallery", "stand", "ruin"},
+    "exhibits": {"exhibit", "exhibition", "display", "panel", "gallery", "stand", "ruin"},
+    "viewing": {"view", "exhibit", "exhibits", "exhibition", "display", "panel", "gallery", "stand", "ruin"},
+    "perform": {"performing", "performance", "stage", "curtain", "floor"},
+    "performing": {"perform", "performance", "stage", "curtain", "floor"},
+    "watching": {"watch", "performance", "stage", "seating", "audience"},
+    "walking": {"walk", "walkway", "sidewalk", "pavement", "path"},
+    "walk": {"walking", "walkway", "sidewalk", "pavement", "path"},
+    "levels": {"stairs", "staircase", "steps"},
 }
 
 _TOKEN_ALIASES = {
@@ -153,12 +172,14 @@ _TOKEN_ALIASES = {
 }
 
 
-def _tokens(text: str) -> set[str]:
+def _tokens(text: str, *, expand: bool = True) -> set[str]:
     values = {
         _TOKEN_ALIASES.get(token, token)
         for token in re.findall(r"[a-z0-9]+", text.lower())
         if token not in _STOPWORDS
     }
+    if not expand:
+        return values
     expanded = set(values)
     for value in values:
         expanded.update(_SYNONYMS.get(value, set()))
@@ -207,11 +228,145 @@ def _view_objects(view: dict[str, Any]) -> list[dict[str, Any]]:
     return [item for item in value if isinstance(item, dict)] if isinstance(value, list) else []
 
 
+def _object_text(obj: dict[str, Any]) -> str:
+    pieces = [
+        str(obj.get("label", "")),
+        str(obj.get("approx_location", "")),
+    ]
+    attributes = obj.get("attributes")
+    if isinstance(attributes, dict):
+        pieces.extend(str(value) for value in attributes.values() if value is not None)
+    elif isinstance(attributes, list):
+        pieces.extend(str(value) for value in attributes if value is not None)
+    return " ".join(pieces)
+
+
 def _score(text: str, query_tokens: set[str]) -> tuple[int, float]:
-    haystack = _tokens(text)
+    haystack = _tokens(text, expand=False)
     overlap = len(query_tokens & haystack)
     ratio = overlap / len(query_tokens) if query_tokens else 0.0
     return overlap, ratio
+
+
+def _object_rank(
+    obj: dict[str, Any],
+    query_tokens: set[str],
+    exact_query_tokens: set[str] | None = None,
+) -> tuple[int, int, int, int, int, float, float, float, float, int]:
+    exact_query_tokens = exact_query_tokens or query_tokens
+    text_overlap, text_ratio = _score(_object_text(obj), query_tokens)
+    label_overlap, label_ratio = _score(str(obj.get("label", "")), query_tokens)
+    exact_text_overlap, exact_text_ratio = _score(_object_text(obj), exact_query_tokens)
+    exact_label_overlap, exact_label_ratio = _score(str(obj.get("label", "")), exact_query_tokens)
+    has_bbox = 1 if isinstance(obj.get("bbox_3d"), dict) else 0
+    label_tokens = _tokens(str(obj.get("label", "")), expand=False)
+    extra_label_terms = len(label_tokens - exact_query_tokens)
+    label_compactness = -extra_label_terms if exact_text_overlap > 0 else 0
+    return (
+        text_overlap,
+        exact_text_overlap,
+        label_compactness,
+        label_overlap,
+        exact_label_overlap,
+        text_ratio,
+        exact_text_ratio,
+        label_ratio,
+        exact_label_ratio,
+        has_bbox,
+    )
+
+
+def _best_object_rank(
+    view: dict[str, Any],
+    query_tokens: set[str],
+    exact_query_tokens: set[str],
+) -> tuple[int, int, int, int, int, float, float, float, float, int]:
+    ranks = [_object_rank(obj, query_tokens, exact_query_tokens) for obj in _view_objects(view)]
+    return max(ranks) if ranks else (0, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0)
+
+
+def _has_full_exact_object_match(views: dict[str, dict[str, Any]], exact_query_tokens: set[str]) -> bool:
+    if not exact_query_tokens:
+        return False
+    for view in views.values():
+        for obj in _view_objects(view):
+            label_tokens = _tokens(str(obj.get("label", "")), expand=False)
+            if len(exact_query_tokens) == 1 and label_tokens != exact_query_tokens:
+                continue
+            object_tokens = _tokens(_object_text(obj), expand=False)
+            if exact_query_tokens <= object_tokens:
+                return True
+    return False
+
+
+def _box_bounds(box: Any) -> tuple[list[float], list[float]] | None:
+    if not isinstance(box, dict):
+        return None
+    if isinstance(box.get("min"), list) and isinstance(box.get("max"), list):
+        lower = box["min"]
+        upper = box["max"]
+    elif isinstance(box.get("center"), (list, tuple)) and isinstance(box.get("size"), (list, tuple)):
+        center = list(box["center"])
+        size = list(box["size"])
+        if len(center) != 3 or len(size) != 3:
+            return None
+        lower = [float(center[index]) - float(size[index]) / 2 for index in range(3)]
+        upper = [float(center[index]) + float(size[index]) / 2 for index in range(3)]
+    else:
+        return None
+    if len(lower) != 3 or len(upper) != 3:
+        return None
+    try:
+        lo = [float(item) for item in lower]
+        hi = [float(item) for item in upper]
+    except (TypeError, ValueError):
+        return None
+    if any(hi[index] <= lo[index] for index in range(3)):
+        return None
+    return lo, hi
+
+
+def _merge_bbox_3d(boxes: list[dict[str, Any]], label: str) -> dict[str, Any] | None:
+    bounds = [_box_bounds(box) for box in boxes]
+    valid = [item for item in bounds if item is not None]
+    if not valid:
+        return None
+    lower = [min(item[0][index] for item in valid) for index in range(3)]
+    upper = [max(item[1][index] for item in valid) for index in range(3)]
+    return {
+        "center": [(lower[index] + upper[index]) / 2 for index in range(3)],
+        "size": [upper[index] - lower[index] for index in range(3)],
+        "label": label,
+    }
+
+
+def _functional_bbox_candidates(
+    views: dict[str, dict[str, Any]],
+    query_tokens: set[str],
+) -> list[tuple[int, float, int, float, str, str, Any, dict[str, Any]]]:
+    candidates: list[tuple[int, float, int, float, str, str, Any, dict[str, Any]]] = []
+    for view_id, view in views.items():
+        view_overlap, view_ratio = _score(_view_text(view), query_tokens)
+        if view_overlap <= 0:
+            continue
+        for obj in _view_objects(view):
+            label = str(obj.get("label", ""))
+            object_overlap, object_ratio = _score(label, query_tokens)
+            bbox_3d = obj.get("bbox_3d")
+            if object_overlap <= 0 or not isinstance(bbox_3d, dict):
+                continue
+            candidates.append((
+                object_overlap,
+                object_ratio,
+                view_overlap,
+                view_ratio,
+                str(view_id),
+                label,
+                obj.get("bbox_2d"),
+                bbox_3d,
+            ))
+    candidates.sort(key=lambda item: item[:6], reverse=True)
+    return candidates
 
 
 def _node_text(node: dict[str, Any]) -> str:
@@ -340,49 +495,118 @@ class StubModelClient(ModelClient):
             query_type = "simple_object"
 
         query_tokens = _tokens(query_text)
-        ranked: list[tuple[int, float, str, dict[str, Any]]] = []
+        exact_query_tokens = _tokens(query_text, expand=False)
+        ranked: list[tuple[Any, ...]] = []
         for view_id, view in views.items():
             overlap, ratio = _score(_view_text(view), query_tokens)
-            ranked.append((overlap, ratio, view_id, view))
-        ranked.sort(key=lambda item: (item[0], item[1], item[2]), reverse=True)
+            exact_overlap, exact_ratio = _score(_view_text(view), exact_query_tokens)
+            (
+                object_text_overlap,
+                exact_object_text_overlap,
+                label_compactness,
+                object_label_overlap,
+                exact_object_label_overlap,
+                object_text_ratio,
+                exact_object_text_ratio,
+                object_label_ratio,
+                exact_object_label_ratio,
+                has_object_bbox,
+            ) = (
+                _best_object_rank(view, query_tokens, exact_query_tokens)
+            )
+            ranked.append((
+                overlap,
+                exact_overlap,
+                object_text_overlap,
+                exact_object_text_overlap,
+                label_compactness,
+                object_label_overlap,
+                exact_object_label_overlap,
+                ratio,
+                exact_ratio,
+                object_text_ratio,
+                exact_object_text_ratio,
+                object_label_ratio,
+                exact_object_label_ratio,
+                has_object_bbox,
+                view_id,
+                view,
+            ))
+        ranked.sort(key=lambda item: item[:-1], reverse=True)
 
-        best_overlap, best_ratio, best_view_id, best_view = ranked[0] if ranked else (0, 0.0, "", {})
+        best_row = ranked[0] if ranked else (0, 0, 0, 0, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, "", {})
+        best_overlap = int(best_row[0])
+        best_ratio = float(best_row[7])
+        best_view_id = str(best_row[14])
+        best_view = best_row[15]
         found = best_overlap > 0
+        if query_type == "negative":
+            found = found and _has_full_exact_object_match(views, exact_query_tokens)
         matched_object: str | None = None
         bbox_2d: Any = None
         bbox_3d: Any = None
         if found:
             object_candidates = []
             for obj in _view_objects(best_view):
-                overlap, ratio = _score(str(obj.get("label", "")), query_tokens)
                 object_candidates.append(
                     (
-                        overlap,
-                        ratio,
+                        _object_rank(obj, query_tokens, exact_query_tokens),
                         str(obj.get("label", "")),
                         obj.get("bbox_2d"),
                         obj.get("bbox_3d"),
                     )
                 )
-            object_candidates.sort(reverse=True)
-            if object_candidates and object_candidates[0][0] > 0:
-                _, _, matched_object, bbox_2d, bbox_3d = object_candidates[0]
+            object_candidates.sort(key=lambda item: (item[0], item[1]), reverse=True)
+            if object_candidates and object_candidates[0][0][0] > 0:
+                _, matched_object, bbox_2d, bbox_3d = object_candidates[0]
             else:
-                matched_object = next(
-                    (str(obj.get("label")) for obj in _view_objects(best_view) if obj.get("label")),
-                    None,
-                )
+                first_object = next((obj for obj in _view_objects(best_view) if obj.get("label")), None)
+                if first_object is not None:
+                    matched_object = str(first_object.get("label"))
+                    bbox_2d = first_object.get("bbox_2d")
+                    bbox_3d = first_object.get("bbox_3d")
+
+        merged_functional_views: list[str] = []
+        merged_functional_bbox = False
+        explicit_functional_object = bool(
+            query_type == "functional"
+            and matched_object
+            and (_tokens(matched_object, expand=False) & exact_query_tokens)
+        )
+        if found and query_type == "functional" and not explicit_functional_object:
+            functional_candidates = _functional_bbox_candidates(views, query_tokens)
+            if functional_candidates:
+                strongest_overlap = functional_candidates[0][0]
+                minimum_overlap = max(1, strongest_overlap - 1)
+                selected_candidates = [
+                    candidate
+                    for candidate in functional_candidates
+                    if candidate[0] >= minimum_overlap
+                ][:12]
+                if len(selected_candidates) > 1:
+                    merged_bbox = _merge_bbox_3d(
+                        [candidate[7] for candidate in selected_candidates],
+                        label="merged functional semantic candidates",
+                    )
+                    if merged_bbox is not None:
+                        bbox_2d = None
+                        bbox_3d = merged_bbox
+                        merged_functional_views = sorted({candidate[4] for candidate in selected_candidates})
+                        merged_functional_bbox = True
 
         root_id, reachable, parents = _reachable_tree(tree)
         selected_node_id = None
         if found:
             candidates = []
-            matched_tokens = _tokens(matched_object or "")
+            matched_tokens = _tokens(matched_object or "", expand=False)
             for key, node in tree.items():
                 node_id = _node_id(node, key)
                 if node_id not in reachable or best_view_id not in as_string_ids(node.get("view_ids")):
                     continue
                 node_text = _node_text(node)
+                name_text = str(node.get("name", ""))
+                matched_name_overlap, matched_name_ratio = _score(name_text, matched_tokens)
+                query_name_overlap, query_name_ratio = _score(name_text, query_tokens)
                 match_overlap, match_ratio = _score(node_text, matched_tokens)
                 query_overlap, query_ratio = _score(node_text, query_tokens)
                 depth = len(_path_to(root_id, node_id, parents))
@@ -395,6 +619,10 @@ class StubModelClient(ModelClient):
                     "root": 0,
                 }.get(node_type, 0)
                 candidates.append((
+                    matched_name_overlap,
+                    matched_name_ratio,
+                    query_name_overlap,
+                    query_name_ratio,
                     match_overlap,
                     match_ratio,
                     query_overlap,
@@ -411,9 +639,15 @@ class StubModelClient(ModelClient):
             visited_nodes = [root_id]
             visited_nodes.extend(str(child) for child in tree[root_id].get("children_ids", []) if str(child) in tree)
 
-        selected_views = [best_view_id] if found else []
+        selected_views = sorted(set([best_view_id, *merged_functional_views])) if found else []
         checked_view_ids = sorted(views)
         target = " ".join(sorted(query_tokens))
+        warnings = [
+            "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
+            "This result is not live or cached-live model reasoning.",
+        ]
+        if merged_functional_bbox:
+            warnings.append("Functional query bbox_3d merges multiple matched semantic object boxes.")
         return {
             "structured_plan": {
                 "target": target,
@@ -438,10 +672,7 @@ class StubModelClient(ModelClient):
                     else "Deterministic lexical fallback found no matching semantic-index tokens."
                 ),
             },
-            "warnings": [
-                "Stub mode uses deterministic lexical matching over saved semantic descriptions.",
-                "This result is not live or cached-live model reasoning.",
-            ],
+            "warnings": warnings,
         }
 
 

@@ -65,6 +65,10 @@ def _result(*, bbox=None):
             "failure_count": 0,
             "visited_node_count": 3,
             "checked_view_count": 1,
+            "context_size_chars": 400,
+            "prompt_size_chars": 460,
+            "estimated_input_tokens": 115,
+            "estimated_token_method": "ceil(prompt_size_chars / 4)",
             "construction_cost": None,
         },
         "warnings": [],
@@ -100,7 +104,10 @@ def test_evaluator_reports_hits_and_unavailable_3d_iou(tmp_path):
     assert summary["metrics"]["expected_zone_hit"]["value"] == 1.0
     assert summary["metrics"]["runtime_seconds"]["mean"] == 0.25
     assert summary["metrics"]["token_usage"]["total"] is None
+    assert summary["metrics"]["estimated_input_tokens"]["total"] == 115
+    assert summary["metrics"]["context_size_chars"]["mean"] == 400
     assert summary["metrics"]["bbox_3d_iou"]["status"] == "N/A"
+    assert summary["metrics"]["bbox_acc_at_0_25"]["status"] == "N/A"
     assert summary["compact_metrics"]["total_queries"] == 1
     assert summary["compact_metrics"]["gt_eligible_queries"] == 1
     assert summary["compact_metrics"]["per_query_type"]["simple"]["retrieval_success"]["value"] == 1.0
@@ -118,6 +125,10 @@ def test_3d_iou_requires_reliable_depth_and_gt(tmp_path):
     assert summary["metrics"]["bbox_3d_iou"]["status"] == "measured"
     assert summary["metrics"]["bbox_3d_iou"]["value"] == 1.0
     assert summary["metrics"]["bbox_3d_iou"]["denominator"] == 1
+    assert summary["metrics"]["bbox_acc_at_0_1"]["value"] == 1.0
+    assert summary["metrics"]["bbox_acc_at_0_1"]["numerator"] == 1
+    assert summary["metrics"]["bbox_acc_at_0_25"]["value"] == 1.0
+    assert summary["metrics"]["bbox_acc_at_0_5"]["value"] == 1.0
 
 
 def test_invalid_schema_is_excluded_from_metrics(tmp_path):
@@ -201,8 +212,36 @@ def test_unavailable_result_is_schema_valid_but_not_measured(tmp_path):
     assert summary["mode_counts"] == {"stub": 1}
     assert summary["metrics"]["retrieval_success"]["status"] == "unavailable"
     assert summary["metrics"]["bbox_3d_iou"]["status"] == "N/A"
+    assert summary["metrics"]["bbox_acc_at_0_5"]["status"] == "N/A"
     assert "| retrieval_success | unavailable |" in markdown
     assert "| bbox_3d_iou | N/A |" in markdown
+    assert "| Acc@0.5 | N/A |" in markdown
+
+
+def test_evaluator_scores_object_ids_and_max_bbox_iou(tmp_path):
+    benchmark, run_dir = _prepare(tmp_path, depth_status="reliable", with_bbox=True)
+    query = _query(with_bbox=True)
+    query["expected_object_id"] = "7"
+    query["expected_object_ids"] = ["7", "8"]
+    query["expected_bboxes_3d"] = [
+        {"center": [10, 10, 10], "size": [1, 1, 1], "object_id": "8"},
+        {"center": [0, 0, 0], "size": [2, 2, 2], "object_id": "7"},
+    ]
+    _write(benchmark, {
+        "schema_version": "semanticsplat.benchmark_queries.v1",
+        "benchmark_id": "multi_bbox_fixture",
+        "queries": [query],
+    })
+    _write(
+        run_dir / "query_results" / "q001.json",
+        _result(bbox={"center": [0, 0, 0], "size": [2, 2, 2], "object_id": "7"}),
+    )
+
+    summary = evaluate(benchmark, run_dir)
+
+    assert summary["metrics"]["expected_object_id_hit"]["value"] == 1.0
+    assert summary["metrics"]["bbox_3d_iou"]["value"] == 1.0
+    assert summary["metrics"]["bbox_acc_at_0_5"]["value"] == 1.0
 
 
 def test_repository_benchmark_is_balanced_and_five_scene_gt_is_empty():

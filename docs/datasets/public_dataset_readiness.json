@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-05T12:31:27.469928+00:00",
-  "git_revision": "e08978a3d8e2cd11539ad30220d19b94b3a99911",
+  "generated_at": "2026-07-11T10:23:22.572966+00:00",
+  "git_revision": "1ab9b5567540bb8024a8368a9dfae10919da9cd2",
   "manual_scenes": [
     {
       "scene_id": "ConferenceHall-capture-pilot",
@@ -43,6 +43,70 @@
       "has_manual_bbox_gt_v2": true
     },
     {
+      "scene_id": "replica_office0",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "replica_office1",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "replica_office2",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "replica_office3",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "replica_office4",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "replica_room0",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "replica_room1",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
+      "scene_id": "replica_room2",
+      "category": "other",
+      "view_json_count": 1,
+      "frame_count": 1,
+      "has_tree": true,
+      "has_manual_bbox_gt_v2": false
+    },
+    {
       "scene_id": "Theater-capture",
       "category": "captured_pilot",
       "view_json_count": 20,
@@ -69,17 +133,101 @@
     }
   ],
   "scannet": [],
+  "imported_replica": [
+    {
+      "scene_id": "replica_office0",
+      "path": "backend\\data\\scenes\\replica_office0",
+      "source_scene_id": "office0",
+      "object_box_count": 64,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_office0.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "replica_office1",
+      "path": "backend\\data\\scenes\\replica_office1",
+      "source_scene_id": "office1",
+      "object_box_count": 48,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_office1.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "replica_office2",
+      "path": "backend\\data\\scenes\\replica_office2",
+      "source_scene_id": "office2",
+      "object_box_count": 91,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_office2.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "replica_office3",
+      "path": "backend\\data\\scenes\\replica_office3",
+      "source_scene_id": "office3",
+      "object_box_count": 100,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_office3.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "replica_office4",
+      "path": "backend\\data\\scenes\\replica_office4",
+      "source_scene_id": "office4",
+      "object_box_count": 65,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_office4.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "replica_room0",
+      "path": "backend\\data\\scenes\\replica_room0",
+      "source_scene_id": "room0",
+      "object_box_count": 92,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_room0.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "replica_room1",
+      "path": "backend\\data\\scenes\\replica_room1",
+      "source_scene_id": "room1",
+      "object_box_count": 54,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_room1.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "replica_room2",
+      "path": "backend\\data\\scenes\\replica_room2",
+      "source_scene_id": "room2",
+      "object_box_count": 61,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\replica_room2.json",
+      "status": "READY_PUBLIC"
+    }
+  ],
   "summary": {
     "captured_pilot_scene_count": 5,
     "captured_pilot_view_json_count": 97,
     "legacy_demo_scene_count": 1,
     "legacy_demo_view_json_count": 19,
     "replica_scene_count": 1,
-    "replica_ready_public_count": 0,
+    "replica_ready_public_count": 8,
+    "imported_replica_ready_public_count": 8,
+    "imported_replica_gt_box_count": 575,
     "scannet_scene_count": 0,
     "scannet_ready_for_conversion_count": 0,
     "publication_readiness": {
-      "twinworld_workshop": "READY_WITH_MANUAL_SCENES_PLUS_BASELINE_SMOKES",
+      "twinworld_workshop": "READY_WITH_MANUAL_SCENES_PLUS_OFFICIAL_REPLICA_PILOT",
       "aaai_main": "NOT_READY_WITHOUT_PUBLIC_DATASET_GT_AND_FAIR_BASELINES"
     }
   }

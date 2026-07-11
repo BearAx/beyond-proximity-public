@@ -285,8 +285,10 @@ def build_scene_tree(scene_dir: Path, views_dir: Path, out_dir: Path) -> dict[st
         warnings.append("Tree is incomplete: ViewJSON files contain no semantic objects, regions, or landmarks.")
     if empty_summary_count:
         warnings.append(f"Tree is incomplete: {empty_summary_count} ViewJSON files have empty summaries.")
-    if counts["bbox_3d_count"]:
+    if counts["bbox_3d_count"] and mode != "official_gt":
         warnings.append("ViewJSON bbox_3d values are predictions/annotations, not independent 3D ground truth.")
+    if mode == "official_gt":
+        warnings.append("Official dataset GT semantic content; not manual annotation, stub output, or model output.")
     if zones:
         warnings.append("Manual zone nodes are reference labels from docs/benchmarks/manual_zone_gt_v2.json, not independent dataset GT.")
     if mode == "stub":

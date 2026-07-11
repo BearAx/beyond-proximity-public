@@ -11,7 +11,7 @@ from typing import Any
 VIEW_SCHEMA_VERSION = "semanticsplat.captured_view_json.v1"
 TREE_MANIFEST_SCHEMA_VERSION = "semanticsplat.semantic_tree_manifest.v1"
 TREE_NODE_SCHEMA_VERSION = "semanticsplat.semantic_tree_node.v1"
-VALID_MODES = {"manual", "live", "cached_live", "stub"}
+VALID_MODES = {"manual", "live", "cached_live", "stub", "official_gt"}
 VALID_LANDMARK_KINDS = {"landmark", "sign", "facility"}
 VIEW_ID_PATTERN = re.compile(r"^v[0-9]+$")
 

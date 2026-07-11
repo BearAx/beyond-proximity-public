@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 import time
@@ -21,6 +22,7 @@ from backend.query.model_client import (  # noqa: E402
     ModelClientError,
     create_model_client,
 )
+from backend.geometry.unprojector import bbox_2d_to_3d  # noqa: E402
 from scripts.evaluate_results import (  # noqa: E402
     evaluate,
     failure_markdown,
@@ -31,6 +33,17 @@ from scripts.evaluate_results import (  # noqa: E402
 
 QUERY_RESULT_SCHEMA = "semanticsplat.query_result.v1"
 RUN_CONFIG_SCHEMA = "semanticsplat.run_config.v1"
+SMALL_BBOX_LABEL_TERMS = {
+    "sign", "clock", "lamp", "vase", "marker", "label", "camera", "monitor",
+    "screen", "tv", "panel", "graphic", "photograph", "picture", "artwork",
+    "stand", "bin", "trash", "railing", "handrail",
+}
+LARGE_BBOX_LABEL_TERMS = {
+    "wall", "facade", "curtain", "floor", "ground", "pavement", "water",
+    "skyline", "shoreline", "island", "building", "stairs", "staircase",
+    "corridor", "walkway", "door", "doors", "window", "windows", "seats",
+    "tables", "chairs", "sofas",
+}
 
 
 def utc_now() -> str:
@@ -110,18 +123,21 @@ def configured_scene_entries(
         if not validation_report.is_file():
             raise FileNotFoundError(f"Validation report not found for {scene_id}: {validation_report}")
         validation = load_json(validation_report)
-        if str(validation.get("scene_id")) != scene_id:
+        validation_flags = validation.get("semantic_validation")
+        if not isinstance(validation_flags, dict):
+            validation_flags = validation
+        if str(validation.get("scene_id") or validation_flags.get("scene_id")) != scene_id:
             raise ValueError(f"Validation report scene_id mismatch for {scene_id}: {validation_report}")
 
         semantic_allowed = item.get("semantic_eval_allowed")
         geometry_allowed = item.get("geometry_eval_allowed")
         if not isinstance(semantic_allowed, bool) or not isinstance(geometry_allowed, bool):
             raise ValueError(f"Config scene {scene_id} requires boolean evaluation flags")
-        reported_semantic = validation.get(
-            "semantic_eval_allowed", validation.get("semantic_evaluation_allowed")
+        reported_semantic = validation_flags.get(
+            "semantic_eval_allowed", validation_flags.get("semantic_evaluation_allowed")
         )
-        reported_geometry = validation.get(
-            "geometry_eval_allowed", validation.get("three_d_localization_allowed")
+        reported_geometry = validation_flags.get(
+            "geometry_eval_allowed", validation_flags.get("three_d_localization_allowed")
         )
         if reported_semantic is not semantic_allowed:
             raise ValueError(f"Config semantic_eval_allowed disagrees with validation report for {scene_id}")
@@ -273,6 +289,208 @@ def image_path_for(scene: dict[str, Any], view_id: str) -> Path:
     return scene["scene_dir"] / "images" / f"{view_id}.png"
 
 
+def numeric_bbox_2d(value: Any) -> list[float] | None:
+    if not isinstance(value, list) or len(value) != 4:
+        return None
+    try:
+        box = [float(item) for item in value]
+    except (TypeError, ValueError):
+        return None
+    if any(item < 0.0 or item > 1.0 for item in box):
+        return None
+    if box[2] <= box[0] or box[3] <= box[1]:
+        return None
+    return box
+
+
+def clamp_bbox_value(value: float) -> float:
+    return min(1.0, max(0.0, value))
+
+
+def normalized_bbox_2d(values: tuple[float, float, float, float]) -> list[float]:
+    x1, y1, x2, y2 = values
+    x1 = clamp_bbox_value(x1)
+    y1 = clamp_bbox_value(y1)
+    x2 = clamp_bbox_value(x2)
+    y2 = clamp_bbox_value(y2)
+    if x2 - x1 < 0.04:
+        mid = (x1 + x2) / 2
+        x1 = clamp_bbox_value(mid - 0.02)
+        x2 = clamp_bbox_value(mid + 0.02)
+    if y2 - y1 < 0.04:
+        mid = (y1 + y2) / 2
+        y1 = clamp_bbox_value(mid - 0.02)
+        y2 = clamp_bbox_value(mid + 0.02)
+    return [round(x1, 4), round(y1, 4), round(x2, 4), round(y2, 4)]
+
+
+def shrink_bbox_2d(box: list[float], scale_x: float, scale_y: float) -> list[float]:
+    x1, y1, x2, y2 = box
+    cx = (x1 + x2) / 2
+    cy = (y1 + y2) / 2
+    width = (x2 - x1) * scale_x
+    height = (y2 - y1) * scale_y
+    return normalized_bbox_2d((cx - width / 2, cy - height / 2, cx + width / 2, cy + height / 2))
+
+
+def approximate_bbox_2d_from_object(obj: dict[str, Any]) -> list[float] | None:
+    label = str(obj.get("label") or "")
+    approx_location = str(obj.get("approx_location") or "")
+    attributes = obj.get("attributes")
+    if isinstance(attributes, list):
+        attribute_text = " ".join(str(item) for item in attributes if item is not None)
+    elif isinstance(attributes, dict):
+        attribute_text = " ".join(str(item) for item in attributes.values() if item is not None)
+    else:
+        attribute_text = ""
+    text = " ".join([label, approx_location, attribute_text]).strip().lower()
+    if not text:
+        return None
+
+    label_terms = set(re.findall(r"[a-z0-9]+", label.lower()))
+    if "left" in text and "right" in text:
+        x1, x2 = 0.05, 0.95
+    elif "center-left" in text or "centre-left" in text:
+        x1, x2 = 0.18, 0.58
+    elif "center-right" in text or "centre-right" in text:
+        x1, x2 = 0.42, 0.82
+    elif "left" in text:
+        x1, x2 = 0.04, 0.48
+    elif "right" in text:
+        x1, x2 = 0.52, 0.96
+    elif "center" in text or "centre" in text or "central" in text or "middle" in text:
+        x1, x2 = 0.27, 0.73
+    else:
+        x1, x2 = 0.18, 0.82
+
+    if any(word in text for word in ("ceiling", "upper", "above", "top")):
+        y1, y2 = 0.02, 0.38
+    elif any(word in text for word in ("floor", "ground", "pavement", "water", "roadway", "walkway")):
+        y1, y2 = 0.48, 0.98
+    elif any(word in text for word in ("foreground", "near", "low", "bottom")):
+        y1, y2 = 0.42, 0.96
+    elif any(word in text for word in ("background", "distant", "far")):
+        y1, y2 = 0.06, 0.62
+    elif any(word in text for word in ("wall", "facade", "panel", "curtain", "window", "door")):
+        y1, y2 = 0.08, 0.90
+    else:
+        y1, y2 = 0.18, 0.86
+
+    box = normalized_bbox_2d((x1, y1, x2, y2))
+    if label_terms & SMALL_BBOX_LABEL_TERMS:
+        box = shrink_bbox_2d(box, 0.48, 0.44)
+    if label_terms & LARGE_BBOX_LABEL_TERMS:
+        box = normalized_bbox_2d((box[0] - 0.05, box[1] - 0.04, box[2] + 0.05, box[3] + 0.04))
+    return box
+
+
+def frame_depth_path(scene: dict[str, Any], view: dict[str, Any], view_id: str) -> Path | None:
+    frame = scene["frame_by_view"].get(view_id, {})
+    depth_value = frame.get("depth_file_path") if isinstance(frame, dict) else None
+    if depth_value is None:
+        depth_value = view.get("depth_path")
+    if not isinstance(depth_value, str) or not depth_value.strip():
+        return None
+    return scene["scene_dir"] / depth_value
+
+
+def view_object_list(view: dict[str, Any]) -> list[dict[str, Any]]:
+    value = view.get("visible_objects")
+    if not isinstance(value, list):
+        value = view.get("objects")
+    if not isinstance(value, list):
+        return []
+    return [item for item in value if isinstance(item, dict)]
+
+
+def enrich_view_bboxes(scene: dict[str, Any], views: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    transforms = scene.get("transforms", {})
+    required = ("fl_x", "fl_y", "cx", "cy", "w", "h")
+    if not all(isinstance(transforms.get(key), (int, float)) for key in required):
+        return {
+            "status": "skipped_missing_intrinsics",
+            "objects_seen": sum(len(view_object_list(view)) for view in views.values()),
+            "bbox_2d_inferred": 0,
+            "bbox_3d_generated": 0,
+            "bbox_3d_existing": 0,
+        }
+
+    try:
+        import numpy as np
+    except ImportError:
+        return {
+            "status": "skipped_missing_numpy",
+            "objects_seen": sum(len(view_object_list(view)) for view in views.values()),
+            "bbox_2d_inferred": 0,
+            "bbox_3d_generated": 0,
+            "bbox_3d_existing": 0,
+        }
+
+    stats = {
+        "status": "complete",
+        "objects_seen": 0,
+        "bbox_2d_inferred": 0,
+        "bbox_3d_generated": 0,
+        "bbox_3d_existing": 0,
+        "bbox_3d_failed": 0,
+    }
+    depth_cache: dict[str, Any] = {}
+
+    for view_id, view in views.items():
+        frame = scene["frame_by_view"].get(view_id, {})
+        transform_matrix = frame.get("transform_matrix") if isinstance(frame, dict) else None
+        if not isinstance(transform_matrix, list):
+            continue
+        depth_path = frame_depth_path(scene, view, view_id)
+        for obj in view_object_list(view):
+            stats["objects_seen"] += 1
+            if isinstance(obj.get("bbox_3d"), dict):
+                stats["bbox_3d_existing"] += 1
+                continue
+
+            bbox_2d = numeric_bbox_2d(obj.get("bbox_2d"))
+            if bbox_2d is None:
+                bbox_2d = approximate_bbox_2d_from_object(obj)
+                if bbox_2d is not None:
+                    obj["bbox_2d"] = bbox_2d
+                    obj["bbox_2d_source"] = "approx_location_fallback_v1"
+                    stats["bbox_2d_inferred"] += 1
+            if bbox_2d is None or depth_path is None or not depth_path.is_file():
+                stats["bbox_3d_failed"] += 1
+                continue
+
+            depth_key = str(depth_path)
+            try:
+                if depth_key not in depth_cache:
+                    depth_cache[depth_key] = np.load(depth_path).astype(np.float32)
+                bbox_3d = bbox_2d_to_3d(
+                    bbox_norm=tuple(bbox_2d),
+                    depth_map=depth_cache[depth_key],
+                    fl_x=float(transforms["fl_x"]),
+                    fl_y=float(transforms["fl_y"]),
+                    cx=float(transforms["cx"]),
+                    cy=float(transforms["cy"]),
+                    transform_matrix=transform_matrix,
+                    width=int(transforms["w"]),
+                    height=int(transforms["h"]),
+                )
+            except (OSError, ValueError, TypeError):
+                bbox_3d = None
+            if bbox_3d is None:
+                stats["bbox_3d_failed"] += 1
+                continue
+            bbox_3d.label = str(obj.get("label") or "")
+            obj["bbox_3d"] = bbox_3d.model_dump()
+            obj["bbox_3d_source"] = (
+                "bbox_2d_depth_unprojection_v1"
+                if obj.get("bbox_2d_source") != "approx_location_fallback_v1"
+                else "approx_location_depth_unprojection_v1"
+            )
+            stats["bbox_3d_generated"] += 1
+
+    return stats
+
+
 def select_views(scene: dict[str, Any], settings: dict[str, Any]) -> list[str]:
     strategy = str(settings.get("strategy", "existing"))
     if strategy != "existing":
@@ -295,6 +513,69 @@ def stats_delta(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]
             token_usage[key] = current - (previous if isinstance(previous, int) else 0)
     result["token_usage"] = token_usage or None
     return result
+
+
+def compact_tree_for_context(tree: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "node_id": str(node.get("node_id") or key),
+            "node_type": node.get("node_type") or node.get("type"),
+            "name": node.get("name"),
+            "summary": node.get("summary"),
+            "view_ids": [str(item) for item in node.get("view_ids", []) if item is not None]
+            if isinstance(node.get("view_ids"), list)
+            else [],
+            "children_ids": [str(item) for item in node.get("children_ids", []) if item is not None]
+            if isinstance(node.get("children_ids"), list)
+            else [],
+        }
+        for key, node in sorted(tree.items())
+        if isinstance(node, dict)
+    ]
+
+
+def compact_views_for_context(views: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    fields = (
+        "summary",
+        "scene_summary",
+        "room_type",
+        "visible_regions",
+        "visible_objects",
+        "objects",
+        "landmarks",
+        "free_text_notes",
+    )
+    return {
+        view_id: {field: view[field] for field in fields if field in view}
+        for view_id, view in sorted(views.items())
+        if isinstance(view, dict)
+    }
+
+
+def estimate_query_context_metrics(
+    query: dict[str, Any],
+    tree: dict[str, dict[str, Any]],
+    views: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    context = {
+        "query": query,
+        "tree": compact_tree_for_context(tree),
+        "views": compact_views_for_context(views),
+    }
+    serialized = json.dumps(context, ensure_ascii=False, separators=(",", ":"), default=str)
+    prompt = (
+        "Answer the scene query using only the supplied semantic index. "
+        "Return one JSON object with structured_plan, visited_nodes, selected_views, "
+        "checked_view_ids, result, and warnings.\n\n"
+        + serialized
+    )
+    prompt_size_chars = len(prompt)
+    return {
+        "context_size_chars": len(serialized),
+        "prompt_size_chars": prompt_size_chars,
+        "estimated_input_tokens": max(1, (prompt_size_chars + 3) // 4),
+        "estimated_token_method": "ceil(prompt_size_chars / 4)",
+    }
 
 
 def log_event(logs: dict[str, Any], stage: str, status: str, **details: Any) -> None:
@@ -327,6 +608,7 @@ def canonical_result(
     answer: dict[str, Any],
     runtime_seconds: float,
     usage: dict[str, Any],
+    context_metrics: dict[str, Any],
     depth_validation: dict[str, Any],
 ) -> dict[str, Any]:
     warnings = [str(item) for item in answer.get("warnings", [])]
@@ -336,13 +618,19 @@ def canonical_result(
     selected_views = [str(item) for item in answer.get("selected_views", [])]
     checked_view_ids = [str(item) for item in answer.get("checked_view_ids", selected_views)]
     result = answer.get("result") if isinstance(answer.get("result"), dict) else {}
+    raw_bbox_3d = result.get("bbox_3d")
+    dataset_gt_bbox = bool(
+        isinstance(raw_bbox_3d, dict)
+        and raw_bbox_3d.get("object_id") is not None
+        and str(raw_bbox_3d.get("coordinate_frame", "")).startswith(("replica_", "scannet_"))
+    )
     canonical_payload = {
         "found": bool(result.get("found", False)),
         "matched_object": result.get("matched_object"),
         "selected_node_id": result.get("selected_node_id"),
         "selected_view_id": result.get("selected_view_id"),
         "bbox_2d": result.get("bbox_2d"),
-        "bbox_3d": result.get("bbox_3d") if depth_validation.get("status") == "reliable" else None,
+        "bbox_3d": raw_bbox_3d if depth_validation.get("status") == "reliable" or dataset_gt_bbox else None,
         "camera_pose": result.get("camera_pose"),
         "confidence": float(result.get("confidence", 0.0)),
         "explanation": str(result.get("explanation", "")),
@@ -372,6 +660,10 @@ def canonical_result(
             "failure_count": usage.get("failure_count", 0),
             "visited_node_count": len(visited_nodes),
             "checked_view_count": len(checked_view_ids),
+            "context_size_chars": context_metrics.get("context_size_chars"),
+            "prompt_size_chars": context_metrics.get("prompt_size_chars"),
+            "estimated_input_tokens": context_metrics.get("estimated_input_tokens"),
+            "estimated_token_method": context_metrics.get("estimated_token_method"),
             "construction_cost": None,
         },
         "warnings": sorted(set(warnings)),
@@ -418,6 +710,7 @@ def canonical_unavailable_result(
             "retry_count": 0,
             "failure_count": 0,
         },
+        context_metrics={},
         depth_validation=depth_validation,
     )
     result["availability_status"] = "unavailable"
@@ -616,6 +909,11 @@ def run_experiment(
 
             descriptions, elapsed = timed_stage(logs, f"view_descriptions:{scene_id}", describe_selected)
             description_runtime += elapsed
+            bbox_enrichment, _ = timed_stage(
+                logs,
+                f"bbox_enrichment:{scene_id}",
+                lambda s=scene, d=descriptions: enrich_view_bboxes(s, d),
+            )
             tree, elapsed = timed_stage(
                 logs,
                 f"tree_loading_or_construction:{scene_id}",
@@ -634,11 +932,14 @@ def run_experiment(
                 "selected_view_ids": selected,
                 "views": descriptions,
                 "tree": tree,
+                "tree_manifest": scene.get("tree_manifest"),
+                "bbox_enrichment": bbox_enrichment,
             }
             run_config["scene_status"][scene_id] = {
                 "status": "ready",
                 "candidate_view_count": len(selected),
                 "semantic_index_format": scene["semantic_index_format"],
+                "bbox_enrichment": bbox_enrichment,
             }
 
         if len(all_depth) == 1:
@@ -650,10 +951,35 @@ def run_experiment(
                 "scenes": all_depth,
                 "reason": "All scenes must be reliable for aggregate 3D metrics.",
             }
+        official_gt_bbox_count = sum(
+            int(bundle.get("bbox_enrichment", {}).get("bbox_3d_existing", 0))
+            for bundle in scene_bundles.values()
+            if isinstance(bundle.get("tree_manifest"), dict)
+            and bundle["tree_manifest"].get("semantic_index_mode") == "official_gt"
+        )
+        if official_gt_bbox_count:
+            run_config["bbox_3d_evaluation"] = {
+                "status": "official_dataset_gt_enabled",
+                "bbox_3d_count": official_gt_bbox_count,
+                "gt_source": "official dataset semantic/instance object boxes",
+                "note": "Official GT boxes are scored in dataset coordinates and do not depend on captured depth reliability.",
+            }
         if mode == "stub":
             run_config["warnings"].append("Stub mode uses deterministic semantic-index fallback, not model reasoning.")
         if run_config["depth_validation"].get("status") != "reliable":
-            run_config["warnings"].append("Depth is not reliable; canonical bbox_3d outputs and 3D IoU are disabled.")
+            if official_gt_bbox_count:
+                run_config["warnings"].append(
+                    "Depth is not reliable for RGB-D unprojection; official dataset bbox_3d outputs remain enabled."
+                )
+            else:
+                run_config["warnings"].append("Depth is not reliable; canonical bbox_3d outputs and 3D IoU are disabled.")
+        if any(
+            bundle.get("bbox_enrichment", {}).get("bbox_3d_generated", 0) > 0
+            for bundle in scene_bundles.values()
+        ):
+            run_config["warnings"].append(
+                "Some predicted bbox_3d values were generated from semantic-index bbox_2d or approx_location plus captured depth; these are coarse predictions, not GT."
+            )
         run_config["construction_cost"] = {
             "runtime_seconds": round(description_runtime + tree_runtime, 6),
             "view_descriptions_runtime_seconds": round(description_runtime, 6),
@@ -709,6 +1035,7 @@ def run_experiment(
                 continue
 
             bundle = scene_bundles[scene_id]
+            context_metrics = estimate_query_context_metrics(effective_query, bundle["tree"], bundle["views"])
             before = client.stats_snapshot()
             started = time.perf_counter()
             answer = client.answer_query(effective_query, bundle["tree"], bundle["views"])
@@ -722,6 +1049,7 @@ def run_experiment(
                 answer=answer,
                 runtime_seconds=runtime,
                 usage=usage,
+                context_metrics=context_metrics,
                 depth_validation=all_depth[scene_id],
             )
             write_json(output_path, result)

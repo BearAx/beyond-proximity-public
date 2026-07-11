@@ -151,6 +151,111 @@ def test_stub_client_normalizes_column_typo_and_aliases():
     assert answer["result"]["selected_view_id"] == "v001"
 
 
+def test_stub_client_prefers_exact_object_label_over_ambiguous_combined_label():
+    client = StubModelClient()
+    views = {
+        "v011": {
+            "view_id": "v011",
+            "summary": "Lobby with elevator doors or golden wall panels.",
+            "visible_objects": [
+                {
+                    "label": "elevator doors or golden wall panels",
+                    "attributes": ["golden"],
+                    "approx_location": "left side",
+                },
+            ],
+            "landmarks": [],
+        },
+        "v013": {
+            "view_id": "v013",
+            "summary": "Lobby with golden elevator doors.",
+            "visible_objects": [
+                {
+                    "label": "elevator doors",
+                    "attributes": ["golden", "double"],
+                    "approx_location": "center-left",
+                },
+            ],
+            "landmarks": [],
+        },
+    }
+    tree = {
+        "root": {
+            "node_id": "root",
+            "node_type": "root",
+            "name": "Root",
+            "summary": "Captured scene",
+            "view_ids": [],
+            "children_ids": ["object_v011_003_ambiguous", "object_v013_002_elevator_doors"],
+        },
+        "object_v011_003_ambiguous": {
+            "node_id": "object_v011_003_ambiguous",
+            "node_type": "object",
+            "name": "elevator doors or golden wall panels",
+            "summary": "Ambiguous combined observation",
+            "view_ids": ["v011"],
+            "children_ids": [],
+        },
+        "object_v013_002_elevator_doors": {
+            "node_id": "object_v013_002_elevator_doors",
+            "node_type": "object",
+            "name": "elevator doors",
+            "summary": "Golden double doors",
+            "view_ids": ["v013"],
+            "children_ids": [],
+        },
+    }
+
+    answer = client.answer_query(
+        {"query": "Find the golden elevator doors", "query_type": "attribute"},
+        tree,
+        views,
+    )
+
+    assert answer["result"]["found"] is True
+    assert answer["result"]["matched_object"] == "elevator doors"
+    assert answer["result"]["selected_view_id"] == "v013"
+    assert answer["result"]["selected_node_id"] == "object_v013_002_elevator_doors"
+
+
+def test_stub_negative_query_does_not_match_single_word_inside_compound_label():
+    client = StubModelClient()
+    views = {
+        "v001": {
+            "view_id": "v001",
+            "summary": "Outdoor facade with a planted bed and paving.",
+            "visible_objects": [
+                {"label": "planted bed", "attributes": ["green"], "approx_location": "foreground"},
+            ],
+            "landmarks": [],
+        }
+    }
+    tree = {
+        "root": {
+            "node_id": "root",
+            "node_type": "root",
+            "name": "Root",
+            "summary": "Captured scene",
+            "view_ids": [],
+            "children_ids": ["object_v001_001_planted_bed"],
+        },
+        "object_v001_001_planted_bed": {
+            "node_id": "object_v001_001_planted_bed",
+            "node_type": "object",
+            "name": "planted bed",
+            "summary": "Landscape planting",
+            "view_ids": ["v001"],
+            "children_ids": [],
+        },
+    }
+
+    answer = client.answer_query({"query": "Find bed", "query_type": "negative"}, tree, views)
+
+    assert answer["result"]["found"] is False
+    assert answer["result"]["matched_object"] is None
+    assert answer["selected_views"] == []
+
+
 def test_cached_client_replays_only_verified_live_entry(tmp_path):
     query = {"query": "Find the red chair", "query_type": "attribute"}
     payload = {"query": query, "tree": _tree(), "views": _views()}

@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -173,6 +174,26 @@ def normalized_labels(values: Iterable[Any]) -> set[str]:
     return {str(value).strip().lower() for value in values if str(value).strip()}
 
 
+def expected_object_ids(query: dict[str, Any]) -> set[str]:
+    values = as_string_list(query.get("expected_object_ids"))
+    single = query.get("expected_object_id")
+    if single is not None:
+        values.append(str(single))
+    return {value for value in values if value}
+
+
+def result_object_id(result: dict[str, Any]) -> str | None:
+    bbox = result.get("bbox_3d")
+    if isinstance(bbox, dict) and bbox.get("object_id") is not None:
+        return str(bbox.get("object_id"))
+    node_id = result.get("selected_node_id")
+    if isinstance(node_id, str):
+        match = re.search(r"object_v\d+_(\d+)_", node_id)
+        if match:
+            return str(int(match.group(1)))
+    return None
+
+
 def box_bounds(box: Any) -> tuple[list[float], list[float]] | None:
     if not isinstance(box, dict):
         return None
@@ -222,6 +243,23 @@ def bbox_iou_3d(predicted: Any, expected: Any) -> float | None:
     return round(intersection / union, 6) if union > 0 else None
 
 
+def expected_3d_boxes(query: dict[str, Any]) -> list[Any]:
+    boxes = query.get("expected_bboxes_3d")
+    if isinstance(boxes, list) and boxes:
+        return boxes
+    box = query.get("expected_bbox_3d")
+    return [box] if box else []
+
+
+def best_bbox_iou_3d(predicted: Any, query: dict[str, Any]) -> float | None:
+    values = [
+        value
+        for box in expected_3d_boxes(query)
+        if (value := bbox_iou_3d(predicted, box)) is not None
+    ]
+    return max(values) if values else None
+
+
 def run_depth_reliable(run_config: dict[str, Any]) -> bool:
     direct = run_config.get("depth_validation")
     if isinstance(direct, dict) and direct.get("status") == "reliable":
@@ -229,6 +267,7 @@ def run_depth_reliable(run_config: dict[str, Any]) -> bool:
     bbox_eval = run_config.get("bbox_3d_evaluation")
     if isinstance(bbox_eval, dict) and bbox_eval.get("status") in {
         "coarse_manual_gt_enabled",
+        "official_dataset_gt_enabled",
         "reliable",
     }:
         return True
@@ -237,6 +276,11 @@ def run_depth_reliable(run_config: dict[str, Any]) -> bool:
         validation = manifest.get("depth_validation")
         return isinstance(validation, dict) and validation.get("status") == "reliable"
     return False
+
+
+def official_dataset_bbox_gt_enabled(run_config: dict[str, Any]) -> bool:
+    bbox_eval = run_config.get("bbox_3d_evaluation")
+    return isinstance(bbox_eval, dict) and bbox_eval.get("status") == "official_dataset_gt_enabled"
 
 
 def bbox_evaluation_warning(run_config: dict[str, Any]) -> str | None:
@@ -271,6 +315,7 @@ def evaluate_one(
     data: dict[str, Any],
     *,
     depth_reliable: bool,
+    official_bbox_gt: bool = False,
 ) -> dict[str, Any]:
     schema_errors = validate_result(data, query)
     result = data.get("result") if isinstance(data.get("result"), dict) else {}
@@ -290,15 +335,27 @@ def evaluate_one(
     visited = set(as_string_list(data.get("visited_nodes")))
     actual_labels = normalized_labels([result.get("matched_object")])
     expected_labels = normalized_labels(query.get("expected_object_labels", []))
+    expected_ids = expected_object_ids(query)
+    actual_object_id = result_object_id(result)
 
     view_hit = (bool(expected_views & actual_views) if expected_views else None) if accuracy_eligible else None
     node_hit = (
         str(actual_node) in expected_nodes if expected_nodes and actual_node is not None else (False if expected_nodes else None)
     ) if accuracy_eligible else None
     zone_hit = (bool(expected_zones & visited) if expected_zones else None) if accuracy_eligible else None
-    object_hit = (
-        bool(expected_labels & actual_labels) if expected_labels and found else (None if not expected_labels else False)
-    ) if accuracy_eligible else None
+    object_hit = None
+    object_id_hit = None
+    if accuracy_eligible and not expected_negative:
+        object_hit = (
+            bool(expected_labels & actual_labels)
+            if expected_labels and found
+            else (None if not expected_labels else False)
+        )
+        object_id_hit = (
+            actual_object_id in expected_ids
+            if expected_ids and actual_object_id is not None
+            else (False if expected_ids else None)
+        )
     not_found_correct = (found is False if expected_negative else None) if accuracy_eligible else None
 
     iou = None
@@ -306,10 +363,10 @@ def evaluate_one(
         result_available
         and depth_reliable
         and query.get("gt_3d_reliable") is True
-        and query.get("expected_bbox_3d")
+        and expected_3d_boxes(query)
     )
     if iou_eligible:
-        iou = bbox_iou_3d(result.get("bbox_3d"), query.get("expected_bbox_3d"))
+        iou = best_bbox_iou_3d(result.get("bbox_3d"), query)
 
     categories: set[str] = set()
     warnings = warning_text(data)
@@ -320,7 +377,10 @@ def evaluate_one(
         categories.add("ambiguous ground truth")
     elif verification == "missing_gt":
         categories.add("missing GT")
-    if "invalid depth" in warnings or "constant depth" in warnings or "unreliable depth" in warnings:
+    if (
+        not official_bbox_gt
+        and ("invalid depth" in warnings or "constant depth" in warnings or "unreliable depth" in warnings)
+    ):
         categories.add("invalid depth")
     if "missing object in semantic description" in warnings:
         categories.add("missing object in semantic description")
@@ -333,6 +393,7 @@ def evaluate_one(
         or node_hit is False
         or zone_hit is False
         or object_hit is False
+        or object_id_hit is False
     )
     if failed:
         if not isinstance(data.get("structured_plan"), dict) or not data.get("structured_plan"):
@@ -341,7 +402,7 @@ def evaluate_one(
             categories.add("wrong room / zone")
         if expected_views and view_hit is False:
             categories.add("wrong view")
-        if expected_labels and found and object_hit is False:
+        if (expected_labels and found and object_hit is False) or object_id_hit is False:
             categories.add("wrong object")
         if not expected_negative and (not visited or found is False):
             categories.add("bad traversal")
@@ -365,9 +426,16 @@ def evaluate_one(
         "expected_view_hit": view_hit,
         "expected_node_hit": node_hit,
         "expected_zone_hit": zone_hit,
+        "expected_object_hit": object_hit,
+        "expected_object_id_hit": object_id_hit,
+        "expected_object_ids": sorted(expected_ids),
+        "actual_object_id": actual_object_id,
         "not_found_correct": not_found_correct,
         "runtime_seconds": numeric(metrics.get("runtime_seconds")),
         "token_usage": token_usage if isinstance(token_usage, dict) else None,
+        "context_size_chars": numeric(metrics.get("context_size_chars")),
+        "prompt_size_chars": numeric(metrics.get("prompt_size_chars")),
+        "estimated_input_tokens": numeric(metrics.get("estimated_input_tokens")),
         "checked_view_count": numeric(metrics.get("checked_view_count")),
         "visited_node_count": numeric(metrics.get("visited_node_count")),
         "bbox_3d_iou": iou,
@@ -429,6 +497,29 @@ def aggregate_tokens(rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def aggregate_numeric(rows: list[dict[str, Any]], field: str) -> dict[str, Any]:
+    values = [value for row in rows if (value := numeric(row.get(field))) is not None]
+    return {
+        "mean": mean(values),
+        "total": round(sum(values), 4) if values else None,
+        "denominator": len(values),
+        "status": "measured" if values else "unavailable",
+    }
+
+
+def aggregate_iou_threshold(ious: list[float], threshold: float) -> dict[str, Any]:
+    numerator = sum(value >= threshold for value in ious)
+    denominator = len(ious)
+    return {
+        "value": round(numerator / denominator, 4) if denominator else None,
+        "numerator": numerator,
+        "denominator": denominator,
+        "threshold": threshold,
+        "status": "measured" if denominator else "N/A",
+        "reason": None if denominator else "Reliable GT 3D boxes and predictions were not both available",
+    }
+
+
 def compact_metrics(
     queries: Iterable[dict[str, Any]],
     per_query: list[dict[str, Any]],
@@ -436,6 +527,7 @@ def compact_metrics(
     query_list = list(queries)
     rows_by_id = {str(row.get("query_id")): row for row in per_query if row.get("query_id") is not None}
     per_type: dict[str, dict[str, Any]] = {}
+    raw_per_type: dict[str, dict[str, Any]] = {}
 
     for query_type in QUERY_TYPE_STRATA:
         typed_queries = [
@@ -458,6 +550,24 @@ def compact_metrics(
             "expected_zone_hit": aggregate_metric(evaluated_rows, "expected_zone_hit"),
         }
 
+    for query_type in sorted({str(query.get("query_type", "unknown")) for query in query_list}):
+        typed_queries = [query for query in query_list if str(query.get("query_type", "unknown")) == query_type]
+        typed_ids = {str(query.get("query_id")) for query in typed_queries if query.get("query_id") is not None}
+        typed_rows = [row for query_id, row in rows_by_id.items() if query_id in typed_ids]
+        schema_valid_rows = [
+            row for row in typed_rows if row.get("status") in {"evaluated", "unavailable"}
+        ]
+        evaluated_rows = [row for row in typed_rows if row.get("status") == "evaluated"]
+        raw_per_type[query_type] = {
+            "total_queries": len(typed_queries),
+            "runnable_queries": sum(row.get("status") != "missing_result" for row in typed_rows),
+            "gt_eligible_queries": sum(query_has_accuracy_gt(query) for query in typed_queries),
+            "schema_valid_count": len(schema_valid_rows),
+            "retrieval_success": aggregate_metric(evaluated_rows, "retrieval_success"),
+            "expected_object_id_hit": aggregate_metric(evaluated_rows, "expected_object_id_hit"),
+            "not_found_correctness": aggregate_metric(evaluated_rows, "not_found_correct"),
+        }
+
     return {
         "total_queries": len(query_list),
         "runnable_queries": sum(row.get("status") != "missing_result" for row in per_query),
@@ -467,6 +577,7 @@ def compact_metrics(
         ),
         "query_type_normalization": QUERY_TYPE_ALIASES,
         "per_query_type": per_type,
+        "raw_per_query_type": raw_per_type,
     }
 
 
@@ -518,6 +629,7 @@ def evaluate(
         query_by_id[query_id] = effective_query
     excluded_query_count = len(all_query_by_id) - len(query_by_id)
     depth_reliable = run_depth_reliable(run_config)
+    official_bbox_gt = official_dataset_bbox_gt_enabled(run_config)
     results_dir = results_dir or run_dir / "query_results"
     if not results_dir.exists():
         raise FileNotFoundError(f"Missing query_results directory: {results_dir}")
@@ -555,7 +667,7 @@ def evaluate(
                 "schema_errors": [],
             })
             continue
-        row = evaluate_one(query, saved[1], depth_reliable=depth_reliable)
+        row = evaluate_one(query, saved[1], depth_reliable=depth_reliable, official_bbox_gt=official_bbox_gt)
         try:
             result_file = saved[0].relative_to(run_dir)
         except ValueError:
@@ -623,6 +735,8 @@ def evaluate(
             "expected_view_hit": aggregate_metric(evaluated_rows, "expected_view_hit"),
             "expected_node_hit": aggregate_metric(evaluated_rows, "expected_node_hit"),
             "expected_zone_hit": aggregate_metric(evaluated_rows, "expected_zone_hit"),
+            "expected_object_hit": aggregate_metric(evaluated_rows, "expected_object_hit"),
+            "expected_object_id_hit": aggregate_metric(evaluated_rows, "expected_object_id_hit"),
             "not_found_correctness": aggregate_metric(evaluated_rows, "not_found_correct"),
             "runtime_seconds": {
                 "mean": mean(runtimes),
@@ -631,6 +745,9 @@ def evaluate(
                 "status": runtime_status,
             },
             "token_usage": aggregate_tokens(evaluated_rows),
+            "context_size_chars": aggregate_numeric(evaluated_rows, "context_size_chars"),
+            "prompt_size_chars": aggregate_numeric(evaluated_rows, "prompt_size_chars"),
+            "estimated_input_tokens": aggregate_numeric(evaluated_rows, "estimated_input_tokens"),
             "checked_view_count": {
                 "mean": mean(checked),
                 "total": int(sum(checked)) if checked else None,
@@ -649,6 +766,9 @@ def evaluate(
                 "denominator": len(ious),
                 "reason": None if ious else "Reliable depth and reliable GT 3D boxes were not both available",
             },
+            "bbox_acc_at_0_1": aggregate_iou_threshold(ious, 0.1),
+            "bbox_acc_at_0_25": aggregate_iou_threshold(ious, 0.25),
+            "bbox_acc_at_0_5": aggregate_iou_threshold(ious, 0.5),
         },
         "failure_categories": all_failure_counts,
         "missing_query_ids": missing_ids,
@@ -706,6 +826,30 @@ def summary_markdown(summary: dict[str, Any]) -> str:
             f"{record.get('schema_valid_count', 0)} | "
             f"{format_value(hit_rate.get('value'))} |"
         )
+    raw_per_query_type = compact.get("raw_per_query_type", {}) if isinstance(compact, dict) else {}
+    lines.extend([
+        "",
+        "## Raw Query Type Coverage",
+        "",
+        "| Query type | Total | Runnable | GT-eligible | Schema-valid | Retrieval hit rate | Object-ID hit rate | Not-found correctness |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
+    ])
+    if isinstance(raw_per_query_type, dict) and raw_per_query_type:
+        for query_type, record in raw_per_query_type.items():
+            hit_rate = record.get("retrieval_success", {}) if isinstance(record, dict) else {}
+            object_id_rate = record.get("expected_object_id_hit", {}) if isinstance(record, dict) else {}
+            not_found_rate = record.get("not_found_correctness", {}) if isinstance(record, dict) else {}
+            lines.append(
+                f"| {query_type} | {record.get('total_queries', 0)} | "
+                f"{record.get('runnable_queries', 0)} | "
+                f"{record.get('gt_eligible_queries', 0)} | "
+                f"{record.get('schema_valid_count', 0)} | "
+                f"{format_value(hit_rate.get('value'))} | "
+                f"{format_value(object_id_rate.get('value'))} | "
+                f"{format_value(not_found_rate.get('value'))} |"
+            )
+    else:
+        lines.append("| N/A | 0 | 0 | 0 | 0 | N/A | N/A | N/A |")
     lines.extend([
         "",
         "## Metrics",
@@ -715,7 +859,15 @@ def summary_markdown(summary: dict[str, Any]) -> str:
         "| Metric | Status | Value | Numerator / denominator |",
         "|---|---|---:|---:|",
     ])
-    for key in ("retrieval_success", "expected_view_hit", "expected_node_hit", "expected_zone_hit", "not_found_correctness"):
+    for key in (
+        "retrieval_success",
+        "expected_view_hit",
+        "expected_node_hit",
+        "expected_zone_hit",
+        "expected_object_hit",
+        "expected_object_id_hit",
+        "not_found_correctness",
+    ):
         record = metrics[key]
         lines.append(
             f"| {key} | {record.get('status', 'unavailable')} | {format_value(record['value'])} | "
@@ -725,12 +877,33 @@ def summary_markdown(summary: dict[str, Any]) -> str:
         f"| runtime_seconds mean | {metrics['runtime_seconds']['status']} | {format_value(metrics['runtime_seconds']['mean'])} | {metrics['runtime_seconds']['denominator']} records |",
         f"| checked_view_count mean | {metrics['checked_view_count']['status']} | {format_value(metrics['checked_view_count']['mean'])} | {metrics['checked_view_count']['denominator']} records |",
         f"| visited_node_count mean | {metrics['visited_node_count']['status']} | {format_value(metrics['visited_node_count']['mean'])} | {metrics['visited_node_count']['denominator']} records |",
+        f"| context_size_chars mean | {metrics['context_size_chars']['status']} | {format_value(metrics['context_size_chars']['mean'])} | {metrics['context_size_chars']['denominator']} records |",
+        f"| estimated_input_tokens mean | {metrics['estimated_input_tokens']['status']} | {format_value(metrics['estimated_input_tokens']['mean'])} | {metrics['estimated_input_tokens']['denominator']} records |",
         f"| bbox_3d_iou | {metrics['bbox_3d_iou']['status']} | {format_value(metrics['bbox_3d_iou']['value'])} | {metrics['bbox_3d_iou']['denominator']} records |",
+        f"| Acc@0.1 | {metrics['bbox_acc_at_0_1']['status']} | {format_value(metrics['bbox_acc_at_0_1']['value'])} | {metrics['bbox_acc_at_0_1']['numerator']} / {metrics['bbox_acc_at_0_1']['denominator']} |",
+        f"| Acc@0.25 | {metrics['bbox_acc_at_0_25']['status']} | {format_value(metrics['bbox_acc_at_0_25']['value'])} | {metrics['bbox_acc_at_0_25']['numerator']} / {metrics['bbox_acc_at_0_25']['denominator']} |",
+        f"| Acc@0.5 | {metrics['bbox_acc_at_0_5']['status']} | {format_value(metrics['bbox_acc_at_0_5']['value'])} | {metrics['bbox_acc_at_0_5']['numerator']} / {metrics['bbox_acc_at_0_5']['denominator']} |",
         "",
-        "## Token Usage",
+        "## Actual Provider Token Usage",
+        "",
+        "Actual provider token usage is only available for `live` or verified `cached_live` runs. Stub runs report estimated input tokens from the serialized query context.",
         "",
         "```json",
         json.dumps(metrics["token_usage"], indent=2, ensure_ascii=False),
+        "```",
+        "",
+        "## Estimated Context And Tokens",
+        "",
+        "```json",
+        json.dumps(
+            {
+                "context_size_chars": metrics["context_size_chars"],
+                "prompt_size_chars": metrics["prompt_size_chars"],
+                "estimated_input_tokens": metrics["estimated_input_tokens"],
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
         "```",
         "",
         "## Warnings",

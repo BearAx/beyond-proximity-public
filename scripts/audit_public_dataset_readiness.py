@@ -28,6 +28,16 @@ CAPTURED_PILOT_SCENES = {
     "outdoor-street-capture",
 }
 LEGACY_SCENES = {"default"}
+REPLICA_BBQ_BACKEND_SCENES = {
+    "replica_room0",
+    "replica_room1",
+    "replica_room2",
+    "replica_office0",
+    "replica_office1",
+    "replica_office2",
+    "replica_office3",
+    "replica_office4",
+}
 
 
 def utc_now() -> str:
@@ -125,8 +135,43 @@ def scannet_inventory(scannet_root: Path) -> list[dict[str, Any]]:
     return rows
 
 
+def imported_replica_inventory(scene_root: Path) -> list[dict[str, Any]]:
+    rows = []
+    for scene_id in sorted(REPLICA_BBQ_BACKEND_SCENES):
+        scene = scene_root / scene_id
+        gt_path = scene / "ground_truth" / "object_boxes_3d.json"
+        validation_path = ROOT / "docs" / "validation" / "public_datasets" / f"{scene_id}.json"
+        manifest = load_json(scene / "scene_manifest.json")
+        gt = load_json(gt_path)
+        validation = load_json(validation_path)
+        semantic_validation = validation.get("semantic_validation")
+        if not isinstance(semantic_validation, dict):
+            semantic_validation = validation
+        ready = bool(
+            scene.is_dir()
+            and gt_path.is_file()
+            and gt.get("source_dataset") == "Replica"
+            and semantic_validation.get("semantic_eval_allowed") is True
+            and semantic_validation.get("geometry_eval_allowed") is True
+        )
+        rows.append({
+            "scene_id": scene_id,
+            "path": str(scene.relative_to(ROOT)) if scene.exists() else str(scene),
+            "source_scene_id": manifest.get("source_scene_id") or gt.get("source_scene_id"),
+            "object_box_count": gt.get("object_count"),
+            "semantic_eval_allowed": semantic_validation.get("semantic_eval_allowed"),
+            "geometry_eval_allowed": semantic_validation.get("geometry_eval_allowed"),
+            "validation_report": str(validation_path.relative_to(ROOT)),
+            "status": "READY_PUBLIC" if ready else "NOT_READY",
+        })
+    return rows
+
+
 def summarize(report: dict[str, Any]) -> dict[str, Any]:
     replica_ready = [row for row in report["replica"] if row["status"] == "READY_PUBLIC"]
+    imported_replica_ready = [
+        row for row in report.get("imported_replica", []) if row["status"] == "READY_PUBLIC"
+    ]
     scannet_ready = [row for row in report["scannet"] if row["status"] == "READY_FOR_CONVERSION"]
     captured = [row for row in report["manual_scenes"] if row["category"] == "captured_pilot"]
     legacy = [row for row in report["manual_scenes"] if row["category"] == "legacy_demo"]
@@ -136,11 +181,15 @@ def summarize(report: dict[str, Any]) -> dict[str, Any]:
         "legacy_demo_scene_count": len(legacy),
         "legacy_demo_view_json_count": sum(row["view_json_count"] for row in legacy),
         "replica_scene_count": len(report["replica"]),
-        "replica_ready_public_count": len(replica_ready),
+        "replica_ready_public_count": len(replica_ready) + len(imported_replica_ready),
+        "imported_replica_ready_public_count": len(imported_replica_ready),
+        "imported_replica_gt_box_count": sum(
+            int(row.get("object_box_count") or 0) for row in imported_replica_ready
+        ),
         "scannet_scene_count": len(report["scannet"]),
         "scannet_ready_for_conversion_count": len(scannet_ready),
         "publication_readiness": {
-            "twinworld_workshop": "READY_WITH_MANUAL_SCENES_PLUS_BASELINE_SMOKES",
+            "twinworld_workshop": "READY_WITH_MANUAL_SCENES_PLUS_OFFICIAL_REPLICA_PILOT",
             "aaai_main": "NOT_READY_WITHOUT_PUBLIC_DATASET_GT_AND_FAIR_BASELINES",
         },
     }
@@ -161,14 +210,16 @@ def write_markdown(report: dict[str, Any], path: Path) -> None:
         f"- Legacy demo ViewJSON annotations: {summary['legacy_demo_view_json_count']}",
         f"- Replica-style local folders: {summary['replica_scene_count']}",
         f"- Official/public Replica scenes ready: {summary['replica_ready_public_count']}",
+        f"- Imported official Replica BBQ scenes ready: {summary['imported_replica_ready_public_count']}",
+        f"- Imported official Replica GT object boxes: {summary['imported_replica_gt_box_count']}",
         f"- ScanNet local folders: {summary['scannet_scene_count']}",
         f"- ScanNet folders ready for conversion: {summary['scannet_ready_for_conversion_count']}",
         "",
         "## Decision",
         "",
         "- Keep the five captured scenes as pilot/system evidence.",
-        "- Add official Replica first for a public-dataset workshop extension.",
-        "- Add ScanNet only after Replica is reproducible; ScanNet requires licensed data access and a completed converter.",
+        "- Use the eight imported official Replica BBQ scenes as the first public-dataset workshop extension.",
+        "- Add ScanNet after official ScanNet Terms-of-Use approval; ScanNet still requires licensed data access and a completed converter.",
         "- Do not call local `data/replica/pilot_scene_001` an official Replica result unless its source metadata changes to an official dataset scene.",
         "",
         "## Manual Captured Scenes",
@@ -199,6 +250,22 @@ def write_markdown(report: dict[str, Any], path: Path) -> None:
         lines.append("| N/A | `NOT_PRESENT` | N/A | all | false |")
     lines.extend([
         "",
+        "## Imported Official Replica Scenes",
+        "",
+        "| Scene | Source scene | Status | GT boxes | Semantic eval | Geometry eval |",
+        "|---|---|---|---:|---|---|",
+    ])
+    if report.get("imported_replica"):
+        for row in report["imported_replica"]:
+            lines.append(
+                f"| `{row['scene_id']}` | `{row.get('source_scene_id')}` | `{row['status']}` | "
+                f"{row.get('object_box_count') or 0} | {row.get('semantic_eval_allowed')} | "
+                f"{row.get('geometry_eval_allowed')} |"
+            )
+    else:
+        lines.append("| N/A | N/A | `NOT_PRESENT` | 0 | false | false |")
+    lines.extend([
+        "",
         "## ScanNet Inputs",
         "",
         "| Scene | Status | Missing |",
@@ -214,9 +281,10 @@ def write_markdown(report: dict[str, Any], path: Path) -> None:
         "",
         "## What Must Be Supplied For Public-Dataset Claims",
         "",
-        "- Official Replica scene folders or a documented legal download path.",
-        "- Official ScanNet extracted scene folders after accepting ScanNet terms.",
-        "- Independent labels or dataset-provided instance/semantic annotations mapped to query GT.",
+        "- For Replica object-grounding claims: the imported `backend/data/scenes/replica_*` scenes and their official GT object boxes are ready.",
+        "- For Replica segmentation claims: add a semantic/instance segmentation evaluator over the official mesh labels.",
+        "- For ScanNet claims: provide official ScanNet extracted scene folders after accepting ScanNet terms.",
+        "- For ScanNet language-grounding claims: add Sr3D+, Nr3D, and/or ScanRefer labels mapped to ScanNet object IDs.",
         "- Baseline outputs generated on the same public scenes, not only smoke scenes.",
     ])
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -239,6 +307,7 @@ def main() -> int:
         "replica": replica_inventory(ROOT / args.replica_root),
         "scannet": scannet_inventory(ROOT / args.scannet_root),
     }
+    report["imported_replica"] = imported_replica_inventory(ROOT / args.scene_root)
     report["summary"] = summarize(report)
     out_json = ROOT / args.out_json
     out_json.parent.mkdir(parents=True, exist_ok=True)

@@ -9,6 +9,9 @@ outputs/
 # Large pilot scene binaries (keep json/scripts in git)
 data/replica/**/rgb/
 data/replica/**/depth/
+data/replica_official_raw/
+data/replica_official_downloads/
+data/scannet/
 
 # Python
 __pycache__/

@@ -15,14 +15,40 @@
 
 ## Replica Mapping
 
-No Replica scene or official annotations are available locally. Consequently:
+Official Replica v1 semantic metadata is now available locally for the
+BBQ-aligned subset. The current importer uses
+`habitat/info_semantic.json` object IDs, class labels, and `oriented_bbox`
+values. This enables object-level GT and 3D box evaluation for:
 
-- view-to-room GT is unknown;
-- query-to-instance GT is unknown;
-- GT 3D boxes are unknown;
-- room and instance mappings must remain empty until licensed data and annotations are supplied;
-- no default-scene label may be copied and presented as Replica GT.
+- `replica_room0`
+- `replica_room1`
+- `replica_room2`
+- `replica_office0`
+- `replica_office1`
+- `replica_office2`
+- `replica_office3`
+- `replica_office4`
+
+Available Replica GT:
+
+- query-to-instance/object GT for the 56 mixed-type pilot queries;
+- official object labels;
+- official 3D object boxes in Replica habitat mesh coordinates.
+
+Unavailable Replica GT in the current importer:
+
+- rendered RGB-D frame-level GT;
+- room hierarchy GT;
+- segmentation metrics such as mAcc, mIoU, and fmIoU.
+
+No default-scene or manual captured-scene label may be copied and presented as
+Replica GT. Replica GT must come from the official Replica metadata or a
+documented conversion from official Replica assets.
 
 ## Benchmark Consequence
 
 `docs/benchmarks/benchmark_queries_v1.json` is a semantic-index regression benchmark. Expected IDs are valid for testing traversal/output behavior, but its metrics are not independent visual recognition or Replica-GT accuracy.
+
+`docs/benchmarks/replica_scannet_pilot_queries.json` contains the current
+GT-backed Replica object-box pilot. The ScanNet part remains inactive until
+official ScanNet access and query labels are available.

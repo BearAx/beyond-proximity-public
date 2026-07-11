@@ -195,7 +195,7 @@ Important spelling note: `Museume-capture` is intentionally spelled this way in 
 Use this as the safest honest description:
 
 ```text
-SemanticSplat currently provides a reproducible, test-backed evaluation prototype over five manually captured and manually annotated RGB-D pilot scenes. It includes canonical schemas, semantic indexes, generated trees, benchmark queries, and stub-mode query evaluation. Live and cached-live evaluation are out of scope for the next phase. ConceptGraphs has a one-frame smoke result and LangSplat has an official-sofa smoke result, but neither is a fair five-scene comparison or GT-backed accuracy result. The project does not yet provide official Replica/ScanNet results, independent semantic accuracy, 3D IoU, or baseline head-to-head comparison.
+SemanticSplat currently provides a reproducible, test-backed evaluation prototype over five manually captured and manually annotated RGB-D pilot scenes, plus an official Replica object-box pilot. It includes canonical schemas, semantic indexes, generated trees, benchmark queries, stub-mode query evaluation, eight imported BBQ-aligned Replica scenes, 575 official Replica GT object boxes, and a 56-query official Replica object-box run with mixed query types. Live and cached-live evaluation are out of scope for the next phase. ConceptGraphs has a one-frame smoke result and LangSplat has an official-sofa smoke result, but neither is a fair same-scene public-dataset comparison. The project does not yet provide official ScanNet results, segmentation metrics, independent semantic accuracy beyond dataset object boxes, or baseline head-to-head comparison.
 ```
 
 ## Claims To Prove Next
