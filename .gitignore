@@ -12,6 +12,13 @@ data/replica/**/depth/
 data/replica_official_raw/
 data/replica_official_downloads/
 data/scannet/
+# Licensed/derived ScanNet backend scenes; regenerate with prepare_scannet_scene.py.
+backend/data/scenes/scannet_*/
+
+# Generated from licensed ScanNet-derived GT after local terms acceptance.
+docs/benchmarks/scannet_bbq_grounding_pilot_v1.json
+docs/benchmarks/replica_scannet_room0_scene0011_pilot_v1.json
+docs/experiments/public_datasets/scannet_bbq_grounding_v2_metrics_summary.json
 
 # Python
 __pycache__/

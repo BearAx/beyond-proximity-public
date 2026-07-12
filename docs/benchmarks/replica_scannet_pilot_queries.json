@@ -1,8 +1,8 @@
 {
   "schema_version": "semanticsplat.benchmark_queries.v1",
   "benchmark_id": "replica_bbq_aligned_official_gt_pilot_v2",
-  "status": "replica_official_gt_ready_scannet_terms_required",
-  "status_date": "2026-07-11",
+  "status": "replica_official_gt_ready_scannet_separate_track_ready",
+  "status_date": "2026-07-12",
   "scene_scope": [
     "replica_room0",
     "replica_room1",
@@ -24,7 +24,7 @@
       "office3",
       "office4"
     ],
-    "scanNet_status": "requires official ScanNet Terms-of-Use approval before download"
+    "scanNet_status": "separate official eight-scene Nr3D/Sr3D+ grounding track ready"
   },
   "query_count": 56,
   "query_type_counts": {

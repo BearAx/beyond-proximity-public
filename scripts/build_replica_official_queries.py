@@ -236,12 +236,12 @@ def build_benchmark() -> dict[str, Any]:
     return {
         "schema_version": "semanticsplat.benchmark_queries.v1",
         "benchmark_id": "replica_bbq_aligned_official_gt_pilot_v2",
-        "status": "replica_official_gt_ready_scannet_terms_required",
+        "status": "replica_official_gt_ready_scannet_separate_track_ready",
         "status_date": datetime.now(timezone.utc).date().isoformat(),
         "scene_scope": [scene_id for scene_id, _ in SCENES],
         "source_alignment": {
             "bbq_replica_scene_subset": [dataset_scene_id for _, dataset_scene_id in SCENES],
-            "scanNet_status": "requires official ScanNet Terms-of-Use approval before download",
+            "scanNet_status": "separate official eight-scene Nr3D/Sr3D+ grounding track ready",
         },
         "query_count": len(queries),
         "query_type_counts": dict(sorted(counts.items())),

@@ -89,5 +89,6 @@ Summary from `outputs/public_datasets/replica_bbq_aligned_v3/metrics_summary.jso
 - This is not a fair ConceptGraphs/LangSplat baseline comparison yet.
 - Replica segmentation metrics such as mAcc, mIoU, and fmIoU still need a
   segmentation evaluator over the official semantic mesh labels.
-- ScanNet remains unavailable until official ScanNet Terms-of-Use approval and
-  local extracted scenes are present.
+- ScanNet remains outside this Replica-specific report, but its separate
+  eight-scene Nr3D/Sr3D+ grounding track is complete and documented in
+  `docs/experiments/public_datasets/scannet_bbq_grounding_v2_metrics_summary.md`.

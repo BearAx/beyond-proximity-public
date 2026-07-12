@@ -1,0 +1,121 @@
+{
+  "schema_version": "semanticsplat.scannet_grounding_annotations_manifest.v1",
+  "generated_at": "2026-07-12T06:32:29.827655+00:00",
+  "dataset_license_note": "ScanNet scenes remain subject to ScanNet Terms of Use. ReferIt3D annotations are obtained from the official ReferIt3D project links; raw data files are intentionally gitignored.",
+  "acquisition_command": "python -B scripts/download_scannet_grounding_annotations.py --install-gdown --acknowledge-source-terms",
+  "local_download_manifest": "data/scannet/annotations/download_manifest.json",
+  "sources": {
+    "nr3d": {
+      "path": "data/scannet/annotations/nr3d.csv",
+      "source_url": "https://drive.google.com/file/d/1qswKclq4BlnHSGMSgzLmUu8iqdUXD8ZC/view",
+      "source_id": "1qswKclq4BlnHSGMSgzLmUu8iqdUXD8ZC",
+      "bytes": 10700336,
+      "sha256": "5de4f1b47130803c88f7c57903e7b6df5473f1b903c32cf28d06fa9c25996a67",
+      "row_count": 41503
+    },
+    "sr3d_plus": {
+      "path": "data/scannet/annotations/sr3d/sr3d+.csv",
+      "source_url": "https://drive.google.com/drive/folders/1DS4uQq7fCmbJHeE-rEbO8G1-XatGEqNV",
+      "source_id": "1DS4uQq7fCmbJHeE-rEbO8G1-XatGEqNV/sr3d+.csv",
+      "bytes": 28887195,
+      "sha256": "b6cd28ed18cbce716a3103198851d39a3dfb221d55eea66899d5f2c07a597d0d",
+      "row_count": 114532
+    }
+  },
+  "bbq_alignment_validation": {
+    "nr3d_correct_guess_count": 699,
+    "nr3d_expected_count": 699,
+    "nr3d_count_matches": true,
+    "sr3d_plus_unique_triplet_count": 661,
+    "sr3d_plus_expected_unique_triplet_count": 661,
+    "sr3d_plus_count_matches": true,
+    "missing_target_id_count": 0,
+    "missing_anchor_id_count": 0,
+    "all_annotation_ids_mapped_to_official_scannet_gt": true
+  },
+  "pilot": {
+    "benchmark_path": "docs/benchmarks/scannet_bbq_grounding_pilot_v1.json",
+    "benchmark_file_tracked": false,
+    "distribution_note": "The generated benchmark contains licensed ScanNet-derived per-query GT and remains local; builders and aggregate evidence are tracked.",
+    "selection_protocol": "Deterministic stratification, three Nr3D and three unique Sr3D+ queries per scene. Nr3D covers spatial+attribute, spatial, and non-spatial language where available; Sr3D+ greedily diversifies official relation types. No result metric is used for selection.",
+    "query_count": 48,
+    "source_query_counts": {
+      "Nr3D": 24,
+      "Sr3D+": 24
+    }
+  },
+  "scenes": [
+    {
+      "backend_scene_id": "scannet_0011_00",
+      "scan_id": "scene0011_00",
+      "official_object_count": 33,
+      "nr3d_correct_guess_count": 56,
+      "sr3d_plus_unique_triplet_count": 43,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    },
+    {
+      "backend_scene_id": "scannet_0030_00",
+      "scan_id": "scene0030_00",
+      "official_object_count": 90,
+      "nr3d_correct_guess_count": 129,
+      "sr3d_plus_unique_triplet_count": 25,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    },
+    {
+      "backend_scene_id": "scannet_0046_00",
+      "scan_id": "scene0046_00",
+      "official_object_count": 57,
+      "nr3d_correct_guess_count": 46,
+      "sr3d_plus_unique_triplet_count": 131,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    },
+    {
+      "backend_scene_id": "scannet_0086_00",
+      "scan_id": "scene0086_00",
+      "official_object_count": 30,
+      "nr3d_correct_guess_count": 109,
+      "sr3d_plus_unique_triplet_count": 40,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    },
+    {
+      "backend_scene_id": "scannet_0222_00",
+      "scan_id": "scene0222_00",
+      "official_object_count": 43,
+      "nr3d_correct_guess_count": 97,
+      "sr3d_plus_unique_triplet_count": 56,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    },
+    {
+      "backend_scene_id": "scannet_0378_00",
+      "scan_id": "scene0378_00",
+      "official_object_count": 45,
+      "nr3d_correct_guess_count": 75,
+      "sr3d_plus_unique_triplet_count": 76,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    },
+    {
+      "backend_scene_id": "scannet_0389_00",
+      "scan_id": "scene0389_00",
+      "official_object_count": 30,
+      "nr3d_correct_guess_count": 68,
+      "sr3d_plus_unique_triplet_count": 77,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    },
+    {
+      "backend_scene_id": "scannet_0435_00",
+      "scan_id": "scene0435_00",
+      "official_object_count": 64,
+      "nr3d_correct_guess_count": 119,
+      "sr3d_plus_unique_triplet_count": 213,
+      "selected_nr3d_count": 3,
+      "selected_sr3d_plus_count": 3
+    }
+  ]
+}

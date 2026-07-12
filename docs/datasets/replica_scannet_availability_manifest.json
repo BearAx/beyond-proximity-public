@@ -1,8 +1,8 @@
 {
   "schema_version": "semanticsplat.public_dataset_manifest.v1",
-  "status_date": "2026-07-11",
+  "status_date": "2026-07-12",
   "owner_role": "Person 1: Public Dataset And GT Lead",
-  "overall_status": "replica_ready_scannet_license_required",
+  "overall_status": "replica_and_scannet_bbq_object_grounding_ready",
   "status_vocabulary": [
     "available",
     "missing_data",
@@ -10,14 +10,19 @@
     "conversion_blocked",
     "ready"
   ],
-  "acceptance_rule": "Replica scenes are ready for object-grounding metrics after official semantic mesh GT import; ScanNet scenes require official ScanNet Terms-of-Use approval before data can be downloaded and converted.",
+  "acceptance_rule": "Replica and ScanNet scenes are ready for object-grounding metrics after official GT import and validation. ScanNet language grounding uses mapped Nr3D/Sr3D+ targets; segmentation metrics remain disabled until model predictions exist.",
   "local_audit": {
     "replica_proxy_path": "data/replica/pilot_scene_001",
     "replica_proxy_status": "missing_data",
     "replica_proxy_note": "This folder has poses.json, intrinsics.json, and metadata.json only in the current checkout; expected rgb/ and depth/ folders are absent. Metadata also marks it as provided project data converted as a Replica-style pilot, not official Replica.",
     "scannet_root": "data/scannet",
-    "scannet_root_status": "license_blocked",
-    "scannet_root_note": "No data/scannet directory is present. Official ScanNet access requires accepting the ScanNet Terms of Use before download.",
+    "scannet_root_status": "available",
+    "scannet_root_note": "All eight BBQ-aligned scenes are present under data/scannet/scans with six required raw files each; the second full downloader pass verified 49/49 files and zero .part files.",
+    "scannet_acquisition_manifest": "docs/datasets/scannet_official_acquisition_manifest.json",
+    "scannet_import_report": "docs/datasets/scannet_official_import_report.json",
+    "scannet_grounding_manifest": "docs/datasets/scannet_grounding_annotations_manifest.json",
+    "scannet_metrics_summary": "docs/experiments/public_datasets/scannet_bbq_grounding_v2_metrics_summary_compact.json",
+    "scannet_raw_bytes": 10148583774,
     "replica_official_archive_status": "ready",
     "replica_official_archive_path": "data/replica_official_raw",
     "replica_official_download_manifest": "docs/datasets/replica_official_acquisition_manifest.json",
@@ -199,7 +204,7 @@
     "source": {
       "name": "ScanNet",
       "official_reference": "https://www.scan-net.org/ScanNet/",
-      "access_note": "Download requires agreeing to ScanNet Terms of Use.",
+      "access_note": "Official raw data was downloaded after user-confirmed Terms-of-Use authorization; licensed files remain local and excluded from Git.",
       "bbq_scene_subset": [
         "0011_00",
         "0030_00",
@@ -220,99 +225,117 @@
       "instance_labels",
       "object_boxes_3d_or_instance_geometry",
       "sr3d_plus_labels",
-      "nr3d_labels",
+      "nr3d_labels"
+    ],
+    "optional_inputs": [
       "scanrefer_labels"
     ],
-    "converter_status": "conversion_blocked",
-    "converter_note": "scripts/prepare_scannet_scene.py currently checks folder shape but raises NotImplementedError before conversion.",
+    "converter_status": "ready",
+    "converter_note": "scripts/prepare_scannet_scene.py extracted real RGB-D and camera data, converted official semantic/instance GT, imported all eight scenes, and produced passing validation reports.",
     "scenes": [
       {
         "dataset_scene_id": "0011_00",
         "official_folder": "scene0011_00",
         "backend_scene_id": "scannet_0011_00",
-        "expected_source_path": "data/scannet/scene0011_00",
+        "expected_source_path": "data/scannet/scans/scene0011_00",
         "expected_backend_path": "backend/data/scenes/scannet_0011_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0011_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 33,
+        "selected_rgbd_view_count": 4,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       },
       {
         "dataset_scene_id": "0030_00",
         "official_folder": "scene0030_00",
         "backend_scene_id": "scannet_0030_00",
-        "expected_source_path": "data/scannet/scene0030_00",
+        "expected_source_path": "data/scannet/scans/scene0030_00",
         "expected_backend_path": "backend/data/scenes/scannet_0030_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0030_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 90,
+        "selected_rgbd_view_count": 6,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       },
       {
         "dataset_scene_id": "0046_00",
         "official_folder": "scene0046_00",
         "backend_scene_id": "scannet_0046_00",
-        "expected_source_path": "data/scannet/scene0046_00",
+        "expected_source_path": "data/scannet/scans/scene0046_00",
         "expected_backend_path": "backend/data/scenes/scannet_0046_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0046_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 57,
+        "selected_rgbd_view_count": 4,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       },
       {
         "dataset_scene_id": "0086_00",
         "official_folder": "scene0086_00",
         "backend_scene_id": "scannet_0086_00",
-        "expected_source_path": "data/scannet/scene0086_00",
+        "expected_source_path": "data/scannet/scans/scene0086_00",
         "expected_backend_path": "backend/data/scenes/scannet_0086_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0086_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 30,
+        "selected_rgbd_view_count": 3,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       },
       {
         "dataset_scene_id": "0222_00",
         "official_folder": "scene0222_00",
         "backend_scene_id": "scannet_0222_00",
-        "expected_source_path": "data/scannet/scene0222_00",
+        "expected_source_path": "data/scannet/scans/scene0222_00",
         "expected_backend_path": "backend/data/scenes/scannet_0222_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0222_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 43,
+        "selected_rgbd_view_count": 5,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       },
       {
         "dataset_scene_id": "0378_00",
         "official_folder": "scene0378_00",
         "backend_scene_id": "scannet_0378_00",
-        "expected_source_path": "data/scannet/scene0378_00",
+        "expected_source_path": "data/scannet/scans/scene0378_00",
         "expected_backend_path": "backend/data/scenes/scannet_0378_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0378_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 45,
+        "selected_rgbd_view_count": 5,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       },
       {
         "dataset_scene_id": "0389_00",
         "official_folder": "scene0389_00",
         "backend_scene_id": "scannet_0389_00",
-        "expected_source_path": "data/scannet/scene0389_00",
+        "expected_source_path": "data/scannet/scans/scene0389_00",
         "expected_backend_path": "backend/data/scenes/scannet_0389_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0389_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 30,
+        "selected_rgbd_view_count": 5,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       },
       {
         "dataset_scene_id": "0435_00",
         "official_folder": "scene0435_00",
         "backend_scene_id": "scannet_0435_00",
-        "expected_source_path": "data/scannet/scene0435_00",
+        "expected_source_path": "data/scannet/scans/scene0435_00",
         "expected_backend_path": "backend/data/scenes/scannet_0435_00",
         "expected_validation_report": "docs/validation/public_datasets/scannet_0435_00.json",
-        "status": "license_blocked",
-        "gt_status": "license_blocked",
-        "metrics_allowed": []
+        "status": "ready",
+        "gt_status": "ready_official_scannet_and_referit3d",
+        "gt_object_box_count": 64,
+        "selected_rgbd_view_count": 7,
+        "metrics_allowed": ["Recall@1", "Acc@0.1", "Acc@0.25", "Acc@0.5"]
       }
     ]
   },

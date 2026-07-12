@@ -1,7 +1,8 @@
 # SemanticSplat Claims Register
 
-Status date: 2026-06-23
-Scope: Replica and available pilot scenes only for Week 2 and Week 3.
+Status date: 2026-07-12
+Scope: current manual, Replica, and ScanNet evidence; historical Week 2/3 mode
+labels remain where applicable.
 
 ## Status Vocabulary
 
@@ -27,10 +28,10 @@ Scope: Replica and available pilot scenes only for Week 2 and Week 3.
 | Query outputs follow one canonical schema. | `implemented` for Week 2/3 runner | `scripts/run_experiment.py`, evaluator tests | New Week 2/3 outputs use `semanticsplat.query_result.v1`; legacy sessions remain legacy. |
 | A Cursor-independent headless model pipeline exists. | `implemented` for `stub` and OpenAI live adapter; live run blocked on credentials | `scripts/run_experiment.py`, `backend/query/model_client.py` | The headless pipeline supports deterministic stub execution and a credential-gated OpenAI live path without Cursor/UI; no project live result exists yet. |
 | Cached live model replay is reproducible. | `implemented` interface; no project cache | `CachedModelClient` tests | Verified-live cache replay is implemented, but no project cached-live result is claimed. |
-| Retrieval accuracy is validated on Replica ground truth. | `planned` | Week 2 evaluation scope | Current 50-query run uses ViewJSON-derived expectations, not Replica GT. |
-| 3D localization is validated. | `planned` | Current pilot depth is constant and unreliable | 3D IoU is currently `N/A`. |
+| Retrieval accuracy is validated on Replica ground truth. | `measured` for oracle GT map | official 8-scene/56-query Replica pilot | Replica object retrieval is measured over official GT boxes supplied as the semantic map. |
+| 3D localization is validated. | `measured` for GT-map retrieval only | Replica and ScanNet Acc@k summaries | 3D box IoU measures selection of official map boxes, not localization predicted from RGB-D. |
 | SemanticSplat outperforms external baselines. | `planned` | No executable baseline comparison exists | No baseline superiority claim is allowed. |
-| ScanNet evaluation is part of Week 3. | `future work` | Scope decision | ScanNet is postponed beyond Week 3. |
+| ScanNet grounding evaluation exists. | `measured` for oracle GT map | 8 scenes, 392 boxes, 48 Nr3D/Sr3D+ queries | Report exact object-ID hit 0.2500 and Acc@0.25 0.2708 for the lexical stub; do not call it semantic perception. |
 
 ## Publication Rule
 

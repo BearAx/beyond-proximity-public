@@ -1,6 +1,6 @@
 # Public Dataset Readiness Audit
 
-Generated: 2026-07-11T10:23:22.572966+00:00
+Generated: 2026-07-12T06:25:39.518374+00:00
 
 ## Summary
 
@@ -12,14 +12,18 @@ Generated: 2026-07-11T10:23:22.572966+00:00
 - Official/public Replica scenes ready: 8
 - Imported official Replica BBQ scenes ready: 8
 - Imported official Replica GT object boxes: 575
-- ScanNet local folders: 0
-- ScanNet folders ready for conversion: 0
+- ScanNet local folders: 8
+- ScanNet raw scenes available: 8
+- ScanNet extracted folders available: 8
+- Imported official ScanNet BBQ scenes ready: 8
+- Imported official ScanNet GT object boxes: 392
+- Imported official ScanNet RGB-D views: 39
 
 ## Decision
 
 - Keep the five captured scenes as pilot/system evidence.
-- Use the eight imported official Replica BBQ scenes as the first public-dataset workshop extension.
-- Add ScanNet after official ScanNet Terms-of-Use approval; ScanNet still requires licensed data access and a completed converter.
+- Use the eight imported official Replica and eight imported official ScanNet BBQ scenes as public-dataset workshop evidence.
+- ScanNet Nr3D/Sr3D+ grounding is runnable over official GT object IDs and boxes; the current lexical-stub result is a method-quality baseline, not a semantic-perception result.
 - Do not call local `data/replica/pilot_scene_001` an official Replica result unless its source metadata changes to an official dataset scene.
 
 ## Manual Captured Scenes
@@ -31,14 +35,6 @@ Generated: 2026-07-11T10:23:22.572966+00:00
 | `Museume-capture` | `captured_pilot` | 20 | 20 | True | True |
 | `outdoor-drone-capture` | `captured_pilot` | 16 | 16 | True | True |
 | `outdoor-street-capture` | `captured_pilot` | 21 | 21 | True | True |
-| `replica_office0` | `other` | 1 | 1 | True | False |
-| `replica_office1` | `other` | 1 | 1 | True | False |
-| `replica_office2` | `other` | 1 | 1 | True | False |
-| `replica_office3` | `other` | 1 | 1 | True | False |
-| `replica_office4` | `other` | 1 | 1 | True | False |
-| `replica_room0` | `other` | 1 | 1 | True | False |
-| `replica_room1` | `other` | 1 | 1 | True | False |
-| `replica_room2` | `other` | 1 | 1 | True | False |
 | `Theater-capture` | `captured_pilot` | 20 | 20 | True | True |
 
 ## Replica-Style Inputs
@@ -62,14 +58,35 @@ Generated: 2026-07-11T10:23:22.572966+00:00
 
 ## ScanNet Inputs
 
-| Scene | Status | Missing |
-|---|---|---|
-| N/A | `NOT_PRESENT` | color, depth, pose, intrinsic |
+| Scene | Status | Raw files | Missing extracted folders |
+|---|---|---:|---|
+| `scene0011_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+| `scene0030_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+| `scene0046_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+| `scene0086_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+| `scene0222_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+| `scene0378_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+| `scene0389_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+| `scene0435_00` | `READY_FOR_CONVERSION` | 6/6 | none |
+
+## Imported Official ScanNet Scenes
+
+| Scene | Source scene | Status | RGB-D views | GT boxes | Indexed boxes | Semantic eval | Geometry eval |
+|---|---|---|---:|---:|---:|---|---|
+| `scannet_0011_00` | `scene0011_00` | `READY_PUBLIC` | 4 | 33 | 33 | True | True |
+| `scannet_0030_00` | `scene0030_00` | `READY_PUBLIC` | 6 | 90 | 90 | True | True |
+| `scannet_0046_00` | `scene0046_00` | `READY_PUBLIC` | 4 | 57 | 57 | True | True |
+| `scannet_0086_00` | `scene0086_00` | `READY_PUBLIC` | 3 | 30 | 30 | True | True |
+| `scannet_0222_00` | `scene0222_00` | `READY_PUBLIC` | 5 | 43 | 43 | True | True |
+| `scannet_0378_00` | `scene0378_00` | `READY_PUBLIC` | 5 | 45 | 45 | True | True |
+| `scannet_0389_00` | `scene0389_00` | `READY_PUBLIC` | 5 | 30 | 30 | True | True |
+| `scannet_0435_00` | `scene0435_00` | `READY_PUBLIC` | 7 | 64 | 64 | True | True |
 
 ## What Must Be Supplied For Public-Dataset Claims
 
 - For Replica object-grounding claims: the imported `backend/data/scenes/replica_*` scenes and their official GT object boxes are ready.
 - For Replica segmentation claims: add a semantic/instance segmentation evaluator over the official mesh labels.
-- For ScanNet claims: provide official ScanNet extracted scene folders after accepting ScanNet terms.
-- For ScanNet language-grounding claims: add Sr3D+, Nr3D, and/or ScanRefer labels mapped to ScanNet object IDs.
+- For ScanNet object-grounding claims: the eight scenes, official boxes, Nr3D/Sr3D+ labels, validation reports, and 48-query pilot are ready.
+- For ScanNet semantic-segmentation claims: add independent predicted per-vertex classes; GT labels alone cannot produce mAcc/mIoU/fmIoU.
+- For ScanRefer claims: obtain its separately gated official annotation release and add a frozen subset; it is optional after the completed Nr3D/Sr3D+ track.
 - Baseline outputs generated on the same public scenes, not only smoke scenes.

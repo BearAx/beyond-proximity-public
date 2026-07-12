@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-11T10:23:22.572966+00:00",
-  "git_revision": "1ab9b5567540bb8024a8368a9dfae10919da9cd2",
+  "generated_at": "2026-07-12T06:25:39.518374+00:00",
+  "git_revision": "9c6263ac21b279341e9b48c833779c16b7e64a73",
   "manual_scenes": [
     {
       "scene_id": "ConferenceHall-capture-pilot",
@@ -43,70 +43,6 @@
       "has_manual_bbox_gt_v2": true
     },
     {
-      "scene_id": "replica_office0",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
-      "scene_id": "replica_office1",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
-      "scene_id": "replica_office2",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
-      "scene_id": "replica_office3",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
-      "scene_id": "replica_office4",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
-      "scene_id": "replica_room0",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
-      "scene_id": "replica_room1",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
-      "scene_id": "replica_room2",
-      "category": "other",
-      "view_json_count": 1,
-      "frame_count": 1,
-      "has_tree": true,
-      "has_manual_bbox_gt_v2": false
-    },
-    {
       "scene_id": "Theater-capture",
       "category": "captured_pilot",
       "view_json_count": 20,
@@ -132,7 +68,80 @@
       "status": "PROXY_OR_NOT_READY"
     }
   ],
-  "scannet": [],
+  "scannet": [
+    {
+      "scene_id": "scene0011_00",
+      "path": "data\\scannet\\scans\\scene0011_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0011_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    },
+    {
+      "scene_id": "scene0030_00",
+      "path": "data\\scannet\\scans\\scene0030_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0030_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    },
+    {
+      "scene_id": "scene0046_00",
+      "path": "data\\scannet\\scans\\scene0046_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0046_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    },
+    {
+      "scene_id": "scene0086_00",
+      "path": "data\\scannet\\scans\\scene0086_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0086_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    },
+    {
+      "scene_id": "scene0222_00",
+      "path": "data\\scannet\\scans\\scene0222_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0222_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    },
+    {
+      "scene_id": "scene0378_00",
+      "path": "data\\scannet\\scans\\scene0378_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0378_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    },
+    {
+      "scene_id": "scene0389_00",
+      "path": "data\\scannet\\scans\\scene0389_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0389_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    },
+    {
+      "scene_id": "scene0435_00",
+      "path": "data\\scannet\\scans\\scene0435_00",
+      "extracted_path": "data\\scannet\\extracted\\scene0435_00",
+      "missing_raw": [],
+      "missing_required": [],
+      "raw_file_count": 6,
+      "status": "READY_FOR_CONVERSION"
+    }
+  ],
   "imported_replica": [
     {
       "scene_id": "replica_office0",
@@ -215,6 +224,104 @@
       "status": "READY_PUBLIC"
     }
   ],
+  "imported_scannet": [
+    {
+      "scene_id": "scannet_0011_00",
+      "path": "backend\\data\\scenes\\scannet_0011_00",
+      "source_scene_id": "scene0011_00",
+      "frame_count": 4,
+      "object_box_count": 33,
+      "indexed_object_count": 33,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0011_00.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "scannet_0030_00",
+      "path": "backend\\data\\scenes\\scannet_0030_00",
+      "source_scene_id": "scene0030_00",
+      "frame_count": 6,
+      "object_box_count": 90,
+      "indexed_object_count": 90,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0030_00.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "scannet_0046_00",
+      "path": "backend\\data\\scenes\\scannet_0046_00",
+      "source_scene_id": "scene0046_00",
+      "frame_count": 4,
+      "object_box_count": 57,
+      "indexed_object_count": 57,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0046_00.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "scannet_0086_00",
+      "path": "backend\\data\\scenes\\scannet_0086_00",
+      "source_scene_id": "scene0086_00",
+      "frame_count": 3,
+      "object_box_count": 30,
+      "indexed_object_count": 30,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0086_00.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "scannet_0222_00",
+      "path": "backend\\data\\scenes\\scannet_0222_00",
+      "source_scene_id": "scene0222_00",
+      "frame_count": 5,
+      "object_box_count": 43,
+      "indexed_object_count": 43,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0222_00.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "scannet_0378_00",
+      "path": "backend\\data\\scenes\\scannet_0378_00",
+      "source_scene_id": "scene0378_00",
+      "frame_count": 5,
+      "object_box_count": 45,
+      "indexed_object_count": 45,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0378_00.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "scannet_0389_00",
+      "path": "backend\\data\\scenes\\scannet_0389_00",
+      "source_scene_id": "scene0389_00",
+      "frame_count": 5,
+      "object_box_count": 30,
+      "indexed_object_count": 30,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0389_00.json",
+      "status": "READY_PUBLIC"
+    },
+    {
+      "scene_id": "scannet_0435_00",
+      "path": "backend\\data\\scenes\\scannet_0435_00",
+      "source_scene_id": "scene0435_00",
+      "frame_count": 7,
+      "object_box_count": 64,
+      "indexed_object_count": 64,
+      "semantic_eval_allowed": true,
+      "geometry_eval_allowed": true,
+      "validation_report": "docs\\validation\\public_datasets\\scannet_0435_00.json",
+      "status": "READY_PUBLIC"
+    }
+  ],
   "summary": {
     "captured_pilot_scene_count": 5,
     "captured_pilot_view_json_count": 97,
@@ -224,11 +331,15 @@
     "replica_ready_public_count": 8,
     "imported_replica_ready_public_count": 8,
     "imported_replica_gt_box_count": 575,
-    "scannet_scene_count": 0,
-    "scannet_ready_for_conversion_count": 0,
+    "scannet_scene_count": 8,
+    "scannet_raw_available_count": 8,
+    "scannet_ready_for_conversion_count": 8,
+    "imported_scannet_ready_public_count": 8,
+    "imported_scannet_gt_box_count": 392,
+    "imported_scannet_rgbd_view_count": 39,
     "publication_readiness": {
-      "twinworld_workshop": "READY_WITH_MANUAL_SCENES_PLUS_OFFICIAL_REPLICA_PILOT",
-      "aaai_main": "NOT_READY_WITHOUT_PUBLIC_DATASET_GT_AND_FAIR_BASELINES"
+      "twinworld_workshop": "READY_WITH_MANUAL_SCENES_PLUS_OFFICIAL_REPLICA_AND_SCANNET_PILOTS",
+      "aaai_main": "NOT_READY_WITHOUT_STRONGER_METHOD_RESULTS_AND_FAIR_BASELINES"
     }
   }
 }

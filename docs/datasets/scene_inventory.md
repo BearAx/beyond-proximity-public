@@ -75,7 +75,7 @@ The PLY files remain ignored by the repository-wide `*.ply` rule. The small mani
 | Week 3 canonical gate outputs | 40/40 in `stub` mode |
 | Executable semantic predictions | 0 |
 | Live/cached-live execution | not run; provider environment and verified cache unavailable |
-| ScanNet | postponed |
+| ScanNet | 8 official BBQ-aligned scenes imported; 39 RGB-D views, 392 GT boxes, 48-query Nr3D/Sr3D+ run complete |
 
 The gate outputs prove output/schema handling only. They do not convert these PLY-only assets into semantic or 3D evaluation scenes.
 
@@ -89,7 +89,9 @@ The gate outputs prove output/schema handling only. They do not convert these PL
 - Original dataset provenance and independent GT: unavailable for all 5.
 - RGB/depth frames, poses, and intrinsics: unavailable for all 5.
 - Raw ZIP files or temporary extraction directories: none.
-- ScanNet: postponed and excluded.
+- ScanNet: this historical five-scene gate remains separate, but the public
+  track is now complete under `backend/data/scenes/scannet_*` with validation in
+  `docs/validation/public_datasets/scannet_*.json`.
 
 Normalization makes paths and provenance consistent; it does not create missing evaluation evidence. Semantic and 3D eligibility remain blocked honestly.
 

@@ -1,0 +1,24 @@
+{
+  "schema_version": "semanticsplat.scannet_official_import_summary.v1",
+  "generated_at": "2026-07-12T05:59:08.438799+00:00",
+  "scene_count": 1,
+  "official_object_count": 33,
+  "indexed_object_count": 33,
+  "selected_frame_count": 4,
+  "semantic_vertex_count": 237360,
+  "all_semantic_valid": true,
+  "all_geometry_valid": true,
+  "scenes": [
+    {
+      "scene_id": "scannet_0011_00",
+      "source_scene_id": "scene0011_00",
+      "raw_frame_count": 2374,
+      "selected_frame_count": 4,
+      "official_object_count": 33,
+      "indexed_object_count": 33,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 237360,
+      "semantic_class_count": 14
+    }
+  ]
+}

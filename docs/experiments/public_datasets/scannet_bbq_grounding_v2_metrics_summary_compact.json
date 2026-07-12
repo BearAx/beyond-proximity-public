@@ -1,0 +1,360 @@
+{
+  "schema_version": "semanticsplat.public_metrics_snapshot.v1",
+  "source_schema_version": "semanticsplat.metrics_record.v1",
+  "generated_at": "2026-07-12T06:25:39.399408+00:00",
+  "run_id": "scannet_bbq_grounding_official_gt_v2",
+  "benchmark_id": "scannet_bbq_aligned_referit3d_official_gt_pilot_v1",
+  "evidence_scope": "Aggregate metrics only; licensed ScanNet-derived per-query GT IDs, boxes, and utterances remain in the local generated benchmark and run outputs.",
+  "coverage": {
+    "benchmark_total_query_count": 48,
+    "benchmark_query_count": 48,
+    "excluded_scene_query_count": 0,
+    "result_count": 48,
+    "missing_result_count": 0,
+    "schema_valid_result_count": 48,
+    "evaluated_result_count": 48,
+    "unavailable_result_count": 0,
+    "accuracy_eligible_result_count": 48,
+    "ground_truth_unavailable_result_count": 0
+  },
+  "mode_counts": {
+    "stub": 48
+  },
+  "per_source_dataset": {
+    "Nr3D": {
+      "query_count": 24,
+      "evaluated_count": 24,
+      "retrieval_success": {
+        "value": 0.875,
+        "numerator": 21,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_hit": {
+        "value": 0.3333,
+        "numerator": 8,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_id_hit": {
+        "value": 0.25,
+        "numerator": 6,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_view_hit": {
+        "value": 0.625,
+        "numerator": 15,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_node_hit": {
+        "value": 0.1667,
+        "numerator": 4,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_3d_iou": {
+        "value": 0.2572,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "bbox_acc_at_0_1": {
+        "value": 0.25,
+        "numerator": 6,
+        "denominator": 24,
+        "threshold": 0.1,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_25": {
+        "value": 0.25,
+        "numerator": 6,
+        "denominator": 24,
+        "threshold": 0.25,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_5": {
+        "value": 0.25,
+        "numerator": 6,
+        "denominator": 24,
+        "threshold": 0.5,
+        "status": "measured",
+        "reason": null
+      },
+      "runtime_seconds": {
+        "mean": 0.0025,
+        "total": 0.0597,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "checked_view_count": {
+        "mean": 4.875,
+        "total": 117.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "visited_node_count": {
+        "mean": 7.4583,
+        "total": 179.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "context_size_chars": {
+        "mean": 35371.2083,
+        "total": 848909.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "estimated_input_tokens": {
+        "mean": 8888.2083,
+        "total": 213317.0,
+        "denominator": 24,
+        "status": "measured"
+      }
+    },
+    "Sr3D+": {
+      "query_count": 24,
+      "evaluated_count": 24,
+      "retrieval_success": {
+        "value": 1.0,
+        "numerator": 24,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_hit": {
+        "value": 0.25,
+        "numerator": 6,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_id_hit": {
+        "value": 0.25,
+        "numerator": 6,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_view_hit": {
+        "value": 0.625,
+        "numerator": 15,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_node_hit": {
+        "value": 0.125,
+        "numerator": 3,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_3d_iou": {
+        "value": 0.266,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "bbox_acc_at_0_1": {
+        "value": 0.3333,
+        "numerator": 8,
+        "denominator": 24,
+        "threshold": 0.1,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_25": {
+        "value": 0.2917,
+        "numerator": 7,
+        "denominator": 24,
+        "threshold": 0.25,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_5": {
+        "value": 0.25,
+        "numerator": 6,
+        "denominator": 24,
+        "threshold": 0.5,
+        "status": "measured",
+        "reason": null
+      },
+      "runtime_seconds": {
+        "mean": 0.0026,
+        "total": 0.0626,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "checked_view_count": {
+        "mean": 4.875,
+        "total": 117.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "visited_node_count": {
+        "mean": 2.0,
+        "total": 48.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "context_size_chars": {
+        "mean": 35382.9167,
+        "total": 849190.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "estimated_input_tokens": {
+        "mean": 8891.1667,
+        "total": 213388.0,
+        "denominator": 24,
+        "status": "measured"
+      }
+    }
+  },
+  "metrics": {
+    "retrieval_success": {
+      "value": 0.9375,
+      "numerator": 45,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_view_hit": {
+      "value": 0.625,
+      "numerator": 30,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_node_hit": {
+      "value": 0.1458,
+      "numerator": 7,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_zone_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_object_hit": {
+      "value": 0.2917,
+      "numerator": 14,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_object_id_hit": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "not_found_correctness": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "runtime_seconds": {
+      "mean": 0.0025,
+      "total": 0.1223,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "token_usage": {
+      "input": null,
+      "output": null,
+      "total": null,
+      "denominator": 0,
+      "status": "unavailable"
+    },
+    "context_size_chars": {
+      "mean": 35377.0625,
+      "total": 1698099.0,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "prompt_size_chars": {
+      "mean": 35557.0625,
+      "total": 1706739.0,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "estimated_input_tokens": {
+      "mean": 8889.6875,
+      "total": 426705.0,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "checked_view_count": {
+      "mean": 4.875,
+      "total": 234,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "visited_node_count": {
+      "mean": 4.7292,
+      "total": 227,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "bbox_3d_iou": {
+      "value": 0.2616,
+      "status": "measured",
+      "denominator": 48,
+      "missing_prediction_count": 3,
+      "reason": null
+    },
+    "bbox_acc_at_0_1": {
+      "value": 0.2917,
+      "numerator": 14,
+      "denominator": 48,
+      "threshold": 0.1,
+      "status": "measured",
+      "reason": null
+    },
+    "bbox_acc_at_0_25": {
+      "value": 0.2708,
+      "numerator": 13,
+      "denominator": 48,
+      "threshold": 0.25,
+      "status": "measured",
+      "reason": null
+    },
+    "bbox_acc_at_0_5": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "threshold": 0.5,
+      "status": "measured",
+      "reason": null
+    }
+  },
+  "failure_categories": {
+    "wrong room / zone": 0,
+    "wrong object": 40,
+    "wrong view": 18,
+    "missing object in semantic description": 0,
+    "bad query parsing": 0,
+    "bad traversal": 3,
+    "bad bbox": 36,
+    "invalid depth": 0,
+    "ambiguous ground truth": 0,
+    "baseline adapter issue": 0,
+    "missing GT": 0
+  },
+  "warnings": []
+}

@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from scripts.evaluate_results import evaluate, summary_markdown
+from scripts.export_compact_metrics import compact_metrics
 
 
 def _write(path: Path, data: dict) -> None:
@@ -131,6 +132,30 @@ def test_3d_iou_requires_reliable_depth_and_gt(tmp_path):
     assert summary["metrics"]["bbox_acc_at_0_5"]["value"] == 1.0
 
 
+def test_missing_bbox_prediction_counts_as_zero_in_acc_denominator(tmp_path):
+    benchmark, run_dir = _prepare(tmp_path, depth_status="reliable", with_bbox=True)
+    query = _query(with_bbox=True)
+    query["source_dataset"] = "Nr3D"
+    _write(benchmark, {
+        "schema_version": "semanticsplat.benchmark_queries.v1",
+        "benchmark_id": "missing_bbox_fixture",
+        "queries": [query],
+    })
+    result = _result(bbox=None)
+    result["result"]["found"] = False
+    result["result"]["matched_object"] = None
+    _write(run_dir / "query_results" / "q001.json", result)
+
+    summary = evaluate(benchmark, run_dir)
+
+    assert summary["metrics"]["bbox_3d_iou"]["value"] == 0.0
+    assert summary["metrics"]["bbox_3d_iou"]["denominator"] == 1
+    assert summary["metrics"]["bbox_3d_iou"]["missing_prediction_count"] == 1
+    assert summary["metrics"]["bbox_acc_at_0_25"]["value"] == 0.0
+    assert summary["metrics"]["bbox_acc_at_0_25"]["denominator"] == 1
+    assert summary["per_source_dataset"]["Nr3D"]["bbox_acc_at_0_5"]["value"] == 0.0
+
+
 def test_invalid_schema_is_excluded_from_metrics(tmp_path):
     benchmark, run_dir = _prepare(tmp_path)
     invalid = _result()
@@ -242,6 +267,22 @@ def test_evaluator_scores_object_ids_and_max_bbox_iou(tmp_path):
     assert summary["metrics"]["expected_object_id_hit"]["value"] == 1.0
     assert summary["metrics"]["bbox_3d_iou"]["value"] == 1.0
     assert summary["metrics"]["bbox_acc_at_0_5"]["value"] == 1.0
+
+
+def test_public_metrics_export_excludes_per_query_gt_details(tmp_path):
+    benchmark, run_dir = _prepare(tmp_path, depth_status="reliable", with_bbox=True)
+    _write(
+        run_dir / "query_results" / "q001.json",
+        _result(bbox={"center": [0, 0, 0], "size": [2, 2, 2]}),
+    )
+    summary = evaluate(benchmark, run_dir)
+
+    public = compact_metrics(summary)
+
+    assert public["run_id"] == "run"
+    assert public["coverage"]["result_count"] == 1
+    assert "per_query" not in public
+    assert "missing_query_ids" not in public
 
 
 def test_repository_benchmark_is_balanced_and_five_scene_gt_is_empty():

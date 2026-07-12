@@ -6,7 +6,7 @@ import argparse
 import json
 import math
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
@@ -415,6 +415,7 @@ def evaluate_one(
     return {
         "query_id": query.get("query_id"),
         "scene_id": query.get("scene_id"),
+        "source_dataset": query.get("source_dataset"),
         "query_type": query.get("query_type"),
         "mode": data.get("mode"),
         "status": "invalid_schema" if schema_errors else ("evaluated" if result_available else "unavailable"),
@@ -518,6 +519,51 @@ def aggregate_iou_threshold(ious: list[float], threshold: float) -> dict[str, An
         "status": "measured" if denominator else "N/A",
         "reason": None if denominator else "Reliable GT 3D boxes and predictions were not both available",
     }
+
+
+def eligible_iou_values(rows: Iterable[dict[str, Any]]) -> list[float]:
+    """Return one IoU per GT-eligible query, using zero for no valid prediction."""
+    values: list[float] = []
+    for row in rows:
+        if not row.get("bbox_3d_iou_eligible"):
+            continue
+        value = numeric(row.get("bbox_3d_iou"))
+        values.append(float(value) if value is not None else 0.0)
+    return values
+
+
+def source_dataset_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        source = str(row.get("source_dataset") or "unspecified")
+        grouped[source].append(row)
+    result: dict[str, Any] = {}
+    for source, source_rows in sorted(grouped.items()):
+        evaluated = [row for row in source_rows if row.get("status") == "evaluated"]
+        ious = eligible_iou_values(evaluated)
+        result[source] = {
+            "query_count": len(source_rows),
+            "evaluated_count": len(evaluated),
+            "retrieval_success": aggregate_metric(evaluated, "retrieval_success"),
+            "expected_object_hit": aggregate_metric(evaluated, "expected_object_hit"),
+            "expected_object_id_hit": aggregate_metric(evaluated, "expected_object_id_hit"),
+            "expected_view_hit": aggregate_metric(evaluated, "expected_view_hit"),
+            "expected_node_hit": aggregate_metric(evaluated, "expected_node_hit"),
+            "bbox_3d_iou": {
+                "value": mean(ious),
+                "denominator": len(ious),
+                "status": "measured" if ious else "N/A",
+            },
+            "bbox_acc_at_0_1": aggregate_iou_threshold(ious, 0.1),
+            "bbox_acc_at_0_25": aggregate_iou_threshold(ious, 0.25),
+            "bbox_acc_at_0_5": aggregate_iou_threshold(ious, 0.5),
+            "runtime_seconds": aggregate_numeric(evaluated, "runtime_seconds"),
+            "checked_view_count": aggregate_numeric(evaluated, "checked_view_count"),
+            "visited_node_count": aggregate_numeric(evaluated, "visited_node_count"),
+            "context_size_chars": aggregate_numeric(evaluated, "context_size_chars"),
+            "estimated_input_tokens": aggregate_numeric(evaluated, "estimated_input_tokens"),
+        }
+    return result
 
 
 def compact_metrics(
@@ -661,6 +707,7 @@ def evaluate(
             per_query.append({
                 "query_id": query_id,
                 "scene_id": query.get("scene_id"),
+                "source_dataset": query.get("source_dataset"),
                 "query_type": query.get("query_type"),
                 "status": "missing_result",
                 "failure_categories": [],
@@ -686,11 +733,11 @@ def evaluate(
     runtimes = [value for row in evaluated_rows if (value := numeric(row.get("runtime_seconds"))) is not None]
     checked = [value for row in evaluated_rows if (value := numeric(row.get("checked_view_count"))) is not None]
     visited = [value for row in evaluated_rows if (value := numeric(row.get("visited_node_count"))) is not None]
-    ious = [
-        float(row["bbox_3d_iou"])
+    ious = eligible_iou_values(evaluated_rows)
+    missing_bbox_prediction_count = sum(
+        row.get("bbox_3d_iou_eligible") and row.get("bbox_3d_iou") is None
         for row in evaluated_rows
-        if row.get("bbox_3d_iou_eligible") and row.get("bbox_3d_iou") is not None
-    ]
+    )
 
     if missing_ids:
         warnings.append(f"{len(missing_ids)} benchmark queries have no saved result")
@@ -730,6 +777,7 @@ def evaluate(
         },
         "mode_counts": dict(sorted(mode_counts.items())),
         "compact_metrics": compact_metrics(query_by_id.values(), per_query),
+        "per_source_dataset": source_dataset_metrics(per_query),
         "metrics": {
             "retrieval_success": aggregate_metric(evaluated_rows, "retrieval_success"),
             "expected_view_hit": aggregate_metric(evaluated_rows, "expected_view_hit"),
@@ -764,6 +812,7 @@ def evaluate(
                 "value": mean(ious),
                 "status": "measured" if ious else "N/A",
                 "denominator": len(ious),
+                "missing_prediction_count": missing_bbox_prediction_count,
                 "reason": None if ious else "Reliable depth and reliable GT 3D boxes were not both available",
             },
             "bbox_acc_at_0_1": aggregate_iou_threshold(ious, 0.1),
@@ -850,6 +899,29 @@ def summary_markdown(summary: dict[str, Any]) -> str:
             )
     else:
         lines.append("| N/A | 0 | 0 | 0 | 0 | N/A | N/A | N/A |")
+    lines.extend([
+        "",
+        "## Source Dataset Metrics",
+        "",
+        "Missing or invalid 3D-box predictions count as IoU 0 and remain in every Acc@k denominator.",
+        "",
+        "| Source | Queries | Object-ID hit | Acc@0.1 | Acc@0.25 | Acc@0.5 | Runtime mean (s) | Estimated input tokens mean |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
+    ])
+    per_source = summary.get("per_source_dataset", {})
+    if isinstance(per_source, dict) and per_source:
+        for source, record in per_source.items():
+            lines.append(
+                f"| {source} | {record.get('query_count', 0)} | "
+                f"{format_value(record.get('expected_object_id_hit', {}).get('value'))} | "
+                f"{format_value(record.get('bbox_acc_at_0_1', {}).get('value'))} | "
+                f"{format_value(record.get('bbox_acc_at_0_25', {}).get('value'))} | "
+                f"{format_value(record.get('bbox_acc_at_0_5', {}).get('value'))} | "
+                f"{format_value(record.get('runtime_seconds', {}).get('mean'))} | "
+                f"{format_value(record.get('estimated_input_tokens', {}).get('mean'))} |"
+            )
+    else:
+        lines.append("| N/A | 0 | N/A | N/A | N/A | N/A | N/A | N/A |")
     lines.extend([
         "",
         "## Metrics",

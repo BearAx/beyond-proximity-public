@@ -1,0 +1,136 @@
+{
+  "schema_version": "semanticsplat.scannet_official_import.v1",
+  "generated_at": "2026-07-12T06:14:17.460224+00:00",
+  "scene_id": "scannet_0435_00",
+  "source_scene_id": "scene0435_00",
+  "raw_frame_count": 3273,
+  "selected_frame_count": 7,
+  "official_object_count": 64,
+  "indexed_object_count": 64,
+  "object_coverage_ratio": 1.0,
+  "uncovered_object_count": 0,
+  "semantic_vertex_count": 254998,
+  "semantic_class_count": 25,
+  "conversion_runtime_seconds": 2.802436,
+  "tree": {
+    "node_count": 66,
+    "semantic_item_count": 71,
+    "complete": true
+  },
+  "semantic_validation": {
+    "schema_version": "semanticsplat.semantic_index_validation.v1",
+    "scene_id": "scannet_0435_00",
+    "scene": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\scannet_0435_00",
+    "expected_view_count": 7,
+    "view_json_count": 7,
+    "valid_view_json_count": 7,
+    "invalid_view_json_count": 0,
+    "missing_view_ids": [],
+    "unexpected_view_ids": [],
+    "semantic_index_mode": "official_gt",
+    "visible_region_count": 7,
+    "visible_object_count": 64,
+    "landmark_count": 0,
+    "sign_count": 0,
+    "facility_count": 0,
+    "semantic_item_count": 71,
+    "annotated_view_count": 7,
+    "bbox_3d_count": 64,
+    "tree_manifest_exists": true,
+    "root_node_exists": true,
+    "node_count": 66,
+    "semantic_node_count": 65,
+    "tree_complete": true,
+    "tree_valid": true,
+    "query_runner_loadable": true,
+    "query_runner_schema_compatible": true,
+    "semantic_eval_allowed": true,
+    "geometry_eval_allowed": true,
+    "errors": [],
+    "warnings": [
+      "Semantic content and bbox_3d values are official dataset ground truth."
+    ]
+  },
+  "geometry_validation": {
+    "schema_version": "semanticsplat.geometry_validation.v1",
+    "generated_at": "2026-07-12T06:14:17.459695+00:00",
+    "scene_id": "scannet_0435_00",
+    "scene_path": "backend/data/scenes/scannet_0435_00",
+    "layout": "backend",
+    "frame_count": 7,
+    "rgb_count": 7,
+    "depth_count": 7,
+    "pose_count": 7,
+    "valid_pose_count": 7,
+    "intrinsics": {
+      "w": 640,
+      "h": 480,
+      "fl_x": 577.87060546875,
+      "fl_y": 577.87060546875,
+      "cx": 319.5,
+      "cy": 239.5,
+      "present": true
+    },
+    "metadata": {
+      "status": "consistent",
+      "present": true,
+      "consistent": true,
+      "files_checked": [
+        {
+          "path": "backend/data/scenes/scannet_0435_00/source_metadata.json",
+          "readable": true,
+          "issues": []
+        },
+        {
+          "path": "backend/data/scenes/scannet_0435_00/scene_manifest.json",
+          "readable": true,
+          "issues": []
+        }
+      ],
+      "checks_performed": 10,
+      "issues": []
+    },
+    "semantic_index": {
+      "view_json_count": 7,
+      "tree_valid": true,
+      "complete": true
+    },
+    "ground_truth": {
+      "bbox_3d_available": true
+    },
+    "checks": {
+      "missing_frames": 0,
+      "missing_rgb": 0,
+      "missing_depth": 0,
+      "constant_depth": 0,
+      "excessive_zero_depth": 0,
+      "rgb_depth_resolution_mismatch": 0,
+      "intrinsics_resolution_mismatch": 0,
+      "invalid_pose": 0,
+      "metadata_missing": 0,
+      "metadata_inconsistency": 0
+    },
+    "check_availability": {
+      "rgb_count": "measured",
+      "depth_count": "measured",
+      "pose_count": "measured",
+      "rgb_depth_resolution_match": "measured",
+      "intrinsics_resolution_match": "measured",
+      "constant_depth": "measured",
+      "zero_depth_ratio": "measured",
+      "invalid_pose_matrices": "measured",
+      "missing_frames": "measured",
+      "metadata_consistency": "consistent"
+    },
+    "semantic_evaluation_allowed": true,
+    "geometry_inputs_valid": true,
+    "three_d_localization_allowed": true,
+    "metrics_eligibility": {
+      "semantic_retrieval": "allowed",
+      "expected_view_node_zone": "allowed",
+      "bbox_3d": "allowed",
+      "iou_3d": "allowed"
+    },
+    "warnings": []
+  }
+}

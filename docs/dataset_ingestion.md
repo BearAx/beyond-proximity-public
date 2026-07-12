@@ -46,11 +46,19 @@ Depth files exist, but all checked depth values are constant at 0.1. This means 
 
 ## ScanNet status
 
-ScanNet cannot be converted from the uploaded archive because no ScanNet scene is present. A converter skeleton is included as `scripts/prepare_scannet_scene.py`, but it requires an extracted ScanNet scene with folders like `color/`, `depth/`, `pose/`, and `intrinsic/`.
+The eight BBQ-aligned official ScanNet scenes are complete. Raw files live under
+`data/scannet/scans/`, extracted RGB-D under `data/scannet/extracted/`, and
+backend scenes under `backend/data/scenes/scannet_*`. The converter decodes the
+official `.sens` streams, maps poses/intrinsics, converts semantic labels and
+aggregation instances, builds 392 official AABBs, and validates all scenes.
 
 ## Recommended next step
 
-Use `data/replica/pilot_scene_001` for the smoke test only. Ask for either:
+Use the imported official Replica scenes for the Replica object-box track and
+the ScanNet scenes for the Nr3D/Sr3D+ grounding track. Reproduce ScanNet with:
 
-1. a real Replica scene with non-constant depth, or
-2. an extracted ScanNet scene, for example `scene0000_00`, with RGB/depth/pose/intrinsics.
+```powershell
+python -B scripts\prepare_scannet_scene.py --all-bbq-scenes --max-views 24 --candidate-stride 5 --overwrite
+python -B scripts\build_scannet_official_queries.py
+python -B scripts\run_experiment.py --config configs\scannet_benchmark.yaml --mode stub
+```

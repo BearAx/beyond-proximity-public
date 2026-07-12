@@ -1,0 +1,123 @@
+{
+  "schema_version": "semanticsplat.scannet_acquisition_summary.v1",
+  "status_date": "2026-07-12",
+  "status": "raw_verified_downstream_import_complete",
+  "source_dataset": "ScanNet v2",
+  "source": "official ScanNet release server",
+  "source_url": "https://kaldir.vc.in.tum.de/scannet/",
+  "terms_url": "https://kaldir.vc.in.tum.de/scannet/ScanNet_TOS.pdf",
+  "local_root": "data/scannet",
+  "local_raw_scene_root": "data/scannet/scans",
+  "local_download_manifest": "data/scannet/download_manifest.json",
+  "download_profile": "full",
+  "scene_count": 8,
+  "scene_file_count": 48,
+  "label_map_file": "data/scannet/tasks/scannetv2-labels.combined.tsv",
+  "label_map_bytes": 56406,
+  "total_bytes": 10148583774,
+  "part_file_count_after_verification": 0,
+  "downstream_import_report": "docs/datasets/scannet_official_import_report.json",
+  "downstream_grounding_manifest": "docs/datasets/scannet_grounding_annotations_manifest.json",
+  "file_types_per_scene": [
+    ".aggregation.json",
+    ".sens",
+    ".txt",
+    "_vh_clean_2.0.010000.segs.json",
+    "_vh_clean_2.ply",
+    "_vh_clean_2.labels.ply"
+  ],
+  "scenes": [
+    {
+      "scene_id": "scene0011_00",
+      "dataset_scene_id": "0011_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 1230660692,
+      "sens_bytes": 1209266158,
+      "instance_group_count": 33
+    },
+    {
+      "scene_id": "scene0030_00",
+      "dataset_scene_id": "0030_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 1650865040,
+      "sens_bytes": 1624232644,
+      "instance_group_count": 90
+    },
+    {
+      "scene_id": "scene0046_00",
+      "dataset_scene_id": "0046_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 1349506610,
+      "sens_bytes": 1332586337,
+      "instance_group_count": 57
+    },
+    {
+      "scene_id": "scene0086_00",
+      "dataset_scene_id": "0086_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 961196828,
+      "sens_bytes": 949911920,
+      "instance_group_count": 30
+    },
+    {
+      "scene_id": "scene0222_00",
+      "dataset_scene_id": "0222_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 2151593757,
+      "sens_bytes": 2130366550,
+      "instance_group_count": 43
+    },
+    {
+      "scene_id": "scene0378_00",
+      "dataset_scene_id": "0378_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 1218042845,
+      "sens_bytes": 1203982054,
+      "instance_group_count": 45
+    },
+    {
+      "scene_id": "scene0389_00",
+      "dataset_scene_id": "0389_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 485240554,
+      "sens_bytes": 467016520,
+      "instance_group_count": 30
+    },
+    {
+      "scene_id": "scene0435_00",
+      "dataset_scene_id": "0435_00",
+      "status": "raw_available",
+      "file_count": 6,
+      "total_bytes": 1101421042,
+      "sens_bytes": 1078287049,
+      "instance_group_count": 64
+    }
+  ],
+  "instance_group_count_total": 392,
+  "acquisition_command": "python -B scripts/download_scannet_official.py --out-dir data/scannet --bbq-scenes --profile full --workers 8 --retries 8 --accept-tos",
+  "verification": {
+    "method": "A second full downloader pass compared every local file with the official HTTP Content-Length.",
+    "status": "complete",
+    "verified_file_count": 49,
+    "failure_count": 0
+  },
+  "evaluation_status": {
+    "raw_data_available": true,
+    "sensor_streams_extracted": false,
+    "backend_scenes_imported": false,
+    "gt_boxes_converted": false,
+    "benchmark_run": false
+  },
+  "notes": [
+    "The raw files are licensed local data and are excluded from Git by data/scannet/.",
+    "Raw availability does not constitute a ScanNet benchmark result.",
+    "The next step is .sens extraction plus semantic/instance GT conversion into backend scene format."
+  ]
+}

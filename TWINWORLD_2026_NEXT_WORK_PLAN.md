@@ -104,9 +104,9 @@ BBQ metrics:
 | Mapping time | object-map construction runtime | Yes, report construction cost separately. |
 
 Our current hit@1/hit@3 and token/view savings are still useful, but they are
-not enough for a BBQ-level comparison. The next evaluation must add object-level
-3D grounding metrics on Replica now exist for the object-box pilot; ScanNet
-still needs official access and conversion.
+not enough for a BBQ-level comparison. Object-level 3D grounding pilots now
+exist for the eight BBQ Replica scenes and the same eight ScanNet scenes used by
+BBQ. The ScanNet pilot adds mapped Nr3D/Sr3D+ targets and Acc@0.1/0.25/0.5.
 
 ## 3. Definition Of "100/100 TwinWorld Workshop Ready"
 
@@ -184,6 +184,14 @@ Acceptance:
 - Every planned scene has a clear status: `available`, `missing_data`,
   `license_blocked`, `conversion_blocked`, or `ready`.
 - No metric is planned without an available GT source.
+
+Completion record, 2026-07-12: all Person 1 acceptance criteria are met. The
+eight Replica and eight ScanNet scenes are `ready`; the ScanNet importer maps
+392/392 official instances, and all 699 Nr3D plus 661 unique Sr3D+ records in
+the BBQ subset map to official target/anchor IDs. A deterministic 48-query pilot
+has complete saved metrics, and the exact room0 + scene0011_00 acceptance pilot
+contains 20 official-GT queries. ScanRefer remains an optional later dataset
+because the plan explicitly prioritized it only after Nr3D/Sr3D+.
 
 ### Person 2: Algorithm And Evaluation Lead
 
@@ -334,8 +342,8 @@ used by BBQ-style object-graph methods.
    - baseline status.
 6. Add limitations:
    - manual five-scene GT is not independent public GT;
-- public dataset track is Replica-only where official runs are complete; ScanNet
-  stays future work until official access is approved;
+   - public Replica/ScanNet tracks use official GT semantic maps as input and do
+     not measure semantic perception;
    - external baselines must be labeled as smoke, blocked, or fair comparison;
    - coarse predicted boxes are not GT.
 7. Prepare final checklist:
@@ -374,17 +382,16 @@ Acceptance:
 Go/no-go decision:
 
 ```text
-Replica official data is now available and imported for the BBQ-aligned object
-box pilot. If ScanNet access is not approved by the paper deadline, the paper
-must be framed as manual scenes plus official Replica pilot evidence, not as a
-completed Replica-plus-ScanNet evaluation.
+Replica and ScanNet official data are imported for the exact BBQ-aligned scene
+subsets. The ScanNet Nr3D/Sr3D+ pilot is complete, so the paper may report both
+public-dataset tracks while clearly labeling them oracle-GT-map retrieval.
 ```
 
 ### Days 3-5: Public-Dataset Pilot
 
 | Person | Work |
 |---|---|
-| Person 1 | DONE for Replica: converted all eight BBQ-aligned Replica scenes; ScanNet waits for official access. |
+| Person 1 | DONE: all Replica/ScanNet scenes, GT conversion, ReferIt3D mappings, 48-query ScanNet pilot, and manifests are frozen. |
 | Person 2 | Run object-grounding pilot and compute Acc@0.1/0.25/0.5. |
 | Person 3 | Prepare baseline command/status table. |
 | Person 4 | Draft method and evaluation sections. |
@@ -393,7 +400,7 @@ completed Replica-plus-ScanNet evaluation.
 
 | Person | Work |
 |---|---|
-| Person 1 | Expand to BBQ scene subsets where data is available. |
+| Person 1 | DONE: expanded to all eight BBQ Replica and eight BBQ ScanNet scenes. |
 | Person 2 | Run graph, flat lexical, flat embedding, and fallback variants. |
 | Person 3 | Compare against BBQ tables and write caveats. |
 | Person 4 | Add result tables and visual examples. |
@@ -402,7 +409,7 @@ completed Replica-plus-ScanNet evaluation.
 
 | Person | Work |
 |---|---|
-| Person 1 | Validate GT mapping and missing-data statuses. |
+| Person 1 | DONE: 392/392 ScanNet objects and all ReferIt3D target/anchor IDs validated. |
 | Person 2 | Run ablations: no hierarchy, no relation rerank, no fallback, flat-only. |
 | Person 3 | Audit all baseline claims. |
 | Person 4 | Add failure analysis and limitations. |
@@ -411,7 +418,7 @@ completed Replica-plus-ScanNet evaluation.
 
 | Person | Work |
 |---|---|
-| Person 1 | Freeze dataset inventory and GT report. |
+| Person 1 | DONE: dataset inventory, GT reports, validation, and reproduction commands frozen. |
 | Person 2 | Freeze metrics outputs and reproduction commands. |
 | Person 3 | Freeze related work and baseline status. |
 | Person 4 | Build anonymized PDF and final checklist. |
@@ -499,8 +506,8 @@ Recommended technical improvements:
 
 | Risk | Impact | Mitigation |
 |---|---|---|
-| ScanNet data not available | Cannot claim ScanNet evaluation | Use the official Replica pilot honestly and leave ScanNet for the next approved-data sprint. |
-| 3D GT boxes hard to extract | Acc@0.25 unavailable | Start with ScanRefer/Sr3D/Nr3D object IDs and bbox where available; report N/A honestly. |
+| ScanNet relational grounding is weak | Low public-dataset quality | Treat the 0.25 exact-object result as the lexical baseline and add target-anchor spatial reranking. |
+| Oracle GT map could be mistaken for perception | Overclaim risk | State that official instances are the map input and keep segmentation metrics N/A without predictions. |
 | BBQ official code is hard to run | No fair BBQ baseline | Use BBQ as related work and metric guide; do not claim direct comparison. |
 | Graph quality drops on public data | Weak result | Report cost/quality trade-off and add fallback expansion. |
 | Paper too broad | Reviewer confusion | Make one central claim: graph-pruned semantic search for queryable digital twins. |
@@ -510,12 +517,11 @@ Recommended technical improvements:
 
 These are decisions or resources, not coding tasks:
 
-1. Confirm whether official ScanNet access is approved.
-2. Confirm whether the team wants to prioritize:
+1. Confirm whether the team wants to prioritize:
    - strongest TwinWorld workshop submission by 2026-07-31; or
    - stronger WACV/3DV follow-up after TwinWorld.
-3. Confirm available GPU/CUDA resources for public-dataset and baseline runs.
-5. Decide whether external repo clones are allowed for BBQ/ConceptGraphs
+2. Confirm available GPU/CUDA resources for public-dataset and baseline runs.
+3. Decide whether external repo clones are allowed for BBQ/ConceptGraphs
    expansion.
 
 ## 10. Final Recommendation
@@ -524,15 +530,15 @@ For TwinWorld 2026, the most credible path is:
 
 ```text
 Use the current five-scene system as the digital-twin prototype evidence,
-use the official Replica object-box pilot with BBQ-style metrics,
+use the official Replica and ScanNet object-grounding pilots with BBQ-style metrics,
 compare honestly to BBQ as the closest related object-graph approach,
 and make the paper visually strong, reproducible, and limitation-aware.
 ```
 
-Do not try to make the paper look like a completed main-conference benchmark if
-ScanNet and fair external baselines are not finished. A clean, honest workshop
-paper with a strong Replica pilot is more publishable than an overclaimed paper
-with broken baseline evidence.
+Do not present the completed public-dataset ingestion as a solved algorithm. The
+ScanNet lexical baseline reaches only 0.25 exact object-ID hit, and fair external
+baselines are still unfinished. A clean workshop paper centered on this measured
+quality-efficiency problem is stronger than an overclaimed benchmark story.
 
 ## Sources Checked
 

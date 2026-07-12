@@ -4,7 +4,7 @@ This is the operating guide for Codex, Cursor, and future agents working in this
 repository. The goal is to keep every change evidence-based, reproducible, and
 honest about what the project has actually proven.
 
-Status date: 2026-07-05.
+Status date: 2026-07-12.
 
 ---
 
@@ -52,9 +52,12 @@ reduction (75.5% fewer views checked and 68.2% fewer input tokens), but lower
 hit@k than flat lexical search under the current stub ranker. Live and
 cached-live evaluation are out of scope for the next phase. ConceptGraphs has a
 one-frame smoke result and LangSplat has an official-sofa smoke result, but
-neither is a fair five-scene comparison or GT-backed accuracy result. The
-project does not yet provide official Replica/ScanNet results, independent
-semantic accuracy, 3D IoU, or baseline head-to-head comparison.
+neither is a fair five-scene comparison or GT-backed accuracy result. Official
+Replica and ScanNet oracle-GT-map object-grounding pilots are now reproducible:
+Replica has 575 boxes and 56 queries; ScanNet has 392 boxes, 48 Nr3D/Sr3D+
+queries, exact object-ID hit 0.2500, and Acc@0.25 0.2708 under the lexical stub.
+These are retrieval results over GT semantic maps, not semantic-perception
+accuracy or fair external-baseline superiority.
 ```
 
 ---
@@ -77,7 +80,11 @@ graph scaling stress outputs
 LangSplat official-sofa smoke output
 ConceptGraphs one-frame captured-scene smoke output
 50 default-scene stub benchmark outputs
-108 passing backend tests as of the 2026-07-05 local check
+8 official Replica scenes, 575 GT boxes, 56 GT-backed queries
+8 official ScanNet scenes, 39 selected RGB-D views, 392 GT boxes
+699 mapped Nr3D rows and 661 mapped unique Sr3D+ triplets
+48-query ScanNet pilot with saved object-ID, bbox, runtime, context, and token metrics
+128 passing backend tests as of the 2026-07-12 local check
 ```
 
 Current scene set:
@@ -88,6 +95,8 @@ backend/data/scenes/Museume-capture
 backend/data/scenes/Theater-capture
 backend/data/scenes/outdoor-street-capture
 backend/data/scenes/outdoor-drone-capture
+backend/data/scenes/replica_*
+backend/data/scenes/scannet_*
 ```
 
 Important: `Museume-capture` is intentionally spelled this way in current data
@@ -100,10 +109,10 @@ live model evaluation = out of scope for the next phase
 cached_live = out of scope for the next phase; no verified live cache exists
 ConceptGraphs = one-frame Docker smoke executed; five-scene comparison blocked
 LangSplat = official sofa smoke executed; five-scene comparison blocked
-Replica = not official / not completed
-ScanNet = postponed
-independent semantic accuracy = unavailable without independent GT
-3D IoU = unavailable without GT boxes and predicted boxes
+Replica = official BBQ-aligned object-box pilot completed
+ScanNet = official eight-scene RGB-D/object-box and Nr3D/Sr3D+ pilot completed
+semantic segmentation accuracy = unavailable without independent model predictions
+3D IoU = measured for oracle-GT-map object retrieval; not predicted localization
 ```
 
 ---
@@ -121,10 +130,9 @@ Do not rebuild the project from scratch. The repo already has:
 The next technical milestone is:
 
 ```text
-Improve the current graph/search pipeline with calibrated pruning or fallback
-expansion, add an official public-dataset track starting with Replica, and run
-fair same-scene baseline comparisons when external methods can consume the same
-data and queries.
+Improve the current graph/search pipeline with explicit target-anchor spatial
+reasoning, calibrated pruning, or fallback expansion. Then run fair same-scene
+baselines over the completed Replica/ScanNet inputs and identical queries.
 ```
 
 The main target claim to prove next is:
