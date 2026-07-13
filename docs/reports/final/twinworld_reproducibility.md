@@ -7,7 +7,8 @@ Status date: 2026-07-14. Branch: `week6-person4`.
 Recorded at freeze time (update after each intentional push):
 
 ```
-PLACEHOLDER_WILL_BE_FILLED
+086eb32212da4bb206105fef193b6e00db477958
+(short: 086eb32 on week6-person4)
 ```
 
 Paper path: `papers/twinworld/main.tex`  
