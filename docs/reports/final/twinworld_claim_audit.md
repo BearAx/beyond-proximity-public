@@ -1,21 +1,23 @@
 # Claim Audit — TwinWorld Week 6 (Person 4)
 
-Status date: 2026-07-13. Owner: Person 4 (Telman).  
+Status date: 2026-07-14. Owner: Person 4 (Telman).  
 Branch: `week6-person4` (base: `week6-person3` = P1+P2+P3).  
 Paper: `papers/twinworld/main.tex`.
 
 ## Central claim (allowed)
 
-> SemanticSplat is a graph-pruned semantic search layer for queryable 3DGS digital twins. It reduces query-time context while preserving retrieval on the internal benchmark, and is aligned with BBQ-style public grounding metrics — **without** claiming superiority over BBQ.
+> SemanticSplat is a graph-pruned semantic search layer for queryable 3DGS digital twins. It reduces query-time context on the internal benchmark (with a stub-lexical hit@$k$ tradeoff) and is aligned with BBQ-style public grounding metrics — **without** claiming superiority over BBQ.
 
 ## Evidence map
 
 | Claim in paper | Verdict | Evidence |
 |---|---|---|
-| Internal: −71.4% views, −65.1% tokens; hit@1 0.792 vs 0.768 | **supported** | `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json` |
+| Internal: −75.5% views, −68.2% tokens (19.4→4.77; 3168→1014) | **supported** | `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json` |
+| Internal hit@1 0.68 graph vs 0.768 flat (n=125); hit@3 0.808 vs 0.928 | **supported** | same JSON (`quality`) |
+| Cumulative tokens 475k flat vs 152k graph | **supported** | sum of `per_query_results.json` → `queries[*].{flat,graph}.input_tokens` |
 | Replica oracle Acc@k / Recall@1 = 1.0 for graph & flat lexical | **supported_with_caveat** (ceiling / oracle candidates) | `outputs/public_datasets/replica_pilot_v1/`; `docs/experiments/public_datasets/person2_grounding_results.md` |
 | Replica: graph checks ~12.1 objects vs ~71.9 flat | **supported** | same |
-| ScanNet: Recall@1 = Acc@0.25 = 0.271 for graph & flat lexical | **supported** | `outputs/public_datasets/scannet_pilot_v1/`; person2_grounding_results.md |
+| ScanNet: Recall@1 = Acc@0.25 = 0.271 for graph & flat lexical | **supported** | `outputs/public_datasets/scannet_pilot_v1/` |
 | ScanNet: graph checks ~11.2 vs ~49.0 objects (~77% fewer) | **supported** | same |
 | Relation rerank does not help this pilot | **supported** | no-relation Acc@0.25 = 0.292 > 0.271 |
 | mAcc/mIoU/fmIoU | **N/A** — must stay N/A | bbq_aligned_metrics.md |
@@ -24,6 +26,11 @@ Paper: `papers/twinworld/main.tex`.
 | LangSplat five-scene accuracy | **unsupported** (smoke only) | langsplat_smoke_result.md |
 | Live VLM evaluation | **out of scope** | — |
 | Stale “1,046 semantic items” as current absolute truth | **avoid** | outdoor-street recheck can differ; use 96 views + “~1k items” or freeze a count with a path |
+| Superseded PERSON1 roundings (71.4% / 0.792 hit@1) | **forbidden in TwinWorld PDF** | prefer frozen JSON; see note below |
+
+## Superseded note
+
+`docs/experiments/graph_vs_flat/PERSON1_DELIVERABLE.md` lists v2 as 19.2→5.39 (−71.4%) and hit@1 0.792 vs 0.768. The **checked-in** `five_scene_graph_vs_flat_v2/metrics_summary.json` instead reports 19.4→4.77 (−75.5%) and hit@1 0.68 vs 0.768. TwinWorld paper + `check_twinworld_numbers.py` follow the JSON.
 
 ## Unsafe wording (never use)
 
@@ -32,6 +39,7 @@ Paper: `papers/twinworld/main.tex`.
 - “mIoU improved by …”
 - “100% room accuracy / 34% IoU” (legacy Beyond Proximity overclaims)
 - Presenting internal hit@k as Acc@0.25
+- “preserving retrieval quality” on the internal five-scene track without mentioning the hit@k tradeoff
 
 ## Team freeze pointers
 
@@ -40,4 +48,4 @@ Paper: `papers/twinworld/main.tex`.
 | P1 | `docs/datasets/replica_scannet_plan.md`, availability manifests, configs |
 | P2 | `docs/experiments/public_datasets/person2_grounding_results.md`, `scripts/evaluate_grounding.py` |
 | P3 | `docs/baselines/bbq_comparison.md`, `baseline_status.md` |
-| P4 | `papers/twinworld/`, this audit, figure/submission checklists |
+| P4 | `papers/twinworld/`, this audit, figure/submission checklists, `twinworld_reproducibility.md` |
