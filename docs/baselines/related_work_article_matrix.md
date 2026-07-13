@@ -1,7 +1,7 @@
 # Related Work Article Matrix
 
 Owner: Person 3, Baselines and Literature Lead  
-Status date: 2026-07-03  
+Status date: 2026-07-13  
 Scope: article-facing comparison notes. This matrix is not experimental evidence by itself.
 
 ## Claim Guardrail
@@ -63,3 +63,14 @@ The reviewed 3D scene understanding papers do not use LLM token count as a prima
 | Token count is not a standard 3D scene understanding metric | Token/context metrics must be framed as internal graph-vs-flat efficiency metrics. |
 | Language-field methods optimize a different representation | Their native outputs are relevancy maps, not tree traversal traces. |
 | Graph methods depend on segmentation and association | Their failure modes differ from VLM-summary/tree failure modes. |
+
+## Week 6 BBQ And Baseline Claim Audit
+
+| Claim area | Current evidence | Article decision |
+|---|---|---|
+| BBQ related-work positioning | `docs/baselines/bbq_comparison.md`; `markdown-papers/beyond_bare_query/beyond_bare_query/beyond_bare_query.md` | Treat BBQ as the closest object-centric 3D scene-graph anchor and metric guide. |
+| Same-input public-dataset pilot | `outputs/public_datasets/replica_pilot_v1/variant_comparison.md`; `outputs/public_datasets/scannet_pilot_v1/variant_comparison.md` | Compare only our graph/fallback/flat/embedding variants directly. |
+| ConceptGraphs external baseline | `docs/baselines/conceptgraphs/conceptgraphs_full_result.md`; `outputs/baselines/conceptgraphs_full_v1/metrics_summary.md` | May report as a five captured-scene baseline with limitations, not as an official Replica/ScanNet result. |
+| LangSplat external baseline | `docs/baselines/langsplat/langsplat_smoke_result.md`; `outputs/baselines/langsplat_smoke_v1/metrics_summary.md` | Smoke/adaptation evidence only; do not report as a head-to-head result. |
+| Token/context metrics | Token/context papers in `papers/new-papers/context-efficiency/` and our saved variant summaries | Use for internal context-efficiency framing only; do not call token count a standard 3D scene metric. |
+| Segmentation metrics | BBQ reports mAcc/mIoU/fmIoU; our current public pilot has no paired prediction arrays | Do not report our mAcc/mIoU/fmIoU until segmentation predictions exist. |

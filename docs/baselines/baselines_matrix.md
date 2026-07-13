@@ -136,3 +136,20 @@ result and does not provide 3D IoU. The drone scene produced a native empty
 object map and is recorded as explicit `found=false` baseline misses.
 
 Exact commands/errors are recorded under `docs/baselines/`. A future smoke must save native output, canonical adapter output, source revision, config, and measured timing. Heavy setup must not block the main pipeline. ScanNet is explicitly postponed beyond Week 3.
+
+## Week 6 BBQ-Aligned Baseline Status
+
+Status date: 2026-07-13. These rows supersede the Week 2/3 feasibility notes for the current TwinWorld sprint. `DONE_WITH_LIMITATIONS` means a saved run exists, but its scope must be stated exactly.
+
+| Baseline / variant | Status | Dataset / scope | Evidence | Directness | Claim guardrail |
+|---|---|---|---|---|---|
+| SemanticSplat graph | DONE_WITH_LIMITATIONS | 56-query Replica pilot and 48-query ScanNet pilot over oracle semantic candidates | `outputs/public_datasets/replica_pilot_v1/variant_comparison.md`; `outputs/public_datasets/scannet_pilot_v1/variant_comparison.md` | Direct against same-input internal variants | Do not describe as semantic perception or BBQ reproduction. |
+| SemanticSplat graph + fallback | DONE_WITH_LIMITATIONS | Same Replica/ScanNet pilots | Same variant-comparison outputs | Direct against same-input internal variants | Report fallback cost separately; on ScanNet it approaches flat-search cost. |
+| Flat lexical | DONE | Same Replica/ScanNet pilots | Same variant-comparison outputs | Direct | Required internal flat baseline. |
+| Flat embedding | DONE | Same Replica/ScanNet pilots using local CPU `fastembed` | Same variant-comparison outputs plus per-run configs | Direct | Required embedding baseline; no external method claim. |
+| ConceptGraphs | DONE_WITH_LIMITATIONS | Five captured SemanticSplat scenes, 150 canonical outputs | `docs/baselines/conceptgraphs/conceptgraphs_full_result.md`; `outputs/baselines/conceptgraphs_full_v1/metrics_summary.md` | Direct only for captured-scene internal protocol | Not official Replica/ScanNet; 3D IoU uses internal coarse boxes. |
+| LangSplat | PARTIALLY_DONE | Official pretrained sofa smoke, one schema-valid canonical output | `docs/baselines/langsplat/langsplat_smoke_result.md`; `outputs/baselines/langsplat_smoke_v1/metrics_summary.md` | Not direct | Smoke proves native execution and adapter path only. |
+| BBQ official code | NOT_DONE | No saved official-code run | No `outputs/baselines/bbq_*` artifact exists | Not direct | BBQ remains related work and metric guide. |
+| BBQ paper tables | DONE_AS_RELATED_WORK | Paper-reported Replica/ScanNet/Sr3D+/Nr3D/ScanRefer tables | `docs/baselines/bbq_comparison.md`; `markdown-papers/beyond_bare_query/beyond_bare_query/beyond_bare_query.md` | Literature only | Do not merge paper-reported BBQ metrics into our results table. |
+
+Current Person 3 summary: use BBQ as the closest object-centric scene-graph positioning anchor and as a source for BBQ-style metric alignment. The defensible experimental comparison is same-input graph/fallback/flat/embedding variants on saved Replica/ScanNet pilots, plus the existing captured-scene ConceptGraphs baseline with its limitations. Token/context measurements are internal efficiency evidence and are not standard 3D scene metrics.

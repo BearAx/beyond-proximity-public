@@ -177,3 +177,9 @@ Why these matter:
 | LERF is useful as background and optional baseline. | Include in related work and possibly a small localization comparison if time permits. |
 | Baseline output formats are mismatched. | Aleksander's evaluation protocol should define a common query-result JSON. |
 | Our strongest distinction is not just "3DGS + language." | Emphasize automatic semantic tree construction, query traversal, and context efficiency. |
+
+## Week 6 BBQ Positioning Paragraph
+
+BBQ is the closest object-centric scene-graph reference for the current public-dataset alignment. It builds an RGB-D object graph with captions, 3D extents, metric distances, and semantic spatial relations, then uses deductive LLM calls to select target and anchor objects before grounding over a compact subgraph. BBQ reports stronger public grounding evidence than the current Beyond Proximity paper draft, including Replica/ScanNet segmentation metrics and Sr3D+/Nr3D/ScanRefer Acc@k tables. Our Week 6 evidence should therefore position Beyond Proximity differently: as a hierarchical semantic-tree and context-pruning layer for queryable 3DGS digital twins, evaluated against same-input flat graph-search baselines and aligned with BBQ-style object-grounding metrics. We do not claim superiority over BBQ because the repository does not contain a same-dataset, same-query BBQ official-code run.
+
+Evidence for this paragraph is consolidated in `docs/baselines/bbq_comparison.md`.

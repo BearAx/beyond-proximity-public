@@ -1,12 +1,20 @@
 # Baseline Status
 
-Status date: 2026-07-06. ConceptGraphs has a five-captured-scene run with
-limitations; LangSplat remains smoke-only.
+Status date: 2026-07-13. Week 6 Person 3 audit.
 
-| Baseline | Smoke status | Native outputs | Canonical outputs | Main blocker |
-|---|---|---:|---:|---|
-| ConceptGraphs | five captured scenes executed with limitations | 5 native result files | 150 | Not official Replica/ScanNet; drone native map is empty; no 3D IoU |
-| LangSplat | official sofa smoke executed | 1 | 1 | Not yet adapted to the five captured SemanticSplat scenes; no GT accuracy |
+This file summarizes what can be claimed from saved artifacts. It must be read together with `docs/baselines/bbq_comparison.md` and `docs/benchmarks/bbq_aligned_metrics.md`.
+
+## Current Status Table
+
+| Baseline / method | Status | Native outputs | Canonical outputs | Main evidence | Main blocker / caveat |
+|---|---|---:|---:|---|---|
+| SemanticSplat graph | DONE_WITH_LIMITATIONS | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | `outputs/public_datasets/replica_pilot_v1/variant_comparison.md`; `outputs/public_datasets/scannet_pilot_v1/variant_comparison.md` | Oracle semantic candidates; not semantic perception or BBQ reproduction. |
+| SemanticSplat graph + fallback | DONE_WITH_LIMITATIONS | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | Same outputs as graph | Fallback can approach flat-search cost; report separately. |
+| Flat lexical | DONE | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | Same outputs as graph | Same-input internal baseline only. |
+| Flat embedding | DONE | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | Same outputs as graph; per-run configs record `fastembed` | Same-input internal baseline only. |
+| ConceptGraphs | DONE_WITH_LIMITATIONS | 5 native result files | 150 | `docs/baselines/conceptgraphs/conceptgraphs_full_result.md`; `outputs/baselines/conceptgraphs_full_v1/metrics_summary.md` | Five captured scenes only; not official Replica/ScanNet; drone native map empty; internal coarse 3D boxes only. |
+| LangSplat | PARTIALLY_DONE | 1 | 1 | `docs/baselines/langsplat/langsplat_smoke_result.md`; `outputs/baselines/langsplat_smoke_v1/metrics_summary.md` | Official sofa smoke only; no GT accuracy and no five-scene/public-dataset run. |
+| BBQ official code | NOT_DONE | 0 | 0 | No saved `outputs/baselines/bbq_*` run exists | Use as related work and metric guide only. |
 
 ## Local Capability Audit
 
@@ -19,15 +27,27 @@ limitations; LangSplat remains smoke-only.
 | Docker daemon | available for LangSplat and ConceptGraphs smoke after starting Docker Desktop |
 | ConceptGraphs checkout | missing in `external/baselines/`; Docker image `semanticsplat-conceptgraphs:72f5962` is the execution evidence |
 | LangSplat checkout | missing in `external/baselines/`; external checkout exists at `C:/GitProjects/baseline-deps/LangSplat` but Git revision check is blocked by `safe.directory` ownership protection |
-| ConceptGraphs checkpoints | present for smoke: `yolov8l-world.pt`, `mobile_sam.pt`, and downloaded HF CLIP cache |
-| LangSplat assets | present: official sofa `data`, `ckpt`, `output`, and rendered `train/ours_None/renders_npy/00000.npy` |
-| Baseline-native preprocessing outputs | LangSplat sofa smoke present; ConceptGraphs one-frame smoke present |
-| Strict canonical adapter scripts | implemented and fixture-tested; no project output without native evidence |
+| ConceptGraphs checkpoints | present for smoke/full run evidence: `yolov8l-world.pt`, `mobile_sam.pt`, and downloaded HF CLIP cache |
+| LangSplat assets | present: official sofa `data`, `ckpt`, and `output` folders |
+| BBQ official-code run | not present in saved outputs |
 
-The captured scenes provide valid RGB-D, poses, and intrinsics, but they are not proven packaged in either baseline's official native layout. The GPU does not satisfy LangSplat's documented 24 GB paper-quality training recommendation, but it was sufficient for a pretrained official sofa render/query smoke.
+## Safe Claims
 
-Exact setup and result evidence:
+- Same-input graph, graph+fallback, flat lexical, and flat embedding variants have saved Replica/ScanNet pilot outputs and can be compared directly within that protocol.
+- ConceptGraphs has a full five captured-scene saved run, but it is not an official public-dataset result.
+- LangSplat has native smoke execution and canonical adapter evidence only.
+- BBQ has paper-reported metrics in local markdown, but no official-code run in this repo.
 
+## Unsafe Claims
+
+- Do not claim external baselines were run unless this table names saved native/canonical outputs.
+- Do not claim Beyond Proximity beats BBQ, ConceptGraphs, LangSplat, or any external paper without same-dataset, same-query, same-protocol saved outputs.
+- Do not claim token count is a standard 3D scene metric. Token/context counts support internal context-efficiency analysis only.
+- Do not report mAcc/mIoU/fmIoU for our public-dataset pilots until paired model-predicted segmentation arrays exist.
+
+## Exact Setup And Result Evidence
+
+- `docs/baselines/bbq_comparison.md`
 - `docs/baselines/conceptgraphs/conceptgraphs_smoke_setup.md`
 - `docs/baselines/conceptgraphs/conceptgraphs_smoke_result.md`
 - `docs/baselines/conceptgraphs/conceptgraphs_full_result.md`
@@ -35,10 +55,6 @@ Exact setup and result evidence:
 - `docs/baselines/langsplat/langsplat_smoke_setup.md`
 - `docs/baselines/langsplat/langsplat_smoke_result.md`
 - `docs/baselines/langsplat/status.md`
-
-LangSplat has native and canonical smoke evidence under
-`outputs/baselines/langsplat_smoke_v1/`. ConceptGraphs has native and canonical
-five captured-scene evidence under `outputs/baselines/conceptgraphs_full_v1/`.
-This is not an official public-dataset result and does not provide 3D IoU. The
-drone scene produced a native empty object map, which is recorded as explicit
-`found=false` baseline misses rather than fabricated answers.
+- `docs/experiments/public_datasets/person2_grounding_results.md`
+- `outputs/public_datasets/replica_pilot_v1/variant_comparison.md`
+- `outputs/public_datasets/scannet_pilot_v1/variant_comparison.md`
