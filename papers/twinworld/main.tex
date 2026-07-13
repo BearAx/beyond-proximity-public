@@ -1,0 +1,183 @@
+% papers/twinworld/main.tex
+% TwinWorld @ ECCV 2026 workshop submission (Person 4).
+% Review mode: anonymized + line numbers via eccv.sty [review].
+\documentclass[runningheads]{llncs}
+\usepackage[review,year=2026,ID=XXXXX]{eccv}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+
+% Camera-ready later: switch to \usepackage[final,year=2026]{eccv}
+% and restore named authors.
+
+\title{SemanticSplat: Graph-Pruned Semantic Search for \\ Queryable 3DGS Digital Twins}
+\titlerunning{SemanticSplat: Graph-Pruned Search for 3DGS Digital Twins}
+
+% Anonymous for review
+\author{Anonymous Authors}
+\authorrunning{Anonymous}
+\institute{Anonymous Institution}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Built-environment digital twins based on 3D Gaussian Splatting (3DGS) are photorealistic but lack an explicit semantic layer for natural-language querying. We present SemanticSplat, a graph-pruned semantic search layer that organizes captured views into a hierarchical zone--region--object tree and answers queries via top-down traversal instead of exhaustive flat search over the same semantic items. On five manually captured indoor/outdoor digital-twin pilot scenes (96 views), graph traversal cuts average views checked by 71.4\% and input tokens by 65.1\% while preserving retrieval quality (hit@1 $0.792$ vs.\ $0.768$). We further align evaluation with BBQ-style object grounding on official Replica and ScanNet pilot subsets: on a 48-query ScanNet language pilot, graph search matches flat lexical Recall@1 / Acc@0.25 ($0.271$) while checking about 77\% fewer objects. We position the work as hierarchical context pruning for queryable 3DGS twins, not as a claim of superiority over BBQ, whose official code is not reproduced here.
+\keywords{Digital twins \and 3D Gaussian Splatting \and Scene graphs \and Semantic search \and 3D object grounding.}
+\end{abstract}
+
+\section{Introduction}
+Digital twins of the built environment increasingly rely on neural rendering, including 3D Gaussian Splatting~\cite{kerbl20233dgs}, for interactive visualization. TwinWorld-relevant applications---facility queries, robotics hand-off, and semantic mapping---need more than geometry and appearance: a user should ask ``where can I sit near the reception?'' and receive a grounded viewpoint or object. Exhaustive flat search over all views or objects is simple but wastes context and scales poorly with scene size.
+
+Language-field methods~\cite{kerr2023lerf,langsplat2024} distill features into the field but do not expose hierarchical pruning. Object-centric scene graphs such as ConceptGraphs~\cite{gu2023conceptgraphs} and BBQ~\cite{bbq2024} provide strong public-dataset object grounding; BBQ in particular reports Acc@$k$ on Replica/ScanNet and Sr3D+/Nr3D/ScanRefer. Our focus is complementary: a hierarchical semantic index over 3DGS-captured views with measured \emph{query-time} context pruning, evaluated under a same-input graph-vs-flat protocol and aligned with BBQ-style Acc@$k$ / Recall@1 on public-dataset pilots.
+
+\paragraph{Contributions.}
+\begin{itemize}
+\item A rendering-first semantic-map layer for queryable 3DGS digital twins with hierarchical traversal and affordance expansion.
+\item Same-input graph-vs-flat evidence on five captured scenes and BBQ-aligned object-grounding pilots on official Replica (8 scenes) and ScanNet (8 scenes).
+\item Honest baseline status: internal flat lexical / embedding variants, ConceptGraphs full captured-scene run, LangSplat smoke, BBQ as related-work metric guide (official BBQ code not run).
+\end{itemize}
+
+\section{Related Work}
+\paragraph{Language fields and 3DGS semantics.}
+LERF~\cite{kerr2023lerf}, LangSplat~\cite{langsplat2024}, and related Gaussian semantics embed language for open-vocabulary pointing. They optimize a different native representation than tree traversal over shared semantic items.
+
+\paragraph{Object-centric and hierarchical scene graphs.}
+ConceptGraphs~\cite{gu2023conceptgraphs}, BBQ~\cite{bbq2024}, HOV-SG~\cite{hovsg2024}, and Hydra~\cite{hydra2022} construct graphs for grounding, navigation, or robotics. BBQ is the closest public-dataset grounding reference: object IDs, captions, 3D extents, spatial relations, and deductive LLM reasoning over a compact subgraph~\cite{bbq2024}. We cite BBQ Acc@$k$ tables as literature context, not as measurements from this repository.
+
+\paragraph{Positioning.}
+SemanticSplat targets hierarchical context control for 3DGS digital twins. Measured comparisons are same-input graph vs.\ flat lexical/embedding on identical scenes, items, queries, and labels. We do not claim superiority over BBQ without a same-protocol official-code run.
+
+\section{Method}
+\subsection{Capture and semantic index}
+Users capture posed RGB(-D) views from a 3DGS or RGB-D scene and annotate or convert structured view records (objects, landmarks, room cues, short summaries). These records form the shared search units for both graph and flat methods.
+
+\subsection{Hierarchical tree and traversal}
+Items are organized as zones $\rightarrow$ regions $\rightarrow$ object/view leaves. Queries are decomposed into constraints; the tree is traversed top-down and irrelevant branches are pruned before leaf confirmation. The flat baseline scans the same items exhaustively.
+
+\subsection{Object grounding output}
+For BBQ-aligned evaluation, each query records selected object/view/node IDs, predicted 3D bbox when available, traversal path, checked objects/views/nodes, runtime, and estimated tokens. Construction cost is reported separately from query-time cost.
+
+\subsection{Search variants}
+We evaluate graph, graph+calibrated fallback, flat lexical, and flat embedding on the same public-dataset pilots, plus ablations (no hierarchy, no relation rerank, no fallback).
+
+\section{Datasets and Evaluation}
+\subsection{Internal digital-twin pilots}
+Five manually captured scenes (Conference Hall, Museum, Theater, outdoor drone/street; 96 views) provide digital-twin prototype evidence. Metrics: views checked, input tokens, hit@$k$ on verified view labels. Manual annotations are \emph{reference labels}, not independent public GT.
+
+\subsection{Public-dataset pilots (Person 1+2)}
+We use the BBQ scene subset where possible: Replica room0--2 and office0--4; ScanNet 0011\_00, 0030\_00, 0046\_00, 0086\_00, 0222\_00, 0378\_00, 0389\_00, 0435\_00. Pilot tracks:
+\begin{itemize}
+\item Replica: 56 queries, 8 scenes, official GT object boxes (oracle semantic candidates).
+\item ScanNet: 48 official Nr3D/Sr3D+ queries, 8 scenes.
+\end{itemize}
+BBQ-aligned metrics: Recall@1, Acc@0.1 / 0.25 / 0.5. Segmentation mAcc/mIoU/fmIoU are \textbf{N/A} (no paired predicted segmentation arrays in this track).
+
+\section{Experiments}
+\subsection{Internal five-scene graph vs.\ flat}
+Across 150 queries, graph traversal reduces average views checked from 19.2 to 5.39 ($71.4\%$) and input tokens from 3104 to 1062 ($65.1\%$), with hit@1 $0.792$ (graph) vs.\ $0.768$ (flat) on 125 GT queries (Fig.~\ref{fig:five-scene}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_five_scene_summary.pdf}
+\caption{Internal five-scene cost (normalized to flat) and quality (stub lexical).}
+\label{fig:five-scene}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/fig_cumulative.pdf}
+\caption{Cumulative tokens over 150 internal queries (466k flat vs.\ 159k graph).}
+\label{fig:cumulative}
+\end{figure}
+
+\subsection{Where hierarchy helps}
+Per-query-type and per-scene analysis (Figs.~\ref{fig:by-type}--\ref{fig:by-scene}) show larger savings when queries localize to one zone (e.g.\ negatives, simple objects) and smaller savings for multi-hop and flatter outdoor trees.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{figures/fig_by_query_type.pdf}
+\caption{Token savings by query type on the internal five-scene track.}
+\label{fig:by-type}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{figures/fig_by_scene.pdf}
+\caption{Per-scene view/token savings heatmap (internal track).}
+\label{fig:by-scene}
+\end{figure}
+
+\subsection{Public-dataset BBQ-aligned pilots}
+Table~\ref{tab:public} summarizes frozen Person~2 runs. On Replica, graph and flat lexical reach a Recall@1 / Acc@$k$ ceiling of $1.0$ on oracle candidates---a protocol sanity check, \emph{not} independent perception accuracy. Graph checks $12.1$ objects vs.\ $71.9$ for flat lexical. On the harder ScanNet language pilot, graph matches flat lexical quality (Recall@1 $=$ Acc@0.25 $=$ $0.271$) while checking $11.2$ vs.\ $49.0$ objects ($\approx 77\%$ fewer). Relation reranking does not help this pilot (no-relation Acc@0.25 $=0.292$). Figure~\ref{fig:scannet} visualizes the quality/cost trade-off; Figure~\ref{fig:replica} shows Replica oracle search cost under a Acc@$k{=}1.0$ ceiling.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_scannet_pilot.pdf}
+\caption{ScanNet BBQ-aligned pilot ($n{=}48$ Nr3D/Sr3D+ queries, oracle candidates). Graph preserves flat-lexical Acc@0.25 while checking far fewer objects; fallback approaches flat cost.}
+\label{fig:scannet}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{figures/fig_replica_pilot.pdf}
+\caption{Replica oracle pilot ($n{=}56$): quality ceiling Acc@$k{=}1.0$ for graph and flat lexical; graph still reduces objects checked. Not independent perception accuracy.}
+\label{fig:replica}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Public-dataset pilots (oracle semantic candidates). Efficiency $=$ avg checked objects.}
+\label{tab:public}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Track & Variant & Recall@1 & Acc@0.25 & Objects & Tokens \\
+\midrule
+\multirow{3}{*}{Replica ($n{=}56$)}
+ & graph & 1.00 & 1.00 & 12.1 & 303 \\
+ & flat lexical & 1.00 & 1.00 & 71.9 & 1765 \\
+ & flat embedding & 0.83 & 0.88 & 71.9 & 1765 \\
+\midrule
+\multirow{4}{*}{ScanNet ($n{=}48$)}
+ & graph & 0.271 & 0.271 & 11.2 & 501 \\
+ & graph+fallback & 0.271 & 0.271 & 47.0 & 2027 \\
+ & flat lexical & 0.271 & 0.271 & 49.0 & 2117 \\
+ & flat embedding & 0.250 & 0.250 & 49.0 & 2117 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Case studies}
+Room-scoped case studies on the Conference Hall demo (Fig.~\ref{fig:failure}) show matched correctness at far lower cost for isolated targets, near-flat cost when the answer is zone-wide, and cheap shared misses when lexical retrieval fails for both methods.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_failure_cases.pdf}
+\caption{Room-scoped case studies: graph views checked vs.\ flat full scan.}
+\label{fig:failure}
+\end{figure}
+
+\subsection{Baselines status}
+ConceptGraphs has a full five captured-scene run (not Replica/ScanNet). LangSplat has official sofa smoke only. BBQ official code: \textbf{not run}; BBQ paper tables are related-work only~\cite{bbq2024}.
+
+\section{Limitations}
+\begin{itemize}
+\item Manual five-scene annotations are reference labels, not independent public GT.
+\item Public pilots use oracle semantic candidates; Replica Acc@$k{=}1.0$ is a ceiling sanity result.
+\item mAcc/mIoU/fmIoU are unavailable without predicted segmentation arrays.
+\item Relation reranking currently underperforms its ablation on ScanNet pilot.
+\item No same-protocol BBQ official-code comparison; no superiority claim.
+\item Stub / deterministic lexical matching is not live provider-backed VLM evaluation.
+\end{itemize}
+
+\section{Conclusion}
+SemanticSplat shows that hierarchical graph pruning reduces query-time context for 3DGS digital twins under a controlled same-input protocol, and that BBQ-aligned Acc@$k$ / Recall@1 can be reported on Replica/ScanNet pilots without overclaiming perception accuracy or BBQ superiority. Future work: stronger relation-aware search, predicted segmentation track, and fair same-protocol BBQ execution if permitted.
+
+% Acknowledgements omitted for anonymous review.
+
+\bibliographystyle{splncs04}
+\bibliography{refs}
+
+\end{document}

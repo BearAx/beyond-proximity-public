@@ -84,7 +84,15 @@ outputs/baselines/conceptgraphs_smoke_v1/**
 # Matplotlib cache (benchmark charts)
 .matplotlib/
 
-# LaTeX build artifacts (rebuild via papers/beyond-proximity/build_paper.cmd)
+# LaTeX build artifacts (rebuild via papers/*/BUILD.md)
+papers/*/main.aux
+papers/*/main.bbl
+papers/*/main.blg
+papers/*/main.log
+papers/*/main.out
+papers/*/main.fls
+papers/*/main.fdb_latexmk
+papers/*/main.synctex.gz
 papers/beyond-proximity/main.aux
 papers/beyond-proximity/main.bbl
 papers/beyond-proximity/main.blg
@@ -93,6 +101,14 @@ papers/beyond-proximity/main.out
 papers/beyond-proximity/main.fls
 papers/beyond-proximity/main.fdb_latexmk
 papers/beyond-proximity/main.synctex.gz
+papers/twinworld/main.aux
+papers/twinworld/main.bbl
+papers/twinworld/main.blg
+papers/twinworld/main.log
+papers/twinworld/main.out
+papers/twinworld/main.fls
+papers/twinworld/main.fdb_latexmk
+papers/twinworld/main.synctex.gz
 
 # Local Query Flow / auto-benchmark session logs (not article evidence)
 backend/data/scenes/*/queries/auto_*.json

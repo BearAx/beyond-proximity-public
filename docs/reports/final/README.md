@@ -1,18 +1,15 @@
-# Final Reports (article sprint)
-
-Person 4 artifacts for the four-person sprint. All claims cross-check against repository evidence.
+# Final Reports (Person 4)
 
 | Document | Purpose |
 |----------|---------|
-| [`claim_audit.md`](claim_audit.md) | Claims vs evidence (updated 2026-07-05) |
-| [`paper_outline.md`](paper_outline.md) | Honest section skeleton and figure checklist |
-| [`reproducibility_windows.md`](reproducibility_windows.md) | Windows commands including five-scene runner |
-| [`../../notebooks/graph_vs_flat_evidence.ipynb`](../../notebooks/graph_vs_flat_evidence.ipynb) | Part A: `default` · Part B: five-scene v2 |
-| [`../../papers/beyond-proximity/main.tex`](../../papers/beyond-proximity/main.tex) | Article draft (honest scope) |
-| [`../../papers/beyond-proximity/BUILD.md`](../../papers/beyond-proximity/BUILD.md) | LaTeX PDF build instructions |
+| [`twinworld_claim_audit.md`](twinworld_claim_audit.md) | Week 6 TwinWorld claims vs P1–P3 evidence |
+| [`twinworld_figure_checklist.md`](twinworld_figure_checklist.md) | Required figures + status |
+| [`twinworld_submission_checklist.md`](twinworld_submission_checklist.md) | ECCV/TwinWorld submission gate |
+| [`claim_audit.md`](claim_audit.md) | Earlier five-scene claim audit |
+| [`paper_outline.md`](paper_outline.md) | Prior outline |
+| [`reproducibility_windows.md`](reproducibility_windows.md) | Windows commands |
+| [`../../papers/twinworld/`](../../papers/twinworld/) | **TwinWorld anonymous LNCS draft** |
+| [`../../papers/beyond-proximity/main.tex`](../../papers/beyond-proximity/main.tex) | Prior CVPR-style draft |
 
-Integration branch: `week4/integration-article-sprint`.
+Active branch: `week6-person4` (from `week6-person3`).
 
-Week 3 acceptance (team): [`docs/project/final_week3_acceptance.md`](../../project/final_week3_acceptance.md).
-
-Private sprint journal (gitignored): `worklog/` at repo root.
