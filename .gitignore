@@ -28,6 +28,7 @@ __pycache__/
 .pytest_tmp/
 .mypy_cache/
 .ruff_cache/
+.cache/
 .env
 venv/
 .venv/
@@ -103,6 +104,33 @@ backend/data/scenes/replica_pilot_001/
 /leo-fork/
 local_backup*.zip
 graphify-out/
+
+# Frozen Person 2 public-dataset grounding evidence (JSON/CSV/MD only).
+!outputs/
+!outputs/public_datasets/
+outputs/public_datasets/**
+!outputs/public_datasets/replica_pilot_v1/
+!outputs/public_datasets/replica_pilot_v1/variant_comparison.json
+!outputs/public_datasets/replica_pilot_v1/variant_comparison.csv
+!outputs/public_datasets/replica_pilot_v1/variant_comparison.md
+!outputs/public_datasets/replica_pilot_v1/*/
+outputs/public_datasets/replica_pilot_v1/*/**
+!outputs/public_datasets/replica_pilot_v1/*/run_config.json
+!outputs/public_datasets/replica_pilot_v1/*/grounding_summary.json
+!outputs/public_datasets/replica_pilot_v1/*/grounding_summary.csv
+!outputs/public_datasets/replica_pilot_v1/*/grounding_summary.md
+!outputs/public_datasets/replica_pilot_v1/*/grounding_failures.json
+!outputs/public_datasets/scannet_pilot_v1/
+!outputs/public_datasets/scannet_pilot_v1/variant_comparison.json
+!outputs/public_datasets/scannet_pilot_v1/variant_comparison.csv
+!outputs/public_datasets/scannet_pilot_v1/variant_comparison.md
+!outputs/public_datasets/scannet_pilot_v1/*/
+outputs/public_datasets/scannet_pilot_v1/*/**
+!outputs/public_datasets/scannet_pilot_v1/*/run_config.json
+!outputs/public_datasets/scannet_pilot_v1/*/grounding_summary.json
+!outputs/public_datasets/scannet_pilot_v1/*/grounding_summary.csv
+!outputs/public_datasets/scannet_pilot_v1/*/grounding_summary.md
+!outputs/public_datasets/scannet_pilot_v1/*/grounding_failures.json
 
 # Person 4 private sprint journal (thoughts, WIP notes)
 worklog/

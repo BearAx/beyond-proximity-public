@@ -1,0 +1,57 @@
+query_id,scene_id,source,query_type,search_variant,input_shape,schema_valid,prediction_available,bbox_eligible,bbox_iou_3d,recall_at_1_eligible,recall_at_1,predicted_object_id,failures,runtime_seconds,checked_nodes,checked_views,checked_objects,context_chars,estimated_tokens
+replica_room0_simple_001,replica_room0,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,2,,0.0007887500000833825,2.0,1.0,1.0,97.0,28.0
+replica_room0_simple_002,replica_room0,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,36,,0.000706374999936088,2.0,1.0,1.0,95.0,27.0
+replica_room0_attribute_001,replica_room0,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,45,,0.0017296249998253188,2.0,1.0,92.0,8923.0,2240.0
+replica_room0_relational_001,replica_room0,Replica,relational,graph,canonical,True,True,True,1.0,True,True,60,,0.0021693749999940337,2.0,1.0,1.0,94.0,32.0
+replica_room0_multi_hop_001,replica_room0,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,63,,0.000781624999945052,2.0,1.0,1.0,98.0,38.0
+replica_room0_functional_001,replica_room0,Replica,functional,graph,canonical,True,True,True,1.0,True,True,73,,0.0007498749996557308,2.0,1.0,4.0,381.0,103.0
+replica_room0_negative_001,replica_room0,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0006866670000817976,0.0,1.0,1.0,96.0,29.0
+replica_room1_simple_001,replica_room1,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,36,,0.0005486249997375126,2.0,1.0,1.0,98.0,28.0
+replica_room1_simple_002,replica_room1,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,6,,0.0004588330002661678,2.0,1.0,1.0,94.0,27.0
+replica_room1_attribute_001,replica_room1,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,51,,0.0009332920003544132,2.0,1.0,54.0,5222.0,1315.0
+replica_room1_relational_001,replica_room1,Replica,relational,graph,canonical,True,True,True,1.0,True,True,20,,0.0013682499998139974,2.0,1.0,1.0,94.0,32.0
+replica_room1_multi_hop_001,replica_room1,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,32,,0.0004787909997503448,2.0,1.0,1.0,93.0,36.0
+replica_room1_functional_001,replica_room1,Replica,functional,graph,canonical,True,True,True,1.0,True,True,32,,0.00045512499991673394,2.0,1.0,1.0,93.0,31.0
+replica_room1_negative_001,replica_room1,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0004282499999135325,0.0,1.0,1.0,98.0,30.0
+replica_room2_simple_001,replica_room2,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,54,,0.00048799999967741314,2.0,1.0,1.0,95.0,27.0
+replica_room2_simple_002,replica_room2,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,14,,0.0005808340001749457,2.0,1.0,5.0,475.0,122.0
+replica_room2_attribute_001,replica_room2,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,1,,0.001051791999998386,2.0,1.0,61.0,5887.0,1481.0
+replica_room2_relational_001,replica_room2,Replica,relational,graph,canonical,True,True,True,1.0,True,True,5,,0.0014444590001403412,2.0,1.0,1.0,95.0,33.0
+replica_room2_multi_hop_001,replica_room2,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,26,,0.0005516249998436251,2.0,1.0,1.0,97.0,38.0
+replica_room2_functional_001,replica_room2,Replica,functional,graph,canonical,True,True,True,1.0,True,True,11,,0.0005655840000144963,2.0,1.0,8.0,764.0,199.0
+replica_room2_negative_001,replica_room2,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0004732079996756511,0.0,1.0,1.0,95.0,29.0
+replica_office0_simple_001,replica_office0,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,16,,0.0005221669998718426,2.0,1.0,1.0,95.0,27.0
+replica_office0_simple_002,replica_office0,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,5,,0.0005872500000805303,2.0,1.0,1.0,93.0,26.0
+replica_office0_attribute_001,replica_office0,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,12,,0.0012000829997305118,2.0,1.0,64.0,6326.0,1591.0
+replica_office0_relational_001,replica_office0,Replica,relational,graph,canonical,True,True,True,1.0,True,True,66,,0.001569416000165802,2.0,1.0,1.0,100.0,35.0
+replica_office0_multi_hop_001,replica_office0,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,64,,0.0005430000001069857,2.0,1.0,1.0,97.0,38.0
+replica_office0_functional_001,replica_office0,Replica,functional,graph,canonical,True,True,True,1.0,True,True,4,,0.0005567500002143788,2.0,1.0,4.0,379.0,103.0
+replica_office0_negative_001,replica_office0,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0005019169998377038,0.0,1.0,1.0,101.0,30.0
+replica_office1_simple_001,replica_office1,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,34,,0.0003843340000457829,2.0,1.0,1.0,95.0,27.0
+replica_office1_simple_002,replica_office1,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,42,,0.00040279199993165093,2.0,1.0,3.0,294.0,77.0
+replica_office1_attribute_001,replica_office1,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,18,,0.0009858330004135496,2.0,1.0,48.0,4685.0,1181.0
+replica_office1_relational_001,replica_office1,Replica,relational,graph,canonical,True,True,True,1.0,True,True,5,,0.0021702090002690966,2.0,1.0,3.0,294.0,82.0
+replica_office1_multi_hop_001,replica_office1,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,29,,0.00044170900036988314,2.0,1.0,1.0,98.0,38.0
+replica_office1_functional_001,replica_office1,Replica,functional,graph,canonical,True,True,True,1.0,True,True,40,,0.0004144999998061394,2.0,1.0,1.0,96.0,32.0
+replica_office1_negative_001,replica_office1,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0004189579999547277,0.0,1.0,1.0,95.0,29.0
+replica_office2_simple_001,replica_office2,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,4,,0.0007839170002625906,2.0,1.0,1.0,94.0,27.0
+replica_office2_simple_002,replica_office2,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,38,,0.0008131669997055724,2.0,1.0,3.0,288.0,76.0
+replica_office2_attribute_001,replica_office2,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,76,,0.0016134170000441372,2.0,1.0,91.0,9002.0,2260.0
+replica_office2_relational_001,replica_office2,Replica,relational,graph,canonical,True,True,True,1.0,True,True,8,,0.0021682090000467724,2.0,1.0,1.0,99.0,35.0
+replica_office2_multi_hop_001,replica_office2,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,28,,0.0007380000001830922,2.0,1.0,1.0,97.0,38.0
+replica_office2_functional_001,replica_office2,Replica,functional,graph,canonical,True,True,True,1.0,True,True,32,,0.000777292000293528,2.0,1.0,6.0,575.0,152.0
+replica_office2_negative_001,replica_office2,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0006871249997857376,0.0,1.0,1.0,96.0,29.0
+replica_office3_simple_001,replica_office3,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,56,,0.0007874170000832237,2.0,1.0,1.0,95.0,27.0
+replica_office3_simple_002,replica_office3,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,15,,0.0008014160002858262,2.0,1.0,4.0,393.0,102.0
+replica_office3_attribute_001,replica_office3,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,92,,0.0016532080003344163,2.0,1.0,100.0,9838.0,2469.0
+replica_office3_relational_001,replica_office3,Replica,relational,graph,canonical,True,True,True,1.0,True,True,26,,0.003417707999687991,2.0,1.0,2.0,194.0,58.0
+replica_office3_multi_hop_001,replica_office3,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,101,,0.000864042000102927,2.0,1.0,1.0,97.0,37.0
+replica_office3_functional_001,replica_office3,Replica,functional,graph,canonical,True,True,True,1.0,True,True,10,,0.0009011659999487165,2.0,1.0,13.0,1244.0,319.0
+replica_office3_negative_001,replica_office3,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.000751417000174115,0.0,1.0,1.0,98.0,30.0
+replica_office4_simple_001,replica_office4,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,60,,0.0006767499999114079,2.0,1.0,1.0,95.0,27.0
+replica_office4_simple_002,replica_office4,Replica,simple_object,graph,canonical,True,True,True,1.0,True,True,49,,0.0005048749999332358,2.0,1.0,1.0,96.0,28.0
+replica_office4_attribute_001,replica_office4,Replica,attribute,graph,canonical,True,True,True,1.0,True,True,4,,0.0012379170002532192,2.0,1.0,65.0,6363.0,1601.0
+replica_office4_relational_001,replica_office4,Replica,relational,graph,canonical,True,True,True,1.0,True,True,34,,0.0015378749999399588,2.0,1.0,1.0,96.0,33.0
+replica_office4_multi_hop_001,replica_office4,Replica,multi_hop,graph,canonical,True,True,True,1.0,True,True,5,,0.0005468750000545697,2.0,1.0,1.0,96.0,37.0
+replica_office4_functional_001,replica_office4,Replica,functional,graph,canonical,True,True,True,1.0,True,True,12,,0.0006398750001608278,2.0,1.0,12.0,1148.0,295.0
+replica_office4_negative_001,replica_office4,Replica,negative,graph,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0005344999999579159,0.0,1.0,1.0,95.0,29.0

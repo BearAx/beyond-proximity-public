@@ -1,0 +1,268 @@
+{
+  "schema_version": "semanticsplat.grounding_metrics.v1",
+  "failure_taxonomy": {
+    "wrong object": 0,
+    "wrong relation": 0,
+    "invalid/unavailable prediction": 8,
+    "bad bbox": 0,
+    "missing GT": 8
+  },
+  "per_query_failures": [
+    {
+      "query_id": "replica_room0_negative_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_room0_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0007023340003797784,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 96.0,
+        "estimated_tokens": 29.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_negative_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_room1_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0004228329999023117,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 98.0,
+        "estimated_tokens": 30.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_negative_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_room2_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.00047733300016261637,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 95.0,
+        "estimated_tokens": 29.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_negative_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_office0_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.000533749999704014,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 101.0,
+        "estimated_tokens": 30.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_negative_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_office1_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.00044554099986271467,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 95.0,
+        "estimated_tokens": 29.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_negative_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_office2_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0007294579995686945,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 96.0,
+        "estimated_tokens": 29.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_negative_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_office3_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.000775333999627037,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 98.0,
+        "estimated_tokens": 30.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_negative_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "ablation_no_fallback",
+      "result_file": "replica_office4_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0005247079998298432,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 1.0,
+        "context_chars": 95.0,
+        "estimated_tokens": 29.0
+      },
+      "construction_cost": null
+    }
+  ]
+}

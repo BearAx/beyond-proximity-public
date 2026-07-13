@@ -1,0 +1,30 @@
+{
+  "schema_version": "semanticsplat.grounding_variant_run.v1",
+  "run_name": "flat_embedding",
+  "search_options": {
+    "variant": "flat_embedding"
+  },
+  "benchmark_path": "/Users/leo/beyond-proximity-week6-person2/docs/benchmarks/scannet_bbq_grounding_pilot_v1.json",
+  "query_count": 48,
+  "scene_ids": [
+    "scannet_0011_00",
+    "scannet_0030_00",
+    "scannet_0046_00",
+    "scannet_0086_00",
+    "scannet_0222_00",
+    "scannet_0378_00",
+    "scannet_0389_00",
+    "scannet_0435_00"
+  ],
+  "construction_cost": {
+    "runtime_seconds": 0.002169,
+    "candidate_count": 392,
+    "scope": "one-time canonical candidate construction"
+  },
+  "embedding": {
+    "backend": "fastembed",
+    "model": "BAAI/bge-small-en-v1.5",
+    "cache_dir": "/Users/leo/beyond-proximity-week6-person2/.cache/fastembed",
+    "device": "cpu"
+  }
+}

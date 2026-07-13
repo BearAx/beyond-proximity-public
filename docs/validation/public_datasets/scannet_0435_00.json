@@ -1,6 +1,6 @@
 {
   "schema_version": "semanticsplat.scannet_official_import.v1",
-  "generated_at": "2026-07-12T06:14:17.460224+00:00",
+  "generated_at": "2026-07-13T16:34:40.634596+00:00",
   "scene_id": "scannet_0435_00",
   "source_scene_id": "scene0435_00",
   "raw_frame_count": 3273,
@@ -11,7 +11,7 @@
   "uncovered_object_count": 0,
   "semantic_vertex_count": 254998,
   "semantic_class_count": 25,
-  "conversion_runtime_seconds": 2.802436,
+  "conversion_runtime_seconds": 0.715993,
   "tree": {
     "node_count": 66,
     "semantic_item_count": 71,
@@ -20,7 +20,7 @@
   "semantic_validation": {
     "schema_version": "semanticsplat.semantic_index_validation.v1",
     "scene_id": "scannet_0435_00",
-    "scene": "C:\\GitProjects\\beyond-proximity\\backend\\data\\scenes\\scannet_0435_00",
+    "scene": "/Users/leo/beyond-proximity-week6-person2/backend/data/scenes/scannet_0435_00",
     "expected_view_count": 7,
     "view_json_count": 7,
     "valid_view_json_count": 7,
@@ -53,7 +53,7 @@
   },
   "geometry_validation": {
     "schema_version": "semanticsplat.geometry_validation.v1",
-    "generated_at": "2026-07-12T06:14:17.459695+00:00",
+    "generated_at": "2026-07-13T16:34:40.634533+00:00",
     "scene_id": "scannet_0435_00",
     "scene_path": "backend/data/scenes/scannet_0435_00",
     "layout": "backend",

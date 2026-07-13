@@ -1,6 +1,6 @@
 {
   "schema_version": "semanticsplat.scannet_grounding_annotations_manifest.v1",
-  "generated_at": "2026-07-12T06:32:29.827655+00:00",
+  "generated_at": "2026-07-13T16:34:48.470936+00:00",
   "dataset_license_note": "ScanNet scenes remain subject to ScanNet Terms of Use. ReferIt3D annotations are obtained from the official ReferIt3D project links; raw data files are intentionally gitignored.",
   "acquisition_command": "python -B scripts/download_scannet_grounding_annotations.py --install-gdown --acknowledge-source-terms",
   "local_download_manifest": "data/scannet/annotations/download_manifest.json",

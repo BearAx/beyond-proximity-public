@@ -1,0 +1,110 @@
+{
+  "schema_version": "semanticsplat.scannet_official_import_summary.v1",
+  "generated_at": "2026-07-13T16:34:40.635170+00:00",
+  "scene_count": 8,
+  "official_object_count": 392,
+  "indexed_object_count": 392,
+  "selected_frame_count": 39,
+  "semantic_vertex_count": 1689730,
+  "conversion_runtime_seconds": 4.050762,
+  "all_semantic_valid": true,
+  "all_geometry_valid": true,
+  "scenes": [
+    {
+      "scene_id": "scannet_0011_00",
+      "source_scene_id": "scene0011_00",
+      "raw_frame_count": 2374,
+      "selected_frame_count": 4,
+      "official_object_count": 33,
+      "indexed_object_count": 33,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 237360,
+      "semantic_class_count": 14,
+      "conversion_runtime_seconds": 0.389536
+    },
+    {
+      "scene_id": "scannet_0030_00",
+      "source_scene_id": "scene0030_00",
+      "raw_frame_count": 2498,
+      "selected_frame_count": 6,
+      "official_object_count": 90,
+      "indexed_object_count": 90,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 293811,
+      "semantic_class_count": 16,
+      "conversion_runtime_seconds": 0.791516
+    },
+    {
+      "scene_id": "scannet_0046_00",
+      "source_scene_id": "scene0046_00",
+      "raw_frame_count": 2481,
+      "selected_frame_count": 4,
+      "official_object_count": 57,
+      "indexed_object_count": 57,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 186857,
+      "semantic_class_count": 26,
+      "conversion_runtime_seconds": 0.515556
+    },
+    {
+      "scene_id": "scannet_0086_00",
+      "source_scene_id": "scene0086_00",
+      "raw_frame_count": 1428,
+      "selected_frame_count": 3,
+      "official_object_count": 30,
+      "indexed_object_count": 30,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 124572,
+      "semantic_class_count": 11,
+      "conversion_runtime_seconds": 0.211867
+    },
+    {
+      "scene_id": "scannet_0222_00",
+      "source_scene_id": "scene0222_00",
+      "raw_frame_count": 5422,
+      "selected_frame_count": 5,
+      "official_object_count": 43,
+      "indexed_object_count": 43,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 234831,
+      "semantic_class_count": 16,
+      "conversion_runtime_seconds": 0.831669
+    },
+    {
+      "scene_id": "scannet_0378_00",
+      "source_scene_id": "scene0378_00",
+      "raw_frame_count": 1892,
+      "selected_frame_count": 5,
+      "official_object_count": 45,
+      "indexed_object_count": 45,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 156298,
+      "semantic_class_count": 15,
+      "conversion_runtime_seconds": 0.361345
+    },
+    {
+      "scene_id": "scannet_0389_00",
+      "source_scene_id": "scene0389_00",
+      "raw_frame_count": 1415,
+      "selected_frame_count": 5,
+      "official_object_count": 30,
+      "indexed_object_count": 30,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 201003,
+      "semantic_class_count": 18,
+      "conversion_runtime_seconds": 0.23328
+    },
+    {
+      "scene_id": "scannet_0435_00",
+      "source_scene_id": "scene0435_00",
+      "raw_frame_count": 3273,
+      "selected_frame_count": 7,
+      "official_object_count": 64,
+      "indexed_object_count": 64,
+      "object_coverage_ratio": 1.0,
+      "semantic_vertex_count": 254998,
+      "semantic_class_count": 25,
+      "conversion_runtime_seconds": 0.715993
+    }
+  ]
+}

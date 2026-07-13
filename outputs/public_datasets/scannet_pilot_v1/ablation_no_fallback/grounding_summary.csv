@@ -1,0 +1,49 @@
+query_id,scene_id,source,query_type,search_variant,input_shape,schema_valid,prediction_available,bbox_eligible,bbox_iou_3d,recall_at_1_eligible,recall_at_1,predicted_object_id,failures,runtime_seconds,checked_nodes,checked_views,checked_objects,context_chars,estimated_tokens
+scannet_0011_00_nr3d_001,scannet_0011_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,17,wrong object,0.00046312500035128323,2.0,1.0,3.0,526.0,144.0
+scannet_0011_00_nr3d_002,scannet_0011_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.001459,True,False,1,wrong object,0.00039266599969778326,2.0,2.0,2.0,382.0,106.0
+scannet_0011_00_nr3d_003,scannet_0011_00,Nr3D,simple_object,ablation_no_fallback,canonical,True,True,True,1.0,True,True,20,,0.00038612500020462903,2.0,2.0,3.0,533.0,141.0
+scannet_0011_00_sr3d_plus_001,scannet_0011_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,1,wrong object,0.0004468330002964649,2.0,1.0,4.0,729.0,196.0
+scannet_0011_00_sr3d_plus_002,scannet_0011_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,1,wrong object,0.0004682500002672896,2.0,3.0,4.0,802.0,215.0
+scannet_0011_00_sr3d_plus_003,scannet_0011_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,1,,0.0005160420000720478,2.0,2.0,3.0,585.0,168.0
+scannet_0030_00_nr3d_001,scannet_0030_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,17,,0.0009823749996940023,2.0,3.0,7.0,1200.0,312.0
+scannet_0030_00_nr3d_002,scannet_0030_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,17,wrong object,0.0012565420001919847,2.0,4.0,28.0,4630.0,1169.0
+scannet_0030_00_nr3d_003,scannet_0030_00,Nr3D,simple_object,ablation_no_fallback,canonical,True,True,True,0.0,True,False,26,wrong object,0.0008940000002439774,2.0,3.0,3.0,490.0,133.0
+scannet_0030_00_sr3d_plus_001,scannet_0030_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,0,wrong object,0.0010848339998119627,2.0,4.0,18.0,3023.0,766.0
+scannet_0030_00_sr3d_plus_002,scannet_0030_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,17,wrong object,0.0019644160001917044,2.0,6.0,90.0,14943.0,3748.0
+scannet_0030_00_sr3d_plus_003,scannet_0030_00,Sr3D+,relational,ablation_no_fallback,canonical,True,False,True,0.0,True,False,,bad bbox; invalid/unavailable prediction,0.0015842090001569886,0.0,1.0,1.0,169.0,66.0
+scannet_0046_00_nr3d_001,scannet_0046_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,18,wrong object; wrong relation,0.0013843340002495097,2.0,2.0,4.0,726.0,202.0
+scannet_0046_00_nr3d_002,scannet_0046_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,21,wrong object,0.0013803329998154368,2.0,4.0,57.0,10008.0,2517.0
+scannet_0046_00_nr3d_003,scannet_0046_00,Nr3D,simple_object,ablation_no_fallback,canonical,True,True,True,0.0,True,False,21,wrong object,0.0006609170000047015,2.0,1.0,5.0,867.0,226.0
+scannet_0046_00_sr3d_plus_001,scannet_0046_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,18,,0.0006609590000152821,2.0,2.0,5.0,891.0,234.0
+scannet_0046_00_sr3d_plus_002,scannet_0046_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,0,wrong object,0.0013096249999762222,2.0,4.0,57.0,10008.0,2513.0
+scannet_0046_00_sr3d_plus_003,scannet_0046_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,33,wrong object,0.0007444170000781014,2.0,3.0,5.0,917.0,247.0
+scannet_0086_00_nr3d_001,scannet_0086_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,14,wrong object,0.001228958999945462,2.0,3.0,5.0,859.0,236.0
+scannet_0086_00_nr3d_002,scannet_0086_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,17,,0.0004960000001119624,2.0,2.0,4.0,860.0,233.0
+scannet_0086_00_nr3d_003,scannet_0086_00,Nr3D,attribute,ablation_no_fallback,canonical,True,True,True,0.020786,True,False,1,wrong object,0.0004476250001061999,2.0,1.0,9.0,1805.0,458.0
+scannet_0086_00_sr3d_plus_001,scannet_0086_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,1,,0.0005110000001877779,2.0,1.0,10.0,1967.0,504.0
+scannet_0086_00_sr3d_plus_002,scannet_0086_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,0,wrong object,0.0007494999999835272,2.0,3.0,30.0,5503.0,1388.0
+scannet_0086_00_sr3d_plus_003,scannet_0086_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,4,,0.0007387499999822467,2.0,1.0,1.0,180.0,59.0
+scannet_0222_00_nr3d_001,scannet_0222_00,Nr3D,relational,ablation_no_fallback,canonical,True,False,True,0.0,True,False,,bad bbox; invalid/unavailable prediction,0.0005972090002615005,0.0,1.0,1.0,155.0,53.0
+scannet_0222_00_nr3d_002,scannet_0222_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,24,,0.0007930000001579174,2.0,2.0,4.0,692.0,198.0
+scannet_0222_00_nr3d_003,scannet_0222_00,Nr3D,simple_object,ablation_no_fallback,canonical,True,False,True,0.0,True,False,,bad bbox; invalid/unavailable prediction,0.000477791999855981,0.0,1.0,1.0,155.0,48.0
+scannet_0222_00_sr3d_plus_001,scannet_0222_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,15,wrong object,0.0005317919999470178,2.0,3.0,3.0,515.0,140.0
+scannet_0222_00_sr3d_plus_002,scannet_0222_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,22,wrong object,0.0010208329999841226,2.0,5.0,43.0,7528.0,1893.0
+scannet_0222_00_sr3d_plus_003,scannet_0222_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,15,wrong object,0.0006294169998000143,2.0,4.0,4.0,714.0,198.0
+scannet_0378_00_nr3d_001,scannet_0378_00,Nr3D,relational,ablation_no_fallback,canonical,True,False,True,0.0,True,False,,bad bbox; invalid/unavailable prediction,0.0004932499996357365,0.0,1.0,1.0,161.0,49.0
+scannet_0378_00_nr3d_002,scannet_0378_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,2,wrong object,0.0005064580000180285,2.0,2.0,3.0,521.0,137.0
+scannet_0378_00_nr3d_003,scannet_0378_00,Nr3D,simple_object,ablation_no_fallback,canonical,True,True,True,1.0,True,True,0,,0.0005523750000975269,2.0,3.0,4.0,635.0,168.0
+scannet_0378_00_sr3d_plus_001,scannet_0378_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,0,,0.0011542500001269218,2.0,3.0,3.0,476.0,128.0
+scannet_0378_00_sr3d_plus_002,scannet_0378_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,0,wrong object,0.0010889169998336001,2.0,5.0,45.0,7703.0,1937.0
+scannet_0378_00_sr3d_plus_003,scannet_0378_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,2,wrong object,0.0005709579995709646,2.0,3.0,3.0,505.0,140.0
+scannet_0389_00_nr3d_001,scannet_0389_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.072976,True,False,22,wrong object,0.00035437499991530785,2.0,1.0,2.0,314.0,85.0
+scannet_0389_00_nr3d_002,scannet_0389_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,2,,0.00036937499999112333,2.0,1.0,3.0,495.0,130.0
+scannet_0389_00_nr3d_003,scannet_0389_00,Nr3D,attribute,ablation_no_fallback,canonical,True,True,True,0.0,True,False,12,wrong object,0.0003579579997676774,2.0,2.0,2.0,317.0,86.0
+scannet_0389_00_sr3d_plus_001,scannet_0389_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,2,,0.0003971249998357962,2.0,1.0,3.0,481.0,132.0
+scannet_0389_00_sr3d_plus_002,scannet_0389_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,2,wrong object,0.0007301670002561877,2.0,5.0,30.0,5110.0,1289.0
+scannet_0389_00_sr3d_plus_003,scannet_0389_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,28,wrong object,0.00048199999991993536,2.0,1.0,3.0,518.0,147.0
+scannet_0435_00_nr3d_001,scannet_0435_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,52,wrong object,0.0012840829999731795,2.0,3.0,5.0,898.0,258.0
+scannet_0435_00_nr3d_002,scannet_0435_00,Nr3D,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,28,wrong object; wrong relation,0.0012411249999786378,2.0,2.0,2.0,332.0,90.0
+scannet_0435_00_nr3d_003,scannet_0435_00,Nr3D,simple_object,ablation_no_fallback,canonical,True,True,True,0.0,True,False,10,wrong object,0.0006695830002172443,2.0,2.0,2.0,314.0,86.0
+scannet_0435_00_sr3d_plus_001,scannet_0435_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,8,wrong object,0.0007567079996988468,2.0,2.0,5.0,879.0,232.0
+scannet_0435_00_sr3d_plus_002,scannet_0435_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,0.0,True,False,8,wrong object,0.0007538330000897986,2.0,2.0,5.0,879.0,234.0
+scannet_0435_00_sr3d_plus_003,scannet_0435_00,Sr3D+,relational,ablation_no_fallback,canonical,True,True,True,1.0,True,True,12,,0.0007343749998653948,2.0,2.0,4.0,690.0,185.0

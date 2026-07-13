@@ -1,0 +1,4240 @@
+{
+  "schema_version": "semanticsplat.grounding_metrics.v1",
+  "benchmark_id": "scannet_bbq_aligned_referit3d_official_gt_pilot_v1",
+  "generated_at": "2026-07-13T16:35:04.650857+00:00",
+  "coverage": {
+    "benchmark_queries": 48,
+    "result_files": 48,
+    "canonical_results": 48,
+    "legacy_adapted_results": 0,
+    "schema_valid_results": 48
+  },
+  "metrics": {
+    "query_count": 48,
+    "bbox_eligible_count": 48,
+    "bbox_iou_3d": {
+      "value": 0.256007,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "recall_at_1_exact_object_id": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "efficiency": {
+      "runtime_seconds": {
+        "mean": 0.168815,
+        "total": 8.103103,
+        "denominator": 48,
+        "status": "measured"
+      },
+      "checked_nodes": {
+        "mean": 2.0,
+        "total": 96.0,
+        "denominator": 48,
+        "status": "measured"
+      },
+      "checked_views": {
+        "mean": 4.875,
+        "total": 234.0,
+        "denominator": 48,
+        "status": "measured"
+      },
+      "checked_objects": {
+        "mean": 49.0,
+        "total": 2352.0,
+        "denominator": 48,
+        "status": "measured"
+      },
+      "context_chars": {
+        "mean": 8414.625,
+        "total": 403902.0,
+        "denominator": 48,
+        "status": "measured"
+      },
+      "estimated_tokens": {
+        "mean": 2116.770833,
+        "total": 101605.0,
+        "denominator": 48,
+        "status": "measured"
+      }
+    },
+    "acc_at_0_1": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "threshold": 0.1,
+      "status": "measured"
+    },
+    "bbox_acc_at_0_1": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "threshold": 0.1,
+      "status": "measured"
+    },
+    "acc_at_0_25": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "threshold": 0.25,
+      "status": "measured"
+    },
+    "bbox_acc_at_0_25": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "threshold": 0.25,
+      "status": "measured"
+    },
+    "acc_at_0_5": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "threshold": 0.5,
+      "status": "measured"
+    },
+    "bbox_acc_at_0_5": {
+      "value": 0.25,
+      "numerator": 12,
+      "denominator": 48,
+      "threshold": 0.5,
+      "status": "measured"
+    },
+    "segmentation": {
+      "mAcc": {
+        "status": "N/A",
+        "value": null,
+        "reason": "Segmentation prediction and GT arrays/masks are not jointly available; object retrieval or oracle object IDs are not segmentation evidence.",
+        "query_count": 0
+      },
+      "mIoU": {
+        "status": "N/A",
+        "value": null,
+        "reason": "Segmentation prediction and GT arrays/masks are not jointly available; object retrieval or oracle object IDs are not segmentation evidence.",
+        "query_count": 0
+      },
+      "fmIoU": {
+        "status": "N/A",
+        "value": null,
+        "reason": "Segmentation prediction and GT arrays/masks are not jointly available; object retrieval or oracle object IDs are not segmentation evidence.",
+        "query_count": 0
+      }
+    }
+  },
+  "construction_cost": {
+    "status": "reported",
+    "scope": "one-time construction; excluded from per-query efficiency",
+    "run": {
+      "runtime_seconds": 0.002169,
+      "candidate_count": 392,
+      "scope": "one-time canonical candidate construction"
+    },
+    "per_query_records": [],
+    "record_count": 0
+  },
+  "strata": {
+    "scene": {
+      "scannet_0011_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.333576,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.102558,
+            "total": 0.615348,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 4.0,
+            "total": 24.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 33.0,
+            "total": 198.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 5653.0,
+            "total": 33918.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1426.833333,
+            "total": 8561.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "scannet_0030_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.166667,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.311622,
+            "total": 1.869735,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 6.0,
+            "total": 36.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 90.0,
+            "total": 540.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 14943.0,
+            "total": 89658.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 3749.166667,
+            "total": 22495.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "scannet_0046_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.514981,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.201111,
+            "total": 1.206666,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 4.0,
+            "total": 24.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 57.0,
+            "total": 342.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 10008.0,
+            "total": 60048.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2516.166667,
+            "total": 15097.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "scannet_0086_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.005813,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.11386,
+            "total": 0.683162,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 3.0,
+            "total": 18.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 30.0,
+            "total": 180.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 5503.0,
+            "total": 33018.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1389.833333,
+            "total": 8339.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "scannet_0222_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.334987,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.152169,
+            "total": 0.913016,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 5.0,
+            "total": 30.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 43.0,
+            "total": 258.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7528.0,
+            "total": 45168.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1897.166667,
+            "total": 11383.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.333333,
+          "numerator": 2,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "scannet_0378_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.169914,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.145553,
+            "total": 0.873315,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 5.0,
+            "total": 30.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 45.0,
+            "total": 270.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7703.0,
+            "total": 46218.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1935.5,
+            "total": 11613.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "scannet_0389_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.520261,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.101442,
+            "total": 0.608651,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 5.0,
+            "total": 30.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 30.0,
+            "total": 180.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 5110.0,
+            "total": 30660.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1287.5,
+            "total": 7725.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.5,
+          "numerator": 3,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "scannet_0435_00": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.001856,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.222202,
+            "total": 1.333211,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 7.0,
+            "total": 42.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 64.0,
+            "total": 384.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 10869.0,
+            "total": 65214.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2732.0,
+            "total": 16392.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    },
+    "source": {
+      "Nr3D": {
+        "query_count": 24,
+        "bbox_eligible_count": 24,
+        "bbox_iou_3d": {
+          "value": 0.175202,
+          "denominator": 24,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.166667,
+          "numerator": 4,
+          "denominator": 24,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.167398,
+            "total": 4.017562,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 48.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 4.875,
+            "total": 117.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 49.0,
+            "total": 1176.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 8414.625,
+            "total": 201951.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2116.166667,
+            "total": 50788.0,
+            "denominator": 24,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 4,
+          "denominator": 24,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 4,
+          "denominator": 24,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 4,
+          "denominator": 24,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 4,
+          "denominator": 24,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 4,
+          "denominator": 24,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 4,
+          "denominator": 24,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "Sr3D+": {
+        "query_count": 24,
+        "bbox_eligible_count": 24,
+        "bbox_iou_3d": {
+          "value": 0.336811,
+          "denominator": 24,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.333333,
+          "numerator": 8,
+          "denominator": 24,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.170231,
+            "total": 4.085541,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 48.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 4.875,
+            "total": 117.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 49.0,
+            "total": 1176.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 8414.625,
+            "total": 201951.0,
+            "denominator": 24,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2117.375,
+            "total": 50817.0,
+            "denominator": 24,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.333333,
+          "numerator": 8,
+          "denominator": 24,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.333333,
+          "numerator": 8,
+          "denominator": 24,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.333333,
+          "numerator": 8,
+          "denominator": 24,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.333333,
+          "numerator": 8,
+          "denominator": 24,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.333333,
+          "numerator": 8,
+          "denominator": 24,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.333333,
+          "numerator": 8,
+          "denominator": 24,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    },
+    "query_type": {
+      "attribute": {
+        "query_count": 2,
+        "bbox_eligible_count": 2,
+        "bbox_iou_3d": {
+          "value": 0.5,
+          "denominator": 2,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.102892,
+            "total": 0.205785,
+            "denominator": 2,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 4.0,
+            "denominator": 2,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 4.0,
+            "total": 8.0,
+            "denominator": 2,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 30.0,
+            "total": 60.0,
+            "denominator": 2,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 5306.5,
+            "total": 10613.0,
+            "denominator": 2,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1333.0,
+            "total": 2666.0,
+            "denominator": 2,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "relational": {
+        "query_count": 40,
+        "bbox_eligible_count": 40,
+        "bbox_iou_3d": {
+          "value": 0.254683,
+          "denominator": 40,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.25,
+          "numerator": 10,
+          "denominator": 40,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.169047,
+            "total": 6.761888,
+            "denominator": 40,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 80.0,
+            "denominator": 40,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 4.875,
+            "total": 195.0,
+            "denominator": 40,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 49.0,
+            "total": 1960.0,
+            "denominator": 40,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 8414.625,
+            "total": 336585.0,
+            "denominator": 40,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2117.75,
+            "total": 84710.0,
+            "denominator": 40,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.25,
+          "numerator": 10,
+          "denominator": 40,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.25,
+          "numerator": 10,
+          "denominator": 40,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.25,
+          "numerator": 10,
+          "denominator": 40,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.25,
+          "numerator": 10,
+          "denominator": 40,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.25,
+          "numerator": 10,
+          "denominator": 40,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.25,
+          "numerator": 10,
+          "denominator": 40,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "simple_object": {
+        "query_count": 6,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 0.183503,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.189238,
+            "total": 1.135431,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 12.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 5.166667,
+            "total": 31.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 55.333333,
+            "total": 332.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 9450.666667,
+            "total": 56704.0,
+            "denominator": 6,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2371.5,
+            "total": 14229.0,
+            "denominator": 6,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.166667,
+          "numerator": 1,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    },
+    "search_variant": {
+      "flat_embedding": {
+        "query_count": 48,
+        "bbox_eligible_count": 48,
+        "bbox_iou_3d": {
+          "value": 0.256007,
+          "denominator": 48,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 0.25,
+          "numerator": 12,
+          "denominator": 48,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.168815,
+            "total": 8.103103,
+            "denominator": 48,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 96.0,
+            "denominator": 48,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 4.875,
+            "total": 234.0,
+            "denominator": 48,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 49.0,
+            "total": 2352.0,
+            "denominator": 48,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 8414.625,
+            "total": 403902.0,
+            "denominator": 48,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2116.770833,
+            "total": 101605.0,
+            "denominator": 48,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 0.25,
+          "numerator": 12,
+          "denominator": 48,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 0.25,
+          "numerator": 12,
+          "denominator": 48,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 0.25,
+          "numerator": 12,
+          "denominator": 48,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 0.25,
+          "numerator": 12,
+          "denominator": 48,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 0.25,
+          "numerator": 12,
+          "denominator": 48,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 0.25,
+          "numerator": 12,
+          "denominator": 48,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    }
+  },
+  "failure_taxonomy": {
+    "wrong object": 36,
+    "wrong relation": 1,
+    "invalid/unavailable prediction": 0,
+    "bad bbox": 0,
+    "missing GT": 0
+  },
+  "per_query": [
+    {
+      "query_id": "scannet_0011_00_nr3d_001",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "17",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.09689170799993008,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1426.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_002",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.001459,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "28"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10462145799965583,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1424.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_003",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "20"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10102591700024277,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1421.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_001",
+      "scene_id": "scannet_0011_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11888474999977916,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1427.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_002",
+      "scene_id": "scannet_0011_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "15"
+      ],
+      "predicted_object_id": "15",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.09650991600028647,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1428.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_003",
+      "scene_id": "scannet_0011_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "1"
+      ],
+      "predicted_object_id": "1",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.09741383299979134,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1435.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_001",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "predicted_object_id": "19",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.30417679199990744,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3748.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_002",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "24"
+      ],
+      "predicted_object_id": "19",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.3061652910000703,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3748.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_003",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "27"
+      ],
+      "predicted_object_id": "20",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2993347910000921,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3746.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_001",
+      "scene_id": "scannet_0030_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.31318262499962657,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3746.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_002",
+      "scene_id": "scannet_0030_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "19"
+      ],
+      "predicted_object_id": "19",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.31628808300001765,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3748.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_003",
+      "scene_id": "scannet_0030_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "11",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.3305870839999443,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3759.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_001",
+      "scene_id": "scannet_0046_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "52"
+      ],
+      "predicted_object_id": "18",
+      "failures": [
+        "wrong object",
+        "wrong relation"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.19557791700026428,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2523.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_002",
+      "scene_id": "scannet_0046_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "49"
+      ],
+      "predicted_object_id": "49",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.2089672080001037,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2517.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_003",
+      "scene_id": "scannet_0046_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.089885,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "48"
+      ],
+      "predicted_object_id": "49",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.19039950000023964,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2511.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_001",
+      "scene_id": "scannet_0046_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "18"
+      ],
+      "predicted_object_id": "18",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.19162566700015304,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2513.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_002",
+      "scene_id": "scannet_0046_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "21"
+      ],
+      "predicted_object_id": "21",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.21076929199989536,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2513.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_003",
+      "scene_id": "scannet_0046_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "33",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.20932662500035804,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2520.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_001",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "13"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11137266700006876,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1397.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_002",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "predicted_object_id": "18",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11211929199998849,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1394.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_003",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "attribute",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "28",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1095875830001205,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1382.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_001",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.034876,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "1"
+      ],
+      "predicted_object_id": "10",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11203954099983093,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1388.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_002",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "29",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.12393779200010613,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1388.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_003",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11410533299977033,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1390.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_001",
+      "scene_id": "scannet_0222_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.009919,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "16"
+      ],
+      "predicted_object_id": "5",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1482152909998149,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1896.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_002",
+      "scene_id": "scannet_0222_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "24"
+      ],
+      "predicted_object_id": "24",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.14998612499994124,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1908.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_003",
+      "scene_id": "scannet_0222_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "17"
+      ],
+      "predicted_object_id": "17",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.15035520900028132,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1892.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_001",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "15",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.16318199999977878,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1893.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_002",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "3"
+      ],
+      "predicted_object_id": "22",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.15219933300022603,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1893.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_003",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "7"
+      ],
+      "predicted_object_id": "15",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.14907837500004462,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1901.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_001",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.019484,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "38"
+      ],
+      "predicted_object_id": "39",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13849274999984118,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1935.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_002",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "31"
+      ],
+      "predicted_object_id": "2",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1544478750001872,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1933.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_003",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "44",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.14406008300011308,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1934.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_001",
+      "scene_id": "scannet_0378_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "0",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.15902987500021482,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1934.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_002",
+      "scene_id": "scannet_0378_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "35"
+      ],
+      "predicted_object_id": "44",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13782262499989884,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1937.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_003",
+      "scene_id": "scannet_0378_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "2",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13946179200002007,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1940.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_001",
+      "scene_id": "scannet_0389_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.072976,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "23"
+      ],
+      "predicted_object_id": "22",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11291116699976556,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1284.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_002",
+      "scene_id": "scannet_0389_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "9",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.09531366700002764,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1284.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_003",
+      "scene_id": "scannet_0389_00",
+      "source": "Nr3D",
+      "query_type": "attribute",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "7"
+      ],
+      "predicted_object_id": "7",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.09619716699990022,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1284.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_001",
+      "scene_id": "scannet_0389_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.048591,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "6",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10751004100029604,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1289.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_002",
+      "scene_id": "scannet_0389_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "3"
+      ],
+      "predicted_object_id": "3",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.09501933399997142,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1289.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_003",
+      "scene_id": "scannet_0389_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "6",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.10169912499986822,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1295.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_001",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "50"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.22490395899967552,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2751.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_002",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "57"
+      ],
+      "predicted_object_id": "11",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2121833329997571,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2725.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_003",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.011133,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "predicted_object_id": "39",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.25025529200001984,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2725.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_001",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "10"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.21577095900011045,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2730.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_002",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.20830724999996164,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2731.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_003",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "12"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2217900840000766,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2730.0
+      },
+      "construction_cost": null
+    }
+  ],
+  "failures": [
+    {
+      "query_id": "scannet_0011_00_nr3d_001",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "17",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.09689170799993008,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1426.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_002",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.001459,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "28"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10462145799965583,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1424.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_003",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "20"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10102591700024277,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1421.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_001",
+      "scene_id": "scannet_0011_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11888474999977916,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1427.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_001",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "predicted_object_id": "19",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.30417679199990744,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3748.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_002",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "24"
+      ],
+      "predicted_object_id": "19",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.3061652910000703,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3748.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_003",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "27"
+      ],
+      "predicted_object_id": "20",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2993347910000921,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3746.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_001",
+      "scene_id": "scannet_0030_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.31318262499962657,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3746.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_003",
+      "scene_id": "scannet_0030_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "11",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.3305870839999443,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3759.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_001",
+      "scene_id": "scannet_0046_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "52"
+      ],
+      "predicted_object_id": "18",
+      "failures": [
+        "wrong object",
+        "wrong relation"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.19557791700026428,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2523.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_003",
+      "scene_id": "scannet_0046_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.089885,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "48"
+      ],
+      "predicted_object_id": "49",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.19039950000023964,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2511.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_003",
+      "scene_id": "scannet_0046_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "33",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.20932662500035804,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2520.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_001",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "13"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11137266700006876,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1397.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_002",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "predicted_object_id": "18",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11211929199998849,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1394.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_003",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "attribute",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "28",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1095875830001205,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1382.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_001",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.034876,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "1"
+      ],
+      "predicted_object_id": "10",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11203954099983093,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1388.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_002",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "29",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.12393779200010613,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1388.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_003",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11410533299977033,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1390.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_001",
+      "scene_id": "scannet_0222_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.009919,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "16"
+      ],
+      "predicted_object_id": "5",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1482152909998149,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1896.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_001",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "15",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.16318199999977878,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1893.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_002",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "3"
+      ],
+      "predicted_object_id": "22",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.15219933300022603,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1893.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_003",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "7"
+      ],
+      "predicted_object_id": "15",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.14907837500004462,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1901.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_001",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.019484,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "38"
+      ],
+      "predicted_object_id": "39",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13849274999984118,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1935.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_002",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "31"
+      ],
+      "predicted_object_id": "2",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1544478750001872,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1933.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_003",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "44",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.14406008300011308,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1934.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_002",
+      "scene_id": "scannet_0378_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "35"
+      ],
+      "predicted_object_id": "44",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13782262499989884,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1937.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_003",
+      "scene_id": "scannet_0378_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "2",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13946179200002007,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1940.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_001",
+      "scene_id": "scannet_0389_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.072976,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "23"
+      ],
+      "predicted_object_id": "22",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11291116699976556,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1284.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_002",
+      "scene_id": "scannet_0389_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "9",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.09531366700002764,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1284.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_001",
+      "scene_id": "scannet_0389_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.048591,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "6",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10751004100029604,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1289.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_001",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "50"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.22490395899967552,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2751.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_002",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "57"
+      ],
+      "predicted_object_id": "11",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2121833329997571,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2725.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_003",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.011133,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "predicted_object_id": "39",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.25025529200001984,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2725.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_001",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "10"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.21577095900011045,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2730.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_002",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.20830724999996164,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2731.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_003",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "12"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2217900840000766,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2730.0
+      },
+      "construction_cost": null
+    }
+  ],
+  "warnings": []
+}

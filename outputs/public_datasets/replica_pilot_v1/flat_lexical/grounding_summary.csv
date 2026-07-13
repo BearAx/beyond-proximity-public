@@ -1,0 +1,57 @@
+query_id,scene_id,source,query_type,search_variant,input_shape,schema_valid,prediction_available,bbox_eligible,bbox_iou_3d,recall_at_1_eligible,recall_at_1,predicted_object_id,failures,runtime_seconds,checked_nodes,checked_views,checked_objects,context_chars,estimated_tokens
+replica_room0_simple_001,replica_room0,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,2,,0.0012851250003222958,2.0,1.0,92.0,8923.0,2235.0
+replica_room0_simple_002,replica_room0,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,36,,0.0013280000002851011,2.0,1.0,92.0,8923.0,2234.0
+replica_room0_attribute_001,replica_room0,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,45,,0.0012192919998597063,2.0,1.0,92.0,8923.0,2240.0
+replica_room0_relational_001,replica_room0,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,60,,0.0832532499998706,2.0,1.0,92.0,8923.0,2240.0
+replica_room0_multi_hop_001,replica_room0,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,63,,0.001375374999952328,2.0,1.0,92.0,8923.0,2244.0
+replica_room0_functional_001,replica_room0,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,73,,0.0012796669998351717,2.0,1.0,92.0,8923.0,2239.0
+replica_room0_negative_001,replica_room0,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.001164457999948354,0.0,1.0,92.0,8923.0,2236.0
+replica_room1_simple_001,replica_room1,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,36,,0.0007107500000529399,2.0,1.0,54.0,5222.0,1310.0
+replica_room1_simple_002,replica_room1,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,6,,0.0006897910002408025,2.0,1.0,54.0,5222.0,1309.0
+replica_room1_attribute_001,replica_room1,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,51,,0.0007528330002060102,2.0,1.0,54.0,5222.0,1315.0
+replica_room1_relational_001,replica_room1,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,20,,0.030152374999943277,2.0,1.0,54.0,5222.0,1314.0
+replica_room1_multi_hop_001,replica_room1,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,32,,0.000964958000167826,2.0,1.0,54.0,5222.0,1318.0
+replica_room1_functional_001,replica_room1,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,32,,0.0008330420000675076,2.0,1.0,54.0,5222.0,1313.0
+replica_room1_negative_001,replica_room1,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0007766660000925185,0.0,1.0,54.0,5222.0,1311.0
+replica_room2_simple_001,replica_room2,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,54,,0.0007528330002060102,2.0,1.0,61.0,5887.0,1475.0
+replica_room2_simple_002,replica_room2,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,14,,0.0008395829995606618,2.0,1.0,61.0,5887.0,1475.0
+replica_room2_attribute_001,replica_room2,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,1,,0.0009931670001606108,2.0,1.0,61.0,5887.0,1481.0
+replica_room2_relational_001,replica_room2,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,5,,0.03831295800000589,2.0,1.0,61.0,5887.0,1481.0
+replica_room2_multi_hop_001,replica_room2,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,26,,0.0009482909999860567,2.0,1.0,61.0,5887.0,1485.0
+replica_room2_functional_001,replica_room2,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,11,,0.0008955829998740228,2.0,1.0,61.0,5887.0,1480.0
+replica_room2_negative_001,replica_room2,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0008677499999976135,0.0,1.0,61.0,5887.0,1477.0
+replica_office0_simple_001,replica_office0,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,16,,0.0009646250000514556,2.0,1.0,64.0,6326.0,1585.0
+replica_office0_simple_002,replica_office0,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,5,,0.0008042499998737185,2.0,1.0,64.0,6326.0,1584.0
+replica_office0_attribute_001,replica_office0,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,12,,0.0008824589999676391,2.0,1.0,64.0,6326.0,1591.0
+replica_office0_relational_001,replica_office0,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,66,,0.04168208400005824,2.0,1.0,64.0,6326.0,1592.0
+replica_office0_multi_hop_001,replica_office0,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,64,,0.0010245829998893896,2.0,1.0,64.0,6326.0,1595.0
+replica_office0_functional_001,replica_office0,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,4,,0.001100916999803303,2.0,1.0,64.0,6326.0,1590.0
+replica_office0_negative_001,replica_office0,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0008842500001264852,0.0,1.0,64.0,6326.0,1587.0
+replica_office1_simple_001,replica_office1,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,34,,0.0007135829996514076,2.0,1.0,48.0,4685.0,1174.0
+replica_office1_simple_002,replica_office1,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,42,,0.0007065830000101414,2.0,1.0,48.0,4685.0,1175.0
+replica_office1_attribute_001,replica_office1,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,18,,0.000866666000092664,2.0,1.0,48.0,4685.0,1181.0
+replica_office1_relational_001,replica_office1,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,5,,0.024250624999694992,2.0,1.0,48.0,4685.0,1180.0
+replica_office1_multi_hop_001,replica_office1,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,29,,0.0007825829998182599,2.0,1.0,48.0,4685.0,1185.0
+replica_office1_functional_001,replica_office1,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,40,,0.0007375830000455608,2.0,1.0,48.0,4685.0,1179.0
+replica_office1_negative_001,replica_office1,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0006446669999604637,0.0,1.0,48.0,4685.0,1176.0
+replica_office2_simple_001,replica_office2,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,4,,0.0012076660000275297,2.0,1.0,91.0,9002.0,2254.0
+replica_office2_simple_002,replica_office2,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,38,,0.0011527500000738655,2.0,1.0,91.0,9002.0,2254.0
+replica_office2_attribute_001,replica_office2,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,76,,0.0012394589998621086,2.0,1.0,91.0,9002.0,2260.0
+replica_office2_relational_001,replica_office2,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,8,,0.08203362499989453,2.0,1.0,91.0,9002.0,2261.0
+replica_office2_multi_hop_001,replica_office2,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,28,,0.0013991249998070998,2.0,1.0,91.0,9002.0,2264.0
+replica_office2_functional_001,replica_office2,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,32,,0.001582041999881767,2.0,1.0,91.0,9002.0,2258.0
+replica_office2_negative_001,replica_office2,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0011947080001846189,0.0,1.0,91.0,9002.0,2256.0
+replica_office3_simple_001,replica_office3,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,56,,0.0012866669999311853,2.0,1.0,100.0,9838.0,2463.0
+replica_office3_simple_002,replica_office3,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,15,,0.0013787500001853914,2.0,1.0,100.0,9838.0,2463.0
+replica_office3_attribute_001,replica_office3,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,92,,0.0014684170000691665,2.0,1.0,100.0,9838.0,2469.0
+replica_office3_relational_001,replica_office3,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,26,,0.09941141700028311,2.0,1.0,100.0,9838.0,2469.0
+replica_office3_multi_hop_001,replica_office3,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,101,,0.0015569590000268363,2.0,1.0,100.0,9838.0,2472.0
+replica_office3_functional_001,replica_office3,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,10,,0.001435125000170956,2.0,1.0,100.0,9838.0,2468.0
+replica_office3_negative_001,replica_office3,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.0012856250000368163,0.0,1.0,100.0,9838.0,2465.0
+replica_office4_simple_001,replica_office4,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,60,,0.0009816669999054284,2.0,1.0,65.0,6363.0,1594.0
+replica_office4_simple_002,replica_office4,Replica,simple_object,flat_lexical,canonical,True,True,True,1.0,True,True,49,,0.0008322500002577726,2.0,1.0,65.0,6363.0,1594.0
+replica_office4_attribute_001,replica_office4,Replica,attribute,flat_lexical,canonical,True,True,True,1.0,True,True,4,,0.0009857919999376463,2.0,1.0,65.0,6363.0,1601.0
+replica_office4_relational_001,replica_office4,Replica,relational,flat_lexical,canonical,True,True,True,1.0,True,True,34,,0.04304175000015675,2.0,1.0,65.0,6363.0,1600.0
+replica_office4_multi_hop_001,replica_office4,Replica,multi_hop,flat_lexical,canonical,True,True,True,1.0,True,True,5,,0.0010194169999522273,2.0,1.0,65.0,6363.0,1604.0
+replica_office4_functional_001,replica_office4,Replica,functional,flat_lexical,canonical,True,True,True,1.0,True,True,12,,0.0009893750002447632,2.0,1.0,65.0,6363.0,1599.0
+replica_office4_negative_001,replica_office4,Replica,negative,flat_lexical,canonical,True,False,False,,False,,,invalid/unavailable prediction; missing GT,0.001017334000152914,0.0,1.0,65.0,6363.0,1596.0

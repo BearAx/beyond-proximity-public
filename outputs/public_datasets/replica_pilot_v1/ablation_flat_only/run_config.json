@@ -1,0 +1,28 @@
+{
+  "schema_version": "semanticsplat.grounding_variant_run.v1",
+  "run_name": "ablation_flat_only",
+  "search_options": {
+    "variant": "flat_lexical",
+    "no_hierarchy": true,
+    "no_relation": true,
+    "no_fallback": true
+  },
+  "benchmark_path": "/Users/leo/beyond-proximity-week6-person2/docs/benchmarks/replica_scannet_pilot_queries.json",
+  "query_count": 56,
+  "scene_ids": [
+    "replica_office0",
+    "replica_office1",
+    "replica_office2",
+    "replica_office3",
+    "replica_office4",
+    "replica_room0",
+    "replica_room1",
+    "replica_room2"
+  ],
+  "construction_cost": {
+    "runtime_seconds": 0.002691,
+    "candidate_count": 575,
+    "scope": "one-time canonical candidate construction"
+  },
+  "embedding": null
+}

@@ -1,0 +1,1201 @@
+{
+  "schema_version": "semanticsplat.grounding_metrics.v1",
+  "failure_taxonomy": {
+    "wrong object": 36,
+    "wrong relation": 1,
+    "invalid/unavailable prediction": 0,
+    "bad bbox": 0,
+    "missing GT": 0
+  },
+  "per_query_failures": [
+    {
+      "query_id": "scannet_0011_00_nr3d_001",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "17",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.09689170799993008,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1426.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_002",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.001459,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "28"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10462145799965583,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1424.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_003",
+      "scene_id": "scannet_0011_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "20"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10102591700024277,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1421.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_001",
+      "scene_id": "scannet_0011_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0011_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "1",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11888474999977916,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 33.0,
+        "context_chars": 5653.0,
+        "estimated_tokens": 1427.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_001",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "predicted_object_id": "19",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.30417679199990744,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3748.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_002",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "24"
+      ],
+      "predicted_object_id": "19",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.3061652910000703,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3748.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_003",
+      "scene_id": "scannet_0030_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "27"
+      ],
+      "predicted_object_id": "20",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2993347910000921,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3746.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_001",
+      "scene_id": "scannet_0030_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.31318262499962657,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3746.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_003",
+      "scene_id": "scannet_0030_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0030_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "11",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.3305870839999443,
+        "checked_nodes": 2.0,
+        "checked_views": 6.0,
+        "checked_objects": 90.0,
+        "context_chars": 14943.0,
+        "estimated_tokens": 3759.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_001",
+      "scene_id": "scannet_0046_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "52"
+      ],
+      "predicted_object_id": "18",
+      "failures": [
+        "wrong object",
+        "wrong relation"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.19557791700026428,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2523.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_003",
+      "scene_id": "scannet_0046_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.089885,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "48"
+      ],
+      "predicted_object_id": "49",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.19039950000023964,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2511.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_003",
+      "scene_id": "scannet_0046_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0046_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "33",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.20932662500035804,
+        "checked_nodes": 2.0,
+        "checked_views": 4.0,
+        "checked_objects": 57.0,
+        "context_chars": 10008.0,
+        "estimated_tokens": 2520.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_001",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "13"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11137266700006876,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1397.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_002",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "predicted_object_id": "18",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11211929199998849,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1394.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_003",
+      "scene_id": "scannet_0086_00",
+      "source": "Nr3D",
+      "query_type": "attribute",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "28",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1095875830001205,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1382.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_001",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.034876,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "1"
+      ],
+      "predicted_object_id": "10",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11203954099983093,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1388.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_002",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "29",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.12393779200010613,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1388.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_003",
+      "scene_id": "scannet_0086_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0086_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "0",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11410533299977033,
+        "checked_nodes": 2.0,
+        "checked_views": 3.0,
+        "checked_objects": 30.0,
+        "context_chars": 5503.0,
+        "estimated_tokens": 1390.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_001",
+      "scene_id": "scannet_0222_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.009919,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "16"
+      ],
+      "predicted_object_id": "5",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1482152909998149,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1896.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_001",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "15",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.16318199999977878,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1893.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_002",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "3"
+      ],
+      "predicted_object_id": "22",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.15219933300022603,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1893.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_003",
+      "scene_id": "scannet_0222_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0222_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "7"
+      ],
+      "predicted_object_id": "15",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.14907837500004462,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 43.0,
+        "context_chars": 7528.0,
+        "estimated_tokens": 1901.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_001",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.019484,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "38"
+      ],
+      "predicted_object_id": "39",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13849274999984118,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1935.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_002",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "31"
+      ],
+      "predicted_object_id": "2",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.1544478750001872,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1933.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_003",
+      "scene_id": "scannet_0378_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "predicted_object_id": "44",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.14406008300011308,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1934.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_002",
+      "scene_id": "scannet_0378_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "35"
+      ],
+      "predicted_object_id": "44",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13782262499989884,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1937.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_003",
+      "scene_id": "scannet_0378_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0378_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "2",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.13946179200002007,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 45.0,
+        "context_chars": 7703.0,
+        "estimated_tokens": 1940.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_001",
+      "scene_id": "scannet_0389_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.072976,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "23"
+      ],
+      "predicted_object_id": "22",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.11291116699976556,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1284.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_002",
+      "scene_id": "scannet_0389_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "9",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.09531366700002764,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1284.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_001",
+      "scene_id": "scannet_0389_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0389_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.048591,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "6",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.10751004100029604,
+        "checked_nodes": 2.0,
+        "checked_views": 5.0,
+        "checked_objects": 30.0,
+        "context_chars": 5110.0,
+        "estimated_tokens": 1289.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_001",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "50"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.22490395899967552,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2751.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_002",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "57"
+      ],
+      "predicted_object_id": "11",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2121833329997571,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2725.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_003",
+      "scene_id": "scannet_0435_00",
+      "source": "Nr3D",
+      "query_type": "simple_object",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_nr3d_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.011133,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "predicted_object_id": "39",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.25025529200001984,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2725.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_001",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "10"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.21577095900011045,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2730.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_002",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.20830724999996164,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2731.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_003",
+      "scene_id": "scannet_0435_00",
+      "source": "Sr3D+",
+      "query_type": "relational",
+      "search_variant": "flat_embedding",
+      "result_file": "scannet_0435_00_sr3d_plus_003.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 0.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": false,
+      "expected_object_ids": [
+        "12"
+      ],
+      "predicted_object_id": "8",
+      "failures": [
+        "wrong object"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.2217900840000766,
+        "checked_nodes": 2.0,
+        "checked_views": 7.0,
+        "checked_objects": 64.0,
+        "context_chars": 10869.0,
+        "estimated_tokens": 2730.0
+      },
+      "construction_cost": null
+    }
+  ]
+}

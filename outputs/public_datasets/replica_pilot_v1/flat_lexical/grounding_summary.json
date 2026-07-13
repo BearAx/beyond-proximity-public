@@ -1,0 +1,3723 @@
+{
+  "schema_version": "semanticsplat.grounding_metrics.v1",
+  "benchmark_id": "replica_bbq_aligned_official_gt_pilot_v2",
+  "generated_at": "2026-07-13T16:34:06.778191+00:00",
+  "coverage": {
+    "benchmark_queries": 56,
+    "result_files": 56,
+    "canonical_results": 56,
+    "legacy_adapted_results": 0,
+    "schema_valid_results": 56
+  },
+  "metrics": {
+    "query_count": 56,
+    "bbox_eligible_count": 48,
+    "bbox_iou_3d": {
+      "value": 1.0,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "recall_at_1_exact_object_id": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "efficiency": {
+      "runtime_seconds": {
+        "mean": 0.008785,
+        "total": 0.491941,
+        "denominator": 56,
+        "status": "measured"
+      },
+      "checked_nodes": {
+        "mean": 1.714286,
+        "total": 96.0,
+        "denominator": 56,
+        "status": "measured"
+      },
+      "checked_views": {
+        "mean": 1.0,
+        "total": 56.0,
+        "denominator": 56,
+        "status": "measured"
+      },
+      "checked_objects": {
+        "mean": 71.875,
+        "total": 4025.0,
+        "denominator": 56,
+        "status": "measured"
+      },
+      "context_chars": {
+        "mean": 7030.75,
+        "total": 393722.0,
+        "denominator": 56,
+        "status": "measured"
+      },
+      "estimated_tokens": {
+        "mean": 1765.178571,
+        "total": 98850.0,
+        "denominator": 56,
+        "status": "measured"
+      }
+    },
+    "acc_at_0_1": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "threshold": 0.1,
+      "status": "measured"
+    },
+    "bbox_acc_at_0_1": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "threshold": 0.1,
+      "status": "measured"
+    },
+    "acc_at_0_25": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "threshold": 0.25,
+      "status": "measured"
+    },
+    "bbox_acc_at_0_25": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "threshold": 0.25,
+      "status": "measured"
+    },
+    "acc_at_0_5": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "threshold": 0.5,
+      "status": "measured"
+    },
+    "bbox_acc_at_0_5": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "threshold": 0.5,
+      "status": "measured"
+    },
+    "segmentation": {
+      "mAcc": {
+        "status": "N/A",
+        "value": null,
+        "reason": "Segmentation prediction and GT arrays/masks are not jointly available; object retrieval or oracle object IDs are not segmentation evidence.",
+        "query_count": 0
+      },
+      "mIoU": {
+        "status": "N/A",
+        "value": null,
+        "reason": "Segmentation prediction and GT arrays/masks are not jointly available; object retrieval or oracle object IDs are not segmentation evidence.",
+        "query_count": 0
+      },
+      "fmIoU": {
+        "status": "N/A",
+        "value": null,
+        "reason": "Segmentation prediction and GT arrays/masks are not jointly available; object retrieval or oracle object IDs are not segmentation evidence.",
+        "query_count": 0
+      }
+    }
+  },
+  "construction_cost": {
+    "status": "reported",
+    "scope": "one-time construction; excluded from per-query efficiency",
+    "run": {
+      "runtime_seconds": 0.002656,
+      "candidate_count": 575,
+      "scope": "one-time canonical candidate construction"
+    },
+    "per_query_records": [],
+    "record_count": 0
+  },
+  "strata": {
+    "scene": {
+      "replica_office0": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.006763,
+            "total": 0.047343,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 64.0,
+            "total": 448.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 6326.0,
+            "total": 44282.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1589.142857,
+            "total": 11124.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "replica_office1": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.0041,
+            "total": 0.028702,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 48.0,
+            "total": 336.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 4685.0,
+            "total": 32795.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1178.571429,
+            "total": 8250.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "replica_office2": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.01283,
+            "total": 0.089809,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 91.0,
+            "total": 637.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 9002.0,
+            "total": 63014.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2258.142857,
+            "total": 15807.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "replica_office3": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.015403,
+            "total": 0.107823,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 100.0,
+            "total": 700.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 9838.0,
+            "total": 68866.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2467.0,
+            "total": 17269.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "replica_office4": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.006981,
+            "total": 0.048868,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 65.0,
+            "total": 455.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 6363.0,
+            "total": 44541.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1598.285714,
+            "total": 11188.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "replica_room0": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.012986,
+            "total": 0.090905,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 92.0,
+            "total": 644.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 8923.0,
+            "total": 62461.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 2238.285714,
+            "total": 15668.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "replica_room1": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.004983,
+            "total": 0.03488,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 54.0,
+            "total": 378.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 5222.0,
+            "total": 36554.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1312.857143,
+            "total": 9190.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "replica_room2": {
+        "query_count": 7,
+        "bbox_eligible_count": 6,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.00623,
+            "total": 0.04361,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 12.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 7.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 61.0,
+            "total": 427.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 5887.0,
+            "total": 41209.0,
+            "denominator": 7,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1479.142857,
+            "total": 10354.0,
+            "denominator": 7,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    },
+    "source": {
+      "Replica": {
+        "query_count": 56,
+        "bbox_eligible_count": 48,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 48,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.008785,
+            "total": 0.491941,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 96.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 56.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 4025.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 393722.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1765.178571,
+            "total": 98850.0,
+            "denominator": 56,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    },
+    "query_type": {
+      "attribute": {
+        "query_count": 8,
+        "bbox_eligible_count": 8,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.001051,
+            "total": 0.008408,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 16.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 8.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 575.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 56246.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1767.25,
+            "total": 14138.0,
+            "denominator": 8,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "functional": {
+        "query_count": 8,
+        "bbox_eligible_count": 8,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.001107,
+            "total": 0.008853,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 16.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 8.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 575.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 56246.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1765.75,
+            "total": 14126.0,
+            "denominator": 8,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "multi_hop": {
+        "query_count": 8,
+        "bbox_eligible_count": 8,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.001134,
+            "total": 0.009071,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 16.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 8.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 575.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 56246.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1770.875,
+            "total": 14167.0,
+            "denominator": 8,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "negative": {
+        "query_count": 8,
+        "bbox_eligible_count": 0,
+        "bbox_iou_3d": {
+          "value": null,
+          "denominator": 0,
+          "status": "N/A"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "N/A"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.000979,
+            "total": 0.007835,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 0.0,
+            "total": 0.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 8.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 575.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 56246.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1763.0,
+            "total": 14104.0,
+            "denominator": 8,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "threshold": 0.1,
+          "status": "N/A"
+        },
+        "bbox_acc_at_0_1": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "threshold": 0.1,
+          "status": "N/A"
+        },
+        "acc_at_0_25": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "threshold": 0.25,
+          "status": "N/A"
+        },
+        "bbox_acc_at_0_25": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "threshold": 0.25,
+          "status": "N/A"
+        },
+        "acc_at_0_5": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "threshold": 0.5,
+          "status": "N/A"
+        },
+        "bbox_acc_at_0_5": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "threshold": 0.5,
+          "status": "N/A"
+        }
+      },
+      "relational": {
+        "query_count": 8,
+        "bbox_eligible_count": 8,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.055267,
+            "total": 0.442138,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 16.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 8.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 575.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 56246.0,
+            "denominator": 8,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1767.125,
+            "total": 14137.0,
+            "denominator": 8,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 8,
+          "denominator": 8,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      },
+      "simple_object": {
+        "query_count": 16,
+        "bbox_eligible_count": 16,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 16,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 16,
+          "denominator": 16,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.000977,
+            "total": 0.015635,
+            "denominator": 16,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 2.0,
+            "total": 32.0,
+            "denominator": 16,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 16.0,
+            "denominator": 16,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 1150.0,
+            "denominator": 16,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 112492.0,
+            "denominator": 16,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1761.125,
+            "total": 28178.0,
+            "denominator": 16,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 16,
+          "denominator": 16,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 16,
+          "denominator": 16,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 16,
+          "denominator": 16,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 16,
+          "denominator": 16,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 16,
+          "denominator": 16,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 16,
+          "denominator": 16,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    },
+    "search_variant": {
+      "flat_lexical": {
+        "query_count": 56,
+        "bbox_eligible_count": 48,
+        "bbox_iou_3d": {
+          "value": 1.0,
+          "denominator": 48,
+          "status": "measured"
+        },
+        "recall_at_1_exact_object_id": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "status": "measured"
+        },
+        "efficiency": {
+          "runtime_seconds": {
+            "mean": 0.008785,
+            "total": 0.491941,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "checked_nodes": {
+            "mean": 1.714286,
+            "total": 96.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "checked_views": {
+            "mean": 1.0,
+            "total": 56.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "checked_objects": {
+            "mean": 71.875,
+            "total": 4025.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "context_chars": {
+            "mean": 7030.75,
+            "total": 393722.0,
+            "denominator": 56,
+            "status": "measured"
+          },
+          "estimated_tokens": {
+            "mean": 1765.178571,
+            "total": 98850.0,
+            "denominator": 56,
+            "status": "measured"
+          }
+        },
+        "acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_1": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.1,
+          "status": "measured"
+        },
+        "acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_25": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.25,
+          "status": "measured"
+        },
+        "acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.5,
+          "status": "measured"
+        },
+        "bbox_acc_at_0_5": {
+          "value": 1.0,
+          "numerator": 48,
+          "denominator": 48,
+          "threshold": 0.5,
+          "status": "measured"
+        }
+      }
+    }
+  },
+  "failure_taxonomy": {
+    "wrong object": 0,
+    "wrong relation": 0,
+    "invalid/unavailable prediction": 8,
+    "bad bbox": 0,
+    "missing GT": 8
+  },
+  "per_query": [
+    {
+      "query_id": "replica_room0_simple_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "2"
+      ],
+      "predicted_object_id": "2",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0012851250003222958,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2235.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room0_simple_002",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "36"
+      ],
+      "predicted_object_id": "36",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0013280000002851011,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2234.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room0_attribute_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "45"
+      ],
+      "predicted_object_id": "45",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0012192919998597063,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2240.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room0_relational_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "60"
+      ],
+      "predicted_object_id": "60",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0832532499998706,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2240.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room0_multi_hop_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "63"
+      ],
+      "predicted_object_id": "63",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.001375374999952328,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2244.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room0_functional_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "73",
+        "74"
+      ],
+      "predicted_object_id": "73",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0012796669998351717,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2239.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room0_negative_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.001164457999948354,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2236.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_simple_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "36"
+      ],
+      "predicted_object_id": "36",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0007107500000529399,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1310.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_simple_002",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "6"
+      ],
+      "predicted_object_id": "6",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0006897910002408025,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1309.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_attribute_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "51"
+      ],
+      "predicted_object_id": "51",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0007528330002060102,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1315.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_relational_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "20"
+      ],
+      "predicted_object_id": "20",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.030152374999943277,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1314.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_multi_hop_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "32"
+      ],
+      "predicted_object_id": "32",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.000964958000167826,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1318.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_functional_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "32"
+      ],
+      "predicted_object_id": "32",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0008330420000675076,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1313.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_negative_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0007766660000925185,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1311.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_simple_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "54"
+      ],
+      "predicted_object_id": "54",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0007528330002060102,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1475.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_simple_002",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "14",
+        "17",
+        "27",
+        "40",
+        "46"
+      ],
+      "predicted_object_id": "14",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0008395829995606618,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1475.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_attribute_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "1"
+      ],
+      "predicted_object_id": "1",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0009931670001606108,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1481.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_relational_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "5"
+      ],
+      "predicted_object_id": "5",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.03831295800000589,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1481.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_multi_hop_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "26"
+      ],
+      "predicted_object_id": "26",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0009482909999860567,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1485.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_functional_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "11",
+        "12",
+        "13",
+        "3",
+        "48",
+        "6",
+        "7",
+        "9"
+      ],
+      "predicted_object_id": "11",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0008955829998740228,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1480.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_negative_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0008677499999976135,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1477.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_simple_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "16"
+      ],
+      "predicted_object_id": "16",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0009646250000514556,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1585.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_simple_002",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "5"
+      ],
+      "predicted_object_id": "5",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0008042499998737185,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1584.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_attribute_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "12",
+        "58"
+      ],
+      "predicted_object_id": "12",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0008824589999676391,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1591.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_relational_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "66"
+      ],
+      "predicted_object_id": "66",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.04168208400005824,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1592.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_multi_hop_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "64"
+      ],
+      "predicted_object_id": "64",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0010245829998893896,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1595.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_functional_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "4",
+        "61"
+      ],
+      "predicted_object_id": "4",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.001100916999803303,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1590.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_negative_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0008842500001264852,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1587.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_simple_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "34"
+      ],
+      "predicted_object_id": "34",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0007135829996514076,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1174.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_simple_002",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "42"
+      ],
+      "predicted_object_id": "42",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0007065830000101414,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1175.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_attribute_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "18"
+      ],
+      "predicted_object_id": "18",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.000866666000092664,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1181.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_relational_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "5"
+      ],
+      "predicted_object_id": "5",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.024250624999694992,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1180.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_multi_hop_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "29"
+      ],
+      "predicted_object_id": "29",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0007825829998182599,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1185.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_functional_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "40"
+      ],
+      "predicted_object_id": "40",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0007375830000455608,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1179.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_negative_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0006446669999604637,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1176.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_simple_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "4",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0012076660000275297,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2254.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_simple_002",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "38",
+        "43",
+        "75"
+      ],
+      "predicted_object_id": "38",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0011527500000738655,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2254.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_attribute_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "76",
+        "89"
+      ],
+      "predicted_object_id": "76",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0012394589998621086,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2260.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_relational_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "8"
+      ],
+      "predicted_object_id": "8",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.08203362499989453,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2261.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_multi_hop_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "28"
+      ],
+      "predicted_object_id": "28",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0013991249998070998,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2264.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_functional_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "32",
+        "41",
+        "80",
+        "90",
+        "93"
+      ],
+      "predicted_object_id": "32",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.001582041999881767,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2258.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_negative_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0011947080001846189,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2256.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_simple_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "56"
+      ],
+      "predicted_object_id": "56",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0012866669999311853,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2463.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_simple_002",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "15",
+        "20",
+        "51"
+      ],
+      "predicted_object_id": "15",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0013787500001853914,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2463.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_attribute_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "92",
+        "94"
+      ],
+      "predicted_object_id": "92",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0014684170000691665,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2469.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_relational_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "26",
+        "30"
+      ],
+      "predicted_object_id": "26",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.09941141700028311,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2469.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_multi_hop_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "101"
+      ],
+      "predicted_object_id": "101",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0015569590000268363,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2472.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_functional_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "10",
+        "100",
+        "16",
+        "25",
+        "27",
+        "37",
+        "72",
+        "76",
+        "9",
+        "98"
+      ],
+      "predicted_object_id": "10",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.001435125000170956,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2468.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_negative_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0012856250000368163,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2465.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_simple_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_simple_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "60"
+      ],
+      "predicted_object_id": "60",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0009816669999054284,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1594.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_simple_002",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "simple_object",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_simple_002.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "49"
+      ],
+      "predicted_object_id": "49",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0008322500002577726,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1594.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_attribute_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "attribute",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_attribute_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "4"
+      ],
+      "predicted_object_id": "4",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0009857919999376463,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1601.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_relational_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "relational",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_relational_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "34"
+      ],
+      "predicted_object_id": "34",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.04304175000015675,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1600.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_multi_hop_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "multi_hop",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_multi_hop_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "5"
+      ],
+      "predicted_object_id": "5",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0010194169999522273,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1604.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_functional_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "functional",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_functional_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": true,
+      "bbox_eligible": true,
+      "bbox_iou_3d": 1.0,
+      "bbox_prediction_valid": true,
+      "recall_at_1_eligible": true,
+      "recall_at_1": true,
+      "expected_object_ids": [
+        "12",
+        "13",
+        "15",
+        "17",
+        "19",
+        "2",
+        "20",
+        "3",
+        "31",
+        "69"
+      ],
+      "predicted_object_id": "12",
+      "failures": [],
+      "efficiency": {
+        "runtime_seconds": 0.0009893750002447632,
+        "checked_nodes": 2.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1599.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_negative_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.001017334000152914,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1596.0
+      },
+      "construction_cost": null
+    }
+  ],
+  "failures": [
+    {
+      "query_id": "replica_room0_negative_001",
+      "scene_id": "replica_room0",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room0_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.001164457999948354,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 92.0,
+        "context_chars": 8923.0,
+        "estimated_tokens": 2236.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room1_negative_001",
+      "scene_id": "replica_room1",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room1_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0007766660000925185,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 54.0,
+        "context_chars": 5222.0,
+        "estimated_tokens": 1311.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_room2_negative_001",
+      "scene_id": "replica_room2",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_room2_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0008677499999976135,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 61.0,
+        "context_chars": 5887.0,
+        "estimated_tokens": 1477.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office0_negative_001",
+      "scene_id": "replica_office0",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office0_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0008842500001264852,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 64.0,
+        "context_chars": 6326.0,
+        "estimated_tokens": 1587.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office1_negative_001",
+      "scene_id": "replica_office1",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office1_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0006446669999604637,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 48.0,
+        "context_chars": 4685.0,
+        "estimated_tokens": 1176.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office2_negative_001",
+      "scene_id": "replica_office2",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office2_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0011947080001846189,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 91.0,
+        "context_chars": 9002.0,
+        "estimated_tokens": 2256.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office3_negative_001",
+      "scene_id": "replica_office3",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office3_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.0012856250000368163,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 100.0,
+        "context_chars": 9838.0,
+        "estimated_tokens": 2465.0
+      },
+      "construction_cost": null
+    },
+    {
+      "query_id": "replica_office4_negative_001",
+      "scene_id": "replica_office4",
+      "source": "Replica",
+      "query_type": "negative",
+      "search_variant": "flat_lexical",
+      "result_file": "replica_office4_negative_001.json",
+      "input_shape": "canonical",
+      "schema_valid": true,
+      "schema_errors": [],
+      "prediction_available": false,
+      "bbox_eligible": false,
+      "bbox_iou_3d": null,
+      "bbox_prediction_valid": false,
+      "recall_at_1_eligible": false,
+      "recall_at_1": null,
+      "expected_object_ids": [],
+      "predicted_object_id": null,
+      "failures": [
+        "invalid/unavailable prediction",
+        "missing GT"
+      ],
+      "efficiency": {
+        "runtime_seconds": 0.001017334000152914,
+        "checked_nodes": 0.0,
+        "checked_views": 1.0,
+        "checked_objects": 65.0,
+        "context_chars": 6363.0,
+        "estimated_tokens": 1596.0
+      },
+      "construction_cost": null
+    }
+  ],
+  "warnings": []
+}

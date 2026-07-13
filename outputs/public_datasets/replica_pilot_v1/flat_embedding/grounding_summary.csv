@@ -1,0 +1,57 @@
+query_id,scene_id,source,query_type,search_variant,input_shape,schema_valid,prediction_available,bbox_eligible,bbox_iou_3d,recall_at_1_eligible,recall_at_1,predicted_object_id,failures,runtime_seconds,checked_nodes,checked_views,checked_objects,context_chars,estimated_tokens
+replica_room0_simple_001,replica_room0,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,2,,0.14505670800008374,2.0,1.0,92.0,8923.0,2235.0
+replica_room0_simple_002,replica_room0,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,36,,0.16693579100001443,2.0,1.0,92.0,8923.0,2234.0
+replica_room0_attribute_001,replica_room0,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,45,,0.16239908299985473,2.0,1.0,92.0,8923.0,2240.0
+replica_room0_relational_001,replica_room0,Replica,relational,flat_embedding,canonical,True,True,True,0.0,True,False,1,wrong object,0.2315196249996916,2.0,1.0,92.0,8923.0,2240.0
+replica_room0_multi_hop_001,replica_room0,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,63,,0.14067720799994277,2.0,1.0,92.0,8923.0,2244.0
+replica_room0_functional_001,replica_room0,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,73,,0.1568638749999991,2.0,1.0,92.0,8923.0,2239.0
+replica_room0_negative_001,replica_room0,Replica,negative,flat_embedding,canonical,True,True,False,,False,,79,missing GT,0.15121291700006623,2.0,1.0,92.0,8923.0,2236.0
+replica_room1_simple_001,replica_room1,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,36,,0.09705841699997109,2.0,1.0,54.0,5222.0,1310.0
+replica_room1_simple_002,replica_room1,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,6,,0.14341045799983476,2.0,1.0,54.0,5222.0,1309.0
+replica_room1_attribute_001,replica_room1,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,51,,0.08679279199986922,2.0,1.0,54.0,5222.0,1315.0
+replica_room1_relational_001,replica_room1,Replica,relational,flat_embedding,canonical,True,True,True,0.361749,True,False,1,wrong object,0.12850670900024852,2.0,1.0,54.0,5222.0,1314.0
+replica_room1_multi_hop_001,replica_room1,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,32,,0.0810100000003331,2.0,1.0,54.0,5222.0,1318.0
+replica_room1_functional_001,replica_room1,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,32,,0.08721566599979269,2.0,1.0,54.0,5222.0,1313.0
+replica_room1_negative_001,replica_room1,Replica,negative,flat_embedding,canonical,True,True,False,,False,,10,missing GT,0.085028790999786,2.0,1.0,54.0,5222.0,1311.0
+replica_room2_simple_001,replica_room2,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,54,,0.10393991699993421,2.0,1.0,61.0,5887.0,1475.0
+replica_room2_simple_002,replica_room2,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,46,,0.10924129199975141,2.0,1.0,61.0,5887.0,1475.0
+replica_room2_attribute_001,replica_room2,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,1,,0.10978283399981592,2.0,1.0,61.0,5887.0,1481.0
+replica_room2_relational_001,replica_room2,Replica,relational,flat_embedding,canonical,True,True,True,0.0,True,False,1,wrong object,0.149934999999914,2.0,1.0,61.0,5887.0,1481.0
+replica_room2_multi_hop_001,replica_room2,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,26,,0.1091736669995953,2.0,1.0,61.0,5887.0,1485.0
+replica_room2_functional_001,replica_room2,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,6,,0.10792854099963733,2.0,1.0,61.0,5887.0,1480.0
+replica_room2_negative_001,replica_room2,Replica,negative,flat_embedding,canonical,True,True,False,,False,,26,missing GT,0.12289941700009877,2.0,1.0,61.0,5887.0,1477.0
+replica_office0_simple_001,replica_office0,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,16,,0.13169825000022684,2.0,1.0,64.0,6326.0,1585.0
+replica_office0_simple_002,replica_office0,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,5,,0.10990700000002107,2.0,1.0,64.0,6326.0,1584.0
+replica_office0_attribute_001,replica_office0,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,58,,0.1331318329998794,2.0,1.0,64.0,6326.0,1591.0
+replica_office0_relational_001,replica_office0,Replica,relational,flat_embedding,canonical,True,True,True,0.0,True,False,1,wrong object,0.15260037500002,2.0,1.0,64.0,6326.0,1592.0
+replica_office0_multi_hop_001,replica_office0,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,64,,0.11045999999987544,2.0,1.0,64.0,6326.0,1595.0
+replica_office0_functional_001,replica_office0,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,4,,0.12863816700019015,2.0,1.0,64.0,6326.0,1590.0
+replica_office0_negative_001,replica_office0,Replica,negative,flat_embedding,canonical,True,True,False,,False,,17,missing GT,0.10633283400011351,2.0,1.0,64.0,6326.0,1587.0
+replica_office1_simple_001,replica_office1,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,34,,0.08454916699975001,2.0,1.0,48.0,4685.0,1174.0
+replica_office1_simple_002,replica_office1,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,42,,0.08448520799993275,2.0,1.0,48.0,4685.0,1175.0
+replica_office1_attribute_001,replica_office1,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,18,,0.08413437500030341,2.0,1.0,48.0,4685.0,1181.0
+replica_office1_relational_001,replica_office1,Replica,relational,flat_embedding,canonical,True,True,True,0.0,True,False,1,wrong object,0.1132063330001074,2.0,1.0,48.0,4685.0,1180.0
+replica_office1_multi_hop_001,replica_office1,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,29,,0.0873370409999552,2.0,1.0,48.0,4685.0,1185.0
+replica_office1_functional_001,replica_office1,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,40,,0.08150316599994767,2.0,1.0,48.0,4685.0,1179.0
+replica_office1_negative_001,replica_office1,Replica,negative,flat_embedding,canonical,True,True,False,,False,,18,missing GT,0.08705533300008028,2.0,1.0,48.0,4685.0,1176.0
+replica_office2_simple_001,replica_office2,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,4,,0.16241700000000492,2.0,1.0,91.0,9002.0,2254.0
+replica_office2_simple_002,replica_office2,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,43,,0.17046945899983257,2.0,1.0,91.0,9002.0,2254.0
+replica_office2_attribute_001,replica_office2,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,76,,0.1634649160000663,2.0,1.0,91.0,9002.0,2260.0
+replica_office2_relational_001,replica_office2,Replica,relational,flat_embedding,canonical,True,True,True,0.0,True,False,1,wrong object,0.24972462499999892,2.0,1.0,91.0,9002.0,2261.0
+replica_office2_multi_hop_001,replica_office2,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,28,,0.15577008299987938,2.0,1.0,91.0,9002.0,2264.0
+replica_office2_functional_001,replica_office2,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,41,,0.16340358300021762,2.0,1.0,91.0,9002.0,2258.0
+replica_office2_negative_001,replica_office2,Replica,negative,flat_embedding,canonical,True,True,False,,False,,76,missing GT,0.16552566600012142,2.0,1.0,91.0,9002.0,2256.0
+replica_office3_simple_001,replica_office3,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,56,,0.20110304099989662,2.0,1.0,100.0,9838.0,2463.0
+replica_office3_simple_002,replica_office3,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,15,,0.17927266699962274,2.0,1.0,100.0,9838.0,2463.0
+replica_office3_attribute_001,replica_office3,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,92,,0.18189670799984015,2.0,1.0,100.0,9838.0,2469.0
+replica_office3_relational_001,replica_office3,Replica,relational,flat_embedding,canonical,True,True,True,0.250968,True,False,1,wrong object,0.2921692080003595,2.0,1.0,100.0,9838.0,2469.0
+replica_office3_multi_hop_001,replica_office3,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,101,,0.16839812499983964,2.0,1.0,100.0,9838.0,2472.0
+replica_office3_functional_001,replica_office3,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,100,,0.19938120899996647,2.0,1.0,100.0,9838.0,2468.0
+replica_office3_negative_001,replica_office3,Replica,negative,flat_embedding,canonical,True,True,False,,False,,94,missing GT,0.20242441700020208,2.0,1.0,100.0,9838.0,2465.0
+replica_office4_simple_001,replica_office4,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,60,,0.1152942499998062,2.0,1.0,65.0,6363.0,1594.0
+replica_office4_simple_002,replica_office4,Replica,simple_object,flat_embedding,canonical,True,True,True,1.0,True,True,49,,0.1179298749998452,2.0,1.0,65.0,6363.0,1594.0
+replica_office4_attribute_001,replica_office4,Replica,attribute,flat_embedding,canonical,True,True,True,1.0,True,True,4,,0.12020108300021093,2.0,1.0,65.0,6363.0,1601.0
+replica_office4_relational_001,replica_office4,Replica,relational,flat_embedding,canonical,True,True,True,0.0,True,False,1,wrong object,0.15537504100029764,2.0,1.0,65.0,6363.0,1600.0
+replica_office4_multi_hop_001,replica_office4,Replica,multi_hop,flat_embedding,canonical,True,True,True,1.0,True,True,5,,0.11676537499988626,2.0,1.0,65.0,6363.0,1604.0
+replica_office4_functional_001,replica_office4,Replica,functional,flat_embedding,canonical,True,True,True,1.0,True,True,20,,0.11459195899988117,2.0,1.0,65.0,6363.0,1599.0
+replica_office4_negative_001,replica_office4,Replica,negative,flat_embedding,canonical,True,True,False,,False,,23,missing GT,0.11019708300000275,2.0,1.0,65.0,6363.0,1596.0

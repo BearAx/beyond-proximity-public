@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 
 from backend.query.model_client import OpenAIModelClient
-from scripts.run_experiment import run_experiment
+from scripts.run_experiment import canonical_result, run_experiment
 
 
 def _write_json(path: Path, data: dict) -> None:
@@ -20,7 +20,7 @@ def _prepare_scene(scene_root: Path) -> None:
         "scene_summary": "A red chair in a small lounge.",
         "room_type": "lounge",
         "lighting": "bright",
-        "objects": [{"label": "chair", "confidence": 1.0, "bbox_2d": [0.1, 0.2, 0.4, 0.8], "attributes": {"color": "red"}}],
+        "objects": [{"object_id": "chair-1", "label": "chair", "confidence": 1.0, "bbox_2d": [0.1, 0.2, 0.4, 0.8], "attributes": {"color": "red"}}],
         "spatial_relations": [],
         "functional_context": "seating",
         "facing": "wall",
@@ -112,17 +112,33 @@ def test_stub_experiment_writes_canonical_outputs_and_resumes(tmp_path):
     assert first["schema_version"] == "semanticsplat.query_result.v1"
     assert first["mode"] == "stub"
     assert first["result"]["found"] is True
+    assert first["result"]["selected_object_id"] == "chair-1"
     assert first["result"]["selected_view_id"] == "v001"
+    assert first["result"]["bbox_availability_status"] == "not_eligible"
+    assert first["result"]["bbox_unavailable_reason"] == "geometry_evaluation_not_eligible"
+    assert first["traversal_path"] == ["root", "leaf_lounge"]
+    assert first["checked_node_ids"]
+    assert first["checked_view_ids"] == ["v001"]
+    assert first["checked_object_ids"] == ["chair-1"]
+    assert first["search_variant"] == "deterministic_lexical_v1"
+    assert first["fallback_used"] is True
+    assert first["fallback_reason"]
     assert first["metrics_log"]["token_usage"] is None
     assert first["metrics_log"]["estimated_input_tokens"] > 0
     assert first["metrics_log"]["context_size_chars"] > 0
     assert first["metrics_log"]["model_call_count"] == 0
+    assert first["metrics_log"]["checked_object_count"] == 1
+    assert first["metrics_log"]["construction_cost"] is None
     assert any("not live" in warning.lower() for warning in first["warnings"])
     assert negative["result"]["found"] is False
+    assert negative["result"]["bbox_availability_status"] == "not_applicable"
+    assert negative["result"]["bbox_unavailable_reason"] == "negative_query"
     assert metrics["coverage"]["result_count"] == 2
     assert metrics["mode_counts"] == {"stub": 2}
     assert metrics["metrics"]["estimated_input_tokens"]["status"] == "measured"
     assert metrics["metrics"]["bbox_3d_iou"]["status"] == "N/A"
+    run_config = json.loads((run_dir / "run_config.json").read_text(encoding="utf-8"))
+    assert run_config["construction_cost"]["runtime_seconds"] >= 0
 
     run_experiment(config)
     logs = json.loads((run_dir / "logs.json").read_text(encoding="utf-8"))
@@ -257,6 +273,72 @@ def test_live_experiment_records_provider_calls_usage_and_cache(tmp_path, monkey
     assert "secret-fixture" not in cache_files[0].read_text(encoding="utf-8")
 
 
+def test_canonical_bbox_quality_gate_marks_eligible_missing_and_invalid_boxes_unavailable():
+    common = {
+        "run_id": "bbox_gate",
+        "method": "semantic_splat",
+        "mode": "stub",
+        "query": {
+            "scene_id": "fixture_scene",
+            "query_id": "q001",
+            "query": "Find the chair",
+            "query_type": "simple_object",
+            "expected_output_type": "object_3d_bbox",
+        },
+        "runtime_seconds": 0.01,
+        "usage": {},
+        "context_metrics": {},
+        "depth_validation": {"status": "reliable"},
+        "geometry_eval_allowed": True,
+    }
+    answer = {
+        "result": {
+            "found": True,
+            "selected_object_id": "chair-1",
+            "bbox_3d": None,
+            "confidence": 1.0,
+        }
+    }
+    missing = canonical_result(answer=answer, **common)
+    assert missing["availability_status"] == "unavailable"
+    assert missing["availability_reason"] == "bbox_3d_missing"
+    assert missing["result"]["bbox_3d"] is None
+    assert missing["result"]["bbox_availability_status"] == "unavailable"
+    assert missing["result"]["bbox_unavailable_reason"] == "bbox_3d_missing"
+
+    answer["result"]["bbox_3d"] = {
+        "center": [0.0, float("nan"), 1.0],
+        "size": [1.0, 1.0, 1.0],
+        "object_id": "chair-1",
+    }
+    invalid = canonical_result(answer=answer, **common)
+    assert invalid["availability_status"] == "unavailable"
+    assert invalid["result"]["bbox_3d"] is None
+    assert invalid["result"]["bbox_availability_status"] == "unavailable"
+    assert invalid["result"]["bbox_unavailable_reason"] == "bbox_3d_values_non_finite"
+
+    answer["result"]["bbox_3d"] = {
+        "center": [0.0, 0.0, 1.0],
+        "size": [1.0, 0.0, 1.0],
+        "object_id": "chair-1",
+    }
+    degenerate = canonical_result(answer=answer, **common)
+    assert degenerate["availability_status"] == "unavailable"
+    assert degenerate["result"]["bbox_3d"] is None
+    assert degenerate["result"]["bbox_unavailable_reason"] == "bbox_3d_extents_non_positive"
+
+    answer["result"]["bbox_3d"] = {
+        "center": [0.0, 0.0, 1.0],
+        "dimensions": [1.0, 2.0, 3.0],
+        "object_id": "chair-1",
+    }
+    available = canonical_result(answer=answer, **common)
+    assert available["availability_status"] == "available"
+    assert available["result"]["bbox_3d"]["dimensions"] == [1.0, 2.0, 3.0]
+    assert available["result"]["bbox_availability_status"] == "available"
+    assert available["result"]["bbox_unavailable_reason"] is None
+
+
 def test_structured_ineligible_scene_batch_is_logged_and_skipped(tmp_path):
     scene_root = tmp_path / "scenes"
     scene = scene_root / "fixture_scene"
@@ -308,6 +390,7 @@ def test_structured_ineligible_scene_batch_is_logged_and_skipped(tmp_path):
     assert len(results) == 2
     assert all(result["mode"] == "stub" for result in results)
     assert all(result["availability_status"] == "unavailable" for result in results)
+    assert all(result["availability_reason"] for result in results)
     assert all(result["metrics_log"]["model_call_count"] == 0 for result in results)
     assert any("semantic_eval_allowed=false" in warning for warning in run_config["warnings"])
 

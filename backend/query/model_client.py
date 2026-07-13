@@ -241,6 +241,37 @@ def _object_text(obj: dict[str, Any]) -> str:
     return " ".join(pieces)
 
 
+def _object_id(obj: dict[str, Any]) -> str | None:
+    """Return an explicit object identifier without inventing one from a label."""
+    for key in ("object_id", "instance_id", "id"):
+        value = obj.get(key)
+        if value is not None and not isinstance(value, (dict, list, tuple)):
+            text = str(value).strip()
+            if text:
+                return text
+    for bbox_key in ("bbox_3d", "bbox_2d"):
+        bbox = obj.get(bbox_key)
+        if isinstance(bbox, dict):
+            for key in ("object_id", "instance_id", "id"):
+                value = bbox.get(key)
+                if value is not None and not isinstance(value, (dict, list, tuple)):
+                    text = str(value).strip()
+                    if text:
+                        return text
+    attributes = obj.get("attributes")
+    if isinstance(attributes, dict):
+        values = attributes.values()
+    elif isinstance(attributes, (list, tuple)):
+        values = attributes
+    else:
+        values = ()
+    for value in values:
+        match = re.fullmatch(r"\s*(?:object|instance)_id\s*:\s*(\S+)\s*", str(value), re.IGNORECASE)
+        if match:
+            return match.group(1)
+    return None
+
+
 def _score(text: str, query_tokens: set[str]) -> tuple[int, float]:
     haystack = _tokens(text, expand=False)
     overlap = len(query_tokens & haystack)
@@ -543,8 +574,16 @@ class StubModelClient(ModelClient):
         if query_type == "negative":
             found = found and _has_full_exact_object_match(views, exact_query_tokens)
         matched_object: str | None = None
+        selected_object_id: str | None = None
         bbox_2d: Any = None
         bbox_3d: Any = None
+        checked_object_ids = sorted({
+            object_id
+            for view in views.values()
+            for obj in _view_objects(view)
+            if (object_id := _object_id(obj)) is not None
+        })
+        checked_object_count = sum(len(_view_objects(view)) for view in views.values())
         if found:
             object_candidates = []
             for obj in _view_objects(best_view):
@@ -552,19 +591,20 @@ class StubModelClient(ModelClient):
                     (
                         _object_rank(obj, query_tokens, exact_query_tokens),
                         str(obj.get("label", "")),
-                        obj.get("bbox_2d"),
-                        obj.get("bbox_3d"),
+                        obj,
                     )
                 )
             object_candidates.sort(key=lambda item: (item[0], item[1]), reverse=True)
             if object_candidates and object_candidates[0][0][0] > 0:
-                _, matched_object, bbox_2d, bbox_3d = object_candidates[0]
+                _, matched_object, selected_object = object_candidates[0]
             else:
-                first_object = next((obj for obj in _view_objects(best_view) if obj.get("label")), None)
-                if first_object is not None:
-                    matched_object = str(first_object.get("label"))
-                    bbox_2d = first_object.get("bbox_2d")
-                    bbox_3d = first_object.get("bbox_3d")
+                selected_object = next((obj for obj in _view_objects(best_view) if obj.get("label")), None)
+                if selected_object is not None:
+                    matched_object = str(selected_object.get("label"))
+            if selected_object is not None:
+                selected_object_id = _object_id(selected_object)
+                bbox_2d = selected_object.get("bbox_2d")
+                bbox_3d = selected_object.get("bbox_3d")
 
         merged_functional_views: list[str] = []
         merged_functional_bbox = False
@@ -591,11 +631,13 @@ class StubModelClient(ModelClient):
                     if merged_bbox is not None:
                         bbox_2d = None
                         bbox_3d = merged_bbox
+                        selected_object_id = None
                         merged_functional_views = sorted({candidate[4] for candidate in selected_candidates})
                         merged_functional_bbox = True
 
         root_id, reachable, parents = _reachable_tree(tree)
         selected_node_id = None
+        checked_node_ids: list[str] = []
         if found:
             candidates = []
             matched_tokens = _tokens(matched_object or "", expand=False)
@@ -603,6 +645,7 @@ class StubModelClient(ModelClient):
                 node_id = _node_id(node, key)
                 if node_id not in reachable or best_view_id not in as_string_ids(node.get("view_ids")):
                     continue
+                checked_node_ids.append(node_id)
                 node_text = _node_text(node)
                 name_text = str(node.get("name", ""))
                 matched_name_overlap, matched_name_ratio = _score(name_text, matched_tokens)
@@ -638,6 +681,8 @@ class StubModelClient(ModelClient):
         if not found and root_id:
             visited_nodes = [root_id]
             visited_nodes.extend(str(child) for child in tree[root_id].get("children_ids", []) if str(child) in tree)
+        if not checked_node_ids:
+            checked_node_ids = list(visited_nodes)
 
         selected_views = sorted(set([best_view_id, *merged_functional_views])) if found else []
         checked_view_ids = sorted(views)
@@ -655,11 +700,19 @@ class StubModelClient(ModelClient):
                 "parser": "deterministic_tokenizer_v1",
             },
             "visited_nodes": visited_nodes,
+            "traversal_path": visited_nodes,
             "selected_views": selected_views,
+            "checked_node_ids": checked_node_ids,
             "checked_view_ids": checked_view_ids,
+            "checked_object_ids": checked_object_ids,
+            "checked_object_count": checked_object_count,
+            "search_variant": "deterministic_lexical_v1",
+            "fallback_used": True,
+            "fallback_reason": "stub_mode_uses_deterministic_semantic_index_fallback",
             "result": {
                 "found": found,
                 "matched_object": matched_object,
+                "selected_object_id": selected_object_id,
                 "selected_node_id": selected_node_id,
                 "selected_view_id": best_view_id if found else None,
                 "bbox_2d": bbox_2d,
@@ -943,9 +996,11 @@ class OpenAIModelClient(ModelClient):
         return (
             "Answer the scene query using only the supplied manual semantic index. "
             "Do not invent objects, views, nodes, geometry, or ground truth. Return one JSON object only with "
-            "structured_plan (object), visited_nodes (array), selected_views (array), checked_view_ids (array), "
-            "result (object with found, matched_object, selected_node_id, selected_view_id, bbox_2d, bbox_3d, "
-            "camera_pose, confidence, explanation), and warnings (array). Use null for unavailable boxes and pose. "
+            "structured_plan (object), visited_nodes (array), traversal_path (array), selected_views (array), "
+            "checked_node_ids (array), checked_view_ids (array), checked_object_ids (array), search_variant "
+            "(string), fallback_used (boolean), fallback_reason (string or null), result (object with found, "
+            "matched_object, selected_object_id, selected_node_id, selected_view_id, bbox_2d, bbox_3d, camera_pose, "
+            "confidence, explanation), and warnings (array). Use null for unavailable boxes, IDs, and pose. "
             "Confidence must be a number from 0 to 1. The manual index is not independent ground truth.\n\n"
             + json.dumps(context, ensure_ascii=False, separators=(",", ":"), default=str)
         )
@@ -1046,6 +1101,13 @@ class OpenAIModelClient(ModelClient):
         answer["checked_view_ids"] = [
             str(item) for item in answer.get("checked_view_ids", []) if str(item) in valid_views
         ]
+        answer["checked_node_ids"] = [
+            str(item) for item in answer.get("checked_node_ids", []) if str(item) in valid_nodes
+        ]
+        answer["traversal_path"] = [
+            str(item) for item in answer.get("traversal_path", answer["visited_nodes"]) if str(item) in valid_nodes
+        ]
+        answer["checked_object_ids"] = as_string_ids(answer.get("checked_object_ids"))
         if result.get("selected_node_id") not in valid_nodes:
             if result.get("selected_node_id") is not None:
                 warnings.append("Provider-selected node was absent from the semantic index and was cleared.")
@@ -1054,9 +1116,12 @@ class OpenAIModelClient(ModelClient):
             if result.get("selected_view_id") is not None:
                 warnings.append("Provider-selected view was absent from the semantic index and was cleared.")
             result["selected_view_id"] = None
-        for field in ("matched_object", "bbox_2d", "bbox_3d", "camera_pose"):
+        for field in ("matched_object", "selected_object_id", "bbox_2d", "bbox_3d", "camera_pose"):
             result.setdefault(field, None)
         result.setdefault("explanation", "")
+        answer["search_variant"] = str(answer.get("search_variant") or "provider_semantic_index")
+        answer["fallback_used"] = bool(answer.get("fallback_used", False))
+        answer["fallback_reason"] = answer.get("fallback_reason")
         answer["structured_plan"] = answer.get("structured_plan") if isinstance(answer.get("structured_plan"), dict) else {}
         warnings.append("Live provider reasoning used a manual semantic index, not independent ground truth.")
         answer["warnings"] = sorted(set(warnings))

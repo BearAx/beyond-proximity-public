@@ -1,0 +1,25 @@
+{
+  "schema_version": "semanticsplat.grounding_variant_run.v1",
+  "run_name": "graph_fallback",
+  "search_options": {
+    "variant": "graph_fallback"
+  },
+  "benchmark_path": "/Users/leo/beyond-proximity-week6-person2/docs/benchmarks/scannet_bbq_grounding_pilot_v1.json",
+  "query_count": 48,
+  "scene_ids": [
+    "scannet_0011_00",
+    "scannet_0030_00",
+    "scannet_0046_00",
+    "scannet_0086_00",
+    "scannet_0222_00",
+    "scannet_0378_00",
+    "scannet_0389_00",
+    "scannet_0435_00"
+  ],
+  "construction_cost": {
+    "runtime_seconds": 0.00187,
+    "candidate_count": 392,
+    "scope": "one-time canonical candidate construction"
+  },
+  "embedding": null
+}

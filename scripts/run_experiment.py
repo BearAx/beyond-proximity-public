@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import subprocess
 import sys
@@ -599,6 +600,59 @@ def timed_stage(
     return value, elapsed
 
 
+def string_id_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [str(item) for item in value if item is not None]
+
+
+def bbox_3d_quality(value: Any) -> tuple[dict[str, Any] | None, str | None]:
+    if value is None:
+        return None, "bbox_3d_missing"
+    if not isinstance(value, dict):
+        return None, "bbox_3d_not_an_object"
+    center = value.get("center")
+    dimensions = value.get("size", value.get("dimensions"))
+    if not isinstance(center, (list, tuple)) or len(center) != 3:
+        return None, "bbox_3d_center_invalid"
+    if not isinstance(dimensions, (list, tuple)) or len(dimensions) != 3:
+        return None, "bbox_3d_dimensions_invalid"
+    try:
+        center_values = [float(item) for item in center]
+        dimension_values = [float(item) for item in dimensions]
+    except (TypeError, ValueError):
+        return None, "bbox_3d_values_non_numeric"
+    if not all(math.isfinite(item) for item in [*center_values, *dimension_values]):
+        return None, "bbox_3d_values_non_finite"
+    if any(item <= 0.0 for item in dimension_values):
+        return None, "bbox_3d_extents_non_positive"
+    normalized = dict(value)
+    normalized["center"] = center_values
+    if "size" in value:
+        normalized["size"] = dimension_values
+    else:
+        normalized["dimensions"] = dimension_values
+    return normalized, None
+
+
+def selected_object_id(result: dict[str, Any]) -> str | None:
+    value = result.get("selected_object_id")
+    if value is not None:
+        text = str(value).strip()
+        if text:
+            return text
+    for key in ("bbox_3d", "bbox_2d"):
+        bbox = result.get(key)
+        if isinstance(bbox, dict):
+            for id_key in ("object_id", "instance_id", "id"):
+                value = bbox.get(id_key)
+                if value is not None:
+                    text = str(value).strip()
+                    if text:
+                        return text
+    return None
+
+
 def canonical_result(
     *,
     run_id: str,
@@ -610,45 +664,110 @@ def canonical_result(
     usage: dict[str, Any],
     context_metrics: dict[str, Any],
     depth_validation: dict[str, Any],
+    geometry_eval_allowed: bool | None = None,
 ) -> dict[str, Any]:
     warnings = [str(item) for item in answer.get("warnings", [])]
     if depth_validation.get("status") != "reliable":
         warnings.append(f"Unreliable depth: {depth_validation.get('reason', 'validation failed')}")
-    visited_nodes = [str(item) for item in answer.get("visited_nodes", [])]
-    selected_views = [str(item) for item in answer.get("selected_views", [])]
-    checked_view_ids = [str(item) for item in answer.get("checked_view_ids", selected_views)]
+    visited_nodes = string_id_list(answer.get("visited_nodes"))
+    traversal_path = string_id_list(answer.get("traversal_path")) or visited_nodes
+    selected_views = string_id_list(answer.get("selected_views"))
+    checked_node_ids = string_id_list(answer.get("checked_node_ids")) or visited_nodes
+    checked_view_ids = string_id_list(answer.get("checked_view_ids")) or selected_views
+    checked_object_ids = string_id_list(answer.get("checked_object_ids"))
+    raw_checked_object_count = answer.get("checked_object_count")
+    checked_object_count = (
+        raw_checked_object_count
+        if isinstance(raw_checked_object_count, int) and not isinstance(raw_checked_object_count, bool)
+        and raw_checked_object_count >= len(checked_object_ids)
+        else len(checked_object_ids)
+    )
     result = answer.get("result") if isinstance(answer.get("result"), dict) else {}
+    found = bool(result.get("found", False))
+    negative_query = (
+        query.get("query_type") == "negative"
+        or query.get("expected_output_type") == "not_found"
+    )
+    geometry_query_eligible = (
+        geometry_eval_allowed is True
+        and (
+            query.get("geometry_eval_allowed") is True
+            or query.get("expected_output_type") in {"object", "object_3d_bbox"}
+            or isinstance(query.get("expected_bbox_3d"), dict)
+            or bool(query.get("expected_bboxes_3d"))
+        )
+    )
     raw_bbox_3d = result.get("bbox_3d")
     dataset_gt_bbox = bool(
         isinstance(raw_bbox_3d, dict)
         and raw_bbox_3d.get("object_id") is not None
         and str(raw_bbox_3d.get("coordinate_frame", "")).startswith(("replica_", "scannet_"))
     )
+    bbox_3d, bbox_quality_reason = bbox_3d_quality(raw_bbox_3d)
+    if bbox_3d is not None and depth_validation.get("status") != "reliable" and not dataset_gt_bbox:
+        bbox_3d = None
+        bbox_quality_reason = "depth_validation_not_reliable"
+    if negative_query:
+        bbox_3d = None
+        bbox_availability_status = "not_applicable"
+        bbox_unavailable_reason = "negative_query"
+    elif not found:
+        bbox_3d = None
+        bbox_availability_status = "not_applicable"
+        bbox_unavailable_reason = "object_not_found"
+    elif not geometry_query_eligible:
+        bbox_3d = None
+        bbox_availability_status = "not_eligible"
+        bbox_unavailable_reason = "geometry_evaluation_not_eligible"
+    elif bbox_3d is None:
+        bbox_availability_status = "unavailable"
+        bbox_unavailable_reason = bbox_quality_reason or "bbox_3d_unavailable"
+    else:
+        bbox_availability_status = "available"
+        bbox_unavailable_reason = None
+    result_unavailable = bool(
+        geometry_query_eligible
+        and not negative_query
+        and (not found or bbox_3d is None)
+    )
     canonical_payload = {
-        "found": bool(result.get("found", False)),
+        "found": found,
         "matched_object": result.get("matched_object"),
+        "selected_object_id": selected_object_id(result),
         "selected_node_id": result.get("selected_node_id"),
         "selected_view_id": result.get("selected_view_id"),
         "bbox_2d": result.get("bbox_2d"),
-        "bbox_3d": raw_bbox_3d if depth_validation.get("status") == "reliable" or dataset_gt_bbox else None,
+        "bbox_3d": bbox_3d,
+        "bbox_availability_status": bbox_availability_status,
+        "bbox_unavailable_reason": bbox_unavailable_reason,
         "camera_pose": result.get("camera_pose"),
         "confidence": float(result.get("confidence", 0.0)),
         "explanation": str(result.get("explanation", "")),
+        "relation_satisfied": result.get("relation_satisfied"),
+        "search_score": result.get("search_score"),
+        "score_details": result.get("score_details", {}),
     }
     return {
         "schema_version": QUERY_RESULT_SCHEMA,
         "run_id": run_id,
         "method": method,
         "mode": mode,
-        "availability_status": "available",
-        "availability_reason": None,
+        "availability_status": "unavailable" if result_unavailable else "available",
+        "availability_reason": bbox_unavailable_reason if result_unavailable else None,
         "scene_id": query["scene_id"],
         "query_id": query["query_id"],
         "query": query["query"],
         "query_type": query["query_type"],
         "structured_plan": answer.get("structured_plan", {}),
         "visited_nodes": visited_nodes,
+        "traversal_path": traversal_path,
         "selected_views": selected_views,
+        "checked_node_ids": checked_node_ids,
+        "checked_view_ids": checked_view_ids,
+        "checked_object_ids": checked_object_ids,
+        "search_variant": str(answer.get("search_variant") or "unspecified"),
+        "fallback_used": bool(answer.get("fallback_used", False)),
+        "fallback_reason": answer.get("fallback_reason"),
         "result": canonical_payload,
         "metrics_log": {
             "runtime_seconds": runtime_seconds,
@@ -659,7 +778,9 @@ def canonical_result(
             "retry_count": usage.get("retry_count", 0),
             "failure_count": usage.get("failure_count", 0),
             "visited_node_count": len(visited_nodes),
+            "checked_node_count": len(checked_node_ids),
             "checked_view_count": len(checked_view_ids),
+            "checked_object_count": checked_object_count,
             "context_size_chars": context_metrics.get("context_size_chars"),
             "prompt_size_chars": context_metrics.get("prompt_size_chars"),
             "estimated_input_tokens": context_metrics.get("estimated_input_tokens"),
@@ -712,6 +833,7 @@ def canonical_unavailable_result(
         },
         context_metrics={},
         depth_validation=depth_validation,
+        geometry_eval_allowed=False,
     )
     result["availability_status"] = "unavailable"
     result["availability_reason"] = reason
@@ -934,6 +1056,7 @@ def run_experiment(
                 "tree": tree,
                 "tree_manifest": scene.get("tree_manifest"),
                 "bbox_enrichment": bbox_enrichment,
+                "geometry_eval_allowed": scene_entry["geometry_eval_allowed"],
             }
             run_config["scene_status"][scene_id] = {
                 "status": "ready",
@@ -1051,6 +1174,7 @@ def run_experiment(
                 usage=usage,
                 context_metrics=context_metrics,
                 depth_validation=all_depth[scene_id],
+                geometry_eval_allowed=bundle["geometry_eval_allowed"],
             )
             write_json(output_path, result)
             log_event(
