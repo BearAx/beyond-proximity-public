@@ -4,6 +4,9 @@ Status date: 2026-07-14.
 
 Integrated branch: `codex/week6-integration`.
 
+Integration verification commit:
+`b23359a923ef3ede19e16bb35a0c1be6018087d9`.
+
 ## Integration Result
 
 The four Week 6 branches form a clean linear history, so no work was dropped or

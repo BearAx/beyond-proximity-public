@@ -11,8 +11,15 @@ Person 4 evidence tip audited by integration:
 (short: 62cf94a on week6-person4)
 ```
 
-The final integration verification commit is recorded in
-`WEEK6_INTEGRATION_REPORT.md` and in the branch history.
+Integration verification commit:
+
+```
+b23359a923ef3ede19e16bb35a0c1be6018087d9
+(short: b23359a on codex/week6-integration)
+```
+
+The following documentation-only freeze commit records that immutable parent
+hash without changing the experiment or paper evidence.
 
 Paper path: `papers/twinworld/main.tex`  
 PDF: `papers/twinworld/main.pdf`
