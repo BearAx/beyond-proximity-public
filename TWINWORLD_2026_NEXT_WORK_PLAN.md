@@ -1,8 +1,11 @@
 # TwinWorld 2026 Next Work Plan
 
-Status date: 2026-07-09.
+Status date: 2026-07-14.
 
-Scope: planning only. This document does not start implementation work.
+Scope: original two-week plan plus audited completion records. Implementation
+evidence is now integrated on `codex/week6-integration`; remaining limitations
+and external submission actions are recorded below and in
+`WEEK6_INTEGRATION_REPORT.md`.
 
 Target venue: TwinWorld @ ECCV 2026 Workshop, "Visual Intelligence for Built
 Environment Digital Twins".
@@ -251,6 +254,14 @@ Acceptance:
 - No `bbox_3d = null` for eligible positive object-grounding queries unless the
   result is explicitly marked unavailable with reason.
 
+Completion record, 2026-07-14: all Person 2 acceptance criteria are met. The
+Replica and ScanNet pilots each contain eight search variants with canonical
+schema validation, BBQ-aligned quality metrics, efficiency metrics, separate
+construction cost, and per-query failure labels. A clean integration rerun
+reproduced every deterministic quality and efficiency field. The measured
+ScanNet quality remains limited: graph and flat lexical both reach Acc@0.25 of
+0.2708, while the no-relation ablation reaches 0.2917.
+
 ### Person 3: BBQ, Baselines, And Related Work Lead
 
 Mission:
@@ -304,6 +315,14 @@ Acceptance:
   official source.
 - The paper never claims superiority over BBQ unless the same-dataset metrics
   prove it.
+
+Completion record, 2026-07-14: all Person 3 acceptance criteria are met.
+`docs/baselines/bbq_comparison.md` records BBQ datasets, metrics, tables,
+hardware, limitations, allowed comparisons, and baseline statuses with evidence
+paths. The article positions BBQ as the closest reference and explicitly avoids
+a superiority claim. BBQ official code remains documented as `NOT_DONE`, which
+is permitted by the task's "run or document" requirement and is a research
+limitation rather than a missing Person 3 artifact.
 
 ### Person 4: TwinWorld Paper, Figures, And Submission Lead
 
@@ -367,6 +386,15 @@ Acceptance:
 - Paper can be read as a complete workshop contribution even if not all
   main-conference experiments are finished.
 - Claims match saved outputs exactly.
+
+Completion record, 2026-07-14: all repository-side Person 4 acceptance criteria
+are met. The anonymous eleven-page PDF compiles from source, all 33 automated
+number checks match frozen JSON, and the figures were visually inspected. The
+checked-in `eccv.sty`, `llncs.cls`, and `splncs04.bst` match the official ECCV
+2026 author-kit files at upstream commit
+`da8c09c40239d5665757527e77388f4716a6564a`. OpenReview paper-ID assignment,
+final author-profile checks, upload, and attendance registration are external
+submission actions, not unfinished branch implementation.
 
 ## 5. Two-Week Schedule
 

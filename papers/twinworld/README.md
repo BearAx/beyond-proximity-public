@@ -1,20 +1,24 @@
 # TwinWorld @ ECCV 2026 — Person 4 paper package
 
-Status date: 2026-07-13. Branch: `week6-person4` (from `week6-person3`).
+Status date: 2026-07-14. Integrated branch: `codex/week6-integration`.
 
 ## Files
 
 | File | Purpose |
 |------|---------|
 | `main.tex` | Anonymous LNCS / ECCV workshop draft |
-| `llncs.cls`, `eccv.sty`, `splncs04.bst` | ECCV-style template (from public ECCV template + LNCS) |
+| `llncs.cls`, `eccv.sty`, `splncs04.bst` | Exact official ECCV 2026 author-kit files |
 | `refs.bib` | Bibliography |
 | `figures/` | Paper figures (shared with prior five-scene evidence) |
 | `BUILD.md` | Build commands |
 
 ## Claim (frozen for this draft)
 
-> SemanticSplat is a graph-pruned semantic search layer for queryable 3DGS digital twins. It reduces query-time context while preserving retrieval on the internal benchmark, and is aligned with BBQ-style Acc@k / Recall@1 on Replica/ScanNet pilots — without claiming superiority over BBQ.
+> SemanticSplat is a graph-pruned semantic search layer for queryable 3DGS
+> digital twins. It reduces query-time context with a measured internal
+> hit-at-k tradeoff, and matches flat lexical quality on the current
+> BBQ-aligned oracle-map pilots while checking fewer objects. It does not claim
+> superiority over BBQ.
 
 ## Evidence sources (team)
 

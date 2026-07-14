@@ -1,15 +1,18 @@
 # TwinWorld reproducibility freeze (Person 4)
 
-Status date: 2026-07-14. Branch: `week6-person4`.
+Status date: 2026-07-14. Integrated branch: `codex/week6-integration`.
 
 ## Commit hash
 
-Recorded at freeze time (update after each intentional push):
+Person 4 evidence tip audited by integration:
 
 ```
-086eb32212da4bb206105fef193b6e00db477958
-(short: 086eb32 on week6-person4)
+62cf94a179f2b9f42a1cb122e0106f5ac957bdf0
+(short: 62cf94a on week6-person4)
 ```
+
+The final integration verification commit is recorded in
+`WEEK6_INTEGRATION_REPORT.md` and in the branch history.
 
 Paper path: `papers/twinworld/main.tex`  
 PDF: `papers/twinworld/main.pdf`
@@ -62,9 +65,14 @@ Scene PNGs for qualitative/gallery figures may require:
 git lfs pull --include="backend/data/scenes/*/images/v001.png,backend/data/scenes/default/images/v0*.png"
 ```
 
-## Still needs team / OpenReview
+## External submission actions
 
 - Replace `ID=XXXXX` in `main.tex` with the real OpenReview paper ID.
-- Confirm ECCV 2026 author kit vs current 2024-style `eccv.sty`.
-- P1/P2/P3 freeze sign-off on pilot run IDs and BBQ wording.
+- Complete the final human author-profile, citation, and anonymity review.
+- Upload the anonymous PDF by the TwinWorld deadline.
 - Camera-ready: set `\twinworldcamerareadytrue` and fill affiliations.
+
+The template files were checked byte-for-byte against the official ECCV 2026
+author kit at upstream commit
+`da8c09c40239d5665757527e77388f4716a6564a`. P1-P3 evidence and run IDs were
+verified in the integration audit.

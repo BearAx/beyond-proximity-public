@@ -15,10 +15,14 @@ and evaluator. Construction cost is reported separately from per-query cost.
 ## Frozen runs
 
 - `outputs/public_datasets/replica_pilot_v1/`: 56 queries, 8 official Replica
-  scenes, 8 variants/ablations, 448 canonical result files.
+  scenes, 8 variants/ablations, 448 evaluated canonical result records.
 - `outputs/public_datasets/scannet_pilot_v1/`: 48 official Nr3D/Sr3D+ queries,
-  8 official ScanNet scenes, 8 variants/ablations, 384 canonical result files.
+  8 official ScanNet scenes, 8 variants/ablations, 384 evaluated canonical
+  result records.
 - Every variant has JSON/CSV/MD metrics and per-query failure output.
+- Per-query result files are reproducible working artifacts and intentionally
+  ignored; evaluated per-query records and aggregate evidence are retained in
+  each tracked `grounding_summary.json`.
 - Conditional segmentation mAcc/mIoU/fmIoU is `N/A`: there are GT semantic
   labels but no paired model-predicted segmentation arrays in this track.
 

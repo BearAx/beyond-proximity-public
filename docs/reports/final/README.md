@@ -11,5 +11,6 @@
 | [`../../papers/twinworld/`](../../papers/twinworld/) | **TwinWorld anonymous LNCS draft** |
 | [`../../papers/beyond-proximity/main.tex`](../../papers/beyond-proximity/main.tex) | Prior CVPR-style draft |
 
-Active branch: `week6-person4` (from `week6-person3`).
+Integrated branch: `codex/week6-integration`, containing the complete linear
+history of `week6-person1` through `week6-person4` plus final verification fixes.
 

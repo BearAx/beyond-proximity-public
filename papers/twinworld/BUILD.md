@@ -27,5 +27,10 @@ Output: `main.pdf` (anonymous review build).
 ## Notes
 
 - Template follows ECCV LNCS / `eccv.sty` review mode (line numbers, anonymous).
-- TwinWorld requires official ECCV workshop formatting; if the 2026 author kit differs, swap `llncs.cls` / `eccv.sty` for the kit files before camera-ready.
-- `silence.sty` here is a tiny stub to avoid a hard MiKTeX dependency; replace with the real CTAN package when available.
+- `eccv.sty`, `llncs.cls`, and `splncs04.bst` match the official ECCV 2026
+  author-kit repository at commit
+  `da8c09c40239d5665757527e77388f4716a6564a` (verified 2026-07-14).
+- `silence.sty` is a tiny local compatibility stub because the official kit does
+  not vendor that CTAN dependency. The paper also compiles successfully with
+  Tectonic 0.16.9.
+- Replace `ID=XXXXX` only after OpenReview assigns the submission ID.

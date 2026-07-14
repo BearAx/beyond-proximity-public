@@ -29,6 +29,7 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .cache/
+/tmp/
 .env
 venv/
 .venv/

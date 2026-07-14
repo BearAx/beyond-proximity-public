@@ -4,7 +4,7 @@ This is the operating guide for Codex, Cursor, and future agents working in this
 repository. The goal is to keep every change evidence-based, reproducible, and
 honest about what the project has actually proven.
 
-Status date: 2026-07-12.
+Status date: 2026-07-14.
 
 ---
 
@@ -84,7 +84,7 @@ ConceptGraphs one-frame captured-scene smoke output
 8 official ScanNet scenes, 39 selected RGB-D views, 392 GT boxes
 699 mapped Nr3D rows and 661 mapped unique Sr3D+ triplets
 48-query ScanNet pilot with saved object-ID, bbox, runtime, context, and token metrics
-128 passing backend tests as of the 2026-07-12 local check
+144 passing backend tests as of the 2026-07-14 integration check
 ```
 
 Current scene set:
