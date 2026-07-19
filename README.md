@@ -1,4 +1,15 @@
-# SemanticSplat — 3D Gaussian Splatting Semantic Navigator
+<div align="center">
+
+# SemanticSplat
+
+### Natural-language navigation for 3D Gaussian Splatting scenes
+
+![React](https://img.shields.io/badge/React-3D_Viewer-61DAFB?style=flat-square&logo=react&logoColor=111827)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&logo=fastapi&logoColor=white)
+![MCP](https://img.shields.io/badge/MCP-Semantic_Tools-7C3AED?style=flat-square)
+![3DGS](https://img.shields.io/badge/3DGS-Semantic_Search-111827?style=flat-square)
+
+</div>
 
 Natural-language navigation over 3D Gaussian Splatting scenes. Fly through a `.ply` scene in the browser, capture views, build a **semantic tree** with Cursor AI (via MCP), and query objects with **graph-pruned search** — faster and more room-accurate than flat view-by-view search.
 
