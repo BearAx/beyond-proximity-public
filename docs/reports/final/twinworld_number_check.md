@@ -2,7 +2,7 @@
 
 Source of truth: `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json`
 
-Checks: 91 - mismatches: 0
+Checks: 104 - mismatches: 0
 
 | Name | Got | Expected | OK |
 |---|---:|---:|:---:|
@@ -24,8 +24,14 @@ Checks: 91 - mismatches: 0
 | `construction.views` | 97 | 97 | yes |
 | `construction.items` | 1066 | 1066 | yes |
 | `construction.nodes` | 1064 | 1064 | yes |
+| `construction.source_characters` | 267877 | 267877 | yes |
 | `construction.source_token_equivalent` | 66937 | 66937 | yes |
 | `construction.tree_token_equivalent` | 179817 | 179817 | yes |
+| `construction.serialized_io_token_equivalent` | 246754 | 246754 | yes |
+| `annotation.records` | 97 | 97 | yes |
+| `annotation.items` | 1066 | 1066 | yes |
+| `annotation.characters` | 267877 | 267877 | yes |
+| `annotation.token_equivalent` | 66937 | 66937 | yes |
 | `replica_pilot_v1.n` | 56 | 56 | yes |
 | `replica_pilot_v1.acc025_graph` | 1.0 | 1.0 | yes |
 | `replica_pilot_v1.acc025_flat` | 1.0 | 1.0 | yes |
@@ -95,5 +101,12 @@ Checks: 91 - mismatches: 0
 | `tex_has:provider calls and zero provider input/output tokens` | 1 | 1 | yes |
 | `tex_has:66,937` | 1 | 1 | yes |
 | `tex_has:179,817` | 1 | 1 | yes |
+| `tex_has:267,877` | 1 | 1 | yes |
+| `tex_has:246,754` | 1 | 1 | yes |
 | `tex_has:1.822\,s` | 1 | 1 | yes |
-| `tex_has:annotation is unmetered and therefore` | 1 | 1 | yes |
+| `tex_has:manual-annotation artifact workload is measured` | 1 | 1 | yes |
+| `site_has:<dt>Manual records</dt><dd>97` | 1 | 1 | yes |
+| `site_has:<dt>Semantic items</dt><dd>1,066` | 1 | 1 | yes |
+| `site_has:<dt>Annotation payload</dt><dd>66,937` | 1 | 1 | yes |
+| `site_has:<dt>Serialized I/O</dt><dd>246,754` | 1 | 1 | yes |
+| `site_free_of:N/A` | 1 | 1 | yes |

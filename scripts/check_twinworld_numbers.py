@@ -81,11 +81,18 @@ def main() -> int:
     )
     construction_totals = construction["totals"]
     provider_usage = construction["provider_usage"]
+    annotation_usage = construction["annotation_usage"]
     check("construction.provider_calls", provider_usage["model_call_count"], 0, tol=0)
     check("construction.provider_tokens", provider_usage["total_tokens"], 0, tol=0)
     check("construction.views", construction_totals["view_count"], 97, tol=0)
     check("construction.items", construction_totals["semantic_item_count"], 1066, tol=0)
     check("construction.nodes", construction_totals["node_count"], 1064, tol=0)
+    check(
+        "construction.source_characters",
+        construction_totals["source_viewjson_serialized_characters"],
+        267877,
+        tol=0,
+    )
     check(
         "construction.source_token_equivalent",
         construction_totals["source_viewjson_estimated_tokens_chars_div_4"],
@@ -96,6 +103,26 @@ def main() -> int:
         "construction.tree_token_equivalent",
         construction_totals["constructed_tree_estimated_tokens_chars_div_4"],
         179817,
+        tol=0,
+    )
+    check(
+        "construction.serialized_io_token_equivalent",
+        construction_totals["serialized_io_estimated_tokens_chars_div_4"],
+        246754,
+        tol=0,
+    )
+    check("annotation.records", annotation_usage["viewjson_record_count"], 97, tol=0)
+    check("annotation.items", annotation_usage["semantic_item_count"], 1066, tol=0)
+    check(
+        "annotation.characters",
+        annotation_usage["canonical_serialized_characters"],
+        267877,
+        tol=0,
+    )
+    check(
+        "annotation.token_equivalent",
+        annotation_usage["estimated_tokens_chars_div_4"],
+        66937,
         tol=0,
     )
 
@@ -234,13 +261,29 @@ def main() -> int:
         "provider calls and zero provider input/output tokens",
         "66,937",
         "179,817",
+        "267,877",
+        "246,754",
         "1.822\\,s",
-        "annotation is unmetered and therefore",
+        "manual-annotation artifact workload is measured",
     ]
     for s_ok in required:
         present = s_ok in tex
         checks.append((f"tex_has:{s_ok}", 1 if present else 0, 1, present))
         print(("OK " if present else "MISMATCH "), f"tex must contain {s_ok!r}")
+
+    site = (ROOT / "site/index.html").read_text(encoding="utf-8")
+    for site_required in (
+        "<dt>Manual records</dt><dd>97",
+        "<dt>Semantic items</dt><dd>1,066",
+        "<dt>Annotation payload</dt><dd>66,937",
+        "<dt>Serialized I/O</dt><dd>246,754",
+    ):
+        present = site_required in site
+        checks.append((f"site_has:{site_required}", 1 if present else 0, 1, present))
+        print(("OK " if present else "MISMATCH "), f"site must contain {site_required!r}")
+    site_has_na = "N/A" in site
+    checks.append(("site_free_of:N/A", 0 if site_has_na else 1, 1, not site_has_na))
+    print(("OK " if not site_has_na else "MISMATCH "), "site must not contain 'N/A'")
 
     bad = [c for c in checks if not c[3]]
     out = ROOT / "docs/reports/final/twinworld_number_check.md"

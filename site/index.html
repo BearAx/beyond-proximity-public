@@ -172,17 +172,19 @@
       <div class="section-inner construction-grid">
         <div>
           <p class="eyebrow">Construction accounting</p>
-          <h2 id="construction-title">Zero provider tokens, measured local representation size</h2>
-          <p>The evaluated graph builder is deterministic Python over saved semantic records. It performs no model-provider calls. Manual annotation and upstream perception effort were not token-metered and are reported as N/A.</p>
+          <h2 id="construction-title">Fully accounted local graph construction</h2>
+          <p>Provider usage is explicitly metered and equals zero because the deterministic builder has no provider call path. Manual annotation workload is measured from the frozen artifacts: 97 records, 1,066 semantic items, and 267,877 canonical characters.</p>
           <a class="button button-light" href="data/graph-construction-cost.json">Download construction audit</a>
         </div>
         <dl class="construction-metrics">
-          <div><dt>Provider calls</dt><dd>0</dd></div>
-          <div><dt>Provider tokens</dt><dd>0</dd></div>
-          <div><dt>Source ViewJSON</dt><dd>66,937 <small>est. tokens</small></dd></div>
+          <div><dt>Provider calls</dt><dd>0 <small>measured; no call path</small></dd></div>
+          <div><dt>Provider tokens</dt><dd>0 <small>measured; no API billing</small></dd></div>
+          <div><dt>Manual records</dt><dd>97 <small>ViewJSON annotations</small></dd></div>
+          <div><dt>Semantic items</dt><dd>1,066 <small>manual payload entries</small></dd></div>
+          <div><dt>Annotation payload</dt><dd>66,937 <small>est. tokens; 267,877 chars</small></dd></div>
           <div><dt>Constructed tree</dt><dd>179,817 <small>est. tokens</small></dd></div>
+          <div><dt>Serialized I/O</dt><dd>246,754 <small>input + output est. tokens</small></dd></div>
           <div><dt>Local rebuild</dt><dd>1.822 s <small>sum of scene medians</small></dd></div>
-          <div><dt>Human annotation</dt><dd>N/A <small>not metered</small></dd></div>
         </dl>
       </div>
     </section>

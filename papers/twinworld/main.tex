@@ -225,8 +225,11 @@ rebuilds is 1.822\,s. Canonically serialized source records contain 66,937
 estimated tokens and the constructed node records contain 179,817, using
 $\lfloor\text{characters}/4\rfloor$ per record. These latter values measure
 local representation size, not tokens consumed by graph construction or API
-billing. The token cost of prior manual annotation is unmetered and therefore
-N/A rather than zero.
+billing. The manual-annotation artifact workload is measured as 97 records,
+1,066 semantic items, 267,877 canonical characters, and 66,937 input
+token-equivalents. Together with the 179,817 output token-equivalents, the
+serialized build I/O is 246,754 token-equivalents. Historical annotator
+wall-clock time was not logged, so we do not infer a person-hour value.
 
 \subsection{Internal digital-twin pilots}
 Five manually captured scenes (Conference Hall, Museum, Theater, outdoor drone/street; 97 views) provide digital-twin prototype evidence (Fig.~\ref{fig:scenes}). Metrics are views checked, estimated context tokens, and hit@$k$ on verified view labels. The frozen internal run sums $\lfloor\text{characters}/4\rfloor$ over serialized view records; public-pilot records round total prompt characters divided by four. These deterministic estimates are context-size proxies, not provider billing usage. Manual annotations are \emph{reference labels}, not independent public GT.

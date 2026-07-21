@@ -9,11 +9,15 @@ This audit rebuilds the five captured-scene semantic graphs from their saved man
 - Views: **97**
 - Semantic items: **1066**
 - Constructed nodes: **1064**
+- Manual annotation records: **97**
+- Manual semantic items: **1066**
+- Manual annotation characters: **267,877** canonical serialized characters
 - Source ViewJSON size: **66,937** estimated tokens (characters/4 proxy)
 - Constructed tree size: **179,817** estimated tokens (characters/4 proxy)
+- Total serialized build I/O: **246,754** estimated tokens (input + output)
 - Sum of per-scene median local build times: **1.822177 s**
 
-Provider tokens and serialized token-equivalents are different quantities. The graph builder is local and deterministic, so provider usage is zero. The size proxies report how much text the saved source and tree representations contain; they are not API billing. Manual annotation effort was not metered and remains N/A.
+Provider tokens and serialized token-equivalents are different quantities. Provider usage is an instrumented zero because the graph builder is local and deterministic. Manual annotation workload is metered from the frozen artifacts as record count, semantic-item count, canonical characters, and token-equivalent payload. Historical annotator wall-clock time was not logged, so no person-hour value is inferred.
 
 ## Per Scene
 

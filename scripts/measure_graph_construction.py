@@ -2,8 +2,8 @@
 """Measure deterministic graph construction over the five captured scenes.
 
 The builder does not call a language-model provider. This script records that
-zero-token fact separately from local serialized-text token equivalents, which
-describe representation size rather than API usage or annotation effort.
+measured zero-token fact separately from serialized-text token equivalents and
+from the saved manual-annotation artifact workload.
 """
 from __future__ import annotations
 
@@ -127,8 +127,16 @@ def build_report(scene_ids: list[str], repeats: int) -> dict[str, Any]:
             sum(scene["runtime_seconds"]["median"] for scene in scenes), 6
         ),
     }
+    totals["serialized_io_characters_total"] = (
+        totals["source_viewjson_serialized_characters"]
+        + totals["constructed_tree_serialized_characters"]
+    )
+    totals["serialized_io_estimated_tokens_chars_div_4"] = (
+        totals["source_viewjson_estimated_tokens_chars_div_4"]
+        + totals["constructed_tree_estimated_tokens_chars_div_4"]
+    )
     return {
-        "schema_version": "semanticsplat.graph_construction_cost.v1",
+        "schema_version": "semanticsplat.graph_construction_cost.v2",
         "scope": "five captured manual-ViewJSON pilot scenes",
         "builder": "scripts/build_scene_tree_from_viewjson.py",
         "provider_usage": {
@@ -139,9 +147,17 @@ def build_report(scene_ids: list[str], repeats: int) -> dict[str, Any]:
             "reason": "The measured builder is deterministic local Python and has no provider call path.",
         },
         "annotation_usage": {
-            "token_usage": None,
-            "status": "N/A",
-            "reason": "Manual ViewJSON and zone annotation effort was not captured as model-token usage.",
+            "measurement_basis": "saved manual ViewJSON artifacts",
+            "viewjson_record_count": totals["view_count"],
+            "semantic_item_count": totals["semantic_item_count"],
+            "canonical_serialized_characters": totals["source_viewjson_serialized_characters"],
+            "estimated_tokens_chars_div_4": totals[
+                "source_viewjson_estimated_tokens_chars_div_4"
+            ],
+            "scope_note": (
+                "This meters the produced annotation payload. Historical annotator wall-clock "
+                "time was not logged and is not inferred."
+            ),
         },
         "token_equivalent_definition": (
             "For each canonical compact JSON record, floor(serialized characters / 4), then sum. "
@@ -170,11 +186,15 @@ def markdown_report(report: dict[str, Any]) -> str:
         f"- Views: **{totals['view_count']}**",
         f"- Semantic items: **{totals['semantic_item_count']}**",
         f"- Constructed nodes: **{totals['node_count']}**",
+        f"- Manual annotation records: **{totals['view_count']}**",
+        f"- Manual semantic items: **{totals['semantic_item_count']}**",
+        f"- Manual annotation characters: **{totals['source_viewjson_serialized_characters']:,}** canonical serialized characters",
         f"- Source ViewJSON size: **{totals['source_viewjson_estimated_tokens_chars_div_4']:,}** estimated tokens (characters/4 proxy)",
         f"- Constructed tree size: **{totals['constructed_tree_estimated_tokens_chars_div_4']:,}** estimated tokens (characters/4 proxy)",
+        f"- Total serialized build I/O: **{totals['serialized_io_estimated_tokens_chars_div_4']:,}** estimated tokens (input + output)",
         f"- Sum of per-scene median local build times: **{totals['median_runtime_seconds_sum']:.6f} s**",
         "",
-        "Provider tokens and serialized token-equivalents are different quantities. The graph builder is local and deterministic, so provider usage is zero. The size proxies report how much text the saved source and tree representations contain; they are not API billing. Manual annotation effort was not metered and remains N/A.",
+        "Provider tokens and serialized token-equivalents are different quantities. Provider usage is an instrumented zero because the graph builder is local and deterministic. Manual annotation workload is metered from the frozen artifacts as record count, semantic-item count, canonical characters, and token-equivalent payload. Historical annotator wall-clock time was not logged, so no person-hour value is inferred.",
         "",
         "## Per Scene",
         "",

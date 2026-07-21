@@ -1,5 +1,5 @@
 {
-  "schema_version": "semanticsplat.graph_construction_cost.v1",
+  "schema_version": "semanticsplat.graph_construction_cost.v2",
   "scope": "five captured manual-ViewJSON pilot scenes",
   "builder": "scripts/build_scene_tree_from_viewjson.py",
   "provider_usage": {
@@ -10,9 +10,12 @@
     "reason": "The measured builder is deterministic local Python and has no provider call path."
   },
   "annotation_usage": {
-    "token_usage": null,
-    "status": "N/A",
-    "reason": "Manual ViewJSON and zone annotation effort was not captured as model-token usage."
+    "measurement_basis": "saved manual ViewJSON artifacts",
+    "viewjson_record_count": 97,
+    "semantic_item_count": 1066,
+    "canonical_serialized_characters": 267877,
+    "estimated_tokens_chars_div_4": 66937,
+    "scope_note": "This meters the produced annotation payload. Historical annotator wall-clock time was not logged and is not inferred."
   },
   "token_equivalent_definition": "For each canonical compact JSON record, floor(serialized characters / 4), then sum. This is a local representation-size proxy, not provider billing usage.",
   "runtime_definition": "Wall-clock rebuild in a fresh temporary output directory; median/min/max over repeats.",
@@ -25,7 +28,9 @@
     "source_viewjson_estimated_tokens_chars_div_4": 66937,
     "constructed_tree_serialized_characters": 720910,
     "constructed_tree_estimated_tokens_chars_div_4": 179817,
-    "median_runtime_seconds_sum": 1.822177
+    "median_runtime_seconds_sum": 1.822177,
+    "serialized_io_characters_total": 988787,
+    "serialized_io_estimated_tokens_chars_div_4": 246754
   },
   "scenes": [
     {

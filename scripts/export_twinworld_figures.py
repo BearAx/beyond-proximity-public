@@ -215,7 +215,8 @@ def render_system_overview() -> None:
     ax_graph.text(
         5.5, 0.08,
         f"five scenes: {totals['view_count']} views  |  {totals['semantic_item_count']:,} items  |  "
-        f"{construction['provider_usage']['total_tokens']} provider construction tokens",
+        f"{totals['source_viewjson_estimated_tokens_chars_div_4']:,} input / "
+        f"{totals['constructed_tree_estimated_tokens_chars_div_4']:,} tree token-equiv.",
         ha="center", va="bottom", fontsize=5.25, color=GRAY,
     )
 
