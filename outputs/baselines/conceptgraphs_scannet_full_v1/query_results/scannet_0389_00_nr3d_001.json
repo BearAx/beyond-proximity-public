@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "50418e63-62ac-478b-a42b-dbf80094f9ab"
+  ],
+  "selected_views": [
+    "v002"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "tissue box",
+    "selected_node_id": "50418e63-62ac-478b-a42b-dbf80094f9ab",
+    "selected_view_id": "v002",
+    "bbox_2d": [
+      0.18125,
+      0.378125,
+      0.275,
+      0.5125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.852962166072718,
+        -2.1972414446792166,
+        -0.04177497917854289
+      ],
+      "max": [
+        -1.4981484549396704,
+        -1.5295131070916965,
+        0.3738772453524781
+      ],
+      "minimum": [
+        -1.852962166072718,
+        -2.1972414446792166,
+        -0.04177497917854289
+      ],
+      "maximum": [
+        -1.4981484549396704,
+        -1.5295131070916965,
+        0.3738772453524781
+      ],
+      "center": [
+        -1.6755553105061942,
+        -1.8633772758854565,
+        0.16605113308696762
+      ],
+      "size": [
+        0.3548137111330476,
+        0.66772833758752,
+        0.415652224531021
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2986304759979248,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 11 with class 'tissue box' and cosine similarity 0.298630."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.3252522135000315,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 64.49080078799943,
+      "native_batch_query_total": 1.9515132810001887,
+      "native_batch_query_per_query": 0.3252522135000315
+    },
+    "token_usage": {
+      "input_tokens": 9,
+      "output_tokens": 0,
+      "total_tokens": 9,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 37,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0389_00",
+  "query_id": "scannet_0389_00_nr3d_001",
+  "query": "The white bag on the left.",
+  "query_type": "relational"
+}

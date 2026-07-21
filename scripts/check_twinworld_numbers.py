@@ -6,6 +6,13 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+CAPTURE_SCENES = (
+    "ConferenceHall-capture-pilot",
+    "Museume-capture",
+    "Theater-capture",
+    "outdoor-street-capture",
+    "outdoor-drone-capture",
+)
 
 # Freeze values that must appear in papers/twinworld/main.tex (source: JSON below).
 FIVE = {
@@ -63,6 +70,35 @@ def main() -> int:
     check("five.tok_sum_flat", tok_sum_flat, FIVE["tok_sum_flat"], tol=5)
     check("five.tok_sum_graph", tok_sum_graph, FIVE["tok_sum_graph"], tol=5)
 
+    captured_view_count = sum(
+        len(list((ROOT / "backend/data/scenes" / scene_id / "views").glob("*.json")))
+        for scene_id in CAPTURE_SCENES
+    )
+    check("five.captured_view_count", captured_view_count, 97, tol=0)
+
+    construction = json.loads(
+        (ROOT / "docs/reports/final/graph_construction_cost.json").read_text(encoding="utf-8")
+    )
+    construction_totals = construction["totals"]
+    provider_usage = construction["provider_usage"]
+    check("construction.provider_calls", provider_usage["model_call_count"], 0, tol=0)
+    check("construction.provider_tokens", provider_usage["total_tokens"], 0, tol=0)
+    check("construction.views", construction_totals["view_count"], 97, tol=0)
+    check("construction.items", construction_totals["semantic_item_count"], 1066, tol=0)
+    check("construction.nodes", construction_totals["node_count"], 1064, tol=0)
+    check(
+        "construction.source_token_equivalent",
+        construction_totals["source_viewjson_estimated_tokens_chars_div_4"],
+        66937,
+        tol=0,
+    )
+    check(
+        "construction.tree_token_equivalent",
+        construction_totals["constructed_tree_estimated_tokens_chars_div_4"],
+        179817,
+        tol=0,
+    )
+
     for track, n, g_obj, f_obj, acc in [
         ("replica_pilot_v1", 56, 12.107143, 71.875, 1.0),
         ("scannet_pilot_v1", 48, 11.229167, 49.0, 0.270833),
@@ -98,15 +134,109 @@ def main() -> int:
             tol=0.05,
         )
 
+    conceptgraphs = json.loads(
+        (ROOT / "outputs/baselines/conceptgraphs_scannet_full_v1/metrics_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )["metrics"]
+    check("conceptgraphs_scannet.n", conceptgraphs["bbox_acc_at_0_25"]["denominator"], 48, tol=0)
+    check("conceptgraphs_scannet.acc025", conceptgraphs["bbox_acc_at_0_25"]["value"], 0.0625, tol=0)
+    check("conceptgraphs_scannet.mean_iou", conceptgraphs["bbox_3d_iou"]["value"], 0.0696, tol=0.0001)
+    check("conceptgraphs_scannet.runtime", conceptgraphs["runtime_seconds"]["mean"], 0.3363, tol=0.0001)
+    check("conceptgraphs_scannet.tokens", conceptgraphs["token_usage"]["total"], 627, tol=0)
+
+    conceptgraphs_replica = json.loads(
+        (ROOT / "outputs/baselines/conceptgraphs_replica_full_v1/metrics_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )["metrics"]
+    check(
+        "conceptgraphs_replica.n",
+        conceptgraphs_replica["bbox_acc_at_0_25"]["denominator"],
+        48,
+        tol=0,
+    )
+    check(
+        "conceptgraphs_replica.acc025",
+        conceptgraphs_replica["bbox_acc_at_0_25"]["value"],
+        0.0625,
+        tol=0,
+    )
+    check(
+        "conceptgraphs_replica.mean_iou",
+        conceptgraphs_replica["bbox_3d_iou"]["value"],
+        0.0624,
+        tol=0.0001,
+    )
+    check(
+        "conceptgraphs_replica.runtime",
+        conceptgraphs_replica["runtime_seconds"]["mean"],
+        0.2743,
+        tol=0.0001,
+    )
+    check(
+        "conceptgraphs_replica.tokens",
+        conceptgraphs_replica["token_usage"]["total"],
+        459,
+        tol=0,
+    )
+
+    langsplat = json.loads(
+        (ROOT / "outputs/baselines/langsplat_scannet_full_v1/metrics_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )["metrics"]
+    check("langsplat_scannet.n", langsplat["retrieval_success"]["denominator"], 6, tol=0)
+    check("langsplat_scannet.view_hit", langsplat["expected_view_hit"]["value"], 0.6667, tol=0.0001)
+    check("langsplat_scannet.runtime", langsplat["runtime_seconds"]["mean"], 2.0365, tol=0.0001)
+    check("langsplat_scannet.tokens", langsplat["token_usage"]["total"], 74, tol=0)
+    check("langsplat_scannet.iou_na", langsplat["bbox_3d_iou"]["denominator"], 0, tol=0)
+
     # Paper must not still claim the superseded PERSON1_DELIVERABLE roundings.
     tex = (ROOT / "papers/twinworld/main.tex").read_text(encoding="utf-8")
-    forbidden = ["71.4\\%", "65.1\\%", "0.792", "19.2 to 5.39", "from 19.2", "3104 to 1062"]
+    forbidden = [
+        "71.4\\%",
+        "65.1\\%",
+        "0.792",
+        "19.2 to 5.39",
+        "from 19.2",
+        "3104 to 1062",
+        "96 views",
+        "Person 1",
+        "Person 2",
+        "Person 3",
+        "Person 4",
+        "Person~",
+        "calibrated fallback",
+        "\\subsection{Capture and semantic index}",
+        "XXXXX",
+    ]
     for s_bad in forbidden:
         present = s_bad in tex
         checks.append((f"tex_free_of:{s_bad}", 0 if present else 1, 1, not present))
         print(("OK " if not present else "MISMATCH "), f"tex must not contain {s_bad!r}")
 
-    required = ["75.5\\%", "68.2\\%", "0.68", "19.4", "4.77"]
+    required = [
+        "97 views", "75.5\\%", "68.2\\%", "0.68", "19.4", "4.77",
+        "Acc@.25 $=.063$", "view hit $=.667$", "0.0696", "0.0624",
+        "CG--Replica", "& .274 & 459",
+        "[73.2,77.7]", "[65.3,71.0]", "[-0.184,0.008]", "20,260,715",
+        "\\subsection{Hierarchical query representation}",
+        "Hierarchical semantic tree used at query time",
+        "through zone, region, object, and view-observation levels",
+        "c_i=(\\mathrm{id}_i,\\tau_i,A_i,y_i,x_i,R_i,B_i,V_i)",
+        "\\subsection{Captured-scene zone pruning}",
+        "\\subsection{Object-level lexical and intent scoring}",
+        "\\subsection{Target--anchor spatial reasoning}",
+        "\\subsection{Fallback, variants, and measured cost}",
+        "\\subsection{Input representation and index construction}",
+        "figures/fig_method_workflow.pdf",
+        "provider calls and zero provider input/output tokens",
+        "66,937",
+        "179,817",
+        "1.822\\,s",
+        "annotation is unmetered and therefore",
+    ]
     for s_ok in required:
         present = s_ok in tex
         checks.append((f"tex_has:{s_ok}", 1 if present else 0, 1, present))
@@ -119,7 +249,7 @@ def main() -> int:
         "",
         "Source of truth: `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json`",
         "",
-        f"Checks: {len(checks)} · mismatches: {len(bad)}",
+        f"Checks: {len(checks)} - mismatches: {len(bad)}",
         "",
         "| Name | Got | Expected | OK |",
         "|---|---:|---:|:---:|",

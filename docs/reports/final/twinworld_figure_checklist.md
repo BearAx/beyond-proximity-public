@@ -1,12 +1,13 @@
-# TwinWorld Figure Checklist (Person 4)
+# Workshop Paper Figure Checklist
 
-Status date: 2026-07-14.
+Status date: 2026-07-21.
 
 ## Required by plan
 
 | Figure | Status | Path / note |
 |---|---|---|
-| System overview (capture → tree → query) | **done** | `fig_system_overview.pdf` via `scripts/export_twinworld_figures.py` |
+| Evidence-backed method workflow (RGB-D -> ViewJSON -> hierarchy -> graph/flat -> evidence) | **done** | `fig_method_workflow.pdf` via `scripts/export_twinworld_figures.py`; real Conference Hall v018, frozen qv2_010, and construction audit |
+| Controlled evaluation protocol | **done** | `fig_evaluation_protocol.pdf` |
 | Captured-scene visual examples | **done** | `fig_scene_gallery.pdf` (needs `git lfs pull` for scene PNGs) |
 | Graph/tree traversal | **done** | `fig_tree_traversal.pdf` |
 | Query → node/view/object/bbox example | **done** | `fig_qualitative_bbox.pdf` (default scene v018/v012) |

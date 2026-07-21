@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "6b23494d-8fac-4648-b974-ecf8f638a822"
+  ],
+  "selected_views": [
+    "v001"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "storage bin",
+    "selected_node_id": "6b23494d-8fac-4648-b974-ecf8f638a822",
+    "selected_view_id": "v001",
+    "bbox_2d": [
+      0.6328125,
+      0.521875,
+      0.8234375,
+      0.859375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -0.993055149517776,
+        1.6853883115213666,
+        0.3981946331854877
+      ],
+      "max": [
+        -0.7073162848925485,
+        2.2601628761584527,
+        0.9705158205459807
+      ],
+      "minimum": [
+        -0.993055149517776,
+        1.6853883115213666,
+        0.3981946331854877
+      ],
+      "maximum": [
+        -0.7073162848925485,
+        2.2601628761584527,
+        0.9705158205459807
+      ],
+      "center": [
+        -0.8501857172051622,
+        1.9727755938399096,
+        0.6843552268657342
+      ],
+      "size": [
+        0.28573886462522746,
+        0.5747745646370861,
+        0.572321187360493
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.42150700092315674,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'storage bin' and cosine similarity 0.421507."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.3393861945000178,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 59.22912305199998,
+      "native_batch_query_total": 2.0363171670001066,
+      "native_batch_query_per_query": 0.3393861945000178
+    },
+    "token_usage": {
+      "input_tokens": 21,
+      "output_tokens": 0,
+      "total_tokens": 21,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 19,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0086_00",
+  "query_id": "scannet_0086_00_nr3d_001",
+  "query": "The correct trash can is on the wall and to the right of a tan paper towel dispenser.",
+  "query_type": "relational"
+}

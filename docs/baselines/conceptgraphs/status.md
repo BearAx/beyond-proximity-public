@@ -1,106 +1,51 @@
 # ConceptGraphs Status
 
-Status date: 2026-07-06. Status: `FULL_FIVE_SCENE_DONE_WITH_LIMITATIONS`.
+Status date: 2026-07-15. Status: `PUBLIC_DATA_RUNS_DONE_WITH_LIMITATIONS`.
 
-## Evidence
+## Completed Native Runs
 
-| Check | Status | Evidence |
-|---|---|---|
-| In-repo checkout | not used | Smoke uses Docker image `semanticsplat-conceptgraphs:72f5962` built from the official repository revision |
-| External checkout | present but not required for smoke | `C:/GitProjects/baseline-deps/concept-graphs` exists; Docker image is the execution evidence |
-| Conda env | not required | Smoke runs in Docker, not the missing local `conceptgraph` Conda env |
-| Docker runtime | available | Docker Desktop and GPU passthrough were used for ConceptGraphs |
-| Checkpoints/assets | present for smoke | `C:/GitProjects/baseline-deps/model-cache/yolov8l-world.pt`, `mobile_sam.pt`, and HF CLIP cache were used |
-| Official smoke entrypoint | present | `scripts/run_conceptgraphs_smoke.ps1` |
-| Native output | present | `outputs/baselines/conceptgraphs_smoke_v1/native_results.json` |
-| Canonical output | present | `outputs/baselines/conceptgraphs_smoke_v1/query_results/q051.json` |
-| Metrics summary | present | `outputs/baselines/conceptgraphs_smoke_v1/metrics_summary.json` |
-| Full five-scene output | present with limitations | `outputs/baselines/conceptgraphs_full_v1/` |
-| Full five-scene result note | present | `docs/baselines/conceptgraphs/conceptgraphs_full_result.md` |
-| Canonical adapter | present | `scripts/adapt_conceptgraphs_output.py` |
-| Adapter tests | present | `tests/backend/test_baseline_adapters.py` |
+| Dataset | Scenes | RGB-D views | Queries | Native maps | Acc@0.25 | Evidence |
+|---|---:|---:|---:|---:|---:|---|
+| ScanNet | 8 | 39 | 48 / 48 | 8 / 8 nonempty | 0.0625 | `outputs/baselines/conceptgraphs_scannet_full_v1/` |
+| Replica | 8 | 40 | 56 / 56 | 8 / 8 nonempty | 0.0625 | `outputs/baselines/conceptgraphs_replica_full_v1/` |
 
-## Smoke Result
+Both runs use official RGB-D, metric depth, absolute camera poses, native
+YOLO-World + MobileSAM detection, ConceptGraphs object mapping, and OpenCLIP
+ViT-H-14 retrieval. They execute in Docker image
+`semanticsplat-conceptgraphs:72f5962`, pinned to official repository revision
+`72f5962822b5e8678a446f367a06df1a977d2a4d`.
 
-ConceptGraphs executed a one-frame native smoke on `ConferenceHall-capture-pilot`. The run converted one captured RGB-D frame to the ConceptGraphs Azure-style layout, ran native detection, augmented missing caption metadata required by the pinned mapping script, wrote a ConceptGraphs map, queried it with CLIP retrieval, and adapted one canonical result.
+The ScanNet run uses 39 selected views. The Replica run uses five evenly spaced
+frames from each 2,000-frame trajectory (40 total), so it is a full-scene and
+full-query sampled-map run, not full-trajectory mapping.
 
-Observed canonical result:
+## Results
 
-```text
-query_id = q051
-mode = live
-schema_valid_result_count = 1
-native object count = 16
-matched_object = sofa chair
-confidence = 0.2810319662094116
-accuracy_eligible_result_count = 0
-```
+| Metric | ScanNet | Replica |
+|---|---:|---:|
+| Schema-valid outputs | 48 / 48 | 56 / 56 |
+| Positive-query label hit | 8 / 48 | 7 / 48 |
+| Exact object-ID hit | 0 / 48 | 0 / 48 |
+| Mean 3D IoU | 0.0696 | 0.0624 |
+| Acc@0.1 | 0.2917 | 0.1667 |
+| Acc@0.25 | 0.0625 | 0.0625 |
+| Acc@0.5 | 0.0000 | 0.0417 |
+| Mean query runtime | 0.3363 s | 0.2743 s |
+| Local text tokens | 627 | 459 |
 
-This smoke is superseded by the five-scene captured-scene run below for
-ConceptGraphs execution evidence. Query `q051` has `verification_status:
-missing_gt`, so smoke accuracy, retrieval success, and 3D IoU are unavailable.
-
-## Full Five-Scene Result
-
-ConceptGraphs was run through Docker image `semanticsplat-conceptgraphs:72f5962`
-over the five captured scenes and adapted to the 150-query v2 benchmark.
-
-Observed canonical result:
-
-```text
-run_id = conceptgraphs_full_v1
-canonical results = 150 / 150
-schema-valid results = 150 / 150
-retrieval_success = 0.7000
-expected_view_hit = 0.2240
-expected_node_hit = 0.0000
-expected_zone_hit = 0.0000
-token_usage = 1205 OpenCLIP text tokens / 150 queries
-bbox_3d_iou = 0.0490 over 100 records
-```
-
-The token usage field is local OpenCLIP `ViT-H-14` text-tokenizer usage, not
-provider/API billing usage.
-
-The 3D IoU field uses Person 2 manual coarse depth-projected boxes from
-`docs/benchmarks/manual_bbox_gt_v2.json`. It is an internal regression signal,
-not official Replica/ScanNet or independent dataset GT.
-
-Native map object counts:
-
-```text
-ConferenceHall-capture-pilot = 313
-Museume-capture = 150
-Theater-capture = 183
-outdoor-street-capture = 43
-outdoor-drone-capture = 0
-```
-
-The drone scene is an explicit baseline miss case: native detection/mapping
-produced a saved map artifact with zero serialized objects, so all 30 drone
-query outputs are `found=false`.
-
-Known warning: `streamlined_mapping.py` writes the map artifact and then exits non-zero while generating its internal report (`KeyError: 'Sort Key'`). The wrapper continues only when the expected native map file exists.
-
-## Reproduction Command
-
-Run:
+## Reproduction
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_conceptgraphs_smoke.ps1
+powershell -ExecutionPolicy Bypass -File scripts\run_conceptgraphs_public.ps1 -Dataset scannet
+powershell -ExecutionPolicy Bypass -File scripts\run_conceptgraphs_public.ps1 -Dataset replica -ReplicaFramesPerScene 5
 ```
 
-Then evaluate:
+The pinned mapper has a known post-save `KeyError: Sort Key` while generating
+its internal report. The wrapper accepts this only after verifying that the
+native map artifact exists.
 
-```powershell
-python -B scripts\evaluate_results.py `
-  --benchmark docs\benchmarks\benchmark_queries_v1.json `
-  --run-dir outputs\baselines\conceptgraphs_smoke_v1
-```
+## Interpretation Boundary
 
-## Remaining Gap
-
-The smoke proves native ConceptGraphs execution and canonical adaptation for one
-captured frame/query. The full run proves five captured-scene native execution
-and canonical adaptation, but it still does not prove official Replica/ScanNet
-performance, independent semantic accuracy, or 3D IoU.
+These are real predicted-map public-dataset executions, but they are not fair
+rankings against SemanticSplat's oracle-map public pilots. Returning a top
+object is not accuracy, and the local token counts are not API billing tokens.

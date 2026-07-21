@@ -1,7 +1,6 @@
-# Claim Audit — TwinWorld Week 6 (Person 4)
+# Workshop Paper Claim Audit
 
-Status date: 2026-07-14. Owner: Person 4 (Telman).  
-Branch: `week6-person4` (base: `week6-person3` = P1+P2+P3).  
+Status date: 2026-07-15.
 Paper: `papers/twinworld/main.tex`.
 
 ## Central claim (allowed)
@@ -22,10 +21,11 @@ Paper: `papers/twinworld/main.tex`.
 | Relation rerank does not help this pilot | **supported** | no-relation Acc@0.25 = 0.292 > 0.271 |
 | mAcc/mIoU/fmIoU | **N/A** — must stay N/A | bbq_aligned_metrics.md |
 | BBQ superiority | **forbidden** | no `outputs/baselines/bbq_*` |
-| ConceptGraphs five-scene full run | **supported_with_limits** (captured only) | conceptgraphs_full_result.md |
-| LangSplat five-scene accuracy | **unsupported** (smoke only) | langsplat_smoke_result.md |
+| ConceptGraphs ScanNet predicted-map run (8 scenes / 48 queries) | **supported_with_limits** | `outputs/baselines/conceptgraphs_scannet_full_v1/` |
+| ConceptGraphs Replica sampled-map run (8 scenes / 56 queries) | **supported_with_limits** | `outputs/baselines/conceptgraphs_replica_full_v1/` |
+| LangSplat end-to-end ScanNet pilot (1 scene / 6 queries) | **supported_with_limits** | `outputs/baselines/langsplat_scannet_full_v1/` |
 | Live VLM evaluation | **out of scope** | — |
-| Stale “1,046 semantic items” as current absolute truth | **avoid** | outdoor-street recheck can differ; use 96 views + “~1k items” or freeze a count with a path |
+| Stale “1,046 semantic items” as current absolute truth | **avoid** | outdoor-street recheck can differ; use the verified 97-view count or freeze an item count with a path |
 | Superseded PERSON1 roundings (71.4% / 0.792 hit@1) | **forbidden in TwinWorld PDF** | prefer frozen JSON; see note below |
 
 ## Superseded note
@@ -41,11 +41,11 @@ Paper: `papers/twinworld/main.tex`.
 - Presenting internal hit@k as Acc@0.25
 - “preserving retrieval quality” on the internal five-scene track without mentioning the hit@k tradeoff
 
-## Team freeze pointers
+## Evidence pointers
 
-| Role | Artifact |
+| Area | Artifact |
 |---|---|
-| P1 | `docs/datasets/replica_scannet_plan.md`, availability manifests, configs |
-| P2 | `docs/experiments/public_datasets/person2_grounding_results.md`, `scripts/evaluate_grounding.py` |
-| P3 | `docs/baselines/bbq_comparison.md`, `baseline_status.md` |
-| P4 | `papers/twinworld/`, this audit, figure/submission checklists, `twinworld_reproducibility.md` |
+| Datasets | `docs/datasets/replica_scannet_plan.md`, availability manifests, configs |
+| Evaluation | `docs/experiments/public_datasets/person2_grounding_results.md`, `scripts/evaluate_grounding.py` |
+| Baselines | `docs/baselines/bbq_comparison.md`, `baseline_status.md` |
+| Paper | `papers/twinworld/`, this audit, figure/submission checklists, `twinworld_reproducibility.md` |

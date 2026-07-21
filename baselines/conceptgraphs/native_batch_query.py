@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import json
+import os
 import pickle
 import time
 from pathlib import Path
@@ -199,8 +200,11 @@ def main() -> None:
 
     objects = MapObjectList(device="cuda")
     objects.load_serializable(serialized_objects)
+    clip_checkpoint = os.environ.get(
+        "SEMANTICSPLAT_OPENCLIP_CHECKPOINT", "laion2b_s32b_b79k"
+    )
     model, _, _ = open_clip.create_model_and_transforms(
-        "ViT-H-14", pretrained="laion2b_s32b_b79k"
+        "ViT-H-14", pretrained=clip_checkpoint
     )
     model = model.eval().cuda()
     tokenizer = open_clip.get_tokenizer("ViT-H-14")

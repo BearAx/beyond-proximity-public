@@ -23,6 +23,21 @@ def main() -> None:
     if not transforms_path.is_file():
         raise SystemExit(f"Missing transforms.json: {transforms_path}")
     transforms = json.loads(transforms_path.read_text(encoding="utf-8"))
+    source_metadata_path = args.scene / "source_metadata.json"
+    source_metadata = (
+        json.loads(source_metadata_path.read_text(encoding="utf-8"))
+        if source_metadata_path.is_file()
+        else {}
+    )
+    source_warning = str(source_metadata.get("warning") or "").lower()
+    if "no rendered rgb-d camera trajectory" in source_warning:
+        raise SystemExit(
+            f"{args.scene.name} is mesh-level GT only, not a native RGB-D trajectory"
+        )
+    if int(transforms.get("w", 0)) <= 4 or int(transforms.get("h", 0)) <= 4:
+        raise SystemExit(
+            f"{args.scene.name} has placeholder camera dimensions; refusing baseline conversion"
+        )
     frames = transforms.get("frames", [])[: args.limit]
     if not frames:
         raise SystemExit("Scene contains no frames")
@@ -86,13 +101,20 @@ def main() -> None:
     }
     config_path = args.out / "captured_scene.yaml"
     config_path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
+    source_dataset = source_metadata.get("source_dataset")
+    pose_convention = (
+        f"official {source_dataset} OpenCV camera-to-world"
+        if source_dataset in {"ScanNet", "Replica"}
+        else "source camera-to-world; camera-axis convention documented by source scene"
+    )
     (scene_out / "conversion_manifest.json").write_text(
         json.dumps({
             "adapter": "semanticsplat_capture_to_conceptgraphs_azure_v1",
             "scene_id": scene_id,
             "frame_count": len(manifest_frames),
             "frames": manifest_frames,
-            "pose_convention": "source Three.js camera-to-world; metric alignment unverified",
+            "pose_convention": pose_convention,
+            "source_metadata": str(source_metadata_path) if source_metadata_path.is_file() else None,
         }, indent=2) + "\n",
         encoding="utf-8",
     )

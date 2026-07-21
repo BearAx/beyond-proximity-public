@@ -1,0 +1,52 @@
+{
+  "schema_version": "semanticsplat.public_site_dataset_manifest.v1",
+  "generated_for": "SemanticSplat project page",
+  "redistribution_policy": "The site publishes identifiers, metadata, derived metrics, and code. It does not redistribute licensed ScanNet or Replica scene files.",
+  "datasets": [
+    {
+      "name": "Team-captured RGB-D pilots",
+      "access": "Repository scene records; team-owned captures",
+      "scene_ids": [
+        "ConferenceHall-capture-pilot",
+        "Museume-capture",
+        "Theater-capture",
+        "outdoor-street-capture",
+        "outdoor-drone-capture"
+      ],
+      "scene_count": 5,
+      "view_count": 97,
+      "semantic_item_count": 1066,
+      "query_count": 150,
+      "annotation_mode": "manual ViewJSON plus manual zone references",
+      "independent_ground_truth": false
+    },
+    {
+      "name": "ScanNet v2",
+      "official_url": "https://github.com/ScanNet/ScanNet",
+      "scene_ids": [
+        "scene0011_00",
+        "scene0030_00",
+        "scene0046_00",
+        "scene0086_00",
+        "scene0222_00",
+        "scene0378_00",
+        "scene0389_00",
+        "scene0435_00"
+      ],
+      "scene_count": 8,
+      "gt_box_count": 392,
+      "query_count": 48,
+      "query_sources": ["Nr3D", "Sr3D+"],
+      "raw_data_redistributed": false
+    },
+    {
+      "name": "Replica",
+      "official_url": "https://github.com/facebookresearch/Replica-Dataset",
+      "scene_ids": ["room0", "room1", "room2", "office0", "office1", "office2", "office3", "office4"],
+      "scene_count": 8,
+      "gt_box_count": 575,
+      "query_count": 56,
+      "raw_data_redistributed": false
+    }
+  ]
+}

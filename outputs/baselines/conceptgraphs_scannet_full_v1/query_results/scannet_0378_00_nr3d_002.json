@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "08152dd3-2c21-47ff-be9e-906b8cb3ff87"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "cup",
+    "selected_node_id": "08152dd3-2c21-47ff-be9e-906b8cb3ff87",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.909375,
+      0.790625,
+      0.98125,
+      0.8875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        0.605078597213212,
+        0.5355761318096096,
+        0.7437726751644482
+      ],
+      "max": [
+        0.9708095366045824,
+        0.7022579885699486,
+        0.8530418623938396
+      ],
+      "minimum": [
+        0.605078597213212,
+        0.5355761318096096,
+        0.7437726751644482
+      ],
+      "maximum": [
+        0.9708095366045824,
+        0.7022579885699486,
+        0.8530418623938396
+      ],
+      "center": [
+        0.7879440669088972,
+        0.6189170601897791,
+        0.7984072687791439
+      ],
+      "size": [
+        0.36573093939137036,
+        0.16668185676033898,
+        0.10926918722939138
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3149471879005432,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 49 with class 'cup' and cosine similarity 0.314947."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.34056097133331303,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 66.65877008299958,
+      "native_batch_query_total": 2.043365827999878,
+      "native_batch_query_per_query": 0.34056097133331303
+    },
+    "token_usage": {
+      "input_tokens": 9,
+      "output_tokens": 0,
+      "total_tokens": 9,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 70,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0378_00",
+  "query_id": "scannet_0378_00_nr3d_002",
+  "query": "The cup closest to the door.",
+  "query_type": "relational"
+}

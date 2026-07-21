@@ -1,0 +1,270 @@
+{
+  "schema_version": "semanticsplat.run_config.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "status": "complete",
+  "scene_ids": [
+    "scannet_0011_00",
+    "scannet_0030_00",
+    "scannet_0046_00",
+    "scannet_0086_00",
+    "scannet_0222_00",
+    "scannet_0378_00",
+    "scannet_0389_00",
+    "scannet_0435_00"
+  ],
+  "scenes": [
+    {
+      "scene_id": "scannet_0011_00",
+      "benchmark_scene_id": "scannet_0011_00"
+    },
+    {
+      "scene_id": "scannet_0030_00",
+      "benchmark_scene_id": "scannet_0030_00"
+    },
+    {
+      "scene_id": "scannet_0046_00",
+      "benchmark_scene_id": "scannet_0046_00"
+    },
+    {
+      "scene_id": "scannet_0086_00",
+      "benchmark_scene_id": "scannet_0086_00"
+    },
+    {
+      "scene_id": "scannet_0222_00",
+      "benchmark_scene_id": "scannet_0222_00"
+    },
+    {
+      "scene_id": "scannet_0378_00",
+      "benchmark_scene_id": "scannet_0378_00"
+    },
+    {
+      "scene_id": "scannet_0389_00",
+      "benchmark_scene_id": "scannet_0389_00"
+    },
+    {
+      "scene_id": "scannet_0435_00",
+      "benchmark_scene_id": "scannet_0435_00"
+    }
+  ],
+  "scene_stats": [
+    {
+      "scene_id": "scannet_0011_00",
+      "benchmark_scene_id": "scannet_0011_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 36,
+      "status": "available"
+    },
+    {
+      "scene_id": "scannet_0030_00",
+      "benchmark_scene_id": "scannet_0030_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 69,
+      "status": "available"
+    },
+    {
+      "scene_id": "scannet_0046_00",
+      "benchmark_scene_id": "scannet_0046_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 43,
+      "status": "available"
+    },
+    {
+      "scene_id": "scannet_0086_00",
+      "benchmark_scene_id": "scannet_0086_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 19,
+      "status": "available"
+    },
+    {
+      "scene_id": "scannet_0222_00",
+      "benchmark_scene_id": "scannet_0222_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 73,
+      "status": "available"
+    },
+    {
+      "scene_id": "scannet_0378_00",
+      "benchmark_scene_id": "scannet_0378_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 70,
+      "status": "available"
+    },
+    {
+      "scene_id": "scannet_0389_00",
+      "benchmark_scene_id": "scannet_0389_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 37,
+      "status": "available"
+    },
+    {
+      "scene_id": "scannet_0435_00",
+      "benchmark_scene_id": "scannet_0435_00",
+      "query_count": 6,
+      "found_count": 6,
+      "native_map_object_count": 56,
+      "status": "available"
+    }
+  ],
+  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\scannet_bbq_grounding_pilot_v1.json",
+  "native_input": "C:\\GitProjects\\beyond-proximity\\outputs\\baselines\\conceptgraphs_scannet_full_v1",
+  "provenance_by_scene": {
+    "scannet_0011_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0011_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0011_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0011_00/conversion_manifest.json"
+      ]
+    },
+    "scannet_0030_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0030_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0030_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0030_00/conversion_manifest.json"
+      ]
+    },
+    "scannet_0046_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0046_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0046_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0046_00/conversion_manifest.json"
+      ]
+    },
+    "scannet_0086_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0086_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0086_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0086_00/conversion_manifest.json"
+      ]
+    },
+    "scannet_0222_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0222_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0222_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0222_00/conversion_manifest.json"
+      ]
+    },
+    "scannet_0378_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0378_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0378_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0378_00/conversion_manifest.json"
+      ]
+    },
+    "scannet_0389_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0389_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0389_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0389_00/conversion_manifest.json"
+      ]
+    },
+    "scannet_0435_00": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "scannet_0435_00",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/scannet_0435_00/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/scannet_0435_00/conversion_manifest.json"
+      ]
+    }
+  },
+  "depth_validation": {
+    "status": "official_rgbd_metric_depth",
+    "reason": "Native ConceptGraphs consumed official scannet RGB-D and absolute camera-to-world poses."
+  },
+  "bbox_3d_evaluation": {
+    "status": "official_dataset_gt_enabled",
+    "gt_source": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\scannet_bbq_grounding_pilot_v1.json",
+    "prediction_coordinate_frame": "official_scannet_world",
+    "gt_coordinate_frame": "official_scannet_world",
+    "reason": "Native mapping used absolute dataset camera-to-world poses and metric depth."
+  },
+  "result_count": 48,
+  "finished_at": "2026-07-15T22:15:52.375102+00:00"
+}

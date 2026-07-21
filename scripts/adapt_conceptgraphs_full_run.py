@@ -50,6 +50,11 @@ def main() -> None:
     parser.add_argument("--benchmark", type=Path, required=True)
     parser.add_argument("--run-id", default="conceptgraphs_full_v1")
     parser.add_argument("--mode", choices=("live", "cached_live"), default="live")
+    parser.add_argument(
+        "--dataset-scope",
+        choices=("captured", "scannet", "replica"),
+        default="captured",
+    )
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
@@ -85,9 +90,7 @@ def main() -> None:
         if not isinstance(provenance, dict):
             raise SystemExit(f"{native_path} lacks provenance")
         scene_id = require_nonempty_string(provenance, "scene_id", "provenance")
-        benchmark_scene_id = CAPTURE_TO_BENCHMARK.get(scene_id)
-        if benchmark_scene_id is None:
-            raise SystemExit(f"No benchmark scene mapping for {scene_id}")
+        benchmark_scene_id = CAPTURE_TO_BENCHMARK.get(scene_id, scene_id)
         validated_provenance, predictions = validate_native_export(
             native_path, native, baseline="conceptgraphs", scene_id=scene_id
         )
@@ -162,22 +165,39 @@ def main() -> None:
         "benchmark_path": str(args.benchmark),
         "native_input": str(args.native_dir),
         "provenance_by_scene": provenance_by_scene,
-        "depth_validation": {
-            "status": "unverified_for_native_conceptgraphs_metric_alignment",
-            "reason": "RGB-D was valid for native mapping, but metric alignment and independent 3D GT are not established.",
-        },
-        "bbox_3d_evaluation": {
-            "status": "coarse_manual_gt_enabled",
-            "gt_source": "docs/benchmarks/manual_bbox_gt_v2.json",
-            "prediction_coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
-            "gt_coordinate_frame": "camera_to_world",
-            "reason": (
-                "ConceptGraphs consumed the captured source camera-to-world poses; "
-                "3D IoU is reported only as a coarse internal regression signal "
-                "against Person 2 manual depth-projected boxes."
-            ),
-            "not_official_dataset_gt": True,
-        },
+        "depth_validation": (
+            {
+                "status": "official_rgbd_metric_depth",
+                "reason": f"Native ConceptGraphs consumed official {args.dataset_scope} RGB-D and absolute camera-to-world poses.",
+            }
+            if args.dataset_scope in {"scannet", "replica"}
+            else {
+                "status": "unverified_for_native_conceptgraphs_metric_alignment",
+                "reason": "RGB-D was valid for native mapping, but metric alignment and independent 3D GT are not established.",
+            }
+        ),
+        "bbox_3d_evaluation": (
+            {
+                "status": "official_dataset_gt_enabled",
+                "gt_source": str(args.benchmark),
+                "prediction_coordinate_frame": f"official_{args.dataset_scope}_world",
+                "gt_coordinate_frame": f"official_{args.dataset_scope}_world",
+                "reason": "Native mapping used absolute dataset camera-to-world poses and metric depth.",
+            }
+            if args.dataset_scope in {"scannet", "replica"}
+            else {
+                "status": "coarse_manual_gt_enabled",
+                "gt_source": "docs/benchmarks/manual_bbox_gt_v2.json",
+                "prediction_coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+                "gt_coordinate_frame": "camera_to_world",
+                "reason": (
+                    "ConceptGraphs consumed the captured source camera-to-world poses; "
+                    "3D IoU is reported only as a coarse internal regression signal "
+                    "against Person 2 manual depth-projected boxes."
+                ),
+                "not_official_dataset_gt": True,
+            }
+        ),
         "result_count": canonical_count,
         "finished_at": now,
     }
@@ -204,24 +224,35 @@ def main() -> None:
         )
         for scene in scene_stats
     )
-    (args.out / "baseline_summary.md").write_text(
-        "# ConceptGraphs Full Baseline\n\n"
-        f"- Mode: `{args.mode}`\n"
-        f"- Scenes: {len(scenes)}\n"
-        f"- Canonical results: {canonical_count}\n"
-        f"- Native input directory: `{args.native_dir}`\n"
-        "- Scope: full five captured scenes with native ConceptGraphs maps and batch CLIP object retrieval.\n"
-        "- Important limitation: this is not an official Replica/ScanNet run and has no independent 3D IoU GT.\n"
-        "- Empty-scene handling: if a native map has zero objects, outputs are explicit `found=false` misses.\n\n"
-        "Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer tokens, "
-        "not provider/API billing tokens.\n\n"
-        "3D IoU, when evaluated, uses Person 2 manual coarse depth-projected GT boxes "
-        "from `docs/benchmarks/manual_bbox_gt_v2.json`; it is an internal regression "
-        "signal, not official dataset localization GT.\n\n"
-        "## Per-Scene Native Map Status\n\n"
-        "| Scene | Queries | Found outputs | Native map objects | Status |\n"
-        "|---|---:|---:|---:|---|\n"
+    gt_summary = (
+        f"- GT: official `{args.dataset_scope}` object boxes from the benchmark.\n"
+        if args.dataset_scope in {"scannet", "replica"}
+        else "- Important limitation: captured-scene boxes are coarse manual GT, not official dataset GT.\n"
+    )
+    iou_summary = (
+        "3D IoU uses official public-dataset GT boxes in the dataset world frame.\n\n"
+        if args.dataset_scope in {"scannet", "replica"}
+        else "3D IoU uses Person 2 manual coarse depth-projected GT boxes as an internal regression signal.\n\n"
+    )
+    summary = "".join([
+        "# ConceptGraphs Full Baseline\n\n",
+        f"- Mode: `{args.mode}`\n",
+        f"- Scenes: {len(scenes)}\n",
+        f"- Canonical results: {canonical_count}\n",
+        f"- Native input directory: `{args.native_dir}`\n",
+        f"- Scope: `{args.dataset_scope}` scenes with native ConceptGraphs maps and batch CLIP object retrieval.\n",
+        gt_summary,
+        "- Empty-scene handling: if a native map has zero objects, outputs are explicit `found=false` misses.\n\n",
+        "Token usage is measured as OpenCLIP `ViT-H-14` non-padding text-tokenizer tokens, ",
+        "not provider/API billing tokens.\n\n",
+        iou_summary,
+        "## Per-Scene Native Map Status\n\n",
+        "| Scene | Queries | Found outputs | Native map objects | Status |\n",
+        "|---|---:|---:|---:|---|\n",
         f"{scene_rows}\n",
+    ])
+    (args.out / "baseline_summary.md").write_text(
+        summary,
         encoding="utf-8",
     )
     print(f"Adapted {canonical_count} ConceptGraphs result(s): {args.out}")

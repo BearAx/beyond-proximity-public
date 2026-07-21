@@ -561,7 +561,7 @@ def graph_pruned_candidate_ids(
         scored.append((score, child_id))
     best = max((score for score, _ in scored), default=0.0)
     if best <= 0:
-        # No hierarchy evidence: deliberately narrow; calibrated fallback can expand.
+        # No hierarchy evidence: deliberately narrow; thresholded fallback can expand.
         selected = {sorted(child_ids)[0]}
     else:
         selected = {child_id for score, child_id in scored if score >= best * branch_keep_ratio}
@@ -678,7 +678,7 @@ def search_grounding(
 
     Ablations are orthogonal: ``no_hierarchy`` disables graph pruning,
     ``no_relation`` disables relation reranking, and ``no_fallback`` prevents
-    calibrated expansion.  ``flat_embedding`` returns ``status='blocked'`` if
+    thresholded expansion.  ``flat_embedding`` returns ``status='blocked'`` if
     its optional backend cannot be loaded.
     """
     if variant not in SEARCH_VARIANTS:

@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "db8539c3-fca6-4a03-8e41-7fa6f8a7388a"
+  ],
+  "selected_views": [
+    "frame001999"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "cup",
+    "selected_node_id": "db8539c3-fca6-4a03-8e41-7fa6f8a7388a",
+    "selected_view_id": "frame001999",
+    "bbox_2d": [
+      0.12166666666666667,
+      0.0,
+      0.25833333333333336,
+      0.17941176470588235
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        3.1041700089544726,
+        -1.0590608135350292,
+        -1.8589698116774347
+      ],
+      "max": [
+        3.594150876596082,
+        -0.6850723343642118,
+        -1.4914283937341128
+      ],
+      "minimum": [
+        3.1041700089544726,
+        -1.0590608135350292,
+        -1.8589698116774347
+      ],
+      "maximum": [
+        3.594150876596082,
+        -0.6850723343642118,
+        -1.4914283937341128
+      ],
+      "center": [
+        3.3491604427752772,
+        -0.8720665739496205,
+        -1.6751991027057738
+      ],
+      "size": [
+        0.4899808676416093,
+        0.37398847917081746,
+        0.36754141794332185
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.17180675268173218,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 52 with class 'cup' and cosine similarity 0.171807."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.26343256814288907,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 61.140905760999885,
+      "native_batch_query_total": 1.8440279770002235,
+      "native_batch_query_per_query": 0.26343256814288907
+    },
+    "token_usage": {
+      "input_tokens": 7,
+      "output_tokens": 0,
+      "total_tokens": 7,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 54,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_room2",
+  "query_id": "replica_room2_negative_001",
+  "query": "Find the fire hydrant",
+  "query_type": "negative"
+}

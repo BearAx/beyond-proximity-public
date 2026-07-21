@@ -1,10 +1,10 @@
-# TwinWorld reproducibility freeze (Person 4)
+# Workshop paper reproducibility freeze
 
-Status date: 2026-07-14. Integrated branch: `codex/week6-integration`.
+Status date: 2026-07-21. Publication/site branch: `codex/project-site-method-figure`.
 
 ## Commit hash
 
-Person 4 evidence tip audited by integration:
+Paper evidence tip audited by integration:
 
 ```
 62cf94a179f2b9f42a1cb122e0106f5ac957bdf0
@@ -24,6 +24,11 @@ hash without changing the experiment or paper evidence.
 Paper path: `papers/twinworld/main.tex`  
 PDF: `papers/twinworld/main.pdf`
 
+Latest ID-free local PDF check: 14 pages total, 13 content pages, with the
+conclusion followed by references on page 13. The real-data workflow shares
+page 3 with the Method section; there are no float-only pages, placeholder
+paper IDs, team-role labels, clipped figures, or overlapping tables.
+
 ## Evidence sources (do not invent)
 
 | Track | Path |
@@ -32,6 +37,11 @@ PDF: `papers/twinworld/main.pdf`
 | Per-query | `.../per_query_results.json` |
 | Replica pilot | `outputs/public_datasets/replica_pilot_v1/` |
 | ScanNet pilot | `outputs/public_datasets/scannet_pilot_v1/` |
+| ConceptGraphs ScanNet | `outputs/baselines/conceptgraphs_scannet_full_v1/` |
+| ConceptGraphs Replica | `outputs/baselines/conceptgraphs_replica_full_v1/` |
+| LangSplat ScanNet | `outputs/baselines/langsplat_scannet_full_v1/` |
+| Paired bootstrap intervals | `docs/reports/final/twinworld_bootstrap_ci.json` |
+| Graph construction tokens/runtime | `docs/reports/final/graph_construction_cost.json` |
 | Claim audit | `docs/reports/final/twinworld_claim_audit.md` |
 | Number gate | `docs/reports/final/twinworld_number_check.md` |
 
@@ -57,13 +67,18 @@ python -B scripts/export_twinworld_figures.py
 
 # Cross-check numbers vs main.tex
 python -B scripts/check_twinworld_numbers.py
+python -B scripts/compute_twinworld_bootstrap.py
+python -B scripts/measure_graph_construction.py --repeats 7
 
-# PDF (MiKTeX / pdflatex)
-cd papers/twinworld
-pdflatex -interaction=nonstopmode main.tex
-bibtex main
-pdflatex -interaction=nonstopmode main.tex
-pdflatex -interaction=nonstopmode main.tex
+# Static project page
+python -B scripts/build_project_site.py
+python -m http.server 4173 --directory site-dist
+
+# ID-free pre-submission PDF
+powershell -ExecutionPolicy Bypass -File scripts/build_twinworld_preprint.ps1
+
+# Anonymous review PDF after OpenReview assigns the numeric ID
+powershell -ExecutionPolicy Bypass -File scripts/build_twinworld_review.ps1 -PaperId 12345
 ```
 
 Scene PNGs for qualitative/gallery figures may require:
@@ -74,12 +89,14 @@ git lfs pull --include="backend/data/scenes/*/images/v001.png,backend/data/scene
 
 ## External submission actions
 
-- Replace `ID=XXXXX` in `main.tex` with the real OpenReview paper ID.
+- Register the paper, then run `build_twinworld_review.ps1` with the assigned
+  numeric OpenReview paper ID. Do not edit a placeholder into `main.tex`.
 - Complete the final human author-profile, citation, and anonymity review.
 - Upload the anonymous PDF by the TwinWorld deadline.
-- Camera-ready: set `\twinworldcamerareadytrue` and fill affiliations.
+- Camera-ready: use `\usepackage{eccv}` and restore authors/affiliations from a
+  private source.
 
 The template files were checked byte-for-byte against the official ECCV 2026
 author kit at upstream commit
-`da8c09c40239d5665757527e77388f4716a6564a`. P1-P3 evidence and run IDs were
-verified in the integration audit.
+`da8c09c40239d5665757527e77388f4716a6564a`. Dataset, evaluation, and baseline
+evidence and run IDs were verified in the integration audit.

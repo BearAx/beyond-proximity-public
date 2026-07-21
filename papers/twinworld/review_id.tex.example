@@ -1,0 +1,2 @@
+% Copy to review_id.tex (ignored) after OpenReview assigns the real number.
+\def\SemanticSplatPaperID{12345}

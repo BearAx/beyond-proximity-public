@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "0fba9640-fd80-4e0d-9e35-b057d4f92147"
+  ],
+  "selected_views": [
+    "v005"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "backpack",
+    "selected_node_id": "0fba9640-fd80-4e0d-9e35-b057d4f92147",
+    "selected_view_id": "v005",
+    "bbox_2d": [
+      0.4453125,
+      0.578125,
+      0.7953125,
+      0.996875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.1531218925778868,
+        0.818032366454513,
+        0.5927905960124568
+      ],
+      "max": [
+        -0.8216752407144712,
+        1.16621792130801,
+        0.8209507972154738
+      ],
+      "minimum": [
+        -1.1531218925778868,
+        0.818032366454513,
+        0.5927905960124568
+      ],
+      "maximum": [
+        -0.8216752407144712,
+        1.16621792130801,
+        0.8209507972154738
+      ],
+      "center": [
+        -0.987398566646179,
+        0.9921251438812615,
+        0.7068706966139653
+      ],
+      "size": [
+        0.3314466518634156,
+        0.3481855548534969,
+        0.22816020120301705
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2840113043785095,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 68 with class 'backpack' and cosine similarity 0.284011."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.36679888333325533,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 68.05858559599983,
+      "native_batch_query_total": 2.200793299999532,
+      "native_batch_query_per_query": 0.36679888333325533
+    },
+    "token_usage": {
+      "input_tokens": 17,
+      "output_tokens": 0,
+      "total_tokens": 17,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 73,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0222_00",
+  "query_id": "scannet_0222_00_sr3d_plus_003",
+  "query": "choose the chair that is in the center of the laundry hamper and the backpack",
+  "query_type": "relational"
+}

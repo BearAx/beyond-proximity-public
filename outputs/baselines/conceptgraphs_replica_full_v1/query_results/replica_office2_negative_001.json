@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "81a10731-6e00-48e0-b2c6-a78d0268fbdf"
+  ],
+  "selected_views": [
+    "frame000000"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "sofa chair",
+    "selected_node_id": "81a10731-6e00-48e0-b2c6-a78d0268fbdf",
+    "selected_view_id": "frame000000",
+    "bbox_2d": [
+      0.9166666666666666,
+      0.6941176470588235,
+      1.0,
+      0.9970588235294118
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        0.35017750107150003,
+        0.2120211588954355,
+        -1.1425551326401986
+      ],
+      "max": [
+        1.3280384097855893,
+        0.34867914627500696,
+        -0.5590070560503818
+      ],
+      "minimum": [
+        0.35017750107150003,
+        0.2120211588954355,
+        -1.1425551326401986
+      ],
+      "maximum": [
+        1.3280384097855893,
+        0.34867914627500696,
+        -0.5590070560503818
+      ],
+      "center": [
+        0.8391079554285447,
+        0.2803501525852212,
+        -0.8507810943452903
+      ],
+      "size": [
+        0.9778609087140893,
+        0.13665798737957147,
+        0.5835480765898168
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.19474631547927856,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 14 with class 'sofa chair' and cosine similarity 0.194746."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.26389795371427943,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 60.416187817998434,
+      "native_batch_query_total": 1.8472856759999559,
+      "native_batch_query_per_query": 0.26389795371427943
+    },
+    "token_usage": {
+      "input_tokens": 7,
+      "output_tokens": 0,
+      "total_tokens": 7,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 44,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office2",
+  "query_id": "replica_office2_negative_001",
+  "query": "Find the fire hydrant",
+  "query_type": "negative"
+}

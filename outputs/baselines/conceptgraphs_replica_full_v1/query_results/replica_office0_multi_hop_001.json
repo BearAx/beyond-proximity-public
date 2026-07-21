@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "46b9fade-d4ef-4057-a05b-fec1cdb4ef54"
+  ],
+  "selected_views": [
+    "frame001499"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "couch",
+    "selected_node_id": "46b9fade-d4ef-4057-a05b-fec1cdb4ef54",
+    "selected_view_id": "frame001499",
+    "bbox_2d": [
+      0.0,
+      0.3764705882352941,
+      0.77,
+      0.9970588235294118
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.8990912822913284,
+        -1.7792223293782214,
+        -1.1144647892554789
+      ],
+      "max": [
+        -0.686747889033084,
+        0.8062593930558095,
+        -0.3876396880035742
+      ],
+      "minimum": [
+        -1.8990912822913284,
+        -1.7792223293782214,
+        -1.1144647892554789
+      ],
+      "maximum": [
+        -0.686747889033084,
+        0.8062593930558095,
+        -0.3876396880035742
+      ],
+      "center": [
+        -1.2929195856622062,
+        -0.48648146816120597,
+        -0.7510522386295265
+      ],
+      "size": [
+        1.2123433932582444,
+        2.585481722434031,
+        0.7268251012519047
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3171750009059906,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 20 with class 'couch' and cosine similarity 0.317175."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.24905135814281362,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 60.63432706799904,
+      "native_batch_query_total": 1.7433595069996954,
+      "native_batch_query_per_query": 0.24905135814281362
+    },
+    "token_usage": {
+      "input_tokens": 12,
+      "output_tokens": 0,
+      "total_tokens": 12,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 29,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office0",
+  "query_id": "replica_office0_multi_hop_001",
+  "query": "First inspect the scene objects, then find the tablet",
+  "query_type": "multi_hop"
+}

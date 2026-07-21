@@ -1,0 +1,611 @@
+{
+  "provenance": {
+    "native_execution": true,
+    "baseline": "conceptgraphs",
+    "scene_id": "replica_room0",
+    "repository": "https://github.com/concept-graphs/concept-graphs",
+    "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+    "command": "native detection, absolute-pose mapping, CLIP batch query",
+    "checkpoints": [
+      "ultralytics/yolov8l-world.pt",
+      "ultralytics/mobile_sam.pt",
+      "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+    ],
+    "native_artifacts": [
+      "native_data/replica_room0/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+      "native_data/replica_room0/conversion_manifest.json"
+    ]
+  },
+  "predictions": [
+    {
+      "query_id": "replica_room0_simple_001",
+      "found": true,
+      "matched_object": "cabinet",
+      "selected_object_id": "327a6d01-f38b-4785-9bb6-f91a65724dd5",
+      "selected_view_ids": [
+        "frame000500"
+      ],
+      "trace_node_ids": [
+        "327a6d01-f38b-4785-9bb6-f91a65724dd5"
+      ],
+      "confidence": 0.2749876081943512,
+      "bbox_2d": [
+        0.7283333333333334,
+        0.5088235294117647,
+        1.0,
+        0.9058823529411765
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -0.824975141657255,
+          0.11940066659364795,
+          -1.5217282045100204
+        ],
+        "max": [
+          -0.3068125925039596,
+          1.3909452023503523,
+          -0.8301004284536114
+        ],
+        "minimum": [
+          -0.824975141657255,
+          0.11940066659364795,
+          -1.5217282045100204
+        ],
+        "maximum": [
+          -0.3068125925039596,
+          1.3909452023503523,
+          -0.8301004284536114
+        ],
+        "center": [
+          -0.5658938670806073,
+          0.7551729344720002,
+          -1.175914316481816
+        ],
+        "size": [
+          0.5181625491532955,
+          1.2715445357567043,
+          0.691627776056409
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 24 with class 'cabinet' and cosine similarity 0.274988.",
+      "metrics": {
+        "runtime_seconds": 0.2902722925713793,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 59.457557800998984,
+          "native_batch_query_total": 2.031906047999655,
+          "native_batch_query_per_query": 0.2902722925713793
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 66,
+          "scene_query_count": 7
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+      ]
+    },
+    {
+      "query_id": "replica_room0_simple_002",
+      "found": true,
+      "matched_object": "closet door",
+      "selected_object_id": "681a4d97-836d-4ee0-8cd3-d876b48c1a94",
+      "selected_view_ids": [
+        "frame000000",
+        "frame000500"
+      ],
+      "trace_node_ids": [
+        "681a4d97-836d-4ee0-8cd3-d876b48c1a94"
+      ],
+      "confidence": 0.28473377227783203,
+      "bbox_2d": [
+        0.4266666666666667,
+        0.0029411764705882353,
+        0.48833333333333334,
+        0.5323529411764706
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          -0.7108424120041246,
+          -1.1135786458139312,
+          -1.4815617928459162
+        ],
+        "max": [
+          0.2491476733758411,
+          -1.0847092971305758,
+          0.687214151539699
+        ],
+        "minimum": [
+          -0.7108424120041246,
+          -1.1135786458139312,
+          -1.4815617928459162
+        ],
+        "maximum": [
+          0.2491476733758411,
+          -1.0847092971305758,
+          0.687214151539699
+        ],
+        "center": [
+          -0.23084736931414174,
+          -1.0991439714722535,
+          -0.3971738206531086
+        ],
+        "size": [
+          0.9599900853799657,
+          0.028869348683355334,
+          2.168775944385615
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'closet door' and cosine similarity 0.284734.",
+      "metrics": {
+        "runtime_seconds": 0.2902722925713793,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 59.457557800998984,
+          "native_batch_query_total": 2.031906047999655,
+          "native_batch_query_per_query": 0.2902722925713793
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "total_tokens": 5,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
+        "checked_view_count": 2,
+        "construction_cost": {
+          "native_map_object_count": 66,
+          "scene_query_count": 7
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+      ]
+    },
+    {
+      "query_id": "replica_room0_attribute_001",
+      "found": true,
+      "matched_object": "book",
+      "selected_object_id": "d5cf63ce-8926-4656-b1e7-341a5cfdbc8c",
+      "selected_view_ids": [
+        "frame001000"
+      ],
+      "trace_node_ids": [
+        "d5cf63ce-8926-4656-b1e7-341a5cfdbc8c"
+      ],
+      "confidence": 0.32660973072052,
+      "bbox_2d": [
+        0.5733333333333334,
+        0.7676470588235295,
+        0.66,
+        0.8705882352941177
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          3.3551140429591104,
+          0.8707555410377177,
+          -1.0200098818545436
+        ],
+        "max": [
+          3.67805034166882,
+          1.1799169204485143,
+          -0.9407503892917339
+        ],
+        "minimum": [
+          3.3551140429591104,
+          0.8707555410377177,
+          -1.0200098818545436
+        ],
+        "maximum": [
+          3.67805034166882,
+          1.1799169204485143,
+          -0.9407503892917339
+        ],
+        "center": [
+          3.5165821923139653,
+          1.025336230743116,
+          -0.9803801355731387
+        ],
+        "size": [
+          0.32293629870970975,
+          0.3091613794107966,
+          0.07925949256280962
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 42 with class 'book' and cosine similarity 0.326610.",
+      "metrics": {
+        "runtime_seconds": 0.2902722925713793,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 59.457557800998984,
+          "native_batch_query_total": 2.031906047999655,
+          "native_batch_query_per_query": 0.2902722925713793
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "total_tokens": 8,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 66,
+          "scene_query_count": 7
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+      ]
+    },
+    {
+      "query_id": "replica_room0_relational_001",
+      "found": true,
+      "matched_object": "coffee table",
+      "selected_object_id": "ade4a7c6-efd3-4066-a84f-aaaf8d3ee607",
+      "selected_view_ids": [
+        "frame001000"
+      ],
+      "trace_node_ids": [
+        "ade4a7c6-efd3-4066-a84f-aaaf8d3ee607"
+      ],
+      "confidence": 0.29246819019317627,
+      "bbox_2d": [
+        0.5133333333333333,
+        0.6441176470588236,
+        0.7233333333333334,
+        0.9970588235294118
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          2.9897404503515137,
+          0.6220799241546722,
+          -1.4737416115905404
+        ],
+        "max": [
+          5.318891334674914,
+          1.6238404053730173,
+          -0.8100077974840048
+        ],
+        "minimum": [
+          2.9897404503515137,
+          0.6220799241546722,
+          -1.4737416115905404
+        ],
+        "maximum": [
+          5.318891334674914,
+          1.6238404053730173,
+          -0.8100077974840048
+        ],
+        "center": [
+          4.154315892513214,
+          1.1229601647638447,
+          -1.1418747045372726
+        ],
+        "size": [
+          2.3291508843234006,
+          1.0017604812183452,
+          0.6637338141065356
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 30 with class 'coffee table' and cosine similarity 0.292468.",
+      "metrics": {
+        "runtime_seconds": 0.2902722925713793,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 59.457557800998984,
+          "native_batch_query_total": 2.031906047999655,
+          "native_batch_query_per_query": 0.2902722925713793
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 10,
+          "output_tokens": 0,
+          "total_tokens": 10,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 66,
+          "scene_query_count": 7
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+      ]
+    },
+    {
+      "query_id": "replica_room0_multi_hop_001",
+      "found": true,
+      "matched_object": "coffee table",
+      "selected_object_id": "ade4a7c6-efd3-4066-a84f-aaaf8d3ee607",
+      "selected_view_ids": [
+        "frame001000"
+      ],
+      "trace_node_ids": [
+        "ade4a7c6-efd3-4066-a84f-aaaf8d3ee607"
+      ],
+      "confidence": 0.2564581632614136,
+      "bbox_2d": [
+        0.5133333333333333,
+        0.6441176470588236,
+        0.7233333333333334,
+        0.9970588235294118
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          2.9897404503515137,
+          0.6220799241546722,
+          -1.4737416115905404
+        ],
+        "max": [
+          5.318891334674914,
+          1.6238404053730173,
+          -0.8100077974840048
+        ],
+        "minimum": [
+          2.9897404503515137,
+          0.6220799241546722,
+          -1.4737416115905404
+        ],
+        "maximum": [
+          5.318891334674914,
+          1.6238404053730173,
+          -0.8100077974840048
+        ],
+        "center": [
+          4.154315892513214,
+          1.1229601647638447,
+          -1.1418747045372726
+        ],
+        "size": [
+          2.3291508843234006,
+          1.0017604812183452,
+          0.6637338141065356
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 30 with class 'coffee table' and cosine similarity 0.256458.",
+      "metrics": {
+        "runtime_seconds": 0.2902722925713793,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 59.457557800998984,
+          "native_batch_query_total": 2.031906047999655,
+          "native_batch_query_per_query": 0.2902722925713793
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 12,
+          "output_tokens": 0,
+          "total_tokens": 12,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 66,
+          "scene_query_count": 7
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+      ]
+    },
+    {
+      "query_id": "replica_room0_functional_001",
+      "found": true,
+      "matched_object": "sofa chair",
+      "selected_object_id": "f2bae852-cc4f-49c2-bd25-01d53fa6cc50",
+      "selected_view_ids": [
+        "frame001000",
+        "frame001499"
+      ],
+      "trace_node_ids": [
+        "f2bae852-cc4f-49c2-bd25-01d53fa6cc50"
+      ],
+      "confidence": 0.30766069889068604,
+      "bbox_2d": [
+        0.6666666666666666,
+        0.37941176470588234,
+        0.7966666666666666,
+        0.6970588235294117
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          5.273742080906731,
+          -0.1934763614175381,
+          -1.2761938107804516
+        ],
+        "max": [
+          6.7055608826042175,
+          0.9012179401972258,
+          -0.3977148621119877
+        ],
+        "minimum": [
+          5.273742080906731,
+          -0.1934763614175381,
+          -1.2761938107804516
+        ],
+        "maximum": [
+          6.7055608826042175,
+          0.9012179401972258,
+          -0.3977148621119877
+        ],
+        "center": [
+          5.989651481755474,
+          0.35387078938984384,
+          -0.8369543364462196
+        ],
+        "size": [
+          1.4318188016974869,
+          1.0946943016147639,
+          0.8784789486684639
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 39 with class 'sofa chair' and cosine similarity 0.307661.",
+      "metrics": {
+        "runtime_seconds": 0.2902722925713793,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 59.457557800998984,
+          "native_batch_query_total": 2.031906047999655,
+          "native_batch_query_per_query": 0.2902722925713793
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 10,
+          "output_tokens": 0,
+          "total_tokens": 10,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
+        "checked_view_count": 2,
+        "construction_cost": {
+          "native_map_object_count": 66,
+          "scene_query_count": 7
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+      ]
+    },
+    {
+      "query_id": "replica_room0_negative_001",
+      "found": true,
+      "matched_object": "pillow",
+      "selected_object_id": "32faaaaa-dc55-4163-9856-3dd02fcef894",
+      "selected_view_ids": [
+        "frame000000"
+      ],
+      "trace_node_ids": [
+        "32faaaaa-dc55-4163-9856-3dd02fcef894"
+      ],
+      "confidence": 0.17723557353019714,
+      "bbox_2d": [
+        0.20333333333333334,
+        0.8529411764705882,
+        0.37,
+        0.9970588235294118
+      ],
+      "bbox_3d": {
+        "representation": "axis_aligned_min_max",
+        "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+        "min": [
+          2.563518074330314,
+          -0.5960566468696714,
+          -0.8731885213672109
+        ],
+        "max": [
+          2.9226981998314128,
+          -0.20711731761355273,
+          -0.6295726044378297
+        ],
+        "minimum": [
+          2.563518074330314,
+          -0.5960566468696714,
+          -0.8731885213672109
+        ],
+        "maximum": [
+          2.9226981998314128,
+          -0.20711731761355273,
+          -0.6295726044378297
+        ],
+        "center": [
+          2.7431081370808634,
+          -0.40158698224161204,
+          -0.7513805629025203
+        ],
+        "size": [
+          0.3591801255010987,
+          0.3889393292561187,
+          0.24361591692938123
+        ]
+      },
+      "native_query_type": "batch_clip_object_map_retrieval",
+      "explanation": "Native ConceptGraphs CLIP retrieval selected object 2 with class 'pillow' and cosine similarity 0.177236.",
+      "metrics": {
+        "runtime_seconds": 0.2902722925713793,
+        "stage_runtime_seconds": {
+          "native_map_and_model_load": 59.457557800998984,
+          "native_batch_query_total": 2.031906047999655,
+          "native_batch_query_per_query": 0.2902722925713793
+        },
+        "model_call_count": 1,
+        "cache_hits": 0,
+        "token_usage": {
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "total_tokens": 7,
+          "tokenizer": "open_clip:ViT-H-14",
+          "token_count_type": "non_padding_text_encoder_tokens",
+          "provider_billing_tokens": false,
+          "encoded_by_model": true
+        },
+        "checked_view_count": 1,
+        "construction_cost": {
+          "native_map_object_count": 66,
+          "scene_query_count": 7
+        }
+      },
+      "warnings": [
+        "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+        "Selected views are derived from native image_idx observations, not independent GT.",
+        "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "366bc658-7a7e-4523-9bff-7a92bd291e1f"
+  ],
+  "selected_views": [
+    "v003"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "closet door",
+    "selected_node_id": "366bc658-7a7e-4523-9bff-7a92bd291e1f",
+    "selected_view_id": "v003",
+    "bbox_2d": [
+      0.39375,
+      0.003125,
+      0.6125,
+      1.0
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.4974771686154071,
+        1.1206001486738977,
+        0.03979975345711928
+      ],
+      "max": [
+        -1.0278673846383024,
+        2.4899699147128445,
+        2.0378701313916716
+      ],
+      "minimum": [
+        -1.4974771686154071,
+        1.1206001486738977,
+        0.03979975345711928
+      ],
+      "maximum": [
+        -1.0278673846383024,
+        2.4899699147128445,
+        2.0378701313916716
+      ],
+      "center": [
+        -1.2626722766268548,
+        1.805285031693371,
+        1.0388349424243954
+      ],
+      "size": [
+        0.46960978397710473,
+        1.3693697660389468,
+        1.9980703779345523
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.32408076524734497,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 30 with class 'closet door' and cosine similarity 0.324081."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.36679888333325533,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 68.05858559599983,
+      "native_batch_query_total": 2.200793299999532,
+      "native_batch_query_per_query": 0.36679888333325533
+    },
+    "token_usage": {
+      "input_tokens": 26,
+      "output_tokens": 0,
+      "total_tokens": 26,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 73,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0222_00",
+  "query_id": "scannet_0222_00_nr3d_002",
+  "query": "The door with the handle on the right side, which is also the door you use to enter and exit the room.",
+  "query_type": "relational"
+}

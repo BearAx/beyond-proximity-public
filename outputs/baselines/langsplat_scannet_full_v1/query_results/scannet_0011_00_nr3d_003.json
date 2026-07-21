@@ -1,0 +1,89 @@
+{
+  "structured_plan": {
+    "adapter": "langsplat_native_export_v1",
+    "feature_level": 3
+  },
+  "visited_nodes": [
+    "language_field",
+    "feature_level_3",
+    "view:v004"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "the cabinet next to a blackboard",
+    "selected_node_id": null,
+    "selected_view_id": "v004",
+    "bbox_2d": null,
+    "bbox_3d": null,
+    "camera_pose": null,
+    "confidence": 0.5097820162773132,
+    "explanation": "Native LangSplat relevancy peaked at (185, 397) in v004 with score 0.509782."
+  },
+  "metrics_log": {
+    "runtime_seconds": 2.0365223903333267,
+    "stage_runtime_seconds": {
+      "native_language_field_batch_total": 12.219134341999961
+    },
+    "token_usage": {
+      "input_tokens": 9,
+      "output_tokens": 0,
+      "total_tokens": 9,
+      "tokenizer": "open_clip:ViT-B-16",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 3,
+    "checked_view_count": 4,
+    "construction_cost": {
+      "rendered_feature_map_count": 4,
+      "feature_map_shapes": [
+        [
+          480,
+          640,
+          3
+        ],
+        [
+          480,
+          640,
+          3
+        ],
+        [
+          480,
+          640,
+          3
+        ],
+        [
+          480,
+          640,
+          3
+        ]
+      ],
+      "peak_pixel": [
+        185,
+        397
+      ]
+    }
+  },
+  "warnings": [
+    "Reduced-resource ScanNet pilot: 3,000 RGB and language iterations on a 6 GB GPU, not the paper's 30,000-iteration/24 GB configuration.",
+    "Point-in-box is diagnostic only; no predicted 3D box is emitted, so official 3D IoU remains unavailable."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "langsplat_scannet_full_v1",
+  "method": "langsplat",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0011_00",
+  "query_id": "scannet_0011_00_nr3d_003",
+  "query": "the cabinet next to a blackboard",
+  "query_type": "simple_object"
+}

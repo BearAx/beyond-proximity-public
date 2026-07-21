@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "4e9b529a-3adf-4b49-a1a7-3b8f10b81cca"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "chair",
+    "selected_node_id": "4e9b529a-3adf-4b49-a1a7-3b8f10b81cca",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.8265625,
+      0.05,
+      0.9140625,
+      0.1125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -0.12078525592791056,
+        -2.746042481021547,
+        0.6682367886684919
+      ],
+      "max": [
+        0.30218469430596895,
+        -1.723298164710705,
+        0.9356252832420762
+      ],
+      "minimum": [
+        -0.12078525592791056,
+        -2.746042481021547,
+        0.6682367886684919
+      ],
+      "maximum": [
+        0.30218469430596895,
+        -1.723298164710705,
+        0.9356252832420762
+      ],
+      "center": [
+        0.0906997191890292,
+        -2.234670322866126,
+        0.801931035955284
+      ],
+      "size": [
+        0.4229699502338795,
+        1.022744316310842,
+        0.26738849457358427
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.23160728812217712,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 32 with class 'chair' and cosine similarity 0.231607."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.3485168686666687,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 59.317882802999975,
+      "native_batch_query_total": 2.0911012120000123,
+      "native_batch_query_per_query": 0.3485168686666687
+    },
+    "token_usage": {
+      "input_tokens": 9,
+      "output_tokens": 0,
+      "total_tokens": 9,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 36,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0011_00",
+  "query_id": "scannet_0011_00_nr3d_003",
+  "query": "the cabinet next to a blackboard",
+  "query_type": "simple_object"
+}

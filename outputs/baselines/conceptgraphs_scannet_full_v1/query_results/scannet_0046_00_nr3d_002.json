@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "d076adf5-4776-467e-bc1a-24e1e2b4df1c"
+  ],
+  "selected_views": [
+    "v002"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "door",
+    "selected_node_id": "d076adf5-4776-467e-bc1a-24e1e2b4df1c",
+    "selected_view_id": "v002",
+    "bbox_2d": [
+      0.7890625,
+      0.015625,
+      0.9765625,
+      0.609375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -2.1355959072458512,
+        -2.3456397791659827,
+        -0.011062279769763879
+      ],
+      "max": [
+        -1.2262640400708427,
+        -0.2691181460025476,
+        1.2060062173549049
+      ],
+      "minimum": [
+        -2.1355959072458512,
+        -2.3456397791659827,
+        -0.011062279769763879
+      ],
+      "maximum": [
+        -1.2262640400708427,
+        -0.2691181460025476,
+        1.2060062173549049
+      ],
+      "center": [
+        -1.680929973658347,
+        -1.3073789625842651,
+        0.5974719687925705
+      ],
+      "size": [
+        0.9093318671750086,
+        2.076521633163435,
+        1.2170684971246688
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.277399480342865,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 11 with class 'door' and cosine similarity 0.277399."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.297250902500006,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 58.58883470699993,
+      "native_batch_query_total": 1.783505415000036,
+      "native_batch_query_per_query": 0.297250902500006
+    },
+    "token_usage": {
+      "input_tokens": 15,
+      "output_tokens": 0,
+      "total_tokens": 15,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 43,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0046_00",
+  "query_id": "scannet_0046_00_nr3d_002",
+  "query": "The shoes furthest from the door and closest to the window.",
+  "query_type": "relational"
+}

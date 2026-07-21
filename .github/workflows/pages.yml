@@ -1,0 +1,62 @@
+name: deploy-project-page
+
+on:
+  push:
+    branches:
+      - main
+      - codex/project-site-method-figure
+    paths:
+      - ".github/workflows/pages.yml"
+      - "site/**"
+      - "scripts/build_project_site.py"
+      - "papers/twinworld/main_preprint.pdf"
+      - "papers/twinworld/figures/**"
+      - "docs/reports/final/graph_construction_cost.json"
+      - "outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json"
+      - "backend/data/scenes/ConferenceHall-capture-pilot/images/v018.png"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository and LFS assets
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build static research site
+        run: python -B scripts/build_project_site.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site-dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

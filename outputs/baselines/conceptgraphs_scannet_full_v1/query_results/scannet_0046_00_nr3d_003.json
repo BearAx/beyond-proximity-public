@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "bef88d73-eb75-4edc-a6c9-5d2ce3e4cefd"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "backpack",
+    "selected_node_id": "bef88d73-eb75-4edc-a6c9-5d2ce3e4cefd",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.615625,
+      0.75625,
+      0.7609375,
+      0.9125
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        0.2235516280093297,
+        1.8662116939634963,
+        -0.017775474956606585
+      ],
+      "max": [
+        0.6276894748542365,
+        2.177925996296313,
+        0.24200106893831896
+      ],
+      "minimum": [
+        0.2235516280093297,
+        1.8662116939634963,
+        -0.017775474956606585
+      ],
+      "maximum": [
+        0.6276894748542365,
+        2.177925996296313,
+        0.24200106893831896
+      ],
+      "center": [
+        0.4256205514317831,
+        2.0220688451299047,
+        0.11211279699085619
+      ],
+      "size": [
+        0.40413784684490683,
+        0.31171430233281683,
+        0.25977654389492555
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3049637973308563,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 30 with class 'backpack' and cosine similarity 0.304964."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.297250902500006,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 58.58883470699993,
+      "native_batch_query_total": 1.783505415000036,
+      "native_batch_query_per_query": 0.297250902500006
+    },
+    "token_usage": {
+      "input_tokens": 11,
+      "output_tokens": 0,
+      "total_tokens": 11,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 43,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0046_00",
+  "query_id": "scannet_0046_00_nr3d_003",
+  "query": "The pair of shoes closer to the door.",
+  "query_type": "simple_object"
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "semanticsplat.bootstrap_ci.v1",
+  "source": "C:\\GitProjects\\beyond-proximity\\outputs\\graph_vs_flat\\five_scene_graph_vs_flat_v2\\per_query_results.json",
+  "seed": 20260715,
+  "bootstrap_samples": 10000,
+  "query_count": 150,
+  "quality_query_count": 125,
+  "method": "paired nonparametric query bootstrap; percentile 95% interval",
+  "metrics": {
+    "view_savings_pct": {
+      "estimate": 75.4887,
+      "ci_95": {
+        "low": 73.1626,
+        "high": 77.6934
+      }
+    },
+    "token_savings_pct": {
+      "estimate": 68.2233,
+      "ci_95": {
+        "low": 65.2713,
+        "high": 71.0171
+      }
+    },
+    "hit_at_1_graph_minus_flat": {
+      "estimate": -0.088,
+      "ci_95": {
+        "low": -0.184,
+        "high": 0.008
+      }
+    },
+    "hit_at_3_graph_minus_flat": {
+      "estimate": -0.12,
+      "ci_95": {
+        "low": -0.184,
+        "high": -0.056
+      }
+    }
+  }
+}

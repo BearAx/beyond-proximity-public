@@ -156,6 +156,25 @@ def test_missing_bbox_prediction_counts_as_zero_in_acc_denominator(tmp_path):
     assert summary["per_source_dataset"]["Nr3D"]["bbox_acc_at_0_5"]["value"] == 0.0
 
 
+def test_declared_no_predicted_bbox_keeps_iou_unavailable(tmp_path):
+    benchmark, run_dir = _prepare(tmp_path, depth_status="reliable", with_bbox=True)
+    config_path = run_dir / "run_config.json"
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    config["bbox_3d_evaluation"] = {
+        "status": "unavailable_no_predicted_box",
+        "reason": "Method emits a point, not a 3D extent.",
+    }
+    _write(config_path, config)
+    _write(run_dir / "query_results" / "q001.json", _result(bbox=None))
+
+    summary = evaluate(benchmark, run_dir)
+
+    assert summary["metrics"]["bbox_3d_iou"]["status"] == "N/A"
+    assert summary["metrics"]["bbox_3d_iou"]["denominator"] == 0
+    assert summary["metrics"]["bbox_acc_at_0_25"]["status"] == "N/A"
+    assert any("does not emit predicted 3D boxes" in warning for warning in summary["warnings"])
+
+
 def test_invalid_schema_is_excluded_from_metrics(tmp_path):
     benchmark, run_dir = _prepare(tmp_path)
     invalid = _result()

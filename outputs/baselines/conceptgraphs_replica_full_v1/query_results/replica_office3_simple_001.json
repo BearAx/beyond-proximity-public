@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "6d429e2e-4566-40f4-bf09-b8b85919df5b"
+  ],
+  "selected_views": [
+    "frame001000"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "sofa chair",
+    "selected_node_id": "6d429e2e-4566-40f4-bf09-b8b85919df5b",
+    "selected_view_id": "frame001000",
+    "bbox_2d": [
+      0.97,
+      0.5617647058823529,
+      1.0,
+      0.6941176470588235
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.5104179946997318,
+        -5.902327819742046,
+        -1.1626564427080317
+      ],
+      "max": [
+        -0.9928797853068119,
+        -3.4250845102254335,
+        -0.1406065223670292
+      ],
+      "minimum": [
+        -1.5104179946997318,
+        -5.902327819742046,
+        -1.1626564427080317
+      ],
+      "maximum": [
+        -0.9928797853068119,
+        -3.4250845102254335,
+        -0.1406065223670292
+      ],
+      "center": [
+        -1.2516488900032718,
+        -4.66370616498374,
+        -0.6516314825375304
+      ],
+      "size": [
+        0.51753820939292,
+        2.477243309516613,
+        1.0220499203410025
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.22586628794670105,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 37 with class 'sofa chair' and cosine similarity 0.225866."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.30349266114275714,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 62.06633871300073,
+      "native_batch_query_total": 2.1244486279993,
+      "native_batch_query_per_query": 0.30349266114275714
+    },
+    "token_usage": {
+      "input_tokens": 5,
+      "output_tokens": 0,
+      "total_tokens": 5,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 61,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office3",
+  "query_id": "replica_office3_simple_001",
+  "query": "Find the door",
+  "query_type": "simple_object"
+}

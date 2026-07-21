@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "2c7ddac3-ed1b-49a4-a68a-66507328a935"
+  ],
+  "selected_views": [
+    "v004"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "closet door",
+    "selected_node_id": "2c7ddac3-ed1b-49a4-a68a-66507328a935",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.0,
+      0.0,
+      0.1859375,
+      0.621875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        1.0688434419753925,
+        1.3935211701441896,
+        0.13958840396721245
+      ],
+      "max": [
+        1.8764369779005095,
+        1.8886176267086756,
+        1.9601316384619474
+      ],
+      "minimum": [
+        1.0688434419753925,
+        1.3935211701441896,
+        0.13958840396721245
+      ],
+      "maximum": [
+        1.8764369779005095,
+        1.8886176267086756,
+        1.9601316384619474
+      ],
+      "center": [
+        1.472640209937951,
+        1.6410693984264326,
+        1.0498600212145799
+      ],
+      "size": [
+        0.807593535925117,
+        0.495096456564486,
+        1.820543234494735
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2726575434207916,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 27 with class 'closet door' and cosine similarity 0.272658."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.3252522135000315,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 64.49080078799943,
+      "native_batch_query_total": 1.9515132810001887,
+      "native_batch_query_per_query": 0.3252522135000315
+    },
+    "token_usage": {
+      "input_tokens": 7,
+      "output_tokens": 0,
+      "total_tokens": 7,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 37,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0389_00",
+  "query_id": "scannet_0389_00_nr3d_003",
+  "query": "white entry door with handle",
+  "query_type": "attribute"
+}

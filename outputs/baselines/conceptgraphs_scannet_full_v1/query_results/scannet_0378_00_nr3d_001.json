@@ -1,0 +1,104 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "679b1e0b-0d14-4002-a1c9-69d4f3085845"
+  ],
+  "selected_views": [
+    "v004",
+    "v005"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "bookshelf",
+    "selected_node_id": "679b1e0b-0d14-4002-a1c9-69d4f3085845",
+    "selected_view_id": "v004",
+    "bbox_2d": [
+      0.540625,
+      0.015625,
+      0.9296875,
+      0.984375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        0.7419026163217924,
+        0.7875541441921406,
+        0.5251236512459639
+      ],
+      "max": [
+        1.4454024428734145,
+        1.8701459221690522,
+        2.0647275355345087
+      ],
+      "minimum": [
+        0.7419026163217924,
+        0.7875541441921406,
+        0.5251236512459639
+      ],
+      "maximum": [
+        1.4454024428734145,
+        1.8701459221690522,
+        2.0647275355345087
+      ],
+      "center": [
+        1.0936525295976034,
+        1.3288500331805964,
+        1.2949255933902364
+      ],
+      "size": [
+        0.703499826551622,
+        1.0825917779769116,
+        1.5396038842885447
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3229826092720032,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 55 with class 'bookshelf' and cosine similarity 0.322983."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.34056097133331303,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 66.65877008299958,
+      "native_batch_query_total": 2.043365827999878,
+      "native_batch_query_per_query": 0.34056097133331303
+    },
+    "token_usage": {
+      "input_tokens": 10,
+      "output_tokens": 0,
+      "total_tokens": 10,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 2,
+    "construction_cost": {
+      "native_map_object_count": 70,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0378_00",
+  "query_id": "scannet_0378_00_nr3d_001",
+  "query": "The yellow shelf not the gray shelf.",
+  "query_type": "relational"
+}

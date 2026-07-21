@@ -1,0 +1,104 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "681a4d97-836d-4ee0-8cd3-d876b48c1a94"
+  ],
+  "selected_views": [
+    "frame000000",
+    "frame000500"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "closet door",
+    "selected_node_id": "681a4d97-836d-4ee0-8cd3-d876b48c1a94",
+    "selected_view_id": "frame000000",
+    "bbox_2d": [
+      0.4266666666666667,
+      0.0029411764705882353,
+      0.48833333333333334,
+      0.5323529411764706
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -0.7108424120041246,
+        -1.1135786458139312,
+        -1.4815617928459162
+      ],
+      "max": [
+        0.2491476733758411,
+        -1.0847092971305758,
+        0.687214151539699
+      ],
+      "minimum": [
+        -0.7108424120041246,
+        -1.1135786458139312,
+        -1.4815617928459162
+      ],
+      "maximum": [
+        0.2491476733758411,
+        -1.0847092971305758,
+        0.687214151539699
+      ],
+      "center": [
+        -0.23084736931414174,
+        -1.0991439714722535,
+        -0.3971738206531086
+      ],
+      "size": [
+        0.9599900853799657,
+        0.028869348683355334,
+        2.168775944385615
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.28473377227783203,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 8 with class 'closet door' and cosine similarity 0.284734."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.2902722925713793,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 59.457557800998984,
+      "native_batch_query_total": 2.031906047999655,
+      "native_batch_query_per_query": 0.2902722925713793
+    },
+    "token_usage": {
+      "input_tokens": 5,
+      "output_tokens": 0,
+      "total_tokens": 5,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 2,
+    "construction_cost": {
+      "native_map_object_count": 66,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_room0",
+  "query_id": "replica_room0_simple_002",
+  "query": "Find the door",
+  "query_type": "simple_object"
+}

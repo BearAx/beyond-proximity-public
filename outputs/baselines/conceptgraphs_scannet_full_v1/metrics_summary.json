@@ -1,0 +1,2767 @@
+{
+  "schema_version": "semanticsplat.metrics_record.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "benchmark_id": "scannet_bbq_aligned_referit3d_official_gt_pilot_v1",
+  "generated_at": "2026-07-15T22:16:30.775841+00:00",
+  "coverage": {
+    "benchmark_total_query_count": 48,
+    "benchmark_query_count": 48,
+    "excluded_scene_query_count": 0,
+    "result_count": 48,
+    "missing_result_count": 0,
+    "schema_valid_result_count": 48,
+    "evaluated_result_count": 48,
+    "unavailable_result_count": 0,
+    "accuracy_eligible_result_count": 48,
+    "ground_truth_unavailable_result_count": 0
+  },
+  "mode_counts": {
+    "live": 48
+  },
+  "compact_metrics": {
+    "total_queries": 48,
+    "runnable_queries": 48,
+    "gt_eligible_queries": 48,
+    "schema_valid_count": 48,
+    "query_type_normalization": {
+      "simple_object": "simple",
+      "attribute": "compound",
+      "negative": "simple"
+    },
+    "per_query_type": {
+      "simple": {
+        "total_queries": 6,
+        "runnable_queries": 6,
+        "gt_eligible_queries": 6,
+        "schema_valid_count": 6,
+        "retrieval_success": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_view_hit": {
+          "value": 0.3333,
+          "numerator": 2,
+          "denominator": 6,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_node_hit": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "compound": {
+        "total_queries": 2,
+        "runnable_queries": 2,
+        "gt_eligible_queries": 2,
+        "schema_valid_count": 2,
+        "retrieval_success": {
+          "value": 1.0,
+          "numerator": 2,
+          "denominator": 2,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_view_hit": {
+          "value": 0.5,
+          "numerator": 1,
+          "denominator": 2,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_node_hit": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 2,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "relational": {
+        "total_queries": 40,
+        "runnable_queries": 40,
+        "gt_eligible_queries": 40,
+        "schema_valid_count": 40,
+        "retrieval_success": {
+          "value": 1.0,
+          "numerator": 40,
+          "denominator": 40,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_view_hit": {
+          "value": 0.6,
+          "numerator": 24,
+          "denominator": 40,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_node_hit": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 40,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "multi_hop": {
+        "total_queries": 0,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "functional": {
+        "total_queries": 0,
+        "runnable_queries": 0,
+        "gt_eligible_queries": 0,
+        "schema_valid_count": 0,
+        "retrieval_success": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_view_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_node_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        },
+        "expected_zone_hit": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      }
+    },
+    "raw_per_query_type": {
+      "attribute": {
+        "total_queries": 2,
+        "runnable_queries": 2,
+        "gt_eligible_queries": 2,
+        "schema_valid_count": 2,
+        "retrieval_success": {
+          "value": 1.0,
+          "numerator": 2,
+          "denominator": 2,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_object_id_hit": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 2,
+          "status": "measured",
+          "reason": null
+        },
+        "not_found_correctness": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "relational": {
+        "total_queries": 40,
+        "runnable_queries": 40,
+        "gt_eligible_queries": 40,
+        "schema_valid_count": 40,
+        "retrieval_success": {
+          "value": 1.0,
+          "numerator": 40,
+          "denominator": 40,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_object_id_hit": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 40,
+          "status": "measured",
+          "reason": null
+        },
+        "not_found_correctness": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      },
+      "simple_object": {
+        "total_queries": 6,
+        "runnable_queries": 6,
+        "gt_eligible_queries": 6,
+        "schema_valid_count": 6,
+        "retrieval_success": {
+          "value": 1.0,
+          "numerator": 6,
+          "denominator": 6,
+          "status": "measured",
+          "reason": null
+        },
+        "expected_object_id_hit": {
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 6,
+          "status": "measured",
+          "reason": null
+        },
+        "not_found_correctness": {
+          "value": null,
+          "numerator": 0,
+          "denominator": 0,
+          "status": "unavailable",
+          "reason": "No schema-valid result with applicable ground truth"
+        }
+      }
+    }
+  },
+  "per_source_dataset": {
+    "Nr3D": {
+      "query_count": 24,
+      "evaluated_count": 24,
+      "retrieval_success": {
+        "value": 1.0,
+        "numerator": 24,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_hit": {
+        "value": 0.125,
+        "numerator": 3,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_id_hit": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_view_hit": {
+        "value": 0.5417,
+        "numerator": 13,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_node_hit": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_3d_iou": {
+        "value": 0.0659,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "bbox_acc_at_0_1": {
+        "value": 0.2917,
+        "numerator": 7,
+        "denominator": 24,
+        "threshold": 0.1,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_25": {
+        "value": 0.0417,
+        "numerator": 1,
+        "denominator": 24,
+        "threshold": 0.25,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_5": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 24,
+        "threshold": 0.5,
+        "status": "measured",
+        "reason": null
+      },
+      "runtime_seconds": {
+        "mean": 0.3363,
+        "total": 8.0722,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "checked_view_count": {
+        "mean": 1.125,
+        "total": 27.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "visited_node_count": {
+        "mean": 1.0,
+        "total": 24.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "context_size_chars": {
+        "mean": null,
+        "total": null,
+        "denominator": 0,
+        "status": "unavailable"
+      },
+      "estimated_input_tokens": {
+        "mean": null,
+        "total": null,
+        "denominator": 0,
+        "status": "unavailable"
+      }
+    },
+    "Sr3D+": {
+      "query_count": 24,
+      "evaluated_count": 24,
+      "retrieval_success": {
+        "value": 1.0,
+        "numerator": 24,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_hit": {
+        "value": 0.2083,
+        "numerator": 5,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_object_id_hit": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_view_hit": {
+        "value": 0.5833,
+        "numerator": 14,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "expected_node_hit": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 24,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_3d_iou": {
+        "value": 0.0732,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "bbox_acc_at_0_1": {
+        "value": 0.2917,
+        "numerator": 7,
+        "denominator": 24,
+        "threshold": 0.1,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_25": {
+        "value": 0.0833,
+        "numerator": 2,
+        "denominator": 24,
+        "threshold": 0.25,
+        "status": "measured",
+        "reason": null
+      },
+      "bbox_acc_at_0_5": {
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 24,
+        "threshold": 0.5,
+        "status": "measured",
+        "reason": null
+      },
+      "runtime_seconds": {
+        "mean": 0.3363,
+        "total": 8.0722,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "checked_view_count": {
+        "mean": 1.0417,
+        "total": 25.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "visited_node_count": {
+        "mean": 1.0,
+        "total": 24.0,
+        "denominator": 24,
+        "status": "measured"
+      },
+      "context_size_chars": {
+        "mean": null,
+        "total": null,
+        "denominator": 0,
+        "status": "unavailable"
+      },
+      "estimated_input_tokens": {
+        "mean": null,
+        "total": null,
+        "denominator": 0,
+        "status": "unavailable"
+      }
+    }
+  },
+  "metrics": {
+    "retrieval_success": {
+      "value": 1.0,
+      "numerator": 48,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_view_hit": {
+      "value": 0.5625,
+      "numerator": 27,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_node_hit": {
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_zone_hit": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "expected_object_hit": {
+      "value": 0.1667,
+      "numerator": 8,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "expected_object_id_hit": {
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 48,
+      "status": "measured",
+      "reason": null
+    },
+    "not_found_correctness": {
+      "value": null,
+      "numerator": 0,
+      "denominator": 0,
+      "status": "unavailable",
+      "reason": "No schema-valid result with applicable ground truth"
+    },
+    "runtime_seconds": {
+      "mean": 0.3363,
+      "total": 16.1444,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "token_usage": {
+      "input": 627,
+      "output": 0,
+      "total": 627,
+      "denominator": 48,
+      "status": "measured",
+      "tokenizers": [
+        "open_clip:ViT-H-14"
+      ],
+      "token_count_types": [
+        "non_padding_text_encoder_tokens"
+      ],
+      "provider_billing_tokens": false
+    },
+    "context_size_chars": {
+      "mean": null,
+      "total": null,
+      "denominator": 0,
+      "status": "unavailable"
+    },
+    "prompt_size_chars": {
+      "mean": null,
+      "total": null,
+      "denominator": 0,
+      "status": "unavailable"
+    },
+    "estimated_input_tokens": {
+      "mean": null,
+      "total": null,
+      "denominator": 0,
+      "status": "unavailable"
+    },
+    "checked_view_count": {
+      "mean": 1.0833,
+      "total": 52,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "visited_node_count": {
+      "mean": 1.0,
+      "total": 48,
+      "denominator": 48,
+      "status": "measured"
+    },
+    "bbox_3d_iou": {
+      "value": 0.0696,
+      "status": "measured",
+      "denominator": 48,
+      "missing_prediction_count": 0,
+      "reason": null
+    },
+    "bbox_acc_at_0_1": {
+      "value": 0.2917,
+      "numerator": 14,
+      "denominator": 48,
+      "threshold": 0.1,
+      "status": "measured",
+      "reason": null
+    },
+    "bbox_acc_at_0_25": {
+      "value": 0.0625,
+      "numerator": 3,
+      "denominator": 48,
+      "threshold": 0.25,
+      "status": "measured",
+      "reason": null
+    },
+    "bbox_acc_at_0_5": {
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 48,
+      "threshold": 0.5,
+      "status": "measured",
+      "reason": null
+    }
+  },
+  "failure_categories": {
+    "wrong room / zone": 0,
+    "wrong object": 48,
+    "wrong view": 21,
+    "missing object in semantic description": 0,
+    "bad query parsing": 0,
+    "bad traversal": 0,
+    "bad bbox": 48,
+    "invalid depth": 0,
+    "ambiguous ground truth": 0,
+    "baseline adapter issue": 0,
+    "missing GT": 0
+  },
+  "missing_query_ids": [],
+  "per_query": [
+    {
+      "query_id": "scannet_0011_00_nr3d_001",
+      "scene_id": "scannet_0011_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3485168686666687,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.038977,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0011_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_002",
+      "scene_id": "scannet_0011_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "28"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3485168686666687,
+      "token_usage": {
+        "input_tokens": 10,
+        "output_tokens": 0,
+        "total_tokens": 10,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0011_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0011_00_nr3d_003",
+      "scene_id": "scannet_0011_00",
+      "source_dataset": "Nr3D",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "20"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3485168686666687,
+      "token_usage": {
+        "input_tokens": 9,
+        "output_tokens": 0,
+        "total_tokens": 9,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0011_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_001",
+      "scene_id": "scannet_0011_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3485168686666687,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0011_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_002",
+      "scene_id": "scannet_0011_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "15"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3485168686666687,
+      "token_usage": {
+        "input_tokens": 13,
+        "output_tokens": 0,
+        "total_tokens": 13,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0011_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0011_00_sr3d_plus_003",
+      "scene_id": "scannet_0011_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "1"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3485168686666687,
+      "token_usage": {
+        "input_tokens": 18,
+        "output_tokens": 0,
+        "total_tokens": 18,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.034557,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0011_00_sr3d_plus_003.json"
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_001",
+      "scene_id": "scannet_0030_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3294316135000675,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.419873,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0030_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_002",
+      "scene_id": "scannet_0030_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "24"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3294316135000675,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0030_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0030_00_nr3d_003",
+      "scene_id": "scannet_0030_00",
+      "source_dataset": "Nr3D",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "27"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3294316135000675,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0030_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_001",
+      "scene_id": "scannet_0030_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3294316135000675,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0030_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_002",
+      "scene_id": "scannet_0030_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "19"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3294316135000675,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0030_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0030_00_sr3d_plus_003",
+      "scene_id": "scannet_0030_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3294316135000675,
+      "token_usage": {
+        "input_tokens": 22,
+        "output_tokens": 0,
+        "total_tokens": 22,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0030_00_sr3d_plus_003.json"
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_001",
+      "scene_id": "scannet_0046_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "52"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.297250902500006,
+      "token_usage": {
+        "input_tokens": 21,
+        "output_tokens": 0,
+        "total_tokens": 21,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0046_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_002",
+      "scene_id": "scannet_0046_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "49"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.297250902500006,
+      "token_usage": {
+        "input_tokens": 15,
+        "output_tokens": 0,
+        "total_tokens": 15,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0046_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0046_00_nr3d_003",
+      "scene_id": "scannet_0046_00",
+      "source_dataset": "Nr3D",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "48"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.297250902500006,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0046_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_001",
+      "scene_id": "scannet_0046_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "18"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.297250902500006,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.007529,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0046_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_002",
+      "scene_id": "scannet_0046_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "21"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.297250902500006,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0046_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0046_00_sr3d_plus_003",
+      "scene_id": "scannet_0046_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.297250902500006,
+      "token_usage": {
+        "input_tokens": 17,
+        "output_tokens": 0,
+        "total_tokens": 17,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0046_00_sr3d_plus_003.json"
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_001",
+      "scene_id": "scannet_0086_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "13"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3393861945000178,
+      "token_usage": {
+        "input_tokens": 21,
+        "output_tokens": 0,
+        "total_tokens": 21,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.240591,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0086_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_002",
+      "scene_id": "scannet_0086_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3393861945000178,
+      "token_usage": {
+        "input_tokens": 16,
+        "output_tokens": 0,
+        "total_tokens": 16,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0086_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0086_00_nr3d_003",
+      "scene_id": "scannet_0086_00",
+      "source_dataset": "Nr3D",
+      "query_type": "attribute",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3393861945000178,
+      "token_usage": {
+        "input_tokens": 8,
+        "output_tokens": 0,
+        "total_tokens": 8,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.024955,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0086_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_001",
+      "scene_id": "scannet_0086_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "1"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3393861945000178,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.017761,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0086_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_002",
+      "scene_id": "scannet_0086_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3393861945000178,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0086_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0086_00_sr3d_plus_003",
+      "scene_id": "scannet_0086_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3393861945000178,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.17448,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0086_00_sr3d_plus_003.json"
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_001",
+      "scene_id": "scannet_0222_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "16"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.36679888333325533,
+      "token_usage": {
+        "input_tokens": 16,
+        "output_tokens": 0,
+        "total_tokens": 16,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 2.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.002643,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0222_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_002",
+      "scene_id": "scannet_0222_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "24"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.36679888333325533,
+      "token_usage": {
+        "input_tokens": 26,
+        "output_tokens": 0,
+        "total_tokens": 26,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0222_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0222_00_nr3d_003",
+      "scene_id": "scannet_0222_00",
+      "source_dataset": "Nr3D",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "17"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.36679888333325533,
+      "token_usage": {
+        "input_tokens": 10,
+        "output_tokens": 0,
+        "total_tokens": 10,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 2.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.166969,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0222_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_001",
+      "scene_id": "scannet_0222_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.36679888333325533,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.131855,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0222_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_002",
+      "scene_id": "scannet_0222_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "3"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.36679888333325533,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.197248,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0222_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0222_00_sr3d_plus_003",
+      "scene_id": "scannet_0222_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "7"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.36679888333325533,
+      "token_usage": {
+        "input_tokens": 17,
+        "output_tokens": 0,
+        "total_tokens": 17,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0222_00_sr3d_plus_003.json"
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_001",
+      "scene_id": "scannet_0378_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "38"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.34056097133331303,
+      "token_usage": {
+        "input_tokens": 10,
+        "output_tokens": 0,
+        "total_tokens": 10,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 2.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0378_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_002",
+      "scene_id": "scannet_0378_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "31"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.34056097133331303,
+      "token_usage": {
+        "input_tokens": 9,
+        "output_tokens": 0,
+        "total_tokens": 9,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.141069,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0378_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0378_00_nr3d_003",
+      "scene_id": "scannet_0378_00",
+      "source_dataset": "Nr3D",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.34056097133331303,
+      "token_usage": {
+        "input_tokens": 10,
+        "output_tokens": 0,
+        "total_tokens": 10,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0378_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_001",
+      "scene_id": "scannet_0378_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "0"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.34056097133331303,
+      "token_usage": {
+        "input_tokens": 10,
+        "output_tokens": 0,
+        "total_tokens": 10,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0378_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_002",
+      "scene_id": "scannet_0378_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "35"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.34056097133331303,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.3648,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0378_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0378_00_sr3d_plus_003",
+      "scene_id": "scannet_0378_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "4"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.34056097133331303,
+      "token_usage": {
+        "input_tokens": 13,
+        "output_tokens": 0,
+        "total_tokens": 13,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0378_00_sr3d_plus_003.json"
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_001",
+      "scene_id": "scannet_0389_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "23"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3252522135000315,
+      "token_usage": {
+        "input_tokens": 9,
+        "output_tokens": 0,
+        "total_tokens": 9,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.147705,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0389_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_002",
+      "scene_id": "scannet_0389_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3252522135000315,
+      "token_usage": {
+        "input_tokens": 8,
+        "output_tokens": 0,
+        "total_tokens": 8,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.151606,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0389_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0389_00_nr3d_003",
+      "scene_id": "scannet_0389_00",
+      "source_dataset": "Nr3D",
+      "query_type": "attribute",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "7"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3252522135000315,
+      "token_usage": {
+        "input_tokens": 7,
+        "output_tokens": 0,
+        "total_tokens": 7,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0389_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_001",
+      "scene_id": "scannet_0389_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "2"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3252522135000315,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.151606,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0389_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_002",
+      "scene_id": "scannet_0389_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "3"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3252522135000315,
+      "token_usage": {
+        "input_tokens": 11,
+        "output_tokens": 0,
+        "total_tokens": 11,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.224807,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0389_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0389_00_sr3d_plus_003",
+      "scene_id": "scannet_0389_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "6"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3252522135000315,
+      "token_usage": {
+        "input_tokens": 17,
+        "output_tokens": 0,
+        "total_tokens": 17,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.451751,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0389_00_sr3d_plus_003.json"
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_001",
+      "scene_id": "scannet_0435_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "50"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3435396131667403,
+      "token_usage": {
+        "input_tokens": 33,
+        "output_tokens": 0,
+        "total_tokens": 33,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0435_00_nr3d_001.json"
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_002",
+      "scene_id": "scannet_0435_00",
+      "source_dataset": "Nr3D",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "57"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3435396131667403,
+      "token_usage": {
+        "input_tokens": 9,
+        "output_tokens": 0,
+        "total_tokens": 9,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0435_00_nr3d_002.json"
+    },
+    {
+      "query_id": "scannet_0435_00_nr3d_003",
+      "scene_id": "scannet_0435_00",
+      "source_dataset": "Nr3D",
+      "query_type": "simple_object",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": true,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3435396131667403,
+      "token_usage": {
+        "input_tokens": 9,
+        "output_tokens": 0,
+        "total_tokens": 9,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.247193,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0435_00_nr3d_003.json"
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_001",
+      "scene_id": "scannet_0435_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "10"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3435396131667403,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 2.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0435_00_sr3d_plus_001.json"
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_002",
+      "scene_id": "scannet_0435_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": true,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "11"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3435396131667403,
+      "token_usage": {
+        "input_tokens": 13,
+        "output_tokens": 0,
+        "total_tokens": 13,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.000972,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0435_00_sr3d_plus_002.json"
+    },
+    {
+      "query_id": "scannet_0435_00_sr3d_plus_003",
+      "scene_id": "scannet_0435_00",
+      "source_dataset": "Sr3D+",
+      "query_type": "relational",
+      "mode": "live",
+      "status": "evaluated",
+      "ground_truth_available": true,
+      "accuracy_metrics_status": "eligible",
+      "retrieval_success": true,
+      "expected_view_hit": false,
+      "expected_node_hit": false,
+      "expected_zone_hit": null,
+      "expected_object_hit": false,
+      "expected_object_id_hit": false,
+      "expected_object_ids": [
+        "12"
+      ],
+      "actual_object_id": null,
+      "not_found_correct": null,
+      "runtime_seconds": 0.3435396131667403,
+      "token_usage": {
+        "input_tokens": 12,
+        "output_tokens": 0,
+        "total_tokens": 12,
+        "tokenizer": "open_clip:ViT-H-14",
+        "token_count_type": "non_padding_text_encoder_tokens",
+        "provider_billing_tokens": false,
+        "encoded_by_model": true
+      },
+      "context_size_chars": null,
+      "prompt_size_chars": null,
+      "estimated_input_tokens": null,
+      "checked_view_count": 1.0,
+      "visited_node_count": 1.0,
+      "bbox_3d_iou": 0.0,
+      "bbox_3d_iou_eligible": true,
+      "failure_categories": [
+        "bad bbox",
+        "wrong object",
+        "wrong view"
+      ],
+      "schema_errors": [],
+      "result_file": "query_results/scannet_0435_00_sr3d_plus_003.json"
+    }
+  ],
+  "warnings": []
+}

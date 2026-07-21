@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "52a176fd-422f-44c5-b43d-f0b9d70f7c24"
+  ],
+  "selected_views": [
+    "v002"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "bed",
+    "selected_node_id": "52a176fd-422f-44c5-b43d-f0b9d70f7c24",
+    "selected_view_id": "v002",
+    "bbox_2d": [
+      0.0,
+      0.534375,
+      0.3375,
+      0.84375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        0.5477515612438502,
+        -0.040174131238954525,
+        0.49065771830527183
+      ],
+      "max": [
+        1.5592763618261587,
+        1.7498595518691649,
+        1.0705455548278497
+      ],
+      "minimum": [
+        0.5477515612438502,
+        -0.040174131238954525,
+        0.49065771830527183
+      ],
+      "maximum": [
+        1.5592763618261587,
+        1.7498595518691649,
+        1.0705455548278497
+      ],
+      "center": [
+        1.0535139615350044,
+        0.8548427103151052,
+        0.7806016365665608
+      ],
+      "size": [
+        1.0115248005823085,
+        1.7900336831081194,
+        0.5798878365225779
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.29572421312332153,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 16 with class 'bed' and cosine similarity 0.295724."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.36679888333325533,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 68.05858559599983,
+      "native_batch_query_total": 2.200793299999532,
+      "native_batch_query_per_query": 0.36679888333325533
+    },
+    "token_usage": {
+      "input_tokens": 11,
+      "output_tokens": 0,
+      "total_tokens": 11,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 73,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0222_00",
+  "query_id": "scannet_0222_00_sr3d_plus_001",
+  "query": "the bed that is close to the laundry hamper",
+  "query_type": "relational"
+}

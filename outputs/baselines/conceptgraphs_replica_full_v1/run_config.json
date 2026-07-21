@@ -1,0 +1,270 @@
+{
+  "schema_version": "semanticsplat.run_config.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "status": "complete",
+  "scene_ids": [
+    "replica_office0",
+    "replica_office1",
+    "replica_office2",
+    "replica_office3",
+    "replica_office4",
+    "replica_room0",
+    "replica_room1",
+    "replica_room2"
+  ],
+  "scenes": [
+    {
+      "scene_id": "replica_office0",
+      "benchmark_scene_id": "replica_office0"
+    },
+    {
+      "scene_id": "replica_office1",
+      "benchmark_scene_id": "replica_office1"
+    },
+    {
+      "scene_id": "replica_office2",
+      "benchmark_scene_id": "replica_office2"
+    },
+    {
+      "scene_id": "replica_office3",
+      "benchmark_scene_id": "replica_office3"
+    },
+    {
+      "scene_id": "replica_office4",
+      "benchmark_scene_id": "replica_office4"
+    },
+    {
+      "scene_id": "replica_room0",
+      "benchmark_scene_id": "replica_room0"
+    },
+    {
+      "scene_id": "replica_room1",
+      "benchmark_scene_id": "replica_room1"
+    },
+    {
+      "scene_id": "replica_room2",
+      "benchmark_scene_id": "replica_room2"
+    }
+  ],
+  "scene_stats": [
+    {
+      "scene_id": "replica_office0",
+      "benchmark_scene_id": "replica_office0",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 29,
+      "status": "available"
+    },
+    {
+      "scene_id": "replica_office1",
+      "benchmark_scene_id": "replica_office1",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 27,
+      "status": "available"
+    },
+    {
+      "scene_id": "replica_office2",
+      "benchmark_scene_id": "replica_office2",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 44,
+      "status": "available"
+    },
+    {
+      "scene_id": "replica_office3",
+      "benchmark_scene_id": "replica_office3",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 61,
+      "status": "available"
+    },
+    {
+      "scene_id": "replica_office4",
+      "benchmark_scene_id": "replica_office4",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 60,
+      "status": "available"
+    },
+    {
+      "scene_id": "replica_room0",
+      "benchmark_scene_id": "replica_room0",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 66,
+      "status": "available"
+    },
+    {
+      "scene_id": "replica_room1",
+      "benchmark_scene_id": "replica_room1",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 32,
+      "status": "available"
+    },
+    {
+      "scene_id": "replica_room2",
+      "benchmark_scene_id": "replica_room2",
+      "query_count": 7,
+      "found_count": 7,
+      "native_map_object_count": 54,
+      "status": "available"
+    }
+  ],
+  "benchmark_path": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\replica_scannet_pilot_queries.json",
+  "native_input": "C:\\GitProjects\\beyond-proximity\\outputs\\baselines\\conceptgraphs_replica_full_v1",
+  "provenance_by_scene": {
+    "replica_office0": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_office0",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_office0/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_office0/conversion_manifest.json"
+      ]
+    },
+    "replica_office1": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_office1",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_office1/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_office1/conversion_manifest.json"
+      ]
+    },
+    "replica_office2": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_office2",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_office2/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_office2/conversion_manifest.json"
+      ]
+    },
+    "replica_office3": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_office3",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_office3/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_office3/conversion_manifest.json"
+      ]
+    },
+    "replica_office4": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_office4",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_office4/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_office4/conversion_manifest.json"
+      ]
+    },
+    "replica_room0": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_room0",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_room0/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_room0/conversion_manifest.json"
+      ]
+    },
+    "replica_room1": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_room1",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_room1/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_room1/conversion_manifest.json"
+      ]
+    },
+    "replica_room2": {
+      "native_execution": true,
+      "baseline": "conceptgraphs",
+      "scene_id": "replica_room2",
+      "repository": "https://github.com/concept-graphs/concept-graphs",
+      "revision": "72f5962822b5e8678a446f367a06df1a977d2a4d",
+      "command": "native detection, absolute-pose mapping, CLIP batch query",
+      "checkpoints": [
+        "ultralytics/yolov8l-world.pt",
+        "ultralytics/mobile_sam.pt",
+        "laion/CLIP-ViT-H-14-laion2b_s32b_b79K"
+      ],
+      "native_artifacts": [
+        "native_data/replica_room2/exps/semanticsplat_public_mapping_v1/pcd_semanticsplat_public_mapping_v1.pkl.gz",
+        "native_data/replica_room2/conversion_manifest.json"
+      ]
+    }
+  },
+  "depth_validation": {
+    "status": "official_rgbd_metric_depth",
+    "reason": "Native ConceptGraphs consumed official replica RGB-D and absolute camera-to-world poses."
+  },
+  "bbox_3d_evaluation": {
+    "status": "official_dataset_gt_enabled",
+    "gt_source": "C:\\GitProjects\\beyond-proximity\\docs\\benchmarks\\replica_scannet_pilot_queries.json",
+    "prediction_coordinate_frame": "official_replica_world",
+    "gt_coordinate_frame": "official_replica_world",
+    "reason": "Native mapping used absolute dataset camera-to-world poses and metric depth."
+  },
+  "result_count": 56,
+  "finished_at": "2026-07-15T23:54:48.627713+00:00"
+}

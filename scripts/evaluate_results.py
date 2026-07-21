@@ -283,6 +283,14 @@ def official_dataset_bbox_gt_enabled(run_config: dict[str, Any]) -> bool:
     return isinstance(bbox_eval, dict) and bbox_eval.get("status") == "official_dataset_gt_enabled"
 
 
+def bbox_3d_metrics_enabled(run_config: dict[str, Any]) -> bool:
+    bbox_eval = run_config.get("bbox_3d_evaluation")
+    return not (
+        isinstance(bbox_eval, dict)
+        and bbox_eval.get("status") == "unavailable_no_predicted_box"
+    )
+
+
 def bbox_evaluation_warning(run_config: dict[str, Any]) -> str | None:
     bbox_eval = run_config.get("bbox_3d_evaluation")
     if not isinstance(bbox_eval, dict):
@@ -469,6 +477,9 @@ def aggregate_tokens(rows: list[dict[str, Any]]) -> dict[str, Any]:
     totals = {"input": 0, "output": 0, "total": 0}
     available = 0
     seen_fields = set()
+    tokenizers: set[str] = set()
+    count_types: set[str] = set()
+    billing_flags: set[bool] = set()
     aliases = {
         "input": ("input", "input_tokens", "prompt_tokens"),
         "output": ("output", "output_tokens", "completion_tokens"),
@@ -478,6 +489,12 @@ def aggregate_tokens(rows: list[dict[str, Any]]) -> dict[str, Any]:
         usage = row.get("token_usage")
         if not isinstance(usage, dict):
             continue
+        if usage.get("tokenizer") is not None:
+            tokenizers.add(str(usage["tokenizer"]))
+        if usage.get("token_count_type") is not None:
+            count_types.add(str(usage["token_count_type"]))
+        if isinstance(usage.get("provider_billing_tokens"), bool):
+            billing_flags.add(bool(usage["provider_billing_tokens"]))
         row_available = False
         for target, keys in aliases.items():
             for key in keys:
@@ -495,6 +512,11 @@ def aggregate_tokens(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "total": totals["total"] if "total" in seen_fields else None,
         "denominator": available,
         "status": "measured" if available else "unavailable",
+        "tokenizers": sorted(tokenizers),
+        "token_count_types": sorted(count_types),
+        "provider_billing_tokens": (
+            next(iter(billing_flags)) if len(billing_flags) == 1 else None
+        ),
     }
 
 
@@ -675,6 +697,7 @@ def evaluate(
         query_by_id[query_id] = effective_query
     excluded_query_count = len(all_query_by_id) - len(query_by_id)
     depth_reliable = run_depth_reliable(run_config)
+    bbox_metrics_enabled = bbox_3d_metrics_enabled(run_config)
     official_bbox_gt = official_dataset_bbox_gt_enabled(run_config)
     results_dir = results_dir or run_dir / "query_results"
     if not results_dir.exists():
@@ -714,7 +737,12 @@ def evaluate(
                 "schema_errors": [],
             })
             continue
-        row = evaluate_one(query, saved[1], depth_reliable=depth_reliable, official_bbox_gt=official_bbox_gt)
+        row = evaluate_one(
+            query,
+            saved[1],
+            depth_reliable=depth_reliable and bbox_metrics_enabled,
+            official_bbox_gt=official_bbox_gt,
+        )
         try:
             result_file = saved[0].relative_to(run_dir)
         except ValueError:
@@ -744,7 +772,9 @@ def evaluate(
     bbox_warning = bbox_evaluation_warning(run_config)
     if bbox_warning:
         warnings.append(bbox_warning)
-    if not depth_reliable:
+    if not bbox_metrics_enabled:
+        warnings.append("3D IoU is N/A because the run does not emit predicted 3D boxes")
+    elif not depth_reliable:
         warnings.append("3D IoU is N/A because run_config does not confirm reliable depth")
     if unavailable_rows:
         warnings.append(f"{len(unavailable_rows)} query results are unavailable and excluded from measured metrics")
@@ -956,9 +986,9 @@ def summary_markdown(summary: dict[str, Any]) -> str:
         f"| Acc@0.25 | {metrics['bbox_acc_at_0_25']['status']} | {format_value(metrics['bbox_acc_at_0_25']['value'])} | {metrics['bbox_acc_at_0_25']['numerator']} / {metrics['bbox_acc_at_0_25']['denominator']} |",
         f"| Acc@0.5 | {metrics['bbox_acc_at_0_5']['status']} | {format_value(metrics['bbox_acc_at_0_5']['value'])} | {metrics['bbox_acc_at_0_5']['numerator']} / {metrics['bbox_acc_at_0_5']['denominator']} |",
         "",
-        "## Actual Provider Token Usage",
+        "## Measured Token Usage",
         "",
-        "Actual provider token usage is only available for `live` or verified `cached_live` runs. Stub runs report estimated input tokens from the serialized query context.",
+        "Token semantics are recorded below. `provider_billing_tokens: false` means local tokenizer/model tokens, not API usage or cost.",
         "",
         "```json",
         json.dumps(metrics["token_usage"], indent=2, ensure_ascii=False),

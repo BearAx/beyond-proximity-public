@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "d619b07b-3d01-4d72-8f5b-a18b41806d94"
+  ],
+  "selected_views": [
+    "frame001000"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "trash bin",
+    "selected_node_id": "d619b07b-3d01-4d72-8f5b-a18b41806d94",
+    "selected_view_id": "frame001000",
+    "bbox_2d": [
+      0.5666666666666667,
+      0.0,
+      0.7283333333333334,
+      0.3
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        1.8431673754932687,
+        -2.7131433093766484,
+        -1.1250902943854828
+      ],
+      "max": [
+        2.33725308160908,
+        -2.1973882193222964,
+        -0.15117188377408167
+      ],
+      "minimum": [
+        1.8431673754932687,
+        -2.7131433093766484,
+        -1.1250902943854828
+      ],
+      "maximum": [
+        2.33725308160908,
+        -2.1973882193222964,
+        -0.15117188377408167
+      ],
+      "center": [
+        2.0902102285511743,
+        -2.4552657643494724,
+        -0.6381310890797822
+      ],
+      "size": [
+        0.49408570611581126,
+        0.5157550900543519,
+        0.9739184106114012
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.25936412811279297,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 15 with class 'trash bin' and cosine similarity 0.259364."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.24905135814281362,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 60.63432706799904,
+      "native_batch_query_total": 1.7433595069996954,
+      "native_batch_query_per_query": 0.24905135814281362
+    },
+    "token_usage": {
+      "input_tokens": 5,
+      "output_tokens": 0,
+      "total_tokens": 5,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 29,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office0",
+  "query_id": "replica_office0_simple_002",
+  "query": "Find the rug",
+  "query_type": "simple_object"
+}

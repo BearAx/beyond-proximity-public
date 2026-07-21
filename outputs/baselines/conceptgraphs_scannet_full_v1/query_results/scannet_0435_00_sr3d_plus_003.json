@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "2befe26a-4743-48a2-bb55-38b2da9a62bc"
+  ],
+  "selected_views": [
+    "v007"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "desk",
+    "selected_node_id": "2befe26a-4743-48a2-bb55-38b2da9a62bc",
+    "selected_view_id": "v007",
+    "bbox_2d": [
+      0.3,
+      0.1375,
+      0.8953125,
+      0.84375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.967930535082452,
+        0.42865252266866644,
+        -0.09039428401450089
+      ],
+      "max": [
+        -0.9345514023453236,
+        2.0357315821715805,
+        1.0106695271898758
+      ],
+      "minimum": [
+        -1.967930535082452,
+        0.42865252266866644,
+        -0.09039428401450089
+      ],
+      "maximum": [
+        -0.9345514023453236,
+        2.0357315821715805,
+        1.0106695271898758
+      ],
+      "center": [
+        -1.4512409687138879,
+        1.2321920524201235,
+        0.46013762158768745
+      ],
+      "size": [
+        1.0333791327371284,
+        1.607079059502914,
+        1.1010638112043767
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2369639128446579,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 48 with class 'desk' and cosine similarity 0.236964."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.3435396131667403,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 62.2267083050001,
+      "native_batch_query_total": 2.061237679000442,
+      "native_batch_query_per_query": 0.3435396131667403
+    },
+    "token_usage": {
+      "input_tokens": 12,
+      "output_tokens": 0,
+      "total_tokens": 12,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 56,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0435_00",
+  "query_id": "scannet_0435_00_sr3d_plus_003",
+  "query": "the toilet that is between the desk and the bathtub",
+  "query_type": "relational"
+}

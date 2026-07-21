@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leopython2006.github.io/beyond-proximity/sitemap.xml

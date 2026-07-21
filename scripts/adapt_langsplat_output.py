@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 from typing import Any
 
@@ -66,6 +67,32 @@ def main() -> None:
             scene_id=args.scene_id,
             benchmark_scene_id=args.benchmark_scene_id,
             adapt_prediction=adapt_prediction,
+        )
+        run_config_path = output / "run_config.json"
+        run_config = json.loads(run_config_path.read_text(encoding="utf-8"))
+        run_config.update({
+            "depth_validation": {
+                "status": "reliable",
+                "source": "official ScanNet metric RGB-D",
+                "reason": "Peak feature pixels are grounded with official depth and aligned camera-to-world poses.",
+            },
+            "bbox_3d_evaluation": {
+                "status": "unavailable_no_predicted_box",
+                "reason": "Native LangSplat emits a relevancy peak point, not a 3D extent; 3D IoU is therefore N/A.",
+            },
+            "resource_profile": {
+                "status": "reduced_resource_end_to_end",
+                "gpu_memory_gb": 6,
+                "rgb_iterations": 3000,
+                "language_iterations": 3000,
+                "sam_model": "vit_b",
+                "clip_model": "ViT-B-16",
+                "preprocess_width": 320,
+            },
+        })
+        run_config_path.write_text(
+            json.dumps(run_config, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
         )
     except BaselineAdapterError as exc:
         raise SystemExit(f"LangSplat adapter blocked: {exc}") from exc

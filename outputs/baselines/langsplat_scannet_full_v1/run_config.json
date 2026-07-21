@@ -1,0 +1,57 @@
+{
+  "schema_version": "semanticsplat.run_config.v1",
+  "run_id": "langsplat_scannet_full_v1",
+  "method": "langsplat",
+  "mode": "live",
+  "status": "complete",
+  "scene_ids": [
+    "scannet_0011_00"
+  ],
+  "scenes": [
+    {
+      "scene_id": "scannet_0011_00",
+      "benchmark_scene_id": "scannet_0011_00"
+    }
+  ],
+  "benchmark_path": "docs\\benchmarks\\scannet_bbq_grounding_pilot_v1.json",
+  "native_input": "outputs\\baselines\\langsplat_scannet_full_v1\\native_results.json",
+  "provenance": {
+    "native_execution": true,
+    "baseline": "langsplat",
+    "scene_id": "scannet_0011_00",
+    "repository": "https://github.com/minghanqin/LangSplat",
+    "revision": "d70edb86df0fcbda19dc0d9739a3e5140a5e65fc",
+    "command": "ScanNet conversion; 3000-step RGB 3DGS; SAM-B/CLIP-B features; AE; 3000-step LangSplat level 3; batch query",
+    "checkpoints": [
+      "locally trained ScanNet RGB 3DGS checkpoint (3000 iterations)",
+      "locally trained ScanNet LangSplat feature-level-3 checkpoint (3000 iterations)",
+      "locally trained scene autoencoder",
+      "laion/CLIP-ViT-B-16-laion2b_s34b_b88k"
+    ],
+    "native_artifacts": [
+      "rgb_final_-1/chkpnt3000.pth",
+      "ae_checkpoint/best_ckpt.pth",
+      "langsplat_3/chkpnt3000.pth"
+    ]
+  },
+  "result_count": 6,
+  "finished_at": "2026-07-15T22:49:15.492401+00:00",
+  "depth_validation": {
+    "status": "reliable",
+    "source": "official ScanNet metric RGB-D",
+    "reason": "Peak feature pixels are grounded with official depth and aligned camera-to-world poses."
+  },
+  "bbox_3d_evaluation": {
+    "status": "unavailable_no_predicted_box",
+    "reason": "Native LangSplat emits a relevancy peak point, not a 3D extent; 3D IoU is therefore N/A."
+  },
+  "resource_profile": {
+    "status": "reduced_resource_end_to_end",
+    "gpu_memory_gb": 6,
+    "rgb_iterations": 3000,
+    "language_iterations": 3000,
+    "sam_model": "vit_b",
+    "clip_model": "ViT-B-16",
+    "preprocess_width": 320
+  }
+}

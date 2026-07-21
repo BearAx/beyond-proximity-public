@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "4c5d93f4-1804-45d4-9025-07a57733b1ad"
+  ],
+  "selected_views": [
+    "v003"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "floor",
+    "selected_node_id": "4c5d93f4-1804-45d4-9025-07a57733b1ad",
+    "selected_view_id": "v003",
+    "bbox_2d": [
+      0.009375,
+      0.259375,
+      0.996875,
+      0.9875
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -0.9322466113867112,
+        -2.8714312017057226,
+        -0.08578638185808374
+      ],
+      "max": [
+        1.4371050566708417,
+        1.075233676863077,
+        0.3980395709408029
+      ],
+      "minimum": [
+        -0.9322466113867112,
+        -2.8714312017057226,
+        -0.08578638185808374
+      ],
+      "maximum": [
+        1.4371050566708417,
+        1.075233676863077,
+        0.3980395709408029
+      ],
+      "center": [
+        0.25242922264206524,
+        -0.8980987624213228,
+        0.15612659454135958
+      ],
+      "size": [
+        2.369351668057553,
+        3.9466648785687997,
+        0.4838259527988866
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2840379476547241,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 18 with class 'floor' and cosine similarity 0.284038."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.3393861945000178,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 59.22912305199998,
+      "native_batch_query_total": 2.0363171670001066,
+      "native_batch_query_per_query": 0.3393861945000178
+    },
+    "token_usage": {
+      "input_tokens": 8,
+      "output_tokens": 0,
+      "total_tokens": 8,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 19,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0086_00",
+  "query_id": "scannet_0086_00_nr3d_003",
+  "query": "toilet in the larger stall.",
+  "query_type": "attribute"
+}

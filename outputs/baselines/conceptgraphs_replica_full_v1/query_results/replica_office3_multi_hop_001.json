@@ -1,0 +1,104 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "b19b82fa-e172-4526-ae24-ff8fd1305bc6"
+  ],
+  "selected_views": [
+    "frame000000",
+    "frame000500"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "clock",
+    "selected_node_id": "b19b82fa-e172-4526-ae24-ff8fd1305bc6",
+    "selected_view_id": "frame000000",
+    "bbox_2d": [
+      0.11166666666666666,
+      0.12058823529411765,
+      0.16166666666666665,
+      0.20294117647058824
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        1.4501438316821258,
+        1.7546955261237336,
+        0.9480438494516458
+      ],
+      "max": [
+        1.7018001514285526,
+        1.9519781472278155,
+        1.259097106613686
+      ],
+      "minimum": [
+        1.4501438316821258,
+        1.7546955261237336,
+        0.9480438494516458
+      ],
+      "maximum": [
+        1.7018001514285526,
+        1.9519781472278155,
+        1.259097106613686
+      ],
+      "center": [
+        1.5759719915553392,
+        1.8533368366757745,
+        1.1035704780326658
+      ],
+      "size": [
+        0.25165631974642677,
+        0.1972826211040819,
+        0.31105325716204024
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2771177887916565,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 1 with class 'clock' and cosine similarity 0.277118."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.30349266114275714,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 62.06633871300073,
+      "native_batch_query_total": 2.1244486279993,
+      "native_batch_query_per_query": 0.30349266114275714
+    },
+    "token_usage": {
+      "input_tokens": 12,
+      "output_tokens": 0,
+      "total_tokens": 12,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 2,
+    "construction_cost": {
+      "native_map_object_count": 61,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office3",
+  "query_id": "replica_office3_multi_hop_001",
+  "query": "First inspect the scene objects, then find the clock",
+  "query_type": "multi_hop"
+}

@@ -1,58 +1,49 @@
 # LangSplat Status
 
-Status date: 2026-06-26. Status: `READY`.
+Status date: 2026-07-15. Status: `END_TO_END_SCANNET_DONE_WITH_LIMITATIONS`.
 
-## Evidence
+LangSplat now has a native end-to-end public-dataset execution beyond the old
+pretrained-sofa smoke. The run completed on ScanNet `scene0011_00` with four
+official RGB-D views and all six scene queries.
 
-| Check | Status | Evidence |
-|---|---|---|
-| In-repo checkout | not used | Smoke uses a pinned Docker build from official `https://github.com/minghanqin/LangSplat` |
-| External checkout | present | `C:/GitProjects/baseline-deps/LangSplat` exists, but Docker build is the source of execution evidence |
-| Conda env | not required | Smoke runs in Docker image `semanticsplat-langsplat:d70edb8` |
-| Docker runtime | available | Docker Desktop ran the smoke with `--gpus all` |
-| Checkpoints/assets | present | `C:/GitProjects/baseline-deps/LangSplat-assets` contains official sofa `data`, `ckpt`, and `output` folders |
-| GPU/CUDA assumption | satisfied for smoke | Docker GPU check reported NVIDIA GeForce RTX 3060 Laptop GPU, 6144 MiB |
-| Input format | official sofa only | Current captured SemanticSplat scenes are still not converted to LangSplat native SfM/3DGS layout |
-| Smoke command availability | present | `scripts/run_langsplat_smoke.ps1` |
-| Native output | present | `outputs/baselines/langsplat_smoke_v1/native_results.json` |
-| Canonical output | present | `outputs/baselines/langsplat_smoke_v1/query_results/ls001.json` |
-| Metrics summary | present | `outputs/baselines/langsplat_smoke_v1/metrics_summary.json` |
-| Canonical adapter | present | `scripts/adapt_langsplat_output.py` |
-| Adapter tests | present | `tests/backend/test_baseline_adapters.py` |
+## Native Stages Completed
 
-## Smoke Result
+1. RGB 3D Gaussian Splatting optimization, 3,000 iterations.
+2. SAM ViT-B and OpenCLIP ViT-B-16 feature preprocessing.
+3. Autoencoder training for 100 epochs and feature encoding.
+4. Level-3 language-field optimization, 3,000 iterations.
+5. Rendering, six-query native retrieval, canonical adaptation, and evaluation.
 
-LangSplat executed on the official pretrained sofa assets. The run rendered feature maps under `C:/GitProjects/baseline-deps/LangSplat-assets/output/sofa_1/train/ours_None/`, queried `renders_npy/00000.npy`, wrote native evidence, and adapted one canonical query result.
+## Results
 
-This is a smoke result, not a SemanticSplat five-scene comparison. The benchmark query has `verification_status: missing_gt`, so accuracy, retrieval success, and 3D IoU are unavailable.
+| Metric | Result |
+|---|---:|
+| Schema-valid outputs | 6 / 6 |
+| Expected view hit | 4 / 6 (0.6667) |
+| Thresholded retrieval success | 1 / 6 (0.1667) |
+| Exact GT object-ID hit | 0 / 6 |
+| Mean query runtime | 2.0365 s |
+| Local text tokens | 74 |
+| 3D IoU / Acc@k | N/A |
 
-Observed canonical result:
+3D IoU is unavailable because native LangSplat emits a language-relevance peak,
+not a predicted 3D box. No artificial extent is constructed from that point.
 
-```text
-query_id = ls001
-mode = live
-schema_valid_result_count = 1
-native relevancy score = 0.4495883882045746
-found = false
-accuracy_eligible_result_count = 0
-```
-
-## Reproduction Command
-
-Run:
+## Reproduction
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_langsplat_smoke.ps1
+powershell -ExecutionPolicy Bypass -File scripts\run_langsplat_scannet_full.ps1
 ```
 
-Then evaluate:
+Primary evidence:
 
-```powershell
-python -B scripts\evaluate_results.py `
-  --benchmark docs\benchmarks\baseline_smoke_queries_v1.json `
-  --run-dir outputs\baselines\langsplat_smoke_v1
-```
+- `outputs/baselines/langsplat_scannet_full_v1/`
+- `docs/baselines/langsplat/langsplat_scannet_end_to_end_result.md`
+- `scripts/run_langsplat_scannet_full.ps1`
 
-## Remaining Gap
+## Resource Qualification
 
-The official sofa smoke proves LangSplat native execution and canonical adaptation. It does not prove fair comparison on the five captured SemanticSplat scenes. That still requires converting captured scenes into LangSplat's native SfM/3DGS format or training/loading compatible LangSplat scene assets.
+This is a reduced-resource execution on an RTX 3060 Laptop GPU with 6 GB VRAM,
+using 3,000 instead of the paper's 30,000 iterations. It proves every native
+stage runs on project data; it is not a paper-equivalent eight-scene LangSplat
+benchmark or a matched comparison with SemanticSplat.

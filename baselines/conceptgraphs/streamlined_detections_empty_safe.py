@@ -1,6 +1,7 @@
 # Standard library imports
 import cv2
 import gzip
+import os
 import pickle
 from pathlib import Path
 
@@ -41,6 +42,9 @@ def main(cfg: DictConfig):
         desired_width=cfg.desired_width,
         device="cpu",
         dtype=torch.float,
+        # Keep public-dataset map boxes in the official world frame so they can
+        # be compared with the dataset's GT boxes.
+        relative_pose=False,
     )
 
     det_exp_path = get_exp_out_path(cfg.dataset_root, cfg.scene_id, cfg.exp_suffix)
@@ -49,8 +53,11 @@ def main(cfg: DictConfig):
 
     detection_model = measure_time(YOLO)("yolov8l-world.pt")
     sam_predictor = SAM("mobile_sam.pt")
+    clip_checkpoint = os.environ.get(
+        "SEMANTICSPLAT_OPENCLIP_CHECKPOINT", "laion2b_s32b_b79k"
+    )
     clip_model, _, clip_preprocess = open_clip.create_model_and_transforms(
-        "ViT-H-14", "laion2b_s32b_b79k"
+        "ViT-H-14", clip_checkpoint
     )
     clip_model = clip_model.to(cfg.device)
     clip_tokenizer = open_clip.get_tokenizer("ViT-H-14")

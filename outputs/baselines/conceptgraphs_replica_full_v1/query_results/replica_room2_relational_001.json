@@ -1,0 +1,104 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "a332b220-83f9-4f44-98fa-c55195815ef1"
+  ],
+  "selected_views": [
+    "frame001000",
+    "frame001499"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "dining table",
+    "selected_node_id": "a332b220-83f9-4f44-98fa-c55195815ef1",
+    "selected_view_id": "frame001000",
+    "bbox_2d": [
+      0.4766666666666667,
+      0.6617647058823529,
+      1.0,
+      0.9970588235294118
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        1.9535624152738436,
+        -1.5799190498932756,
+        -1.911934492231884
+      ],
+      "max": [
+        3.932246321423456,
+        -0.25899704094632847,
+        -1.535357814535648
+      ],
+      "minimum": [
+        1.9535624152738436,
+        -1.5799190498932756,
+        -1.911934492231884
+      ],
+      "maximum": [
+        3.932246321423456,
+        -0.25899704094632847,
+        -1.535357814535648
+      ],
+      "center": [
+        2.9429043683486498,
+        -0.919458045419802,
+        -1.723646153383766
+      ],
+      "size": [
+        1.9786839061496124,
+        1.3209220089469471,
+        0.37657667769623604
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3097880184650421,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 32 with class 'dining table' and cosine similarity 0.309788."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.26343256814288907,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 61.140905760999885,
+      "native_batch_query_total": 1.8440279770002235,
+      "native_batch_query_per_query": 0.26343256814288907
+    },
+    "token_usage": {
+      "input_tokens": 10,
+      "output_tokens": 0,
+      "total_tokens": 10,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 2,
+    "construction_cost": {
+      "native_map_object_count": 54,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_room2",
+  "query_id": "replica_room2_relational_001",
+  "query": "Find the table near Replica object 26",
+  "query_type": "relational"
+}

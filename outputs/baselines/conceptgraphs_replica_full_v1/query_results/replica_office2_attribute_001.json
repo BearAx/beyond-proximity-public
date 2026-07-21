@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "10c8bb46-c14c-4afa-9e8e-e839741ee7d5"
+  ],
+  "selected_views": [
+    "frame000000"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "book",
+    "selected_node_id": "10c8bb46-c14c-4afa-9e8e-e839741ee7d5",
+    "selected_view_id": "frame000000",
+    "bbox_2d": [
+      0.91,
+      0.7294117647058823,
+      1.0,
+      0.8205882352941176
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        1.0100948110382135,
+        0.2008216690438266,
+        -0.7266189212456124
+      ],
+      "max": [
+        1.388642361443981,
+        0.46266044905626236,
+        -0.6593230136763357
+      ],
+      "minimum": [
+        1.0100948110382135,
+        0.2008216690438266,
+        -0.7266189212456124
+      ],
+      "maximum": [
+        1.388642361443981,
+        0.46266044905626236,
+        -0.6593230136763357
+      ],
+      "center": [
+        1.1993685862410972,
+        0.3317410590500445,
+        -0.6929709674609741
+      ],
+      "size": [
+        0.3785475504057674,
+        0.26183878001243577,
+        0.06729590756927673
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.2804831266403198,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 12 with class 'book' and cosine similarity 0.280483."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.26389795371427943,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 60.416187817998434,
+      "native_batch_query_total": 1.8472856759999559,
+      "native_batch_query_per_query": 0.26389795371427943
+    },
+    "token_usage": {
+      "input_tokens": 8,
+      "output_tokens": 0,
+      "total_tokens": 8,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 44,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office2",
+  "query_id": "replica_office2_attribute_001",
+  "query": "Find the official Replica bottle object",
+  "query_type": "attribute"
+}

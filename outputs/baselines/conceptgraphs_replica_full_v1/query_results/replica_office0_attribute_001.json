@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "08a3bcf2-2e0a-4fe8-826c-0c398ace065f"
+  ],
+  "selected_views": [
+    "frame001000"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "stool",
+    "selected_node_id": "08a3bcf2-2e0a-4fe8-826c-0c398ace065f",
+    "selected_view_id": "frame001000",
+    "bbox_2d": [
+      0.0,
+      0.55,
+      0.23833333333333334,
+      0.9970588235294118
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        0.05378185384021583,
+        -0.8576856351735449,
+        -1.1332596093828498
+      ],
+      "max": [
+        0.7584825208334779,
+        -0.2259397718945002,
+        -0.36705988631973735
+      ],
+      "minimum": [
+        0.05378185384021583,
+        -0.8576856351735449,
+        -1.1332596093828498
+      ],
+      "maximum": [
+        0.7584825208334779,
+        -0.2259397718945002,
+        -0.36705988631973735
+      ],
+      "center": [
+        0.40613218733684686,
+        -0.5418127035340226,
+        -0.7501597478512936
+      ],
+      "size": [
+        0.7047006669932621,
+        0.6317458632790447,
+        0.7661997230631123
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3364548087120056,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 14 with class 'stool' and cosine similarity 0.336455."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.24905135814281362,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 60.63432706799904,
+      "native_batch_query_total": 1.7433595069996954,
+      "native_batch_query_per_query": 0.24905135814281362
+    },
+    "token_usage": {
+      "input_tokens": 8,
+      "output_tokens": 0,
+      "total_tokens": 8,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 29,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office0",
+  "query_id": "replica_office0_attribute_001",
+  "query": "Find the official Replica table object",
+  "query_type": "attribute"
+}

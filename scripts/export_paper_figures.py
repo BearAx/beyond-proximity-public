@@ -81,8 +81,8 @@ def render_five_scene_summary(summary: dict, out_dir: Path) -> None:
     fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
     w = 0.38
 
-    # Normalize the cost panel to flat = 1.0 so views/tokens/runtime share a scale.
-    labels = ["Views", "Tokens", "Runtime"]
+    # Normalize the cost panel to flat = 1.0 so views/context/runtime share a scale.
+    labels = ["Views", "Est. context\ntokens", "Runtime"]
     flat_raw = [
         averages.get("flat_views_checked", 0),
         averages.get("flat_input_tokens", 0),
@@ -145,7 +145,7 @@ def _aggregate(rows, key):
 
 
 def render_cumulative(run_dir: Path, out_dir: Path) -> None:
-    """Filled line chart: cumulative input tokens over queries, flat vs graph."""
+    """Filled line chart: cumulative context tokens over queries, flat vs graph."""
     import matplotlib.pyplot as plt
 
     per_query_path = run_dir / "per_query_results.json"
@@ -164,7 +164,7 @@ def render_cumulative(run_dir: Path, out_dir: Path) -> None:
     x = list(range(1, len(rows) + 1))
 
     fig, ax = plt.subplots(figsize=(3.4, 3.0))
-    ax.fill_between(x, graph_c, flat_c, color=GRAPH_C, alpha=0.12, zorder=1, label="Tokens saved")
+    ax.fill_between(x, graph_c, flat_c, color=GRAPH_C, alpha=0.12, zorder=1, label="Context saved")
     ax.plot(x, flat_c, color=FLAT_C, lw=2.0, zorder=3, label="Flat")
     ax.plot(x, graph_c, color=GRAPH_C, lw=2.0, zorder=3, label="Graph")
     ax.annotate(f"{flat_c[-1]:.0f}k", (x[-1], flat_c[-1]), textcoords="offset points",
@@ -174,7 +174,7 @@ def render_cumulative(run_dir: Path, out_dir: Path) -> None:
     ax.set_xlim(1, len(rows))
     ax.set_ylim(0, flat_c[-1] * 1.08)
     ax.set_xlabel("Query index")
-    ax.set_ylabel("Cumulative input tokens (thousands)")
+    ax.set_ylabel("Cumulative est. tokens (thousands)")
     ax.set_title("Cost accumulates over 150 queries")
     ax.legend(loc="upper left")
     _grid_y(ax)
@@ -207,7 +207,7 @@ def render_by_query_type(run_dir: Path, out_dir: Path) -> None:
                     textcoords="offset points", xytext=(3, 0), va="center", fontsize=7.5)
     ax.set_yticks(y, labels)
     ax.set_xlim(0, 100)
-    ax.set_xlabel("Token savings vs flat (%)")
+    ax.set_xlabel("Estimated-token savings vs flat (%)")
     ax.set_title("Savings by query type")
     ax.grid(axis="x", alpha=0.6)
     ax.grid(axis="y", visible=False)
@@ -239,7 +239,7 @@ def render_by_scene(run_dir: Path, out_dir: Path) -> None:
     labels = [pretty.get(s, s) for s in scenes]
 
     matrix = np.array([[v, t] for v, t in zip(view_sav, tok_sav)])
-    cols = ["Views\nsaved", "Tokens\nsaved"]
+    cols = ["Views\nsaved", "Est. tokens\nsaved"]
 
     fig, ax = plt.subplots(figsize=(3.4, 3.0))
     im = ax.imshow(matrix, cmap="YlGnBu", vmin=45, vmax=90, aspect="auto")
@@ -297,7 +297,7 @@ def render_default_average(bench_path: Path, out_dir: Path) -> None:
         "flat_sec": sum(r["flat_sec"] for r in rows) / len(rows),
     }
 
-    metrics = ["Est. time", "Tokens", "Views"]
+    metrics = ["Est. time", "Est. tokens", "Views"]
     reductions = [
         agg["flat_sec"] / agg["graph_sec"] if agg["graph_sec"] else 0.0,
         agg["flat_tokens"] / agg["graph_tokens"] if agg["graph_tokens"] else 0.0,
@@ -424,7 +424,7 @@ def render_public_pilot(scannet_dir: Path, replica_dir: Path, out_dir: Path) -> 
 
     # Fallback: parse variant_comparison.md-style numbers from known frozen values if empty
     if all(o == 0 for o in objs):
-        # Frozen Person 2 ScanNet pilot (n=48)
+        # Frozen ScanNet pilot (n=48)
         acc = [0.2708, 0.2708, 0.2500, 0.2708]
         objs = [11.23, 49.0, 49.0, 47.0]
 

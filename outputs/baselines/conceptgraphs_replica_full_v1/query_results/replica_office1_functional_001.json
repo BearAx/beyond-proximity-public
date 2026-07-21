@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "697f6fa0-b7c6-4644-bc8f-57d9c531f4c2"
+  ],
+  "selected_views": [
+    "frame001999"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "armchair",
+    "selected_node_id": "697f6fa0-b7c6-4644-bc8f-57d9c531f4c2",
+    "selected_view_id": "frame001999",
+    "bbox_2d": [
+      0.10333333333333333,
+      0.0,
+      0.395,
+      0.5
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        0.8941482257343983,
+        -0.11463072893584147,
+        -1.042890671426975
+      ],
+      "max": [
+        1.794169144480637,
+        0.7545404125016901,
+        -0.21515761642027836
+      ],
+      "minimum": [
+        0.8941482257343983,
+        -0.11463072893584147,
+        -1.042890671426975
+      ],
+      "maximum": [
+        1.794169144480637,
+        0.7545404125016901,
+        -0.21515761642027836
+      ],
+      "center": [
+        1.3441586851075176,
+        0.3199548417829243,
+        -0.6290241439236267
+      ],
+      "size": [
+        0.9000209187462386,
+        0.8691711414375316,
+        0.8277330550066966
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.24994176626205444,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 25 with class 'armchair' and cosine similarity 0.249942."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.27800750471448865,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 59.86534806700001,
+      "native_batch_query_total": 1.9460525330014207,
+      "native_batch_query_per_query": 0.27800750471448865
+    },
+    "token_usage": {
+      "input_tokens": 10,
+      "output_tokens": 0,
+      "total_tokens": 10,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 27,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_office1",
+  "query_id": "replica_office1_functional_001",
+  "query": "Find a place to sit on the chair",
+  "query_type": "functional"
+}

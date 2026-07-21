@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SemanticSplat | Graph-Pruned Semantic Search for 3DGS Digital Twins</title>
+  <meta name="description" content="SemanticSplat is a reproducible graph-pruned semantic search prototype for queryable 3D Gaussian Splatting digital twins.">
+  <meta name="theme-color" content="#171b22">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SemanticSplat">
+  <meta property="og:description" content="Graph-pruned semantic search for queryable 3DGS digital twins, with code, paper, datasets, metrics, and reproducibility artifacts.">
+  <meta property="og:image" content="https://leopython2006.github.io/beyond-proximity/assets/method-workflow.png">
+  <meta property="og:url" content="https://leopython2006.github.io/beyond-proximity/">
+  <link rel="canonical" href="https://leopython2006.github.io/beyond-proximity/">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="SemanticSplat home">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>SemanticSplat</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#datasets">Datasets</a>
+      <a href="#reproduce">Reproduce</a>
+      <a href="#paper">Paper</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Queryable 3DGS digital twins</p>
+        <h1 id="hero-title">SemanticSplat</h1>
+        <p class="hero-copy">A hierarchical semantic graph that prunes scene search before grounding natural-language queries in captured evidence.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="assets/semanticsplat-paper.pdf">Read the paper</a>
+          <a class="button button-ghost" href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure">Browse the code</a>
+        </div>
+        <p class="hero-note">Research prototype. Current claims are deterministic, test-backed, and scoped below.</p>
+      </div>
+    </section>
+
+    <section class="metric-band" aria-label="Project summary">
+      <div class="metric-grid section-inner">
+        <div><strong>97</strong><span>team-captured RGB-D views</span></div>
+        <div><strong>1,066</strong><span>indexed semantic items</span></div>
+        <div><strong>150</strong><span>same-input benchmark queries</span></div>
+        <div><strong>75.5%</strong><span>fewer views checked</span></div>
+        <div><strong>68.2%</strong><span>fewer estimated context tokens</span></div>
+      </div>
+    </section>
+
+    <section class="summary-section section-inner" aria-labelledby="summary-title">
+      <div class="section-heading">
+        <p class="eyebrow dark">Research question</p>
+        <h2 id="summary-title">Can hierarchy reduce query context without changing the semantic map?</h2>
+      </div>
+      <div class="summary-grid">
+        <p class="lead">SemanticSplat organizes the same semantic records used by flat search into scene, zone, region, object, and view-evidence levels. A query retains likely branches, ranks their leaves, and expands only when confidence or geometry requires fallback.</p>
+        <div class="claim-box">
+          <span class="status-label">Safest current claim</span>
+          <p>Hierarchy substantially reduces checked views and serialized query context. The present lexical ranker does not yet preserve flat-search hit@k on the internal track, so the evidence supports a measured quality-cost tradeoff, not universal superiority.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="section-band method-section" aria-labelledby="method-title">
+      <div class="section-inner">
+        <div class="section-heading wide">
+          <p class="eyebrow dark">Method</p>
+          <h2 id="method-title">Captured evidence to graph-pruned grounding</h2>
+          <p>The figure is assembled from the real Conference Hall RGB-D capture, its ViewJSON record, the checked-in hierarchy, and frozen query <code>qv2_010</code>. No AI-generated imagery is used.</p>
+        </div>
+        <figure class="figure-wide">
+          <button class="figure-button" type="button" data-full="assets/method-workflow.png" aria-label="Open full-size method workflow">
+            <img class="zoomable" src="assets/method-workflow.png" alt="SemanticSplat pipeline showing RGB-D capture, semantic ViewJSON, hierarchy construction, query parsing, graph-versus-flat traversal, and grounded evidence.">
+          </button>
+          <figcaption>One-time construction is separated from per-query retrieval. The graph and flat lanes use identical records and scoring; only candidate selection changes.</figcaption>
+        </figure>
+
+        <div class="method-steps">
+          <article><span>01</span><h3>Index evidence</h3><p>Normalize objects, room cues, relations, optional 2D/3D boxes, and supporting views.</p></article>
+          <article><span>02</span><h3>Build hierarchy</h3><p>Attach deterministic entity records beneath scene, zone, and region branches.</p></article>
+          <article><span>03</span><h3>Parse the query</h3><p>Extract target, attributes, intent, optional anchor, and spatial relation.</p></article>
+          <article><span>04</span><h3>Prune and rank</h3><p>Gate branches, score retained entities, validate geometry, and expand on low confidence.</p></article>
+        </div>
+
+        <div class="figure-pair">
+          <figure>
+            <button class="figure-button" type="button" data-full="assets/tree-traversal.png" aria-label="Open full-size hierarchy figure">
+              <img class="zoomable" src="assets/tree-traversal.png" alt="Hierarchy tree with retained green path and pruned gray branches.">
+            </button>
+            <figcaption>Hierarchical search path: retained target evidence and pruned siblings.</figcaption>
+          </figure>
+          <figure>
+            <button class="figure-button" type="button" data-full="assets/evaluation-protocol.png" aria-label="Open full-size evaluation protocol">
+              <img class="zoomable" src="assets/evaluation-protocol.png" alt="Controlled same-map evaluation protocol comparing graph traversal with flat search.">
+            </button>
+            <figcaption>Controlled protocol: same map, query, labels, and scorer.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="results-section section-inner" aria-labelledby="results-title">
+      <div class="section-heading wide">
+        <p class="eyebrow dark">Evidence</p>
+        <h2 id="results-title">Results with protocol boundaries visible</h2>
+        <p>Internal graph-versus-flat numbers are directly comparable. Public-dataset and external-baseline tracks answer different questions and are not collapsed into a single ranking.</p>
+      </div>
+
+      <div class="results-overview">
+        <div class="result-number"><span>Graph</span><strong>4.77</strong><small>views/query</small></div>
+        <div class="result-number"><span>Flat</span><strong>19.4</strong><small>views/query</small></div>
+        <div class="result-number"><span>Graph</span><strong>1,014</strong><small>est. context tokens/query</small></div>
+        <div class="result-number"><span>Flat</span><strong>3,168</strong><small>est. context tokens/query</small></div>
+      </div>
+
+      <div class="tab-shell">
+        <div class="tabs" role="tablist" aria-label="Result tracks">
+          <button id="tab-internal" role="tab" aria-selected="true" aria-controls="panel-internal" tabindex="0">Internal</button>
+          <button id="tab-public" role="tab" aria-selected="false" aria-controls="panel-public" tabindex="-1">Public datasets</button>
+          <button id="tab-baselines" role="tab" aria-selected="false" aria-controls="panel-baselines" tabindex="-1">External baselines</button>
+        </div>
+
+        <div id="panel-internal" class="tab-panel" role="tabpanel" aria-labelledby="tab-internal">
+          <div class="track-copy">
+            <h3>Five captured scenes, 150 queries</h3>
+            <p>Graph reduces mean views by 75.5% and estimated context tokens by 68.2%. On 125 queries with verified view labels, hit@1 is 0.680 graph versus 0.768 flat; hit@3 is 0.808 versus 0.928.</p>
+            <a class="text-link" href="data/internal-metrics.json">Inspect the frozen metrics JSON</a>
+          </div>
+          <figure><img src="assets/five-scene-summary.png" alt="Five-scene graph versus flat summary charts."><figcaption>Efficiency and quality are reported together.</figcaption></figure>
+        </div>
+
+        <div id="panel-public" class="tab-panel" role="tabpanel" aria-labelledby="tab-public" hidden>
+          <div class="public-grid">
+            <div class="track-copy">
+              <h3>BBQ-aligned oracle-map pilots</h3>
+              <p>Replica: 8 scenes, 575 official GT boxes, 56 queries. ScanNet: 8 scenes, 392 official GT boxes, 48 Nr3D/Sr3D+ queries. These runs evaluate retrieval over official semantic maps, not predicted semantic perception.</p>
+              <a class="text-link" href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure/outputs/public_datasets">Open canonical outputs</a>
+            </div>
+            <figure><img src="assets/scannet-pilot.png" alt="ScanNet oracle-map pilot metrics."><figcaption>ScanNet graph and flat lexical Acc@0.25: 0.271.</figcaption></figure>
+            <figure><img src="assets/replica-pilot.png" alt="Replica oracle-map pilot metrics."><figcaption>Replica pilot; oracle semantic candidates.</figcaption></figure>
+          </div>
+        </div>
+
+        <div id="panel-baselines" class="tab-panel" role="tabpanel" aria-labelledby="tab-baselines" hidden>
+          <div class="baseline-table-wrap">
+            <table>
+              <thead><tr><th>Execution</th><th>Scope</th><th>Measured status</th><th>Comparison boundary</th></tr></thead>
+              <tbody>
+                <tr><td>ConceptGraphs / ScanNet</td><td>8 scenes, 48 queries</td><td>Native predicted-map run complete</td><td>Different map construction and query protocol</td></tr>
+                <tr><td>ConceptGraphs / Replica</td><td>8 scenes, 56 queries</td><td>Native predicted-map run complete</td><td>Different map construction and query protocol</td></tr>
+                <tr><td>LangSplat / ScanNet</td><td>1 scene, 6 queries</td><td>Reduced-resource end-to-end run complete</td><td>Not the paper-scale 8-scene configuration</td></tr>
+              </tbody>
+            </table>
+            <p class="table-note">These executions establish integration and diagnostic reference points. They do not establish a fair method ranking against SemanticSplat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="construction-band" aria-labelledby="construction-title">
+      <div class="section-inner construction-grid">
+        <div>
+          <p class="eyebrow">Construction accounting</p>
+          <h2 id="construction-title">Zero provider tokens, measured local representation size</h2>
+          <p>The evaluated graph builder is deterministic Python over saved semantic records. It performs no model-provider calls. Manual annotation and upstream perception effort were not token-metered and are reported as N/A.</p>
+          <a class="button button-light" href="data/graph-construction-cost.json">Download construction audit</a>
+        </div>
+        <dl class="construction-metrics">
+          <div><dt>Provider calls</dt><dd>0</dd></div>
+          <div><dt>Provider tokens</dt><dd>0</dd></div>
+          <div><dt>Source ViewJSON</dt><dd>66,937 <small>est. tokens</small></dd></div>
+          <div><dt>Constructed tree</dt><dd>179,817 <small>est. tokens</small></dd></div>
+          <div><dt>Local rebuild</dt><dd>1.822 s <small>sum of scene medians</small></dd></div>
+          <div><dt>Human annotation</dt><dd>N/A <small>not metered</small></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="datasets" class="datasets-section section-inner" aria-labelledby="datasets-title">
+      <div class="section-heading wide">
+        <p class="eyebrow dark">Data</p>
+        <h2 id="datasets-title">Exact evaluation sets and access boundaries</h2>
+        <p>The page publishes scene IDs, manifests, derived metrics, and reproduction code. Licensed ScanNet and Replica scene files are not mirrored.</p>
+      </div>
+
+      <div class="dataset-list">
+        <article class="dataset-item">
+          <div class="dataset-kicker"><span class="availability open">Team-owned</span><span>Internal track</span></div>
+          <h3>Five manual captures</h3>
+          <p>ConferenceHall-capture-pilot, Museume-capture, Theater-capture, outdoor-street-capture, and outdoor-drone-capture.</p>
+          <dl><div><dt>Views</dt><dd>97</dd></div><div><dt>Items</dt><dd>1,066</dd></div><div><dt>Queries</dt><dd>150</dd></div></dl>
+          <a class="text-link" href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure/backend/data/scenes">Browse scene records</a>
+        </article>
+
+        <article class="dataset-item">
+          <div class="dataset-kicker"><span class="availability licensed">Terms required</span><span>Public pilot</span></div>
+          <h3>ScanNet v2</h3>
+          <p><code>scene0011_00</code>, <code>scene0030_00</code>, <code>scene0046_00</code>, <code>scene0086_00</code>, <code>scene0222_00</code>, <code>scene0378_00</code>, <code>scene0389_00</code>, <code>scene0435_00</code>.</p>
+          <dl><div><dt>Scenes</dt><dd>8</dd></div><div><dt>GT boxes</dt><dd>392</dd></div><div><dt>Queries</dt><dd>48</dd></div></dl>
+          <a class="text-link" href="https://github.com/ScanNet/ScanNet">Request official ScanNet access</a>
+        </article>
+
+        <article class="dataset-item">
+          <div class="dataset-kicker"><span class="availability licensed">Official source</span><span>Public pilot</span></div>
+          <h3>Replica</h3>
+          <p><code>room0</code>-<code>room2</code> and <code>office0</code>-<code>office4</code>, aligned with the BBQ subset used in the paper.</p>
+          <dl><div><dt>Scenes</dt><dd>8</dd></div><div><dt>GT boxes</dt><dd>575</dd></div><div><dt>Queries</dt><dd>56</dd></div></dl>
+          <a class="text-link" href="https://github.com/facebookresearch/Replica-Dataset">Open the official Replica repository</a>
+        </article>
+      </div>
+      <p class="dataset-footnote">Machine-readable scene lists and access notes: <a href="data/datasets.json">dataset manifest JSON</a>.</p>
+    </section>
+
+    <section class="visual-evidence section-band" aria-labelledby="visual-title">
+      <div class="section-inner">
+        <div class="section-heading wide">
+          <p class="eyebrow dark">Visual audit</p>
+          <h2 id="visual-title">Captured scenes and a grounded case</h2>
+        </div>
+        <div class="figure-pair evidence-pair">
+          <figure><img src="assets/scene-gallery.png" alt="Gallery of six captured digital-twin scenes."><figcaption>Team-captured internal scenes. Public-dataset imagery is intentionally not redistributed here.</figcaption></figure>
+          <figure><img src="assets/qualitative-bbox.png" alt="Qualitative projection-screen grounding case with graph and flat views."><figcaption>Qualitative query evidence with a view-annotation box.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="reproduce" class="reproduce-section section-inner" aria-labelledby="reproduce-title">
+      <div class="section-heading wide">
+        <p class="eyebrow dark">Reproduce</p>
+        <h2 id="reproduce-title">Code, artifacts, and validation gates</h2>
+      </div>
+      <div class="reproduce-grid">
+        <div class="command-panel">
+          <div class="command-heading"><span>Core verification</span><button class="copy-button" type="button" data-copy-target="core-commands">Copy</button></div>
+          <pre id="core-commands"><code>python -B -m pytest -q
+python -B scripts/check_twinworld_numbers.py
+python -B scripts/measure_graph_construction.py --repeats 7
+python -B scripts/export_twinworld_figures.py</code></pre>
+        </div>
+        <div class="resource-list">
+          <a href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure/backend/query"><strong>Query implementation</strong><span>Grounding, traversal, provider modes</span></a>
+          <a href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure/scripts"><strong>Experiment scripts</strong><span>Build, run, adapt, evaluate, export</span></a>
+          <a href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure/docs"><strong>Protocols and reports</strong><span>GT, datasets, baselines, audits</span></a>
+          <a href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure/outputs"><strong>Canonical outputs</strong><span>Metrics and schema-valid query results</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="limitations-band" aria-labelledby="limitations-title">
+      <div class="section-inner limitations-grid">
+        <div><p class="eyebrow">Limits</p><h2 id="limitations-title">What this release does not claim</h2></div>
+        <ul>
+          <li>The five internal semantic indexes are manual reference annotations, not independent GT.</li>
+          <li>ScanNet and Replica SemanticSplat pilots use oracle semantic candidates; they do not measure semantic-perception accuracy.</li>
+          <li>ConceptGraphs and LangSplat use different map-construction and evaluation protocols, so their metrics are not a fair leaderboard.</li>
+          <li>Internal context tokens are deterministic text-size estimates. External baseline token counts are local tokenizer counts, not provider billing.</li>
+          <li>The current graph search saves context but trails flat lexical hit@k on the internal verified-view track.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="paper" class="paper-section section-inner" aria-labelledby="paper-title">
+      <div class="paper-copy">
+        <p class="eyebrow dark">Manuscript</p>
+        <h2 id="paper-title">SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins</h2>
+        <p>This ID-free pre-submission artifact contains no placeholder paper number. A portal-generated review ID and author metadata must be added only through the venue’s private submission workflow.</p>
+        <div class="paper-actions">
+          <a class="button button-dark" href="assets/semanticsplat-paper.pdf">Download PDF</a>
+          <a class="button button-outline" href="https://github.com/LeoPython2006/beyond-proximity/tree/codex/project-site-method-figure/papers/twinworld">LaTeX source</a>
+        </div>
+      </div>
+      <div class="citation-panel">
+        <span class="status-label">Double-blind citation</span>
+        <pre id="citation"><code>@article{anonymous2026semanticsplat,
+  title = {SemanticSplat: Graph-Pruned Semantic Search
+           for Queryable 3DGS Digital Twins},
+  author = {Anonymous Authors},
+  year = {2026}
+}</code></pre>
+        <button class="copy-button dark" type="button" data-copy-target="citation">Copy citation</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <div><strong>SemanticSplat</strong><p>Evidence-backed semantic search for 3DGS digital twins.</p></div>
+      <div class="footer-links"><a href="https://github.com/LeoPython2006/beyond-proximity">GitHub</a><a href="assets/semanticsplat-paper.pdf">Paper</a><a href="data/datasets.json">Dataset manifest</a></div>
+    </div>
+  </footer>
+
+  <dialog id="figure-dialog" class="figure-dialog">
+    <button class="dialog-close" type="button" aria-label="Close full-size figure">Close</button>
+    <img alt="">
+  </dialog>
+</body>
+</html>

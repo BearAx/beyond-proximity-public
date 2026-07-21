@@ -1,60 +1,40 @@
 # Baseline Status
 
-Status date: 2026-07-13. Week 6 Person 3 audit.
+Status date: 2026-07-15.
 
-This file summarizes what can be claimed from saved artifacts. It must be read together with `docs/baselines/bbq_comparison.md` and `docs/benchmarks/bbq_aligned_metrics.md`.
+This table describes only saved execution evidence. External rows use different
+map-construction protocols from the SemanticSplat oracle-map pilots and do not
+support a method-superiority claim.
 
-## Current Status Table
+| Baseline / method | Status | Scope | Main evidence | Main caveat |
+|---|---|---|---|---|
+| SemanticSplat graph | DONE_WITH_LIMITATIONS | 56 Replica + 48 ScanNet oracle-map queries | `outputs/public_datasets/replica_pilot_v1/`; `outputs/public_datasets/scannet_pilot_v1/` | Oracle semantic candidates, not semantic perception. |
+| Graph + fallback | DONE_WITH_LIMITATIONS | Same public pilots | Same outputs | Fallback can approach flat-search cost. |
+| Flat lexical / embedding | DONE | Same public pilots | Same outputs | Same-input internal baselines only. |
+| ConceptGraphs ScanNet | DONE_WITH_LIMITATIONS | 8 scenes, 39 RGB-D views, 48 queries | `outputs/baselines/conceptgraphs_scannet_full_v1/`; `docs/baselines/conceptgraphs/conceptgraphs_scannet_full_result.md` | Predicted maps; protocol differs from oracle-map SemanticSplat. |
+| ConceptGraphs Replica | DONE_WITH_LIMITATIONS | 8 scenes, 40 sampled RGB-D views, 56 queries | `outputs/baselines/conceptgraphs_replica_full_v1/`; `docs/baselines/conceptgraphs/conceptgraphs_replica_full_result.md` | Five frames/scene, not full 2,000-frame trajectories. |
+| LangSplat ScanNet | DONE_WITH_LIMITATIONS | End-to-end scene0011_00, 4 views, 6 queries | `outputs/baselines/langsplat_scannet_full_v1/`; `docs/baselines/langsplat/langsplat_scannet_end_to_end_result.md` | Reduced 3k-iteration / 6 GB run, not the 30k / 24 GB paper setting. |
+| BBQ official code | NOT_DONE | Literature only | `docs/baselines/bbq_comparison.md` | No saved official-code run. |
 
-| Baseline / method | Status | Native outputs | Canonical outputs | Main evidence | Main blocker / caveat |
-|---|---|---:|---:|---|---|
-| SemanticSplat graph | DONE_WITH_LIMITATIONS | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | `outputs/public_datasets/replica_pilot_v1/variant_comparison.md`; `outputs/public_datasets/scannet_pilot_v1/variant_comparison.md` | Oracle semantic candidates; not semantic perception or BBQ reproduction. |
-| SemanticSplat graph + fallback | DONE_WITH_LIMITATIONS | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | Same outputs as graph | Fallback can approach flat-search cost; report separately. |
-| Flat lexical | DONE | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | Same outputs as graph | Same-input internal baseline only. |
-| Flat embedding | DONE | N/A, internal variant | 56 Replica + 48 ScanNet result records per variant | Same outputs as graph; per-run configs record `fastembed` | Same-input internal baseline only. |
-| ConceptGraphs | DONE_WITH_LIMITATIONS | 5 native result files | 150 | `docs/baselines/conceptgraphs/conceptgraphs_full_result.md`; `outputs/baselines/conceptgraphs_full_v1/metrics_summary.md` | Five captured scenes only; not official Replica/ScanNet; drone native map empty; internal coarse 3D boxes only. |
-| LangSplat | PARTIALLY_DONE | 1 | 1 | `docs/baselines/langsplat/langsplat_smoke_result.md`; `outputs/baselines/langsplat_smoke_v1/metrics_summary.md` | Official sofa smoke only; no GT accuracy and no five-scene/public-dataset run. |
-| BBQ official code | NOT_DONE | 0 | 0 | No saved `outputs/baselines/bbq_*` run exists | Use as related work and metric guide only. |
+## Executed External Results
 
-## Local Capability Audit
+| Run | Coverage | Quality | Runtime | Local text tokens |
+|---|---:|---:|---:|---:|
+| ConceptGraphs ScanNet | 48 / 48 | Acc@0.25 0.0625; mean IoU 0.0696 | 0.3363 s/query | 627 |
+| ConceptGraphs Replica | 56 / 56 | Acc@0.25 0.0625; mean IoU 0.0624 | 0.2743 s/query | 459 |
+| LangSplat ScanNet | 6 / 6 | view hit 0.6667; 3D IoU N/A | 2.0365 s/query | 74 |
 
-| Capability | Result |
-|---|---|
-| Conda | available |
-| Conda environments | `base`, `pcg`, `semanticsplat`; no `conceptgraph` or `langsplat` |
-| GPU | NVIDIA GeForce RTX 3060 Laptop GPU |
-| GPU memory | 6,144 MiB |
-| Docker daemon | available for LangSplat and ConceptGraphs smoke after starting Docker Desktop |
-| ConceptGraphs checkout | missing in `external/baselines/`; Docker image `semanticsplat-conceptgraphs:72f5962` is the execution evidence |
-| LangSplat checkout | missing in `external/baselines/`; external checkout exists at `C:/GitProjects/baseline-deps/LangSplat` but Git revision check is blocked by `safe.directory` ownership protection |
-| ConceptGraphs checkpoints | present for smoke/full run evidence: `yolov8l-world.pt`, `mobile_sam.pt`, and downloaded HF CLIP cache |
-| LangSplat assets | present: official sofa `data`, `ckpt`, and `output` folders |
-| BBQ official-code run | not present in saved outputs |
+Tokens are measured local OpenCLIP text-encoder tokens, not provider billing
+or cost. LangSplat 3D IoU is N/A because it emits a relevance point rather than
+a predicted 3D extent.
 
-## Safe Claims
+## Safe Interpretation
 
-- Same-input graph, graph+fallback, flat lexical, and flat embedding variants have saved Replica/ScanNet pilot outputs and can be compared directly within that protocol.
-- ConceptGraphs has a full five captured-scene saved run, but it is not an official public-dataset result.
-- LangSplat has native smoke execution and canonical adapter evidence only.
-- BBQ has paper-reported metrics in local markdown, but no official-code run in this repo.
-
-## Unsafe Claims
-
-- Do not claim external baselines were run unless this table names saved native/canonical outputs.
-- Do not claim Beyond Proximity beats BBQ, ConceptGraphs, LangSplat, or any external paper without same-dataset, same-query, same-protocol saved outputs.
-- Do not claim token count is a standard 3D scene metric. Token/context counts support internal context-efficiency analysis only.
-- Do not report mAcc/mIoU/fmIoU for our public-dataset pilots until paired model-predicted segmentation arrays exist.
-
-## Exact Setup And Result Evidence
-
-- `docs/baselines/bbq_comparison.md`
-- `docs/baselines/conceptgraphs/conceptgraphs_smoke_setup.md`
-- `docs/baselines/conceptgraphs/conceptgraphs_smoke_result.md`
-- `docs/baselines/conceptgraphs/conceptgraphs_full_result.md`
-- `docs/baselines/conceptgraphs/status.md`
-- `docs/baselines/langsplat/langsplat_smoke_setup.md`
-- `docs/baselines/langsplat/langsplat_smoke_result.md`
-- `docs/baselines/langsplat/status.md`
-- `docs/experiments/public_datasets/person2_grounding_results.md`
-- `outputs/public_datasets/replica_pilot_v1/variant_comparison.md`
-- `outputs/public_datasets/scannet_pilot_v1/variant_comparison.md`
+- ConceptGraphs now has native public-data predicted-map evidence on every
+  selected ScanNet and Replica scene.
+- LangSplat now has a native end-to-end public-data execution, beyond its old
+  pretrained-sofa smoke, but only on one ScanNet scene at reduced resources.
+- Only SemanticSplat graph-vs-flat variants are directly comparable under the
+  same map, queries, and scorer.
+- BBQ remains a metric and related-work reference until its official code is
+  run under a matched protocol.

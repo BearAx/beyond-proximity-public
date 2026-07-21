@@ -202,7 +202,7 @@ def write_adapter_run(
         json.dumps(logs, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     (output_dir / "baseline_summary.md").write_text(
-        f"# {method} Baseline Smoke\n\n"
+        f"# {method} Baseline Run\n\n"
         f"- Mode: `{mode}`\n"
         f"- Scene: `{scene_id}`\n"
         f"- Canonical results: {len(canonical)}\n"

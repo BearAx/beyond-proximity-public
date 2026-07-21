@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "c6684720-13a1-41d9-8b22-fd11fe8e2873"
+  ],
+  "selected_views": [
+    "v001"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "box",
+    "selected_node_id": "c6684720-13a1-41d9-8b22-fd11fe8e2873",
+    "selected_view_id": "v001",
+    "bbox_2d": [
+      0.51875,
+      0.128125,
+      0.715625,
+      0.39375
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.0750686967198837,
+        1.450123516411589,
+        1.276575824314856
+      ],
+      "max": [
+        -0.6806958100110388,
+        1.9528499807974162,
+        1.6665430795370277
+      ],
+      "minimum": [
+        -1.0750686967198837,
+        1.450123516411589,
+        1.276575824314856
+      ],
+      "maximum": [
+        -0.6806958100110388,
+        1.9528499807974162,
+        1.6665430795370277
+      ],
+      "center": [
+        -0.8778822533654613,
+        1.7014867486045027,
+        1.4715594519259418
+      ],
+      "size": [
+        0.39437288670884485,
+        0.5027264643858271,
+        0.3899672552221718
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.3856923580169678,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 4 with class 'box' and cosine similarity 0.385692."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.3393861945000178,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 59.22912305199998,
+      "native_batch_query_total": 2.0363171670001066,
+      "native_batch_query_per_query": 0.3393861945000178
+    },
+    "token_usage": {
+      "input_tokens": 12,
+      "output_tokens": 0,
+      "total_tokens": 12,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 19,
+      "scene_query_count": 6
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_scannet_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "scannet_0086_00",
+  "query_id": "scannet_0086_00_sr3d_plus_003",
+  "query": "select the plant that is above the paper towel dispenser",
+  "query_type": "relational"
+}

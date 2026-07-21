@@ -4,7 +4,7 @@ This is the operating guide for Codex, Cursor, and future agents working in this
 repository. The goal is to keep every change evidence-based, reproducible, and
 honest about what the project has actually proven.
 
-Status date: 2026-07-14.
+Status date: 2026-07-15.
 
 ---
 
@@ -46,13 +46,14 @@ Safest current claim:
 SemanticSplat currently provides a reproducible, test-backed evaluation
 prototype over five manually captured and manually annotated RGB-D pilot scenes.
 It includes canonical schemas, semantic indexes, generated trees, benchmark
-queries, stub-mode graph-vs-flat evaluation, ablations, and baseline smoke
-adapters. The current reproducible five-scene run shows strong query-time cost
+queries, stub-mode graph-vs-flat evaluation, ablations, and native public-data
+baseline adapters. The current reproducible five-scene run shows strong query-time cost
 reduction (75.5% fewer views checked and 68.2% fewer input tokens), but lower
 hit@k than flat lexical search under the current stub ranker. Live and
-cached-live evaluation are out of scope for the next phase. ConceptGraphs has a
-one-frame smoke result and LangSplat has an official-sofa smoke result, but
-neither is a fair five-scene comparison or GT-backed accuracy result. Official
+cached-live evaluation are out of scope for the next phase. ConceptGraphs has
+native eight-scene ScanNet and eight-scene Replica predicted-map runs;
+LangSplat has a reduced-resource end-to-end one-scene ScanNet run. These are
+real external executions but not fair same-protocol rankings. Official
 Replica and ScanNet oracle-GT-map object-grounding pilots are now reproducible:
 Replica has 575 boxes and 56 queries; ScanNet has 392 boxes, 48 Nr3D/Sr3D+
 queries, exact object-ID hit 0.2500, and Acc@0.25 0.2708 under the lexical stub.
@@ -77,14 +78,15 @@ Strong completed evidence:
 125 verified-view-label quality queries
 graph ablation study outputs
 graph scaling stress outputs
-LangSplat official-sofa smoke output
-ConceptGraphs one-frame captured-scene smoke output
+LangSplat ScanNet end-to-end output: 1 scene, 6 queries, view hit 0.6667
+ConceptGraphs ScanNet output: 8 scenes, 48 queries, Acc@0.25 0.0625
+ConceptGraphs Replica sampled-map output: 8 scenes, 56 queries, Acc@0.25 0.0625
 50 default-scene stub benchmark outputs
 8 official Replica scenes, 575 GT boxes, 56 GT-backed queries
 8 official ScanNet scenes, 39 selected RGB-D views, 392 GT boxes
 699 mapped Nr3D rows and 661 mapped unique Sr3D+ triplets
 48-query ScanNet pilot with saved object-ID, bbox, runtime, context, and token metrics
-144 passing backend tests as of the 2026-07-14 integration check
+145 passing backend tests as of the 2026-07-15 baseline/article check
 ```
 
 Current scene set:
@@ -107,8 +109,8 @@ Current blocked or out-of-scope work:
 ```text
 live model evaluation = out of scope for the next phase
 cached_live = out of scope for the next phase; no verified live cache exists
-ConceptGraphs = one-frame Docker smoke executed; five-scene comparison blocked
-LangSplat = official sofa smoke executed; five-scene comparison blocked
+ConceptGraphs = ScanNet and Replica native public-data runs completed; protocol differs from SemanticSplat oracle-map pilots
+LangSplat = reduced-resource one-scene ScanNet end-to-end run completed; eight-scene/paper-resource comparison not run
 Replica = official BBQ-aligned object-box pilot completed
 ScanNet = official eight-scene RGB-D/object-box and Nr3D/Sr3D+ pilot completed
 semantic segmentation accuracy = unavailable without independent model predictions

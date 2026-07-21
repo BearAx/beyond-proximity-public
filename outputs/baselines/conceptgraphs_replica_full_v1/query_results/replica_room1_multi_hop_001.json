@@ -1,0 +1,103 @@
+{
+  "structured_plan": {
+    "adapter": "conceptgraphs_native_export_v1",
+    "native_query_type": "batch_clip_object_map_retrieval"
+  },
+  "visited_nodes": [
+    "817c9442-aa8c-4794-9f63-bcde574ec70c"
+  ],
+  "selected_views": [
+    "frame001000"
+  ],
+  "result": {
+    "found": true,
+    "matched_object": "pillow",
+    "selected_node_id": "817c9442-aa8c-4794-9f63-bcde574ec70c",
+    "selected_view_id": "frame001000",
+    "bbox_2d": [
+      0.0033333333333333335,
+      0.8823529411764706,
+      0.2633333333333333,
+      0.9970588235294118
+    ],
+    "bbox_3d": {
+      "representation": "axis_aligned_min_max",
+      "coordinate_frame": "conceptgraphs_map_from_source_camera_to_world",
+      "min": [
+        -1.7437938215035715,
+        1.14265263925705,
+        -0.624066887716795
+      ],
+      "max": [
+        -0.6238006913781431,
+        2.229316948216029,
+        -0.358289956054057
+      ],
+      "minimum": [
+        -1.7437938215035715,
+        1.14265263925705,
+        -0.624066887716795
+      ],
+      "maximum": [
+        -0.6238006913781431,
+        2.229316948216029,
+        -0.358289956054057
+      ],
+      "center": [
+        -1.1837972564408572,
+        1.6859847937365395,
+        -0.491178421885426
+      ],
+      "size": [
+        1.1199931301254284,
+        1.0866643089589791,
+        0.26577693166273797
+      ]
+    },
+    "camera_pose": null,
+    "confidence": 0.29295334219932556,
+    "explanation": "Native ConceptGraphs CLIP retrieval selected object 16 with class 'pillow' and cosine similarity 0.292953."
+  },
+  "metrics_log": {
+    "runtime_seconds": 0.29120759428587917,
+    "stage_runtime_seconds": {
+      "native_map_and_model_load": 62.888089645000946,
+      "native_batch_query_total": 2.038453160001154,
+      "native_batch_query_per_query": 0.29120759428587917
+    },
+    "token_usage": {
+      "input_tokens": 12,
+      "output_tokens": 0,
+      "total_tokens": 12,
+      "tokenizer": "open_clip:ViT-H-14",
+      "token_count_type": "non_padding_text_encoder_tokens",
+      "provider_billing_tokens": false,
+      "encoded_by_model": true
+    },
+    "model_call_count": 1,
+    "cache_hits": 0,
+    "retry_count": 0,
+    "failure_count": 0,
+    "visited_node_count": 1,
+    "checked_view_count": 1,
+    "construction_cost": {
+      "native_map_object_count": 32,
+      "scene_query_count": 7
+    }
+  },
+  "warnings": [
+    "Native ConceptGraphs returns the top CLIP object for every query; no calibrated absence threshold is applied.",
+    "Selected views are derived from native image_idx observations, not independent GT.",
+    "Token usage is an OpenCLIP text-tokenizer count, not provider billing tokens."
+  ],
+  "schema_version": "semanticsplat.query_result.v1",
+  "run_id": "conceptgraphs_replica_full_v1",
+  "method": "conceptgraphs",
+  "mode": "live",
+  "availability_status": "available",
+  "availability_reason": null,
+  "scene_id": "replica_room1",
+  "query_id": "replica_room1_multi_hop_001",
+  "query": "First inspect the scene objects, then find the bed",
+  "query_type": "multi_hop"
+}
