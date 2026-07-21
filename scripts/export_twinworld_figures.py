@@ -43,7 +43,7 @@ def render_system_overview() -> None:
     import matplotlib.pyplot as plt
     import matplotlib.patches as patches
     import numpy as np
-    from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
+    from matplotlib.patches import ConnectionPatch, FancyArrowPatch, FancyBboxPatch
 
     scene = ROOT / "backend" / "data" / "scenes" / "ConferenceHall-capture-pilot"
     view = json.loads((scene / "views" / "v018.json").read_text(encoding="utf-8"))
@@ -60,9 +60,17 @@ def render_system_overview() -> None:
     )
     target = next(obj for obj in view["visible_objects"] if obj["label"] == "covered chairs")
 
-    fig = plt.figure(figsize=(7.2, 4.65), facecolor="white")
-    grid = fig.add_gridspec(2, 12, left=0.025, right=0.985, bottom=0.06, top=0.91,
-                            hspace=0.47, wspace=0.72)
+    fig = plt.figure(figsize=(7.2, 4.8), facecolor="white")
+    grid = fig.add_gridspec(
+        2,
+        12,
+        left=0.025,
+        right=0.985,
+        bottom=0.065,
+        top=0.875,
+        hspace=0.62,
+        wspace=0.82,
+    )
     ax_rgb = fig.add_subplot(grid[0, 0:3])
     ax_index = fig.add_subplot(grid[0, 3:7])
     ax_graph = fig.add_subplot(grid[0, 7:12])
@@ -71,7 +79,33 @@ def render_system_overview() -> None:
     ax_output = fig.add_subplot(grid[1, 8:12])
 
     def panel_title(ax, letter: str, title: str) -> None:
-        ax.set_title(f"{letter}  {title}", loc="left", fontsize=7.2, fontweight="bold", pad=3)
+        ax.set_title(f"{letter}  {title}", loc="left", fontsize=7.0, fontweight="bold", pad=4)
+
+    def connect(
+        ax_a,
+        xy_a,
+        ax_b,
+        xy_b,
+        *,
+        color="#64748b",
+        arrowstyle="-|>",
+        lw=1.0,
+    ) -> None:
+        """Connect panels using their transforms instead of figure pixel guesses."""
+        fig.add_artist(ConnectionPatch(
+            xyA=xy_a,
+            xyB=xy_b,
+            coordsA=ax_a.transAxes,
+            coordsB=ax_b.transAxes,
+            arrowstyle=arrowstyle,
+            mutation_scale=8,
+            linewidth=lw,
+            color=color,
+            shrinkA=2,
+            shrinkB=2,
+            zorder=20,
+            clip_on=False,
+        ))
 
     # A: real RGB-D input. The inset is rendered directly from the captured depth array.
     ax_rgb.imshow(rgb)
@@ -98,54 +132,91 @@ def render_system_overview() -> None:
         linewidth=1.7, edgecolor="#f5c542", facecolor="none",
     ))
     ax_index.text(
-        x0 * w, y0 * h + 8, "covered chairs | white | v018",
-        va="top", fontsize=5.4, color="#111827",
-        bbox=dict(boxstyle="square,pad=0.18", facecolor="#f5c542", edgecolor="none"),
+        x0 * w + 4,
+        max(y0 * h - 6, 4),
+        "covered chairs  |  white  |  v018",
+        va="bottom",
+        fontsize=5.2,
+        color="#111827",
+        bbox=dict(
+            boxstyle="round,pad=0.22,rounding_size=0.08",
+            facecolor="#fff7d6",
+            edgecolor="#f5c542",
+            linewidth=0.8,
+        ),
+        clip_on=True,
+        zorder=4,
     )
     panel_title(ax_index, "B", "Semantic ViewJSON record")
     ax_index.axis("off")
 
     # C: a compact, data-backed hierarchy slice from the checked-in scene graph.
-    ax_graph.set_xlim(0, 10)
-    ax_graph.set_ylim(0, 7)
+    ax_graph.set_xlim(0, 11)
+    ax_graph.set_ylim(0, 7.2)
     ax_graph.axis("off")
     panel_title(ax_graph, "C", "Deterministic hierarchy assembly")
     nodes = {
-        "root": (5.0, 6.05, "scene root\n206 nodes", True),
-        "lounge": (1.7, 4.45, "lounge / corridor", False),
-        "banquet": (5.0, 4.45, "banquet hall", True),
-        "exit": (8.3, 4.45, "exit / wayfinding", False),
-        "tables": (3.5, 2.7, "round tables", False),
-        "chairs": (6.5, 2.7, "covered chairs", True),
-        "view": (6.5, 1.05, "v018 evidence", True),
+        "root": (5.5, 6.15, "scene root\n206 nodes", True, 2.15, 0.86),
+        "lounge": (1.75, 4.55, "lounge / corridor", False, 2.75, 0.74),
+        "banquet": (5.5, 4.55, "banquet hall", True, 2.35, 0.74),
+        "exit": (9.25, 4.55, "exit / wayfinding", False, 2.75, 0.74),
+        "tables": (3.65, 2.72, "round tables", False, 2.25, 0.74),
+        "chairs": (7.2, 2.72, "covered chairs", True, 2.55, 0.74),
+        "view": (7.2, 1.08, "v018 evidence", True, 2.25, 0.74),
     }
     edges = [
         ("root", "lounge"), ("root", "banquet"), ("root", "exit"),
         ("banquet", "tables"), ("banquet", "chairs"), ("chairs", "view"),
     ]
+    def node_edge(source: str, target_name: str):
+        x_a, y_a, _, _, width_a, height_a = nodes[source]
+        x_b, y_b, _, _, _, _ = nodes[target_name]
+        dx, dy = x_b - x_a, y_b - y_a
+        tx = (width_a / 2) / abs(dx) if dx else float("inf")
+        ty = (height_a / 2) / abs(dy) if dy else float("inf")
+        scale = min(tx, ty)
+        return x_a + dx * scale, y_a + dy * scale
+
     for parent, child in edges:
-        x_a, y_a, _, on_a = nodes[parent]
-        x_b, y_b, _, on_b = nodes[child]
+        _, _, _, on_a, _, _ = nodes[parent]
+        _, _, _, on_b, _, _ = nodes[child]
         active = on_a and on_b
         ax_graph.add_patch(FancyArrowPatch(
-            (x_a, y_a - 0.36), (x_b, y_b + 0.36), arrowstyle="-|>", mutation_scale=8,
-            lw=1.2 if active else 0.7, color=OK_C if active else "#cbd5e1",
+            node_edge(parent, child),
+            node_edge(child, parent),
+            arrowstyle="-|>",
+            mutation_scale=8,
+            lw=1.2 if active else 0.8,
+            color=OK_C if active else "#cbd5e1",
+            shrinkA=1,
+            shrinkB=2,
+            zorder=1,
         ))
-    for _, (x, y, label, active) in nodes.items():
+    for _, (x, y, label, active, width, height) in nodes.items():
         ax_graph.add_patch(FancyBboxPatch(
-            (x - 1.12, y - 0.35), 2.24, 0.7,
+            (x - width / 2, y - height / 2), width, height,
             boxstyle="round,pad=0.02,rounding_size=0.08",
             facecolor="#e7f5ee" if active else "#f3f4f6",
-            edgecolor=OK_C if active else "#9ca3af", lw=1.0,
+            edgecolor=OK_C if active else "#9ca3af",
+            lw=1.0,
+            zorder=3,
         ))
-        ax_graph.text(x, y, label, ha="center", va="center", fontsize=5.7,
-                      color="#111827" if active else GRAY)
+        ax_graph.text(
+            x,
+            y,
+            label,
+            ha="center",
+            va="center",
+            fontsize=5.5,
+            color="#111827" if active else GRAY,
+            zorder=4,
+        )
     totals = construction["totals"]
     ax_graph.text(
-        5, 0.05,
+        5.5, 0.08,
         f"five scenes: {totals['view_count']} views  |  {totals['semantic_item_count']:,} items  |  "
         f"{construction['provider_usage']['total_tokens']} provider construction tokens",
-        ha="center", va="bottom", fontsize=5.5, color=GRAY,
+        ha="center", va="bottom", fontsize=5.25, color=GRAY,
     )
 
     # D: the exact saved benchmark query and deterministic parse.
@@ -154,47 +225,100 @@ def render_system_overview() -> None:
     ax_query.axis("off")
     panel_title(ax_query, "D", "Natural-language query")
     ax_query.add_patch(FancyBboxPatch(
-        (0.04, 0.48), 0.92, 0.34, boxstyle="round,pad=0.03,rounding_size=0.05",
+        (0.05, 0.49), 0.90, 0.31, boxstyle="round,pad=0.03,rounding_size=0.05",
         facecolor="#eef6ff", edgecolor=GRAPH_C, lw=1.1,
     ))
-    ax_query.text(0.5, 0.65, '"Find the white\ncovered chairs"', ha="center", va="center",
-                  fontsize=7.2, fontweight="bold")
-    ax_query.text(0.08, 0.29, "target", fontsize=5.4, color=GRAY)
-    ax_query.text(0.33, 0.29, "covered chairs", fontsize=5.8, color="#111827")
-    ax_query.text(0.08, 0.13, "attribute", fontsize=5.4, color=GRAY)
-    ax_query.text(0.33, 0.13, "white", fontsize=5.8, color="#111827")
+    ax_query.text(0.5, 0.645, '"Find the white\ncovered chairs"', ha="center", va="center",
+                  fontsize=6.9, fontweight="bold")
+    ax_query.text(0.07, 0.29, "target", fontsize=5.25, color=GRAY)
+    ax_query.text(0.39, 0.29, "covered chairs", fontsize=5.55, color="#111827")
+    ax_query.text(0.07, 0.13, "attribute", fontsize=5.25, color=GRAY)
+    ax_query.text(0.39, 0.13, "white", fontsize=5.55, color="#111827")
 
     # E: same-input graph/flat comparison from qv2_010.
-    ax_search.set_xlim(0, 10)
+    ax_search.set_xlim(0, 11.2)
     ax_search.set_ylim(0, 6)
     ax_search.axis("off")
-    panel_title(ax_search, "E", "Top-down pruning; identical scorer")
+    panel_title(ax_search, "E", "Graph-pruned vs. flat traversal")
     graph = query_result["graph"]
     flat = query_result["flat"]
     lanes = [
         (4.2, "Graph", OK_C, "root", "banquet zone", f"{graph['semantic_entries_scanned']} entries", graph["selected_view_id"]),
-        (1.7, "Flat", FLAT_C, "all records", "no pruning", f"{flat['semantic_entries_scanned']} entries", flat["selected_view_id"]),
+        (1.75, "Flat", FLAT_C, "all records", "no pruning", f"{flat['semantic_entries_scanned']} entries", flat["selected_view_id"]),
     ]
+    split_x = 0.12
+    label_left, label_width = 0.30, 1.05
+    box_half_width, box_half_height = 0.76, 0.40
+    positions_x = (2.25, 4.95, 7.65, 10.35)
+    ax_search.plot([split_x, split_x], [lanes[1][0], lanes[0][0]], color="#94a3b8", lw=0.8, zorder=1)
     for y, label, color, a, b, c, d in lanes:
-        ax_search.text(0.05, y, label, va="center", fontsize=6.2, fontweight="bold", color=color)
-        positions = [(1.55, a), (4.1, b), (6.65, c), (9.1, d)]
+        ax_search.add_patch(FancyBboxPatch(
+            (label_left, y - 0.32),
+            label_width,
+            0.64,
+            boxstyle="round,pad=0.02,rounding_size=0.06",
+            facecolor=color,
+            edgecolor=color,
+            linewidth=0.9,
+            zorder=3,
+        ))
+        ax_search.text(
+            label_left + label_width / 2,
+            y,
+            label,
+            ha="center",
+            va="center",
+            fontsize=5.4,
+            fontweight="bold",
+            color="white",
+            zorder=4,
+        )
+        ax_search.add_patch(FancyArrowPatch(
+            (split_x, y),
+            (label_left - 0.04, y),
+            arrowstyle="-|>",
+            mutation_scale=7,
+            color=color,
+            lw=0.9,
+            zorder=2,
+        ))
+        positions = list(zip(positions_x, (a, b, c, d)))
+        ax_search.add_patch(FancyArrowPatch(
+            (label_left + label_width + 0.03, y),
+            (positions_x[0] - box_half_width - 0.04, y),
+            arrowstyle="-|>",
+            mutation_scale=7,
+            color=color,
+            lw=0.9,
+            zorder=2,
+        ))
         for idx, (x, text_value) in enumerate(positions):
             ax_search.add_patch(FancyBboxPatch(
-                (x - 0.82, y - 0.42), 1.64, 0.84,
+                (x - box_half_width, y - box_half_height),
+                box_half_width * 2,
+                box_half_height * 2,
                 boxstyle="round,pad=0.02,rounding_size=0.06",
-                facecolor="white", edgecolor=color, lw=0.9,
+                facecolor="#f3faf6" if color == OK_C else "#fff7f2",
+                edgecolor=color,
+                lw=0.9,
+                zorder=3,
             ))
-            ax_search.text(x, y, text_value, ha="center", va="center", fontsize=5.2)
+            ax_search.text(x, y, text_value, ha="center", va="center", fontsize=4.9, zorder=4)
             if idx < len(positions) - 1:
                 ax_search.add_patch(FancyArrowPatch(
-                    (x + 0.84, y), (positions[idx + 1][0] - 0.84, y),
-                    arrowstyle="-|>", mutation_scale=7, color=color, lw=0.9,
+                    (x + box_half_width + 0.04, y),
+                    (positions[idx + 1][0] - box_half_width - 0.04, y),
+                    arrowstyle="-|>",
+                    mutation_scale=7,
+                    color=color,
+                    lw=0.9,
+                    zorder=2,
                 ))
     ax_search.text(
-        5.1, 0.45,
+        5.75, 0.38,
         f"views: {graph['views_checked']} vs {flat['views_checked']}  |  "
         f"estimated context: {graph['input_tokens']:,} vs {flat['input_tokens']:,} tokens",
-        ha="center", fontsize=5.5, color=GRAY,
+        ha="center", fontsize=5.15, color=GRAY,
     )
 
     # F: evidence view and result box, both sourced from the saved run/ViewJSON.
@@ -204,9 +328,9 @@ def render_system_overview() -> None:
         linewidth=1.8, edgecolor=OK_C, facecolor="none",
     ))
     ax_output.text(
-        0.02, 0.97, "covered chairs  |  v018",
-        transform=ax_output.transAxes, va="top", fontsize=5.6, color="white",
-        bbox=dict(boxstyle="square,pad=0.2", facecolor=OK_C, edgecolor="none"),
+        0.025, 0.96, "covered chairs  |  v018",
+        transform=ax_output.transAxes, va="top", fontsize=5.35, color="white",
+        bbox=dict(boxstyle="round,pad=0.22,rounding_size=0.08", facecolor=OK_C, edgecolor="none"),
     )
     panel_title(ax_output, "F", "Grounded evidence")
     ax_output.axis("off")
@@ -214,27 +338,42 @@ def render_system_overview() -> None:
         0.5, -0.08,
         f"graph hit@1: yes  |  {flat['elapsed_ms'] / graph['elapsed_ms']:.2f}x speedup  |  "
         f"{query_result['savings_graph_vs_flat']['tokens_pct']:.1f}% fewer est. tokens",
-        transform=ax_output.transAxes, ha="center", va="top", fontsize=5.3, color=GRAY,
+        transform=ax_output.transAxes, ha="center", va="top", fontsize=5.0, color=GRAY,
     )
 
-    # Figure-coordinate arrows make the build-time and query-time flows explicit.
-    overlay = fig.add_axes([0, 0, 1, 1], frameon=False, zorder=20)
-    overlay.set_xlim(0, 1)
-    overlay.set_ylim(0, 1)
-    overlay.axis("off")
-    for start, end in (
-        ((0.238, 0.71), (0.276, 0.71)),
-        ((0.555, 0.71), (0.592, 0.71)),
-        ((0.238, 0.255), (0.276, 0.255)),
-        ((0.665, 0.255), (0.703, 0.255)),
-    ):
-        overlay.add_patch(FancyArrowPatch(
-            start, end, arrowstyle="-|>", mutation_scale=9, color="#64748b", lw=1.0,
-            transform=overlay.transAxes,
-        ))
+    # Panel-aware connectors remain aligned if the grid or image aspect ratio changes.
+    connect(ax_rgb, (1.02, 0.50), ax_index, (-0.02, 0.50))
+    connect(ax_index, (1.02, 0.50), ax_graph, (-0.02, 0.50))
+    fig.add_artist(ConnectionPatch(
+        xyA=(1.02, 0.645),
+        xyB=(split_x, 2.975),
+        coordsA=ax_query.transAxes,
+        coordsB=ax_search.transData,
+        arrowstyle="-",
+        linewidth=1.0,
+        color="#64748b",
+        shrinkA=2,
+        shrinkB=0,
+        zorder=20,
+        clip_on=False,
+    ))
+    fig.add_artist(ConnectionPatch(
+        xyA=(positions_x[-1] + box_half_width, lanes[0][0]),
+        xyB=(-0.02, 0.64),
+        coordsA=ax_search.transData,
+        coordsB=ax_output.transAxes,
+        arrowstyle="-|>",
+        mutation_scale=8,
+        linewidth=1.1,
+        color=OK_C,
+        shrinkA=2,
+        shrinkB=2,
+        zorder=20,
+        clip_on=False,
+    ))
 
-    fig.text(0.015, 0.965, "ONE-TIME MAP CONSTRUCTION", fontsize=6.1, fontweight="bold", color=GRAPH_C)
-    fig.text(0.015, 0.485, "PER-QUERY RETRIEVAL", fontsize=6.1, fontweight="bold", color=GRAPH_C)
+    fig.text(0.015, 0.925, "ONE-TIME MAP CONSTRUCTION", fontsize=6.0, fontweight="bold", color=GRAPH_C)
+    fig.text(0.015, 0.475, "PER-QUERY RETRIEVAL", fontsize=6.0, fontweight="bold", color=GRAPH_C)
     fig.text(
         0.5, 0.985, "SemanticSplat: from captured evidence to graph-pruned grounding",
         ha="center", va="top", fontsize=9.2, fontweight="bold",
