@@ -233,7 +233,7 @@ If you use this codebase in academic work, please cite:
 
 ```bibtex
 @article{mousatat2026semanticsplat,
-  title  = {SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins},
+  title  = {SemanticSplat: Graph-Pruned Semantic Search},
   author = {Mousatat, Mahmoud and Vizan, Leo and Shankin, Nikita and
             Nuruzov, Telman and Medvedev, Alexandr},
   year   = {2026},

@@ -6,10 +6,10 @@ arXiv: `2406.07113v4`
 Title: Beyond Bare Queries: Open-Vocabulary Object Grounding with 3D Scene Graph  
 Year: 2024
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 BBQ is close to the current direction because it uses 3D scene graphs and spatial relations for open-vocabulary object grounding beyond simple object-name queries.
 
 ## Sprint Decision
 
-Literature-only for this sprint. It can motivate relational query framing, but no result should imply that Beyond Proximity beats BBQ without same-input evidence.
+Literature-only for this sprint. It can motivate relational query framing, but no result should imply that SemanticSplat beats BBQ without same-input evidence.

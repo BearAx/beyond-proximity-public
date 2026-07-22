@@ -1,4 +1,4 @@
-# Revised Project Plan — SemanticSplat / Beyond Proximity
+# Revised Project Plan — SemanticSplat
 
 ## 0. Main Goal
 

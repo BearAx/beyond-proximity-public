@@ -429,7 +429,7 @@ Timeline:
 Use this framing:
 
 ```text
-An Evaluation of Graph-Pruned Semantic Search for Queryable 3D Environments
+SemanticSplat: Graph-Pruned Semantic Search
 ```
 
 ### Plan C: Do Not Do Unless The Team Can Sprint Hard

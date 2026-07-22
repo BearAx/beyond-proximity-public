@@ -1,12 +1,12 @@
-# ChatGPT Project Description: SemanticSplat / Beyond Proximity
+# ChatGPT Project Description: SemanticSplat
 
 Status date: 2026-06-28.
 
-This file is project context for ChatGPT. Use it to understand the goal, evaluation direction, required claims, and current evidence for SemanticSplat / Beyond Proximity.
+This file is project context for ChatGPT. Use it to understand the goal, evaluation direction, required claims, and current evidence for SemanticSplat.
 
 ## One-Sentence Description
 
-SemanticSplat / Beyond Proximity is a semantic-map intelligence layer that turns captured visual and 3D observations into a structured semantic graph so a computer can answer useful questions about what is around it, where to go, what a place means, and what changed in the environment.
+SemanticSplat is a semantic-map intelligence layer that turns captured visual and 3D observations into a structured semantic graph so a computer can answer useful questions about what is around it, where to go, what a place means, and what changed in the environment.
 
 ## Main Goal
 

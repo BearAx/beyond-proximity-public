@@ -6,9 +6,9 @@ arXiv: `2211.15654v2`
 Title: OpenScene: 3D Scene Understanding with Open Vocabularies  
 Year: 2023
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
-OpenScene is open-vocabulary 3D representation context. It supports open-vocabulary querying and segmentation-style evaluation over 3D scenes, but it does not provide the same tree-traversal evidence shape as Beyond Proximity.
+OpenScene is open-vocabulary 3D representation context. It supports open-vocabulary querying and segmentation-style evaluation over 3D scenes, but it does not provide the same tree-traversal evidence shape as SemanticSplat.
 
 ## Sprint Decision
 

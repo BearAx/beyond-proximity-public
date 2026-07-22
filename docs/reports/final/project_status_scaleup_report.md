@@ -4,7 +4,7 @@ Status date: 2026-07-05.
 
 ## Executive Summary
 
-SemanticSplat / Beyond Proximity is a reproducible semantic-map evaluation
+SemanticSplat is a reproducible semantic-map evaluation
 prototype. It is strongest as a TwinWorld-style workshop project: a captured
 3DGS semantic-search system with same-input graph-vs-flat evaluation,
 ablation/scaling evidence, and external baseline smokes.

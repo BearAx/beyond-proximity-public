@@ -1,4 +1,4 @@
-# AGENTS.md - SemanticSplat / Beyond Proximity
+# AGENTS.md - SemanticSplat
 
 This is the operating guide for Codex, Cursor, and future agents working in this
 repository. The goal is to keep every change evidence-based, reproducible, and
@@ -10,7 +10,7 @@ Status date: 2026-07-15.
 
 ## 1. Project Identity
 
-Working name: SemanticSplat / Beyond Proximity.
+Project name: SemanticSplat: Graph-Pruned Semantic Search.
 
 Current role of the system: a reproducible semantic-map evaluation prototype,
 not a completed quantitative research result.

@@ -1,4 +1,4 @@
-# SemanticSplat / Beyond Proximity — Updated Research Direction
+# SemanticSplat — Updated Research Direction
 
 ## 1. Main Direction
 

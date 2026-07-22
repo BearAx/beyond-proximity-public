@@ -7,7 +7,7 @@ Title: LangSplat: 3D Language Gaussian Splatting
 Authors: Minghan Qin, Wanhua Li, Jiawei Zhou, Haoqian Wang, Hanspeter Pfister  
 Year: 2024
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 LangSplat is the most important language-field baseline for this project because it shares the 3D Gaussian Splatting representation family. It supports efficient open-vocabulary querying through a 3D language field, but it does not provide an explicit semantic hierarchy comparable to our graph/tree query route.
 

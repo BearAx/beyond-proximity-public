@@ -18,7 +18,7 @@ the repository structure plus the strongest local planning inputs:
 
 ## Project Structure Summary
 
-SemanticSplat / Beyond Proximity is a semantic-map intelligence layer for 3D or
+SemanticSplat is a semantic-map intelligence layer for 3D or
 RGB-D scene observations. The current prototype stores captured views, manual
 ViewJSON annotations, semantic indexes, generated trees, query outputs, and
 evaluation reports.

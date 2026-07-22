@@ -1,11 +1,11 @@
-# Speaker Script: Beyond Proximity
+# Speaker Script: SemanticSplat
 
 > **STALE — do not use for the article sprint.** This script contains unsupported claims (100% room accuracy, 34% IoU, 50 find queries). Source of truth: `main.tex`, `docs/reports/final/claim_audit.md`.
 
 *(Note: This script is designed to sound natural, enthusiastic, and slightly improvised. Pause at the commas and ellipses to let the points land.)*
 
 ## Slide 1: Title Slide
-"Alright, hey everyone. Thanks for coming. Today I’m going to share some work we’ve been doing on 3D scene understanding. The project is called 'Beyond Proximity,' and it’s basically about how we can take these amazing 3D Gaussian Splatting environments and actually teach a system to *understand* what it's looking at—not just render it. So, let's dive in."
+"Alright, hey everyone. Thanks for coming. Today I’m going to share some work we’ve been doing on 3D scene understanding. The project is called 'SemanticSplat: Graph-Pruned Semantic Search,' and it’s about how we can take 3D Gaussian Splatting environments and give them a structured semantic search layer, rather than only rendering them. So, let's dive in."
 
 ## Slide 2: The Core Problem
 "So, we all know 3D Gaussian Splatting is incredible, right? It gives us these beautiful, photorealistic, real-time renders. But there's a catch. Under the hood, the system is kind of... dumb. It’s just geometric and photometric points in space. It doesn't know that a cluster of points is a 'chair' or a 'stage.' And if we ever want to use these environments for real robotics, or VR, or just natural language querying, the system fundamentally needs a semantic structure. It has to understand the space."

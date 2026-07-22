@@ -15,7 +15,7 @@ Submission deadline from the official TwinWorld page: 2026-07-31.
 Main objective:
 
 ```text
-Turn SemanticSplat / Beyond Proximity into a workshop-ready digital-twin paper
+Turn SemanticSplat into a workshop-ready digital-twin paper
 with public-dataset evidence, BBQ-aligned metrics, honest baseline comparison,
 strong visual grounding, and a reproducible artifact package.
 ```
@@ -538,7 +538,7 @@ Recommended technical improvements:
 | Oracle GT map could be mistaken for perception | Overclaim risk | State that official instances are the map input and keep segmentation metrics N/A without predictions. |
 | BBQ official code is hard to run | No fair BBQ baseline | Use BBQ as related work and metric guide; do not claim direct comparison. |
 | Graph quality drops on public data | Weak result | Report cost/quality trade-off and add fallback expansion. |
-| Paper too broad | Reviewer confusion | Make one central claim: graph-pruned semantic search for queryable digital twins. |
+| Paper too broad | Reviewer confusion | Make one central claim: SemanticSplat provides graph-pruned semantic search. |
 | Deadline pressure | Bad submission | Freeze a smaller honest TwinWorld paper rather than inventing incomplete results. |
 
 ## 9. Needed From The Team

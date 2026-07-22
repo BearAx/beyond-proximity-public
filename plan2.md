@@ -1,4 +1,4 @@
-# Revised Plan — SemanticSplat / Beyond Proximity
+# Revised Plan — SemanticSplat
 
 ## 0. Main Direction
 

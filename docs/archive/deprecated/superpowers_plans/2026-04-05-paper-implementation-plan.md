@@ -1,8 +1,8 @@
-# Beyond Proximity: Paper Implementation Plan
+# SemanticSplat: Paper Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Write a top-tier computer vision paper (CVPR/ICCV format) in LaTeX based on the "Beyond Proximity" design spec.
+**Goal:** Write a top-tier computer vision paper (CVPR/ICCV format) in LaTeX based on the SemanticSplat design spec.
 
 **Architecture:** We will set up a standard `cvpr` LaTeX template in a new `papers/beyond-proximity` directory, iteratively write the sections (Abstract through Conclusion), manage bibliography, and compile to PDF using `pdflatex`.
 
@@ -53,7 +53,7 @@ mkdir -p papers/beyond-proximity
 \usepackage{cvpr}
 \usepackage{lipsum}
 
-\title{Beyond Proximity: Two-Pass Geometric-Semantic Clustering for \\ Hierarchical 3D Scene Understanding}
+\title{SemanticSplat: Graph-Pruned Semantic Search}
 
 \author{Anonymous Authors\\
 Institution\\

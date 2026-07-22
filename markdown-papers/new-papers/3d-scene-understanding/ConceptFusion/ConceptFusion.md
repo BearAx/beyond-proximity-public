@@ -6,7 +6,7 @@ arXiv: `2302.07241v3`
 Title: ConceptFusion: Open-set Multimodal 3D Mapping  
 Year: 2023
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 ConceptFusion is open-set multimodal 3D mapping context. It is useful for contrasting feature-map approaches with explicit hierarchy and query traversal.
 

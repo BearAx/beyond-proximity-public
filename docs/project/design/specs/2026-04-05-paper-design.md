@@ -1,4 +1,4 @@
-# Paper Design Document: Beyond Proximity
+# Paper Design Document: SemanticSplat
 
 **Date**: April 5, 2026
 **Target Venue**: CVPR / ICCV / ECCV (Top-tier Computer Vision)

@@ -7,7 +7,7 @@ Title: Hierarchical Open-Vocabulary 3D Scene Graphs for Language-Grounded Robot 
 Authors: Abdelrhman Werby, Chenguang Huang, Martin Buchner, Abhinav Valada, Wolfram Burgard  
 Year: 2024
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 HOV-SG is a close conceptual comparison for hierarchical open-vocabulary 3D scene graphs. It constructs floor, room, and object concepts for robot navigation, making it important for positioning our explicit hierarchy claims.
 

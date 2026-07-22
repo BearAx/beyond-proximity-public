@@ -63,7 +63,7 @@ These are paper-reported BBQ values from the local markdown conversion. They are
 | Our context-size / estimated-token savings vs BBQ paper accuracy | Invalid | Token/context metrics are internal efficiency metrics, not standard 3D grounding quality metrics. |
 | Our captured five-scene ConceptGraphs run vs our captured five-scene SemanticSplat run | Direct only within captured-scene protocol | It uses same benchmark query family, but manual GT and coarse boxes are internal regression evidence, not public-dataset proof. |
 | Our public-dataset pilot vs LangSplat smoke | Invalid | LangSplat smoke uses official sofa assets with missing GT; it is not a public-dataset SemanticSplat comparison. |
-| Any claim that Beyond Proximity beats BBQ | Not allowed now | The repo has no saved BBQ official-code run under the same dataset/query/protocol. |
+| Any claim that SemanticSplat beats BBQ | Not allowed now | The repo has no saved BBQ official-code run under the same dataset/query/protocol. |
 
 ## Baseline Status Table
 
@@ -80,7 +80,7 @@ These are paper-reported BBQ values from the local markdown conversion. They are
 
 ## Paper-Ready Related Work Paragraph
 
-BBQ is the closest object-centric scene-graph reference for our current public-dataset alignment. It builds an RGB-D object graph with captions, 3D extents, metric distances, and semantic spatial relations, then uses deductive LLM calls to select target and anchor objects before grounding over a compact subgraph. BBQ reports stronger public grounding evidence than our current paper draft, including Replica/ScanNet segmentation metrics and Sr3D+/Nr3D/ScanRefer Acc@k tables. Our Week 6 evidence should therefore position Beyond Proximity differently: as a hierarchical semantic-tree and context-pruning layer for queryable 3DGS digital twins, evaluated against same-input flat graph-search baselines and aligned with BBQ-style object-grounding metrics. We do not claim superiority over BBQ because the repository does not contain a same-dataset, same-query BBQ official-code run.
+BBQ is the closest object-centric scene-graph reference for our current public-dataset alignment. It builds an RGB-D object graph with captions, 3D extents, metric distances, and semantic spatial relations, then uses deductive LLM calls to select target and anchor objects before grounding over a compact subgraph. BBQ reports stronger public grounding evidence than our current paper draft, including Replica/ScanNet segmentation metrics and Sr3D+/Nr3D/ScanRefer Acc@k tables. Our Week 6 evidence should therefore position SemanticSplat differently: as a hierarchical semantic-tree and context-pruning layer for structured 3D scene evidence, evaluated against same-input flat graph-search baselines and aligned with BBQ-style object-grounding metrics. We do not claim superiority over BBQ because the repository does not contain a same-dataset, same-query BBQ official-code run.
 
 ## Remaining TODOs
 

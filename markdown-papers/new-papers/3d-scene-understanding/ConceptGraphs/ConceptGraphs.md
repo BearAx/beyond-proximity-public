@@ -6,7 +6,7 @@ arXiv: `2309.16650v1`
 Title: ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning  
 Year: 2023
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 ConceptGraphs is a core external graph comparison for open-vocabulary 3D scene reasoning. It builds object-centric 3D scene graphs from posed RGB-D observations and foundation-model outputs.
 

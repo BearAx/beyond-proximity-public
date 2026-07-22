@@ -7,7 +7,7 @@ Title: ScanRefer: 3D Object Localization in RGB-D Scans using Natural Language
 Authors: Dave Zhenyu Chen, Angel X. Chang, Matthias Niessner  
 Year: 2020
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 ScanRefer is a grounding benchmark and method for localizing an object in an RGB-D scan from a free-form natural-language referring expression. It is useful for our article as a reference point for language-conditioned 3D localization and for clarifying what our current benchmark is not yet claiming.
 

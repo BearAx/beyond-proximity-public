@@ -7,7 +7,7 @@ Title: OpenLex3D: A Tiered Evaluation Benchmark for Open-Vocabulary 3D Scene Rep
 Authors: Christina Kassab, Sacha Morin, Martin Buchner, Matias Mattamala, Kumaraditya Gupta, Abhinav Valada, Liam Paull, Maurice Fallon  
 Year: 2025
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 OpenLex3D is evaluation-focused. It is useful for shaping our benchmark language: object retrieval and open-vocabulary segmentation should be separated from hierarchy traversal and context-efficiency claims.
 

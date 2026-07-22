@@ -5,7 +5,7 @@ Paper: `papers/twinworld/main.tex`.
 
 ## Central claim (allowed)
 
-> SemanticSplat is a graph-pruned semantic search layer for queryable 3DGS digital twins. It reduces query-time context on the internal benchmark (with a stub-lexical hit@$k$ tradeoff) and is aligned with BBQ-style public grounding metrics — **without** claiming superiority over BBQ.
+> SemanticSplat is a graph-pruned semantic search layer over structured 3D scene evidence. It reduces query-time context on the internal benchmark (with a stub-lexical hit@$k$ tradeoff) and is aligned with BBQ-style public grounding metrics — **without** claiming superiority over BBQ.
 
 ## Evidence map
 
@@ -37,7 +37,7 @@ Paper: `papers/twinworld/main.tex`.
 - “We outperform BBQ / ConceptGraphs / LangSplat”
 - “Official Replica/ScanNet perception accuracy”
 - “mIoU improved by …”
-- “100% room accuracy / 34% IoU” (legacy Beyond Proximity overclaims)
+- “100% room accuracy / 34% IoU” (legacy SemanticSplat overclaims)
 - Presenting internal hit@k as Acc@0.25
 - “preserving retrieval quality” on the internal five-scene track without mentioning the hit@k tradeoff
 

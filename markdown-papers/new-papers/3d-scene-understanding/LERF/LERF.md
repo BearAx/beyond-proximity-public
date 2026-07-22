@@ -7,7 +7,7 @@ Title: LERF: Language Embedded Radiance Fields
 Authors: Justin Kerr, Chung Min Kim, Ken Goldberg, Angjoo Kanazawa, Matthew Tancik  
 Year: 2023
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 LERF is the canonical language-field comparison: it distills open-vocabulary language features into a NeRF and supports text-query relevancy maps. It motivates why flat language-field retrieval is strong for open-vocabulary object lookup but insufficient by itself for explicit hierarchy and query-trace control.
 

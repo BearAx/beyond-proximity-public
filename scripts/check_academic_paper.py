@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PAPER = ROOT / "papers" / "beyond-proximity" / "main.tex"
 SITE = ROOT / "site" / "index.html"
 CITATION = ROOT / "CITATION.cff"
+RETIRED_SUBTITLE = "Queryable 3DGS " + "Digital Twins"
+RETIRED_PROJECT_NAME = "Beyond " + "Proximity"
 
 
 def load(path: Path) -> dict:
@@ -43,7 +45,17 @@ def main() -> int:
     replica = load(ROOT / "outputs" / "public_datasets" / "replica_pilot_v1" / "variant_comparison.json")
 
     failures: list[str] = []
-    for marker in ("TwinWorld", "Anonymous Authors", "Paper ID", "#XXXXX", "Person 1", "Person 2"):
+    for marker in (
+        "TwinWorld",
+        "Anonymous Authors",
+        "Paper ID",
+        "#XXXXX",
+        "Person 1",
+        "Person 2",
+        RETIRED_SUBTITLE,
+        RETIRED_PROJECT_NAME,
+        "\\begin{table*}",
+    ):
         forbid(paper, marker, PAPER, failures)
 
     required_paper_strings = (
@@ -68,7 +80,7 @@ def main() -> int:
         "Acc@.25=.063",
         "view hit=.667",
         "Query-result schema",
-        "Metric prerequisites and denominators",
+        "Metric availability and evaluation denominators",
     )
     for value in required_paper_strings:
         require(paper, value, PAPER, failures)
@@ -87,7 +99,14 @@ def main() -> int:
     }
     failures.extend(f"frozen evidence mismatch: {name}" for name, ok in expected_json.items() if not ok)
 
-    for marker in ("<dt>Provider calls</dt>", "<dt>Provider tokens</dt>", "BearAx/beyond-proximity", "Anonymous Authors"):
+    for marker in (
+        "<dt>Provider calls</dt>",
+        "<dt>Provider tokens</dt>",
+        "BearAx/beyond-proximity",
+        "Anonymous Authors",
+        RETIRED_SUBTITLE,
+        RETIRED_PROJECT_NAME,
+    ):
         forbid(site, marker, SITE, failures)
     for marker in (
         "Manual records</dt><dd>97",
@@ -102,12 +121,14 @@ def main() -> int:
         require(site, marker, SITE, failures)
 
     for marker in (
-        "SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins",
+        "SemanticSplat: Graph-Pruned Semantic Search",
         "family-names: \"Mousatat\"",
         "family-names: \"Medvedev\"",
         "https://leopython2006.github.io/beyond-proximity-public/",
     ):
         require(citation, marker, CITATION, failures)
+    for marker in (RETIRED_SUBTITLE, RETIRED_PROJECT_NAME):
+        forbid(citation, marker, CITATION, failures)
 
     if failures:
         print("Academic release consistency check FAILED:")

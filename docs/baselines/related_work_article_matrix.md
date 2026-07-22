@@ -39,7 +39,7 @@ The paper may use literature to explain why hierarchy and context control matter
 
 ## Article Framing
 
-Beyond Proximity should be framed as a rendering-first semantic hierarchy over captured views and semantic items. The defensible comparison is internal same-input graph traversal versus internal same-input flat retrieval.
+SemanticSplat should be framed as a rendering-first semantic hierarchy over captured views and semantic items. The defensible comparison is internal same-input graph traversal versus internal same-input flat retrieval.
 
 | Article need | Closest works | Safe wording |
 |---|---|---|

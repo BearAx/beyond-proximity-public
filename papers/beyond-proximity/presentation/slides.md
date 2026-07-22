@@ -9,15 +9,15 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  Beyond Proximity
+  SemanticSplat: Graph-Pruned Semantic Search
 drawings:
   persist: false
 transition: slide-up
 css: unocss
-title: Beyond Proximity
+title: SemanticSplat: Graph-Pruned Semantic Search
 ---
 
-# Beyond Proximity
+# SemanticSplat: Graph-Pruned Semantic Search
 
 Two-Pass Geometric-Semantic Clustering for Hierarchical 3D Scene Understanding
 
@@ -367,5 +367,5 @@ class: text-center
 </p>
 
 <div class="mt-16 text-sm opacity-50 flex justify-center gap-6">
-  <span class="flex items-center gap-1"><carbon-logo-github/> Beyond Proximity</span>
+  <span class="flex items-center gap-1"><carbon-logo-github/> SemanticSplat</span>
 </div>

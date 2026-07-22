@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use SemanticSplat in academic work, please cite the preprint below."
-title: "SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins"
+title: "SemanticSplat: Graph-Pruned Semantic Search"
 version: 0.3.0
 date-released: 2026-07-22
 authors:
@@ -17,8 +17,8 @@ authors:
 repository-code: "https://github.com/LeoPython2006/beyond-proximity-public"
 url: "https://leopython2006.github.io/beyond-proximity-public/"
 abstract: >-
-  Reproducible graph-pruned semantic search for queryable 3D Gaussian
-  Splatting digital twins, evaluated on captured scenes and BBQ-aligned
+  Reproducible graph-pruned semantic search over structured 3D scene evidence,
+  evaluated on captured scenes and BBQ-aligned
   Replica and ScanNet pilots.
 keywords:
   - 3d gaussian splatting
@@ -28,7 +28,7 @@ keywords:
   - digital twins
 preferred-citation:
   type: article
-  title: "SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins"
+  title: "SemanticSplat: Graph-Pruned Semantic Search"
   year: 2026
   authors:
     - family-names: "Mousatat"

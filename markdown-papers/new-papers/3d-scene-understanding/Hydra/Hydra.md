@@ -6,7 +6,7 @@ arXiv: `2201.13360v2`
 Title: Hydra: A Real-time Spatial Perception System for 3D Scene Graph Construction and Optimization  
 Year: 2022
 
-## Relevance To Beyond Proximity
+## Relevance To SemanticSplat
 
 Hydra is important spatial hierarchy context: it constructs and optimizes layered 3D scene graphs for robotic spatial perception.
 

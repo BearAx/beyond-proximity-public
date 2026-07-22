@@ -327,7 +327,7 @@ def header_footer(canvas, doc):
     canvas.line(doc.leftMargin, height - 1.12 * cm, width - doc.rightMargin, height - 1.12 * cm)
     canvas.setFont("Helvetica", 7.8)
     canvas.setFillColor(MUTED)
-    canvas.drawString(doc.leftMargin, height - 0.8 * cm, "SemanticSplat / Beyond Proximity")
+    canvas.drawString(doc.leftMargin, height - 0.8 * cm, "SemanticSplat")
     canvas.drawRightString(width - doc.rightMargin, height - 0.8 * cm, "Current Status and Research Roadmap")
     canvas.line(doc.leftMargin, 1.0 * cm, width - doc.rightMargin, 1.0 * cm)
     canvas.drawString(doc.leftMargin, 0.62 * cm, "Evidence status: 15 July 2026")
@@ -374,14 +374,14 @@ def build_report() -> Path:
         topMargin=1.55 * cm,
         bottomMargin=1.4 * cm,
         title="SemanticSplat Current Status and Research Roadmap",
-        author="SemanticSplat / Beyond Proximity Team",
+        author="SemanticSplat Team",
         subject="Technical progress, limitations, and research roadmap",
     )
     story = []
 
     # Page 1: answer-first summary.
     story.append(Spacer(1, 0.85 * cm))
-    story.append(p("SemanticSplat / Beyond Proximity", styles, "ReportTitle"))
+    story.append(p("SemanticSplat: Graph-Pruned Semantic Search", styles, "ReportTitle"))
     story.append(p("Current Status and Research Roadmap", styles, "ReportTitle"))
     story.append(
         p(

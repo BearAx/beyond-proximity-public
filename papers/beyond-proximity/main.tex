@@ -10,6 +10,7 @@
 \usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{placeins}
+\usepackage{balance}
 \usepackage{url}
 
 \hypersetup{
@@ -23,8 +24,13 @@
 \newcommand{\method}{SemanticSplat}
 \newcommand{\acc}{\mathrm{Acc}}
 \newcommand{\hit}{\mathrm{hit}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\tableformat}{%
+  \renewcommand{\arraystretch}{1.10}%
+  \setlength{\tabcolsep}{4pt}%
+}
 
-\title{SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins}
+\title{SemanticSplat: Graph-Pruned Semantic Search}
 
 \author{
 Mahmoud Mousatat, Leo Vizan, Nikita Shankin, Telman Nuruzov, Alexandr Medvedev
@@ -171,13 +177,14 @@ deterministically. The same $c_i$ records feed graph and flat search.
 
 \begin{table}[t]
 \centering
-\caption{Canonical semantic-input schema. Optional geometry is validated
+\caption{Canonical semantic-input fields. Geometry is optional and validated
 before spatial scoring.}
 \label{tab:input-schema}
 \footnotesize
-\begin{tabular}{p{0.25\linewidth}p{0.65\linewidth}}
+\tableformat
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}Y@{}}
 \toprule
-Field & Meaning \\
+\textbf{Field} & \textbf{Meaning} \\
 \midrule
 \texttt{id}, \texttt{type} & Stable entity/node identity and semantic type \\
 \texttt{label}, \texttt{text} & Target name and searchable description \\
@@ -187,7 +194,7 @@ Field & Meaning \\
 \texttt{bbox\_2d/3d} & Optional normalized 2D or metric 3D extent $B_i$ \\
 \texttt{view\_ids} & Observations supporting the entity $V_i$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Structured Query and Candidate Gating}
@@ -272,9 +279,10 @@ examples are released with the code.
 \caption{Query-result schema groups used for reproducible evaluation.}
 \label{tab:output-schema}
 \footnotesize
-\begin{tabular}{p{0.27\linewidth}p{0.63\linewidth}}
+\tableformat
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}Y@{}}
 \toprule
-Group & Required contents \\
+\textbf{Group} & \textbf{Required contents} \\
 \midrule
 Identity & run/query/scene IDs, method, mode, status \\
 Selection & object/node/view IDs, score, optional 3D box \\
@@ -283,7 +291,7 @@ Cost & runtime, context characters, token value and tokenizer/type \\
 Quality & GT availability, exact-ID hit, hit@$k$, IoU and Acc@$\tau$ \\
 Provenance & config, map source, model/checkpoint, schema version \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \section{Datasets and Evaluation}
@@ -316,9 +324,10 @@ are manual reference artifacts, not independent public GT.
 \caption{Internal captured-scene composition.}
 \label{tab:dataset}
 \small
-\begin{tabular}{lrrr}
+\tableformat
+\begin{tabular}{@{}lrrr@{}}
 \toprule
-Scene & Views & Items & Nodes \\
+\textbf{Scene} & \textbf{Views} & \textbf{Items} & \textbf{Nodes} \\
 \midrule
 Conference Hall & 20 & 207 & 206 \\
 Museum & 20 & 225 & 228 \\
@@ -326,7 +335,7 @@ Theater & 20 & 226 & 226 \\
 Outdoor street & 21 & 239 & 240 \\
 Outdoor drone & 16 & 169 & 164 \\
 \midrule
-Total & 97 & 1,066 & 1,064 \\
+\textbf{Total} & \textbf{97} & \textbf{1,066} & \textbf{1,064} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -376,6 +385,38 @@ Missing/invalid predictions stay in the eligible denominator with IoU zero.
 Segmentation mAcc/mIoU/fw-mIoU are not reported without paired predicted
 segmentation arrays.
 
+Table~\ref{tab:metric-contract} states the availability rule and denominator
+for every metric family. Missing reference geometry remains unavailable rather
+than being converted to a successful zero-distance case. Eligible missed
+predictions count as zero only where the metric definition requires it.
+
+\begin{table}[t]
+\centering
+\caption{Metric availability and evaluation denominators.}
+\label{tab:metric-contract}
+\footnotesize
+\tableformat
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}
+  >{\raggedright\arraybackslash}p{0.25\linewidth}
+  Y
+  >{\raggedright\arraybackslash}p{0.28\linewidth}@{}}
+\toprule
+\textbf{Metric} & \textbf{Required evidence} & \textbf{Evaluated over} \\
+\midrule
+Checked counts & Traversal trace & Completed queries \\
+Runtime, context, tokens & Timed count metadata & Queries with that measurement \\
+\addlinespace[2pt]
+hit@$k$ & Ranked and expected view IDs & Eligible positive-view queries \\
+Recall@1 & Selected and expected object IDs & Object-ID-eligible queries \\
+\addlinespace[2pt]
+3D IoU & Valid predicted and reference boxes & Box-eligible predictions \\
+Acc@$\tau$ & Valid boxes and threshold $\tau$ & Box-eligible queries; misses are zero \\
+Seg. mIoU & Paired per-point prediction and GT & Paired points and classes \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \subsection{One-Time Construction Accounting}
 The deterministic builder converts 97 manual ViewJSON records into 1,064 tree
 nodes. Source annotations contain 267,877 canonical characters (66,937
@@ -391,9 +432,10 @@ was not logged and is not inferred.
 \caption{Measured one-time construction workload for the five captured scenes.}
 \label{tab:construction}
 \small
-\begin{tabular}{lr}
+\tableformat
+\begin{tabular}{@{}lr@{}}
 \toprule
-Quantity & Measured value \\
+\textbf{Quantity} & \textbf{Measured value} \\
 \midrule
 Manual ViewJSON records & 97 \\
 Semantic items & 1,066 \\
@@ -433,15 +475,21 @@ uses the 125 queries with verified view labels.}
 not model latency.}
 \label{tab:internal}
 \small
-\begin{tabular}{lrr}
+\tableformat
+\begin{tabular}{@{}lrr@{}}
 \toprule
-Metric & Flat & Graph \\
+\textbf{Metric} & \textbf{Flat} & \textbf{Graph} \\
 \midrule
+\multicolumn{3}{@{}l}{\textit{Efficiency and cost}} \\
+\addlinespace[1pt]
 Views/query & 19.4 & 4.77 \\
 Est. context tokens/query & 3,168.2 & 1,014.3 \\
 Infrastructure elapsed (ms) & 6.61 & 6.05 \\
-hit@1 ($n=125$) & 0.768 & 0.680 \\
-hit@3 ($n=125$) & 0.928 & 0.808 \\
+\addlinespace[3pt]
+\multicolumn{3}{@{}l}{\textit{Retrieval quality} ($n=125$)} \\
+\addlinespace[1pt]
+hit@1 & 0.768 & 0.680 \\
+hit@3 & 0.928 & 0.808 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -491,30 +539,35 @@ Acc@0.25 while reducing objects and context; fallback approaches flat cost.}
 \label{fig:scannet}
 \end{figure}
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Oracle-map public pilots. Efficiency is the average number of checked
 objects. Acc values on these tracks measure retrieval over official object
 boxes, not semantic map prediction.}
 \label{tab:public}
-\small
-\begin{tabular}{llrrrrr}
+\footnotesize
+\tableformat
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
-Track & Variant & Recall@1 & Acc@0.25 & Objects & Est. tokens & Runtime (ms) \\
+\textbf{Variant} & \textbf{R@1} & \textbf{A@.25} &
+\textbf{Obj.} & \textbf{Tok.} & \textbf{ms} \\
 \midrule
-\multirow{3}{*}{Replica ($n=56$)}
- & graph & 1.000 & 1.000 & 12.1 & 303 & 0.903 \\
- & flat lexical & 1.000 & 1.000 & 71.9 & 1,765 & 8.785 \\
- & flat embedding & 0.833 & 0.875 & 71.9 & 1,765 & 137.096 \\
-\midrule
-\multirow{4}{*}{ScanNet ($n=48$)}
- & graph & 0.271 & 0.271 & 11.2 & 501 & 0.785 \\
- & graph+fallback & 0.271 & 0.271 & 47.0 & 2,027 & 1.636 \\
- & flat lexical & 0.271 & 0.271 & 49.0 & 2,117 & 1.526 \\
- & flat embedding & 0.250 & 0.250 & 49.0 & 2,117 & 168.815 \\
+\multicolumn{6}{@{}l}{\textit{Replica} ($n=56$)} \\
+\addlinespace[1pt]
+Graph & 1.000 & 1.000 & 12.1 & 303 & 0.903 \\
+Flat lexical & 1.000 & 1.000 & 71.9 & 1,765 & 8.785 \\
+Flat embedding & 0.833 & 0.875 & 71.9 & 1,765 & 137.096 \\
+\addlinespace[3pt]
+\multicolumn{6}{@{}l}{\textit{ScanNet} ($n=48$)} \\
+\addlinespace[1pt]
+Graph & 0.271 & 0.271 & 11.2 & 501 & 0.785 \\
+Graph+fallback & 0.271 & 0.271 & 47.0 & 2,027 & 1.636 \\
+Flat lexical & 0.271 & 0.271 & 49.0 & 2,117 & 1.526 \\
+Flat embedding & 0.250 & 0.250 & 49.0 & 2,117 & 168.815 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Native ConceptGraphs and LangSplat Executions}
 ConceptGraphs builds predicted object maps from 39 selected ScanNet RGB-D views
@@ -536,10 +589,12 @@ a 6 GB GPU, rather than the paper-scale 30,000-iteration/24 GB setting.
 oracle-map SemanticSplat pilots; this table is not a method leaderboard.}
 \label{tab:external}
 \footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrrr}
+\tableformat
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrrrr@{}}
 \toprule
-Execution & Scenes & Queries & Quality & s/query \\
+\textbf{Execution} & \textbf{Scenes} & \textbf{Queries} &
+\textbf{Quality} & \textbf{s/query} \\
 \midrule
 CG--ScanNet & 8 & 48 & Acc@.25=.063 & .336 \\
 CG--Replica & 8 & 56 & Acc@.25=.063 & .274 \\
@@ -616,6 +671,12 @@ the consistency checks. Paired confidence intervals use 10,000 query resamples
 with seed 20,260,715. Licensed ScanNet and Replica scene files are not
 redistributed; manifests and official access instructions are provided.
 
+Canonical internal results reside under
+\texttt{outputs/graph\_vs\_flat/five\_scene\_graph\_vs\_flat\_v2}; public
+pilots under \texttt{outputs/public\_datasets}; native runs under
+\texttt{outputs/baselines}; construction and uncertainty audits under
+\texttt{docs/reports/final}; and schemas under \texttt{docs/schemas}.
+
 The public artifact includes the backend query implementation, benchmark and
 adapter scripts, canonical outputs, JSON schemas, this LaTeX source, and an
 interactive project page. The core verification commands are:
@@ -636,60 +697,7 @@ runs establish integration coverage but not a fair ranking. The next research
 step is calibrated pruning and predicted-map evaluation under a shared scene,
 query, geometry, and resource protocol.
 
-\appendix
-\section{Metric and Artifact Contract}
-\paragraph{Availability.}
-A quality metric is emitted only when its GT and prediction requirements are
-satisfied. Missing geometry is represented as unavailable with a reason; it is
-not converted to a successful zero-distance or zero-error case.
-
-\paragraph{Token fields.}
-Every token value carries a count type and basis. The internal graph-vs.-flat
-track stores deterministic serialized-context estimates; construction stores
-characters/4 token-equivalents per canonical JSON record; ConceptGraphs and
-LangSplat store non-padding local text-encoder tokens. The paper does not sum
-these incompatible types.
-
-\paragraph{Canonical evidence paths.}
-Internal results reside under
-\texttt{outputs/graph\_vs\_flat/five\_scene\_graph\_vs\_flat\_v2}; public
-pilots under \texttt{outputs/public\_datasets}; native runs under
-\texttt{outputs/baselines}; construction and uncertainty audits under
-\texttt{docs/reports/final}; schemas under \texttt{docs/schemas}.
-
-\begin{table*}[t]
-\centering
-\caption{Metric prerequisites and denominators.}
-\label{tab:metric-contract}
-\small
-\renewcommand{\arraystretch}{1.2}
-\setlength{\tabcolsep}{7pt}
-\begin{tabularx}{\textwidth}{@{}
-  >{\raggedright\arraybackslash}p{0.19\textwidth}
-  >{\raggedright\arraybackslash}X
-  >{\raggedright\arraybackslash}X
-  >{\raggedright\arraybackslash}X@{}}
-\toprule
-\textbf{Metric} & \textbf{Prediction requirement} &
-\textbf{Reference requirement} & \textbf{Denominator} \\
-\midrule
-Views/objects/nodes checked & Traversal trace & None & All completed queries \\
-\cmidrule(lr){1-4}
-Runtime, context, tokens & Timed result and count metadata & None & Results with that measurement \\
-\cmidrule(lr){1-4}
-hit@$k$ & Ranked view IDs & Verified expected view IDs & Eligible positive-view queries \\
-\cmidrule(lr){1-4}
-Recall@1 & Selected object ID & Official expected object ID & Object-ID-eligible queries \\
-\cmidrule(lr){1-4}
-3D IoU & Valid predicted 3D box & Valid official 3D box & Box-eligible queries \\
-\cmidrule(lr){1-4}
-Acc@$\tau$ & 3D IoU for a prediction & IoU threshold $\tau$ & All box-eligible queries; misses score zero \\
-\cmidrule(lr){1-4}
-Segmentation mIoU & Predicted per-point labels & Paired GT segmentation & Paired points/classes only \\
-\bottomrule
-\end{tabularx}
-\end{table*}
-
+\balance
 {\footnotesize
 \bibliographystyle{plain}
 \bibliography{refs}
