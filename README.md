@@ -232,11 +232,13 @@ pytest tests/backend/ -v
 If you use this codebase in academic work, please cite:
 
 ```bibtex
-@software{semanticsplat2026,
-  title  = {SemanticSplat: Language-Grounded Navigation over 3D Gaussian Splats},
-  author = {LeoPython2006},
+@article{mousatat2026semanticsplat,
+  title  = {SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins},
+  author = {Mousatat, Mahmoud and Vizan, Leo and Shankin, Nikita and
+            Nuruzov, Telman and Medvedev, Alexandr},
   year   = {2026},
-  url    = {https://github.com/LeoPython2006/beyond-proximity}
+  note   = {Preprint},
+  url    = {https://leopython2006.github.io/beyond-proximity-public/}
 }
 ```
 

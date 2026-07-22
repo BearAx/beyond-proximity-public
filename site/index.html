@@ -9,9 +9,9 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="SemanticSplat">
   <meta property="og:description" content="Graph-pruned semantic search for queryable 3DGS digital twins, with code, paper, datasets, metrics, and reproducibility artifacts.">
-  <meta property="og:image" content="https://bearax.github.io/beyond-proximity/assets/method-workflow.png">
-  <meta property="og:url" content="https://bearax.github.io/beyond-proximity/">
-  <link rel="canonical" href="https://bearax.github.io/beyond-proximity/">
+  <meta property="og:image" content="https://leopython2006.github.io/beyond-proximity-public/assets/method-workflow.png">
+  <meta property="og:url" content="https://leopython2006.github.io/beyond-proximity-public/">
+  <link rel="canonical" href="https://leopython2006.github.io/beyond-proximity-public/">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
@@ -42,7 +42,7 @@
         <p class="hero-copy">A hierarchical semantic graph that prunes scene search before grounding natural-language queries in captured evidence.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="assets/semanticsplat-paper.pdf">Read the paper</a>
-          <a class="button button-ghost" href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure">Browse the code</a>
+          <a class="button button-ghost" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure">Browse the code</a>
         </div>
         <p class="hero-note">Research prototype. Current claims are deterministic, test-backed, and scoped below.</p>
       </div>
@@ -145,7 +145,7 @@
             <div class="track-copy">
               <h3>BBQ-aligned oracle-map pilots</h3>
               <p>Replica: 8 scenes, 575 official GT boxes, 56 queries. ScanNet: 8 scenes, 392 official GT boxes, 48 Nr3D/Sr3D+ queries. These runs evaluate retrieval over official semantic maps, not predicted semantic perception.</p>
-              <a class="text-link" href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure/outputs/public_datasets">Open canonical outputs</a>
+              <a class="text-link" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/outputs/public_datasets">Open canonical outputs</a>
             </div>
             <figure><img src="assets/scannet-pilot.png" alt="ScanNet oracle-map pilot metrics."><figcaption>ScanNet graph and flat lexical Acc@0.25: 0.271.</figcaption></figure>
             <figure><img src="assets/replica-pilot.png" alt="Replica oracle-map pilot metrics."><figcaption>Replica pilot; oracle semantic candidates.</figcaption></figure>
@@ -172,13 +172,11 @@
       <div class="section-inner construction-grid">
         <div>
           <p class="eyebrow">Construction accounting</p>
-          <h2 id="construction-title">Fully accounted local graph construction</h2>
-          <p>Provider usage is explicitly metered and equals zero because the deterministic builder has no provider call path. Manual annotation workload is measured from the frozen artifacts: 97 records, 1,066 semantic items, and 267,877 canonical characters.</p>
+          <h2 id="construction-title">Measured graph-construction workload</h2>
+          <p>The frozen audit separates one-time map preparation from per-query retrieval. It records the complete annotation payload, deterministic tree representation, serialized I/O, and clean-rebuild runtime for all five captured scenes.</p>
           <a class="button button-light" href="data/graph-construction-cost.json">Download construction audit</a>
         </div>
         <dl class="construction-metrics">
-          <div><dt>Provider calls</dt><dd>0 <small>measured; no call path</small></dd></div>
-          <div><dt>Provider tokens</dt><dd>0 <small>measured; no API billing</small></dd></div>
           <div><dt>Manual records</dt><dd>97 <small>ViewJSON annotations</small></dd></div>
           <div><dt>Semantic items</dt><dd>1,066 <small>manual payload entries</small></dd></div>
           <div><dt>Annotation payload</dt><dd>66,937 <small>est. tokens; 267,877 chars</small></dd></div>
@@ -202,7 +200,7 @@
           <h3>Five manual captures</h3>
           <p>ConferenceHall-capture-pilot, Museume-capture, Theater-capture, outdoor-street-capture, and outdoor-drone-capture.</p>
           <dl><div><dt>Views</dt><dd>97</dd></div><div><dt>Items</dt><dd>1,066</dd></div><div><dt>Queries</dt><dd>150</dd></div></dl>
-          <a class="text-link" href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure/backend/data/scenes">Browse scene records</a>
+          <a class="text-link" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/backend/data/scenes">Browse scene records</a>
         </article>
 
         <article class="dataset-item">
@@ -246,15 +244,15 @@
         <div class="command-panel">
           <div class="command-heading"><span>Core verification</span><button class="copy-button" type="button" data-copy-target="core-commands">Copy</button></div>
           <pre id="core-commands"><code>python -B -m pytest -q
-python -B scripts/check_twinworld_numbers.py
+python -B scripts/check_academic_paper.py
 python -B scripts/measure_graph_construction.py --repeats 7
-python -B scripts/export_twinworld_figures.py</code></pre>
+python -B scripts/export_academic_figures.py</code></pre>
         </div>
         <div class="resource-list">
-          <a href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure/backend/query"><strong>Query implementation</strong><span>Grounding, traversal, provider modes</span></a>
-          <a href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure/scripts"><strong>Experiment scripts</strong><span>Build, run, adapt, evaluate, export</span></a>
-          <a href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure/docs"><strong>Protocols and reports</strong><span>GT, datasets, baselines, audits</span></a>
-          <a href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure/outputs"><strong>Canonical outputs</strong><span>Metrics and schema-valid query results</span></a>
+          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/backend/query"><strong>Query implementation</strong><span>Grounding, traversal, provider modes</span></a>
+          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/scripts"><strong>Experiment scripts</strong><span>Build, run, adapt, evaluate, export</span></a>
+          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/docs"><strong>Protocols and reports</strong><span>GT, datasets, baselines, audits</span></a>
+          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/outputs"><strong>Canonical outputs</strong><span>Metrics and schema-valid query results</span></a>
         </div>
       </div>
     </section>
@@ -276,19 +274,22 @@ python -B scripts/export_twinworld_figures.py</code></pre>
       <div class="paper-copy">
         <p class="eyebrow dark">Manuscript</p>
         <h2 id="paper-title">SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins</h2>
-        <p>This ID-free pre-submission artifact contains no placeholder paper number. A portal-generated review ID and author metadata must be added only through the venue’s private submission workflow.</p>
+        <p>The public manuscript is a named-author academic preprint, independent of any workshop template. It includes the complete method, schemas, frozen metrics, uncertainty intervals, public-dataset pilots, external executions, and reproducibility contract.</p>
         <div class="paper-actions">
           <a class="button button-dark" href="assets/semanticsplat-paper.pdf">Download PDF</a>
-          <a class="button button-outline" href="https://github.com/BearAx/beyond-proximity/tree/codex/project-site-method-figure/papers/twinworld">LaTeX source</a>
+          <a class="button button-outline" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/papers/beyond-proximity">LaTeX source</a>
         </div>
       </div>
       <div class="citation-panel">
-        <span class="status-label">Double-blind citation</span>
-        <pre id="citation"><code>@article{anonymous2026semanticsplat,
+        <span class="status-label">Preprint citation</span>
+        <pre id="citation"><code>@article{mousatat2026semanticsplat,
   title = {SemanticSplat: Graph-Pruned Semantic Search
            for Queryable 3DGS Digital Twins},
-  author = {Anonymous Authors},
-  year = {2026}
+  author = {Mousatat, Mahmoud and Vizan, Leo and
+            Shankin, Nikita and Nuruzov, Telman and
+            Medvedev, Alexandr},
+  year = {2026},
+  note = {Preprint}
 }</code></pre>
         <button class="copy-button dark" type="button" data-copy-target="citation">Copy citation</button>
       </div>
@@ -298,7 +299,7 @@ python -B scripts/export_twinworld_figures.py</code></pre>
   <footer class="site-footer">
     <div class="section-inner footer-inner">
       <div><strong>SemanticSplat</strong><p>Evidence-backed semantic search for 3DGS digital twins.</p></div>
-      <div class="footer-links"><a href="https://github.com/BearAx/beyond-proximity">GitHub</a><a href="assets/semanticsplat-paper.pdf">Paper</a><a href="data/datasets.json">Dataset manifest</a></div>
+      <div class="footer-links"><a href="https://github.com/LeoPython2006/beyond-proximity-public">GitHub</a><a href="assets/semanticsplat-paper.pdf">Paper</a><a href="data/datasets.json">Dataset manifest</a></div>
     </div>
   </footer>
 

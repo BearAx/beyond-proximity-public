@@ -13,4 +13,5 @@ publishes `site-dist/`.
 
 The builder intentionally excludes licensed ScanNet/Replica images and raw
 scene data. It publishes exact scene IDs, official access links, team-owned
-captures, derived figures, canonical metrics, and the ID-free paper PDF.
+captures, derived figures, canonical metrics, and the named-author academic
+preprint PDF.

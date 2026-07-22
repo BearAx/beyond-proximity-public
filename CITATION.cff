@@ -1,19 +1,44 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-title: "SemanticSplat: Language-Grounded Navigation over 3D Gaussian Splats"
-version: 0.2.0
-date-released: 2026-06-12
+message: "If you use SemanticSplat in academic work, please cite the preprint below."
+title: "SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins"
+version: 0.3.0
+date-released: 2026-07-22
 authors:
-  - family-names: "LeoPython2006"
-    affiliation: "Independent"
-repository-code: "https://github.com/LeoPython2006/beyond-proximity"
-url: "https://github.com/LeoPython2006/beyond-proximity"
+  - family-names: "Mousatat"
+    given-names: "Mahmoud"
+  - family-names: "Vizan"
+    given-names: "Leo"
+  - family-names: "Shankin"
+    given-names: "Nikita"
+  - family-names: "Nuruzov"
+    given-names: "Telman"
+  - family-names: "Medvedev"
+    given-names: "Alexandr"
+repository-code: "https://github.com/LeoPython2006/beyond-proximity-public"
+url: "https://leopython2006.github.io/beyond-proximity-public/"
 abstract: >-
-  Interactive research prototype for open-vocabulary object search in 3D Gaussian
-  Splatting scenes using hierarchical semantic trees and graph-pruned VLM traversal.
+  Reproducible graph-pruned semantic search for queryable 3D Gaussian
+  Splatting digital twins, evaluated on captured scenes and BBQ-aligned
+  Replica and ScanNet pilots.
 keywords:
   - 3d gaussian splatting
-  - semantic navigation
-  - vision-language models
+  - semantic search
   - scene graphs
-  - open-vocabulary search
+  - 3d object grounding
+  - digital twins
+preferred-citation:
+  type: article
+  title: "SemanticSplat: Graph-Pruned Semantic Search for Queryable 3DGS Digital Twins"
+  year: 2026
+  authors:
+    - family-names: "Mousatat"
+      given-names: "Mahmoud"
+    - family-names: "Vizan"
+      given-names: "Leo"
+    - family-names: "Shankin"
+      given-names: "Nikita"
+    - family-names: "Nuruzov"
+      given-names: "Telman"
+    - family-names: "Medvedev"
+      given-names: "Alexandr"
+  url: "https://leopython2006.github.io/beyond-proximity-public/assets/semanticsplat-paper.pdf"
