@@ -14,6 +14,13 @@
 \usepackage{balance}
 \usepackage{url}
 
+\let\originalthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \originalthebibliography{#1}%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parsep}{0pt}%
+}
+
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
@@ -76,10 +83,10 @@ trade-off under the current deterministic lexical ranker. BBQ-aligned oracle-map
 pilots add 56 Replica and 48 ScanNet queries: graph search matches flat lexical
 quality while checking 83.2\% and 77.1\% fewer objects, respectively. We also
 report native predicted-map ConceptGraphs runs on all eight selected scenes of
-each dataset and a reduced-resource end-to-end LangSplat run on one ScanNet
-scene. These external executions use different map-construction protocols and
-are diagnostic references, not a cross-method ranking. Code, schemas, frozen
-outputs, and figure sources accompany the preprint.
+each dataset and a full hardware-adapted LangSplat pipeline on one ScanNet scene.
+These external executions use different map-construction protocols and are
+diagnostic references, not a cross-method ranking. Code, schemas, frozen outputs,
+and figure sources accompany the preprint.
 \end{abstract}
 
 \section{Introduction}
@@ -134,7 +141,8 @@ and robotics~\cite{hovsg2024,hydra2022}. BBQ is our closest algorithmic
 reference: it combines object captions, 3D extents, spatial relations, and
 deductive reasoning for open-vocabulary grounding~\cite{bbq2024}. We align
 public scene subsets and Acc@$k$ reporting with BBQ where feasible, but do not
-claim a BBQ comparison because its official code is not executed here.
+claim a measured BBQ comparison because this release contains no official BBQ
+execution artifact.
 
 \paragraph{Grounding datasets and evaluation.}
 ScanNet provides annotated RGB-D reconstructions~\cite{dai2017scannet};
@@ -377,10 +385,10 @@ over a known map, not semantic-perception accuracy.
 
 \paragraph{Native external tracks.}
 ConceptGraphs builds predicted object maps for all eight selected ScanNet and
-eight Replica scenes, then answers 48 and 56 queries. LangSplat runs end to end
-on ScanNet 0011\_00 for six queries under a reduced-resource configuration.
-BBQ supplies dataset and metric guidance only; its official implementation is
-not run.
+eight Replica scenes, then answers 48 and 56 queries. LangSplat completes all
+native stages and six queries on ScanNet 0011\_00 under a hardware-adapted
+profile. BBQ supplies metric guidance only; no official execution artifact is
+included.
 
 \subsection{Metrics}
 For method $m$ and query $q$, we record checked views $V_{mq}$, objects
@@ -609,8 +617,10 @@ LangSplat completes RGB 3DGS optimization, SAM/CLIP preprocessing,
 autoencoder compression, language-field optimization, rendering, and retrieval
 on ScanNet 0011\_00. It selects an expected view for 4/6 queries, but produces
 relevance points rather than predicted 3D boxes, so 3D Acc@$\tau$ is not
-applicable. The run uses 3,000 RGB and language iterations with SAM-B/CLIP-B on
-a 6 GB GPU, rather than the paper-scale 30,000-iteration/24 GB setting.
+applicable. This is a complete native pipeline execution rather than a smoke
+test. Its hardware-adapted SAM-B/CLIP-B profile uses 3,000 RGB and language
+iterations on a 6 GB GPU; it does not reproduce the original paper's
+30,000-iteration/24 GB scale.
 
 \begin{table}[t]
 \centering
@@ -683,11 +693,12 @@ changing the semantic map.
   semantic-map construction.
   \item Relation reranking underperforms its no-relation ablation on the current
   ScanNet pilot; geometry and relation confidence require calibration.
-  \item Native ConceptGraphs and LangSplat runs differ in map construction,
-  frame sampling, output geometry, and resources. No fair external superiority
-  claim follows from Table~\ref{tab:external}.
-  \item LangSplat is evaluated on one scene under reduced resources, and BBQ
-  official code has not been run. Broader public evaluation remains necessary.
+  \item Native external runs differ in map construction, frame sampling, output
+  geometry, and resources. LangSplat completes all native stages, but its
+  evidence is one scene under a hardware-adapted 3,000-iteration/6 GB profile;
+  no fair external superiority claim follows from Table~\ref{tab:external}.
+  \item No official BBQ execution artifact exists; alignment is limited to
+  scenes, query sources, and metrics, so no measured comparison is claimed.
   \item Historical human annotation time is unavailable. Artifact size and
   deterministic rebuild time are measured, but person-hours are not inferred.
 \end{itemize}
@@ -723,13 +734,13 @@ query-time scene context when evaluated against a flat method on the same map.
 The five-scene benchmark yields 75.5\% fewer checked views and 68.2\% fewer
 estimated context tokens, with a measured hit@$k$ penalty under the current
 lexical gate. Replica and ScanNet oracle-map pilots preserve flat lexical
-quality while checking far fewer objects. Native ConceptGraphs and LangSplat
-runs establish integration coverage but not a fair ranking. The next research
-step is calibrated pruning and predicted-map evaluation under a shared scene,
-query, geometry, and resource protocol.
+quality while checking far fewer objects. Native ConceptGraphs runs and the
+complete LangSplat pipeline execution establish integration coverage but not a
+fair ranking. Next is calibrated pruning and predicted-map evaluation under a
+shared scene, query, geometry, and resource protocol.
 
 \balance
-{\scriptsize
+{\fontsize{7}{7.5}\selectfont
 \bibliographystyle{plain}
 \bibliography{refs}
 }

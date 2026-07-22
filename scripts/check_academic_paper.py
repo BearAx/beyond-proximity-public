@@ -43,6 +43,12 @@ def main() -> int:
     ci = load(ROOT / "docs" / "reports" / "final" / "twinworld_bootstrap_ci.json")
     scannet = load(ROOT / "outputs" / "public_datasets" / "scannet_pilot_v1" / "variant_comparison.json")
     replica = load(ROOT / "outputs" / "public_datasets" / "replica_pilot_v1" / "variant_comparison.json")
+    langsplat_run = load(
+        ROOT / "outputs" / "baselines" / "langsplat_scannet_full_v1" / "run_config.json"
+    )
+    langsplat_metrics = load(
+        ROOT / "outputs" / "baselines" / "langsplat_scannet_full_v1" / "metrics_summary.json"
+    )
 
     failures: list[str] = []
     for marker in (
@@ -54,6 +60,8 @@ def main() -> int:
         "Person 2",
         RETIRED_SUBTITLE,
         RETIRED_PROJECT_NAME,
+        "LangSplat is evaluated on one scene under reduced resources",
+        "LangSplat and ConceptGraphs are smoke baselines",
     ):
         forbid(paper, marker, PAPER, failures)
 
@@ -78,6 +86,8 @@ def main() -> int:
         "[-0.184, -0.056]",
         "Acc@.25=.063",
         "view hit=.667",
+        "complete native pipeline execution rather than a smoke",
+        "No official BBQ execution artifact",
         "Query-result schema",
         "Metric prerequisites and denominators",
         "Prediction requirement",
@@ -99,6 +109,22 @@ def main() -> int:
         "bootstrap count": ci["bootstrap_samples"] == 10000,
         "ScanNet graph Acc@0.25": scannet["variants"][0]["acc_at_0_25"] == 0.270833,
         "Replica graph Acc@0.25": replica["variants"][0]["acc_at_0_25"] == 1.0,
+        "LangSplat run complete": langsplat_run["status"] == "complete",
+        "LangSplat native execution": langsplat_run["provenance"]["native_execution"] is True,
+        "LangSplat one-scene coverage": langsplat_run["scene_ids"] == ["scannet_0011_00"],
+        "LangSplat six results": langsplat_run["result_count"] == 6,
+        "LangSplat resource status": (
+            langsplat_run["resource_profile"]["status"] == "reduced_resource_end_to_end"
+        ),
+        "LangSplat RGB iterations": langsplat_run["resource_profile"]["rgb_iterations"] == 3000,
+        "LangSplat language iterations": (
+            langsplat_run["resource_profile"]["language_iterations"] == 3000
+        ),
+        "LangSplat expected-view hit": (
+            langsplat_metrics["metrics"]["expected_view_hit"]["numerator"] == 4
+            and langsplat_metrics["metrics"]["expected_view_hit"]["denominator"] == 6
+        ),
+        "LangSplat local tokens": langsplat_metrics["metrics"]["token_usage"]["total"] == 74,
     }
     failures.extend(f"frozen evidence mismatch: {name}" for name, ok in expected_json.items() if not ok)
 

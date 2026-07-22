@@ -31,7 +31,7 @@
 \maketitle
 
 \begin{abstract}
-Built-environment digital twins based on 3D Gaussian Splatting (3DGS) are photorealistic but lack an explicit semantic layer for natural-language querying. We present SemanticSplat, a graph-pruned semantic search layer that organizes captured views into a hierarchical zone--region--object tree and answers queries via top-down traversal instead of exhaustive flat search over the same semantic items. On five manually captured indoor/outdoor digital-twin pilot scenes (97 views; 150 queries), graph traversal cuts average views checked from $19.4$ to $4.77$ ($75.5\%$) and estimated input-context tokens from $3168$ to $1014$ ($68.2\%$). Under stub lexical matching with verified view labels ($n{=}125$), hit@1 is $0.68$ (graph) vs.\ $0.768$ (flat), exposing a quality--cost tradeoff. On a 48-query ScanNet oracle-map pilot, graph search matches flat lexical Recall@1 / Acc@0.25 ($0.271$) while checking about $77\%$ fewer objects. We additionally execute native ConceptGraphs on all eight ScanNet and all eight Replica scenes, plus a reduced-resource end-to-end LangSplat pilot on one ScanNet scene. These external runs use different map-construction protocols and are diagnostic references, not evidence of method superiority.
+Built-environment digital twins based on 3D Gaussian Splatting (3DGS) are photorealistic but lack an explicit semantic layer for natural-language querying. We present SemanticSplat, a graph-pruned semantic search layer that organizes captured views into a hierarchical zone--region--object tree and answers queries via top-down traversal instead of exhaustive flat search over the same semantic items. On five manually captured indoor/outdoor digital-twin pilot scenes (97 views; 150 queries), graph traversal cuts average views checked from $19.4$ to $4.77$ ($75.5\%$) and estimated input-context tokens from $3168$ to $1014$ ($68.2\%$). Under stub lexical matching with verified view labels ($n{=}125$), hit@1 is $0.68$ (graph) vs.\ $0.768$ (flat), exposing a quality--cost tradeoff. On a 48-query ScanNet oracle-map pilot, graph search matches flat lexical Recall@1 / Acc@0.25 ($0.271$) while checking about $77\%$ fewer objects. We additionally execute native ConceptGraphs on all eight ScanNet and all eight Replica scenes, plus a complete hardware-adapted end-to-end LangSplat pipeline on one ScanNet scene. These external runs use different map-construction protocols and are diagnostic references, not evidence of method superiority.
 \keywords{Digital twins \and 3D Gaussian Splatting \and Scene graphs \and Semantic search \and 3D object grounding.}
 \end{abstract}
 
@@ -51,8 +51,9 @@ Language-field methods~\cite{kerr2023lerf,langsplat2024} distill features into t
 \item A representation-agnostic semantic-map query layer for 3DGS-backed digital twins with hierarchical traversal and affordance expansion.
 \item Same-input graph-vs-flat evidence on five captured scenes and BBQ-aligned object-grounding pilots on official Replica (8 scenes) and ScanNet (8 scenes).
 \item External feasibility references: native ConceptGraphs on eight ScanNet
-and eight Replica scenes and reduced-resource LangSplat on one ScanNet scene;
-BBQ remains a metric guide because its official code is not run.
+and eight Replica scenes and a complete hardware-adapted LangSplat pipeline on
+one ScanNet scene; BBQ remains a metric guide because no official execution
+artifact is included.
 \end{itemize}
 
 \section{Related Work}
@@ -372,9 +373,11 @@ ConceptGraphs object-label hit / mean 3D IoU is 8/48 / $0.0696$ on ScanNet
 and 7/48 / $0.0624$ on Replica. Its unthresholded retriever returning an object
 for every positive query is not accuracy. The Replica maps use five evenly
 spaced frames per scene, not all 2,000 trajectory frames.
-LangSplat uses 3,000 RGB and language iterations with SAM-B / CLIP-B on a 6~GB
-GPU, rather than the paper's 30,000-iteration / 24~GB setting. BBQ official code
-is \textbf{not run}; its tables remain related-work evidence only~\cite{bbq2024}.
+This LangSplat result is a complete native pipeline execution, not a smoke test.
+It uses 3,000 RGB and language iterations with SAM-B / CLIP-B on a 6~GB GPU,
+rather than the paper's 30,000-iteration / 24~GB setting, and is therefore not a
+paper-scale reproduction. No official BBQ execution artifact is included; its
+tables remain related-work evidence only~\cite{bbq2024}.
 
 \section{Limitations}
 \begin{itemize}
@@ -383,10 +386,12 @@ is \textbf{not run}; its tables remain related-work evidence only~\cite{bbq2024}
 \item Public pilots use oracle semantic candidates; Replica Acc@$k{=}1.0$ is a ceiling sanity result.
 \item mAcc/mIoU/fmIoU are unavailable without predicted segmentation arrays.
 \item Relation reranking currently underperforms its ablation on ScanNet pilot.
-\item No same-protocol BBQ official-code comparison; no superiority claim.
+\item No official BBQ execution artifact or same-protocol BBQ comparison; no
+superiority claim.
 \item External executions are not matched comparisons: ConceptGraphs predicts
-objects from sampled RGB-D frames, LangSplat learns a one-scene field, and
-SemanticSplat public pilots search oracle semantic candidates.
+objects from sampled RGB-D frames, LangSplat completes a hardware-adapted
+one-scene field, and SemanticSplat public pilots search oracle semantic
+candidates.
 \item Stub / deterministic lexical matching is not live provider-backed VLM evaluation.
 \end{itemize}
 

@@ -42,5 +42,10 @@ the checked release PDF.
 - Construction token-equivalents are canonical character counts divided by
   four per record.
 - ConceptGraphs and LangSplat token values are local tokenizer counts.
+- The LangSplat result is a complete native end-to-end execution on one ScanNet
+  scene under the saved 3,000-iteration, 6 GB hardware-adapted profile. It is
+  not a smoke test and not an eight-scene, paper-scale reproduction.
+- BBQ provides dataset and metric alignment only; this release contains no
+  official BBQ execution artifact.
 - Licensed ScanNet and Replica raw scenes are never copied into the paper or
   project-site artifact.
