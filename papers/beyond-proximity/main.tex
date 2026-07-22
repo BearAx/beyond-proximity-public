@@ -552,13 +552,6 @@ hit@3 & 0.928 & 0.808 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.92\linewidth]{figures/fig_cumulative.pdf}
-\caption{Cumulative estimated context over the 150-query internal benchmark.}
-\label{fig:cumulative}
-\end{figure}
-
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.45\textwidth]{figures/fig_by_query_type.pdf}\hfill
@@ -567,6 +560,13 @@ hit@3 & 0.928 & 0.808 \\
 and token reduction. Hierarchy helps most when a query localizes to one branch.}
 \label{fig:breakdowns}
 \end{figure*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig_cumulative.pdf}
+\caption{Cumulative estimated context over the 150-query internal benchmark.}
+\label{fig:cumulative}
+\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -655,14 +655,14 @@ after three views. Figure~\ref{fig:cases} grounds the screen query in stage view
 v018 and exposes a flat full-scan distractor. The cases support cost-control
 claims, not increased semantic accuracy.
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{figures/fig_failure_cases.pdf}\hfill
-\includegraphics[width=0.45\textwidth]{figures/fig_qualitative_bbox.pdf}
-\caption{Left: room-scoped graph view counts against a 19-view flat scan.
-Right: grounded stage-screen evidence and a full-scan distractor view.}
+\includegraphics[width=0.90\linewidth]{figures/fig_failure_cases.pdf}
+\includegraphics[width=0.90\linewidth]{figures/fig_qualitative_bbox.pdf}
+\caption{Top: graph views checked versus a 19-view flat scan. Bottom: grounded
+screen evidence and a flat-scan distractor.}
 \label{fig:cases}
-\end{figure*}
+\end{figure}
 
 \section{Discussion}
 The same-map experiment isolates hierarchy as the cause of the context
