@@ -9,6 +9,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{listings}
 \usepackage{placeins}
 \usepackage{balance}
 \usepackage{url}
@@ -29,6 +30,23 @@
   \renewcommand{\arraystretch}{1.10}%
   \setlength{\tabcolsep}{4pt}%
 }
+\definecolor{CodeBackground}{HTML}{F3F5F7}
+\definecolor{CodeBorder}{HTML}{B8C1CC}
+\definecolor{CodeText}{HTML}{1F2933}
+\lstdefinestyle{commandblock}{
+  basicstyle=\ttfamily\scriptsize\color{CodeText},
+  backgroundcolor=\color{CodeBackground},
+  frame=single,
+  rulecolor=\color{CodeBorder},
+  framerule=0.4pt,
+  framesep=4pt,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  aboveskip=5pt,
+  belowskip=3pt
+}
 
 \title{SemanticSplat: Graph-Pruned Semantic Search}
 
@@ -38,6 +56,7 @@ Mahmoud Mousatat, Leo Vizan, Nikita Shankin, Telman Nuruzov, Alexandr Medvedev
 \date{Academic preprint, July 2026}
 
 \begin{document}
+\raggedbottom
 \maketitle
 
 \begin{abstract}
@@ -390,32 +409,42 @@ for every metric family. Missing reference geometry remains unavailable rather
 than being converted to a successful zero-distance case. Eligible missed
 predictions count as zero only where the metric definition requires it.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\caption{Metric availability and evaluation denominators.}
+\caption{Metric prerequisites and denominators. A metric is reported only when
+the prediction and reference evidence shown below are available.}
 \label{tab:metric-contract}
 \footnotesize
 \tableformat
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{@{}
-  >{\raggedright\arraybackslash}p{0.25\linewidth}
-  Y
-  >{\raggedright\arraybackslash}p{0.28\linewidth}@{}}
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{0.96\textwidth}{@{}
+  >{\raggedright\arraybackslash}p{0.17\textwidth}
+  >{\raggedright\arraybackslash}p{0.24\textwidth}
+  >{\raggedright\arraybackslash}p{0.24\textwidth}
+  Y@{}}
 \toprule
-\textbf{Metric} & \textbf{Required evidence} & \textbf{Evaluated over} \\
+\textbf{Metric} & \textbf{Prediction requirement} &
+\textbf{Reference requirement} & \textbf{Denominator} \\
 \midrule
-Checked counts & Traversal trace & Completed queries \\
-Runtime, context, tokens & Timed count metadata & Queries with that measurement \\
+\multicolumn{4}{@{}l}{\textit{Efficiency and cost}} \\
 \addlinespace[2pt]
-hit@$k$ & Ranked and expected view IDs & Eligible positive-view queries \\
-Recall@1 & Selected and expected object IDs & Object-ID-eligible queries \\
+Checked views, objects, nodes & Traversal trace & None & All completed queries \\
+Runtime, context, tokens & Timed result and count metadata & None & Results with that measurement \\
+\addlinespace[3pt]
+\multicolumn{4}{@{}l}{\textit{Retrieval quality}} \\
 \addlinespace[2pt]
-3D IoU & Valid predicted and reference boxes & Box-eligible predictions \\
-Acc@$\tau$ & Valid boxes and threshold $\tau$ & Box-eligible queries; misses are zero \\
-Seg. mIoU & Paired per-point prediction and GT & Paired points and classes \\
+hit@$k$ & Ranked view IDs & Verified expected view IDs & Eligible positive-view queries \\
+Recall@1 & Selected object ID & Official expected object ID & Object-ID-eligible queries \\
+\addlinespace[3pt]
+\multicolumn{4}{@{}l}{\textit{Geometric and segmentation quality}} \\
+\addlinespace[2pt]
+3D IoU & Valid predicted 3D box & Valid official 3D box & Box-eligible predictions \\
+Acc@$\tau$ & 3D IoU for a prediction & IoU threshold $\tau$ & All box-eligible queries; misses score zero \\
+Segmentation mIoU & Predicted per-point labels & Paired GT segmentation & Paired points and classes \\
 \bottomrule
 \end{tabularx}
-\end{table}
+\end{table*}
+\FloatBarrier
 
 \subsection{One-Time Construction Accounting}
 The deterministic builder converts 97 manual ViewJSON records into 1,064 tree
@@ -680,11 +709,13 @@ pilots under \texttt{outputs/public\_datasets}; native runs under
 The public artifact includes the backend query implementation, benchmark and
 adapter scripts, canonical outputs, JSON schemas, this LaTeX source, and an
 interactive project page. The core verification commands are:
-\begin{verbatim}
+\noindent\begin{minipage}{\linewidth}
+\begin{lstlisting}[style=commandblock]
 python -B -m pytest -q tests -p no:cacheprovider
 python -B scripts/check_academic_paper.py
 python -B scripts/build_project_site.py
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 \section{Conclusion}
 \method demonstrates that a semantic hierarchy can substantially reduce
@@ -698,7 +729,7 @@ step is calibrated pruning and predicted-map evaluation under a shared scene,
 query, geometry, and resource protocol.
 
 \balance
-{\footnotesize
+{\scriptsize
 \bibliographystyle{plain}
 \bibliography{refs}
 }

@@ -54,7 +54,6 @@ def main() -> int:
         "Person 2",
         RETIRED_SUBTITLE,
         RETIRED_PROJECT_NAME,
-        "\\begin{table*}",
     ):
         forbid(paper, marker, PAPER, failures)
 
@@ -80,7 +79,11 @@ def main() -> int:
         "Acc@.25=.063",
         "view hit=.667",
         "Query-result schema",
-        "Metric availability and evaluation denominators",
+        "Metric prerequisites and denominators",
+        "Prediction requirement",
+        "Reference requirement",
+        "\\begin{table*}",
+        "\\begin{lstlisting}[style=commandblock]",
     )
     for value in required_paper_strings:
         require(paper, value, PAPER, failures)
