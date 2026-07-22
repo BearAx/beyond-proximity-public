@@ -7,6 +7,7 @@
 \usepackage{multirow}
 \usepackage{amsmath}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{placeins}
 \usepackage{url}
@@ -661,19 +662,32 @@ pilots under \texttt{outputs/public\_datasets}; native runs under
 \caption{Metric prerequisites and denominators.}
 \label{tab:metric-contract}
 \small
-\begin{tabular}{p{0.18\textwidth}p{0.24\textwidth}p{0.23\textwidth}p{0.24\textwidth}}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{7pt}
+\begin{tabularx}{\textwidth}{@{}
+  >{\raggedright\arraybackslash}p{0.19\textwidth}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}X@{}}
 \toprule
-Metric & Prediction requirement & Reference requirement & Denominator \\
+\textbf{Metric} & \textbf{Prediction requirement} &
+\textbf{Reference requirement} & \textbf{Denominator} \\
 \midrule
 Views/objects/nodes checked & Traversal trace & None & All completed queries \\
+\cmidrule(lr){1-4}
 Runtime, context, tokens & Timed result and count metadata & None & Results with that measurement \\
+\cmidrule(lr){1-4}
 hit@$k$ & Ranked view IDs & Verified expected view IDs & Eligible positive-view queries \\
+\cmidrule(lr){1-4}
 Recall@1 & Selected object ID & Official expected object ID & Object-ID-eligible queries \\
+\cmidrule(lr){1-4}
 3D IoU & Valid predicted 3D box & Valid official 3D box & Box-eligible queries \\
+\cmidrule(lr){1-4}
 Acc@$\tau$ & 3D IoU for a prediction & IoU threshold $\tau$ & All box-eligible queries; misses score zero \\
+\cmidrule(lr){1-4}
 Segmentation mIoU & Predicted per-point labels & Paired GT segmentation & Paired points/classes only \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table*}
 
 {\footnotesize
