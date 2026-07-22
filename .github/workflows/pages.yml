@@ -29,10 +29,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository and LFS assets
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
+
+      - name: Pull required LFS asset only
+        run: git lfs pull --include="backend/data/scenes/ConferenceHall-capture-pilot/images/v018.png"
 
       - name: Set up Python
         uses: actions/setup-python@v5
