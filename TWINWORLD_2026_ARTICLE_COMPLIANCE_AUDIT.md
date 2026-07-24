@@ -1,6 +1,6 @@
 # TwinWorld 2026 Article Compliance Audit
 
-Status date: 2026-07-21
+Status date: 2026-07-24
 Paper: `papers/twinworld/main.tex`
 Target: TwinWorld at ECCV 2026
 
@@ -12,17 +12,19 @@ evaluation on Replica and ScanNet. The local review manuscript now follows the
 ECCV 2026 review format and is source-level anonymous.
 
 No submission can be guaranteed acceptance. The expanded ID-free manuscript
-has 13 content pages within 14 total pages; the conclusion is followed by
-references on page 13. The Method workflow and hierarchy are placed on pages 3
-and 4 without a float-only page. The tracked PDF remains ID-free until
+has 14 pages total, with content through page 13 and references continuing to
+page 14. The Method workflow and hierarchy are placed without a float-only
+page. The tracked PDF remains ID-free until
 OpenReview assigns the real numeric ID; review line numbering and header-ID
 validation must be repeated on that final upload build.
 
-Scientifically, the principal weakness is not formatting: SemanticSplat's
-public-dataset experiments retrieve over oracle semantic maps and do not yet
-evaluate semantic perception or reproduce BBQ under the same protocol. The
-paper is therefore best submitted under ECCV's **Concept & Feasibility**
-contribution type, with the present limitations retained.
+Scientifically, the paper now includes a complete Qwen instruction-agent run,
+the original Cursor-Agent/MCP construction path, and a zero-ViewJSON raw RGB-D
+construction track. Its principal remaining research limitation is that the
+public-dataset experiments retrieve over oracle semantic maps and do not
+reproduce BBQ under the same protocol. The paper is therefore best submitted
+under ECCV's **Concept & Feasibility** contribution type, with the present
+limitations retained.
 
 ## Requirement Matrix
 
@@ -33,12 +35,12 @@ contribution type, with the present limitations retained.
 | Anonymous double-blind review PDF | DONE | `[review]`; anonymous author/institute; no author names in review source or PDF metadata | Run a final metadata inspection on the uploaded PDF |
 | Review line numbering | DONE_VALIDATED | A temporary numeric-ID review build rendered blue marginal line numbers on every page | Keep for initial submission; remove for camera-ready |
 | Paper ID on review pages | READY_PENDING_ASSIGNMENT | No placeholder in `main.tex`; `build_twinworld_review.ps1` accepts only an assigned numeric ID | Register the submission, then run the review builder with that ID |
-| At most 14 content pages | DONE_LOCAL | Latest ID-free build has 13 content pages within 14 total pages; references begin after the conclusion on page 13 | Recheck after the final real-ID build |
+| At most 14 content pages | DONE_LOCAL | Latest ID-free build has 14 pages total, content through page 13, and references continuing to page 14 | Recheck after the final real-ID build |
 | References only beyond content limit | DONE_LOCAL | No appendix or supplementary material appended to the PDF | Keep the PDF self-contained |
 | No appendix | DONE | No `\appendix` or appendix section | None |
 | No acknowledgements in review | DONE | No acknowledgement section in rendered paper | Add acknowledgements only camera-ready if desired |
 | No external links that expand the paper | DONE | No URL, repository link, or external-results dependency in manuscript | Do not add a public project link during review |
-| Claims supported by saved evidence | DONE_WITH_LIMITATIONS | Automated JSON number gate; explicit oracle/stub/baseline caveats | Preserve limitations and no-superiority wording |
+| Claims supported by saved evidence | DONE_WITH_LIMITATIONS | Automated JSON number gate; complete Qwen ledger; frozen Cursor/MCP decisions; raw RGB-D validation; explicit oracle/baseline caveats | Preserve limitations and no-superiority wording |
 | Contribution type | READY_TEAM_SELECTION | Evidence and claim scope fit **Concept & Feasibility** better than a full Algorithms paper | Select this category in OpenReview unless the call exposes a workshop-specific equivalent |
 | Author list and order | PENDING_TEAM_INPUT | Review PDF must remain anonymous | Agree exact names, order, affiliations, emails, and OpenReview identities before registration |
 | OpenReview profiles and conflicts | PENDING_EXTERNAL | Submission-portal requirement | Every author must complete profile/conflicts before deadline |
@@ -110,13 +112,15 @@ a TwinWorld-specific decoration and not an error in the review PDF.
 
 ## Scientific Readiness
 
-The current defensible claim is that hierarchy reduces checked context on the
-same semantic map, with an internal hit-at-k tradeoff and matched flat-lexical
-quality on the current oracle-map public pilots. ConceptGraphs now supplies
+The current defensible claim is that a real instruction model can traverse the
+hierarchy with complete accounting, Cursor can construct scene partitions
+through MCP, and a raw RGB-D pipeline can construct coarse branches without
+manual ViewJSON. Hierarchy reduces checked context, but the internal
+deterministic control has a significant hit@3 decline. ConceptGraphs supplies
 real eight-scene predicted-map references on ScanNet and sampled-frame Replica,
-and LangSplat supplies a real reduced-resource end-to-end one-scene reference. Their protocols differ from
-the oracle-map SemanticSplat track, so the paper still must not claim external
-baseline superiority.
+and LangSplat supplies a hardware-adapted end-to-end one-scene reference. Their
+protocols differ from the oracle-map track, so the paper still must not claim
+external baseline superiority.
 
 Highest-value additions before the deadline, if experiment time permits:
 

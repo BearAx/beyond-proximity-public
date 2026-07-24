@@ -1,6 +1,6 @@
 # Anonymous workshop paper package
 
-Status date: 2026-07-21. Publication/site branch: `codex/project-site-method-figure`.
+Status date: 2026-07-24. Publication/site branch: `codex/project-site-method-figure`.
 
 ## Files
 
@@ -14,11 +14,13 @@ Status date: 2026-07-21. Publication/site branch: `codex/project-site-method-fig
 
 ## Claim (frozen for this draft)
 
-> SemanticSplat is a graph-pruned semantic search layer for queryable 3DGS
-> digital twins. It reduces query-time context with a measured internal
-> hit-at-k tradeoff, and matches flat lexical quality on the current
-> BBQ-aligned oracle-map pilots while checking fewer objects. It does not claim
-> superiority over BBQ.
+> Agent-guided hierarchical search controls the scene evidence presented at
+> query time. The complete 150-query Qwen run is fully metered; five direct
+> Cursor-Agent/MCP calls evaluate the original agent construction path; and a
+> separate frozen CLIP pipeline builds a predicted hierarchy from raw RGB-D and
+> poses without reading manual ViewJSON. Calibrated Replica/ScanNet oracle-map
+> pilots isolate retrieval efficiency. The paper does not claim superiority
+> over BBQ, ConceptGraphs, or LangSplat.
 
 ## Evidence sources
 
@@ -26,6 +28,16 @@ Status date: 2026-07-21. Publication/site branch: `codex/project-site-method-fig
 - Grounding results: `docs/experiments/public_datasets/person2_grounding_results.md`, `outputs/public_datasets/*_pilot_v1/`
 - Baselines and related work: `docs/baselines/bbq_comparison.md`, `docs/baselines/baseline_status.md`
 - Internal five-scene figures: `figures/`
+- Complete instruction agent:
+  `outputs/instruction_agent/five_scene_qwen25_05b_graph_v1/`
+- Cursor-Agent/MCP construction:
+  `docs/experiments/hierarchy_construction/cursor_agent_mcp_v1/`
+- Four hierarchy-construction variants:
+  `docs/experiments/hierarchy_construction/four_variant_v1/`
+- Raw RGB-D hierarchy:
+  `outputs/raw_rgbd_hierarchy/five_scene_clip_v1/`
+- New generated figures/macros:
+  `scripts/export_twinworld_agent_figures.py`, `tables/new_experiment_macros.tex`
 - Graph-construction accounting: `docs/reports/final/graph_construction_cost.json`
 - Project page source: `site/` (assembled by `scripts/build_project_site.py`)
 

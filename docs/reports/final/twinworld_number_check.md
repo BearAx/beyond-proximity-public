@@ -1,112 +1,119 @@
 # TwinWorld number cross-check
 
-Source of truth: `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json`
+The anonymous TwinWorld manuscript is checked against the frozen instruction-agent, raw RGB-D hierarchy, and calibrated public-dataset outputs.
 
-Checks: 104 - mismatches: 0
+Checks: 111; mismatches: 0.
 
-| Name | Got | Expected | OK |
-|---|---:|---:|:---:|
-| `five.views_flat` | 19.4 | 19.4 | yes |
-| `five.views_graph` | 4.77 | 4.77 | yes |
-| `five.tok_flat` | 3168.2 | 3168.2 | yes |
-| `five.tok_graph` | 1014.26 | 1014.26 | yes |
-| `five.sav_views` | 75.5 | 75.5 | yes |
-| `five.sav_tok` | 68.2 | 68.2 | yes |
-| `five.hit1_flat` | 0.768 | 0.768 | yes |
-| `five.hit1_graph` | 0.68 | 0.68 | yes |
-| `five.hit3_flat` | 0.928 | 0.928 | yes |
-| `five.hit3_graph` | 0.808 | 0.808 | yes |
-| `five.tok_sum_flat` | 475230.0 | 475230 | yes |
-| `five.tok_sum_graph` | 152139.0 | 152139 | yes |
-| `five.captured_view_count` | 97 | 97 | yes |
-| `construction.provider_calls` | 0 | 0 | yes |
-| `construction.provider_tokens` | 0 | 0 | yes |
-| `construction.views` | 97 | 97 | yes |
-| `construction.items` | 1066 | 1066 | yes |
-| `construction.nodes` | 1064 | 1064 | yes |
-| `construction.source_characters` | 267877 | 267877 | yes |
-| `construction.source_token_equivalent` | 66937 | 66937 | yes |
-| `construction.tree_token_equivalent` | 179817 | 179817 | yes |
-| `construction.serialized_io_token_equivalent` | 246754 | 246754 | yes |
-| `annotation.records` | 97 | 97 | yes |
-| `annotation.items` | 1066 | 1066 | yes |
-| `annotation.characters` | 267877 | 267877 | yes |
-| `annotation.token_equivalent` | 66937 | 66937 | yes |
-| `replica_pilot_v1.n` | 56 | 56 | yes |
-| `replica_pilot_v1.acc025_graph` | 1.0 | 1.0 | yes |
-| `replica_pilot_v1.acc025_flat` | 1.0 | 1.0 | yes |
-| `replica_pilot_v1.obj_graph` | 12.107143 | 12.107143 | yes |
-| `replica_pilot_v1.obj_flat` | 71.875 | 71.875 | yes |
-| `scannet_pilot_v1.n` | 48 | 48 | yes |
-| `scannet_pilot_v1.acc025_graph` | 0.270833 | 0.270833 | yes |
-| `scannet_pilot_v1.acc025_flat` | 0.270833 | 0.270833 | yes |
-| `scannet_pilot_v1.obj_graph` | 11.229167 | 11.229167 | yes |
-| `scannet_pilot_v1.obj_flat` | 49.0 | 49.0 | yes |
-| `conceptgraphs_scannet.n` | 48 | 48 | yes |
-| `conceptgraphs_scannet.acc025` | 0.0625 | 0.0625 | yes |
-| `conceptgraphs_scannet.mean_iou` | 0.0696 | 0.0696 | yes |
-| `conceptgraphs_scannet.runtime` | 0.3363 | 0.3363 | yes |
-| `conceptgraphs_scannet.tokens` | 627 | 627 | yes |
-| `conceptgraphs_replica.n` | 48 | 48 | yes |
-| `conceptgraphs_replica.acc025` | 0.0625 | 0.0625 | yes |
-| `conceptgraphs_replica.mean_iou` | 0.0624 | 0.0624 | yes |
-| `conceptgraphs_replica.runtime` | 0.2743 | 0.2743 | yes |
-| `conceptgraphs_replica.tokens` | 459 | 459 | yes |
-| `langsplat_scannet.n` | 6 | 6 | yes |
-| `langsplat_scannet.view_hit` | 0.6667 | 0.6667 | yes |
-| `langsplat_scannet.runtime` | 2.0365 | 2.0365 | yes |
-| `langsplat_scannet.tokens` | 74 | 74 | yes |
-| `langsplat_scannet.iou_na` | 0 | 0 | yes |
-| `tex_free_of:71.4\%` | 1 | 1 | yes |
-| `tex_free_of:65.1\%` | 1 | 1 | yes |
-| `tex_free_of:0.792` | 1 | 1 | yes |
-| `tex_free_of:19.2 to 5.39` | 1 | 1 | yes |
-| `tex_free_of:from 19.2` | 1 | 1 | yes |
-| `tex_free_of:3104 to 1062` | 1 | 1 | yes |
-| `tex_free_of:96 views` | 1 | 1 | yes |
-| `tex_free_of:Person 1` | 1 | 1 | yes |
-| `tex_free_of:Person 2` | 1 | 1 | yes |
-| `tex_free_of:Person 3` | 1 | 1 | yes |
-| `tex_free_of:Person 4` | 1 | 1 | yes |
-| `tex_free_of:Person~` | 1 | 1 | yes |
-| `tex_free_of:calibrated fallback` | 1 | 1 | yes |
-| `tex_free_of:\subsection{Capture and semantic index}` | 1 | 1 | yes |
-| `tex_free_of:XXXXX` | 1 | 1 | yes |
-| `tex_has:97 views` | 1 | 1 | yes |
-| `tex_has:75.5\%` | 1 | 1 | yes |
-| `tex_has:68.2\%` | 1 | 1 | yes |
-| `tex_has:0.68` | 1 | 1 | yes |
-| `tex_has:19.4` | 1 | 1 | yes |
-| `tex_has:4.77` | 1 | 1 | yes |
-| `tex_has:Acc@.25 $=.063$` | 1 | 1 | yes |
-| `tex_has:view hit $=.667$` | 1 | 1 | yes |
-| `tex_has:0.0696` | 1 | 1 | yes |
-| `tex_has:0.0624` | 1 | 1 | yes |
-| `tex_has:CG--Replica` | 1 | 1 | yes |
-| `tex_has:& .274 & 459` | 1 | 1 | yes |
-| `tex_has:[73.2,77.7]` | 1 | 1 | yes |
-| `tex_has:[65.3,71.0]` | 1 | 1 | yes |
-| `tex_has:[-0.184,0.008]` | 1 | 1 | yes |
-| `tex_has:20,260,715` | 1 | 1 | yes |
-| `tex_has:\subsection{Hierarchical query representation}` | 1 | 1 | yes |
-| `tex_has:Hierarchical semantic tree used at query time` | 1 | 1 | yes |
-| `tex_has:through zone, region, object, and view-observation levels` | 1 | 1 | yes |
-| `tex_has:c_i=(\mathrm{id}_i,\tau_i,A_i,y_i,x_i,R_i,B_i,V_i)` | 1 | 1 | yes |
-| `tex_has:\subsection{Captured-scene zone pruning}` | 1 | 1 | yes |
-| `tex_has:\subsection{Object-level lexical and intent scoring}` | 1 | 1 | yes |
-| `tex_has:\subsection{Target--anchor spatial reasoning}` | 1 | 1 | yes |
-| `tex_has:\subsection{Fallback, variants, and measured cost}` | 1 | 1 | yes |
-| `tex_has:\subsection{Input representation and index construction}` | 1 | 1 | yes |
-| `tex_has:figures/fig_method_workflow.pdf` | 1 | 1 | yes |
-| `tex_has:provider calls and zero provider input/output tokens` | 1 | 1 | yes |
-| `tex_has:66,937` | 1 | 1 | yes |
-| `tex_has:179,817` | 1 | 1 | yes |
-| `tex_has:267,877` | 1 | 1 | yes |
-| `tex_has:246,754` | 1 | 1 | yes |
-| `tex_has:1.822\,s` | 1 | 1 | yes |
-| `tex_has:manual-annotation artifact workload is measured` | 1 | 1 | yes |
-| `site_has:<dt>Manual records</dt><dd>97` | 1 | 1 | yes |
-| `site_has:<dt>Semantic items</dt><dd>1,066` | 1 | 1 | yes |
-| `site_has:<dt>Annotation payload</dt><dd>66,937` | 1 | 1 | yes |
-| `site_has:<dt>Serialized I/O</dt><dd>246,754` | 1 | 1 | yes |
-| `site_free_of:N/A` | 1 | 1 | yes |
+| Check | Got | Expected | Pass |
+|---|---|---|:---:|
+| `agent.status` | `complete` | `complete` | yes |
+| `agent.queries` | `150` | `150` | yes |
+| `agent.quality_denominator` | `125` | `125` | yes |
+| `agent.hit1` | `0.368` | `0.368` | yes |
+| `agent.hit3` | `0.696` | `0.696` | yes |
+| `agent.mrr` | `0.509333` | `0.509333` | yes |
+| `agent.views` | `9.626667` | `9.626667` | yes |
+| `agent.calls` | `300` | `300` | yes |
+| `agent.tokens` | `239893` | `239893` | yes |
+| `agent.valid` | `1.0` | `1.0` | yes |
+| `agent.trace_count` | `150` | `150` | yes |
+| `raw.status` | `complete` | `complete` | yes |
+| `raw.rgb` | `97` | `97` | yes |
+| `raw.depth` | `97` | `97` | yes |
+| `raw.poses` | `97` | `97` | yes |
+| `raw.model_calls` | `15` | `15` | yes |
+| `raw.label_tokens` | `151` | `151` | yes |
+| `raw.manual_viewjson_reads` | `0` | `0` | yes |
+| `raw.manual_zone_reads` | `0` | `0` | yes |
+| `raw.pairwise_f1` | `0.486673` | `0.486673` | yes |
+| `raw.rand` | `0.637318` | `0.637318` | yes |
+| `raw.hit1` | `0.368` | `0.368` | yes |
+| `raw.hit3` | `0.528` | `0.528` | yes |
+| `raw.views` | `10.0` | `10.0` | yes |
+| `cursor.direct_mcp_calls` | `True` | `True` | yes |
+| `cursor.mcp_calls` | `5` | `5` | yes |
+| `cursor.provider_tokens` | `None` | `None` | yes |
+| `cursor.zones` | `18` | `18` | yes |
+| `cursor.pairwise_f1` | `0.616174` | `0.616174` | yes |
+| `cursor.hit1` | `0.704` | `0.704` | yes |
+| `cursor.hit3` | `0.784` | `0.784` | yes |
+| `cursor.views` | `5.533333` | `5.533333` | yes |
+| `semantic.hit1` | `0.784` | `0.784` | yes |
+| `semantic.hit3` | `0.904` | `0.904` | yes |
+| `bootstrap.samples` | `10000` | `10000` | yes |
+| `bootstrap.view_savings` | `75.4887` | `75.4887` | yes |
+| `bootstrap.hit1_low` | `-0.184` | `-0.184` | yes |
+| `bootstrap.hit1_high` | `0.008` | `0.008` | yes |
+| `bootstrap.hit3_low` | `-0.184` | `-0.184` | yes |
+| `bootstrap.hit3_high` | `-0.056` | `-0.056` | yes |
+| `phase6_replica_calibrated_v3.queries` | `56` | `56` | yes |
+| `phase6_replica_calibrated_v3.acc025` | `1.0` | `1.0` | yes |
+| `phase6_replica_calibrated_v3.objects` | `12.107143` | `12.107143` | yes |
+| `phase6_replica_calibrated_v3.tokens` | `302.678571` | `302.678571` | yes |
+| `phase6_scannet_calibrated_v3.queries` | `48` | `48` | yes |
+| `phase6_scannet_calibrated_v3.acc025` | `0.604167` | `0.604167` | yes |
+| `phase6_scannet_calibrated_v3.objects` | `4.729167` | `4.729167` | yes |
+| `phase6_scannet_calibrated_v3.tokens` | `219.3125` | `219.3125` | yes |
+| `phase6_scannet_extended_v3.queries` | `64` | `64` | yes |
+| `phase6_scannet_extended_v3.acc025` | `0.589286` | `0.589286` | yes |
+| `phase6_scannet_extended_v3.objects` | `4.375` | `4.375` | yes |
+| `phase6_scannet_extended_v3.tokens` | `200.0625` | `200.0625` | yes |
+| `scannet.no_relation_acc025` | `0.5` | `0.5` | yes |
+| `tex_has:\title{Agent-Guided Hierarchical Semantic Search over 3D Scene Records}` | `True` | `True` | yes |
+| `tex_has:\author{Anonymous Authors}` | `True` | `True` | yes |
+| `tex_has:\subsection{Instruction-agent traversal}` | `True` | `True` | yes |
+| `tex_has:\subsection{Agent/MCP hierarchy construction}` | `True` | `True` | yes |
+| `tex_has:\subsection{Automatic raw RGB-D hierarchy}` | `True` | `True` | yes |
+| `tex_has:\subsection{Complete instruction-agent benchmark}` | `True` | `True` | yes |
+| `tex_has:\subsection{Raw RGB-D hierarchy versus manual reference}` | `True` | `True` | yes |
+| `tex_has:\subsection{Semantic-record construction variants}` | `True` | `True` | yes |
+| `tex_has:figures/fig_instruction_agent.pdf` | `True` | `True` | yes |
+| `tex_has:figures/fig_raw_rgbd_hierarchy.pdf` | `True` | `True` | yes |
+| `tex_has:figures/fig_hierarchy_construction_variants.pdf` | `True` | `True` | yes |
+| `tex_has:figures/fig_agent_mcp_workflow.pdf` | `True` | `True` | yes |
+| `tex_has:SayPlan~\cite{rana2023sayplan}` | `True` | `True` | yes |
+| `tex_has:Search3D~\cite{takmaz2025search3d}` | `True` | `True` | yes |
+| `tex_has:reads zero manual ViewJSON or zone` | `True` | `True` | yes |
+| `tex_has:\AgentTotalCalls{} model calls` | `True` | `True` | yes |
+| `tex_has:\CursorMcpCalls{} direct tool calls` | `True` | `True` | yes |
+| `tex_has:Cursor changes hit@1 by $+0.024$ and hit@3` | `True` | `True` | yes |
+| `tex_has:1-4.77/19.40=75.4\%` | `True` | `True` | yes |
+| `tex_has:\HitOneLow{}, \HitOneHigh{}` | `True` | `True` | yes |
+| `tex_has:\HitThreeLow{}, \HitThreeHigh{}` | `True` | `True` | yes |
+| `tex_has:inconclusive` | `True` | `True` | yes |
+| `tex_has:significant decline` | `True` | `True` | yes |
+| `tex_has:Replica (56; 48+)` | `True` | `True` | yes |
+| `tex_has:ScanNet (48; 48+)` | `True` | `True` | yes |
+| `tex_has:Replica's exact-match ceiling is only a protocol sanity check` | `True` | `True` | yes |
+| `tex_has:relation scoring reduces Acc@0.25 to 0.500` | `True` | `True` | yes |
+| `tex_has:The superseded reranker underperformed because it applied low-confidence` | `True` | `True` | yes |
+| `tex_has:Qwen/Qwen2.5-0.5B-Instruct` | `True` | `True` | yes |
+| `tex_has:openai/clip-vit-base-patch32` | `True` | `True` | yes |
+| `tex_free_of:SemanticSplat: Graph-Pruned Semantic Search` | `True` | `True` | yes |
+| `tex_free_of:SemanticSplat` | `True` | `True` | yes |
+| `tex_free_of:Paper ID #XXXXX` | `True` | `True` | yes |
+| `tex_free_of:XXXXX` | `True` | `True` | yes |
+| `tex_free_of:Person 1` | `True` | `True` | yes |
+| `tex_free_of:Person 2` | `True` | `True` | yes |
+| `tex_free_of:Person 3` | `True` | `True` | yes |
+| `tex_free_of:Person 4` | `True` | `True` | yes |
+| `tex_free_of:ScanNet oracle-map pilot, graph search matches flat lexical Recall@1 / Acc@0.25 ($0.271$)` | `True` | `True` | yes |
+| `tex_free_of:Relation reranking does not help` | `True` | `True` | yes |
+| `tex_free_of:Stub / deterministic lexical matching is not live provider-backed VLM evaluation` | `True` | `True` | yes |
+| `macro:AgentHitOne` | `0.368` | `0.368` | yes |
+| `macro:AgentHitThree` | `0.696` | `0.696` | yes |
+| `macro:AgentTotalCalls` | `300` | `300` | yes |
+| `macro:AgentTotalTokens` | `239893` | `239893` | yes |
+| `macro:RawConstructionCalls` | `15` | `15` | yes |
+| `macro:RawConstructionTokens` | `151` | `151` | yes |
+| `macro:RawPairwiseFOne` | `0.487` | `0.487` | yes |
+| `macro:RawHitThree` | `0.528` | `0.528` | yes |
+| `macro:CursorMcpCalls` | `5` | `5` | yes |
+| `macro:CursorPairwiseFOne` | `0.616` | `0.616` | yes |
+| `macro:CursorHitThree` | `0.784` | `0.784` | yes |
+| `macro:ViewSavingsPerQuery` | `75.5` | `75.5` | yes |
+| `macro:HitOneLow` | `-0.184` | `-0.184` | yes |
+| `macro:HitOneHigh` | `0.008` | `0.008` | yes |
+| `macro:HitThreeHigh` | `-0.056` | `-0.056` | yes |
+| `validation:five_scene_qwen25_05b_graph_v1` | `passed` | `passed` | yes |
+| `validation:five_scene_clip_v1` | `passed` | `passed` | yes |

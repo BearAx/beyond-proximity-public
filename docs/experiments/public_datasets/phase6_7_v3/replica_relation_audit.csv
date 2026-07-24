@@ -1,0 +1,17 @@
+query_id,query,scene_id,source_dataset,query_type,relation,anchor,anchor_secondary,expected_object_ids,with_relation_top1,without_relation_top1,with_relation_hit_at_1,without_relation_hit_at_1,top1_changed,effect,relation_satisfied,relation_applied,validated_relation_change,relation_confidence,relation_source,relation_ranking_changed,relation_candidate_count
+replica_room0_relational_001,Find the rug near Replica object 63,replica_room0,Replica,relational,near,replica 63,,60,60,60,True,True,False,neutral,False,False,False,0.0,unresolved,False,92
+replica_room0_multi_hop_001,"First inspect the scene objects, then find the picture",replica_room0,Replica,multi_hop,unparsed,,,63,63,63,True,True,False,neutral,,,False,,,False,0
+replica_room1_relational_001,Find the rug near Replica object 32,replica_room1,Replica,relational,near,replica 32,,20,20,20,True,True,False,neutral,False,False,False,0.0,unresolved,False,54
+replica_room1_multi_hop_001,"First inspect the scene objects, then find the bed",replica_room1,Replica,multi_hop,unparsed,,,32,32,32,True,True,False,neutral,,,False,,,False,0
+replica_room2_relational_001,Find the table near Replica object 26,replica_room2,Replica,relational,near,replica 26,,5,5,5,True,True,False,neutral,False,False,False,0.0,unresolved,False,61
+replica_room2_multi_hop_001,"First inspect the scene objects, then find the bottle",replica_room2,Replica,multi_hop,unparsed,,,26,26,26,True,True,False,neutral,,,False,,,False,0
+replica_office0_relational_001,Find the tv screen near Replica object 64,replica_office0,Replica,relational,near,replica 64,,66,66,66,True,True,False,neutral,False,False,False,0.0,unresolved,False,64
+replica_office0_multi_hop_001,"First inspect the scene objects, then find the tablet",replica_office0,Replica,multi_hop,unparsed,,,64,64,64,True,True,False,neutral,,,False,,,False,0
+replica_office1_relational_001,Find the desk near Replica object 29,replica_office1,Replica,relational,near,replica 29,,5,5,5,True,True,False,neutral,False,False,False,0.0,unresolved,False,48
+replica_office1_multi_hop_001,"First inspect the scene objects, then find the monitor",replica_office1,Replica,multi_hop,unparsed,,,29,29,29,True,True,False,neutral,,,False,,,False,0
+replica_office2_relational_001,Find the tv screen near Replica object 28,replica_office2,Replica,relational,near,replica 28,,8,8,8,True,True,False,neutral,False,False,False,0.0,unresolved,False,91
+replica_office2_multi_hop_001,"First inspect the scene objects, then find the tablet",replica_office2,Replica,multi_hop,unparsed,,,28,28,28,True,True,False,neutral,,,False,,,False,0
+replica_office3_relational_001,Find the tablet near Replica object 101,replica_office3,Replica,relational,near,replica 101,,26;30,26,26,True,True,False,neutral,False,False,False,0.0,unresolved,False,100
+replica_office3_multi_hop_001,"First inspect the scene objects, then find the clock",replica_office3,Replica,multi_hop,unparsed,,,101,101,101,True,True,False,neutral,,,False,,,False,0
+replica_office4_relational_001,Find the clock near Replica object 5,replica_office4,Replica,relational,near,replica 5,,34,34,34,True,True,False,neutral,False,False,False,0.0,unresolved,False,65
+replica_office4_multi_hop_001,"First inspect the scene objects, then find the camera",replica_office4,Replica,multi_hop,unparsed,,,5,5,5,True,True,False,neutral,,,False,,,False,0

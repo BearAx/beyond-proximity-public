@@ -36,6 +36,7 @@ def _result(
     object_id="7",
     found=True,
     relation_correct=None,
+    ranked_object_ids=None,
 ):
     result = {
         "schema_version": "semanticsplat.query_result.v1",
@@ -53,6 +54,7 @@ def _result(
             "found": found,
             "selected_node_id": "leaf",
             "object_id": object_id,
+            "ranked_object_ids": ranked_object_ids or [object_id],
             "bbox_3d": bbox,
         },
         "metrics_log": {
@@ -111,6 +113,39 @@ def test_recall_at_1_uses_exact_object_id():
         "status": "measured",
     }
     assert "wrong object" in miss["failures"]
+
+
+def test_recall_at_k_mrr_and_verified_negative_accuracy():
+    ranked = evaluate_query(
+        _query("ranked"),
+        _result(
+            "ranked",
+            bbox=None,
+            object_id="8",
+            ranked_object_ids=["8", "9", "7", "10", "11"],
+        ),
+    )
+    negative_query = {
+        "query_id": "negative",
+        "scene_id": "scene-a",
+        "source_dataset": "fixture",
+        "query_type": "negative",
+        "verification_status": "verified_official_absence",
+        "expected_output_type": "not_found",
+    }
+    negative = evaluate_query(
+        negative_query,
+        _result("negative", bbox=None, object_id=None, found=False),
+    )
+
+    metrics = aggregate_rows([ranked, negative])
+
+    assert metrics["recall_at_1_exact_object_id"]["value"] == 0.0
+    assert metrics["recall_at_3_exact_object_id"]["value"] == 1.0
+    assert metrics["recall_at_5_exact_object_id"]["value"] == 1.0
+    assert metrics["mrr_exact_object_id"]["value"] == 0.333333
+    assert metrics["negative_accuracy"]["value"] == 1.0
+    assert negative["failures"] == []
 
 
 def test_failure_aggregation_includes_relation_unavailable_bad_bbox_and_missing_gt(tmp_path):

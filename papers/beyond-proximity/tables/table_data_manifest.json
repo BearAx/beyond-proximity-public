@@ -1,0 +1,48 @@
+{
+  "schema_version": "academic_table_export.v1",
+  "sources": {
+    "agent": {
+      "path": "outputs/agent_semantic/five_scene_four_variant_v1/metrics_summary.json",
+      "sha256": "80022db81a79c8494871bc0c0c470342bfe45623c722f2cc69dbd29420043b18"
+    },
+    "hierarchy": {
+      "path": "docs/experiments/hierarchy_construction/four_variant_v1/hierarchy_evaluation.json",
+      "sha256": "e182d10ebefdd50917c37b5049137f2d2664572c1b62755b1811604b0f9fee1a"
+    },
+    "replica": {
+      "path": "docs/experiments/public_datasets/phase6_7_v3/replica_variant_comparison.json",
+      "sha256": "b86b480493ef101355786f916f591635375dc5dbfb0fbc58e00de6e3db7bd82c"
+    },
+    "scannet": {
+      "path": "docs/experiments/public_datasets/phase6_7_v3/scannet_original_variant_comparison.json",
+      "sha256": "f85aba3883559d07824d903a6eb9eccd8992fa5face05500427e8ccac62ad130"
+    },
+    "scannet_extended": {
+      "path": "docs/experiments/public_datasets/phase6_7_v3/scannet_extended_variant_comparison.json",
+      "sha256": "c0fc66cccdeff0e6fc9868f0c8805af6767c455314d2f1cc73f04278f4e934e7"
+    },
+    "relation": {
+      "path": "docs/experiments/public_datasets/phase6_7_v3/scannet_relation_audit.json",
+      "sha256": "5bfb73f381e4388a1283fae21c6d0d5287f1f1293b18355bcc10a10bf0acefb4"
+    },
+    "conceptgraphs_scannet": {
+      "path": "outputs/baselines/conceptgraphs_scannet_full_v1/metrics_summary.json",
+      "sha256": "07a8ceecb5022b90334603957e0f164b9957d12857ddb7d4d52ce9e0502414ad"
+    },
+    "conceptgraphs_replica": {
+      "path": "outputs/baselines/conceptgraphs_replica_full_v1/metrics_summary.json",
+      "sha256": "f72a1faf3346b181b9f2d16e090adb674b550c2d776f365c30eec9d9c9fcc41d"
+    },
+    "langsplat": {
+      "path": "outputs/baselines/langsplat_scannet_full_v1/metrics_summary.json",
+      "sha256": "dfeee41f954038446cae1d3dcecf23dff57ad53a131cf8b96d9f5a9bb29acd0c"
+    }
+  },
+  "outputs": [
+    "agent_variant_rows.tex",
+    "external_rows.tex",
+    "hierarchy_rows.tex",
+    "public_rows.tex",
+    "relation_rows.tex"
+  ]
+}

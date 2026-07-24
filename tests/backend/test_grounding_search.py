@@ -136,6 +136,55 @@ def test_relation_parser_and_predicates_cover_supported_axes():
         assert matched is True, (relation, detail)
 
 
+def test_dataset_world_boxes_do_not_fake_viewpoint_relative_axes():
+    target = _candidate("chair", [-2.0, 0.0, 0.0])
+    anchor = _candidate("table", [0.0, 0.0, 0.0])
+    target.bbox_3d["coordinate_frame"] = "scannet_axis_aligned_mesh"
+    anchor.bbox_3d["coordinate_frame"] = "scannet_axis_aligned_mesh"
+
+    matched, detail = relation_predicate(target, anchor, "left")
+
+    assert matched is None
+    assert detail["reason"] == "viewpoint_axis_unavailable"
+
+
+def test_relation_parser_covers_public_benchmark_distance_and_between_phrases():
+    closest = parse_relation_query(
+        "select the table that is closer to the kitchen cabinets"
+    )
+    farthest = parse_relation_query(
+        "select the trash can that is far from the kitchen cabinets"
+    )
+    between = parse_relation_query(
+        "choose the picture that is in the center of the toilet paper and the tv"
+    )
+    above = parse_relation_query(
+        "choose the dispenser that is on top of the other dispenser"
+    )
+
+    assert (closest.target, closest.relation, closest.anchor) == (
+        "table",
+        "closest",
+        "kitchen cabinets",
+    )
+    assert (farthest.target, farthest.relation, farthest.anchor) == (
+        "trash can",
+        "farthest",
+        "kitchen cabinets",
+    )
+    assert (
+        between.target,
+        between.relation,
+        between.anchor,
+        between.anchor_secondary,
+    ) == ("picture", "between", "toilet paper", "tv")
+    assert (above.target, above.relation, above.anchor) == (
+        "dispenser",
+        "above",
+        "other dispenser",
+    )
+
+
 def test_relation_reranking_prefers_matching_target():
     result = search_grounding(
         _bundle(),
@@ -151,6 +200,165 @@ def test_relation_reranking_prefers_matching_target():
     }
     table = next(candidate for candidate in result.candidates if candidate.label == "table")
     assert table.score_details["relation_score"] == 0.0
+    assert result.metadata["relation_audit"]["applied_candidate_count"] == 1
+
+
+def test_relation_cannot_override_stronger_label_outside_score_margin():
+    bundle = {
+        "views": {
+            "v1": {
+                "view_id": "v1",
+                "visible_objects": [
+                    _object("chair", None, _box([2.0, 0.0, 0.0])),
+                    _object("red chair", None, _box([-2.0, 0.0, 0.0])),
+                    _object("table", None, _box([0.0, 0.0, 0.0])),
+                ],
+            }
+        },
+        "tree": {},
+    }
+
+    result = search_grounding(
+        bundle,
+        "Find the chair left of the table",
+        variant="flat_lexical",
+    )
+
+    assert result.candidates[0].label == "chair"
+    red = next(candidate for candidate in result.candidates if candidate.label == "red chair")
+    assert red.score_details["relation_score"] == 1.0
+    assert red.score_details["relation_score_margin_eligible"] is False
+    assert red.score_details["relation_applied"] is False
+
+
+def test_ambiguous_anchor_geometry_is_below_relation_confidence_gate():
+    bundle = {
+        "views": {
+            "v1": {
+                "view_id": "v1",
+                "visible_objects": [
+                    _object("chair", None, _box([-2.0, 0.0, 0.0])),
+                    _object("table", None, _box([0.0, 0.0, 0.0])),
+                    _object("table", None, _box([4.0, 0.0, 0.0])),
+                ],
+            }
+        },
+        "tree": {},
+    }
+
+    result = search_grounding(
+        bundle,
+        "Find the chair left of the table",
+        variant="flat_lexical",
+    )
+
+    chair = next(candidate for candidate in result.candidates if candidate.label == "chair")
+    assert chair.score_details["anchor_evidence"]["status"] == "ambiguous"
+    assert chair.score_details["relation_confidence"] < 0.65
+    assert chair.score_details["relation_applied"] is False
+    assert result.metadata["relation_unresolved"] is True
+
+
+def test_unapplied_relation_confidence_cannot_break_lexical_ties():
+    bundle = {
+        "views": {
+            "v1": {
+                "view_id": "v1",
+                "visible_objects": [
+                    {
+                        **_object("chair", None, _box([2.0, 0.0, 0.0])),
+                        "object_id": "a_lexical_first",
+                    },
+                    {
+                        **_object("chair", None, _box([-2.0, 0.0, 0.0])),
+                        "object_id": "z_low_confidence_relation",
+                    },
+                    {
+                        **_object("table", None, _box([0.0, 0.0, 0.0])),
+                        "object_id": "anchor_1",
+                    },
+                    {
+                        **_object("table", None, _box([4.0, 0.0, 0.0])),
+                        "object_id": "anchor_2",
+                    },
+                ],
+            }
+        },
+        "tree": {},
+    }
+
+    result = search_grounding(
+        bundle,
+        "Find the chair left of the table",
+        variant="flat_lexical",
+    )
+
+    assert result.candidates[0].object_id == "a_lexical_first"
+    low_confidence = next(
+        candidate
+        for candidate in result.candidates
+        if candidate.object_id == "z_low_confidence_relation"
+    )
+    assert low_confidence.score_details["relation_confidence"] < 0.65
+    assert low_confidence.score_details["relation_applied"] is False
+
+
+def test_relative_distance_relations_choose_closest_and_farthest_target():
+    bundle = {
+        "views": {
+            "v1": {
+                "view_id": "v1",
+                "visible_objects": [
+                    {**_object("chair", None, _box([1.0, 0.0, 0.0])), "object_id": "near"},
+                    {**_object("chair", None, _box([5.0, 0.0, 0.0])), "object_id": "far"},
+                    {**_object("table", None, _box([0.0, 0.0, 0.0])), "object_id": "anchor"},
+                ],
+            }
+        },
+        "tree": {},
+    }
+
+    closest = search_grounding(
+        bundle,
+        "select the chair that is closest to the table",
+        variant="flat_lexical",
+    )
+    farthest = search_grounding(
+        bundle,
+        "select the chair that is farthest from the table",
+        variant="flat_lexical",
+    )
+
+    assert closest.candidates[0].object_id == "near"
+    assert farthest.candidates[0].object_id == "far"
+    assert closest.candidates[0].score_details["relation_applied"] is True
+    assert farthest.candidates[0].score_details["relation_applied"] is True
+
+
+def test_between_relation_requires_two_valid_anchors():
+    bundle = {
+        "views": {
+            "v1": {
+                "view_id": "v1",
+                "visible_objects": [
+                    _object("chair", None, _box([5.0, 0.0, 0.0])),
+                    _object("table", None, _box([0.0, 0.0, 0.0])),
+                    _object("sofa", None, _box([10.0, 0.0, 0.0])),
+                ],
+            }
+        },
+        "tree": {},
+    }
+
+    result = search_grounding(
+        bundle,
+        "find the chair between the table and the sofa",
+        variant="flat_lexical",
+    )
+
+    assert result.candidates[0].label == "chair"
+    assert result.candidates[0].score_details["relation_applied"] is True
+    assert result.metadata["relation_unresolved"] is False
 
 
 def test_graph_fallback_expands_after_low_confidence_pruning():

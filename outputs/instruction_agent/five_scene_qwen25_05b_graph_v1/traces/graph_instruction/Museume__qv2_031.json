@@ -1,0 +1,228 @@
+{
+  "schema_version": "semanticsplat.instruction_agent_trace.v1",
+  "created_at": "2026-07-24T06:51:36.473789+00:00",
+  "query_id": "qv2_031",
+  "scene_id": "Museume",
+  "query": "Find the information counter",
+  "method": "graph_instruction",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "calls": [
+    {
+      "phase": "hierarchy_traversal",
+      "system_prompt": "Judge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.",
+      "user_prompts": [
+        "Query: Find the information counter\nCandidate C0: entrance and information Entrance lobby, stair, information counter, and visitor information views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C1: red-panel exhibition gallery Red panels, wall labels, exhibition corridor, historical photographs, and display-wall views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C2: Reichenstein and media station Reichenstein exhibit wall, information panel, media station, and adjacent window-side views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C3: ruin and label gallery Stone ruin, label rail, dark niche, and surrounding exhibit views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C4: visitor seating and workshop Workshop corner, bench, chairs, and visitor seating views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C5: window and mesh side Window-side gallery views with mesh partitions, seating, and side displays.\nRelevant? Answer exactly Yes or No."
+      ],
+      "rendered_prompts": [
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C0: entrance and information Entrance lobby, stair, information counter, and visitor information views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C1: red-panel exhibition gallery Red panels, wall labels, exhibition corridor, historical photographs, and display-wall views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C2: Reichenstein and media station Reichenstein exhibit wall, information panel, media station, and adjacent window-side views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C3: ruin and label gallery Stone ruin, label rail, dark niche, and surrounding exhibit views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C4: visitor seating and workshop Workshop corner, bench, chairs, and visitor seating views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C5: window and mesh side Window-side gallery views with mesh partitions, seating, and side displays.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n"
+      ],
+      "raw_response": "C2,C5",
+      "candidate_scores": [
+        {
+          "alias": "C2",
+          "candidate_id": "manual_zone_museume_reichenstein_media",
+          "relevance_probability": 0.94442385,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C5",
+          "candidate_id": "manual_zone_museume_window_mesh_side",
+          "relevance_probability": 0.93387097,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C0",
+          "candidate_id": "manual_zone_museume_entrance_information",
+          "relevance_probability": 0.93309987,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C4",
+          "candidate_id": "manual_zone_museume_visitor_seating_workshop",
+          "relevance_probability": 0.90581942,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C3",
+          "candidate_id": "manual_zone_museume_ruin_label_gallery",
+          "relevance_probability": 0.8632012,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C1",
+          "candidate_id": "manual_zone_museume_red_panel_gallery",
+          "relevance_probability": 0.84141147,
+          "generated_decision": "Yes"
+        }
+      ],
+      "alias_map": {
+        "C0": "manual_zone_museume_entrance_information",
+        "C1": "manual_zone_museume_red_panel_gallery",
+        "C2": "manual_zone_museume_reichenstein_media",
+        "C3": "manual_zone_museume_ruin_label_gallery",
+        "C4": "manual_zone_museume_visitor_seating_workshop",
+        "C5": "manual_zone_museume_window_mesh_side"
+      },
+      "ranked_ids": [
+        "manual_zone_museume_reichenstein_media",
+        "manual_zone_museume_window_mesh_side"
+      ],
+      "input_tokens": 413,
+      "output_tokens": 6,
+      "total_tokens": 419,
+      "latency_ms": 1503.3538,
+      "token_method": "transformers_native:Qwen/Qwen2.5-0.5B-Instruct",
+      "valid_response": true,
+      "scoring_method": "instruction_yes_no_next_token_probability"
+    },
+    {
+      "phase": "view_grounding",
+      "system_prompt": "Judge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.",
+      "user_prompts": [
+        "Query: Find the information counter\nCandidate C0: v006: Gallery corridor with a large red exhibition panel, printed historical images, a window wall, and dark metal mesh partitions.; red information panel area; window side; mesh partition gallery; red exhibition panel; historical photographs; tall windows; metal mesh partitions; gray \nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C1: v008: Gallery room with tall windows, black metal mesh partitions, red information panels, white chairs, and display screens or cases.; window gallery area; seating and panel area; mesh partition corridor; tall windows; white chairs; red exhibition panel; black mesh partitions; display\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C2: v009: Exhibition corridor with red and white information panels, a white chair, dark wall panels, metal mesh, and a yellow floor marker.; information panel corridor; seating corner; mesh partition area; red exhibition panel; white information panel; white chair; metal mesh partition; y\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C3: v011: Gallery corridor with a large white illustrated panel, black mesh partitions, display cases or railings, and a dark doorway area.; illustrated panel area; mesh corridor; dark doorway area; illustrated white panel; metal mesh partitions; display railing; dark doorway or opening; s\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C4: v016: Exhibit wall with the Reichenstein title panel, a display case or monitor, and three arched historical illustrations behind mesh partitions.; Reichenstein exhibit wall; display monitor area; Reichenstein information panel; display monitor or case; arched historical illustrations;\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C5: v017: Reichenstein exhibit wall with large information panel, small artifact display shelf, tall windows, and black metal mesh partition.; Reichenstein information area; window side; mesh partition side; Reichenstein information panel; artifact shelf; tall windows; black mesh partition\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C6: v019: Reichenstein exhibit panel near tall windows, with a small artifact display shelf and printed explanation boards.; Reichenstein panel area; window side; Reichenstein information panel; artifact shelf; tall windows; printed diagram; small caption labels; gray concrete wall; Reiche\nRelevant? Answer exactly Yes or No.",
+        "Query: Find the information counter\nCandidate C7: v020: Small media or seating corner with a monitor on a table, two chairs, wall text, a tall window, and a metal ladder or rack.; media station area; window side; ladder or rack side; monitor; chairs; table; tall window; metal ladder or rack; red information sign; media monitor; tall w\nRelevant? Answer exactly Yes or No."
+      ],
+      "rendered_prompts": [
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C0: v006: Gallery corridor with a large red exhibition panel, printed historical images, a window wall, and dark metal mesh partitions.; red information panel area; window side; mesh partition gallery; red exhibition panel; historical photographs; tall windows; metal mesh partitions; gray \nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C1: v008: Gallery room with tall windows, black metal mesh partitions, red information panels, white chairs, and display screens or cases.; window gallery area; seating and panel area; mesh partition corridor; tall windows; white chairs; red exhibition panel; black mesh partitions; display\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C2: v009: Exhibition corridor with red and white information panels, a white chair, dark wall panels, metal mesh, and a yellow floor marker.; information panel corridor; seating corner; mesh partition area; red exhibition panel; white information panel; white chair; metal mesh partition; y\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C3: v011: Gallery corridor with a large white illustrated panel, black mesh partitions, display cases or railings, and a dark doorway area.; illustrated panel area; mesh corridor; dark doorway area; illustrated white panel; metal mesh partitions; display railing; dark doorway or opening; s\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C4: v016: Exhibit wall with the Reichenstein title panel, a display case or monitor, and three arched historical illustrations behind mesh partitions.; Reichenstein exhibit wall; display monitor area; Reichenstein information panel; display monitor or case; arched historical illustrations;\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C5: v017: Reichenstein exhibit wall with large information panel, small artifact display shelf, tall windows, and black metal mesh partition.; Reichenstein information area; window side; mesh partition side; Reichenstein information panel; artifact shelf; tall windows; black mesh partition\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C6: v019: Reichenstein exhibit panel near tall windows, with a small artifact display shelf and printed explanation boards.; Reichenstein panel area; window side; Reichenstein information panel; artifact shelf; tall windows; printed diagram; small caption labels; gray concrete wall; Reiche\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find the information counter\nCandidate C7: v020: Small media or seating corner with a monitor on a table, two chairs, wall text, a tall window, and a metal ladder or rack.; media station area; window side; ladder or rack side; monitor; chairs; table; tall window; metal ladder or rack; red information sign; media monitor; tall w\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n"
+      ],
+      "raw_response": "C4,C5,C1",
+      "candidate_scores": [
+        {
+          "alias": "C4",
+          "candidate_id": "v016",
+          "relevance_probability": 0.99016285,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C5",
+          "candidate_id": "v017",
+          "relevance_probability": 0.98112923,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C1",
+          "candidate_id": "v008",
+          "relevance_probability": 0.95144099,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C0",
+          "candidate_id": "v006",
+          "relevance_probability": 0.94663876,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C6",
+          "candidate_id": "v019",
+          "relevance_probability": 0.94527334,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C2",
+          "candidate_id": "v009",
+          "relevance_probability": 0.94303316,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C3",
+          "candidate_id": "v011",
+          "relevance_probability": 0.93672276,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C7",
+          "candidate_id": "v020",
+          "relevance_probability": 0.92519009,
+          "generated_decision": "Yes"
+        }
+      ],
+      "alias_map": {
+        "C0": "v006",
+        "C1": "v008",
+        "C2": "v009",
+        "C3": "v011",
+        "C4": "v016",
+        "C5": "v017",
+        "C6": "v019",
+        "C7": "v020"
+      },
+      "ranked_ids": [
+        "v016",
+        "v017",
+        "v008"
+      ],
+      "input_tokens": 877,
+      "output_tokens": 8,
+      "total_tokens": 885,
+      "latency_ms": 2737.7617,
+      "token_method": "transformers_native:Qwen/Qwen2.5-0.5B-Instruct",
+      "valid_response": true,
+      "scoring_method": "instruction_yes_no_next_token_probability"
+    }
+  ],
+  "result": {
+    "ranked_view_ids": [
+      "v016",
+      "v017",
+      "v008"
+    ],
+    "selected_view_id": "v016",
+    "found": true,
+    "selected_zone_ids": [
+      "manual_zone_museume_reichenstein_media",
+      "manual_zone_museume_window_mesh_side"
+    ],
+    "candidate_view_ids": [
+      "v006",
+      "v008",
+      "v009",
+      "v011",
+      "v016",
+      "v017",
+      "v019",
+      "v020"
+    ],
+    "views_checked": 8,
+    "response_valid": true,
+    "accounting": {
+      "model_call_count": 2,
+      "input_tokens": 1290,
+      "output_tokens": 14,
+      "total_tokens": 1304,
+      "latency_ms": 4241.1155
+    },
+    "quality": {
+      "eligible": true,
+      "expected_view_ids": [
+        "v001"
+      ],
+      "hit_at_1": false,
+      "hit_at_3": false,
+      "reciprocal_rank": 0.0
+    }
+  }
+}

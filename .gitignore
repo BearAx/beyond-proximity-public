@@ -62,6 +62,13 @@ site-dist/
 
 # Incoming archives and generated evaluation runs
 outputs/**
+!outputs/instruction_agent/
+!outputs/instruction_agent/five_scene_qwen25_05b_graph_v1/
+!outputs/instruction_agent/five_scene_qwen25_05b_graph_v1/**
+outputs/instruction_agent/five_scene_qwen25_05b_graph_v1/runner.*
+!outputs/raw_rgbd_hierarchy/
+!outputs/raw_rgbd_hierarchy/five_scene_clip_v1/
+!outputs/raw_rgbd_hierarchy/five_scene_clip_v1/**
 !outputs/week2/
 outputs/week2/**
 !outputs/week2/phase1_evaluator_smoke/

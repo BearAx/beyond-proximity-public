@@ -376,8 +376,13 @@ def render_system_overview() -> None:
     fig.text(0.015, 0.925, "ONE-TIME MAP CONSTRUCTION", fontsize=6.0, fontweight="bold", color=GRAPH_C)
     fig.text(0.015, 0.475, "PER-QUERY RETRIEVAL", fontsize=6.0, fontweight="bold", color=GRAPH_C)
     fig.text(
-        0.5, 0.985, "SemanticSplat: from captured evidence to graph-pruned grounding",
-        ha="center", va="top", fontsize=9.2, fontweight="bold",
+        0.5,
+        0.985,
+        "Agent-guided hierarchy: from captured evidence to grounded retrieval",
+        ha="center",
+        va="top",
+        fontsize=9.2,
+        fontweight="bold",
     )
     _save(fig, "fig_method_workflow")
     plt.close(fig)
@@ -431,9 +436,9 @@ def render_tree_traversal() -> None:
     import matplotlib.pyplot as plt
     from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
-    fig, ax = plt.subplots(figsize=(7.2, 3.55))
+    fig, ax = plt.subplots(figsize=(5.0, 3.25))
     ax.set_xlim(0, 10)
-    ax.set_ylim(0, 7)
+    ax.set_ylim(-0.35, 7)
     ax.axis("off")
 
     nodes = {
@@ -456,11 +461,11 @@ def render_tree_traversal() -> None:
             face, edge = "#e7f5ee", OK_C
         else:
             face, edge = "#f3f4f6", "#9ca3af"
-        ax.add_patch(FancyBboxPatch((x - 0.78, y - 0.39), 1.56, 0.78,
+        ax.add_patch(FancyBboxPatch((x - 1.0, y - 0.43), 2.0, 0.86,
                                     boxstyle="round,pad=0.02,rounding_size=0.1",
                                     facecolor=face, edgecolor=edge, lw=1.2,
                                     linestyle="-" if key in keep else "--"))
-        ax.text(x, y, label, ha="center", va="center", fontsize=7.0,
+        ax.text(x, y, label, ha="center", va="center", fontsize=7.8,
                 color="#111" if key in keep else "#6b7280")
 
     for k in nodes:
@@ -475,16 +480,16 @@ def render_tree_traversal() -> None:
     for a, b, on in edges:
         x0, y0, _ = nodes[a]
         x1, y1, _ = nodes[b]
-        ax.add_patch(FancyArrowPatch((x0, y0 - 0.39), (x1, y1 + 0.39),
-                                     arrowstyle="-|>", mutation_scale=10,
+        ax.add_patch(FancyArrowPatch((x0, y0 - 0.43), (x1, y1 + 0.43),
+                                     arrowstyle="-|>", mutation_scale=11,
                                      color=OK_C if on else "#cbd5e1",
                                      lw=1.6 if on else 0.9,
                                      linestyle="-" if on else "--"))
 
     ax.text(5, 6.88, 'Query: "where is the screen in the conference room?"',
-            ha="center", fontsize=9, fontweight="bold")
-    ax.text(0.08, 0.10, "Solid green = retained target path; dashed gray = pruned branch",
-            fontsize=6.8, color=GRAY, va="bottom")
+            ha="center", fontsize=9.2, fontweight="bold")
+    ax.text(0.08, -0.27, "Solid green = retained target path; dashed gray = pruned branch",
+            fontsize=7.2, color=GRAY, va="bottom")
     _save(fig, "fig_tree_traversal")
     plt.close(fig)
 

@@ -4,7 +4,7 @@ This is the operating guide for Codex, Cursor, and future agents working in this
 repository. The goal is to keep every change evidence-based, reproducible, and
 honest about what the project has actually proven.
 
-Status date: 2026-07-15.
+Status date: 2026-07-24.
 
 ---
 
@@ -12,8 +12,9 @@ Status date: 2026-07-15.
 
 Project name: SemanticSplat: Graph-Pruned Semantic Search.
 
-Current role of the system: a reproducible semantic-map evaluation prototype,
-not a completed quantitative research result.
+Current role of the system: a reproducible semantic-map evaluation prototype
+with complete local instruction-agent and raw RGB-D hierarchy experiments, not
+a completed main-conference quantitative result.
 
 Basic idea:
 
@@ -43,22 +44,24 @@ meaning, hierarchy, and query-time reasoning above existing map context.
 Safest current claim:
 
 ```text
-SemanticSplat currently provides a reproducible, test-backed evaluation
-prototype over five manually captured and manually annotated RGB-D pilot scenes.
-It includes canonical schemas, semantic indexes, generated trees, benchmark
-queries, stub-mode graph-vs-flat evaluation, ablations, and native public-data
-baseline adapters. The current reproducible five-scene run shows strong query-time cost
-reduction (75.5% fewer views checked and 68.2% fewer input tokens), but lower
-hit@k than flat lexical search under the current stub ranker. Live and
-cached-live evaluation are out of scope for the next phase. ConceptGraphs has
-native eight-scene ScanNet and eight-scene Replica predicted-map runs;
-LangSplat has a reduced-resource end-to-end one-scene ScanNet run. These are
-real external executions but not fair same-protocol rankings. Official
-Replica and ScanNet oracle-GT-map object-grounding pilots are now reproducible:
-Replica has 575 boxes and 56 queries; ScanNet has 392 boxes, 48 Nr3D/Sr3D+
-queries, exact object-ID hit 0.2500, and Acc@0.25 0.2708 under the lexical stub.
-These are retrieval results over GT semantic maps, not semantic-perception
-accuracy or fair external-baseline superiority.
+SemanticSplat provides a reproducible, test-backed evaluation prototype over
+five captured RGB-D pilot scenes, plus official Replica and ScanNet
+oracle-map retrieval tracks. The 150-query deterministic control reduces
+checked views by 75.5% and estimated context by 68.2%, but loses hit@k. A
+complete local Qwen2.5-0.5B-Instruct run executes all 150 queries with 150
+traces, 300 model calls, 239,893 exact native tokens, hit@1 0.368, hit@3 0.696,
+and 9.63 checked views/query. A separate CLIP ViT-B/32 constructor builds
+hierarchies from all 97 RGB images, depth arrays, and poses with zero manual
+ViewJSON or zone reads during construction. It reaches macro pairwise F1 0.487
+against manual overlapping zones and checks 10.0 views/query with hit@3 0.528,
+versus flat CLIP at 19.4 views and hit@3 0.624.
+
+Calibrated v3 oracle-map pilots preserve flat lexical Acc@0.25 while reducing
+checked objects: Replica reaches 1.000 on 48 positives; ScanNet reaches 0.604
+on 48 Nr3D/Sr3D+ queries. ConceptGraphs has native eight-scene ScanNet and
+eight-scene Replica predicted-map runs; LangSplat has a hardware-adapted
+end-to-end one-scene ScanNet run. These prove execution and quantify quality
+gaps; they do not prove automatic-map, LLM, or external-baseline superiority.
 ```
 
 ---
@@ -87,6 +90,8 @@ ConceptGraphs Replica sampled-map output: 8 scenes, 56 queries, Acc@0.25 0.0625
 699 mapped Nr3D rows and 661 mapped unique Sr3D+ triplets
 48-query ScanNet pilot with saved object-ID, bbox, runtime, context, and token metrics
 145 passing backend tests as of the 2026-07-15 baseline/article check
+150 complete Qwen2.5 instruction-agent queries with prompt/call/token traces
+97-view raw RGB-D/pose CLIP hierarchy with zero manual construction reads
 ```
 
 Current scene set:

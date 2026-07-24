@@ -1,21 +1,31 @@
 #!/usr/bin/env python3
-"""Cross-check the academic preprint and public page against frozen evidence."""
+"""Cross-check the academic preprint against frozen experiment evidence."""
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPER = ROOT / "papers" / "beyond-proximity" / "main.tex"
-SITE = ROOT / "site" / "index.html"
-CITATION = ROOT / "CITATION.cff"
-RETIRED_SUBTITLE = "Queryable 3DGS " + "Digital Twins"
-RETIRED_PROJECT_NAME = "Beyond " + "Proximity"
+FIGURES = ROOT / "papers" / "beyond-proximity" / "figures"
+TABLES = ROOT / "papers" / "beyond-proximity" / "tables"
+TABLE_ROW_FILES = (
+    "agent_variant_rows.tex",
+    "hierarchy_rows.tex",
+    "public_rows.tex",
+    "relation_rows.tex",
+    "external_rows.tex",
+)
 
 
 def load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def variant(data: dict, name: str) -> dict:
+    return next(item for item in data["variants"] if item["variant"] == name)
 
 
 def require(text: str, needle: str, source: Path, failures: list[str]) -> None:
@@ -29,143 +39,227 @@ def forbid(text: str, needle: str, source: Path, failures: list[str]) -> None:
 
 
 def main() -> int:
-    paper = PAPER.read_text(encoding="utf-8")
-    site = SITE.read_text(encoding="utf-8")
-    citation = CITATION.read_text(encoding="utf-8")
-    internal = load(
+    paper_source = PAPER.read_text(encoding="utf-8")
+    table_text = "\n".join(
+        (TABLES / name).read_text(encoding="utf-8")
+        for name in TABLE_ROW_FILES
+        if (TABLES / name).is_file()
+    )
+    paper = f"{paper_source}\n{table_text}"
+    agent = load(
         ROOT
         / "outputs"
-        / "graph_vs_flat"
-        / "five_scene_graph_vs_flat_v2"
+        / "agent_semantic"
+        / "five_scene_four_variant_v1"
         / "metrics_summary.json"
     )
-    construction = load(ROOT / "docs" / "reports" / "final" / "graph_construction_cost.json")
-    ci = load(ROOT / "docs" / "reports" / "final" / "twinworld_bootstrap_ci.json")
-    scannet = load(ROOT / "outputs" / "public_datasets" / "scannet_pilot_v1" / "variant_comparison.json")
-    replica = load(ROOT / "outputs" / "public_datasets" / "replica_pilot_v1" / "variant_comparison.json")
+    hierarchy = load(
+        ROOT
+        / "docs"
+        / "experiments"
+        / "hierarchy_construction"
+        / "four_variant_v1"
+        / "hierarchy_evaluation.json"
+    )
+    replica = load(
+        ROOT
+        / "docs"
+        / "experiments"
+        / "public_datasets"
+        / "phase6_7_v3"
+        / "replica_variant_comparison.json"
+    )
+    scannet = load(
+        ROOT
+        / "docs"
+        / "experiments"
+        / "public_datasets"
+        / "phase6_7_v3"
+        / "scannet_original_variant_comparison.json"
+    )
+    scannet_ext = load(
+        ROOT
+        / "docs"
+        / "experiments"
+        / "public_datasets"
+        / "phase6_7_v3"
+        / "scannet_extended_variant_comparison.json"
+    )
+    relation = load(
+        ROOT
+        / "docs"
+        / "experiments"
+        / "public_datasets"
+        / "phase6_7_v3"
+        / "scannet_relation_audit.json"
+    )
     langsplat_run = load(
         ROOT / "outputs" / "baselines" / "langsplat_scannet_full_v1" / "run_config.json"
     )
     langsplat_metrics = load(
-        ROOT / "outputs" / "baselines" / "langsplat_scannet_full_v1" / "metrics_summary.json"
+        ROOT
+        / "outputs"
+        / "baselines"
+        / "langsplat_scannet_full_v1"
+        / "metrics_summary.json"
     )
 
     failures: list[str] = []
+    for name in TABLE_ROW_FILES:
+        path = TABLES / name
+        if not path.is_file() or path.stat().st_size == 0:
+            failures.append(f"missing generated table rows: {path}")
+    manifest_path = TABLES / "table_data_manifest.json"
+    if not manifest_path.is_file():
+        failures.append(f"missing generated table manifest: {manifest_path}")
+    else:
+        manifest = load(manifest_path)
+        for item in manifest.get("sources", {}).values():
+            path = ROOT / item["path"]
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            if digest != item["sha256"]:
+                failures.append(f"stale generated table source: {path}")
     for marker in (
+        "SemanticSplat",
         "TwinWorld",
         "Anonymous Authors",
         "Paper ID",
         "#XXXXX",
         "Person 1",
         "Person 2",
-        RETIRED_SUBTITLE,
-        RETIRED_PROJECT_NAME,
+        "Queryable 3DGS Digital Twins",
+        "75.5\\%",
+        "matches flat quality",
+        "relation reranking underperforms",
         "LangSplat is evaluated on one scene under reduced resources",
-        "LangSplat and ConceptGraphs are smoke baselines",
     ):
         forbid(paper, marker, PAPER, failures)
 
-    required_paper_strings = (
-        "97 RGB-D views",
-        "1,066 semantic items",
+    required_strings = (
+        "Agent-Guided Hierarchical Semantic Search",
+        "Model Context Protocol",
+        "Cursor Agent",
+        "BAAI/bge-small-en-v1.5",
+        "SayPlan",
+        "Search3D",
+        "97 captured views",
         "150 queries",
-        "75.5\\%",
-        "68.2\\%",
-        "0.680",
-        "0.768",
-        "0.808",
-        "0.928",
-        "575 official object boxes",
-        "392 official object boxes",
-        "66,937",
-        "179,817",
-        "246,754",
-        "1.822 seconds",
-        "10,000-resample",
-        "[-0.184, 0.008]",
-        "[-0.184, -0.056]",
-        "Acc@.25=.063",
-        "view hit=.667",
-        "complete native pipeline execution rather than a smoke",
-        "No official BBQ execution artifact",
-        "Query-result schema",
+        "75.43\\%",
+        "67.99\\%",
+        "79.90\\%",
+        "32.50\\%",
+        "[-0.184,0.008]",
+        "[-0.184,-0.056]",
+        "[-0.096,0.064]",
+        "[-0.224,-0.072]",
+        "five direct MCP calls",
+        "Q_{\\mathrm{total}}",
+        "Q_+",
+        "Q_-",
+        "Q_{\\mathrm{box}}",
+        "25.0\\% fewer objects",
+        "18.8\\% fewer objects",
+        "from .550 to .675",
+        "five beneficial",
+        "zero harmful",
+        "complete native pipeline execution",
+        "No official BBQ",
         "Metric prerequisites and denominators",
-        "Prediction requirement",
-        "Reference requirement",
-        "\\begin{table*}",
         "\\begin{lstlisting}[style=commandblock]",
+        "figures/fig_agent_mcp_protocol.pdf",
+        "figures/fig_agent_semantic_results.pdf",
+        "figures/fig_hierarchy_comparison.pdf",
     )
-    for value in required_paper_strings:
+    for value in required_strings:
         require(paper, value, PAPER, failures)
 
-    expected_json = {
-        "internal query count": internal["summary"]["query_count"] == 150,
-        "construction views": construction["totals"]["view_count"] == 97,
-        "construction items": construction["totals"]["semantic_item_count"] == 1066,
-        "construction annotation tokens": construction["annotation_usage"]["estimated_tokens_chars_div_4"] == 66937,
-        "construction tree tokens": construction["totals"]["constructed_tree_estimated_tokens_chars_div_4"] == 179817,
-        "construction I/O tokens": construction["totals"]["serialized_io_estimated_tokens_chars_div_4"] == 246754,
-        "construction runtime": round(construction["totals"]["median_runtime_seconds_sum"], 3) == 1.822,
-        "bootstrap count": ci["bootstrap_samples"] == 10000,
-        "ScanNet graph Acc@0.25": scannet["variants"][0]["acc_at_0_25"] == 0.270833,
-        "Replica graph Acc@0.25": replica["variants"][0]["acc_at_0_25"] == 1.0,
-        "LangSplat run complete": langsplat_run["status"] == "complete",
-        "LangSplat native execution": langsplat_run["provenance"]["native_execution"] is True,
-        "LangSplat one-scene coverage": langsplat_run["scene_ids"] == ["scannet_0011_00"],
-        "LangSplat six results": langsplat_run["result_count"] == 6,
-        "LangSplat resource status": (
-            langsplat_run["resource_profile"]["status"] == "reduced_resource_end_to_end"
+    methods = agent["methods"]
+    scan_graph = variant(scannet, "graph")
+    scan_fallback = variant(scannet, "graph_fallback")
+    scan_flat = variant(scannet, "flat_lexical")
+    ext_fallback = variant(scannet_ext, "graph_fallback")
+    ext_flat = variant(scannet_ext, "flat_lexical")
+    replica_fallback = variant(replica, "graph_fallback")
+    replica_flat = variant(replica, "flat_lexical")
+    expected = {
+        "agent query count": agent["query_count"] == 150,
+        "agent quality denominator": agent["quality_query_count"] == 125,
+        "flat lexical hit@1": methods["flat_lexical"]["quality"]["hit_at_1"] == 0.768,
+        "graph lexical hit@3": methods["graph_lexical"]["quality"]["hit_at_3"] == 0.808,
+        "flat semantic hit@3": methods["flat_semantic_embedding"]["quality"]["hit_at_3"] == 0.928,
+        "graph semantic hit@1": methods["graph_semantic_embedding"]["quality"]["hit_at_1"] == 0.664,
+        "semantic model": (
+            methods["graph_semantic_embedding"]["accounting"]["model_name"]
+            == "BAAI/bge-small-en-v1.5"
         ),
-        "LangSplat RGB iterations": langsplat_run["resource_profile"]["rgb_iterations"] == 3000,
-        "LangSplat language iterations": (
-            langsplat_run["resource_profile"]["language_iterations"] == 3000
+        "semantic graph tokens": (
+            methods["graph_semantic_embedding"]["accounting"]["total_input_tokens"]
+            == 235045
         ),
-        "LangSplat expected-view hit": (
+        "hierarchy variants": set(hierarchy["variants"]) == {
+            "manual_reference",
+            "pose_only",
+            "pose_semantic_merge",
+            "cursor_agent_mcp",
+        },
+        "Cursor MCP calls": hierarchy["agent_evidence"]["mcp_tool_call_count"] == 5,
+        "Cursor provider usage unavailable": hierarchy["agent_evidence"]["provider_tokens"] is None,
+        "Cursor hierarchy hit@3": (
+            hierarchy["variants"]["cursor_agent_mcp"]["query_metrics"]["hit_at_3"]
+            == 0.784
+        ),
+        "ScanNet fallback preserves R@1": (
+            scan_fallback["recall_at_1"] == scan_flat["recall_at_1"] == 0.625
+        ),
+        "ScanNet graph objects": scan_graph["avg_checked_objects"] == 4.729167,
+        "ScanNet fallback objects": scan_fallback["avg_checked_objects"] == 36.75,
+        "ScanNet flat objects": scan_flat["avg_checked_objects"] == 49.0,
+        "extended fallback preserves MRR": ext_fallback["mrr"] == ext_flat["mrr"],
+        "extended negative accuracy": ext_fallback["negative_accuracy"] == 1.0,
+        "Replica fallback preserves ceiling": (
+            replica_fallback["recall_at_1"] == replica_flat["recall_at_1"] == 1.0
+        ),
+        "relation query count": relation["query_count"] == 40,
+        "relation parsed/unparsed": (
+            relation["parsed_relation_count"] == 35
+            and relation["unparsed_relation_count"] == 5
+        ),
+        "relation gain": (
+            relation["overall"]["with_relation_hit_at_1"] == 0.675
+            and relation["overall"]["without_relation_hit_at_1"] == 0.55
+        ),
+        "relation changes safe": (
+            relation["overall"]["beneficial"] == 5
+            and relation["overall"]["harmful"] == 0
+        ),
+        "LangSplat complete": (
+            langsplat_run["status"] == "complete"
+            and langsplat_run["provenance"]["native_execution"] is True
+        ),
+        "LangSplat view hits": (
             langsplat_metrics["metrics"]["expected_view_hit"]["numerator"] == 4
             and langsplat_metrics["metrics"]["expected_view_hit"]["denominator"] == 6
         ),
-        "LangSplat local tokens": langsplat_metrics["metrics"]["token_usage"]["total"] == 74,
     }
-    failures.extend(f"frozen evidence mismatch: {name}" for name, ok in expected_json.items() if not ok)
+    failures.extend(f"frozen evidence mismatch: {name}" for name, ok in expected.items() if not ok)
 
-    for marker in (
-        "<dt>Provider calls</dt>",
-        "<dt>Provider tokens</dt>",
-        "BearAx/beyond-proximity",
-        "Anonymous Authors",
-        RETIRED_SUBTITLE,
-        RETIRED_PROJECT_NAME,
+    for stem in (
+        "fig_agent_mcp_protocol",
+        "fig_agent_semantic_results",
+        "fig_hierarchy_comparison",
     ):
-        forbid(site, marker, SITE, failures)
-    for marker in (
-        "Manual records</dt><dd>97",
-        "Semantic items</dt><dd>1,066",
-        "Annotation payload</dt><dd>66,937",
-        "Constructed tree</dt><dd>179,817",
-        "Serialized I/O</dt><dd>246,754",
-        "Local rebuild</dt><dd>1.822 s",
-        "https://leopython2006.github.io/beyond-proximity-public/",
-        "papers/beyond-proximity",
-    ):
-        require(site, marker, SITE, failures)
-
-    for marker in (
-        "SemanticSplat: Graph-Pruned Semantic Search",
-        "family-names: \"Mousatat\"",
-        "family-names: \"Medvedev\"",
-        "https://leopython2006.github.io/beyond-proximity-public/",
-    ):
-        require(citation, marker, CITATION, failures)
-    for marker in (RETIRED_SUBTITLE, RETIRED_PROJECT_NAME):
-        forbid(citation, marker, CITATION, failures)
+        for suffix in (".pdf", ".png"):
+            path = FIGURES / f"{stem}{suffix}"
+            if not path.is_file() or path.stat().st_size == 0:
+                failures.append(f"missing generated figure: {path}")
 
     if failures:
-        print("Academic release consistency check FAILED:")
+        print("Academic paper evidence check FAILED:")
         for failure in failures:
             print(f"- {failure}")
         return 1
 
-    print("Academic release consistency check passed (paper, site, and frozen JSON).")
+    print("Academic paper evidence check passed (source, figures, and frozen JSON).")
     return 0
 
 

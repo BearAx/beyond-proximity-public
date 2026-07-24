@@ -28,6 +28,8 @@ $env:PYTHONPATH = "."
 python -B scripts\export_paper_figures.py --out-dir papers\twinworld\figures
 python -B scripts\measure_graph_construction.py --repeats 7
 python -B scripts\export_twinworld_figures.py
+python -B scripts\export_twinworld_agent_figures.py
+python -B scripts\check_twinworld_numbers.py
 cd papers\twinworld
 pdflatex main.tex
 bibtex main

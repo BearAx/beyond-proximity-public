@@ -734,6 +734,12 @@ def canonical_result(
         "found": found,
         "matched_object": result.get("matched_object"),
         "selected_object_id": selected_object_id(result),
+        "ranked_object_ids": string_id_list(result.get("ranked_object_ids")),
+        "ranked_candidates": (
+            result.get("ranked_candidates")
+            if isinstance(result.get("ranked_candidates"), list)
+            else []
+        ),
         "selected_node_id": result.get("selected_node_id"),
         "selected_view_id": result.get("selected_view_id"),
         "bbox_2d": result.get("bbox_2d"),
@@ -744,6 +750,11 @@ def canonical_result(
         "confidence": float(result.get("confidence", 0.0)),
         "explanation": str(result.get("explanation", "")),
         "relation_satisfied": result.get("relation_satisfied"),
+        "relation_audit": (
+            result.get("relation_audit")
+            if isinstance(result.get("relation_audit"), dict)
+            else {}
+        ),
         "search_score": result.get("search_score"),
         "score_details": result.get("score_details", {}),
     }

@@ -17,12 +17,14 @@ except ModuleNotFoundError:  # Direct execution: python scripts/evaluate_groundi
     from evaluate_results import bbox_iou_3d, box_bounds
 
 
-SCHEMA_VERSION = "semanticsplat.grounding_metrics.v1"
+SCHEMA_VERSION = "semanticsplat.grounding_metrics.v2"
 CANONICAL_RESULT_SCHEMA = "semanticsplat.query_result.v1"
 THRESHOLDS = (0.1, 0.25, 0.5)
+RECALL_K = (1, 3, 5)
 FAILURE_TYPES = (
     "wrong object",
     "wrong relation",
+    "false positive",
     "invalid/unavailable prediction",
     "bad bbox",
     "missing GT",
@@ -86,6 +88,30 @@ def predicted_object_id(result: dict[str, Any]) -> str | None:
     if value is None and isinstance(bbox, dict):
         value = bbox.get("object_id")
     return str(value) if value is not None else None
+
+
+def ranked_object_ids(result: dict[str, Any]) -> list[str]:
+    values = result.get("ranked_object_ids")
+    if isinstance(values, list):
+        ranked = [str(value) for value in values if value is not None]
+    else:
+        candidates = result.get("ranked_candidates")
+        ranked = [
+            str(item["object_id"])
+            for item in candidates
+            if isinstance(item, dict) and item.get("object_id") is not None
+        ] if isinstance(candidates, list) else []
+    selected = predicted_object_id(result)
+    if selected is not None and selected not in ranked:
+        ranked.insert(0, selected)
+    return list(dict.fromkeys(ranked))
+
+
+def _rank_of_expected(ranked: list[str], expected: set[str]) -> int | None:
+    for rank, object_id in enumerate(ranked, start=1):
+        if object_id in expected:
+            return rank
+    return None
 
 
 def _legacy_normalize(raw: dict[str, Any]) -> tuple[dict[str, Any], str]:
@@ -193,6 +219,11 @@ def evaluate_query(
     bbox_eligible = bool(valid_gt_boxes) and gt_status not in {"missing_gt", "ambiguous"}
     id_gt = expected_object_ids(query)
     recall_eligible = bool(id_gt) and gt_status not in {"missing_gt", "ambiguous"}
+    negative_eligible = bool(
+        query.get("expected_output_type") == "not_found"
+        and "verified" in gt_status
+        and ("absence" in gt_status or query.get("negative_gt_verified") is True)
+    )
     failures: set[str] = set()
 
     if raw is None:
@@ -201,15 +232,14 @@ def evaluate_query(
         schema_errors = ["missing result file"]
         result: dict[str, Any] = {}
         metrics: dict[str, Any] = {}
-        available = False
+        result_valid = False
     else:
         data, input_shape = _legacy_normalize(raw)
         schema_errors = validate_result(data, query, input_shape)
         result = data.get("result") if isinstance(data.get("result"), dict) else {}
         metrics = data.get("metrics_log") if isinstance(data.get("metrics_log"), dict) else {}
-        available = (
+        result_valid = (
             data.get("availability_status", "available") == "available"
-            and result.get("found") is True
             and not schema_errors
         )
 
@@ -218,17 +248,35 @@ def evaluate_query(
     measured_iou = _best_iou(prediction, valid_gt_boxes) if bbox_eligible and prediction_valid else None
     iou = float(measured_iou) if measured_iou is not None else (0.0 if bbox_eligible else None)
     actual_id = predicted_object_id(result)
-    recall_hit = (actual_id in id_gt) if recall_eligible else None
+    ranked_ids = ranked_object_ids(result)
+    expected_rank = _rank_of_expected(ranked_ids, id_gt) if recall_eligible else None
+    recall_hits = {
+        k: (expected_rank is not None and expected_rank <= k) if recall_eligible else None
+        for k in RECALL_K
+    }
+    reciprocal_rank = (
+        (1.0 / expected_rank if expected_rank is not None else 0.0)
+        if recall_eligible
+        else None
+    )
+    negative_correct = (
+        bool(result_valid and result.get("found") is False)
+        if negative_eligible
+        else None
+    )
+    prediction_available = bool(result_valid and result.get("found") is True)
 
-    if not bbox_eligible and not recall_eligible:
+    if not bbox_eligible and not recall_eligible and not negative_eligible:
         failures.add("missing GT")
-    if raw is None or not available:
+    if raw is None or not result_valid:
         failures.add("invalid/unavailable prediction")
     if bbox_eligible and not prediction_valid:
         failures.add("bad bbox")
-    if recall_eligible and recall_hit is False and available:
+    if recall_eligible and recall_hits[1] is False and result_valid:
         failures.add("wrong object")
-    if _relation_failure(query, result, recall_hit):
+    if negative_eligible and negative_correct is False and result_valid:
+        failures.add("false positive")
+    if _relation_failure(query, result, recall_hits[1]):
         failures.add("wrong relation")
 
     return {
@@ -241,12 +289,20 @@ def evaluate_query(
         "input_shape": input_shape,
         "schema_valid": not schema_errors and input_shape == "canonical",
         "schema_errors": schema_errors,
-        "prediction_available": available,
+        "prediction_available": prediction_available,
+        "result_valid": result_valid,
         "bbox_eligible": bbox_eligible,
         "bbox_iou_3d": iou,
         "bbox_prediction_valid": prediction_valid,
         "recall_at_1_eligible": recall_eligible,
-        "recall_at_1": recall_hit,
+        "recall_at_1": recall_hits[1],
+        "recall_at_3": recall_hits[3],
+        "recall_at_5": recall_hits[5],
+        "reciprocal_rank": reciprocal_rank,
+        "expected_rank": expected_rank,
+        "ranked_object_ids": ranked_ids,
+        "negative_eligible": negative_eligible,
+        "negative_correct": negative_correct,
         "expected_object_ids": sorted(id_gt),
         "predicted_object_id": actual_id,
         "failures": sorted(failures),
@@ -382,6 +438,7 @@ def segmentation_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
 def aggregate_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
     iou_rows = [row for row in rows if row["bbox_eligible"]]
     recall_rows = [row for row in rows if row["recall_at_1_eligible"]]
+    negative_rows = [row for row in rows if row["negative_eligible"]]
     ious = [float(row["bbox_iou_3d"]) for row in iou_rows]
     efficiency: dict[str, Any] = {}
     for field in (
@@ -411,14 +468,32 @@ def aggregate_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "denominator": len(ious),
             "status": "measured" if ious else "N/A",
         },
-        "recall_at_1_exact_object_id": {
-            "value": _rate(sum(row["recall_at_1"] is True for row in recall_rows), len(recall_rows)),
-            "numerator": sum(row["recall_at_1"] is True for row in recall_rows),
+        "mrr_exact_object_id": {
+            "value": _mean(float(row["reciprocal_rank"]) for row in recall_rows),
             "denominator": len(recall_rows),
             "status": "measured" if recall_rows else "N/A",
         },
+        "negative_accuracy": {
+            "value": _rate(
+                sum(row["negative_correct"] is True for row in negative_rows),
+                len(negative_rows),
+            ),
+            "numerator": sum(
+                row["negative_correct"] is True for row in negative_rows
+            ),
+            "denominator": len(negative_rows),
+            "status": "measured" if negative_rows else "N/A",
+        },
         "efficiency": efficiency,
     }
+    for k in RECALL_K:
+        numerator = sum(row[f"recall_at_{k}"] is True for row in recall_rows)
+        result[f"recall_at_{k}_exact_object_id"] = {
+            "value": _rate(numerator, len(recall_rows)),
+            "numerator": numerator,
+            "denominator": len(recall_rows),
+            "status": "measured" if recall_rows else "N/A",
+        }
     for threshold in THRESHOLDS:
         numerator = sum(iou >= threshold for iou in ious)
         suffix = str(threshold).replace(".", "_")
@@ -550,9 +625,20 @@ def summary_markdown(summary: dict[str, Any]) -> str:
         lines.append(
             f"| Acc@{threshold:g} | {_fmt(record['value'])} | {record['numerator']} / {record['denominator']} |"
         )
-    recall = metrics["recall_at_1_exact_object_id"]
+    for k in RECALL_K:
+        recall = metrics[f"recall_at_{k}_exact_object_id"]
+        lines.append(
+            f"| Recall@{k} exact object ID | {_fmt(recall['value'])} | "
+            f"{recall['numerator']} / {recall['denominator']} |"
+        )
+    mrr = metrics["mrr_exact_object_id"]
     lines.append(
-        f"| Recall@1 exact object ID | {_fmt(recall['value'])} | {recall['numerator']} / {recall['denominator']} |"
+        f"| MRR exact object ID | {_fmt(mrr['value'])} | {mrr['denominator']} eligible |"
+    )
+    negative = metrics["negative_accuracy"]
+    lines.append(
+        f"| Verified-negative accuracy | {_fmt(negative['value'])} | "
+        f"{negative['numerator']} / {negative['denominator']} |"
     )
     lines.extend(["", "## Segmentation", "", "| Metric | Status | Value |", "|---|---|---:|"])
     for name, record in metrics["segmentation"].items():
@@ -598,6 +684,13 @@ def write_csv(path: Path, summary: dict[str, Any]) -> None:
         "bbox_iou_3d",
         "recall_at_1_eligible",
         "recall_at_1",
+        "recall_at_3",
+        "recall_at_5",
+        "reciprocal_rank",
+        "expected_rank",
+        "ranked_object_ids",
+        "negative_eligible",
+        "negative_correct",
         "predicted_object_id",
         "failures",
         "runtime_seconds",

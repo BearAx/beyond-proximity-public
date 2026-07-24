@@ -182,11 +182,23 @@ def run_variant(
         relation_score = (
             selected.score_details.get("relation_score") if selected is not None else None
         )
+        ranked_candidates = [
+            {
+                "rank": rank,
+                "object_id": candidate.object_id,
+                "label": candidate.label,
+                "score": candidate.score,
+                "relation_confidence": candidate.score_details.get("relation_confidence"),
+                "relation_applied": candidate.score_details.get("relation_applied"),
+            }
+            for rank, candidate in enumerate(search.candidates, start=1)
+        ]
         answer = {
             "structured_plan": {
                 "target": search.parsed_query.target,
                 "relation": search.parsed_query.relation,
                 "anchor": search.parsed_query.anchor,
+                "anchor_secondary": search.parsed_query.anchor_secondary,
             },
             "visited_nodes": traversal,
             "traversal_path": traversal,
@@ -204,13 +216,22 @@ def run_variant(
                 "selected_object_id": selected.object_id if selected is not None else None,
                 "selected_node_id": selected.node_id if selected is not None else None,
                 "selected_view_id": selected.view_id if selected is not None else None,
+                "ranked_object_ids": [
+                    candidate.object_id for candidate in search.candidates
+                ],
+                "ranked_candidates": ranked_candidates,
                 "bbox_2d": list(selected.bbox_2d) if selected and selected.bbox_2d else None,
                 "bbox_3d": selected.bbox_3d if selected is not None else None,
                 "camera_pose": None,
                 "confidence": selected.score if selected is not None else 0.0,
                 "search_score": selected.score if selected is not None else None,
                 "score_details": selected.score_details if selected is not None else {},
-                "relation_satisfied": relation_score > 0 if relation_score is not None else None,
+                "relation_satisfied": (
+                    bool(selected.score_details.get("relation_applied"))
+                    if relation_score is not None and selected is not None
+                    else None
+                ),
+                "relation_audit": search.metadata.get("relation_audit"),
                 "explanation": (
                     f"{run_name} selected object {selected.object_id}."
                     if selected is not None
@@ -251,6 +272,16 @@ def run_variant(
         "schema_version": "semanticsplat.grounding_variant_run.v1",
         "run_name": run_name,
         "search_options": options,
+        "fixed_search_policy": {
+            "top_k": 10,
+            "confidence_threshold": 0.45,
+            "branch_keep_ratio": 0.5,
+            "anchor_confidence_threshold": 0.55,
+            "anchor_margin_threshold": 0.10,
+            "relation_confidence_threshold": 0.65,
+            "relation_score_margin": 0.15,
+            "relation_boost": 0.20,
+        },
         "benchmark_path": str(resolve(config["benchmark_path"])),
         "query_count": len(queries),
         "scene_ids": sorted(bundles),
@@ -289,6 +320,10 @@ def write_comparison(output_root: Path, summaries: dict[str, dict[str, Any]]) ->
             {
                 "variant": name,
                 "recall_at_1": metrics["recall_at_1_exact_object_id"]["value"],
+                "recall_at_3": metrics["recall_at_3_exact_object_id"]["value"],
+                "recall_at_5": metrics["recall_at_5_exact_object_id"]["value"],
+                "mrr": metrics["mrr_exact_object_id"]["value"],
+                "negative_accuracy": metrics["negative_accuracy"]["value"],
                 "acc_at_0_1": metrics["acc_at_0_1"]["value"],
                 "acc_at_0_25": metrics["acc_at_0_25"]["value"],
                 "acc_at_0_5": metrics["acc_at_0_5"]["value"],
@@ -308,14 +343,15 @@ def write_comparison(output_root: Path, summaries: dict[str, dict[str, Any]]) ->
     if rows:
         lines.extend(
             [
-                "| Variant | Recall@1 | Acc@0.1 | Acc@0.25 | Acc@0.5 | Checked objects | Runtime (s) |",
-                "|---|---:|---:|---:|---:|---:|---:|",
+                "| Variant | R@1 | R@3 | R@5 | MRR | Neg. acc. | Acc@0.25 | Checked objects | Runtime (s) |",
+                "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
             ]
         )
         for row in rows:
             lines.append(
-                f"| {row['variant']} | {row['recall_at_1']} | {row['acc_at_0_1']} | "
-                f"{row['acc_at_0_25']} | {row['acc_at_0_5']} | "
+                f"| {row['variant']} | {row['recall_at_1']} | {row['recall_at_3']} | "
+                f"{row['recall_at_5']} | {row['mrr']} | {row['negative_accuracy']} | "
+                f"{row['acc_at_0_25']} | "
                 f"{row['avg_checked_objects']} | {row['avg_runtime_seconds']} |"
             )
     (output_root / "variant_comparison.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

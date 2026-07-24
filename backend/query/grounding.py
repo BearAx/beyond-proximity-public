@@ -17,7 +17,23 @@ from backend.query.affordance import expand_query_tokens, tokenize
 
 
 SEARCH_VARIANTS = frozenset({"graph", "graph_fallback", "flat_lexical", "flat_embedding"})
-RELATIONS = ("near", "left", "right", "front", "behind", "above", "below")
+RELATIONS = (
+    "near",
+    "closest",
+    "farthest",
+    "between",
+    "left",
+    "right",
+    "front",
+    "behind",
+    "above",
+    "below",
+)
+DEFAULT_ANCHOR_CONFIDENCE_THRESHOLD = 0.55
+DEFAULT_ANCHOR_MARGIN_THRESHOLD = 0.10
+DEFAULT_RELATION_CONFIDENCE_THRESHOLD = 0.65
+DEFAULT_RELATION_SCORE_MARGIN = 0.15
+DEFAULT_RELATION_BOOST = 0.20
 
 _SYNONYMS: dict[str, frozenset[str]] = {
     "couch": frozenset({"sofa", "settee", "seating"}),
@@ -39,7 +55,14 @@ _RELATION_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("right", re.compile(r"\b(.+?)\s+(?:is\s+)?(?:to\s+the\s+)?right\s+of\s+(.+?)(?:[?.!,]|$)", re.I)),
     ("front", re.compile(r"\b(.+?)\s+(?:is\s+)?(?:in\s+)?front\s+of\s+(.+?)(?:[?.!,]|$)", re.I)),
     ("behind", re.compile(r"\b(.+?)\s+(?:is\s+)?behind\s+(.+?)(?:[?.!,]|$)", re.I)),
-    ("above", re.compile(r"\b(.+?)\s+(?:is\s+)?above\s+(.+?)(?:[?.!,]|$)", re.I)),
+    (
+        "above",
+        re.compile(
+            r"\b(.+?)\s+(?:is\s+)?(?:above|on\s+top\s+of)\s+"
+            r"(.+?)(?:[?.!,]|$)",
+            re.I,
+        ),
+    ),
     ("below", re.compile(r"\b(.+?)\s+(?:is\s+)?below\s+(.+?)(?:[?.!,]|$)", re.I)),
     ("near", re.compile(r"\b(.+?)\s+(?:is\s+)?near\s+(.+?)(?:[?.!,]|$)", re.I)),
 )
@@ -48,8 +71,52 @@ _PREFIX_RELATION = re.compile(
     r"(?:the\s+)?(?P<anchor>[a-z0-9][a-z0-9 _-]*?)(?:[?.!,]|$)",
     re.I,
 )
+_BETWEEN_RELATION = re.compile(
+    r"\b(.+?)\s+(?:that\s+(?:is|are)\s+)?"
+    r"(?:between|in\s+the\s+(?:center|middle)\s+of)\s+"
+    r"(?:the\s+)?(.+?)\s+and\s+(?:the\s+)?(.+?)(?:[?.!,]|$)",
+    re.I,
+)
+_DISTANCE_RELATIONS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    (
+        "closest",
+        re.compile(
+            r"\b(.+?)\s+(?:that\s+(?:is|are)\s+)?"
+            r"(?:is\s+)?(?:closer|closest|close|nearest)\s+to\s+"
+            r"(?:the\s+)?(.+?)(?:[?.!,]|$)",
+            re.I,
+        ),
+    ),
+    (
+        "farthest",
+        re.compile(
+            r"\b(.+?)\s+(?:that\s+(?:is|are)\s+)?"
+            r"(?:is\s+)?(?:farther|farthest|furthest|far(?:\s+away)?)\s+from\s+"
+            r"(?:the\s+)?(.+?)(?:[?.!,]|$)",
+            re.I,
+        ),
+    ),
+)
 _QUERY_FILLER = frozenset(
-    {"find", "where", "is", "are", "the", "a", "an", "object", "thing", "located", "please", "show", "me"}
+    {
+        "find",
+        "select",
+        "choose",
+        "where",
+        "is",
+        "are",
+        "that",
+        "which",
+        "the",
+        "a",
+        "an",
+        "object",
+        "thing",
+        "located",
+        "please",
+        "show",
+        "me",
+    }
 )
 
 
@@ -65,6 +132,7 @@ class RelationQuery:
     target: str
     relation: str | None = None
     anchor: str | None = None
+    anchor_secondary: str | None = None
 
 
 @dataclass
@@ -336,6 +404,22 @@ def validate_bbox_2d(bbox: Sequence[float] | None) -> tuple[bool, str]:
 def parse_relation_query(query: str) -> RelationQuery:
     """Extract a target, optional relation, and anchor from common phrasings."""
     cleaned = " ".join(query.strip().split())
+    match = _BETWEEN_RELATION.search(cleaned)
+    if match:
+        return RelationQuery(
+            target=_clean_query_phrase(match.group(1)),
+            relation="between",
+            anchor=_clean_query_phrase(match.group(2)),
+            anchor_secondary=_clean_query_phrase(match.group(3)),
+        )
+    for relation, pattern in _DISTANCE_RELATIONS:
+        match = pattern.search(cleaned)
+        if match:
+            return RelationQuery(
+                target=_clean_query_phrase(match.group(1)),
+                relation=relation,
+                anchor=_clean_query_phrase(match.group(2)),
+            )
     for relation, pattern in _RELATION_PATTERNS:
         match = pattern.search(cleaned)
         if match:
@@ -428,6 +512,19 @@ def relation_predicate(
     anchor_center, anchor_size, anchor_source = anchor_geometry
     if center.shape != anchor_center.shape:
         return None, {"source": "none", "reason": "bbox_dimension_mismatch"}
+    if center.shape[0] == 3 and relation in {"left", "right", "front", "behind"}:
+        coordinate_frames = {
+            str((candidate.bbox_3d or {}).get("coordinate_frame") or ""),
+            str((anchor.bbox_3d or {}).get("coordinate_frame") or ""),
+        }
+        if any(
+            frame.startswith(("scannet_", "replica_"))
+            for frame in coordinate_frames
+        ):
+            return None, {
+                "source": source,
+                "reason": "viewpoint_axis_unavailable",
+            }
 
     delta = center - anchor_center
     tolerance = np.maximum((size + anchor_size) * 0.05, 1e-9)
@@ -436,6 +533,7 @@ def relation_predicate(
         normalized_distance = float(np.linalg.norm(delta) / scale)
         matched = normalized_distance <= 1.5
         margin = 1.5 - normalized_distance
+        confidence = max(0.0, min(1.0, margin / 1.5)) if matched else 0.0
     else:
         axis = {"left": 0, "right": 0, "above": 1, "below": 1, "front": -1, "behind": -1}[relation]
         if center.shape[0] == 2 and relation in {"front", "behind"}:
@@ -452,9 +550,87 @@ def relation_predicate(
         }[relation]
         margin = direction * signed - float(tolerance[axis])
         matched = margin > 0
+        scale = max(float((size[axis] + anchor_size[axis]) / 2.0), 1e-9)
+        confidence = max(0.0, min(1.0, margin / scale)) if matched else 0.0
     return matched, {
         "source": source if source == anchor_source else f"{source}+{anchor_source}",
         "margin": round(float(margin), 6),
+        "confidence": round(float(confidence), 6),
+    }
+
+
+def _distance_evidence(
+    candidate: GroundingCandidate,
+    anchor: GroundingCandidate,
+    scene_bounds: Sequence[Sequence[float]] | Mapping[str, Sequence[float]] | None,
+) -> dict[str, Any] | None:
+    candidate_geometry = _geometry(candidate, scene_bounds)
+    anchor_geometry = _geometry(anchor, scene_bounds)
+    if candidate_geometry is None or anchor_geometry is None:
+        return None
+    center, _, source = candidate_geometry
+    anchor_center, anchor_size, anchor_source = anchor_geometry
+    if center.shape != anchor_center.shape:
+        return None
+    scale = max(float(np.linalg.norm(anchor_size)), 1e-9)
+    return {
+        "source": source if source == anchor_source else f"{source}+{anchor_source}",
+        "distance": round(float(np.linalg.norm(center - anchor_center)), 6),
+        "normalized_distance": round(
+            float(np.linalg.norm(center - anchor_center) / scale),
+            6,
+        ),
+    }
+
+
+def _between_evidence(
+    candidate: GroundingCandidate,
+    anchor_a: GroundingCandidate,
+    anchor_b: GroundingCandidate,
+    scene_bounds: Sequence[Sequence[float]] | Mapping[str, Sequence[float]] | None,
+) -> dict[str, Any] | None:
+    candidate_geometry = _geometry(candidate, scene_bounds)
+    first_geometry = _geometry(anchor_a, scene_bounds)
+    second_geometry = _geometry(anchor_b, scene_bounds)
+    if candidate_geometry is None or first_geometry is None or second_geometry is None:
+        return None
+    center, candidate_size, source = candidate_geometry
+    first_center, first_size, first_source = first_geometry
+    second_center, second_size, second_source = second_geometry
+    if not (center.shape == first_center.shape == second_center.shape):
+        return None
+    segment = second_center - first_center
+    length_squared = float(np.dot(segment, segment))
+    if length_squared <= 1e-12:
+        return None
+    projection = float(np.dot(center - first_center, segment) / length_squared)
+    closest = first_center + projection * segment
+    perpendicular = float(np.linalg.norm(center - closest))
+    size_scale = max(
+        float(
+            np.linalg.norm(
+                (candidate_size + first_size + second_size) / 3.0
+            )
+        ),
+        1e-9,
+    )
+    threshold = max(size_scale, 0.25 * length_squared**0.5)
+    matched = 0.0 <= projection <= 1.0 and perpendicular <= threshold
+    midpoint_score = max(0.0, 1.0 - 2.0 * abs(projection - 0.5))
+    perpendicular_score = max(0.0, 1.0 - perpendicular / threshold)
+    confidence = (
+        0.5 * midpoint_score + 0.5 * perpendicular_score
+        if matched
+        else 0.0
+    )
+    return {
+        "source": "+".join(
+            dict.fromkeys((source, first_source, second_source))
+        ),
+        "matched": matched,
+        "projection": round(projection, 6),
+        "perpendicular_distance": round(perpendicular, 6),
+        "confidence": round(confidence, 6),
     }
 
 
@@ -486,9 +662,80 @@ def _relation_text_match(candidate: GroundingCandidate, relation: str, anchor: s
 def _matching_anchors(
     candidates: Iterable[GroundingCandidate],
     anchor_text: str,
-) -> list[GroundingCandidate]:
-    scored = [(lexical_score(candidate, anchor_text)[0], candidate) for candidate in candidates]
-    return [candidate for score, candidate in sorted(scored, key=lambda item: item[0], reverse=True) if score > 0]
+) -> list[tuple[float, GroundingCandidate]]:
+    object_id_match = re.search(
+        r"\b(?:replica\s+|scannet\s+)?(?:object|instance)\s*(?:id\s*)?([a-z0-9_-]+)\b",
+        anchor_text,
+        re.I,
+    )
+    explicit_object_id = object_id_match.group(1) if object_id_match else None
+    scored = [
+        (
+            1.0
+            if explicit_object_id is not None
+            and candidate.object_id.casefold() == explicit_object_id.casefold()
+            else lexical_score(candidate, anchor_text)[0],
+            candidate,
+        )
+        for candidate in candidates
+    ]
+    return [
+        (score, candidate)
+        for score, candidate in sorted(
+            scored,
+            key=lambda item: (-item[0], item[1].object_id),
+        )
+        if score > 0
+    ]
+
+
+def _select_anchors(
+    candidates: Iterable[GroundingCandidate],
+    anchor_text: str,
+    *,
+    confidence_threshold: float,
+    margin_threshold: float,
+) -> tuple[list[GroundingCandidate], dict[str, Any]]:
+    scored = _matching_anchors(candidates, anchor_text)
+    top_score = scored[0][0] if scored else 0.0
+    second_score = scored[1][0] if len(scored) > 1 else 0.0
+    score_margin = top_score - second_score
+    if not scored or top_score < confidence_threshold:
+        return [], {
+            "status": "rejected",
+            "reason": "low_anchor_confidence",
+            "top_score": round(top_score, 6),
+            "second_score": round(second_score, 6),
+            "score_margin": round(score_margin, 6),
+            "candidate_count": len(scored),
+            "confidence": 0.0,
+        }
+
+    selected = [
+        candidate
+        for score, candidate in scored
+        if score >= confidence_threshold and top_score - score <= margin_threshold
+    ]
+    if len(selected) == 1:
+        confidence = top_score
+        status = "unique"
+    else:
+        # Repeated anchor labels are retained for geometric testing, but their
+        # confidence is deliberately capped so they cannot dominate lexical
+        # evidence without a high-confidence explicit relation string.
+        confidence = min(top_score, 0.5 + max(0.0, score_margin))
+        status = "ambiguous"
+    return selected, {
+        "status": status,
+        "reason": None,
+        "top_score": round(top_score, 6),
+        "second_score": round(second_score, 6),
+        "score_margin": round(score_margin, 6),
+        "candidate_count": len(scored),
+        "selected_count": len(selected),
+        "selected_object_ids": [candidate.object_id for candidate in selected],
+        "confidence": round(float(confidence), 6),
+    }
 
 
 def rerank_relations(
@@ -498,38 +745,301 @@ def rerank_relations(
     *,
     use_relation: bool = True,
     scene_bounds: Sequence[Sequence[float]] | Mapping[str, Sequence[float]] | None = None,
+    anchor_confidence_threshold: float = DEFAULT_ANCHOR_CONFIDENCE_THRESHOLD,
+    anchor_margin_threshold: float = DEFAULT_ANCHOR_MARGIN_THRESHOLD,
+    relation_confidence_threshold: float = DEFAULT_RELATION_CONFIDENCE_THRESHOLD,
+    relation_score_margin: float = DEFAULT_RELATION_SCORE_MARGIN,
+    relation_boost: float = DEFAULT_RELATION_BOOST,
 ) -> tuple[list[GroundingCandidate], bool, bool]:
-    """Apply explicit relation strings and bbox predicates to lexical scores."""
+    """Apply relations only when anchor, geometry, and score-margin gates pass."""
     if not use_relation or not parsed.relation or not parsed.anchor:
         return candidates, False, False
-    anchors = _matching_anchors(all_candidates, parsed.anchor)
+    anchors, anchor_evidence = _select_anchors(
+        all_candidates,
+        parsed.anchor,
+        confidence_threshold=anchor_confidence_threshold,
+        margin_threshold=anchor_margin_threshold,
+    )
+    anchor_confidence = float(anchor_evidence.get("confidence") or 0.0)
+    secondary_anchors: list[GroundingCandidate] = []
+    secondary_anchor_evidence: dict[str, Any] | None = None
+    secondary_anchor_confidence = 0.0
+    if parsed.relation == "between" and parsed.anchor_secondary:
+        secondary_anchors, secondary_anchor_evidence = _select_anchors(
+            all_candidates,
+            parsed.anchor_secondary,
+            confidence_threshold=anchor_confidence_threshold,
+            margin_threshold=anchor_margin_threshold,
+        )
+        secondary_anchor_confidence = float(
+            secondary_anchor_evidence.get("confidence") or 0.0
+        )
     relation_resolved = False
     bbox_rejected = False
+    best_lexical_score = max((candidate.score for candidate in candidates), default=0.0)
+    lexical_order = [candidate.object_id for candidate in candidates]
+    relative_distances: dict[str, float] = {}
     for candidate in candidates:
+        base_score = candidate.score
         best_relation = 0.0
+        relation_confidence = 0.0
         source = "unresolved"
-        if _relation_text_match(candidate, parsed.relation, parsed.anchor):
-            best_relation, source = 1.0, "spatial_relation_string"
-        for anchor in anchors:
-            if anchor.object_id == candidate.object_id:
-                continue
-            matched, detail = relation_predicate(candidate, anchor, parsed.relation, scene_bounds)
-            if matched is None:
-                bbox_rejected = bbox_rejected or detail.get("reason") == "bbox_quality_rejected"
-                continue
-            value = 1.0 if matched else -0.35
-            if value > best_relation:
-                best_relation, source = value, str(detail.get("source"))
+        evidence: list[dict[str, Any]] = []
+        if (
+            parsed.relation not in {"closest", "farthest", "between"}
+            and _relation_text_match(candidate, parsed.relation, parsed.anchor)
+        ):
+            best_relation, relation_confidence, source = 1.0, 1.0, "spatial_relation_string"
+            evidence.append(
+                {
+                    "source": source,
+                    "matched": True,
+                    "confidence": 1.0,
+                }
+            )
+        if parsed.relation in {"closest", "farthest"}:
+            distances: list[float] = []
+            for anchor in anchors:
+                if anchor.object_id == candidate.object_id:
+                    continue
+                detail = _distance_evidence(candidate, anchor, scene_bounds)
+                if detail is None:
+                    bbox_rejected = True
+                    evidence.append(
+                        {
+                            "source": "none",
+                            "anchor_object_id": anchor.object_id,
+                            "matched": None,
+                            "reason": "bbox_quality_rejected",
+                            "confidence": 0.0,
+                        }
+                    )
+                    continue
+                distance = float(detail["normalized_distance"])
+                distances.append(distance)
+                evidence.append(
+                    {
+                        "source": detail["source"],
+                        "anchor_object_id": anchor.object_id,
+                        "matched": True,
+                        "normalized_distance": distance,
+                    }
+                )
+            if distances:
+                relative_distances[candidate.object_id] = min(distances)
+                source = str(evidence[-1]["source"])
+        elif parsed.relation == "between":
+            for anchor in anchors:
+                for secondary_anchor in secondary_anchors:
+                    if candidate.object_id in {
+                        anchor.object_id,
+                        secondary_anchor.object_id,
+                    }:
+                        continue
+                    detail = _between_evidence(
+                        candidate,
+                        anchor,
+                        secondary_anchor,
+                        scene_bounds,
+                    )
+                    if detail is None:
+                        bbox_rejected = True
+                        continue
+                    confidence = (
+                        anchor_confidence
+                        * secondary_anchor_confidence
+                        * float(detail["confidence"])
+                    )
+                    evidence.append(
+                        {
+                            **detail,
+                            "anchor_object_id": anchor.object_id,
+                            "secondary_anchor_object_id": secondary_anchor.object_id,
+                            "confidence": round(confidence, 6),
+                        }
+                    )
+                    if detail["matched"] and confidence > relation_confidence:
+                        best_relation = 1.0
+                        relation_confidence = confidence
+                        source = str(detail["source"])
+        else:
+            for anchor in anchors:
+                if anchor.object_id == candidate.object_id:
+                    continue
+                matched, detail = relation_predicate(candidate, anchor, parsed.relation, scene_bounds)
+                if matched is None:
+                    bbox_rejected = bbox_rejected or detail.get("reason") == "bbox_quality_rejected"
+                    evidence.append(
+                        {
+                            "source": detail.get("source", "none"),
+                            "anchor_object_id": anchor.object_id,
+                            "matched": None,
+                            "reason": detail.get("reason"),
+                            "confidence": 0.0,
+                        }
+                    )
+                    continue
+                geometry_confidence = float(detail.get("confidence") or 0.0)
+                confidence = anchor_confidence * geometry_confidence if matched else 0.0
+                evidence.append(
+                    {
+                        "source": detail.get("source", "none"),
+                        "anchor_object_id": anchor.object_id,
+                        "matched": matched,
+                        "margin": detail.get("margin"),
+                        "confidence": round(confidence, 6),
+                    }
+                )
+                if matched and confidence > relation_confidence:
+                    best_relation = 1.0
+                    relation_confidence = confidence
+                    source = str(detail.get("source"))
         if best_relation == 0.0:
-            source = "unresolved"
-        elif best_relation > 0:
-            relation_resolved = True
-        candidate.score = max(0.0, min(1.0, candidate.score + 0.35 * best_relation))
-        candidate.score_details.update(
-            {"relation": parsed.relation, "anchor": parsed.anchor, "relation_score": best_relation, "relation_source": source}
+            source = source if candidate.object_id in relative_distances else "unresolved"
+        score_margin_eligible = (
+            base_score >= best_lexical_score - relation_score_margin
+            or bool(candidate.score_details.get("exact_label"))
         )
-    unresolved = not anchors or not relation_resolved
-    return sorted(candidates, key=lambda item: (-item.score, item.object_id)), unresolved, bbox_rejected
+        relation_applied = bool(
+            parsed.relation not in {"closest", "farthest"}
+            and
+            best_relation > 0
+            and relation_confidence >= relation_confidence_threshold
+            and score_margin_eligible
+        )
+        if relation_applied:
+            relation_resolved = True
+            candidate.score = max(
+                0.0,
+                min(1.0, candidate.score + relation_boost * best_relation),
+            )
+        candidate.score_details.update(
+            {
+                "relation": parsed.relation,
+                "anchor": parsed.anchor,
+                "anchor_secondary": parsed.anchor_secondary,
+                "relation_score": best_relation,
+                "relation_source": source,
+                "relation_confidence": round(relation_confidence, 6),
+                "relation_applied": relation_applied,
+                "relation_score_margin_eligible": score_margin_eligible,
+                "relation_evidence": evidence,
+                "anchor_evidence": anchor_evidence,
+                "secondary_anchor_evidence": secondary_anchor_evidence,
+                "pre_relation_score": round(base_score, 6),
+            }
+        )
+    if parsed.relation in {"closest", "farthest"} and relative_distances:
+        eligible = [
+            candidate
+            for candidate in candidates
+            if candidate.object_id in relative_distances
+            and candidate.score_details.get("relation_score_margin_eligible")
+        ]
+        ordered = sorted(
+            eligible,
+            key=lambda candidate: (
+                relative_distances[candidate.object_id],
+                candidate.object_id,
+            ),
+            reverse=parsed.relation == "farthest",
+        )
+        if ordered:
+            best = relative_distances[ordered[0].object_id]
+            ties = [
+                candidate
+                for candidate in ordered
+                if abs(relative_distances[candidate.object_id] - best) <= 1e-9
+            ]
+            second = (
+                relative_distances[ordered[len(ties)].object_id]
+                if len(ordered) > len(ties)
+                else best
+            )
+            separation = (
+                abs(second - best) / max(abs(second), abs(best), 1e-9)
+                if len(ordered) > len(ties)
+                else 0.0
+            )
+            confidence = (
+                anchor_confidence
+                * (0.5 + 0.5 * min(1.0, separation))
+                / len(ties)
+            )
+            for candidate in ties:
+                candidate.score_details["relation_score"] = 1.0
+                candidate.score_details["relation_confidence"] = round(
+                    confidence,
+                    6,
+                )
+                candidate.score_details["relation_source"] = "relative_bbox_distance"
+                candidate.score_details["relation_distance"] = best
+                applied = confidence >= relation_confidence_threshold
+                candidate.score_details["relation_applied"] = applied
+                if applied:
+                    relation_resolved = True
+                    candidate.score = min(1.0, candidate.score + relation_boost)
+    unresolved = (
+        not anchors
+        or (parsed.relation == "between" and not secondary_anchors)
+        or not relation_resolved
+    )
+    ranked = sorted(
+        candidates,
+        key=lambda item: (
+            -item.score,
+            -int(bool(item.score_details.get("relation_applied"))),
+            -(
+                float(item.score_details.get("relation_confidence") or 0.0)
+                if item.score_details.get("relation_applied")
+                else 0.0
+            ),
+            item.object_id,
+        ),
+    )
+    relation_order = [candidate.object_id for candidate in ranked]
+    changed = lexical_order != relation_order
+    for candidate in ranked:
+        candidate.score_details["relation_changed_ranking"] = changed
+        candidate.score_details["pre_relation_rank"] = (
+            lexical_order.index(candidate.object_id) + 1
+        )
+        candidate.score_details["post_relation_rank"] = (
+            relation_order.index(candidate.object_id) + 1
+        )
+    return ranked, unresolved, bbox_rejected
+
+
+def _relation_audit(candidates: Sequence[GroundingCandidate]) -> dict[str, Any]:
+    affected = [
+        candidate
+        for candidate in candidates
+        if candidate.score_details.get("relation") is not None
+    ]
+    return {
+        "evaluated_candidate_count": len(affected),
+        "applied_candidate_count": sum(
+            bool(candidate.score_details.get("relation_applied"))
+            for candidate in affected
+        ),
+        "ranking_changed": any(
+            bool(candidate.score_details.get("relation_changed_ranking"))
+            for candidate in affected
+        ),
+        "candidate_evidence": [
+            {
+                "object_id": candidate.object_id,
+                "label": candidate.label,
+                "relation_score": candidate.score_details.get("relation_score"),
+                "relation_confidence": candidate.score_details.get("relation_confidence"),
+                "relation_applied": candidate.score_details.get("relation_applied"),
+                "relation_source": candidate.score_details.get("relation_source"),
+                "pre_relation_rank": candidate.score_details.get("pre_relation_rank"),
+                "post_relation_rank": candidate.score_details.get("post_relation_rank"),
+            }
+            for candidate in affected
+        ],
+    }
 
 
 def _node_text(node: Mapping[str, Any]) -> str:
@@ -669,6 +1179,11 @@ def search_grounding(
     top_k: int = 10,
     confidence_threshold: float = 0.45,
     branch_keep_ratio: float = 0.5,
+    anchor_confidence_threshold: float = DEFAULT_ANCHOR_CONFIDENCE_THRESHOLD,
+    anchor_margin_threshold: float = DEFAULT_ANCHOR_MARGIN_THRESHOLD,
+    relation_confidence_threshold: float = DEFAULT_RELATION_CONFIDENCE_THRESHOLD,
+    relation_score_margin: float = DEFAULT_RELATION_SCORE_MARGIN,
+    relation_boost: float = DEFAULT_RELATION_BOOST,
     scene_bounds: Sequence[Sequence[float]] | Mapping[str, Sequence[float]] | None = None,
     embedder: Embedder | Callable[[Sequence[str]], Any] | None = None,
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
@@ -689,6 +1204,15 @@ def search_grounding(
         raise ValueError("confidence_threshold must be between 0 and 1")
     if branch_keep_ratio < 0:
         raise ValueError("branch_keep_ratio must be non-negative")
+    for name, value in (
+        ("anchor_confidence_threshold", anchor_confidence_threshold),
+        ("anchor_margin_threshold", anchor_margin_threshold),
+        ("relation_confidence_threshold", relation_confidence_threshold),
+        ("relation_score_margin", relation_score_margin),
+        ("relation_boost", relation_boost),
+    ):
+        if not 0 <= value <= 1:
+            raise ValueError(f"{name} must be between 0 and 1")
 
     views = bundle.get("views", {})
     tree = bundle.get("tree", {})
@@ -701,6 +1225,13 @@ def search_grounding(
             "no_fallback": no_fallback,
         },
         "same_input_candidate_ids": [candidate.object_id for candidate in canonical],
+        "relation_policy": {
+            "anchor_confidence_threshold": anchor_confidence_threshold,
+            "anchor_margin_threshold": anchor_margin_threshold,
+            "relation_confidence_threshold": relation_confidence_threshold,
+            "relation_score_margin": relation_score_margin,
+            "relation_boost": relation_boost,
+        },
     }
 
     if variant == "flat_embedding":
@@ -729,8 +1260,19 @@ def search_grounding(
             parsed,
             use_relation=not no_relation,
             scene_bounds=scene_bounds,
+            anchor_confidence_threshold=anchor_confidence_threshold,
+            anchor_margin_threshold=anchor_margin_threshold,
+            relation_confidence_threshold=relation_confidence_threshold,
+            relation_score_margin=relation_score_margin,
+            relation_boost=relation_boost,
         )
-        metadata.update({"relation_unresolved": unresolved, "bbox_quality_rejected": bbox_rejected})
+        metadata.update(
+            {
+                "relation_unresolved": unresolved,
+                "bbox_quality_rejected": bbox_rejected,
+                "relation_audit": _relation_audit(ranked),
+            }
+        )
         status = "ok" if ranked and ranked[0].score > 0 else "no_match"
         return GroundingSearchResult(
             status=status,
@@ -756,6 +1298,11 @@ def search_grounding(
         parsed,
         use_relation=not no_relation,
         scene_bounds=scene_bounds,
+        anchor_confidence_threshold=anchor_confidence_threshold,
+        anchor_margin_threshold=anchor_margin_threshold,
+        relation_confidence_threshold=relation_confidence_threshold,
+        relation_score_margin=relation_score_margin,
+        relation_boost=relation_boost,
     )
     fallback_reasons: list[str] = []
     if not ranked or ranked[0].score < confidence_threshold:
@@ -775,7 +1322,16 @@ def search_grounding(
             parsed,
             use_relation=not no_relation,
             scene_bounds=scene_bounds,
+            anchor_confidence_threshold=anchor_confidence_threshold,
+            anchor_margin_threshold=anchor_margin_threshold,
+            relation_confidence_threshold=relation_confidence_threshold,
+            relation_score_margin=relation_score_margin,
+            relation_boost=relation_boost,
         )
+        if relation_unresolved and "relation_unresolved" not in fallback_reasons:
+            fallback_reasons.append("relation_unresolved")
+        if bbox_rejected and "bbox_quality_rejected" not in fallback_reasons:
+            fallback_reasons.append("bbox_quality_rejected")
     for candidate in ranked:
         valid_3d, reason_3d = validate_bbox_3d(candidate.bbox_3d, scene_bounds)
         valid_2d, reason_2d = validate_bbox_2d(candidate.bbox_2d)
@@ -790,6 +1346,7 @@ def search_grounding(
             "relation_unresolved": relation_unresolved,
             "bbox_quality_rejected": bbox_rejected,
             "initial_candidate_ids": [candidate.object_id for candidate in initial],
+            "relation_audit": _relation_audit(ranked),
         }
     )
     status = "ok" if ranked and ranked[0].score > 0 else "no_match"

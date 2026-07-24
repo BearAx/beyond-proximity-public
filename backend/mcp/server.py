@@ -39,13 +39,22 @@ from backend.mcp.tools.query_tools import (
     get_capture_intrinsics,
     compute_inter_node_distances,
 )
+from backend.mcp.tools.agent_trace_tools import (
+    start_agent_query_trace_tool,
+    record_agent_query_step_tool,
+    finish_agent_query_trace_tool,
+    get_agent_query_trace_tool,
+)
 
 mcp = FastMCP(
     name="semantic-splat",
     instructions=(
         "Infrastructure tools for the SemanticSplat 3DGS navigator. "
         "Tools handle file I/O, spatial geometry, and data retrieval. "
-        "Cursor AI provides all intelligence (vision, language, reasoning)."
+        "Cursor AI provides all intelligence (vision, language, reasoning). "
+        "For every query, call start_agent_query_trace before decomposition, "
+        "record_agent_query_step after each model decision, and "
+        "finish_agent_query_trace exactly once."
     ),
 )
 
@@ -84,6 +93,12 @@ mcp.tool(name="unproject_bbox")(unproject_bbox_tool)
 mcp.tool(name="merge_bboxes")(merge_bboxes_tool)
 mcp.tool()(get_capture_intrinsics)
 mcp.tool()(compute_inter_node_distances)
+
+# Agent trace tools
+mcp.tool(name="start_agent_query_trace")(start_agent_query_trace_tool)
+mcp.tool(name="record_agent_query_step")(record_agent_query_step_tool)
+mcp.tool(name="finish_agent_query_trace")(finish_agent_query_trace_tool)
+mcp.tool(name="get_agent_query_trace")(get_agent_query_trace_tool)
 
 if __name__ == "__main__":
     from backend.config import MCP_HOST, MCP_PORT

@@ -1,51 +1,55 @@
-# Workshop Paper Claim Audit
+# TwinWorld 2026 Claim Audit
 
-Status date: 2026-07-15.
+Status date: 2026-07-24.
 Paper: `papers/twinworld/main.tex`.
 
-## Central claim (allowed)
+## Allowed Central Claim
 
-> SemanticSplat is a graph-pruned semantic search layer over structured 3D scene evidence. It reduces query-time context on the internal benchmark (with a stub-lexical hit@$k$ tradeoff) and is aligned with BBQ-style public grounding metrics — **without** claiming superiority over BBQ.
+> Agent-guided hierarchical search can control the scene evidence presented to
+> a semantic reasoner. The hierarchy is evaluated both as an input to query
+> traversal and as an output of Cursor/MCP and raw RGB-D construction tracks.
+> The current methods reduce context but do not universally preserve flat-search
+> quality.
 
-## Evidence map
+## Evidence Map
 
-| Claim in paper | Verdict | Evidence |
+| Claim | Status | Evidence |
 |---|---|---|
-| Internal: −75.5% views, −68.2% tokens (19.4→4.77; 3168→1014) | **supported** | `outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json` |
-| Internal hit@1 0.68 graph vs 0.768 flat (n=125); hit@3 0.808 vs 0.928 | **supported** | same JSON (`quality`) |
-| Cumulative tokens 475k flat vs 152k graph | **supported** | sum of `per_query_results.json` → `queries[*].{flat,graph}.input_tokens` |
-| Replica oracle Acc@k / Recall@1 = 1.0 for graph & flat lexical | **supported_with_caveat** (ceiling / oracle candidates) | `outputs/public_datasets/replica_pilot_v1/`; `docs/experiments/public_datasets/person2_grounding_results.md` |
-| Replica: graph checks ~12.1 objects vs ~71.9 flat | **supported** | same |
-| ScanNet: Recall@1 = Acc@0.25 = 0.271 for graph & flat lexical | **supported** | `outputs/public_datasets/scannet_pilot_v1/` |
-| ScanNet: graph checks ~11.2 vs ~49.0 objects (~77% fewer) | **supported** | same |
-| Relation rerank does not help this pilot | **supported** | no-relation Acc@0.25 = 0.292 > 0.271 |
-| mAcc/mIoU/fmIoU | **N/A** — must stay N/A | bbq_aligned_metrics.md |
-| BBQ superiority | **forbidden** | no `outputs/baselines/bbq_*` |
-| ConceptGraphs ScanNet predicted-map run (8 scenes / 48 queries) | **supported_with_limits** | `outputs/baselines/conceptgraphs_scannet_full_v1/` |
-| ConceptGraphs Replica sampled-map run (8 scenes / 56 queries) | **supported_with_limits** | `outputs/baselines/conceptgraphs_replica_full_v1/` |
-| LangSplat end-to-end ScanNet pilot (1 scene / 6 queries) | **supported_with_limits** | `outputs/baselines/langsplat_scannet_full_v1/` |
-| Live VLM evaluation | **out of scope** | — |
-| Stale “1,046 semantic items” as current absolute truth | **avoid** | outdoor-street recheck can differ; use the verified 97-view count or freeze an item count with a path |
-| Superseded PERSON1 roundings (71.4% / 0.792 hit@1) | **forbidden in TwinWorld PDF** | prefer frozen JSON; see note below |
+| Qwen executes all 150 queries | SUPPORTED | 150 traces and a complete ledger under `outputs/instruction_agent/five_scene_qwen25_05b_graph_v1/` |
+| Qwen uses 300 calls and 239,893 exact native tokens | SUPPORTED | `metrics_summary.json` plus validator |
+| Cursor directly constructs five hierarchies through MCP | SUPPORTED | Five saved calls in `docs/experiments/hierarchy_construction/cursor_agent_mcp_v1/` |
+| Cursor construction pairwise F1 is 0.616 | SUPPORTED_WITH_CAVEAT | Manual zones are an overlapping project reference, not independent GT |
+| Raw constructor reads 97 RGB, 97 depth, and 97 poses with zero ViewJSON reads | SUPPORTED | `outputs/raw_rgbd_hierarchy/five_scene_clip_v1/` |
+| Raw hierarchy pairwise F1 is 0.487 | SUPPORTED_WITH_CAVEAT | Comparison is against manual overlapping zones |
+| Mean per-query view reduction is 75.5% | SUPPORTED | Per-query mean, 95% CI [73.2, 77.7] |
+| Ratio of displayed means 19.4 to 4.77 is 75.4% | SUPPORTED | `1 - 4.77 / 19.40` |
+| hit@1 graph-minus-flat is inconclusive | SUPPORTED | -0.088, 95% CI [-0.184, 0.008] |
+| hit@3 graph-minus-flat declines significantly | SUPPORTED | -0.120, 95% CI [-0.184, -0.056] |
+| Replica is a lexical sanity ceiling | SUPPORTED_WITH_CAVEAT | 48 positive and 8 negative oracle-map queries |
+| ScanNet relation-aware Acc@0.25 is 0.604 vs. 0.500 without relations | SUPPORTED | Calibrated v3 output |
+| ConceptGraphs has native eight-scene ScanNet and Replica runs | SUPPORTED_WITH_LIMITS | Predicted-map protocols differ from the oracle-map track |
+| LangSplat has a complete hardware-adapted one-scene run | SUPPORTED_WITH_LIMITS | 3,000 iterations on a 6 GB GPU; not paper-scale reproduction |
 
-## Superseded note
+## Forbidden Claims
 
-`docs/experiments/graph_vs_flat/PERSON1_DELIVERABLE.md` lists v2 as 19.2→5.39 (−71.4%) and hit@1 0.792 vs 0.768. The **checked-in** `five_scene_graph_vs_flat_v2/metrics_summary.json` instead reports 19.4→4.77 (−75.5%) and hit@1 0.68 vs 0.768. TwinWorld paper + `check_twinworld_numbers.py` follow the JSON.
+- Cursor produced the Qwen query metrics or exact token ledger.
+- The Cursor UI used zero provider tokens.
+- The automatic hierarchy matches or exceeds the manual hierarchy.
+- Graph pruning universally preserves flat-search quality.
+- Replica ceiling results establish semantic perception accuracy.
+- Native ConceptGraphs or LangSplat values form a fair leaderboard against the
+  oracle-map experiments.
+- The project outperforms BBQ.
+- Segmentation mIoU is available.
 
-## Unsafe wording (never use)
+## Number Gate
 
-- “We outperform BBQ / ConceptGraphs / LangSplat”
-- “Official Replica/ScanNet perception accuracy”
-- “mIoU improved by …”
-- “100% room accuracy / 34% IoU” (legacy SemanticSplat overclaims)
-- Presenting internal hit@k as Acc@0.25
-- “preserving retrieval quality” on the internal five-scene track without mentioning the hit@k tradeoff
+Run:
 
-## Evidence pointers
+```powershell
+python -B scripts\check_twinworld_numbers.py
+```
 
-| Area | Artifact |
-|---|---|
-| Datasets | `docs/datasets/replica_scannet_plan.md`, availability manifests, configs |
-| Evaluation | `docs/experiments/public_datasets/person2_grounding_results.md`, `scripts/evaluate_grounding.py` |
-| Baselines | `docs/baselines/bbq_comparison.md`, `baseline_status.md` |
-| Paper | `papers/twinworld/`, this audit, figure/submission checklists, `twinworld_reproducibility.md` |
+The gate checks all major paper values, required feedback wording, forbidden
+legacy wording, figure references, model revisions, denominators, and frozen
+validation reports.

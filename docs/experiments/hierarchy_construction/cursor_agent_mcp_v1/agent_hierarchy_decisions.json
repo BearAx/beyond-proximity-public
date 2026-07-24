@@ -1,0 +1,283 @@
+{
+  "schema_version": "semanticsplat.agent_hierarchy_decisions.v1",
+  "generated_at": "2026-07-24T07:55:00+03:00",
+  "agent_surface": "Cursor Agent",
+  "agent_model_ui_label": "Cursor Grok 4.5 High Fast",
+  "mcp_server": "semantic-splat",
+  "constraints": {
+    "manual_zone_gt_read": false,
+    "save_node_called": false,
+    "scene_data_modified": false,
+    "direct_mcp_calls": true,
+    "mcp_tool_call_count": 5,
+    "provider_token_count": null,
+    "model_token_count": null,
+    "input_token_count": null,
+    "output_token_count": null
+  },
+  "scenes": [
+    {
+      "scene_id": "ConferenceHall-capture-pilot",
+      "source_tool": "build_spatial_clusters",
+      "geometry_assisted": true,
+      "input_cluster_count": 1,
+      "zones": [
+        {
+          "zone_id": "conferencehall-lobby-lounge-reception",
+          "zone_name": "Lobby lounge and reception",
+          "view_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014",
+            "v015",
+            "v016"
+          ],
+          "rationale": "Within the single MCP cluster, these views summarize columns, lounge seating, reception counters, elevators/piano landmarks, and blue patterned carpet rather than round banquet tables."
+        },
+        {
+          "zone_id": "conferencehall-banquet-room",
+          "zone_name": "Banquet conference room",
+          "view_ids": [
+            "v005",
+            "v006",
+            "v017",
+            "v018",
+            "v019"
+          ],
+          "rationale": "These views summarize round white banquet tables, covered chairs, beige panel walls, and doorway/exit landmarks around the far banquet end of the same merged cluster."
+        },
+        {
+          "zone_id": "conferencehall-connecting-corridor",
+          "zone_name": "Connecting corridor",
+          "view_ids": [
+            "v007",
+            "v020"
+          ],
+          "rationale": "Both views summarize corridor or lobby-transition passages with window walls, floral artwork, or blurry columned circulation rather than seated lounge or banquet table clusters."
+        }
+      ]
+    },
+    {
+      "scene_id": "Museume-capture",
+      "source_tool": "build_spatial_clusters",
+      "geometry_assisted": true,
+      "input_cluster_count": 1,
+      "zones": [
+        {
+          "zone_id": "museum-entrance-lobby",
+          "zone_name": "Entrance and lobby",
+          "view_ids": [
+            "v001",
+            "v002"
+          ],
+          "rationale": "Entrance-side positions summarize an information counter, green digital screens, glass doors, stairs, and lobby furnishings distinct from deeper gallery panels."
+        },
+        {
+          "zone_id": "museum-main-exhibition-galleries",
+          "zone_name": "Main exhibition galleries",
+          "view_ids": [
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v009",
+            "v010",
+            "v011",
+            "v013",
+            "v014",
+            "v015"
+          ],
+          "rationale": "These contiguous gallery positions summarize red panels, stone ruins, metal mesh partitions, illustrated panels, and corridor-style exhibition walls along the primary museum walkthrough."
+        },
+        {
+          "zone_id": "museum-reichenstein-east-wing",
+          "zone_name": "Reichenstein east wing",
+          "view_ids": [
+            "v016",
+            "v017",
+            "v018",
+            "v019",
+            "v020"
+          ],
+          "rationale": "These views repeatedly reference Reichenstein title/information panels, artifact shelves, display tables, tall windows, and a small media seating corner."
+        },
+        {
+          "zone_id": "museum-workshop-exhibit",
+          "zone_name": "Workshop exhibit room",
+          "view_ids": [
+            "v012"
+          ],
+          "rationale": "The single view at (36.25, 0.30, 1.93) summarizes a reconstructed workshop with stove, tools, work table, and red walls, semantically separate from surrounding panel galleries."
+        }
+      ]
+    },
+    {
+      "scene_id": "Theater-capture",
+      "source_tool": "build_spatial_clusters",
+      "geometry_assisted": true,
+      "input_cluster_count": 1,
+      "zones": [
+        {
+          "zone_id": "theater-backstage-service-corridors",
+          "zone_name": "Backstage service corridors",
+          "view_ids": [
+            "v001",
+            "v003",
+            "v006",
+            "v007",
+            "v008",
+            "v018"
+          ],
+          "rationale": "These views summarize narrow backstage passages, schedule boards, white doors/cabinets, and emergency signage rather than audience-facing lounge or foyer space."
+        },
+        {
+          "zone_id": "theater-stage-area",
+          "zone_name": "Stage performance area",
+          "view_ids": [
+            "v002"
+          ],
+          "rationale": "The stage-side position summarizes a black curtain backdrop with podium and lectern, clearly distinct from corridor and lounge summaries."
+        },
+        {
+          "zone_id": "theater-lobby-notice-area",
+          "zone_name": "Lobby and notice area",
+          "view_ids": [
+            "v004",
+            "v005"
+          ],
+          "rationale": "Both views describe red seating or notice walls with digital schedule screens and timetable boards near the mid-level lobby positions."
+        },
+        {
+          "zone_id": "theater-green-room-lounge",
+          "zone_name": "Green room lounge",
+          "view_ids": [
+            "v009",
+            "v010",
+            "v011",
+            "v012"
+          ],
+          "rationale": "These lounge positions summarize sofas, chandeliers, photo walls, a wall-mounted TV, and a keyboard corner in the theater green-room cluster around z≈-17."
+        },
+        {
+          "zone_id": "theater-public-foyer-staircases",
+          "zone_name": "Public foyer and staircases",
+          "view_ids": [
+            "v013",
+            "v014",
+            "v015",
+            "v016",
+            "v017",
+            "v019",
+            "v020"
+          ],
+          "rationale": "Views farther along negative z summarize grand staircases, glass entrance doors, balcony railings, and public foyer corridors rather than backstage service passages."
+        }
+      ]
+    },
+    {
+      "scene_id": "outdoor-street-capture",
+      "source_tool": "build_spatial_clusters",
+      "geometry_assisted": true,
+      "input_cluster_count": 2,
+      "zones": [
+        {
+          "zone_id": "street-courtyard-entrances",
+          "zone_name": "Courtyard and building entrances",
+          "view_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v005",
+            "v006",
+            "v007",
+            "v008",
+            "v020",
+            "v021"
+          ],
+          "rationale": "Within MCP cluster 0, these nearer positions summarize outdoor stairs, cobblestone walkways, glass-block entrances, turquoise supports, and beige courtyard facades."
+        },
+        {
+          "zone_id": "street-peripheral-alleys-service",
+          "zone_name": "Peripheral alleys and service passages",
+          "view_ids": [
+            "v009",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014",
+            "v016",
+            "v017",
+            "v018",
+            "v019"
+          ],
+          "rationale": "Also from MCP cluster 0, these farther positions summarize narrow alleys, underpass columns, red facades, utility containers, and service corners along the peripheral building edge."
+        },
+        {
+          "zone_id": "street-tree-lined-road",
+          "zone_name": "Tree-lined street view",
+          "view_ids": [
+            "v015"
+          ],
+          "rationale": "MCP cluster 1 is the isolated position at z=66.2 whose summary describes a tree-lined street with parked cars and open roadway, not the courtyard/alley facades."
+        }
+      ]
+    },
+    {
+      "scene_id": "outdoor-drone-capture",
+      "source_tool": "build_spatial_clusters",
+      "geometry_assisted": true,
+      "input_cluster_count": 3,
+      "zones": [
+        {
+          "zone_id": "drone-fortress-harbor-core",
+          "zone_name": "Fortress island and harbor core",
+          "view_ids": [
+            "v001",
+            "v002",
+            "v003",
+            "v004",
+            "v007",
+            "v010",
+            "v011",
+            "v012",
+            "v013",
+            "v014"
+          ],
+          "rationale": "MCP cluster 0 centers on positions whose summaries repeatedly describe the fortress island, marina, waterfront buildings, and nearby open water."
+        },
+        {
+          "zone_id": "drone-east-bay-bridge-panoramas",
+          "zone_name": "East bay and bridge panoramas",
+          "view_ids": [
+            "v005",
+            "v006",
+            "v015",
+            "v016"
+          ],
+          "rationale": "MCP cluster 1 groups blurred east-side aerial positions summarizing distant coastline, bay water expanse, and bridge or roadway lines away from the fortress core."
+        },
+        {
+          "zone_id": "drone-west-coastal-city-panoramas",
+          "zone_name": "West coastal city panoramas",
+          "view_ids": [
+            "v008",
+            "v009"
+          ],
+          "rationale": "MCP cluster 2 preserves the west-side aerial pair summarizing coastal city mass, bright overexposed sky/glare, and a linear bridge or road across the bay horizon."
+        }
+      ]
+    }
+  ]
+}

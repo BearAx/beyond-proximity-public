@@ -1,0 +1,9 @@
+{
+  "schema_version": "semanticsplat.instruction_agent_validation.v1",
+  "status": "passed",
+  "query_count": 150,
+  "method_count": 1,
+  "trace_count": 150,
+  "csv_row_count": 150,
+  "errors": []
+}

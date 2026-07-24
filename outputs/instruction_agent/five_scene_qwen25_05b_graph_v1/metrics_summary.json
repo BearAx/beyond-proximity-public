@@ -1,0 +1,52 @@
+{
+  "schema_version": "semanticsplat.instruction_agent_benchmark.v1",
+  "generated_at": "2026-07-24T07:04:42.274362+00:00",
+  "status": "complete",
+  "query_count": 150,
+  "quality_query_count": 125,
+  "model": {
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "instruction_tuned": true,
+    "framework": "transformers",
+    "torch_version": "2.13.0+cpu",
+    "load_seconds": 5.689316,
+    "decision_tokens_per_candidate": 1,
+    "temperature": 0,
+    "do_sample": false
+  },
+  "hardware": {
+    "device": "cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "threads": 12,
+    "peak_process_rss_mb": 2536.602
+  },
+  "benchmark": {
+    "path": "docs/benchmarks/benchmark_queries_v2.json",
+    "sha256": "54d1b87f4b0d142cd4e6975954b03e8a88a1a9b63be2b78c39798d8ec5284a12"
+  },
+  "methods": {
+    "graph_instruction": {
+      "query_count": 150,
+      "quality_denominator": 125,
+      "hit_at_1": 0.368,
+      "hit_at_3": 0.696,
+      "mrr": 0.509333,
+      "valid_response_rate": 1.0,
+      "mean_views_checked": 9.626667,
+      "mean_model_calls": 2.0,
+      "mean_input_tokens": 1582.86,
+      "mean_output_tokens": 16.426667,
+      "mean_total_tokens": 1599.286667,
+      "total_input_tokens": 237429,
+      "total_output_tokens": 2464,
+      "total_tokens": 239893,
+      "mean_latency_ms": 6238.019205,
+      "total_model_calls": 300
+    }
+  },
+  "comparison": null,
+  "elapsed_seconds": 938.240116,
+  "git_commit": "8f92633f3d9cd4574f5155e7d60f0ae5c5c819d3"
+}

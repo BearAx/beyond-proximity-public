@@ -1,0 +1,117 @@
+{
+  "schema_version": "phase89-paper-audit-v1",
+  "paper": "papers/beyond-proximity/main.pdf",
+  "status": "PASS",
+  "sections": {
+    "scientific": {
+      "ok": true,
+      "claim_checker": {
+        "ok": true,
+        "output": "Academic paper evidence check passed (source, figures, and frozen JSON)."
+      },
+      "source": {
+        "ok": true,
+        "forbidden_hits": [],
+        "required_missing": [],
+        "missing_figures": [],
+        "empty_reference_commands": false
+      }
+    },
+    "reproducibility": {
+      "ok": true,
+      "build_command": "papers/beyond-proximity/build_paper.cmd",
+      "evidence_checker": "python -B scripts/check_academic_paper.py",
+      "model": "BAAI/bge-small-en-v1.5",
+      "seed": 20260715,
+      "table_generator": "scripts/export_academic_tables.py",
+      "figure_generator": "scripts/export_academic_figures.py"
+    },
+    "visual": {
+      "ok": true,
+      "pdf": {
+        "ok": true,
+        "pages": 8,
+        "page_size": "612 x 792 pts (letter)",
+        "pdf_version": "1.5",
+        "file_size_bytes": 217310
+      },
+      "render": {
+        "ok": true,
+        "page_count": 8,
+        "consistent_dimensions": true,
+        "pages": [
+          {
+            "page": 1,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.12687,
+            "nonblank": true
+          },
+          {
+            "page": 2,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.13115,
+            "nonblank": true
+          },
+          {
+            "page": 3,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.17796,
+            "nonblank": true
+          },
+          {
+            "page": 4,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.13187,
+            "nonblank": true
+          },
+          {
+            "page": 5,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.11347,
+            "nonblank": true
+          },
+          {
+            "page": 6,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.14722,
+            "nonblank": true
+          },
+          {
+            "page": 7,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.14402,
+            "nonblank": true
+          },
+          {
+            "page": 8,
+            "width_px": 765,
+            "height_px": 990,
+            "ink_ratio": 0.13222,
+            "nonblank": true
+          }
+        ]
+      },
+      "manual_review": {
+        "status": "PASS",
+        "reviewed_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "notes": "No overlapping text, clipped tables, displaced sections, blank pages, obsolete workflow figure, or malformed floats."
+      }
+    }
+  }
+}

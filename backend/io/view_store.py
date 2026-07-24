@@ -1,7 +1,7 @@
 """Save / load ViewJSON analysis files for a scene."""
 import json
 from pathlib import Path
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from backend.schemas.types import ViewJSON
 
@@ -45,14 +45,84 @@ def list_view_summaries(scene_dir: str) -> List[dict]:
     """
     result = []
     for vid in list_view_ids(scene_dir):
-        v = load_view_analysis(scene_dir, vid)
-        if v:
-            result.append({
-                "view_id": vid,
-                "summary": v.scene_summary,
-                "object_count": len(v.objects),
-                "room_type": v.room_type,
-                "facing": v.facing,
-                "visible_landmarks": v.visible_landmarks,
-            })
+        path = _views_dir(scene_dir) / f"{vid}.json"
+        try:
+            with path.open(encoding="utf-8") as handle:
+                raw = json.load(handle)
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(raw, dict):
+            continue
+        if "scene_summary" in raw:
+            result.append(_legacy_summary(vid, raw))
+        elif raw.get("schema_version") == "semanticsplat.captured_view_json.v1":
+            result.append(_captured_summary(vid, raw))
     return result
+
+
+def _legacy_summary(view_id: str, raw: dict[str, Any]) -> dict[str, Any]:
+    objects = raw.get("objects")
+    landmarks = raw.get("visible_landmarks")
+    return {
+        "view_id": view_id,
+        "summary": str(raw.get("scene_summary") or ""),
+        "object_count": len(objects) if isinstance(objects, list) else 0,
+        "room_type": str(raw.get("room_type") or "unknown"),
+        "facing": str(raw.get("facing") or "unknown"),
+        "visible_landmarks": (
+            [str(value) for value in landmarks if value]
+            if isinstance(landmarks, list)
+            else []
+        ),
+    }
+
+
+def _captured_summary(view_id: str, raw: dict[str, Any]) -> dict[str, Any]:
+    objects = raw.get("visible_objects")
+    landmarks = raw.get("landmarks")
+    regions = raw.get("visible_regions")
+    semantic_text = " ".join(
+        [
+            str(raw.get("summary") or ""),
+            *[
+                str(region.get("label") or "")
+                for region in regions
+                if isinstance(region, dict)
+            ],
+        ]
+    ).lower() if isinstance(regions, list) else str(raw.get("summary") or "").lower()
+    room_rules = (
+        ("outdoor", "outdoor"),
+        ("street", "outdoor"),
+        ("corridor", "corridor"),
+        ("lounge", "lounge"),
+        ("reception", "reception"),
+        ("service", "service_area"),
+        ("ballroom", "ballroom"),
+        ("banquet", "ballroom"),
+        ("conference", "ballroom"),
+        ("stage", "stage"),
+        ("theater", "stage"),
+        ("auditorium", "stage"),
+    )
+    room_type = next(
+        (value for keyword, value in room_rules if keyword in semantic_text),
+        "unknown",
+    )
+    landmark_labels = (
+        [
+            str(item.get("label"))
+            for item in landmarks
+            if isinstance(item, dict) and item.get("label")
+        ]
+        if isinstance(landmarks, list)
+        else []
+    )
+    return {
+        "view_id": view_id,
+        "summary": str(raw.get("summary") or ""),
+        "object_count": len(objects) if isinstance(objects, list) else 0,
+        "room_type": room_type,
+        "facing": "unknown",
+        "visible_landmarks": landmark_labels,
+    }

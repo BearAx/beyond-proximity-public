@@ -34,7 +34,7 @@ function Find-Tectonic {
 
 $tectonic = Find-Tectonic
 $idPath = Join-Path $paperDir "review_id.tex"
-$idSource = "\def\SemanticSplatPaperID{$PaperId}`n"
+$idSource = "\def\TwinWorldPaperID{$PaperId}`n"
 [System.IO.File]::WriteAllText($idPath, $idSource, [System.Text.UTF8Encoding]::new($false))
 
 Push-Location $paperDir

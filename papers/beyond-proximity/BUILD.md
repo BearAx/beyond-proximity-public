@@ -11,16 +11,21 @@ From the repository root:
 papers\beyond-proximity\build_paper.cmd
 ```
 
-The command regenerates all metric and evidence figures, runs LaTeX/BibTeX,
-and checks manuscript/site numbers against the frozen JSON results.
+The command regenerates all quantitative table rows and evidence figures, runs
+LaTeX/BibTeX, and checks manuscript numbers against the frozen JSON results.
+
+Run the complete Phase 9 scientific, reproducibility, and rendered-page audit:
+
+```powershell
+python -B scripts\audit_phase89_paper.py
+```
 
 ## Manual Build
 
 ```powershell
 $env:PYTHONPATH = "."
-python -B scripts\export_paper_figures.py `
-  --run-dir outputs\graph_vs_flat\five_scene_graph_vs_flat_v2 `
-  --out-dir papers\beyond-proximity\figures
+python -B scripts\export_academic_tables.py `
+  --out-dir papers\beyond-proximity\tables
 python -B scripts\export_academic_figures.py `
   --out-dir papers\beyond-proximity\figures
 cd papers\beyond-proximity
@@ -39,6 +44,10 @@ the checked release PDF.
 ## Evidence Boundaries
 
 - Internal token values are deterministic serialized-context estimates.
+- Semantic-model token values use the native
+  `BAAI/bge-small-en-v1.5` tokenizer.
+- Cursor Agent provider/model token usage remains unavailable because the
+  client UI did not expose an auditable counter.
 - Construction token-equivalents are canonical character counts divided by
   four per record.
 - ConceptGraphs and LangSplat token values are local tokenizer counts.
@@ -49,3 +58,6 @@ the checked release PDF.
   official BBQ execution artifact.
 - Licensed ScanNet and Replica raw scenes are never copied into the paper or
   project-site artifact.
+- The paper uses a descriptive research title because the former working name
+  collides with an existing 2025 paper. Repository-wide renaming remains a
+  separate team-approval task.

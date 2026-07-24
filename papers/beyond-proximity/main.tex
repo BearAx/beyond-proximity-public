@@ -1,5 +1,4 @@
-% SemanticSplat academic preprint. This manuscript is independent of any
-% workshop review template and intentionally carries the author list.
+% Academic preprint. This manuscript is independent of a workshop template.
 \documentclass[10pt,twocolumn,letterpaper]{article}
 \usepackage{cvpr}
 \usepackage{booktabs}
@@ -29,10 +28,13 @@
   filecolor=blue
 }
 
-\newcommand{\method}{SemanticSplat}
+\newcommand{\method}{Agent--MCP Search}
 \newcommand{\acc}{\mathrm{Acc}}
 \newcommand{\hit}{\mathrm{hit}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\makeatletter
+\newcommand{\tableinput}[1]{\@@input #1 }
+\makeatother
 \newcommand{\tableformat}{%
   \renewcommand{\arraystretch}{1.10}%
   \setlength{\tabcolsep}{4pt}%
@@ -55,7 +57,7 @@
   belowskip=3pt
 }
 
-\title{SemanticSplat: Graph-Pruned Semantic Search}
+\title{Agent-Guided Hierarchical Semantic Search\\over 3D Scene Records}
 
 \author{
 Mahmoud Mousatat, Leo Vizan, Nikita Shankin, Telman Nuruzov, Alexandr Medvedev
@@ -63,364 +65,331 @@ Mahmoud Mousatat, Leo Vizan, Nikita Shankin, Telman Nuruzov, Alexandr Medvedev
 \date{Academic preprint, July 2026}
 
 \begin{document}
-\raggedbottom
+\emergencystretch=2em
+\flushbottom
 \maketitle
 
 \begin{abstract}
-Digital twins based on 3D Gaussian Splatting (3DGS) are photorealistic but do
-not directly provide the semantic structure needed for natural-language
-queries. We present \method, a representation-agnostic query layer that
-organizes captured evidence into a scene--zone--region--entity--view hierarchy
-and uses top-down pruning before object or view grounding. The central
-experiment controls the semantic map: graph and flat variants use identical
-records, queries, labels, and scorers, differing only in candidate selection.
-Across five manually captured indoor and outdoor scenes (97 RGB-D views, 1,066
-semantic items, 150 queries), graph search reduces mean views checked from
-19.4 to 4.77 (75.5\%) and estimated input context from 3,168 to 1,014 tokens
-(68.2\%). On 125 queries with verified view labels, graph hit@1 is 0.680 vs.
-0.768 for flat search and hit@3 is 0.808 vs. 0.928, exposing a quality--cost
-trade-off under the current deterministic lexical ranker. BBQ-aligned oracle-map
-pilots add 56 Replica and 48 ScanNet queries: graph search matches flat lexical
-quality while checking 83.2\% and 77.1\% fewer objects, respectively. We also
-report native predicted-map ConceptGraphs runs on all eight selected scenes of
-each dataset and a full hardware-adapted LangSplat pipeline on one ScanNet scene.
-These external executions use different map-construction protocols and are
-diagnostic references, not a cross-method ranking. Code, schemas, frozen outputs,
-and figure sources accompany the preprint.
+Large visual maps and 3D digital twins contain more scene evidence than a
+language agent should inspect for every request. We present \method, an
+agent-agnostic Model Context Protocol (MCP) for decomposing a natural-language
+query, traversing a semantic scene hierarchy, validating candidate evidence,
+and recording a replayable grounding trace. Cursor Agent is the interactive
+client; a pinned BGE-small encoder supplies reproducible semantic decisions.
+Lexical search is retained only as a controlled baseline. We also evaluate
+hierarchy construction rather than treating the hierarchy as a free input:
+manual, pose-only, pose-plus-semantic, and five-call Cursor--MCP constructions
+are compared over the same 97 captured views and 150 queries.
+
+On the five-scene query benchmark, lexical graph traversal checks 75.43\% fewer
+views and processes 67.99\% fewer input tokens than lexical flat search.
+Semantic graph traversal checks 79.90\% fewer views and processes 32.50\% fewer
+native model tokens than semantic flat search. In both pairs, the hit@1
+difference is statistically inconclusive at 95\%, while hit@3 declines
+significantly under the frozen pruning rule. Calibrated fallback on the
+48-query ScanNet oracle-map protocol exactly preserves flat lexical
+R@1/R@3/R@5/MRR while checking 25.0\% fewer objects; on the harder 64-query
+extension it preserves those quality values with 18.8\% fewer objects.
+Validated relation evidence improves ScanNet relational hit@1 from 0.550 to
+0.675 with five beneficial and zero harmful top-1 changes. The results support
+context reduction, not automatic perception or general method superiority.
 \end{abstract}
 
 \section{Introduction}
-3D Gaussian Splatting~\cite{kerbl20233dgs} provides real-time, photorealistic
-novel-view rendering, but its geometric and appearance parameters do not by
-themselves say that a region is a lobby, that an object is a chair, or that a
-view supports the request ``find a place to sit near reception.'' Digital-twin
-interfaces, robots, and AR systems therefore need a semantic layer that can
-retrieve grounded evidence without serializing every observation for every
-query.
+Photorealistic 3D representations such as 3D Gaussian Splatting
+(3DGS)~\cite{kerbl20233dgs} do not by themselves encode that a region is a
+lobby, an object affords sitting, or a view supports ``find the chair farthest
+from the cabinet.'' Object maps, language fields, and scene graphs add this
+semantic structure, but a second problem remains: a language agent can exceed
+its useful context budget if it serializes the complete map for each query.
 
-Flat search is a strong and transparent baseline: rank every semantic record
-and return the best match. Its query cost, however, grows with the complete
-map, and unrelated rooms repeatedly enter the context. Language-field methods
-instead distill vision-language features into radiance fields or
-Gaussians~\cite{kerr2023lerf,langsplat2024}; object-centric methods construct
-open-vocabulary 3D graphs~\cite{gu2023conceptgraphs,bbq2024}. \method studies a
-complementary question: \emph{how much context can a semantic hierarchy remove
-when graph and flat search are forced to use exactly the same records and
-scorer, and what quality is lost by pruning?}
+This paper studies semantic search as an \emph{agent--map interaction
+protocol}. The map remains local. An agent receives a compact node summary,
+chooses which branches to expand, validates leaf evidence, and returns stable
+object/view identifiers. MCP tools separate model reasoning from scene I/O,
+geometry, and trace persistence. The trace makes every expansion, pruning
+decision, token count, and fallback auditable.
+
+The hierarchy is not assumed to be automatically correct. We evaluate four
+ways to construct it and distinguish manual references, agent-assisted maps,
+official oracle object maps, and native predicted maps. Likewise, Cursor Agent
+and the reproducible local semantic model are never conflated: Cursor provides
+an interactive product demonstration and direct hierarchy decisions, whereas a
+pinned BGE encoder executes all 150 query-time experiments. Deterministic
+lexical graph and flat search remain controls that isolate candidate traversal.
 
 \paragraph{Contributions.}
 \begin{itemize}
-  \item A queryable semantic-map contract for 3DGS-backed scenes, comprising a
-  canonical entity schema, scene hierarchy, structured query, explicit
-  traversal trace, and grounded result schema.
-  \item A controlled graph-vs.-flat benchmark on five captured scenes and two
-  BBQ-aligned public-dataset pilots, with retrieval, 3D grounding, latency,
-  checked-candidate, context-size, and token metrics kept protocol-specific.
-  \item A reproducible account of one-time graph construction, 10,000-resample
-  paired uncertainty intervals, query-type and scene breakdowns, fallback and
-  relation ablations, and native ConceptGraphs/LangSplat execution evidence.
-  \item Explicit claim boundaries: internal annotations are manual reference
-  labels, public SemanticSplat pilots use oracle semantic candidates, and
-  native external runs are not same-protocol comparisons.
+  \item An agent-agnostic MCP protocol for query decomposition, top-down
+  hierarchy traversal, grounded evidence validation, and complete replayable
+  traces over 3D scene records.
+  \item A controlled four-variant comparison of flat/graph lexical and
+  flat/graph neural semantic retrieval on identical scenes, records, queries,
+  and labels, with native tokenizer counts, latency, calls, and paired
+  confidence intervals.
+  \item A four-way hierarchy-construction evaluation covering manual,
+  pose-only, pose-plus-semantic, and Cursor--MCP maps, including structural
+  agreement, query quality, context, construction time, and missing usage
+  provenance.
+  \item Stronger public protocols with explicit total, positive, negative, and
+  box-eligible denominators, harder functional/relational queries, calibrated
+  fallback, and a controlled relation audit.
+  \item A release contract in which every table and figure is generated or
+  checked against saved per-query evidence, with oracle and predicted-map
+  results kept protocol-separated.
 \end{itemize}
 
 \section{Related Work}
-\paragraph{Language fields and semantic Gaussians.}
-LERF~\cite{kerr2023lerf} embeds language into a radiance field. LangSplat,
-Semantic Gaussians, and LEGS attach open-vocabulary features to Gaussian
-representations~\cite{langsplat2024,semanticgaussians2024,legs2024}. These
-methods provide dense or point-wise relevance, whereas our measured variable
-is explicit hierarchical candidate pruning over frozen semantic records.
+\paragraph{Hierarchical language agents and scene graphs.}
+SayPlan~\cite{rana2023sayplan} is the closest prior to our query protocol: an
+LLM expands and contracts a collapsed hierarchical 3D scene graph to obtain a
+task-relevant subgraph before planning. Our scope is narrower but more
+instrumented: semantic retrieval and grounding rather than long-horizon robot
+planning, an MCP tool boundary, same-map graph-vs.-flat controls, and complete
+per-query cost traces. HOV-SG and Hydra organize semantic/spatial information
+for navigation and robotics~\cite{hovsg2024,hydra2022}. Search3D constructs a
+hierarchical open-vocabulary representation spanning parts, objects, and
+regions~\cite{takmaz2025search3d}; we instead evaluate hierarchy as a
+query-context controller over frozen scene records.
 
-\paragraph{Open-vocabulary maps and scene graphs.}
+\paragraph{Open-vocabulary 3D maps and grounding.}
 ConceptFusion and OpenScene build open-set or open-vocabulary 3D
 representations~\cite{conceptfusion2023,openscene2023}. ConceptGraphs constructs
-object-centric 3D scene graphs from RGB-D observations~\cite{gu2023conceptgraphs},
-while HOV-SG and Hydra add hierarchical or spatial organization for navigation
-and robotics~\cite{hovsg2024,hydra2022}. BBQ is our closest algorithmic
-reference: it combines object captions, 3D extents, spatial relations, and
-deductive reasoning for open-vocabulary grounding~\cite{bbq2024}. We align
-public scene subsets and Acc@$k$ reporting with BBQ where feasible, but do not
-claim a measured BBQ comparison because this release contains no official BBQ
-execution artifact.
+object-centric maps from RGB-D observations~\cite{gu2023conceptgraphs}. Beyond
+Bare Queries (BBQ) combines object captions, 3D extents, relations, and
+deductive reasoning for open-vocabulary grounding~\cite{bbq2024}; it motivates
+our ScanNet/Replica scene and metric alignment. We do not report an official
+BBQ run and make no superiority claim.
 
-\paragraph{Grounding datasets and evaluation.}
-ScanNet provides annotated RGB-D reconstructions~\cite{dai2017scannet};
-Replica provides high-quality indoor digital replicas~\cite{straub2019replica}.
-Nr3D and Sr3D from ReferIt3D support fine-grained object identification in
-ScanNet scenes~\cite{achlioptas2020referit3d}, and ScanRefer establishes 3D
-referring-expression localization~\cite{scanrefer2020}. OpenLex3D advocates
-tiered evaluation of open-vocabulary 3D representations~\cite{openlex3d2025}.
-Accordingly, we separate view-label retrieval, oracle-map object grounding,
-and predicted-map baseline execution instead of merging their metrics.
+\paragraph{Language fields and semantic Gaussians.}
+LERF~\cite{kerr2023lerf} embeds language in a radiance field. LangSplat,
+Semantic Gaussians, and LEGS attach open-vocabulary features to Gaussian
+representations~\cite{langsplat2024,semanticgaussians2024,legs2024}. These
+methods address representation learning and dense relevance. Our primary
+variable is the amount of an existing semantic map exposed to a query client.
+
+\paragraph{Datasets and evaluation.}
+ScanNet provides annotated RGB-D reconstructions~\cite{dai2017scannet}, while
+Replica provides high-quality indoor replicas~\cite{straub2019replica}. Nr3D
+and Sr3D support referring expression grounding in ScanNet
+scenes~\cite{achlioptas2020referit3d}; ScanRefer evaluates 3D referring
+expressions~\cite{scanrefer2020}. OpenLex3D advocates tiered evaluation of
+open-vocabulary 3D representations~\cite{openlex3d2025}. We therefore separate
+view retrieval, oracle-map object retrieval, 3D box accuracy, and native
+predicted-map execution.
 
 \paragraph{Context efficiency.}
-Prompt-compression and retrieval-pruning work studies the removal of irrelevant
-textual evidence~\cite{promptcompression2024,attentionrag2025,provence2025,
-tearag2026,spathrag2026}. Tokens are not a substitute for 3D grounding quality;
-we report context and checked candidates alongside hit@$k$, Recall@1, and 3D
-IoU-based accuracy.
+Prompt compression and retrieval pruning remove irrelevant textual
+evidence~\cite{promptcompression2024,attentionrag2025,provence2025,
+spathrag2026}. Tokens alone do not establish grounding quality; we
+report context, checked candidates, retrieval quality, and geometry together.
 
 \section{Method}
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{figures/fig_method_workflow.pdf}
-\caption{\method end to end, assembled from checked-in evidence. Top: captured
-Conference Hall RGB-D view v018, its ViewJSON annotation, and a hierarchy slice.
-Bottom: frozen query qv2\_010 follows graph-pruned and flat lanes that share the
-same records and scorer, then returns grounded view evidence. One-time index
-construction is separated from per-query retrieval. Token values are local
-serialized-context estimates, not API billing.}
-\label{fig:system}
+\includegraphics[width=0.98\textwidth]{figures/fig_agent_mcp_protocol.pdf}
+\caption{\method. The agent decomposes a query, reads local hierarchy nodes
+through MCP, expands or prunes branches, validates leaf evidence, and writes a
+replayable trace. Cursor Agent is the interactive client; the pinned local
+encoder supplies the reproducible semantic client. One-time hierarchy
+construction is evaluated separately.}
+\label{fig:agent-protocol}
 \end{figure*}
 
-\subsection{Hierarchical Semantic Representation}
-At query time, the system receives a pre-built rooted hierarchy $H=(V,E)$ and
-canonical semantic records. Each node $v\in V$ stores a stable identifier,
-node type $\tau(v)$, label, searchable text, attributes, parent/child links,
-and supporting view IDs. An ordered ancestor path
-$A(v)=(v_0,\ldots,v_d)$ connects the scene root to a zone, region, entity, and
-optional view-observation leaf. Containment/evidence edges form the hierarchy;
-spatial relations remain typed attributes so that they can be validated
-independently.
+\subsection{Agent--MCP Query Protocol}
+Let a scene hierarchy be $H=(V,E)$ and let $\mathcal{C}$ be canonical semantic
+records linked to its leaves. A query client does not receive
+$\mathcal{C}$ in one prompt. It uses the following protocol:
+\begin{enumerate}
+  \item decompose query $q$ into target, attributes, optional anchor/relation,
+  and intent;
+  \item request the root and compact child summaries through MCP;
+  \item select conservative child IDs to expand and record rejected siblings;
+  \item retrieve candidate leaf views/objects and validate semantic or spatial
+  evidence;
+  \item rank stable IDs, return supporting evidence, and finalize a trace.
+\end{enumerate}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.96\linewidth]{figures/fig_tree_traversal.pdf}
-\caption{The scene--zone--region--entity--view hierarchy. The solid path is
-retained for a chair query; gray siblings are pruned before entity scoring.}
-\label{fig:tree}
-\end{figure}
+The MCP server owns scene access, hierarchy inspection, geometry, and trace
+persistence. The client owns semantic decisions. This boundary permits Cursor
+Agent, a local model, or another compatible client without changing map
+storage. The trace stores exact tool requests/responses, model identity,
+branches considered, token method, latency, fallback, and final IDs.
 
-The canonical entity candidate is
+\paragraph{Clients and controls.}
+Cursor Agent is the interactive client used for direct MCP hierarchy
+construction. Its UI label in this study is ``Cursor Grok 4.5 High Fast.''
+Cursor did not expose auditable token usage, so those fields remain
+unavailable. Reproducible query experiments use
+\texttt{BAAI/bge-small-en-v1.5}, a 384-dimensional encoder run with FastEmbed
+ONNX on CPU. It replaces free-form agent choices with cosine similarity while
+preserving the same top-down decision boundary. It is a semantic model, not an
+LLM and not evidence of Cursor quality. Lexical overlap is a non-model control.
+
+\subsection{Hierarchy Construction}
+Each captured record contains a posed view, semantic summary, objects, regions,
+landmarks, attributes, relations, and optional boxes. Construction produces
+scene--zone--entity--view containment edges and stable node IDs. We evaluate
+four variants:
+\begin{enumerate}
+  \item \textbf{Manual reference}: existing human/Cursor-assisted zones;
+  \item \textbf{Pose only}: deterministic camera-position clustering with
+  spatial scale factor 3.5;
+  \item \textbf{Pose + semantic}: pose clusters followed by deterministic
+  summary-based merging;
+  \item \textbf{Cursor Agent + MCP}: five direct
+  \texttt{build\_spatial\_clusters} calls, followed by agent zone decisions.
+\end{enumerate}
+
+The Cursor client was not shown manual-zone labels, did not call persistence
+tools, and did not modify scene data. Its five input cluster counts were
+$1,1,1,2,3$ and its final hierarchy covers all 97 views without duplicate
+assignment. Fixed thresholds, seed 20260724, decisions, and rationales are
+released. Manual zones overlap by design, so structure agreement uses
+multi-membership pairwise F1 and weighted best-zone Jaccard rather than a
+single-label clustering metric.
+
+\subsection{Semantic Records and Structured Queries}
+Each searchable candidate is
 \begin{equation}
 c_i=(\mathrm{id}_i,\tau_i,A_i,y_i,x_i,R_i,B_i,V_i),
 \label{eq:candidate}
 \end{equation}
-where $y_i$ is the label, $x_i$ searchable text, $R_i$ typed relations,
-$B_i=(B_i^{2D},B_i^{3D})$ optional boxes, and $V_i$ supporting views. Source
-instance IDs are retained when available; otherwise IDs are derived
-deterministically. The same $c_i$ records feed graph and flat search.
+where $\tau_i$ is type, $A_i$ the ancestor path, $y_i$ label, $x_i$ searchable
+text, $R_i$ typed relations, $B_i$ optional 2D/3D boxes, and $V_i$ supporting
+views. Source object IDs are retained where available. Graph and flat variants
+consume identical $c_i$.
 
-\begin{table}[t]
-\centering
-\caption{Canonical semantic-input fields. Geometry is optional and validated
-before spatial scoring.}
-\label{tab:input-schema}
-\footnotesize
-\tableformat
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}Y@{}}
-\toprule
-\textbf{Field} & \textbf{Meaning} \\
-\midrule
-\texttt{id}, \texttt{type} & Stable entity/node identity and semantic type \\
-\texttt{label}, \texttt{text} & Target name and searchable description \\
-\texttt{ancestors} & Ordered scene/zone/region path $A_i$ \\
-\texttt{attributes} & Color, material, affordance, and room cues \\
-\texttt{relations} & Typed target--anchor relation records $R_i$ \\
-\texttt{bbox\_2d/3d} & Optional normalized 2D or metric 3D extent $B_i$ \\
-\texttt{view\_ids} & Observations supporting the entity $V_i$ \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\subsection{Structured Query and Candidate Gating}
-A natural-language query is parsed as
+A query is represented as
 \begin{equation}
 q=(q_t,q_a,r,\mathcal{A},\iota),
 \end{equation}
-with target phrase $q_t$, optional anchor $q_a$, relation $r$, attributes
-$\mathcal{A}$, and intent/affordance $\iota$. The parser handles simple object,
-attribute, relational, functional, multi-hop, and negative forms. Deterministic
-intent expansion maps goals to candidate classes; for example, \emph{sit}
-activates chair, sofa, bench, couch, armchair, lounge, and seating.
+with target $q_t$, anchor $q_a$, relation $r$, attributes $\mathcal{A}$, and
+intent $\iota$. Intent expansion maps functional requests to candidate
+affordances; for example, ``find a place to sit'' activates chair, sofa, bench,
+couch, armchair, lounge, and seating records.
 
-For the internal view benchmark, query tokens $Q$ and branch tokens $T_b$ give
-the branch score $u_b=|Q\cap T_b|$. If $u_m=\max_bu_b>0$, graph search retains
-branches satisfying
+\subsection{Top-Down Semantic Traversal}
+At node $v$, the semantic client embeds $q$ and each child summary. With cosine
+scores $z_j$, it retains up to three children whose score is at least 0.20 and
+within 0.08 of the best child. If no child meets the threshold, a fixed
+three-child fallback is recorded. The same encoder ranks leaf evidence.
+Flat-semantic search embeds all scene records without hierarchy decisions.
+
+The lexical graph control computes branch token overlap $u_j$. If
+$u_{\max}>0$, branches satisfying
 \begin{equation}
-u_b\geq\max(1,0.5u_m).
-\label{eq:branch-gate}
+u_j\geq\max(1,0.5u_{\max})
+\label{eq:lexical-gate}
 \end{equation}
-When every overlap is zero, all branches remain eligible. Unzoned entries are
-never silently dropped. Flat search skips this gate and ranks every searchable
-record.
+are retained; if all overlap is zero, all branches are eligible. The identical
+lexical scorer ranks retained or flat candidates. Stable-ID tie breaking keeps
+the run deterministic.
 
-For object grounding, $Q_e$ augments the base tokens with aliases and
-affordance expansions. A branch receives
-$h_b=|Q_e\cap T_b|/\max(1,|Q_e|)$, and graph search keeps
-$h_b\geq0.5\max_jh_j$. Candidate $i$ is scored as
-\begin{equation}
-s_i=\min(1,0.65e_i+0.55\ell_i+0.20t_i+0.25a_i),
-\label{eq:entity-score}
-\end{equation}
-where $e_i$ is exact-label match and $\ell_i,t_i,a_i$ are normalized label,
-record-text, and synonym/affordance overlaps. Flat lexical applies the identical
-scorer to the full candidate universe. Stable ID tie-breaking makes every run
-deterministic.
+\subsection{Validated Relation Reasoning}
+Relations are parsed only when a target--anchor predicate and required frame
+exist. Anchor confidence and margin are checked before geometry. Valid 3D
+boxes are preferred; normalized 2D boxes are used only for image-frame
+relations. Non-finite coordinates, non-positive extents, or absent viewpoint
+frames invalidate evidence.
 
-\subsection{Target--Anchor Spatial Reasoning}
-The parser recognizes \emph{near}, left/right, above/below, and front/behind in
-infix and prefix forms. Anchors are retrieved from the complete candidate set,
-even if the target branch was pruned. A relation can be supported by a stored
-relation string or geometry. Valid 3D boxes are preferred; normalized 2D boxes
-are used otherwise. Non-finite coordinates, non-positive extents, or values
-outside declared bounds invalidate geometric evidence rather than producing a
-score.
+Relation evidence may change ranking only if confidence is at least 0.65 and
+the candidate's lexical score is within 0.15 of the best lexical candidate.
+Unresolved evidence triggers deterministic fallback and cannot break a lexical
+tie. This prevents world-coordinate boxes from masquerading as
+viewpoint-relative left/right/front/behind evidence.
 
-For \emph{near}, center distance normalized by mean combined box extent must be
-at most 1.5. Directional predicates compare the relevant center axis with a 5\%
-combined-extent tolerance; front/behind is unresolved for 2D-only geometry.
-Let $r_i=1$ for a satisfied relation, $-0.35$ for a resolved violation, and 0
-when unresolved. We update
-\begin{equation}
-s_i\leftarrow\min(1,\max(0,s_i+0.35r_i)).
-\end{equation}
-The trace stores anchor ID, relation score, evidence source, margin, and any box
-validation failure.
+\subsection{Output, Accounting, and Complexity}
+Every result contains ranked IDs, supporting views/boxes, visited ancestors,
+checked counts, fallback reason, runtime, serialized context, token method,
+model calls, GT eligibility, and provenance. Model input tokens use the native
+BGE tokenizer; lexical context uses a pinned local tokenizer. Cursor usage is
+reported only when exposed. One-time construction cost is never mixed with
+per-query cost.
 
-\subsection{Fallback, Variants, and Complexity}
-Graph+fallback expands to every candidate when the best score is below 0.45,
-the relation is unresolved, or required geometry is rejected. Expansion is
-recorded explicitly. We evaluate graph, graph+fallback, flat lexical, and flat
-embedding, with no-hierarchy, no-relation, no-fallback, and flat-only
-ablations. Flat embedding uses a local BGE-small-en-v1.5 encoder; an unavailable
-encoder is reported as unavailable rather than replaced silently.
-
-For $N$ searchable records and $N_q$ records retained by the branch gate, flat
-leaf scoring is $O(N)$ and graph leaf scoring is $O(N_q)$ after a gate over
-top-level branches. Fallback has the flat worst case. Construction and
-canonicalization are one-time map costs and are excluded from per-query
-latency.
-
-\subsection{Output and Trace Contract}
-Every query result contains the selected IDs and box, method/mode, score
-components, ancestor traversal, checked nodes/objects/views, fallback reason,
-runtime, serialized context, token measurement metadata, and GT eligibility.
-The evaluator never converts an unavailable quality field to zero. Table
-\ref{tab:output-schema} summarizes the contract; the complete JSON schemas and
-examples are released with the code.
-
-\begin{table}[t]
-\centering
-\caption{Query-result schema groups used for reproducible evaluation.}
-\label{tab:output-schema}
-\footnotesize
-\tableformat
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}Y@{}}
-\toprule
-\textbf{Group} & \textbf{Required contents} \\
-\midrule
-Identity & run/query/scene IDs, method, mode, status \\
-Selection & object/node/view IDs, score, optional 3D box \\
-Trace & visited ancestors, checked counts, fallback reason \\
-Cost & runtime, context characters, token value and tokenizer/type \\
-Quality & GT availability, exact-ID hit, hit@$k$, IoU and Acc@$\tau$ \\
-Provenance & config, map source, model/checkpoint, schema version \\
-\bottomrule
-\end{tabularx}
-\end{table}
+For $N$ scene records and $N_q$ retained records, flat scoring is $O(N)$ and
+graph leaf scoring is $O(N_q)$ after the hierarchy gate. Fallback has the flat
+worst case. An agent may make more small calls while processing fewer total
+tokens; both values are therefore reported.
 
 \section{Datasets and Evaluation}
 \subsection{Evaluation Tracks}
-Figure~\ref{fig:protocol} shows the protocol boundary. Internal graph-vs.-flat
-results compare candidate selection on manual captured records. Replica and
-ScanNet SemanticSplat pilots compare variants on official oracle semantic
-candidates. ConceptGraphs and LangSplat consume their native predicted or
-learned representations and are therefore reported separately.
-
-\begin{figure}[t]
+\begin{table*}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig_evaluation_protocol.pdf}
-\caption{Evaluation tracks. A fair graph-vs.-flat comparison shares maps,
-queries, labels, and scorer; native external executions have different inputs
-and do not enter the same ranking.}
-\label{fig:protocol}
-\end{figure}
-
-\paragraph{Internal digital-twin track.}
-Five team-captured scenes contain 97 RGB-D views, 1,066 semantic items, and
-1,064 constructed nodes (Table~\ref{tab:dataset}). The benchmark has 150
-queries, 25 in each of six query types. Verified expected view IDs exist for
-125 queries; the 25 without applicable positive view labels remain in cost
-metrics but not hit@$k$ denominators. The semantic index and expected labels
-are manual reference artifacts, not independent public GT.
-
-\begin{table}[t]
-\centering
-\caption{Internal captured-scene composition.}
-\label{tab:dataset}
+\caption{Evaluation tracks and denominators. $Q_{\mathrm{total}}$ contributes
+to cost; $Q_+$ to retrieval quality; $Q_-$ to negative accuracy; $Q_{\mathrm
+{box}}$ to 3D box metrics.}
+\label{tab:tracks}
 \small
 \tableformat
-\begin{tabular}{@{}lrrr@{}}
+\begin{tabularx}{0.96\textwidth}{@{}lrrrrrY@{}}
 \toprule
-\textbf{Scene} & \textbf{Views} & \textbf{Items} & \textbf{Nodes} \\
+\textbf{Track} & \textbf{Scenes} & $\mathbf{Q_{\mathrm{total}}}$ &
+$\mathbf{Q_+}$ & $\mathbf{Q_-}$ & $\mathbf{Q_{\mathrm{box}}}$ &
+\textbf{Map/evidence type} \\
 \midrule
-Conference Hall & 20 & 207 & 206 \\
-Museum & 20 & 225 & 228 \\
-Theater & 20 & 226 & 226 \\
-Outdoor street & 21 & 239 & 240 \\
-Outdoor drone & 16 & 169 & 164 \\
-\midrule
-\textbf{Total} & \textbf{97} & \textbf{1,066} & \textbf{1,064} \\
+Captured scenes & 5 & 150 & 125 & 0 & 0 &
+Manual records and verified expected views \\
+Replica & 8 & 56 & 48 & 8 & 48 &
+Official oracle object IDs and boxes \\
+ScanNet original & 8 & 48 & 48 & 0 & 48 &
+Official oracle object IDs/boxes; Nr3D/Sr3D+ \\
+ScanNet extended & 8 & 64 & 56 & 8 & 56 &
+Original plus functional and verified-absence queries \\
+ConceptGraphs native & 16 & 104 & 96 & 0 & 96 &
+Predicted object maps; separate protocol \\
+LangSplat native & 1 & 6 & 6 & 0 & 0 &
+Learned language field; separate protocol \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{tabularx}
+\end{table*}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.88\textwidth]{figures/fig_scene_gallery.pdf}
-\caption{Team-captured indoor and outdoor digital-twin scenes used by the
-internal track. Licensed public-dataset imagery is not redistributed.}
-\label{fig:scenes}
-\end{figure*}
+\paragraph{Captured scenes.}
+Five team-captured indoor/outdoor scenes contain 97 RGB-D views and 1,066
+semantic items. The benchmark has 25 queries in each of six categories:
+simple-object, attribute, relational, functional, multi-hop, and negative.
+Verified expected views exist for 125 queries. The remaining 25 negative
+queries contribute to cost only because no independent negative GT exists.
 
 \paragraph{Public oracle-map tracks.}
-We use the BBQ-aligned Replica subset room0--room2 and office0--office4 (8
-scenes, 575 official object boxes, 56 queries), and ScanNet scenes 0011\_00,
-0030\_00, 0046\_00, 0086\_00, 0222\_00, 0378\_00, 0389\_00, and 0435\_00
-(392 official object boxes, 48 Nr3D/Sr3D+ queries). Official object identities
-and 3D boxes form oracle semantic candidates. These tracks measure retrieval
-over a known map, not semantic-perception accuracy.
+The BBQ-aligned Replica subset contains 575 official object boxes. The ScanNet
+subset contains 392 official boxes and 48 mapped Nr3D/Sr3D+ queries. The
+extended ScanNet track adds one GT-backed functional query and one
+verified-absence query per scene. These tracks evaluate retrieval over known
+objects, not automatic segmentation or map construction.
 
-\paragraph{Native external tracks.}
-ConceptGraphs builds predicted object maps for all eight selected ScanNet and
-eight Replica scenes, then answers 48 and 56 queries. LangSplat completes all
-native stages and six queries on ScanNet 0011\_00 under a hardware-adapted
-profile. BBQ supplies metric guidance only; no official execution artifact is
-included.
+\paragraph{Native predicted-map tracks.}
+ConceptGraphs constructs predicted maps for all eight selected ScanNet and
+eight Replica scenes. LangSplat executes RGB 3DGS optimization, SAM/CLIP
+preprocessing, autoencoder compression, language-field optimization,
+rendering, and six queries on ScanNet 0011\_00. Different map construction and
+resource profiles keep these executions outside the oracle-map ranking.
 
-\subsection{Metrics}
-For method $m$ and query $q$, we record checked views $V_{mq}$, objects
-$O_{mq}$, nodes $G_{mq}$, runtime $t_{mq}$, serialized context characters
-$C_{mq}$, and tokens $T_{mq}$. Internal and oracle-map token estimates are
-deterministic text-size proxies with their exact rounding rule saved per run;
-external token values are local tokenizer counts. None are API billing tokens.
-Relative cost reduction against flat is
+\subsection{Metrics and Statistical Protocol}
+For each method/query we record views $V$, objects $O$, nodes $G$, elapsed time
+$t$, context characters $C$, input tokens $T$, and model calls. Ratio-of-sums
+reduction against flat is
 \begin{equation}
 \Delta_X=100\left(1-\frac{\sum_qX_{gq}}{\sum_qX_{fq}}\right)\%.
 \end{equation}
+This definition yields 75.43\% fewer views for lexical graph traversal and
+75.4\% when rounded to one decimal.
 
-For verified labels, hit@$k$ is the fraction whose expected view appears in the
-top $k$. Public-pilot Recall@1 requires exact target object-ID match. With
-predicted and reference boxes $B_p,B_g$,
-\begin{equation}
-\mathrm{IoU}_{3D}=\frac{|B_p\cap B_g|}{|B_p\cup B_g|},\qquad
-\acc@\tau=\frac{1}{|Q|}\sum_q\mathbf{1}[\mathrm{IoU}_{3D}\geq\tau].
-\end{equation}
-Missing/invalid predictions stay in the eligible denominator with IoU zero.
-Segmentation mAcc/mIoU/fw-mIoU are not reported without paired predicted
-segmentation arrays.
-
-Table~\ref{tab:metric-contract} states the availability rule and denominator
-for every metric family. Missing reference geometry remains unavailable rather
-than being converted to a successful zero-distance case. Eligible missed
-predictions count as zero only where the metric definition requires it.
+For ranked expected views or objects we report hit/Recall@$k$ and reciprocal
+rank. A 3D prediction is scored with
+\begin{align}
+\mathrm{IoU}_{3D}&=\frac{|B_p\cap B_g|}{|B_p\cup B_g|},\\
+\acc@\tau&=\frac{1}{|Q_{\mathrm{box}}|}
+\sum_q\mathbf{1}[\mathrm{IoU}_{3D}\geq\tau].
+\end{align}
+Eligible misses score zero. Segmentation mIoU is unavailable without paired
+predicted and reference point labels. Paired differences use 10,000 query
+bootstrap resamples with seed 20260715.
 
 \begin{table*}[t]
 \centering
-\caption{Metric prerequisites and denominators. A metric is reported only when
-the prediction and reference evidence shown below are available.}
+\caption{Metric prerequisites and denominators. Missing evidence remains
+unavailable rather than becoming zero.}
 \label{tab:metric-contract}
 \footnotesize
 \tableformat
@@ -435,313 +404,309 @@ the prediction and reference evidence shown below are available.}
 \textbf{Reference requirement} & \textbf{Denominator} \\
 \midrule
 \multicolumn{4}{@{}l}{\textit{Efficiency and cost}} \\
+\addlinespace[3pt]
+Checked views/objects/nodes & Traversal trace & None & All completed queries \\
+Runtime and usage & Timed result and count metadata & None &
+Results with that measurement \\
 \addlinespace[5pt]
-Checked views, objects, nodes & Traversal trace & None & All completed queries \\
-Runtime, context, tokens & Timed result and count metadata & None & Results with that measurement \\
-\addlinespace[7pt]
 \multicolumn{4}{@{}l}{\textit{Retrieval quality}} \\
+\addlinespace[3pt]
+hit@$k$ & Ranked view IDs & Verified expected view IDs &
+Eligible positive-view queries \\
+Recall@$k$, MRR & Ranked object IDs & Official expected object IDs &
+Object-ID-eligible positive queries \\
+Negative accuracy & Explicit not-found result & Verified object absence &
+Verified negative queries \\
 \addlinespace[5pt]
-hit@$k$ & Ranked view IDs & Verified expected view IDs & Eligible positive-view queries \\
-Recall@1 & Selected object ID & Official expected object ID & Object-ID-eligible queries \\
-\addlinespace[7pt]
-\multicolumn{4}{@{}l}{\textit{Geometric and segmentation quality}} \\
-\addlinespace[5pt]
-3D IoU & Valid predicted 3D box & Valid official 3D box & Box-eligible predictions \\
-Acc@$\tau$ & 3D IoU for a prediction & IoU threshold $\tau$ & All box-eligible queries; misses score zero \\
-\addlinespace[2pt]
-Segmentation mIoU & Predicted per-point labels & Paired GT segmentation & Paired points and classes \\
+\multicolumn{4}{@{}l}{\textit{Geometry and segmentation}} \\
+\addlinespace[3pt]
+3D IoU, Acc@$\tau$ & Valid predicted 3D box & Valid official 3D box &
+Box-eligible queries; misses score zero \\
+Segmentation mIoU & Predicted point labels & Paired GT segmentation &
+Paired points/classes only \\
 \bottomrule
 \end{tabularx}
 \end{table*}
 
-\subsection{One-Time Construction Accounting}
-The deterministic builder converts 97 manual ViewJSON records into 1,064 tree
-nodes. Source annotations contain 267,877 canonical characters (66,937
-character/4 token-equivalents); constructed node records contain 720,910
-characters (179,817 token-equivalents). Total serialized input plus output is
-988,787 characters, or 246,754 token-equivalents. Across seven clean temporary
-rebuilds per scene, the sum of per-scene median runtimes is 1.822 seconds. This
-measures artifact size and local build time; historical human annotation time
-was not logged and is not inferred.
-
-\begin{table}[t]
+\section{Experiments}
+\subsection{Four Query Variants}
+\begin{figure*}[t]
 \centering
-\caption{Measured one-time construction workload for the five captured scenes.}
-\label{tab:construction}
+\includegraphics[width=0.96\textwidth]{figures/fig_agent_semantic_results.pdf}
+\caption{Four query variants over identical scenes, records, queries, and
+quality labels. Semantic tokens use the model's native tokenizer; lexical
+tokens count serialized inspected context.}
+\label{fig:query-variants}
+\end{figure*}
+
+\begin{table*}[t]
+\centering
+\caption{Same-input query benchmark. Quality uses $Q_+=125$; cost uses
+$Q_{\mathrm{total}}=150$. Runtime includes local model execution where
+applicable.}
+\label{tab:query-variants}
 \small
 \tableformat
-\begin{tabular}{@{}lr@{}}
+\begin{tabular}{@{}lrrrrrrrrr@{}}
 \toprule
-\textbf{Quantity} & \textbf{Measured value} \\
+\textbf{Method} & \textbf{hit@1} & \textbf{hit@3} & \textbf{MRR} &
+\textbf{Obj. hit} & \textbf{Views} & \textbf{Tokens} & \textbf{ms} &
+\textbf{Calls} & \textbf{Total tokens} \\
 \midrule
-Manual ViewJSON records & 97 \\
-Semantic items & 1,066 \\
-Annotation characters / token-equiv. & 267,877 / 66,937 \\
-Tree characters / token-equiv. & 720,910 / 179,817 \\
-Serialized I/O token-equiv. & 246,754 \\
-Sum of scene median rebuilds & 1.822 s \\
+\tableinput{tables/agent_variant_rows.tex}
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
-\section{Experiments}
-\subsection{Internal Graph vs. Flat}
-Across 150 queries, graph traversal checks 4.77 views on average vs. 19.4 for
-flat (75.5\% fewer) and uses 1,014 estimated context tokens vs. 3,168 (68.2\%
-fewer). A paired 10,000-resample query bootstrap gives 95\% percentile
-intervals of [73.2, 77.7]\% and [65.3, 71.0]\%, respectively. Cumulative
-context is 152k vs. 475k tokens.
+Lexical graph reduces views by 75.43\% and input tokens by 67.99\%. Its
+graph-minus-flat hit@1 difference is $-0.088$ with 95\% CI
+$[-0.184,0.008]$, which is inconclusive. The hit@3 difference is $-0.120$
+with CI $[-0.184,-0.056]$, a significant decline.
 
-On the 125 queries with verified view labels, graph hit@1 is 0.680 vs. 0.768
-for flat and hit@3 is 0.808 vs. 0.928. Paired graph-minus-flat intervals are
-[-0.184, 0.008] for hit@1 and [-0.184, -0.056] for hit@3. Thus the present
-lexical hierarchy provides substantial cost control but does not preserve flat
-hit@$k$.
+Semantic graph reduces views by 79.90\% and native input tokens by 32.50\%.
+Mean per-query token reduction is 32.73\% with CI $[27.11,38.21]$. The hit@1
+difference is $-0.016$ with CI $[-0.096,0.064]$ and is inconclusive. The
+hit@3 difference is $-0.144$ with CI $[-0.224,-0.072]$; MRR differs by
+$-0.082$ with CI $[-0.150,-0.016]$. Thus the frozen semantic gate saves
+context and CPU time but does not preserve top-3 quality.
 
-\subsection{Query-Type and Scene Analysis}
-Simple-object and functional queries save 74.1\% and 71.2\% of estimated
-context, whereas multi-hop and relational queries save 64.3\% and 62.6\%.
-Queries spanning multiple entities naturally retain more branches. Savings are
-positive in every scene: Conference Hall has the largest token reduction
-(73.2\%), while the larger, noisier outdoor-street tree has the smallest
-(59.1\%).
+Graph-semantic execution makes more small encoder calls because it scores
+successive hierarchy levels. This is why call count and processed tokens are
+reported separately. Model load is 9.459\,s; observed process RSS after load is
+212.88\,MB and peak observed RSS is 471.00\,MB.
 
-\subsection{Public-Dataset Oracle-Map Pilots}
-Table~\ref{tab:public} summarizes the public pilots. On Replica, graph and flat
-lexical both reach Recall@1/Acc@$\tau=1.0$ because official identities and
-boxes are candidates; this is a protocol sanity ceiling, not perception
-accuracy. Graph checks 12.1 objects vs. 71.9 for flat (83.2\% fewer) and uses
-303 vs. 1,765 estimated tokens.
-
-On ScanNet, graph matches flat lexical Recall@1 and Acc@0.25 at 0.271 while
-checking 11.2 vs. 49.0 objects (77.1\% fewer) and using 501 vs. 2,117 estimated
-tokens. Graph+fallback approaches flat cost without improving this lexical
-quality. Removing relation reranking increases Acc@0.25 from 0.271 to 0.292,
-identifying the current spatial reranker as a concrete improvement target.
-
-\begin{figure}[t]
+\subsection{Hierarchy Construction}
+\begin{figure*}[t]
 \centering
-\includegraphics[width=0.94\linewidth]{figures/fig_five_scene_summary.pdf}
-\caption{Internal cost and quality. Efficiency uses all 150 queries; hit@$k$
-uses the 125 queries with verified view labels.}
-\label{fig:five-scene}
-\end{figure}
+\includegraphics[width=0.96\textwidth]{figures/fig_hierarchy_comparison.pdf}
+\caption{Hierarchy construction changes grouping and therefore query behavior,
+but not underlying semantic records. Manual agreement is a project reference,
+not independent GT.}
+\label{fig:hierarchy-results}
+\end{figure*}
+
+\begin{table*}[t]
+\centering
+\caption{Hierarchy construction on the same 97 views and 150 queries.
+Agreement compares to overlapping manual zones; quality uses $n=125$.}
+\label{tab:hierarchy}
+\small
+\tableformat
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+\textbf{Hierarchy} & \textbf{Zones} & \textbf{Pair F1} &
+\textbf{Jacc.} & \textbf{hit@1} & \textbf{hit@3} & \textbf{MRR} &
+\textbf{Views} & \textbf{Tokens} & \textbf{Build s} \\
+\midrule
+\tableinput{tables/hierarchy_rows.tex}
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Pose-plus-semantic gives the highest hit@$k$ in this experiment. Cursor--MCP is
+structurally closer to the manual reference than either deterministic
+alternative and uses less query context, but does not dominate their quality.
+The correct claim is therefore \emph{agent-assisted hierarchy construction},
+not fully automatic construction.
+
+All deterministic variants consume zero provider tokens. Historical manual
+time and Cursor UI runtime/token usage are unavailable, not zero. Each variant
+has 8,939 locally estimated serialized input-context tokens. The Cursor result
+is supported by five direct MCP calls and saved rationales; it is not inferred
+from the manual hierarchy.
+
+\subsection{Public Oracle-Map Protocols}
+\begin{table*}[t]
+\centering
+\caption{Public oracle-map results. Replica is a lexical sanity ceiling.
+ScanNet original and extended are discriminative. Tokens are local context
+estimates, not provider billing.}
+\label{tab:public}
+\footnotesize
+\tableformat
+\setlength{\tabcolsep}{3.8pt}
+\begin{tabular}{@{}llrrrrrrrr@{}}
+\toprule
+\textbf{Track} & \textbf{Method} & \textbf{R@1} & \textbf{R@3} &
+\textbf{R@5} & \textbf{MRR} & \textbf{A@.25} & \textbf{Neg.} &
+\textbf{Objects} & \textbf{Tokens} \\
+\midrule
+\tableinput{tables/public_rows.tex}
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Replica quality saturates because the oracle labels are lexically easy. It is
+a sanity check, not evidence that variants are equivalent generally.
+Graph+fallback preserves the flat lexical ceiling while checking 27.9\% fewer
+objects.
+
+On original ScanNet, graph+fallback exactly preserves flat lexical R@1, R@3,
+R@5, MRR, and Acc@0.25 while checking 25.0\% fewer objects and using 24.9\%
+fewer estimated tokens. Aggressive graph search checks 90.3\% fewer objects but
+loses 2.1 points at R@1, R@3, and R@5. On extended ScanNet, fallback again
+preserves flat values with 18.8\% fewer objects and 18.7\% fewer tokens.
+
+The extended positive denominator is 56, not 64; the remaining eight queries
+measure verified negative accuracy. Its eight functional queries obtain
+R@1=.625, R@3=.750, R@5=.750, and MRR=.667 under graph+fallback. Attribute
+disambiguation remains weak (two queries; R@1=.000).
+
+\subsection{Controlled Relation Audit}
+The relation audit compares graph+fallback with the identical pipeline under
+\texttt{no\_relation=true}. On 40 ScanNet relation-labelled queries, 35 parse
+to a supported target--anchor predicate and five remain explicitly unparsed.
+Validated relations increase hit@1 from .550 to .675. Exactly five top-1
+changes are beneficial, zero are harmful, and all five pass the confidence and
+score-margin gates. Gains comprise one \emph{between}, one \emph{closest}, and
+three \emph{farthest} queries.
+
+The prior relation underperformance arose because low-confidence evidence
+could break lexical ties and frame-dependent predicates could be applied
+without adequate validation. The new policy blocks both behaviors. On Replica,
+eight parsed \emph{near} queries and eight sequential multi-hop prompts remain
+correct with and without reranking; no top-1 result changes.
 
 \begin{table}[t]
 \centering
-\caption{Same-input internal benchmark. Runtime is local infrastructure time,
-not model latency.}
-\label{tab:internal}
+\caption{Controlled ScanNet relation audit ($Q=40$).}
+\label{tab:relation}
 \small
 \tableformat
 \begin{tabular}{@{}lrr@{}}
 \toprule
-\textbf{Metric} & \textbf{Flat} & \textbf{Graph} \\
+\textbf{Measure} & \textbf{No relation} & \textbf{Validated relation} \\
 \midrule
-\multicolumn{3}{@{}l}{\textit{Efficiency and cost}} \\
-\addlinespace[1pt]
-Views/query & 19.4 & 4.77 \\
-Est. context tokens/query & 3,168.2 & 1,014.3 \\
-Infrastructure elapsed (ms) & 6.61 & 6.05 \\
-\addlinespace[3pt]
-\multicolumn{3}{@{}l}{\textit{Retrieval quality} ($n=125$)} \\
-\addlinespace[1pt]
-hit@1 & 0.768 & 0.680 \\
-hit@3 & 0.928 & 0.808 \\
+\tableinput{tables/relation_rows.tex}
 \bottomrule
 \end{tabular}
 \end{table}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.45\textwidth]{figures/fig_by_query_type.pdf}\hfill
-\includegraphics[width=0.45\textwidth]{figures/fig_by_scene.pdf}
-\caption{Left: estimated context savings by query type. Right: per-scene view
-and token reduction. Hierarchy helps most when a query localizes to one branch.}
-\label{fig:breakdowns}
-\end{figure*}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.92\linewidth]{figures/fig_cumulative.pdf}
-\caption{Cumulative estimated context over the 150-query internal benchmark.}
-\label{fig:cumulative}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{figures/fig_scannet_pilot.pdf}
-\caption{ScanNet oracle-map pilot ($n=48$). Graph preserves flat-lexical
-Acc@0.25 while reducing objects and context; fallback approaches flat cost.}
-\label{fig:scannet}
-\end{figure}
+\subsection{Native External Executions}
+ConceptGraphs produces predicted object maps on all 16 selected public scenes.
+Its Acc@0.25 is .0625 on both dataset tracks. LangSplat records a complete native pipeline execution
+and selects an expected view for four of six queries, but returns
+relevance points rather than 3D boxes. Its hardware-adapted SAM-B/CLIP-B run
+uses 3,000 RGB and language iterations on a 6\,GB GPU, not the original
+30,000-iteration/24\,GB scale.
 
 \begin{table}[t]
 \centering
-\caption{Oracle-map public pilots. Efficiency is the average number of checked
-objects. Acc values on these tracks measure retrieval over official object
-boxes, not semantic map prediction.}
-\label{tab:public}
-\footnotesize
-\tableformat
-\setlength{\tabcolsep}{2.6pt}
-\begin{tabular}{@{}lrrrrr@{}}
-\toprule
-\textbf{Variant} & \textbf{R@1} & \textbf{A@.25} &
-\textbf{Obj.} & \textbf{Tok.} & \textbf{ms} \\
-\midrule
-\multicolumn{6}{@{}l}{\textit{Replica} ($n=56$)} \\
-\addlinespace[1pt]
-Graph & 1.000 & 1.000 & 12.1 & 303 & 0.903 \\
-Flat lexical & 1.000 & 1.000 & 71.9 & 1,765 & 8.785 \\
-Flat embedding & 0.833 & 0.875 & 71.9 & 1,765 & 137.096 \\
-\addlinespace[3pt]
-\multicolumn{6}{@{}l}{\textit{ScanNet} ($n=48$)} \\
-\addlinespace[1pt]
-Graph & 0.271 & 0.271 & 11.2 & 501 & 0.785 \\
-Graph+fallback & 0.271 & 0.271 & 47.0 & 2,027 & 1.636 \\
-Flat lexical & 0.271 & 0.271 & 49.0 & 2,117 & 1.526 \\
-Flat embedding & 0.250 & 0.250 & 49.0 & 2,117 & 168.815 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Native ConceptGraphs and LangSplat Executions}
-ConceptGraphs builds predicted object maps from 39 selected ScanNet RGB-D views
-and 40 evenly sampled Replica views. Acc@0.25 is 0.0625 on both tracks;
-object-label hit / mean 3D IoU is 8/48 / 0.0696 on ScanNet and 7/48 positive
-queries / 0.0624 on Replica. Returning an object for every positive query is
-retrieval availability, not accuracy.
-
-LangSplat completes RGB 3DGS optimization, SAM/CLIP preprocessing,
-autoencoder compression, language-field optimization, rendering, and retrieval
-on ScanNet 0011\_00. It selects an expected view for 4/6 queries, but produces
-relevance points rather than predicted 3D boxes, so 3D Acc@$\tau$ is not
-applicable. This is a complete native pipeline execution rather than a smoke
-test. Its hardware-adapted SAM-B/CLIP-B profile uses 3,000 RGB and language
-iterations on a 6 GB GPU; it does not reproduce the original paper's
-30,000-iteration/24 GB scale.
-
-\begin{table}[t]
-\centering
-\caption{Native external executions. Inputs and protocols differ from the
-oracle-map SemanticSplat pilots; this table is not a method leaderboard.}
+\caption{Native external execution evidence. Protocols differ from the
+oracle-map experiments; this is not a leaderboard.}
 \label{tab:external}
 \footnotesize
 \tableformat
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{@{}lrrrr@{}}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
-\textbf{Execution} & \textbf{Scenes} & \textbf{Queries} &
-\textbf{Quality} & \textbf{s/query} \\
+\textbf{Execution} & \textbf{S} & \textbf{Q} & \textbf{Quality} &
+\textbf{s/q} & \textbf{Tokens} \\
 \midrule
-CG--ScanNet & 8 & 48 & Acc@.25=.063 & .336 \\
-CG--Replica & 8 & 56 & Acc@.25=.063 & .274 \\
-LangSplat--ScanNet & 1 & 6 & view hit=.667 & 2.037 \\
+\tableinput{tables/external_rows.tex}
 \bottomrule
 \end{tabular}
 \end{table}
 
-Local text-encoder token totals are 627 for ConceptGraphs--ScanNet, 459 for
-ConceptGraphs--Replica, and 74 for LangSplat. These totals are tied to each
-native tokenizer and are not directly comparable with character/4 context
-estimates or API usage.
+External token totals use each native local tokenizer and are not comparable
+to character-derived context estimates or API billing. No official BBQ
+execution artifact is included.
 
-\subsection{Qualitative Cases and Failure Modes}
-Conference Hall cases show three regimes: isolated screen targets are found in
-two graph views vs. a 19-view flat scan; a zone-wide projector requires 16
-views; and both methods miss an exit-sign query, although graph search stops
-after three views. Figure~\ref{fig:cases} grounds the screen query in stage view
-v018 and exposes a flat full-scan distractor. The cases support cost-control
-claims, not increased semantic accuracy.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.90\linewidth]{figures/fig_failure_cases.pdf}
-\includegraphics[width=0.90\linewidth]{figures/fig_qualitative_bbox.pdf}
-\caption{Top: graph views checked versus a 19-view flat scan. Bottom: grounded
-screen evidence and a flat-scan distractor.}
-\label{fig:cases}
-\end{figure}
+\subsection{Qualitative Trace}
+For ``Find the piano,'' the released local-semantic trace records query
+encoding, root scores, three retained zone branches, leaf-level scores,
+supporting views, native tokens, and per-step latency. It is reloadable under
+the same trace schema used by Cursor. The local trace demonstrates
+reproducibility, not a Cursor query result.
 
 \section{Discussion}
-The same-map experiment isolates hierarchy as the cause of the context
-reduction: data, labels, and ranking features are held fixed. The internal
-quality gap shows that hard lexical branch gates can discard a relevant but
-weakly summarized path. Conversely, public oracle-map pilots show that when
-candidate labels align with query language, hierarchy can preserve lexical
-quality while removing most objects. The no-relation ScanNet ablation further
-shows that relation logic should be confidence-calibrated: unresolved or noisy
-geometric evidence should not overrule a stronger label match.
+The experiments answer three separate questions. First, hierarchical traversal
+reduces context for both lexical and neural semantic scorers. Second, the
+current hard pruning policy does not preserve top-3 retrieval quality on the
+captured-scene benchmark; calibrated fallback is therefore necessary. Third,
+hierarchy construction materially affects both cost and quality. A
+pose-plus-semantic hierarchy can outperform the manual reference on hit@$k$
+while differing structurally, and the Cursor--MCP hierarchy trades some
+quality for closer reference agreement and lower context.
 
-The resulting design target is not maximum pruning at any cost. It is a
-calibrated policy that maximizes candidate reduction subject to a retrieval
-quality constraint. Soft multi-branch retention, learned summaries, and a
-budgeted fallback can be evaluated under the same frozen protocol without
-changing the semantic map.
+Public results reinforce the need for protocol-specific wording. Replica is a
+ceiling sanity check. ScanNet distinguishes aggressive pruning, calibrated
+fallback, and flat search. The safe conclusion is that fallback preserves flat
+lexical quality \emph{on these two frozen ScanNet protocols}, not that graph
+routing universally preserves flat retrieval. Native ConceptGraphs and LangSplat
+runs verify integration under predicted/learned maps but cannot establish a
+ranking against oracle-map retrieval.
+
+The controlled relation result also changes the earlier diagnosis. Relation
+reasoning itself is not harmful after anchor, frame, geometry, confidence, and
+margin checks. The remaining failures are unsupported language forms and
+attribute ambiguity, which should be addressed by improved parsing or a
+stronger instruction-tuned client rather than by weakening geometric safety.
 
 \section{Limitations}
 \begin{itemize}
-  \item Internal ViewJSON and expected-view labels are manual reference
-  artifacts rather than independent annotations; absolute hit@$k$ can contain
-  correlated labeling bias.
-  \item The internal ranker is deterministic lexical stub logic, not a live
-  provider-backed VLM. Results establish algorithmic and artifact
-  reproducibility, not live-model behavior.
-  \item Replica and ScanNet SemanticSplat pilots use oracle semantic
-  candidates. Their Acc@$k$ values do not measure automatic segmentation or
-  semantic-map construction.
-  \item Relation reranking underperforms its no-relation ablation on the current
-  ScanNet pilot; geometry and relation confidence require calibration.
-  \item Native external runs differ in map construction, frame sampling, output
-  geometry, and resources. LangSplat completes all native stages, but its
-  evidence is one scene under a hardware-adapted 3,000-iteration/6 GB profile;
-  no fair external superiority claim follows from Table~\ref{tab:external}.
-  \item No official BBQ execution artifact exists; alignment is limited to
-  scenes, query sources, and metrics, so no measured comparison is claimed.
-  \item Historical human annotation time is unavailable. Artifact size and
-  deterministic rebuild time are measured, but person-hours are not inferred.
+  \item Cursor Agent supplies direct hierarchy-construction decisions, but the
+  150-query benchmark uses a pinned embedding model rather than Cursor or an
+  instruction-tuned LLM. No Cursor query-quality claim is made.
+  \item Cursor UI provider tokens and wall-clock construction time were not
+  exposed. They are unavailable, not zero; only serialized local input context
+  is measured.
+  \item Captured-scene ViewJSON and expected views are manual reference
+  artifacts. Their quality can contain correlated annotation bias.
+  \item The best construction variant is still agent-assisted and starts from
+  manual semantic records. This paper does not establish automatic semantic
+  perception.
+  \item Replica and ScanNet retrieval use oracle object identities and boxes.
+  Their Acc@0.25 is retrieval-over-GT-map accuracy, not predicted-map
+  segmentation or localization accuracy.
+  \item Semantic graph pruning significantly reduces hit@3 and MRR under the
+  frozen policy. Quality-constrained calibration remains the central algorithm
+  target.
+  \item Native external runs differ in maps, frame sampling, output geometry,
+  and resources. They are execution evidence, not fair comparative rankings.
+  \item LangSplat covers one scene under a reduced-resource profile, and no
+  official BBQ execution is included.
 \end{itemize}
 
 \section{Reproducibility and Release}
-The release stores aggregate and per-query results, exact scene/query lists,
-schema versions, run configurations, model/checkpoint provenance, and one-time
-construction accounting. Figure scripts consume the same frozen JSON used by
-the consistency checks. Paired confidence intervals use 10,000 query resamples
-with seed 20,260,715. Licensed ScanNet and Replica scene files are not
-redistributed; manifests and official access instructions are provided.
+The release includes method and trace schemas, 600 per-query rows for the four
+query variants, 300 semantic traces, four hierarchy constructions, per-query
+hierarchy results, three public protocols, relation audits, run configurations,
+model/checkpoint provenance, seeds, and hardware metadata. All 150 queries
+finish under all four internal methods; validation reports contain zero
+errors.
 
-Canonical internal results reside under
-\texttt{outputs/graph\_vs\_flat/five\_scene\_graph\_vs\_flat\_v2}; public
-pilots under \texttt{outputs/public\_datasets}; native runs under
-\texttt{outputs/baselines}; construction and uncertainty audits under
-\texttt{docs/reports/final}; and schemas under \texttt{docs/schemas}.
+The semantic run records Windows 11, Python 3.13.13, FastEmbed 0.8.0,
+ONNX Runtime 1.27.0, and the BGE model name. ScanNet and Replica raw files are
+not redistributed; official access and import manifests are provided. Figure
+scripts read the same frozen JSON checked by the paper audit.
 
-The public artifact includes the backend query implementation, benchmark and
-adapter scripts, canonical outputs, JSON schemas, this LaTeX source, and an
-interactive project page. The core verification commands are:
 \noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[style=commandblock]
-python -B -m pytest -q tests -p no:cacheprovider
+python -B -m pytest -q -p no:cacheprovider tests
+python -B scripts/validate_agent_semantic_benchmark.py \
+  --output outputs/agent_semantic/five_scene_four_variant_v1
 python -B scripts/check_academic_paper.py
-python -B scripts/build_project_site.py
+papers/beyond-proximity/build_paper.cmd
 \end{lstlisting}
 \end{minipage}
 
 \section{Conclusion}
-\method demonstrates that a semantic hierarchy can substantially reduce
-query-time scene context when evaluated against a flat method on the same map.
-The five-scene benchmark yields 75.5\% fewer checked views and 68.2\% fewer
-estimated context tokens, with a measured hit@$k$ penalty under the current
-lexical gate. Replica and ScanNet oracle-map pilots preserve flat lexical
-quality while checking far fewer objects. Native ConceptGraphs runs and the
-complete LangSplat pipeline execution establish integration coverage but not a
-fair ranking. Next is calibrated pruning and predicted-map evaluation under a
-shared scene, query, geometry, and resource protocol.
+\method restores the original agent-centered idea as an explicit, auditable
+MCP protocol rather than a hidden lexical heuristic. Cursor Agent is a
+demonstrated interactive client and hierarchy constructor; a pinned local
+semantic model provides reproducible query evidence. Across identical
+five-scene inputs, hierarchy reduces lexical and semantic query context
+substantially, but the significant hit@3/MRR losses show that uncalibrated hard
+pruning is not yet quality preserving. Calibrated fallback preserves flat
+lexical R@1/R@3/R@5/MRR on the two frozen ScanNet protocols while reducing
+objects and context, and validated relations improve relational hit@1 without
+harmful top-1 changes. The next scientific step is an instruction-tuned,
+quality-constrained agent evaluation on predicted public maps under one shared
+scene/query/resource protocol.
 
 \balance
-{\fontsize{7}{7.5}\selectfont
-\bibliographystyle{plain}
+{\fontsize{6.3}{6.5}\selectfont
+\bibliographystyle{abbrv}
 \bibliography{refs}
 }
 

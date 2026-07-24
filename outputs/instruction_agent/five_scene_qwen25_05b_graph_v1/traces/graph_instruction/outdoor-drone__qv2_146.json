@@ -1,0 +1,207 @@
+{
+  "schema_version": "semanticsplat.instruction_agent_trace.v1",
+  "created_at": "2026-07-24T07:04:23.756940+00:00",
+  "query_id": "qv2_146",
+  "scene_id": "outdoor-drone",
+  "query": "Find grand piano",
+  "method": "graph_instruction",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "calls": [
+    {
+      "phase": "hierarchy_traversal",
+      "system_prompt": "Judge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.",
+      "user_prompts": [
+        "Query: Find grand piano\nCandidate C0: bridge and linear crossing Bridge, long roadway, transport corridor, and linear crossing views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C1: city shoreline and hills Distant city, shoreline, coastline, waterfront district, hills, and urban coast views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C2: fortress island landmark Fortress island, rocky island, lighthouse or tower, and close-up island views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C3: harbor and marina Harbor peninsula, marina, waterfront district, and pier/harbor cluster views.\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C4: open water and bay Open sea, bay water, surrounding water, and waterfront water views.\nRelevant? Answer exactly Yes or No."
+      ],
+      "rendered_prompts": [
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C0: bridge and linear crossing Bridge, long roadway, transport corridor, and linear crossing views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C1: city shoreline and hills Distant city, shoreline, coastline, waterfront district, hills, and urban coast views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C2: fortress island landmark Fortress island, rocky island, lighthouse or tower, and close-up island views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C3: harbor and marina Harbor peninsula, marina, waterfront district, and pier/harbor cluster views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C4: open water and bay Open sea, bay water, surrounding water, and waterfront water views.\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n"
+      ],
+      "raw_response": "C0,C3",
+      "candidate_scores": [
+        {
+          "alias": "C0",
+          "candidate_id": "manual_zone_outdoor_drone_bridge_crossing",
+          "relevance_probability": 0.95992523,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C3",
+          "candidate_id": "manual_zone_outdoor_drone_harbor_marina",
+          "relevance_probability": 0.93950397,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C4",
+          "candidate_id": "manual_zone_outdoor_drone_open_water_bay",
+          "relevance_probability": 0.92850173,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C1",
+          "candidate_id": "manual_zone_outdoor_drone_city_shoreline",
+          "relevance_probability": 0.92264318,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C2",
+          "candidate_id": "manual_zone_outdoor_drone_fortress_island",
+          "relevance_probability": 0.83544368,
+          "generated_decision": "Yes"
+        }
+      ],
+      "alias_map": {
+        "C0": "manual_zone_outdoor_drone_bridge_crossing",
+        "C1": "manual_zone_outdoor_drone_city_shoreline",
+        "C2": "manual_zone_outdoor_drone_fortress_island",
+        "C3": "manual_zone_outdoor_drone_harbor_marina",
+        "C4": "manual_zone_outdoor_drone_open_water_bay"
+      },
+      "ranked_ids": [
+        "manual_zone_outdoor_drone_bridge_crossing",
+        "manual_zone_outdoor_drone_harbor_marina"
+      ],
+      "input_tokens": 343,
+      "output_tokens": 5,
+      "total_tokens": 348,
+      "latency_ms": 2396.7178,
+      "token_method": "transformers_native:Qwen/Qwen2.5-0.5B-Instruct",
+      "valid_response": true,
+      "scoring_method": "instruction_yes_no_next_token_probability"
+    },
+    {
+      "phase": "view_grounding",
+      "system_prompt": "Judge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.",
+      "user_prompts": [
+        "Query: Find grand piano\nCandidate C0: v002: Aerial bay panorama with a waterfront area, modern buildings, water, distant city skyline, hills, and harbor infrastructure.; waterfront district; bay water; distant city and hills; large waterfront buildings; harbor edge or pier; bay water; distant city skyline; hills; small isl\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C1: v003: Aerial harbor view with a rocky peninsula or island, large waterfront building, cranes or industrial structures, sea water, and distant city.; harbor peninsula; industrial waterfront; open water; large waterfront building; rocky peninsula or island; cranes or port structures; sea\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C2: v004: High aerial panorama of a coastal city and marina, with dense urban area, shoreline, boats or harbor structures, and open water.; coastal city; marina or harbor; open water; city buildings; marina or boat area; shoreline; open water; distant hills; roads or waterfront lines; coas\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C3: v006: Blurred aerial view over a bay with a bridge or long linear structure, distant city, coastline, and water.; bay water; bridge or linear crossing; distant urban coast; bridge or long roadway; bay water; distant city; coastline; bright glare; long bridge or roadway; distant city co\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C4: v009: Aerial bay panorama with distant city, water, bridge or road lines, and a coastline stretching across the horizon.; bay water; distant city coastline; linear transport corridor; bay water; distant city; bridge or road lines; coastline; hills; bright reflection; distant city coast\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C5: v011: Aerial waterfront panorama with dense coastal city, marina or harbor area, open water, and distant hills.; coastal urban waterfront; harbor or marina; open bay water; city buildings; marina or harbor cluster; open water; shoreline; distant hills; roads or bridge lines; coastal ci\nRelevant? Answer exactly Yes or No.",
+        "Query: Find grand piano\nCandidate C6: v015: Blurred aerial view across a bay toward a distant city, bridge or linear water crossing, and surrounding hills.; blurred bay; distant urban shoreline; linear crossing area; bay water; distant city; bridge or roadway; hills; bright water reflection; distant city shoreline; bridge \nRelevant? Answer exactly Yes or No."
+      ],
+      "rendered_prompts": [
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C0: v002: Aerial bay panorama with a waterfront area, modern buildings, water, distant city skyline, hills, and harbor infrastructure.; waterfront district; bay water; distant city and hills; large waterfront buildings; harbor edge or pier; bay water; distant city skyline; hills; small isl\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C1: v003: Aerial harbor view with a rocky peninsula or island, large waterfront building, cranes or industrial structures, sea water, and distant city.; harbor peninsula; industrial waterfront; open water; large waterfront building; rocky peninsula or island; cranes or port structures; sea\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C2: v004: High aerial panorama of a coastal city and marina, with dense urban area, shoreline, boats or harbor structures, and open water.; coastal city; marina or harbor; open water; city buildings; marina or boat area; shoreline; open water; distant hills; roads or waterfront lines; coas\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C3: v006: Blurred aerial view over a bay with a bridge or long linear structure, distant city, coastline, and water.; bay water; bridge or linear crossing; distant urban coast; bridge or long roadway; bay water; distant city; coastline; bright glare; long bridge or roadway; distant city co\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C4: v009: Aerial bay panorama with distant city, water, bridge or road lines, and a coastline stretching across the horizon.; bay water; distant city coastline; linear transport corridor; bay water; distant city; bridge or road lines; coastline; hills; bright reflection; distant city coast\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C5: v011: Aerial waterfront panorama with dense coastal city, marina or harbor area, open water, and distant hills.; coastal urban waterfront; harbor or marina; open bay water; city buildings; marina or harbor cluster; open water; shoreline; distant hills; roads or bridge lines; coastal ci\nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nJudge scene-query relevance using semantic meaning and affordances. Answer exactly Yes or No.<|im_end|>\n<|im_start|>user\nQuery: Find grand piano\nCandidate C6: v015: Blurred aerial view across a bay toward a distant city, bridge or linear water crossing, and surrounding hills.; blurred bay; distant urban shoreline; linear crossing area; bay water; distant city; bridge or roadway; hills; bright water reflection; distant city shoreline; bridge \nRelevant? Answer exactly Yes or No.<|im_end|>\n<|im_start|>assistant\n"
+      ],
+      "raw_response": "C1,C4,C6",
+      "candidate_scores": [
+        {
+          "alias": "C1",
+          "candidate_id": "v003",
+          "relevance_probability": 0.98554891,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C4",
+          "candidate_id": "v009",
+          "relevance_probability": 0.98283511,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C6",
+          "candidate_id": "v015",
+          "relevance_probability": 0.97821665,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C3",
+          "candidate_id": "v006",
+          "relevance_probability": 0.97766727,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C5",
+          "candidate_id": "v011",
+          "relevance_probability": 0.97433192,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C0",
+          "candidate_id": "v002",
+          "relevance_probability": 0.97120351,
+          "generated_decision": "Yes"
+        },
+        {
+          "alias": "C2",
+          "candidate_id": "v004",
+          "relevance_probability": 0.96516019,
+          "generated_decision": "Yes"
+        }
+      ],
+      "alias_map": {
+        "C0": "v002",
+        "C1": "v003",
+        "C2": "v004",
+        "C3": "v006",
+        "C4": "v009",
+        "C5": "v011",
+        "C6": "v015"
+      },
+      "ranked_ids": [
+        "v003",
+        "v009",
+        "v015"
+      ],
+      "input_tokens": 782,
+      "output_tokens": 7,
+      "total_tokens": 789,
+      "latency_ms": 3048.2887,
+      "token_method": "transformers_native:Qwen/Qwen2.5-0.5B-Instruct",
+      "valid_response": true,
+      "scoring_method": "instruction_yes_no_next_token_probability"
+    }
+  ],
+  "result": {
+    "ranked_view_ids": [
+      "v003",
+      "v009",
+      "v015"
+    ],
+    "selected_view_id": "v003",
+    "found": true,
+    "selected_zone_ids": [
+      "manual_zone_outdoor_drone_bridge_crossing",
+      "manual_zone_outdoor_drone_harbor_marina"
+    ],
+    "candidate_view_ids": [
+      "v002",
+      "v003",
+      "v004",
+      "v006",
+      "v009",
+      "v011",
+      "v015"
+    ],
+    "views_checked": 7,
+    "response_valid": true,
+    "accounting": {
+      "model_call_count": 2,
+      "input_tokens": 1125,
+      "output_tokens": 12,
+      "total_tokens": 1137,
+      "latency_ms": 5445.0065
+    },
+    "quality": {
+      "eligible": false,
+      "expected_view_ids": [],
+      "hit_at_1": null,
+      "hit_at_3": null,
+      "reciprocal_rank": null
+    }
+  }
+}

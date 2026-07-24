@@ -55,6 +55,15 @@ class SearchMetrics:
     input_tokens: int = 0
     elapsed_ms: float = 0.0
     ranked_view_ids: list[str] = field(default_factory=list)
+    all_ranked_view_ids: list[str] = field(default_factory=list)
+    model_backend: str = "none"
+    model_name: str | None = None
+    model_call_count: int = 0
+    model_input_tokens: int = 0
+    model_output_tokens: int = 0
+    model_inference_ms: float = 0.0
+    model_token_method: str = "not_applicable"
+    process_rss_mb_observed: float | None = None
     warnings: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,6 +74,12 @@ def _top_ranked_views(scored: list[tuple[int, float, str]], *, k: int = 3) -> li
     """Return up to k view ids ordered by lexical score (overlap, ratio)."""
     ordered = sorted(scored, key=lambda item: (item[0], item[1]), reverse=True)
     return [view_id for overlap, _, view_id in ordered[:k] if overlap > 0]
+
+
+def _all_ranked_views(scored: list[tuple[int, float, str]]) -> list[str]:
+    """Return every positively scored view in stable lexical rank order."""
+    ordered = sorted(scored, key=lambda item: (item[0], item[1]), reverse=True)
+    return [view_id for overlap, _, view_id in ordered if overlap > 0]
 
 
 def _utc_now() -> str:
@@ -195,7 +210,8 @@ def simulate_flat_search(
                     best_object = str(obj.get("label"))
                     break
 
-    metrics.ranked_view_ids = _top_ranked_views(scored_views)
+    metrics.all_ranked_view_ids = _all_ranked_views(scored_views)
+    metrics.ranked_view_ids = metrics.all_ranked_view_ids[:3]
     if best_overlap > 0 and best_view:
         metrics.found = True
         metrics.selected_view_id = best_view
@@ -287,7 +303,8 @@ def simulate_graph_search(
         for child_id in reversed(chosen):
             stack.append(child_id)
 
-    metrics.ranked_view_ids = _top_ranked_views(scored_views)
+    metrics.all_ranked_view_ids = _all_ranked_views(scored_views)
+    metrics.ranked_view_ids = metrics.all_ranked_view_ids[:3]
     if best_overlap > 0 and best_view:
         metrics.found = True
         metrics.selected_view_id = best_view
