@@ -1,0 +1,1873 @@
+{
+  "schema_version": "semanticsplat.agent_semantic_benchmark_summary.v1",
+  "generated_at": "2026-07-23T04:29:23.523515+00:00",
+  "method_protocol_id": "mcp_hierarchical_semantic_traversal.v1",
+  "query_count": 150,
+  "quality_query_count": 125,
+  "negative_quality_status": "not_reported_no_independent_negative_gt",
+  "methods": {
+    "flat_lexical": {
+      "query_count": 150,
+      "quality": {
+        "denominator": 125,
+        "hit_at_1": 0.768,
+        "hit_at_3": 0.928,
+        "mrr": 0.845556,
+        "expected_object_hit": 0.648,
+        "expected_object_denominator": 125,
+        "expected_zone_view_hit": 0.768,
+        "expected_zone_denominator": 125,
+        "wrong_zone_view_rate": 0.232,
+        "wrong_room_rate": null,
+        "wrong_room_status": "unavailable_no_independent_room_gt"
+      },
+      "efficiency": {
+        "views_checked": 19.4,
+        "nodes_visited": 0.0,
+        "semantic_entries_scanned": 213.2,
+        "context_chars": 12701.4,
+        "input_tokens": 3168.2,
+        "elapsed_ms": 6.394378,
+        "model_call_count": 0.0,
+        "model_inference_ms": 0.0,
+        "process_rss_mb_observed": 395.848932
+      },
+      "accounting": {
+        "model_backend": "none",
+        "model_name": null,
+        "token_method": "tiktoken:cl100k_base_serialized_context",
+        "total_input_tokens": 475230,
+        "total_model_calls": 0
+      }
+    },
+    "graph_lexical": {
+      "query_count": 150,
+      "quality": {
+        "denominator": 125,
+        "hit_at_1": 0.68,
+        "hit_at_3": 0.808,
+        "mrr": 0.742,
+        "expected_object_hit": 0.632,
+        "expected_object_denominator": 125,
+        "expected_zone_view_hit": 0.68,
+        "expected_zone_denominator": 125,
+        "wrong_zone_view_rate": 0.32,
+        "wrong_room_rate": null,
+        "wrong_room_status": "unavailable_no_independent_room_gt"
+      },
+      "efficiency": {
+        "views_checked": 4.766667,
+        "nodes_visited": 12.76,
+        "semantic_entries_scanned": 53.173333,
+        "context_chars": 4084.82,
+        "input_tokens": 1014.26,
+        "elapsed_ms": 5.531237,
+        "model_call_count": 0.0,
+        "model_inference_ms": 0.0,
+        "process_rss_mb_observed": 395.849115
+      },
+      "accounting": {
+        "model_backend": "none",
+        "model_name": null,
+        "token_method": "tiktoken:cl100k_base_serialized_context",
+        "total_input_tokens": 152139,
+        "total_model_calls": 0
+      }
+    },
+    "flat_semantic_embedding": {
+      "query_count": 150,
+      "quality": {
+        "denominator": 125,
+        "hit_at_1": 0.68,
+        "hit_at_3": 0.928,
+        "mrr": 0.799552,
+        "expected_object_hit": 0.64,
+        "expected_object_denominator": 125,
+        "expected_zone_view_hit": 0.68,
+        "expected_zone_denominator": 125,
+        "wrong_zone_view_rate": 0.32,
+        "wrong_room_rate": null,
+        "wrong_room_status": "unavailable_no_independent_room_gt"
+      },
+      "efficiency": {
+        "views_checked": 19.4,
+        "nodes_visited": 0.0,
+        "semantic_entries_scanned": 213.2,
+        "context_chars": 13006.833333,
+        "input_tokens": 2321.393333,
+        "elapsed_ms": 872.421921,
+        "model_call_count": 3.0,
+        "model_inference_ms": 861.062426,
+        "process_rss_mb_observed": 397.521276
+      },
+      "accounting": {
+        "model_backend": "fastembed_onnx_cpu",
+        "model_name": "BAAI/bge-small-en-v1.5",
+        "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+        "total_input_tokens": 348209,
+        "total_model_calls": 450
+      }
+    },
+    "graph_semantic_embedding": {
+      "query_count": 150,
+      "quality": {
+        "denominator": 125,
+        "hit_at_1": 0.664,
+        "hit_at_3": 0.784,
+        "mrr": 0.717333,
+        "expected_object_hit": 0.624,
+        "expected_object_denominator": 125,
+        "expected_zone_view_hit": 0.664,
+        "expected_zone_denominator": 125,
+        "wrong_zone_view_rate": 0.336,
+        "wrong_room_rate": null,
+        "wrong_room_status": "unavailable_no_independent_room_gt"
+      },
+      "efficiency": {
+        "views_checked": 3.9,
+        "nodes_visited": 7.986667,
+        "semantic_entries_scanned": 42.74,
+        "context_chars": 7442.326667,
+        "input_tokens": 1566.966667,
+        "elapsed_ms": 364.190099,
+        "model_call_count": 8.246667,
+        "model_inference_ms": 353.239116,
+        "process_rss_mb_observed": 396.431901
+      },
+      "accounting": {
+        "model_backend": "fastembed_onnx_cpu",
+        "model_name": "BAAI/bge-small-en-v1.5",
+        "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+        "total_input_tokens": 235045,
+        "total_model_calls": 1237
+      }
+    }
+  },
+  "by_query_type": {
+    "attribute": {
+      "flat_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.76,
+          "hit_at_3": 1.0,
+          "mrr": 0.873333,
+          "expected_object_hit": 0.72,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.76,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.24,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12701.4,
+          "input_tokens": 3168.2,
+          "elapsed_ms": 6.381344,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 397.705312
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 79205,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.68,
+          "hit_at_3": 0.8,
+          "mrr": 0.75,
+          "expected_object_hit": 0.72,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.68,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.32,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.88,
+          "nodes_visited": 11.72,
+          "semantic_entries_scanned": 54.8,
+          "context_chars": 4147.36,
+          "input_tokens": 1030.6,
+          "elapsed_ms": 5.441112,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 397.705469
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 25765,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.6,
+          "hit_at_3": 0.92,
+          "mrr": 0.75,
+          "expected_object_hit": 0.6,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.6,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.4,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12993.96,
+          "input_tokens": 2319.24,
+          "elapsed_ms": 867.483088,
+          "model_call_count": 3.0,
+          "model_inference_ms": 856.304852,
+          "process_rss_mb_observed": 397.872656
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 57981,
+          "total_model_calls": 75
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.64,
+          "hit_at_3": 0.76,
+          "mrr": 0.686667,
+          "expected_object_hit": 0.68,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.64,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.36,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 3.6,
+          "nodes_visited": 7.2,
+          "semantic_entries_scanned": 39.44,
+          "context_chars": 7132.56,
+          "input_tokens": 1507.2,
+          "elapsed_ms": 347.80842,
+          "model_call_count": 8.0,
+          "model_inference_ms": 337.318868,
+          "process_rss_mb_observed": 397.799219
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 37680,
+          "total_model_calls": 200
+        }
+      }
+    },
+    "functional": {
+      "flat_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.64,
+          "hit_at_3": 0.72,
+          "mrr": 0.68,
+          "expected_object_hit": 0.44,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.64,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.36,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12701.4,
+          "input_tokens": 3168.2,
+          "elapsed_ms": 6.572964,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 399.323281
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 79205,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.48,
+          "hit_at_3": 0.64,
+          "mrr": 0.546667,
+          "expected_object_hit": 0.4,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.48,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.52,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.4,
+          "nodes_visited": 11.12,
+          "semantic_entries_scanned": 49.0,
+          "context_chars": 3676.24,
+          "input_tokens": 912.52,
+          "elapsed_ms": 4.889624,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 399.323281
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 22813,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.68,
+          "hit_at_3": 0.84,
+          "mrr": 0.777381,
+          "expected_object_hit": 0.52,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.68,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.32,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 13017.04,
+          "input_tokens": 2323.16,
+          "elapsed_ms": 878.037204,
+          "model_call_count": 3.0,
+          "model_inference_ms": 866.62314,
+          "process_rss_mb_observed": 399.361094
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 58079,
+          "total_model_calls": 75
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.6,
+          "hit_at_3": 0.8,
+          "mrr": 0.7,
+          "expected_object_hit": 0.44,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.6,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.4,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 5.12,
+          "nodes_visited": 8.92,
+          "semantic_entries_scanned": 56.52,
+          "context_chars": 8699.0,
+          "input_tokens": 1813.48,
+          "elapsed_ms": 421.32932,
+          "model_call_count": 9.12,
+          "model_inference_ms": 408.724176,
+          "process_rss_mb_observed": 399.361406
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 45337,
+          "total_model_calls": 228
+        }
+      }
+    },
+    "multi_hop": {
+      "flat_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.84,
+          "hit_at_3": 0.96,
+          "mrr": 0.897778,
+          "expected_object_hit": 0.8,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.84,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.16,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12701.4,
+          "input_tokens": 3168.2,
+          "elapsed_ms": 6.253564,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 399.065469
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 79205,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.8,
+          "hit_at_3": 0.92,
+          "mrr": 0.86,
+          "expected_object_hit": 0.8,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.8,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.2,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 5.28,
+          "nodes_visited": 14.8,
+          "semantic_entries_scanned": 58.92,
+          "context_chars": 4559.84,
+          "input_tokens": 1132.48,
+          "elapsed_ms": 6.0573,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 399.065469
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 28312,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.72,
+          "hit_at_3": 0.92,
+          "mrr": 0.822381,
+          "expected_object_hit": 0.64,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.72,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.28,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 13025.96,
+          "input_tokens": 2324.36,
+          "elapsed_ms": 835.15058,
+          "model_call_count": 3.0,
+          "model_inference_ms": 823.606708,
+          "process_rss_mb_observed": 399.124219
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 58109,
+          "total_model_calls": 75
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.8,
+          "hit_at_3": 0.84,
+          "mrr": 0.82,
+          "expected_object_hit": 0.68,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.8,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.2,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 2.76,
+          "nodes_visited": 6.28,
+          "semantic_entries_scanned": 29.88,
+          "context_chars": 5849.12,
+          "input_tokens": 1235.88,
+          "elapsed_ms": 281.566356,
+          "model_call_count": 6.6,
+          "model_inference_ms": 273.024368,
+          "process_rss_mb_observed": 399.095
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 30897,
+          "total_model_calls": 165
+        }
+      }
+    },
+    "negative": {
+      "flat_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 0,
+          "hit_at_1": null,
+          "hit_at_3": null,
+          "mrr": null,
+          "expected_object_hit": null,
+          "expected_object_denominator": 0,
+          "expected_zone_view_hit": null,
+          "expected_zone_denominator": 0,
+          "wrong_zone_view_rate": null,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12701.4,
+          "input_tokens": 3168.2,
+          "elapsed_ms": 6.3276,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 399.616719
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 79205,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 0,
+          "hit_at_1": null,
+          "hit_at_3": null,
+          "mrr": null,
+          "expected_object_hit": null,
+          "expected_object_denominator": 0,
+          "expected_zone_view_hit": null,
+          "expected_zone_denominator": 0,
+          "wrong_zone_view_rate": null,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.88,
+          "nodes_visited": 12.16,
+          "semantic_entries_scanned": 53.52,
+          "context_chars": 4054.16,
+          "input_tokens": 1005.96,
+          "elapsed_ms": 5.519644,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 399.616719
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 25149,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 0,
+          "hit_at_1": null,
+          "hit_at_3": null,
+          "mrr": null,
+          "expected_object_hit": null,
+          "expected_object_denominator": 0,
+          "expected_zone_view_hit": null,
+          "expected_zone_denominator": 0,
+          "wrong_zone_view_rate": null,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12986.04,
+          "input_tokens": 2318.08,
+          "elapsed_ms": 851.3681,
+          "model_call_count": 3.0,
+          "model_inference_ms": 840.118692,
+          "process_rss_mb_observed": 399.690469
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 57952,
+          "total_model_calls": 75
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 0,
+          "hit_at_1": null,
+          "hit_at_3": null,
+          "mrr": null,
+          "expected_object_hit": null,
+          "expected_object_denominator": 0,
+          "expected_zone_view_hit": null,
+          "expected_zone_denominator": 0,
+          "wrong_zone_view_rate": null,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.96,
+          "nodes_visited": 10.64,
+          "semantic_entries_scanned": 54.48,
+          "context_chars": 8910.0,
+          "input_tokens": 1868.04,
+          "elapsed_ms": 419.215,
+          "model_call_count": 10.08,
+          "model_inference_ms": 406.172,
+          "process_rss_mb_observed": 399.642187
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 46701,
+          "total_model_calls": 252
+        }
+      }
+    },
+    "relational": {
+      "flat_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.84,
+          "hit_at_3": 1.0,
+          "mrr": 0.92,
+          "expected_object_hit": 0.52,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.84,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.16,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12701.4,
+          "input_tokens": 3168.2,
+          "elapsed_ms": 6.300972,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 398.524375
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 79205,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.6,
+          "hit_at_3": 0.72,
+          "mrr": 0.653333,
+          "expected_object_hit": 0.4,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.6,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.4,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 5.44,
+          "nodes_visited": 15.28,
+          "semantic_entries_scanned": 61.2,
+          "context_chars": 4768.16,
+          "input_tokens": 1184.12,
+          "elapsed_ms": 6.39348,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 398.524531
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 29603,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.48,
+          "hit_at_3": 0.96,
+          "mrr": 0.688,
+          "expected_object_hit": 0.6,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.48,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.52,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 13013.0,
+          "input_tokens": 2322.52,
+          "elapsed_ms": 867.545864,
+          "model_call_count": 3.0,
+          "model_inference_ms": 856.11602,
+          "process_rss_mb_observed": 398.636094
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 58063,
+          "total_model_calls": 75
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.4,
+          "hit_at_3": 0.64,
+          "mrr": 0.5,
+          "expected_object_hit": 0.52,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.4,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.6,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.0,
+          "nodes_visited": 8.28,
+          "semantic_entries_scanned": 43.36,
+          "context_chars": 7956.44,
+          "input_tokens": 1685.28,
+          "elapsed_ms": 391.101336,
+          "model_call_count": 8.56,
+          "model_inference_ms": 379.585488,
+          "process_rss_mb_observed": 398.611094
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 42132,
+          "total_model_calls": 214
+        }
+      }
+    },
+    "simple_object": {
+      "flat_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.76,
+          "hit_at_3": 0.96,
+          "mrr": 0.856667,
+          "expected_object_hit": 0.76,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.76,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.24,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 12701.4,
+          "input_tokens": 3168.2,
+          "elapsed_ms": 6.529824,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 380.858438
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 79205,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.84,
+          "hit_at_3": 0.96,
+          "mrr": 0.9,
+          "expected_object_hit": 0.84,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.84,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.16,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 3.72,
+          "nodes_visited": 11.48,
+          "semantic_entries_scanned": 41.6,
+          "context_chars": 3303.16,
+          "input_tokens": 819.88,
+          "elapsed_ms": 4.88626,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 380.859219
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 20497,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.92,
+          "hit_at_3": 1.0,
+          "mrr": 0.96,
+          "expected_object_hit": 0.84,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.92,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.08,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 19.4,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 213.2,
+          "context_chars": 13005.0,
+          "input_tokens": 2321.0,
+          "elapsed_ms": 934.946692,
+          "model_call_count": 3.0,
+          "model_inference_ms": 923.605144,
+          "process_rss_mb_observed": 390.443125
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 58025,
+          "total_model_calls": 75
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 25,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.88,
+          "hit_at_3": 0.88,
+          "mrr": 0.88,
+          "expected_object_hit": 0.8,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.88,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.12,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 2.96,
+          "nodes_visited": 6.6,
+          "semantic_entries_scanned": 32.76,
+          "context_chars": 6106.84,
+          "input_tokens": 1291.92,
+          "elapsed_ms": 324.12016,
+          "model_call_count": 7.12,
+          "model_inference_ms": 314.609796,
+          "process_rss_mb_observed": 384.0825
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 32298,
+          "total_model_calls": 178
+        }
+      }
+    }
+  },
+  "by_scene": {
+    "ConferenceHall": {
+      "flat_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.76,
+          "hit_at_3": 0.92,
+          "mrr": 0.833333,
+          "expected_object_hit": 0.72,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.76,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.24,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 20.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 207.0,
+          "context_chars": 12465.0,
+          "input_tokens": 3110.0,
+          "elapsed_ms": 6.439083,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 335.388542
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 93300,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.64,
+          "hit_at_3": 0.84,
+          "mrr": 0.74,
+          "expected_object_hit": 0.68,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.64,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.36,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.066667,
+          "nodes_visited": 11.5,
+          "semantic_entries_scanned": 41.833333,
+          "context_chars": 3358.633333,
+          "input_tokens": 833.3,
+          "elapsed_ms": 4.811567,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 335.388932
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 24999,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.68,
+          "hit_at_3": 0.88,
+          "mrr": 0.781333,
+          "expected_object_hit": 0.76,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.68,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.32,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 20.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 207.0,
+          "context_chars": 12751.566667,
+          "input_tokens": 2307.733333,
+          "elapsed_ms": 697.96754,
+          "model_call_count": 3.0,
+          "model_inference_ms": 686.835093,
+          "process_rss_mb_observed": 339.721354
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 69232,
+          "total_model_calls": 90
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.68,
+          "hit_at_3": 0.88,
+          "mrr": 0.763333,
+          "expected_object_hit": 0.76,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.68,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.32,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.933333,
+          "nodes_visited": 8.766667,
+          "semantic_entries_scanned": 52.6,
+          "context_chars": 8579.566667,
+          "input_tokens": 1822.1,
+          "elapsed_ms": 414.667343,
+          "model_call_count": 9.433333,
+          "model_inference_ms": 402.120713,
+          "process_rss_mb_observed": 337.713021
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 54663,
+          "total_model_calls": 283
+        }
+      }
+    },
+    "Museume": {
+      "flat_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.72,
+          "hit_at_3": 0.92,
+          "mrr": 0.824444,
+          "expected_object_hit": 0.64,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.72,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.28,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 20.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 225.0,
+          "context_chars": 13516.0,
+          "input_tokens": 3371.0,
+          "elapsed_ms": 6.67182,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 352.575651
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 101130,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.8,
+          "hit_at_3": 0.88,
+          "mrr": 0.833333,
+          "expected_object_hit": 0.72,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.8,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.2,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.566667,
+          "nodes_visited": 14.466667,
+          "semantic_entries_scanned": 51.833333,
+          "context_chars": 4166.033333,
+          "input_tokens": 1033.366667,
+          "elapsed_ms": 5.88275,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 352.575911
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 31001,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.76,
+          "hit_at_3": 1.0,
+          "mrr": 0.866667,
+          "expected_object_hit": 0.6,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.76,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.24,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 20.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 225.0,
+          "context_chars": 13844.7,
+          "input_tokens": 2431.9,
+          "elapsed_ms": 754.339407,
+          "model_call_count": 3.0,
+          "model_inference_ms": 742.6274,
+          "process_rss_mb_observed": 352.792969
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 72957,
+          "total_model_calls": 90
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.92,
+          "hit_at_3": 0.92,
+          "mrr": 0.92,
+          "expected_object_hit": 0.8,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.92,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.08,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 3.533333,
+          "nodes_visited": 8.166667,
+          "semantic_entries_scanned": 40.366667,
+          "context_chars": 7501.8,
+          "input_tokens": 1551.466667,
+          "elapsed_ms": 339.93585,
+          "model_call_count": 8.466667,
+          "model_inference_ms": 328.97849,
+          "process_rss_mb_observed": 352.640755
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 46544,
+          "total_model_calls": 254
+        }
+      }
+    },
+    "Theater": {
+      "flat_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.92,
+          "hit_at_3": 0.92,
+          "mrr": 0.92,
+          "expected_object_hit": 0.76,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.92,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.08,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 20.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 226.0,
+          "context_chars": 13265.0,
+          "input_tokens": 3307.0,
+          "elapsed_ms": 6.43345,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 357.820443
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 99210,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.68,
+          "hit_at_3": 0.68,
+          "mrr": 0.68,
+          "expected_object_hit": 0.68,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.68,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.32,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.666667,
+          "nodes_visited": 10.633333,
+          "semantic_entries_scanned": 53.533333,
+          "context_chars": 3854.7,
+          "input_tokens": 957.133333,
+          "elapsed_ms": 4.834347,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 357.820443
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 28714,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.72,
+          "hit_at_3": 0.92,
+          "mrr": 0.826667,
+          "expected_object_hit": 0.68,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.72,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.28,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 20.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 226.0,
+          "context_chars": 13588.566667,
+          "input_tokens": 2424.966667,
+          "elapsed_ms": 751.72389,
+          "model_call_count": 3.0,
+          "model_inference_ms": 740.249593,
+          "process_rss_mb_observed": 357.946875
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 72749,
+          "total_model_calls": 90
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.44,
+          "hit_at_3": 0.52,
+          "mrr": 0.466667,
+          "expected_object_hit": 0.36,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.44,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.56,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 2.833333,
+          "nodes_visited": 4.9,
+          "semantic_entries_scanned": 29.666667,
+          "context_chars": 4516.4,
+          "input_tokens": 943.933333,
+          "elapsed_ms": 223.26878,
+          "model_call_count": 5.3,
+          "model_inference_ms": 216.781157,
+          "process_rss_mb_observed": 357.938021
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 28318,
+          "total_model_calls": 159
+        }
+      }
+    },
+    "outdoor-drone": {
+      "flat_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.72,
+          "hit_at_3": 0.96,
+          "mrr": 0.843333,
+          "expected_object_hit": 0.48,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.72,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.28,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 16.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 169.0,
+          "context_chars": 9795.0,
+          "input_tokens": 2444.0,
+          "elapsed_ms": 5.320077,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 470.80638
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 73320,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.72,
+          "hit_at_3": 0.84,
+          "mrr": 0.78,
+          "expected_object_hit": 0.48,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.72,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.28,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 3.966667,
+          "nodes_visited": 10.033333,
+          "semantic_entries_scanned": 42.0,
+          "context_chars": 3110.766667,
+          "input_tokens": 772.633333,
+          "elapsed_ms": 4.343377,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 470.80651
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 23179,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.52,
+          "hit_at_3": 0.92,
+          "mrr": 0.710714,
+          "expected_object_hit": 0.52,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.52,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.48,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 16.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 169.0,
+          "context_chars": 10065.666667,
+          "input_tokens": 1769.733333,
+          "elapsed_ms": 554.034923,
+          "model_call_count": 3.0,
+          "model_inference_ms": 544.764303,
+          "process_rss_mb_observed": 470.820703
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 53092,
+          "total_model_calls": 90
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.64,
+          "hit_at_3": 0.8,
+          "mrr": 0.706667,
+          "expected_object_hit": 0.56,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.64,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.36,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 3.433333,
+          "nodes_visited": 7.8,
+          "semantic_entries_scanned": 36.066667,
+          "context_chars": 5766.433333,
+          "input_tokens": 1212.8,
+          "elapsed_ms": 283.508957,
+          "model_call_count": 7.933333,
+          "model_inference_ms": 274.659267,
+          "process_rss_mb_observed": 470.811198
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 36384,
+          "total_model_calls": 238
+        }
+      }
+    },
+    "outdoor-street": {
+      "flat_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.72,
+          "hit_at_3": 0.92,
+          "mrr": 0.806667,
+          "expected_object_hit": 0.64,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.72,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.28,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 21.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 239.0,
+          "context_chars": 14466.0,
+          "input_tokens": 3609.0,
+          "elapsed_ms": 7.10746,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 462.653646
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 108270,
+          "total_model_calls": 0
+        }
+      },
+      "graph_lexical": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.56,
+          "hit_at_3": 0.8,
+          "mrr": 0.676667,
+          "expected_object_hit": 0.6,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.56,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.44,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 6.566667,
+          "nodes_visited": 17.166667,
+          "semantic_entries_scanned": 76.666667,
+          "context_chars": 5933.966667,
+          "input_tokens": 1474.866667,
+          "elapsed_ms": 7.784143,
+          "model_call_count": 0.0,
+          "model_inference_ms": 0.0,
+          "process_rss_mb_observed": 462.653776
+        },
+        "accounting": {
+          "model_backend": "none",
+          "model_name": null,
+          "token_method": "tiktoken:cl100k_base_serialized_context",
+          "total_input_tokens": 44246,
+          "total_model_calls": 0
+        }
+      },
+      "flat_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.72,
+          "hit_at_3": 0.92,
+          "mrr": 0.812381,
+          "expected_object_hit": 0.64,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.72,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.28,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 21.0,
+          "nodes_visited": 0.0,
+          "semantic_entries_scanned": 239.0,
+          "context_chars": 14783.666667,
+          "input_tokens": 2672.633333,
+          "elapsed_ms": 1604.043847,
+          "model_call_count": 3.0,
+          "model_inference_ms": 1590.83574,
+          "process_rss_mb_observed": 466.324479
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 80179,
+          "total_model_calls": 90
+        }
+      },
+      "graph_semantic_embedding": {
+        "query_count": 30,
+        "quality": {
+          "denominator": 25,
+          "hit_at_1": 0.64,
+          "hit_at_3": 0.8,
+          "mrr": 0.73,
+          "expected_object_hit": 0.64,
+          "expected_object_denominator": 25,
+          "expected_zone_view_hit": 0.64,
+          "expected_zone_denominator": 25,
+          "wrong_zone_view_rate": 0.36,
+          "wrong_room_rate": null,
+          "wrong_room_status": "unavailable_no_independent_room_gt"
+        },
+        "efficiency": {
+          "views_checked": 4.766667,
+          "nodes_visited": 10.3,
+          "semantic_entries_scanned": 55.0,
+          "context_chars": 10847.433333,
+          "input_tokens": 2304.533333,
+          "elapsed_ms": 559.569563,
+          "model_call_count": 10.1,
+          "model_inference_ms": 543.655953,
+          "process_rss_mb_observed": 463.05651
+        },
+        "accounting": {
+          "model_backend": "fastembed_onnx_cpu",
+          "model_name": "BAAI/bge-small-en-v1.5",
+          "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+          "total_input_tokens": 69136,
+          "total_model_calls": 303
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "lexical": {
+      "graph_method": "graph_lexical",
+      "flat_method": "flat_lexical",
+      "efficiency": {
+        "views_checked": {
+          "graph_mean": 4.766667,
+          "flat_mean": 19.4,
+          "ratio_of_means_reduction_pct": 75.429553,
+          "mean_per_query_reduction_pct": 75.487698,
+          "mean_per_query_reduction_ci95": [
+            73.153155,
+            77.694494
+          ]
+        },
+        "context_chars": {
+          "graph_mean": 4084.82,
+          "flat_mean": 12701.4,
+          "ratio_of_means_reduction_pct": 67.839608,
+          "mean_per_query_reduction_pct": 68.078904,
+          "mean_per_query_reduction_ci95": [
+            65.163116,
+            70.893714
+          ]
+        },
+        "input_tokens": {
+          "graph_mean": 1014.26,
+          "flat_mean": 3168.2,
+          "ratio_of_means_reduction_pct": 67.986238,
+          "mean_per_query_reduction_pct": 68.225742,
+          "mean_per_query_reduction_ci95": [
+            65.255815,
+            71.032711
+          ]
+        },
+        "elapsed_ms": {
+          "graph_mean": 5.531237,
+          "flat_mean": 6.394378,
+          "ratio_of_means_reduction_pct": 13.498441,
+          "mean_per_query_reduction_pct": 13.869247,
+          "mean_per_query_reduction_ci95": [
+            6.228541,
+            21.267452
+          ]
+        }
+      },
+      "quality": {
+        "denominator": 125,
+        "hit_at_1": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.088,
+          "graph_minus_flat_ci95": [
+            -0.184,
+            0.008
+          ]
+        },
+        "hit_at_3": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.12,
+          "graph_minus_flat_ci95": [
+            -0.184,
+            -0.056
+          ]
+        },
+        "reciprocal_rank": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.103556,
+          "graph_minus_flat_ci95": [
+            -0.173556,
+            -0.03355
+          ]
+        },
+        "expected_object_hit": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.016,
+          "graph_minus_flat_ci95": [
+            -0.096,
+            0.064
+          ]
+        },
+        "expected_zone_view_hit": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.088,
+          "graph_minus_flat_ci95": [
+            -0.184,
+            0.008
+          ]
+        }
+      }
+    },
+    "semantic": {
+      "graph_method": "graph_semantic_embedding",
+      "flat_method": "flat_semantic_embedding",
+      "efficiency": {
+        "views_checked": {
+          "graph_mean": 3.9,
+          "flat_mean": 19.4,
+          "ratio_of_means_reduction_pct": 79.896907,
+          "mean_per_query_reduction_pct": 79.868651,
+          "mean_per_query_reduction_ci95": [
+            77.878155,
+            81.791409
+          ]
+        },
+        "context_chars": {
+          "graph_mean": 7442.326667,
+          "flat_mean": 13006.833333,
+          "ratio_of_means_reduction_pct": 42.78141,
+          "mean_per_query_reduction_pct": 42.934101,
+          "mean_per_query_reduction_ci95": [
+            38.110409,
+            47.845859
+          ]
+        },
+        "input_tokens": {
+          "graph_mean": 1566.966667,
+          "flat_mean": 2321.393333,
+          "ratio_of_means_reduction_pct": 32.498873,
+          "mean_per_query_reduction_pct": 32.726335,
+          "mean_per_query_reduction_ci95": [
+            27.108966,
+            38.211189
+          ]
+        },
+        "elapsed_ms": {
+          "graph_mean": 364.190099,
+          "flat_mean": 872.421921,
+          "ratio_of_means_reduction_pct": 58.255279,
+          "mean_per_query_reduction_pct": 56.026732,
+          "mean_per_query_reduction_ci95": [
+            52.154643,
+            59.7741
+          ]
+        }
+      },
+      "quality": {
+        "denominator": 125,
+        "hit_at_1": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.016,
+          "graph_minus_flat_ci95": [
+            -0.096,
+            0.064
+          ]
+        },
+        "hit_at_3": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.144,
+          "graph_minus_flat_ci95": [
+            -0.224,
+            -0.072
+          ]
+        },
+        "reciprocal_rank": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.082219,
+          "graph_minus_flat_ci95": [
+            -0.150344,
+            -0.016475
+          ]
+        },
+        "expected_object_hit": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.016,
+          "graph_minus_flat_ci95": [
+            -0.088,
+            0.056
+          ]
+        },
+        "expected_zone_view_hit": {
+          "denominator": 125,
+          "graph_minus_flat_mean": -0.016,
+          "graph_minus_flat_ci95": [
+            -0.096,
+            0.064
+          ]
+        }
+      }
+    }
+  },
+  "local_model": {
+    "model_name": "BAAI/bge-small-en-v1.5",
+    "backend": "fastembed_onnx_cpu",
+    "token_method": "fastembed_native_tokenizer:BAAI/bge-small-en-v1.5",
+    "cache_dir": "C:\\GitProjects\\beyond-proximity\\.cache\\fastembed",
+    "cache_fingerprint_sha256": "9b2f4ad063ef6e6cf45f6620cc7fd04177a6ea052cc83905b20ed57b4b47dc8d",
+    "load_seconds": 9.458852,
+    "warmup_seconds": 0.005806,
+    "threads": 4,
+    "device": "cpu",
+    "process_rss_after_model_load_mb": 212.878906,
+    "peak_observed_process_rss_mb": 470.996094,
+    "memory_measurement": "psutil process RSS observed after each method; not per-method attribution"
+  },
+  "construction_and_load_cost": {
+    "scene_bundle_load_seconds": 0.333701,
+    "model_load_seconds": 9.458852,
+    "model_warmup_seconds": 0.005806,
+    "excluded_from_per_query_metrics": true
+  },
+  "bootstrap": {
+    "samples": 10000,
+    "seed": 20260723,
+    "method": "paired_query_resampling_percentile_95"
+  }
+}
