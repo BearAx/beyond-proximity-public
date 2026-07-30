@@ -78,11 +78,10 @@ def render_five_scene_summary(summary: dict, out_dir: Path) -> None:
     quality = summary.get("quality", {})
     n_gt = summary.get("gt_query_count", 0)
 
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    w = 0.38
+    fig, axes = plt.subplots(1, 2, figsize=(5.05, 2.15))
 
-    # Normalize the cost panel to flat = 1.0 so views/context/runtime share a scale.
-    labels = ["Views", "Est. context\ntokens", "Runtime"]
+    # Paired dumbbells preserve the flat-vs-graph relationship without bars.
+    labels = ["Views", "Context tokens", "Runtime"]
     flat_raw = [
         averages.get("flat_views_checked", 0),
         averages.get("flat_input_tokens", 0),
@@ -94,37 +93,59 @@ def render_five_scene_summary(summary: dict, out_dir: Path) -> None:
         averages.get("graph_elapsed_ms", 0),
     ]
     graph_norm = [g / f if f else 0 for f, g in zip(flat_raw, graph_raw)]
-    x = list(range(len(labels)))
-    axes[0].bar([i - w / 2 for i in x], [1.0] * len(x), width=w, label="Flat", color=FLAT_C)
-    gb = axes[0].bar([i + w / 2 for i in x], graph_norm, width=w, label="Graph", color=GRAPH_C)
-    for b, gn in zip(gb, graph_norm):
-        axes[0].annotate(f"{gn*100:.0f}%", (b.get_x() + b.get_width() / 2, b.get_height()),
-                         textcoords="offset points", xytext=(0, 2), ha="center", fontsize=7.5, color=GRAPH_C)
-    axes[0].set_xticks(x, labels)
-    axes[0].set_ylim(0, 1.18)
-    axes[0].set_ylabel("Cost relative to flat")
-    axes[0].set_title("(a) Average cost (lower is better)")
-    axes[0].legend(ncol=2, loc="upper right")
-    _grid_y(axes[0])
+    y = list(range(len(labels)))[::-1]
+    for row, ratio in zip(y, graph_norm):
+        axes[0].hlines(row, ratio, 1.0, color="#cbd5e1", linewidth=2.4)
+    axes[0].scatter([1.0] * len(y), y, s=48, color=FLAT_C, label="Flat", zorder=3)
+    axes[0].scatter(graph_norm, y, s=48, color=GRAPH_C, label="Graph", zorder=3)
+    for row, ratio in zip(y, graph_norm):
+        axes[0].text(
+            (ratio + 1.0) / 2,
+            row + 0.13,
+            f"{(1.0 - ratio) * 100:.1f}% less",
+            ha="center",
+            va="bottom",
+            fontsize=8.0,
+            color="#475467",
+        )
+    axes[0].set_yticks(y, labels)
+    axes[0].set_xlim(0.15, 1.07)
+    axes[0].set_ylim(-0.45, 2.45)
+    axes[0].set_xlabel("Cost / flat (lower is better)")
+    axes[0].set_title("(a) Cost", loc="left")
+    axes[0].grid(axis="x", alpha=0.6)
+    axes[0].grid(axis="y", visible=False)
 
     q_labels = ["hit@1", "hit@3"]
     f_vals = [quality.get("hit_at_1_flat", 0), quality.get("hit_at_3_flat", 0)]
     g_vals = [quality.get("hit_at_1_graph", 0), quality.get("hit_at_3_graph", 0)]
-    xq = list(range(len(q_labels)))
-    b1 = axes[1].bar([i - w / 2 for i in xq], f_vals, width=w, label="Flat", color=FLAT_C)
-    b2 = axes[1].bar([i + w / 2 for i in xq], g_vals, width=w, label="Graph", color=GRAPH_C)
-    for bars in (b1, b2):
-        for b in bars:
-            axes[1].annotate(f"{b.get_height():.3f}", (b.get_x() + b.get_width() / 2, b.get_height()),
-                             textcoords="offset points", xytext=(0, 2), ha="center", fontsize=7)
-    axes[1].set_xticks(xq, q_labels)
-    axes[1].set_ylim(0, 1.15)
-    axes[1].set_ylabel("Accuracy")
-    axes[1].set_title(f"(b) Quality (n={n_gt} GT queries)")
-    axes[1].legend(ncol=2, loc="upper center")
-    _grid_y(axes[1])
+    yq = [1, 0]
+    for row, flat_value, graph_value in zip(yq, f_vals, g_vals):
+        axes[1].hlines(row, graph_value, flat_value, color="#cbd5e1", linewidth=2.4)
+        axes[1].text(graph_value - 0.012, row + 0.13, f"{graph_value:.3f}",
+                     ha="center", va="bottom", fontsize=8.2, color=GRAPH_C)
+        axes[1].text(flat_value + 0.012, row + 0.13, f"{flat_value:.3f}",
+                     ha="center", va="bottom", fontsize=8.2, color=FLAT_C)
+    axes[1].scatter(f_vals, yq, s=52, color=FLAT_C, label="Flat", zorder=3)
+    axes[1].scatter(g_vals, yq, s=52, color=GRAPH_C, label="Graph", zorder=3)
+    axes[1].set_yticks(yq, q_labels)
+    axes[1].set_xlim(0.62, 0.97)
+    axes[1].set_ylim(-0.45, 1.45)
+    axes[1].set_xlabel("Verified-view hit rate")
+    axes[1].set_title(f"(b) Quality ($n={n_gt}$)", loc="left")
+    axes[1].grid(axis="x", alpha=0.6)
+    axes[1].grid(axis="y", visible=False)
 
-    fig.tight_layout()
+    handles, legend_labels = axes[0].get_legend_handles_labels()
+    fig.legend(
+        handles,
+        legend_labels,
+        ncol=2,
+        frameon=False,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.0),
+    )
+    fig.subplots_adjust(left=0.12, right=0.99, bottom=0.25, top=0.72, wspace=0.58)
     _save(fig, out_dir / "fig_five_scene_summary.pdf")
     _save(fig, out_dir / "fig_five_scene_summary.png")
     plt.close(fig)

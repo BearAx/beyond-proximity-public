@@ -1,6 +1,39 @@
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
 
+const readPath = (value, path) => path.split('.').reduce(
+  (current, key) => (current == null ? undefined : current[key]),
+  value,
+);
+
+const formatMetric = (value, format) => {
+  if (typeof value !== 'number') return String(value ?? '');
+  if (format === 'percent') return `${value.toFixed(1)}%`;
+  if (format === 'integer') return Math.round(value).toLocaleString('en-US');
+  if (format === 'decimal-1') return value.toFixed(1);
+  if (format === 'decimal-2') return value.toFixed(2);
+  if (format === 'decimal-3') return value.toFixed(3);
+  if (format === 'seconds') return `${(value / 1000).toFixed(2)} s`;
+  return value.toLocaleString('en-US');
+};
+
+fetch('data/evidence-summary.json')
+  .then((response) => {
+    if (!response.ok) throw new Error(`Evidence summary returned ${response.status}`);
+    return response.json();
+  })
+  .then((evidence) => {
+    document.querySelectorAll('[data-metric]').forEach((element) => {
+      const value = readPath(evidence, element.dataset.metric);
+      if (value !== undefined && value !== null) {
+        element.textContent = formatMetric(value, element.dataset.format);
+      }
+    });
+  })
+  .catch((error) => {
+    console.warn('Using checked-in metric fallbacks:', error);
+  });
+
 navToggle?.addEventListener('click', () => {
   const open = siteNav.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', String(open));

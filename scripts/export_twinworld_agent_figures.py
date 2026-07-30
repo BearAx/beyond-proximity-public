@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from io import BytesIO
 import json
 from pathlib import Path
 
@@ -13,6 +14,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
+from matplotlib.text import Text
+from matplotlib.transforms import Bbox
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,12 +29,12 @@ plt.rcParams.update(
     {
         "font.family": "serif",
         "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
-        "font.size": 7.5,
-        "axes.titlesize": 8.5,
-        "axes.labelsize": 7.5,
-        "xtick.labelsize": 7,
-        "ytick.labelsize": 7,
-        "legend.fontsize": 6.8,
+        "font.size": 9.0,
+        "axes.titlesize": 9.4,
+        "axes.labelsize": 8.7,
+        "xtick.labelsize": 8.2,
+        "ytick.labelsize": 8.2,
+        "legend.fontsize": 8.0,
     }
 )
 
@@ -42,8 +45,24 @@ def read_json(path: Path) -> dict:
 
 def finish(fig: plt.Figure, stem: Path) -> None:
     stem.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight")
-    fig.savefig(stem.with_suffix(".png"), dpi=240, bbox_inches="tight")
+    targets = (
+        (stem.with_suffix(".pdf"), "pdf", {"metadata": {"CreationDate": None}}),
+        (stem.with_suffix(".png"), "png", {"dpi": 240}),
+    )
+    for target, file_format, options in targets:
+        buffer = BytesIO()
+        fig.savefig(
+            buffer,
+            format=file_format,
+            bbox_inches="tight",
+            **options,
+        )
+        rendered = buffer.getvalue()
+        if target.exists() and target.read_bytes() == rendered:
+            continue
+        temporary = target.with_name(f"{target.name}.tmp")
+        temporary.write_bytes(rendered)
+        temporary.replace(target)
     plt.close(fig)
 
 
@@ -53,19 +72,258 @@ def annotate(
     *,
     digits: int = 2,
     skip_indices: frozenset[int] = frozenset(),
-) -> None:
+    font_size: float = 6.6,
+    inside: bool = False,
+) -> list[Text]:
+    labels = []
     for index, bar in enumerate(bars):
         if index in skip_indices:
             continue
         value = bar.get_height()
-        ax.text(
+        y = value * 0.92 if inside else value
+        labels.append(
+            ax.text(
             bar.get_x() + bar.get_width() / 2,
-            value,
+            y,
             f"{value:.{digits}f}",
             ha="center",
-            va="bottom",
-            fontsize=6.8,
+            va="top" if inside else "bottom",
+            fontsize=font_size,
+            color="white" if inside else "#111827",
+            fontweight="bold" if inside else "normal",
+            clip_on=False,
+            )
         )
+    return labels
+
+
+def panel_title(
+    ax: plt.Axes,
+    label: str,
+    title: str,
+    *,
+    y: float = 1.08,
+) -> None:
+    ax.text(
+        0.0,
+        y,
+        rf"$\mathbf{{({label})}}$ {title}",
+        transform=ax.transAxes,
+        ha="left",
+        va="bottom",
+        fontsize=8.8,
+    )
+
+
+def style_axes(axes) -> None:
+    for ax in axes:
+        ax.spines[["top", "right"]].set_visible(False)
+        ax.grid(axis="y", color="#e4e7ec", linewidth=0.6)
+        ax.set_axisbelow(True)
+
+
+def assert_no_annotation_overlap(
+    fig: plt.Figure,
+    labels: list[Text],
+    *,
+    context: str,
+) -> None:
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    boxes: list[tuple[str, Bbox]] = [
+        (label.get_text(), label.get_window_extent(renderer).expanded(1.04, 1.08))
+        for label in labels
+    ]
+    overlaps = []
+    for index, (left_text, left_box) in enumerate(boxes):
+        for right_text, right_box in boxes[index + 1 :]:
+            if left_box.overlaps(right_box):
+                overlaps.append(f"{left_text!r} with {right_text!r}")
+    if overlaps:
+        raise RuntimeError(
+            f"{context} has overlapping value labels: {', '.join(overlaps)}"
+        )
+
+
+def assert_box_text_contained(
+    fig: plt.Figure,
+    pairs: list[tuple[FancyBboxPatch, Text]],
+) -> None:
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    failures = []
+    for patch, label in pairs:
+        box_bounds = patch.get_window_extent(renderer)
+        text_bounds = label.get_window_extent(renderer)
+        inset = 2.0
+        contained = (
+            text_bounds.x0 >= box_bounds.x0 + inset
+            and text_bounds.x1 <= box_bounds.x1 - inset
+            and text_bounds.y0 >= box_bounds.y0 + inset
+            and text_bounds.y1 <= box_bounds.y1 - inset
+        )
+        if not contained:
+            failures.append(label.get_text().replace("\n", " / "))
+    if failures:
+        raise RuntimeError(
+            "Workflow box text exceeds its bounds: " + ", ".join(failures)
+        )
+
+
+def wilson_interval(
+    proportion: float,
+    denominator: int = 125,
+    z_score: float = 1.96,
+) -> tuple[float, float]:
+    z_squared = z_score**2
+    scale = 1.0 + z_squared / denominator
+    center = (proportion + z_squared / (2.0 * denominator)) / scale
+    radius = (
+        z_score
+        * np.sqrt(
+            proportion * (1.0 - proportion) / denominator
+            + z_squared / (4.0 * denominator**2)
+        )
+        / scale
+    )
+    return center - radius, center + radius
+
+
+def quality_range_panel(
+    ax: plt.Axes,
+    method_labels: tuple[str, ...],
+    quality: np.ndarray,
+    *,
+    panel_label: str,
+    title: str = "Retrieval quality",
+    include_mrr: bool = True,
+) -> list[Text]:
+    metrics = (("hit@1", BLUE, "o"), ("hit@3", GREEN, "s"))
+    rows = np.arange(len(method_labels))[::-1]
+    labels: list[Text] = []
+    for row, values in zip(rows, quality, strict=True):
+        ax.plot(
+            values[:2],
+            (row + 0.10, row + 0.10),
+            color="#cbd5e1",
+            linewidth=2.2,
+            solid_capstyle="round",
+            zorder=1,
+        )
+    for metric_index, (name, color, marker) in enumerate(metrics):
+        values = quality[:, metric_index]
+        y_values = rows + 0.10
+        intervals = [wilson_interval(float(value)) for value in values]
+        lower = values - np.asarray([item[0] for item in intervals])
+        upper = np.asarray([item[1] for item in intervals]) - values
+        x_error = np.vstack((lower, upper))
+        ax.errorbar(
+            values,
+            y_values,
+            xerr=x_error,
+            fmt=marker,
+            color=color,
+            ecolor=color,
+            elinewidth=0.9,
+            capsize=2.0,
+            markersize=5.8,
+            markeredgecolor="white",
+            markeredgewidth=0.45,
+            label=name,
+            zorder=3,
+        )
+    if include_mrr:
+        mrr_values = quality[:, 2]
+        ax.scatter(
+            mrr_values,
+            rows - 0.10,
+            marker="D",
+            s=27,
+            color=ORANGE,
+            edgecolor="white",
+            linewidth=0.45,
+            label="MRR",
+            zorder=3,
+        )
+    ax.axvline(1.025, color="#d0d5dd", linewidth=0.8)
+    for row, values in zip(rows, quality, strict=True):
+        exact = (
+            f"{values[0]:.2f} / {values[1]:.2f} / {values[2]:.2f}"
+            if include_mrr
+            else f"{values[0]:.2f} / {values[1]:.2f}"
+        )
+        labels.append(
+            ax.text(
+                1.17,
+                row,
+                exact,
+                ha="center",
+                va="center",
+                fontsize=8.4,
+                color="#111827",
+            )
+        )
+    ax.set_xlim(0.25, 1.34)
+    ax.set_ylim(-0.45, len(method_labels) - 0.55)
+    ax.set_yticks(rows, method_labels)
+    ax.set_xticks((0.25, 0.50, 0.75, 1.00))
+    ax.set_xlabel("Score on 125 labeled queries; whiskers show 95% intervals")
+    ax.grid(axis="x", color="#e4e7ec", linewidth=0.65)
+    ax.set_axisbelow(True)
+    ax.spines[["top", "right", "left"]].set_visible(False)
+    ax.tick_params(axis="y", length=0)
+    panel_title(ax, panel_label, title)
+    return labels
+
+
+def categorical_dot_panel(
+    ax: plt.Axes,
+    method_labels: tuple[str, ...],
+    values: list[float] | np.ndarray,
+    colors: tuple[str, ...],
+    *,
+    panel_label: str,
+    title: str,
+    formatter,
+    log_scale: bool = False,
+    y_label: str | None = None,
+) -> list[Text]:
+    x_values = np.arange(len(method_labels))
+    labels: list[Text] = []
+    ax.plot(x_values, values, color="#d0d5dd", linewidth=1.0, zorder=1)
+    for x_value, value, color in zip(x_values, values, colors, strict=True):
+        ax.scatter(
+            x_value,
+            value,
+            s=58,
+            color=color,
+            edgecolor="white",
+            linewidth=0.6,
+            zorder=3,
+        )
+        labels.append(
+            ax.annotate(
+                formatter(value),
+                (x_value, value),
+                xytext=(0, 7),
+                textcoords="offset points",
+                ha="center",
+                va="bottom",
+                fontsize=8.4,
+                color="#111827",
+            )
+        )
+    if log_scale:
+        ax.set_yscale("log")
+    ax.set_xticks(x_values, method_labels)
+    ax.set_xlim(-0.45, len(method_labels) - 0.55)
+    if y_label:
+        ax.set_ylabel(y_label)
+    ax.grid(axis="y", color="#e4e7ec", linewidth=0.65)
+    ax.set_axisbelow(True)
+    ax.spines[["top", "right"]].set_visible(False)
+    panel_title(ax, panel_label, title)
+    return labels
 
 
 def instruction_figure(agent: dict, controls: dict, output: Path) -> None:
@@ -98,48 +356,94 @@ def instruction_figure(agent: dict, controls: dict, output: Path) -> None:
             tokens.append(value["mean_input_tokens"])
             latency.append(value["mean_latency_ms"])
 
-    fig, axes = plt.subplots(1, 3, figsize=(5.2, 2.3))
-    x = np.arange(3)
-    width = 0.24
     quality_matrix = np.asarray(quality)
-    for index, (metric, color) in enumerate(
-        zip(("hit@1", "hit@3", "MRR"), (BLUE, GREEN, ORANGE), strict=True)
-    ):
-        bars = axes[0].bar(
-            x + (index - 1) * width,
-            quality_matrix[:, index],
-            width,
-            color=color,
-            label=metric,
-        )
-        annotate(axes[0], bars, digits=2)
-    axes[0].set_xticks(x, [value[0] for value in methods])
-    axes[0].set_ylim(0, 1.12)
-    axes[0].set_ylabel("Quality (125 labeled queries)")
-    axes[0].legend(
+    fig = plt.figure(figsize=(5.2, 4.15))
+    grid = fig.add_gridspec(2, 3, height_ratios=(1.55, 1.0))
+    quality_ax = fig.add_subplot(grid[0, :])
+    cost_axes = [fig.add_subplot(grid[1, index]) for index in range(3)]
+    method_labels = tuple(value[0].replace("\n", " ") for value in methods)
+    value_labels = quality_range_panel(
+        quality_ax,
+        method_labels,
+        quality_matrix,
+        panel_label="a",
+        title="Quality with 95% hit-rate intervals",
+    )
+    quality_ax.legend(
+        handles=[
+            plt.Line2D(
+                [], [], marker="o", color=BLUE, linestyle="none",
+                markeredgecolor="white", label="hit@1",
+            ),
+            plt.Line2D(
+                [], [], marker="s", color=GREEN, linestyle="none",
+                markeredgecolor="white", label="hit@3",
+            ),
+            plt.Line2D(
+                [], [], marker="D", color=ORANGE, linestyle="none",
+                markeredgecolor="white", label="MRR",
+            ),
+        ],
         frameon=False,
+        loc="upper right",
+        bbox_to_anchor=(1.0, 1.20),
         ncols=3,
-        loc="upper center",
-        bbox_to_anchor=(0.5, 1.16),
+        columnspacing=1.0,
+        handletextpad=0.35,
     )
 
-    bars = axes[1].bar(x, views, color=PALETTE)
-    annotate(axes[1], bars, digits=1)
-    axes[1].set_xticks(x, [value[0] for value in methods])
-    axes[1].set_ylabel("Mean views checked")
-    axes[1].set_ylim(0, max(views) * 1.22)
-
-    bars = axes[2].bar(x, tokens, color=PALETTE)
-    annotate(axes[2], bars, digits=0)
-    axes[2].set_xticks(x, [value[0] for value in methods])
-    axes[2].set_ylabel("Native / measured input tokens")
-    axes[2].set_ylim(0, max(tokens) * 1.22)
-    for ax in axes:
-        ax.spines[["top", "right"]].set_visible(False)
-        ax.grid(axis="y", color="#e4e7ec", linewidth=0.6)
-        ax.set_axisbelow(True)
-    fig.suptitle("Complete 150-query instruction-agent evaluation", fontsize=8.8, y=1.03)
-    fig.tight_layout()
+    short_labels = ("Lexical", "BGE", "Qwen")
+    value_labels.extend(
+        categorical_dot_panel(
+            cost_axes[0],
+            short_labels,
+            views,
+            PALETTE,
+            panel_label="b",
+            title=r"Views / query $\downarrow$",
+            formatter=lambda value: f"{value:.1f}",
+        )
+    )
+    value_labels.extend(
+        categorical_dot_panel(
+            cost_axes[1],
+            short_labels,
+            tokens,
+            PALETTE,
+            panel_label="c",
+            title=r"Input tokens / query $\downarrow$",
+            formatter=lambda value: f"{value:,.0f}",
+        )
+    )
+    value_labels.extend(
+        categorical_dot_panel(
+            cost_axes[2],
+            short_labels,
+            latency,
+            PALETTE,
+            panel_label="d",
+            title=r"CPU ms / query $\downarrow$",
+            formatter=lambda value: f"{value:,.0f}",
+            log_scale=True,
+            y_label="log scale",
+        )
+    )
+    cost_axes[0].set_ylim(0, max(views) * 1.28)
+    cost_axes[1].set_ylim(0, max(tokens) * 1.28)
+    cost_axes[2].set_ylim(min(latency) / 2.2, max(latency) * 2.2)
+    fig.subplots_adjust(
+        left=0.15,
+        right=0.98,
+        bottom=0.12,
+        top=0.88,
+        hspace=0.66,
+        wspace=0.54,
+    )
+    assert_no_annotation_overlap(
+        fig,
+        value_labels,
+        context="Instruction-model stress-test figure",
+    )
     finish(fig, output)
 
 
@@ -153,56 +457,108 @@ def hierarchy_figure(raw: dict, output: Path) -> None:
     views = [value["mean_views_checked"] for value in values]
     structure = raw["structure"]
 
-    fig, axes = plt.subplots(1, 3, figsize=(5.2, 2.3))
-    x = np.arange(3)
-    width = 0.24
-    for index, (metric, color) in enumerate(
-        zip(("hit@1", "hit@3", "MRR"), (BLUE, GREEN, ORANGE), strict=True)
-    ):
-        bars = axes[0].bar(
-            x + (index - 1) * width,
-            quality[:, index],
-            width,
-            color=color,
-            label=metric,
-        )
-        annotate(axes[0], bars, digits=2)
-    axes[0].set_xticks(x, labels)
-    axes[0].set_ylim(0, 1.12)
-    axes[0].set_ylabel("Quality (125 labeled queries)")
-    axes[0].legend(
+    fig = plt.figure(figsize=(5.2, 3.35))
+    grid = fig.add_gridspec(2, 2, height_ratios=(1.2, 1.0), width_ratios=(1.1, 1.0))
+    quality_ax = fig.add_subplot(grid[0, :])
+    views_ax = fig.add_subplot(grid[1, 0])
+    structure_ax = fig.add_subplot(grid[1, 1])
+    method_labels = tuple(label.replace("\n", " ") for label in labels)
+    value_labels = quality_range_panel(
+        quality_ax,
+        method_labels,
+        quality,
+        panel_label="a",
+        title="Retrieval quality with 95% hit-rate intervals",
+    )
+    quality_ax.legend(
+        handles=[
+            plt.Line2D(
+                [], [], marker="o", color=BLUE, linestyle="none",
+                markeredgecolor="white", label="hit@1",
+            ),
+            plt.Line2D(
+                [], [], marker="s", color=GREEN, linestyle="none",
+                markeredgecolor="white", label="hit@3",
+            ),
+            plt.Line2D(
+                [], [], marker="D", color=ORANGE, linestyle="none",
+                markeredgecolor="white", label="MRR",
+            ),
+        ],
         frameon=False,
+        loc="upper right",
+        bbox_to_anchor=(1.0, 1.20),
         ncols=3,
-        loc="upper center",
-        bbox_to_anchor=(0.5, 1.16),
+        columnspacing=1.0,
+        handletextpad=0.35,
     )
-
-    bars = axes[1].bar(x, views, color=PALETTE)
-    annotate(axes[1], bars, digits=1)
-    axes[1].set_xticks(x, labels)
-    axes[1].set_ylabel("Mean views checked")
-    axes[1].set_ylim(0, max(views) * 1.22)
-
-    structural_values = [
-        structure["macro_pairwise_f1"],
-        structure["macro_rand_index"],
-    ]
-    bars = axes[2].bar(
-        np.arange(2),
-        structural_values,
-        color=(GREEN, BLUE),
-        width=0.62,
+    value_labels.extend(
+        categorical_dot_panel(
+            views_ax,
+            ("Flat", "Manual", "Raw RGB-D"),
+            views,
+            PALETTE,
+            panel_label="b",
+            title=r"Views checked / query $\downarrow$",
+            formatter=lambda value: f"{value:.1f}",
+        )
     )
-    annotate(axes[2], bars, digits=2)
-    axes[2].set_xticks(np.arange(2), ("Pairwise F1", "Rand index"))
-    axes[2].set_ylim(0, 1.12)
-    axes[2].set_ylabel("Agreement with manual zones")
-    for ax in axes:
-        ax.spines[["top", "right"]].set_visible(False)
-        ax.grid(axis="y", color="#e4e7ec", linewidth=0.6)
-        ax.set_axisbelow(True)
-    fig.suptitle("Automatic raw RGB-D hierarchy versus manual reference", fontsize=8.8, y=1.03)
-    fig.tight_layout()
+    views_ax.set_ylim(0, max(views) * 1.25)
+
+    agreement_names = ("Pairwise F1", "Rand index")
+    agreement_values = (structure["macro_pairwise_f1"], structure["macro_rand_index"])
+    agreement_colors = (GREEN, BLUE)
+    agreement_rows = np.arange(2)[::-1]
+    for row, name, value, color in zip(
+        agreement_rows,
+        agreement_names,
+        agreement_values,
+        agreement_colors,
+        strict=True,
+    ):
+        structure_ax.hlines(row, 0, 1, color="#e4e7ec", linewidth=3.2, zorder=1)
+        structure_ax.scatter(
+            value,
+            row,
+            s=62,
+            color=color,
+            edgecolor="white",
+            linewidth=0.6,
+            zorder=3,
+        )
+        value_labels.append(
+            structure_ax.annotate(
+                f"{value:.3f}",
+                (value, row),
+                xytext=(7, 0),
+                textcoords="offset points",
+                ha="left",
+                va="center",
+                fontsize=8.5,
+            )
+        )
+    structure_ax.set_xlim(0, 1.0)
+    structure_ax.set_ylim(-0.5, 1.5)
+    structure_ax.set_yticks(agreement_rows, agreement_names)
+    structure_ax.set_xlabel("Agreement with manual zones")
+    structure_ax.grid(axis="x", color="#e4e7ec", linewidth=0.65)
+    structure_ax.set_axisbelow(True)
+    structure_ax.spines[["top", "right", "left"]].set_visible(False)
+    structure_ax.tick_params(axis="y", length=0)
+    panel_title(structure_ax, "c", "Frozen structure agreement")
+    fig.subplots_adjust(
+        left=0.16,
+        right=0.98,
+        bottom=0.13,
+        top=0.87,
+        hspace=0.76,
+        wspace=0.62,
+    )
+    assert_no_annotation_overlap(
+        fig,
+        value_labels,
+        context="Raw RGB-D hierarchy figure",
+    )
     finish(fig, output)
 
 
@@ -213,12 +569,9 @@ def construction_variants_figure(hierarchy: dict, output: Path) -> None:
         "pose_semantic_merge",
         "cursor_agent_mcp",
     )
-    labels = ("Manual\nreference", "Pose\nonly", "Pose +\nsemantic", "Cursor\n+ MCP")
+    labels = ("Manual reference", "Pose only", "Pose + semantic", "Cursor + MCP")
     colors = (GRAY, BLUE, GREEN, ORANGE)
     variants = [hierarchy["variants"][key] for key in variant_keys]
-
-    fig, axes = plt.subplots(1, 3, figsize=(5.2, 2.35))
-    x = np.arange(len(variants))
 
     structural = np.asarray(
         [
@@ -229,27 +582,6 @@ def construction_variants_figure(hierarchy: dict, output: Path) -> None:
             for value in variants
         ]
     )
-    width = 0.34
-    for index, (metric, color) in enumerate(
-        zip(("Pairwise F1", "Best-zone Jaccard"), (GREEN, BLUE), strict=True)
-    ):
-        bars = axes[0].bar(
-            x + (index - 0.5) * width,
-            structural[:, index],
-            width,
-            color=color,
-            label=metric,
-        )
-        annotate(axes[0], bars, skip_indices=frozenset({0}))
-    axes[0].set_xticks(x, labels)
-    axes[0].set_ylim(0, 1.16)
-    axes[0].set_ylabel("Agreement with manual zones")
-    axes[0].legend(
-        frameon=False,
-        loc="upper center",
-        bbox_to_anchor=(0.5, 1.2),
-    )
-
     quality = np.asarray(
         [
             [
@@ -259,52 +591,157 @@ def construction_variants_figure(hierarchy: dict, output: Path) -> None:
             for value in variants
         ]
     )
-    for index, (metric, color) in enumerate(
-        zip(("hit@1", "hit@3"), (BLUE, GREEN), strict=True)
-    ):
-        bars = axes[1].bar(
-            x + (index - 0.5) * width,
-            quality[:, index],
-            width,
-            color=color,
-            label=metric,
-        )
-        annotate(axes[1], bars)
-    axes[1].set_xticks(x, labels)
-    axes[1].set_ylim(0, 1.16)
-    axes[1].set_ylabel("Retrieval quality (125 queries)")
-    axes[1].legend(
-        frameon=False,
-        loc="upper center",
-        bbox_to_anchor=(0.5, 1.18),
-        ncols=2,
+    fig = plt.figure(figsize=(5.2, 4.25))
+    grid = fig.add_gridspec(
+        2,
+        2,
+        height_ratios=(1.55, 1.0),
+        width_ratios=(1.55, 0.85),
     )
+    quality_ax = fig.add_subplot(grid[0, :])
+    structure_ax = fig.add_subplot(grid[1, 0])
+    views_ax = fig.add_subplot(grid[1, 1])
+    value_labels = quality_range_panel(
+        quality_ax,
+        labels,
+        quality,
+        panel_label="a",
+        title="Retrieval quality with 95% hit-rate intervals",
+        include_mrr=False,
+    )
+    quality_ax.legend(
+        handles=[
+            plt.Line2D(
+                [], [], marker="o", color=BLUE, linestyle="none",
+                markeredgecolor="white", label="hit@1",
+            ),
+            plt.Line2D(
+                [], [], marker="s", color=GREEN, linestyle="none",
+                markeredgecolor="white", label="hit@3",
+            ),
+        ],
+        frameon=False,
+        loc="upper right",
+        bbox_to_anchor=(1.0, 1.18),
+        ncols=2,
+        columnspacing=1.0,
+        handletextpad=0.35,
+    )
+
+    rows = np.arange(len(labels))[::-1]
+    for row, pairwise, jaccard in zip(rows, structural[:, 0], structural[:, 1], strict=True):
+        structure_ax.plot(
+            (pairwise, jaccard),
+            (row, row),
+            color="#cbd5e1",
+            linewidth=2.0,
+            solid_capstyle="round",
+            zorder=1,
+        )
+        structure_ax.scatter(
+            pairwise,
+            row + 0.10,
+            s=58,
+            marker="o",
+            color=BLUE,
+            edgecolor="white",
+            linewidth=0.5,
+            zorder=3,
+        )
+        structure_ax.scatter(
+            jaccard,
+            row - 0.10,
+            s=58,
+            marker="s",
+            color=GREEN,
+            edgecolor="white",
+            linewidth=0.5,
+            zorder=3,
+        )
+        value_labels.append(
+            structure_ax.text(
+                1.035,
+                row,
+                f"F1 {pairwise:.3f}  |  J {jaccard:.3f}",
+                transform=structure_ax.get_yaxis_transform(),
+                ha="left",
+                va="center",
+                fontsize=8.5,
+                clip_on=False,
+            )
+        )
+    structure_ax.set_xlim(0.45, 1.02)
+    structure_ax.set_xticks((0.5, 0.7, 0.9, 1.0))
+    structure_ax.set_ylim(-0.45, len(labels) - 0.25)
+    structure_ax.set_yticks(rows, labels)
+    structure_ax.set_xlabel("Agreement with manual zones")
+    structure_ax.grid(axis="x", color="#e4e7ec", linewidth=0.65)
+    structure_ax.set_axisbelow(True)
+    structure_ax.spines[["top", "right", "left"]].set_visible(False)
+    structure_ax.tick_params(axis="y", length=0)
+    structure_ax.legend(
+        handles=[
+            plt.Line2D(
+                [], [], marker="o", color="none", markerfacecolor=BLUE,
+                markeredgecolor="white", label="Pairwise F1",
+            ),
+            plt.Line2D(
+                [], [], marker="s", color="none", markerfacecolor=GREEN,
+                markeredgecolor="white", label="Best-zone Jaccard",
+            ),
+        ],
+        frameon=False,
+        loc="upper left",
+        bbox_to_anchor=(0.0, 1.15),
+        ncols=2,
+        columnspacing=1.0,
+        handletextpad=0.3,
+    )
+    panel_title(structure_ax, "b", "Structural agreement", y=1.38)
 
     views = [value["query_metrics"]["mean_views_checked"] for value in variants]
-    bars = axes[2].bar(x, views, color=colors)
-    annotate(axes[2], bars, digits=1)
-    axes[2].set_xticks(x, labels)
-    axes[2].set_ylim(0, max(views) * 1.3)
-    axes[2].set_ylabel("Mean views checked")
-
-    for ax in axes:
-        ax.spines[["top", "right"]].set_visible(False)
-        ax.grid(axis="y", color="#e4e7ec", linewidth=0.55)
-        ax.set_axisbelow(True)
-    fig.suptitle(
-        "Hierarchy construction from shared semantic records",
-        fontsize=8.8,
-        y=1.03,
+    value_labels.extend(
+        categorical_dot_panel(
+            views_ax,
+            ("Ref.", "Pose", "Pose+S", "Cursor"),
+            views,
+            colors,
+            panel_label="c",
+            title=r"Views / query $\downarrow$",
+            formatter=lambda value: f"{value:.2f}",
+        )
     )
-    fig.tight_layout()
+    views_ax.set_ylim(0, max(views) * 1.27)
+    views_ax.tick_params(axis="x", labelsize=7.2)
+    plt.setp(
+        views_ax.get_xticklabels(),
+        rotation=28,
+        ha="right",
+        rotation_mode="anchor",
+    )
+
+    fig.subplots_adjust(
+        left=0.18,
+        right=0.98,
+        bottom=0.12,
+        top=0.88,
+        hspace=0.74,
+        wspace=0.82,
+    )
+    assert_no_annotation_overlap(
+        fig,
+        value_labels,
+        context="Hierarchy-construction figure",
+    )
     finish(fig, output)
 
 
 def workflow_figure(output: Path) -> None:
-    fig, ax = plt.subplots(figsize=(5.2, 3.15))
+    fig, ax = plt.subplots(figsize=(5.8, 3.15))
     ax.set_xlim(0, 12)
     ax.set_ylim(0, 8)
     ax.axis("off")
+    box_text_pairs: list[tuple[FancyBboxPatch, Text]] = []
 
     def box(
         x: float,
@@ -318,8 +755,7 @@ def workflow_figure(output: Path) -> None:
         dashed: bool = False,
         font_size: float = 7.2,
     ) -> None:
-        ax.add_patch(
-            FancyBboxPatch(
+        patch = FancyBboxPatch(
                 (x - width / 2, y - height / 2),
                 width,
                 height,
@@ -328,9 +764,9 @@ def workflow_figure(output: Path) -> None:
                 edgecolor=edge,
                 linewidth=1.0,
                 linestyle="--" if dashed else "-",
-            )
         )
-        ax.text(
+        ax.add_patch(patch)
+        label = ax.text(
             x,
             y,
             text,
@@ -339,6 +775,7 @@ def workflow_figure(output: Path) -> None:
             fontsize=font_size,
             color="#111827",
         )
+        box_text_pairs.append((patch, label))
 
     def arrow(
         start: tuple[float, float],
@@ -376,11 +813,20 @@ def workflow_figure(output: Path) -> None:
         color=BLUE,
     )
 
-    box(1.35, 6.55, 2.35, 0.95, "ViewJSON summaries\n+ camera poses", face="#eef6ff", edge=BLUE)
+    box(
+        1.35,
+        6.55,
+        2.5,
+        1.05,
+        "ViewJSON summaries\n+ camera poses",
+        face="#eef6ff",
+        edge=BLUE,
+        font_size=6.5,
+    )
     box(4.15, 6.55, 2.2, 0.95, "MCP proximity\nclusters", face="#eef6ff", edge=BLUE)
     box(7.0, 6.55, 2.25, 0.95, "Cursor semantic\npartition + labels", face="#fff5eb", edge=ORANGE)
     box(10.45, 5.55, 2.35, 1.05, "Frozen scene\nhierarchy", face="#eaf7ef", edge=GREEN)
-    arrow((2.47, 6.55), (3.02, 6.55), color=BLUE)
+    arrow((2.62, 6.55), (3.02, 6.55), color=BLUE)
     arrow((5.28, 6.55), (5.85, 6.55), color=ORANGE)
     arrow((8.15, 6.55), (9.28, 5.78), color=GREEN)
 
@@ -395,21 +841,30 @@ def workflow_figure(output: Path) -> None:
         10.45,
         7.15,
         2.35,
-        0.7,
+        0.82,
         "Manual zones\n(evaluation only)",
         face="#ffffff",
         edge=GRAY,
         dashed=True,
-        font_size=6.8,
+        font_size=6.4,
     )
     arrow((10.45, 6.78), (10.45, 6.12), dashed=True)
 
     box(1.35, 1.85, 2.2, 0.95, "Natural-language\nquery", face="#eef6ff", edge=BLUE)
-    box(4.15, 1.85, 2.35, 0.95, "Branch gate\nQwen / BGE / lexical", face="#fff5eb", edge=ORANGE)
+    box(
+        4.15,
+        1.85,
+        2.55,
+        0.95,
+        "Branch gate\nQwen / BGE / lexical",
+        face="#fff5eb",
+        edge=ORANGE,
+        font_size=6.5,
+    )
     box(7.0, 1.85, 2.35, 0.95, "Shared leaf scorer\non retained records", face="#f7f8fa", edge=GRAY)
     box(10.45, 1.85, 2.35, 0.95, "Grounded view\nor object evidence", face="#eaf7ef", edge=GREEN)
     arrow((2.47, 1.85), (3.02, 1.85), color=BLUE)
-    arrow((5.28, 1.85), (5.85, 1.85), color=ORANGE)
+    arrow((5.45, 1.85), (5.82, 1.85), color=ORANGE)
     arrow((8.15, 1.85), (9.25, 1.85), color=GREEN)
     arrow((10.45, 4.98), (5.15, 2.36), color=GREEN, dashed=True)
 
@@ -421,6 +876,7 @@ def workflow_figure(output: Path) -> None:
         fontsize=6.8,
         color=GRAY,
     )
+    assert_box_text_contained(fig, box_text_pairs)
     finish(fig, output)
 
 

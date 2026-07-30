@@ -2,7 +2,7 @@
 
 The anonymous TwinWorld manuscript is checked against the frozen instruction-agent, raw RGB-D hierarchy, and calibrated public-dataset outputs.
 
-Checks: 111; mismatches: 0.
+Checks: 109; mismatches: 0.
 
 | Check | Got | Expected | Pass |
 |---|---|---|:---:|
@@ -59,12 +59,12 @@ Checks: 111; mismatches: 0.
 | `phase6_scannet_extended_v3.objects` | `4.375` | `4.375` | yes |
 | `phase6_scannet_extended_v3.tokens` | `200.0625` | `200.0625` | yes |
 | `scannet.no_relation_acc025` | `0.5` | `0.5` | yes |
-| `tex_has:\title{Agent-Guided Hierarchical Semantic Search over 3D Scene Records}` | `True` | `True` | yes |
+| `tex_has:\title{SemanticSplat: Graph-Pruned Semantic Search}` | `True` | `True` | yes |
 | `tex_has:\author{Anonymous Authors}` | `True` | `True` | yes |
 | `tex_has:\subsection{Instruction-agent traversal}` | `True` | `True` | yes |
 | `tex_has:\subsection{Agent/MCP hierarchy construction}` | `True` | `True` | yes |
 | `tex_has:\subsection{Automatic raw RGB-D hierarchy}` | `True` | `True` | yes |
-| `tex_has:\subsection{Complete instruction-agent benchmark}` | `True` | `True` | yes |
+| `tex_has:\subsection{Local instruction-model stress test}` | `True` | `True` | yes |
 | `tex_has:\subsection{Raw RGB-D hierarchy versus manual reference}` | `True` | `True` | yes |
 | `tex_has:\subsection{Semantic-record construction variants}` | `True` | `True` | yes |
 | `tex_has:figures/fig_instruction_agent.pdf` | `True` | `True` | yes |
@@ -89,8 +89,6 @@ Checks: 111; mismatches: 0.
 | `tex_has:The superseded reranker underperformed because it applied low-confidence` | `True` | `True` | yes |
 | `tex_has:Qwen/Qwen2.5-0.5B-Instruct` | `True` | `True` | yes |
 | `tex_has:openai/clip-vit-base-patch32` | `True` | `True` | yes |
-| `tex_free_of:SemanticSplat: Graph-Pruned Semantic Search` | `True` | `True` | yes |
-| `tex_free_of:SemanticSplat` | `True` | `True` | yes |
 | `tex_free_of:Paper ID #XXXXX` | `True` | `True` | yes |
 | `tex_free_of:XXXXX` | `True` | `True` | yes |
 | `tex_free_of:Person 1` | `True` | `True` | yes |

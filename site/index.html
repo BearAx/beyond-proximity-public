@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SemanticSplat | Graph-Pruned Semantic Search for 3DGS Digital Twins</title>
-  <meta name="description" content="SemanticSplat is a reproducible graph-pruned semantic search prototype for queryable 3D Gaussian Splatting digital twins.">
+  <title>Beyond Proximity | Graph-Pruned Semantic Search</title>
+  <meta name="description" content="Reproducible hierarchical semantic search over 3D scene records, with deterministic controls, instruction-agent traces, automatic RGB-D hierarchy construction, and public-dataset pilots.">
   <meta name="theme-color" content="#171b22">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SemanticSplat">
+  <meta property="og:title" content="Beyond Proximity: Graph-Pruned Semantic Search">
   <meta property="og:description" content="Graph-pruned semantic search over structured 3D scene evidence, with code, paper, datasets, metrics, and reproducibility artifacts.">
-  <meta property="og:image" content="https://leopython2006.github.io/beyond-proximity-public/assets/method-workflow.png">
-  <meta property="og:url" content="https://leopython2006.github.io/beyond-proximity-public/">
-  <link rel="canonical" href="https://leopython2006.github.io/beyond-proximity-public/">
+  <meta property="og:image" content="https://bearax.github.io/beyond-proximity-public/assets/agent-mcp-workflow.png">
+  <meta property="og:url" content="https://bearax.github.io/beyond-proximity-public/">
+  <link rel="canonical" href="https://bearax.github.io/beyond-proximity-public/">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
@@ -19,9 +19,9 @@
   <a class="skip-link" href="#content">Skip to content</a>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="SemanticSplat home">
-      <span class="brand-mark" aria-hidden="true">S</span>
-      <span>SemanticSplat</span>
+    <a class="brand" href="#top" aria-label="Beyond Proximity home">
+      <span class="brand-mark" aria-hidden="true">BP</span>
+      <span>Beyond Proximity</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
@@ -37,12 +37,12 @@
     <section id="top" class="hero" aria-labelledby="hero-title">
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="eyebrow">Graph-pruned semantic search</p>
-        <h1 id="hero-title">SemanticSplat</h1>
-        <p class="hero-copy">A hierarchical semantic graph that prunes scene search before grounding natural-language queries in captured evidence.</p>
+        <p class="eyebrow">Beyond Proximity research project</p>
+        <h1 id="hero-title">Graph-Pruned Semantic Search</h1>
+        <p class="hero-copy">A traceable hierarchy that reduces the scene evidence inspected per query, with lexical, embedding, instruction-agent, and raw RGB-D construction experiments.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="assets/semanticsplat-paper.pdf">Read the paper</a>
-          <a class="button button-ghost" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure">Browse the code</a>
+          <a class="button button-primary" href="assets/research-preprint.pdf">Read the paper</a>
+          <a class="button button-ghost" href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure">Browse the public artifacts</a>
         </div>
         <p class="hero-note">Research prototype. Current claims are deterministic, test-backed, and scoped below.</p>
       </div>
@@ -50,11 +50,12 @@
 
     <section class="metric-band" aria-label="Project summary">
       <div class="metric-grid section-inner">
-        <div><strong>97</strong><span>team-captured RGB-D views</span></div>
-        <div><strong>1,066</strong><span>indexed semantic items</span></div>
-        <div><strong>150</strong><span>same-input benchmark queries</span></div>
-        <div><strong>75.5%</strong><span>fewer views checked</span></div>
-        <div><strong>68.2%</strong><span>fewer estimated context tokens</span></div>
+        <div><strong>97</strong><span>posed RGB-D views</span></div>
+        <div><strong>150</strong><span>complete benchmark queries</span></div>
+        <div><strong data-metric="instruction_agent.total_tokens">239,893</strong><span>exact Qwen tokens</span></div>
+        <div><strong data-metric="internal.averages.savings_views_pct" data-format="percent">75.5%</strong><span>fewer lexical views checked</span></div>
+        <div><strong data-metric="internal.averages.savings_tokens_pct" data-format="percent">68.2%</strong><span>fewer estimated context tokens</span></div>
+        <div><strong data-metric="raw_rgbd.views_reduction_pct" data-format="percent">48.5%</strong><span>fewer views with raw RGB-D hierarchy</span></div>
       </div>
     </section>
 
@@ -64,10 +65,10 @@
         <h2 id="summary-title">Can hierarchy reduce query context without changing the semantic map?</h2>
       </div>
       <div class="summary-grid">
-        <p class="lead">SemanticSplat organizes the same semantic records used by flat search into scene, zone, region, object, and view-evidence levels. A query retains likely branches, ranks their leaves, and expands only when confidence or geometry requires fallback.</p>
+        <p class="lead">The method organizes the same records used by flat search into scene, zone, object, and view-evidence levels. A query retains likely branches, ranks their leaves, and expands only when confidence or geometry requires fallback.</p>
         <div class="claim-box">
           <span class="status-label">Safest current claim</span>
-          <p>Hierarchy substantially reduces checked views and serialized query context. The present lexical ranker does not yet preserve flat-search hit@k on the internal track, so the evidence supports a measured quality-cost tradeoff, not universal superiority.</p>
+          <p>Hierarchy substantially reduces checked views and serialized query context. A complete local instruction-agent run and an automatic RGB-D constructor establish reproducible execution, while the measured quality gaps define the next research target rather than a superiority claim.</p>
         </div>
       </div>
     </section>
@@ -76,21 +77,21 @@
       <div class="section-inner">
         <div class="section-heading wide">
           <p class="eyebrow dark">Method</p>
-          <h2 id="method-title">Captured evidence to graph-pruned grounding</h2>
-          <p>The figure is assembled from the real Conference Hall RGB-D capture, its ViewJSON record, the checked-in hierarchy, and frozen query <code>qv2_010</code>. No AI-generated imagery is used.</p>
+          <h2 id="method-title">Two construction tracks, one query protocol</h2>
+          <p>The current system can construct a hierarchy through Cursor Agent and MCP over geometric clusters, or predict one directly from RGB, depth, and camera poses. Both feed the same traceable retrieval pipeline.</p>
         </div>
         <figure class="figure-wide">
-          <button class="figure-button" type="button" data-full="assets/method-workflow.png" aria-label="Open full-size method workflow">
-            <img class="zoomable" src="assets/method-workflow.png" alt="SemanticSplat pipeline showing RGB-D capture, semantic ViewJSON, hierarchy construction, query parsing, graph-versus-flat traversal, and grounded evidence.">
+          <button class="figure-button" type="button" data-full="assets/agent-mcp-workflow.png" aria-label="Open full-size construction and retrieval workflow">
+            <img class="zoomable" src="assets/agent-mcp-workflow.png" alt="Two hierarchy-construction tracks feeding graph-pruned retrieval: Cursor Agent with MCP and automatic RGB-D clustering.">
           </button>
-          <figcaption>One-time construction is separated from per-query retrieval. The graph and flat lanes use identical records and scoring; only candidate selection changes.</figcaption>
+          <figcaption>One-time hierarchy construction and per-query retrieval are measured separately. Manual zones are opened only after predicted artifacts are frozen for evaluation.</figcaption>
         </figure>
 
         <div class="method-steps">
-          <article><span>01</span><h3>Index evidence</h3><p>Normalize objects, room cues, relations, optional 2D/3D boxes, and supporting views.</p></article>
-          <article><span>02</span><h3>Build hierarchy</h3><p>Attach deterministic entity records beneath scene, zone, and region branches.</p></article>
-          <article><span>03</span><h3>Parse the query</h3><p>Extract target, attributes, intent, optional anchor, and spatial relation.</p></article>
-          <article><span>04</span><h3>Prune and rank</h3><p>Gate branches, score retained entities, validate geometry, and expand on low confidence.</p></article>
+          <article><span>01</span><h3>Read scene evidence</h3><p>Consume manual scene records or posed RGB images, depth arrays, and camera metadata.</p></article>
+          <article><span>02</span><h3>Construct branches</h3><p>Use reference zones, pose clustering, Cursor-MCP decisions, or frozen CLIP predictions.</p></article>
+          <article><span>03</span><h3>Route the query</h3><p>Score branches with the lexical control, BGE embeddings, or a traced instruction model.</p></article>
+          <article><span>04</span><h3>Return evidence</h3><p>Rank stable view or object IDs and save branch decisions, cost, latency, and quality fields.</p></article>
         </div>
 
         <div class="figure-pair">
@@ -118,16 +119,18 @@
       </div>
 
       <div class="results-overview">
-        <div class="result-number"><span>Graph</span><strong>4.77</strong><small>views/query</small></div>
-        <div class="result-number"><span>Flat</span><strong>19.4</strong><small>views/query</small></div>
-        <div class="result-number"><span>Graph</span><strong>1,014</strong><small>est. context tokens/query</small></div>
-        <div class="result-number"><span>Flat</span><strong>3,168</strong><small>est. context tokens/query</small></div>
+        <div class="result-number"><span>Lexical graph</span><strong data-metric="internal.averages.graph_views_checked" data-format="decimal-2">4.77</strong><small>views/query</small></div>
+        <div class="result-number"><span>Lexical flat</span><strong data-metric="internal.averages.flat_views_checked" data-format="decimal-1">19.4</strong><small>views/query</small></div>
+        <div class="result-number"><span>Lexical graph</span><strong data-metric="internal.averages.graph_input_tokens" data-format="integer">1,014</strong><small>estimated context tokens/query</small></div>
+        <div class="result-number"><span>Lexical flat</span><strong data-metric="internal.averages.flat_input_tokens" data-format="integer">3,168</strong><small>estimated context tokens/query</small></div>
       </div>
 
       <div class="tab-shell">
         <div class="tabs" role="tablist" aria-label="Result tracks">
           <button id="tab-internal" role="tab" aria-selected="true" aria-controls="panel-internal" tabindex="0">Internal</button>
-          <button id="tab-public" role="tab" aria-selected="false" aria-controls="panel-public" tabindex="-1">Public datasets</button>
+          <button id="tab-agent" role="tab" aria-selected="false" aria-controls="panel-agent" tabindex="-1">Agent and BGE</button>
+          <button id="tab-construction" role="tab" aria-selected="false" aria-controls="panel-construction" tabindex="-1">Automatic hierarchy</button>
+          <button id="tab-public" role="tab" aria-selected="false" aria-controls="panel-public" tabindex="-1">Public data</button>
           <button id="tab-baselines" role="tab" aria-selected="false" aria-controls="panel-baselines" tabindex="-1">External baselines</button>
         </div>
 
@@ -140,15 +143,49 @@
           <figure><img src="assets/five-scene-summary.png" alt="Five-scene graph versus flat summary charts."><figcaption>Efficiency and quality are reported together.</figcaption></figure>
         </div>
 
+        <div id="panel-agent" class="tab-panel" role="tabpanel" aria-labelledby="tab-agent" hidden>
+          <div class="track-copy">
+            <h3>Complete model-backed controls</h3>
+            <p>The BGE graph checks 3.90 views/query with hit@1 0.664 and hit@3 0.784. Qwen2.5-0.5B-Instruct completes all 150 queries with 300 calls and 239,893 exact native tokens, reaching hit@1 0.368 and hit@3 0.696.</p>
+            <p class="boundary-note">The Qwen run is a reproducible CPU stress-test baseline. It underperforms lexical retrieval and is not presented as a state-of-the-art reasoning result.</p>
+            <div class="inline-links"><a class="text-link" href="data/semantic-controls.json">BGE metrics</a><a class="text-link" href="data/instruction-agent.json">Qwen metrics</a></div>
+          </div>
+          <figure><img src="assets/instruction-agent.png" alt="Clear comparison of lexical graph, BGE graph, and Qwen instruction-agent retrieval quality, views, and tokens."><figcaption>Same 150-query benchmark; quality uses 125 verified positive-view queries.</figcaption></figure>
+        </div>
+
+        <div id="panel-construction" class="tab-panel construction-panel" role="tabpanel" aria-labelledby="tab-construction" hidden>
+          <div class="track-copy">
+            <h3>Hierarchy without manual ViewJSON</h3>
+            <p>A frozen CLIP ViT-B/32 constructor consumes all 97 RGB images, depth arrays, and poses with zero manual ViewJSON or zone reads. It reaches macro pairwise F1 0.487 and checks 10.0 views/query, versus 19.4 for flat CLIP.</p>
+            <p>Cursor Agent also invokes the MCP construction tool once per scene. Its 18-zone hierarchy reaches pairwise F1 0.616 and checks 5.53 views/query.</p>
+            <div class="inline-links"><a class="text-link" href="data/raw-rgbd-hierarchy.json">Raw RGB-D metrics</a><a class="text-link" href="data/evidence-summary.json">Curated evidence summary</a></div>
+          </div>
+          <div class="construction-figures">
+            <figure><img src="assets/raw-rgbd-hierarchy.png" alt="Raw RGB-D hierarchy retrieval quality, view cost, and structural agreement."><figcaption>Automatic construction: structure and retrieval are both measured.</figcaption></figure>
+            <figure><img src="assets/hierarchy-construction-variants.png" alt="Manual, pose, semantic, and Cursor MCP hierarchy-construction comparison."><figcaption>Four controlled hierarchy-construction variants.</figcaption></figure>
+          </div>
+        </div>
+
         <div id="panel-public" class="tab-panel" role="tabpanel" aria-labelledby="tab-public" hidden>
-          <div class="public-grid">
+          <div class="public-results">
             <div class="track-copy">
-              <h3>BBQ-aligned oracle-map pilots</h3>
-              <p>Replica: 8 scenes, 575 official GT boxes, 56 queries. ScanNet: 8 scenes, 392 official GT boxes, 48 Nr3D/Sr3D+ queries. These runs evaluate retrieval over official semantic maps, not predicted semantic perception.</p>
-              <a class="text-link" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/outputs/public_datasets">Open canonical outputs</a>
+              <h3>Calibrated BBQ-aligned oracle-map pilots</h3>
+              <p>These tracks evaluate retrieval over official object identities and boxes. They measure graph routing over an oracle map, not automatic semantic-map construction.</p>
+              <a class="text-link" href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure/docs/experiments/public_datasets/phase6_7_v3">Open canonical outputs</a>
             </div>
-            <figure><img src="assets/scannet-pilot.png" alt="ScanNet oracle-map pilot metrics."><figcaption>ScanNet graph and flat lexical Acc@0.25: 0.271.</figcaption></figure>
-            <figure><img src="assets/replica-pilot.png" alt="Replica oracle-map pilot metrics."><figcaption>Replica pilot; oracle semantic candidates.</figcaption></figure>
+            <div class="baseline-table-wrap">
+              <table>
+                <thead><tr><th>Track</th><th>Queries</th><th>Acc@0.25</th><th>R@1</th><th>R@3</th><th>Objects checked</th><th>Est. tokens</th></tr></thead>
+                <tbody>
+                  <tr><td>Replica graph</td><td>56 (48 positive)</td><td data-metric="public_datasets.replica.graph.acc_at_0_25" data-format="decimal-3">1.000</td><td data-metric="public_datasets.replica.graph.recall_at_1" data-format="decimal-3">1.000</td><td data-metric="public_datasets.replica.graph.recall_at_3" data-format="decimal-3">1.000</td><td data-metric="public_datasets.replica.graph.avg_checked_objects" data-format="decimal-1">12.1</td><td data-metric="public_datasets.replica.graph.avg_estimated_input_tokens" data-format="integer">303</td></tr>
+                  <tr><td>ScanNet graph</td><td>48</td><td data-metric="public_datasets.scannet_original.graph.acc_at_0_25" data-format="decimal-3">0.604</td><td data-metric="public_datasets.scannet_original.graph.recall_at_1" data-format="decimal-3">0.604</td><td data-metric="public_datasets.scannet_original.graph.recall_at_3" data-format="decimal-3">0.813</td><td data-metric="public_datasets.scannet_original.graph.avg_checked_objects" data-format="decimal-1">4.7</td><td data-metric="public_datasets.scannet_original.graph.avg_estimated_input_tokens" data-format="integer">219</td></tr>
+                  <tr><td>ScanNet graph + fallback</td><td>48</td><td data-metric="public_datasets.scannet_original.graph_fallback.acc_at_0_25" data-format="decimal-3">0.604</td><td data-metric="public_datasets.scannet_original.graph_fallback.recall_at_1" data-format="decimal-3">0.625</td><td data-metric="public_datasets.scannet_original.graph_fallback.recall_at_3" data-format="decimal-3">0.833</td><td data-metric="public_datasets.scannet_original.graph_fallback.avg_checked_objects" data-format="decimal-1">36.8</td><td data-metric="public_datasets.scannet_original.graph_fallback.avg_estimated_input_tokens" data-format="integer">1,589</td></tr>
+                  <tr><td>ScanNet flat lexical</td><td>48</td><td data-metric="public_datasets.scannet_original.flat_lexical.acc_at_0_25" data-format="decimal-3">0.604</td><td data-metric="public_datasets.scannet_original.flat_lexical.recall_at_1" data-format="decimal-3">0.625</td><td data-metric="public_datasets.scannet_original.flat_lexical.recall_at_3" data-format="decimal-3">0.833</td><td data-metric="public_datasets.scannet_original.flat_lexical.avg_checked_objects" data-format="decimal-1">49.0</td><td data-metric="public_datasets.scannet_original.flat_lexical.avg_estimated_input_tokens" data-format="integer">2,117</td></tr>
+                  <tr><td>ScanNet extended graph</td><td>64 (56 positive)</td><td data-metric="public_datasets.scannet_extended.graph.acc_at_0_25" data-format="decimal-3">0.589</td><td data-metric="public_datasets.scannet_extended.graph.recall_at_1" data-format="decimal-3">0.607</td><td data-metric="public_datasets.scannet_extended.graph.recall_at_3" data-format="decimal-3">0.786</td><td data-metric="public_datasets.scannet_extended.graph.avg_checked_objects" data-format="decimal-1">4.4</td><td data-metric="public_datasets.scannet_extended.graph.avg_estimated_input_tokens" data-format="integer">200</td></tr>
+                </tbody>
+              </table>
+              <p class="table-note">Replica is an exact-ID oracle ceiling. ScanNet is the discriminative public track; calibrated fallback preserves flat lexical R@1/R@3/R@5 while checking 25.0% fewer objects.</p>
+            </div>
           </div>
         </div>
 
@@ -157,12 +194,12 @@
             <table>
               <thead><tr><th>Execution</th><th>Scope</th><th>Measured status</th><th>Comparison boundary</th></tr></thead>
               <tbody>
-                <tr><td>ConceptGraphs / ScanNet</td><td>8 scenes, 48 queries</td><td>Native predicted-map run complete</td><td>Different map construction and query protocol</td></tr>
-                <tr><td>ConceptGraphs / Replica</td><td>8 scenes, 56 queries</td><td>Native predicted-map run complete</td><td>Different map construction and query protocol</td></tr>
-                <tr><td>LangSplat / ScanNet</td><td>1 scene, 6 queries</td><td>Full native pipeline complete</td><td>Hardware-adapted 3,000-iteration profile; not an 8-scene paper-scale reproduction</td></tr>
+                <tr><td>ConceptGraphs / ScanNet</td><td>8 scenes, 48 queries</td><td>Native predicted-map run complete; Acc@0.25 0.0625</td><td>Different map construction and query protocol</td></tr>
+                <tr><td>ConceptGraphs / Replica</td><td>8 scenes, 56 queries</td><td>Native predicted-map run complete; Acc@0.25 0.0625</td><td>Different map construction and query protocol</td></tr>
+                <tr><td>LangSplat / ScanNet</td><td>1 scene, 6 queries</td><td>End-to-end native run complete; view hit 0.667</td><td>Hardware-adapted one-scene profile; not an eight-scene reproduction</td></tr>
               </tbody>
             </table>
-            <p class="table-note">These executions establish integration and diagnostic reference points. They do not establish a fair method ranking against SemanticSplat.</p>
+            <p class="table-note">These executions establish integration and diagnostic reference points. They are not a fair leaderboard because inputs, maps, geometry, and resource profiles differ.</p>
           </div>
         </div>
       </div>
@@ -172,17 +209,17 @@
       <div class="section-inner construction-grid">
         <div>
           <p class="eyebrow">Construction accounting</p>
-          <h2 id="construction-title">Measured graph-construction workload</h2>
-          <p>The frozen audit separates one-time map preparation from per-query retrieval. It records the complete annotation payload, deterministic tree representation, serialized I/O, and clean-rebuild runtime for all five captured scenes.</p>
-          <a class="button button-light" href="data/graph-construction-cost.json">Download construction audit</a>
+          <h2 id="construction-title">Automatic construction is fully metered</h2>
+          <p>The raw RGB-D experiment freezes its hierarchy before loading manual zones for evaluation. Construction calls, native text tokens, CPU latency, input counts, and manual-source reads are reported separately from query-time retrieval.</p>
+          <a class="button button-light" href="data/raw-rgbd-hierarchy.json">Download automatic-construction audit</a>
         </div>
         <dl class="construction-metrics">
-          <div><dt>Manual records</dt><dd>97 <small>ViewJSON annotations</small></dd></div>
-          <div><dt>Semantic items</dt><dd>1,066 <small>manual payload entries</small></dd></div>
-          <div><dt>Annotation payload</dt><dd>66,937 <small>est. tokens; 267,877 chars</small></dd></div>
-          <div><dt>Constructed tree</dt><dd>179,817 <small>est. tokens</small></dd></div>
-          <div><dt>Serialized I/O</dt><dd>246,754 <small>input + output est. tokens</small></dd></div>
-          <div><dt>Local rebuild</dt><dd>1.822 s <small>sum of scene medians</small></dd></div>
+          <div><dt>Input observations</dt><dd>97 <small>RGB + depth + pose triplets</small></dd></div>
+          <div><dt>CLIP calls</dt><dd><span data-metric="raw_rgbd.construction.model_call_count">15</span><small>14 image batches + 1 label batch</small></dd></div>
+          <div><dt>Construction text</dt><dd><span data-metric="raw_rgbd.construction.text_tokens" data-format="integer">151</span><small>exact native CLIP tokens</small></dd></div>
+          <div><dt>CPU construction</dt><dd><span data-metric="raw_rgbd.construction.construction_latency_ms" data-format="seconds">14.15 s</span><small>frozen five-scene run</small></dd></div>
+          <div><dt>Structure agreement</dt><dd><span data-metric="raw_rgbd.structure.macro_pairwise_f1" data-format="decimal-3">0.487</span><small>macro pairwise F1 vs. manual zones</small></dd></div>
+          <div><dt>Retrieval cost</dt><dd><span data-metric="raw_rgbd.retrieval.mean_views_checked" data-format="decimal-1">10.0</span><small>views/query vs. 19.4 flat CLIP</small></dd></div>
         </dl>
       </div>
     </section>
@@ -200,14 +237,14 @@
           <h3>Five manual captures</h3>
           <p>ConferenceHall-capture-pilot, Museume-capture, Theater-capture, outdoor-street-capture, and outdoor-drone-capture.</p>
           <dl><div><dt>Views</dt><dd>97</dd></div><div><dt>Items</dt><dd>1,066</dd></div><div><dt>Queries</dt><dd>150</dd></div></dl>
-          <a class="text-link" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/backend/data/scenes">Browse scene records</a>
+          <a class="text-link" href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure/backend/data/scenes">Browse scene records</a>
         </article>
 
         <article class="dataset-item">
           <div class="dataset-kicker"><span class="availability licensed">Terms required</span><span>Public pilot</span></div>
           <h3>ScanNet v2</h3>
           <p><code>scene0011_00</code>, <code>scene0030_00</code>, <code>scene0046_00</code>, <code>scene0086_00</code>, <code>scene0222_00</code>, <code>scene0378_00</code>, <code>scene0389_00</code>, <code>scene0435_00</code>.</p>
-          <dl><div><dt>Scenes</dt><dd>8</dd></div><div><dt>GT boxes</dt><dd>392</dd></div><div><dt>Queries</dt><dd>48</dd></div></dl>
+          <dl><div><dt>Scenes</dt><dd>8</dd></div><div><dt>GT boxes</dt><dd>392</dd></div><div><dt>Queries</dt><dd>48 + 64</dd></div></dl>
           <a class="text-link" href="https://github.com/ScanNet/ScanNet">Request official ScanNet access</a>
         </article>
 
@@ -229,7 +266,7 @@
           <h2 id="visual-title">Captured scenes and a grounded case</h2>
         </div>
         <div class="figure-pair evidence-pair">
-          <figure><img src="assets/scene-gallery.png" alt="Gallery of six captured digital-twin scenes."><figcaption>Team-captured internal scenes. Public-dataset imagery is intentionally not redistributed here.</figcaption></figure>
+          <figure><img src="assets/scene-gallery.png" alt="Gallery of team-captured indoor and outdoor scenes."><figcaption>Team-captured internal scenes. Licensed public-dataset imagery is intentionally not redistributed here.</figcaption></figure>
           <figure><img src="assets/qualitative-bbox.png" alt="Qualitative projection-screen grounding case with graph and flat views."><figcaption>Qualitative query evidence with a view-annotation box.</figcaption></figure>
         </div>
       </div>
@@ -243,16 +280,17 @@
       <div class="reproduce-grid">
         <div class="command-panel">
           <div class="command-heading"><span>Core verification</span><button class="copy-button" type="button" data-copy-target="core-commands">Copy</button></div>
-          <pre id="core-commands"><code>python -B -m pytest -q
+          <pre id="core-commands"><code>python -B -m pytest -q tests -p no:cacheprovider
 python -B scripts/check_academic_paper.py
+python -B scripts/check_twinworld_numbers.py
 python -B scripts/measure_graph_construction.py --repeats 7
-python -B scripts/export_academic_figures.py</code></pre>
+python -B scripts/export_twinworld_agent_figures.py</code></pre>
         </div>
         <div class="resource-list">
-          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/backend/query"><strong>Query implementation</strong><span>Grounding, traversal, provider modes</span></a>
-          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/scripts"><strong>Experiment scripts</strong><span>Build, run, adapt, evaluate, export</span></a>
-          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/docs"><strong>Protocols and reports</strong><span>GT, datasets, baselines, audits</span></a>
-          <a href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/outputs"><strong>Canonical outputs</strong><span>Metrics and schema-valid query results</span></a>
+          <a href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure/backend/query"><strong>Query implementation</strong><span>Grounding, traversal, provider modes</span></a>
+          <a href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure/scripts"><strong>Experiment scripts</strong><span>Build, run, adapt, evaluate, export</span></a>
+          <a href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure/docs"><strong>Protocols and reports</strong><span>GT, datasets, baselines, audits</span></a>
+          <a href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure/outputs"><strong>Canonical outputs</strong><span>Metrics and schema-valid query results</span></a>
         </div>
       </div>
     </section>
@@ -262,9 +300,10 @@ python -B scripts/export_academic_figures.py</code></pre>
         <div><p class="eyebrow">Limits</p><h2 id="limitations-title">What this release does not claim</h2></div>
         <ul>
           <li>The five internal semantic indexes are manual reference annotations, not independent GT.</li>
-          <li>ScanNet and Replica SemanticSplat pilots use oracle semantic candidates; they do not measure semantic-perception accuracy.</li>
+          <li>ScanNet and Replica pilots use oracle semantic candidates; they do not measure semantic-perception accuracy.</li>
           <li>ConceptGraphs and LangSplat use different map-construction and evaluation protocols, so their metrics are not a fair leaderboard.</li>
-          <li>Internal context tokens are deterministic text-size estimates. External baseline token counts are local tokenizer counts, not provider billing.</li>
+          <li>Lexical context is a deterministic text-size estimate. BGE, CLIP, and Qwen counts use their pinned native tokenizers.</li>
+          <li>Qwen2.5-0.5B is a complete but weak CPU baseline; a 7-8B instruction-model run remains important for a main-track submission.</li>
           <li>The current graph search saves context but trails flat lexical hit@k on the internal verified-view track.</li>
         </ul>
       </div>
@@ -273,17 +312,18 @@ python -B scripts/export_academic_figures.py</code></pre>
     <section id="paper" class="paper-section section-inner" aria-labelledby="paper-title">
       <div class="paper-copy">
         <p class="eyebrow dark">Manuscript</p>
-        <h2 id="paper-title">SemanticSplat: Graph-Pruned Semantic Search</h2>
-        <p>The public manuscript is a named-author academic preprint, independent of any workshop template. It includes the complete method, schemas, frozen metrics, uncertainty intervals, public-dataset pilots, external executions, and reproducibility contract.</p>
+        <h2 id="paper-title">Agent-Guided Hierarchical Semantic Search over 3D Scene Records</h2>
+        <p>The public manuscript is a named-author academic preprint, independent of any workshop template. It documents the agent-MCP protocol, controlled hierarchy variants, public-dataset pilots, and reproducibility contract; the evidence tabs above additionally publish the complete instruction-agent and raw RGB-D results.</p>
         <div class="paper-actions">
-          <a class="button button-dark" href="assets/semanticsplat-paper.pdf">Download PDF</a>
-          <a class="button button-outline" href="https://github.com/LeoPython2006/beyond-proximity-public/tree/codex/project-site-method-figure/papers/beyond-proximity">LaTeX source</a>
+          <a class="button button-dark" href="assets/research-preprint.pdf">Download PDF</a>
+          <a class="button button-outline" href="https://github.com/BearAx/beyond-proximity-public/tree/codex/project-site-method-figure/papers/beyond-proximity">LaTeX source</a>
         </div>
       </div>
       <div class="citation-panel">
         <span class="status-label">Preprint citation</span>
-        <pre id="citation"><code>@article{mousatat2026semanticsplat,
-  title = {SemanticSplat: Graph-Pruned Semantic Search},
+        <pre id="citation"><code>@article{mousatat2026agentmcpsearch,
+  title = {Agent-Guided Hierarchical Semantic Search
+           over 3D Scene Records},
   author = {Mousatat, Mahmoud and Vizan, Leo and
             Shankin, Nikita and Nuruzov, Telman and
             Medvedev, Alexandr},
@@ -297,8 +337,8 @@ python -B scripts/export_academic_figures.py</code></pre>
 
   <footer class="site-footer">
     <div class="section-inner footer-inner">
-      <div><strong>SemanticSplat</strong><p>Evidence-backed semantic search for 3DGS digital twins.</p></div>
-      <div class="footer-links"><a href="https://github.com/LeoPython2006/beyond-proximity-public">GitHub</a><a href="assets/semanticsplat-paper.pdf">Paper</a><a href="data/datasets.json">Dataset manifest</a></div>
+      <div><strong>Beyond Proximity</strong><p>Evidence-backed, graph-pruned semantic search over 3D scene records.</p></div>
+      <div class="footer-links"><a href="https://github.com/BearAx/beyond-proximity-public">GitHub</a><a href="assets/research-preprint.pdf">Paper</a><a href="data/evidence-summary.json">Metrics</a><a href="data/datasets.json">Datasets</a></div>
     </div>
   </footer>
 

@@ -11,8 +11,18 @@ on:
       - "scripts/build_project_site.py"
       - "papers/beyond-proximity/main.pdf"
       - "papers/beyond-proximity/figures/**"
+      - "papers/twinworld/figures/fig_agent_mcp_workflow.png"
+      - "papers/twinworld/figures/fig_five_scene_summary.png"
+      - "papers/twinworld/figures/fig_instruction_agent.png"
+      - "papers/twinworld/figures/fig_raw_rgbd_hierarchy.png"
+      - "papers/twinworld/figures/fig_hierarchy_construction_variants.png"
       - "docs/reports/final/graph_construction_cost.json"
+      - "docs/experiments/hierarchy_construction/four_variant_v1/hierarchy_evaluation.json"
+      - "docs/experiments/public_datasets/phase6_7_v3/**"
       - "outputs/graph_vs_flat/five_scene_graph_vs_flat_v2/metrics_summary.json"
+      - "outputs/agent_semantic/five_scene_four_variant_v1/metrics_summary.json"
+      - "outputs/instruction_agent/five_scene_qwen25_05b_graph_v1/metrics_summary.json"
+      - "outputs/raw_rgbd_hierarchy/five_scene_clip_v1/metrics_summary.json"
       - "backend/data/scenes/ConferenceHall-capture-pilot/images/v018.png"
   workflow_dispatch:
 

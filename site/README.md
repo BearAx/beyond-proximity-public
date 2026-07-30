@@ -1,4 +1,4 @@
-# SemanticSplat Project Site
+# Beyond Proximity Project Site
 
 This directory contains the static GitHub Pages source. Repository artifacts
 are copied into a clean deployment directory by:
@@ -13,5 +13,7 @@ publishes `site-dist/`.
 
 The builder intentionally excludes licensed ScanNet/Replica images and raw
 scene data. It publishes exact scene IDs, official access links, team-owned
-captures, derived figures, canonical metrics, and the named-author academic
-preprint PDF.
+captures, derived figures, curated metric summaries, and the named-author
+academic preprint PDF. Values rendered in the page are refreshed from
+`data/evidence-summary.json`, which the builder derives from frozen experiment
+outputs.

@@ -189,12 +189,12 @@ def main() -> int:
         ROOT / "papers" / "twinworld" / "tables" / "new_experiment_macros.tex"
     ).read_text(encoding="utf-8")
     required = (
-        r"\title{Agent-Guided Hierarchical Semantic Search over 3D Scene Records}",
+        r"\title{SemanticSplat: Graph-Pruned Semantic Search}",
         r"\author{Anonymous Authors}",
         r"\subsection{Instruction-agent traversal}",
         r"\subsection{Agent/MCP hierarchy construction}",
         r"\subsection{Automatic raw RGB-D hierarchy}",
-        r"\subsection{Complete instruction-agent benchmark}",
+        r"\subsection{Local instruction-model stress test}",
         r"\subsection{Raw RGB-D hierarchy versus manual reference}",
         r"\subsection{Semantic-record construction variants}",
         "figures/fig_instruction_agent.pdf",
@@ -224,8 +224,6 @@ def main() -> int:
         check(f"tex_has:{value}", value in tex, True)
 
     forbidden = (
-        "SemanticSplat: Graph-Pruned Semantic Search",
-        "SemanticSplat",
         "Paper ID #XXXXX",
         "XXXXX",
         "Person 1",

@@ -1,6 +1,6 @@
 {
-  "schema_version": "semanticsplat.public_site_dataset_manifest.v1",
-  "generated_for": "SemanticSplat project page",
+  "schema_version": "graph_pruned_search.public_site_dataset_manifest.v2",
+  "generated_for": "Beyond Proximity project page",
   "redistribution_policy": "The site publishes identifiers, metadata, derived metrics, and code. It does not redistribute licensed ScanNet or Replica scene files.",
   "datasets": [
     {
@@ -35,8 +35,12 @@
       ],
       "scene_count": 8,
       "gt_box_count": 392,
-      "query_count": 48,
+      "original_query_count": 48,
+      "extended_query_count": 64,
+      "extended_positive_count": 56,
+      "extended_negative_count": 8,
       "query_sources": ["Nr3D", "Sr3D+"],
+      "evaluation_mode": "oracle object identities and boxes; retrieval quality, not automatic map perception",
       "raw_data_redistributed": false
     },
     {
@@ -46,6 +50,9 @@
       "scene_count": 8,
       "gt_box_count": 575,
       "query_count": 56,
+      "positive_count": 48,
+      "negative_count": 8,
+      "evaluation_mode": "oracle object identities and boxes; retrieval sanity ceiling",
       "raw_data_redistributed": false
     }
   ]

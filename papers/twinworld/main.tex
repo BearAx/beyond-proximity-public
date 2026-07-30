@@ -23,39 +23,41 @@
 \input{tables/new_experiment_macros.tex}
 \emergencystretch=2em
 
-\title{Agent-Guided Hierarchical Semantic Search over 3D Scene Records}
-\titlerunning{Agent-Guided Hierarchical Semantic Search}
+\title{SemanticSplat: Graph-Pruned Semantic Search}
+\titlerunning{SemanticSplat: Graph-Pruned Semantic Search}
 
 \author{Anonymous Authors}
 \authorrunning{Anonymous}
 \institute{Anonymous Institution}
 
 \begin{document}
+\raggedbottom
 \maketitle
 
 \begin{abstract}
-Photorealistic 3D digital twins remain difficult to query because visual
-observations, objects, and spatial evidence grow faster than the context
-available to a reasoning agent. We study a representation-agnostic hierarchy
-that prunes a scene before semantic grounding. The system supports
-deterministic lexical and embedding controls, an instruction-tuned language
-agent, an original Cursor-Agent/MCP construction path, and a hierarchy
-constructed directly from posed RGB-D observations. On five indoor/outdoor
-captures (97 RGB-D views; 150 queries), a complete Qwen2.5 run checks
-\AgentViews{} views per query and obtains hit@1 / hit@3 of \AgentHitOne{} /
-\AgentHitThree{} on 125 verified positives while recording every prompt, call,
-native token count, latency, and trace. Five direct Cursor MCP calls construct
-scene partitions without access to manual zones and reach pairwise F1
-\CursorPairwiseFOne{} against the overlapping manual reference. A separate
-CLIP constructor reads zero manual ViewJSON records and reaches pairwise F1
-\RawPairwiseFOne{} from RGB, depth, and poses. In the deterministic control,
-mean per-query view reduction is \ViewSavingsPerQuery{}\%, while the hit@1
-difference is inconclusive and hit@3 declines significantly under a paired
-bootstrap. ScanNet relation-aware graph search reaches Acc@0.25 0.604 versus
-0.500 without relations while checking 90.3\% fewer objects than flat search.
-Replica is reported only as an oracle-map sanity ceiling.
-\keywords{Digital twins \and 3D scene graphs \and RGB-D \and Language agents
-\and Grounding.}
+Large 3D scene collections contain more visual and semantic evidence than a
+query reasoner can inspect efficiently. We study a representation-agnostic,
+traceable hierarchy that prunes scene records before semantic grounding while
+keeping construction and query costs separate. The evaluation combines
+same-scorer lexical and embedding controls, a fully instrumented local
+instruction model, an original Cursor-Agent/MCP construction path, and a
+hierarchy predicted directly from posed RGB-D observations. Across five
+indoor/outdoor captures and 150 queries, lexical hierarchical search reduces
+mean checked views by \ViewSavingsPerQuery{}\% and serialized context by
+\TokenSavingsPerQuery{}\% relative to flat search. This efficiency has a
+measured quality trade-off: hit@1 is statistically inconclusive and hit@3
+declines under a paired bootstrap. A complete Qwen2.5-0.5B run verifies
+reproducible model-driven traversal and accounting, but underperforms the
+lexical control and is therefore treated as a small-model baseline rather than
+a state-of-the-art reasoning result. Two construction tracks avoid manual zone
+access and expose the remaining automatic-hierarchy gap. Calibrated ScanNet
+experiments further show that explicit spatial relations improve grounding
+while preserving substantial pruning. Together, the results characterize an
+efficiency--quality frontier for semantic search rather than claiming that
+hierarchy or language models dominate flat retrieval.
+\keywords{Hierarchical semantic search \and 3D scene graphs \and RGB-D scene
+understanding \and Open-vocabulary grounding \and Language agents \and
+Context-efficient retrieval.}
 \end{abstract}
 
 \section{Introduction}
@@ -100,6 +102,17 @@ evaluated against but not constructed from manual zone references.
 object-grounding pilots, and native ConceptGraphs/LangSplat feasibility runs,
 with protocol differences stated explicitly.
 \end{itemize}
+
+\paragraph{Headline findings.}
+The lexical hierarchy checks 4.77 rather than 19.40 views per query and uses
+1,014 rather than 3,168 estimated input tokens, but its hit@3 is 0.808 versus
+0.928 for flat retrieval. The fully traced Qwen2.5-0.5B run obtains hit@1 /
+hit@3 of \AgentHitOne{} / \AgentHitThree{}, below the lexical hierarchy's
+0.680 / 0.808, while establishing exact prompts, calls, tokens, latency, and
+branch decisions. Cursor-Agent/MCP construction reaches pairwise F1
+\CursorPairwiseFOne{} against the overlapping manual zones; the raw RGB-D CLIP
+constructor reaches \RawPairwiseFOne{} without reading ViewJSON or zone files.
+On ScanNet, relation-aware graph search improves Acc@0.25 from 0.500 to 0.604.
 
 \section{Related Work}
 \paragraph{Language-aligned 3D representations.}
@@ -319,7 +332,7 @@ negative labels exist. Structural hierarchy quality uses pairwise F1 and Rand
 index. Missing predictions stay in the relevant denominator with score zero.
 
 \section{Experiments}
-\subsection{Complete instruction-agent benchmark}
+\subsection{Local instruction-model stress test}
 Table~\ref{tab:agent} and Fig.~\ref{fig:agent} report all 150 queries. The
 instruction agent reaches hit@1 \AgentHitOne{}, hit@3 \AgentHitThree{}, and MRR
 \AgentMRR{} on the 125 labeled positives while checking \AgentViews{} views.
@@ -329,9 +342,20 @@ CPU latency is \AgentLatencySeconds{}\,s/query. Across the run, the saved
 ledger contains \AgentTotalCalls{} model calls and \AgentTotalTokens{} exact
 native tokens.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_instruction_agent.pdf}
+\caption{Local instruction-model stress test against deterministic graph
+controls. (a) Point estimates and Wilson 95\% intervals for hit rates; MRR is
+shown separately. (b--d) Measured search effort, native input tokens, and CPU
+latency. The latency axis is logarithmic. Tokenizer semantics differ by model,
+so token counts describe actual method inputs rather than billing cost.}
+\label{fig:agent}
+\end{figure}
+
 \begin{table}[H]
 \centering
-\caption{Complete instruction-agent execution. Tokens are native Qwen
+\caption{Complete local instruction-model execution. Tokens are native Qwen
 tokenizer counts; latency is deterministic CPU wall time.}
 \label{tab:agent}
 \small
@@ -345,20 +369,14 @@ Qwen graph agent & 150 & 125 & \AgentHitOne & \AgentHitThree & \AgentMRR
 \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{figures/fig_instruction_agent.pdf}
-\caption{Instruction-agent evidence against deterministic graph controls.
-Tokenizer semantics differ by model, so token bars measure each method's
-actual input representation rather than a billing comparison.}
-\label{fig:agent}
-\end{figure}
-
 This run directly answers whether the hierarchy can be traversed by a real
 language model. The answer is yes operationally: all prompts and responses are
-valid and reproducible. Quality remains an empirical result rather than a
-claim of LLM superiority; the smaller Qwen model is included to make the
-complete run credential-independent.
+valid and reproducible. Relative to the lexical graph control, however, Qwen
+reduces hit@1 by 0.312 and hit@3 by 0.112 while checking 2.02 times as many
+views. It is deliberately reported as a reproducible 0.5B CPU stress test, not
+as evidence that an agent outperforms deterministic retrieval. A stronger
+7--8B instruction-model comparison is the appropriate next step for a
+main-track extension.
 
 \subsection{Raw RGB-D hierarchy versus manual reference}
 The constructor processes 97 RGB images, 97 depth maps, and 97 poses using
@@ -368,6 +386,16 @@ text tokens for semantic branch labeling. Construction takes
 files. Against the manual overlapping zones, macro pairwise F1 is
 \RawPairwiseFOne{} and macro Rand index is \RawRandIndex{}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/fig_raw_rgbd_hierarchy.pdf}
+\caption{Automatic hierarchy construction and retrieval. (a) Hit-rate
+whiskers are Wilson 95\% intervals; MRR is a point estimate. (b) Mean views
+checked under the fixed CLIP scorer. (c) Frozen agreement between raw RGB-D
+clusters and manual zones, measured only after construction.}
+\label{fig:automatic}
+\end{figure}
+
 At query time, flat CLIP obtains hit@1 / hit@3
 \FlatClipHitOne{} / \FlatClipHitThree{} while checking \FlatClipViews{} views.
 Manual-hierarchy CLIP obtains \ManualHitOne{} / \ManualHitThree{} while
@@ -376,15 +404,7 @@ checking \ManualViews{} views. The automatic hierarchy obtains
 (Fig.~\ref{fig:automatic}). This experiment exposes rather than hides the cost
 of removing manual semantics.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{figures/fig_raw_rgbd_hierarchy.pdf}
-\caption{Automatic hierarchy construction and retrieval. Structure is scored
-only after the raw artifact is frozen; all retrieval variants use the same
-CLIP query/image scorer.}
-\label{fig:automatic}
-\end{figure}
-
+\FloatBarrier
 \subsection{Semantic-record construction variants}
 Table~\ref{tab:construction} and Fig.~\ref{fig:construction} compare four
 hierarchies under the same 97 records, 150 queries, and fixed leaf scorer. The
@@ -404,7 +424,7 @@ by $-0.024$, while checking 5.53 rather than 4.77 views; this is a comparable
 controlled retrieval profile, not a claim of equivalent independent-GT
 accuracy.
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \caption{Hierarchy construction from shared semantic records. Quality uses
 125 verified positives; efficiency uses all 150 queries. Tokens are measured
@@ -413,7 +433,7 @@ serialized query context, not Cursor provider billing.}
 \small
 \begin{tabular}{lccccccc}
 \toprule
-Variant & Zones & F1 & Jacc. & hit@1 & hit@3 & Views & Tokens \\
+Variant & Zones & F1 & \shortstack{Best-zone\\Jaccard} & hit@1 & hit@3 & Views & Tokens \\
 \midrule
 Manual reference & 26 & 1.000 & 1.000 & .680 & .808 & 4.77 & 1,014 \\
 Pose only & 10 & \PosePairwiseFOne & .526 & .760 & \PoseHitThree & 6.07 & 1,780 \\
@@ -424,15 +444,19 @@ Cursor Agent + MCP & \CursorZones & \CursorPairwiseFOne & \CursorJaccard
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{figures/fig_hierarchy_construction_variants.pdf}
-\caption{Construction variants under a fixed query policy. Manual-reference
-agreement is descriptive rather than independent GT because zones overlap and
-were authored during the pilot.}
+\caption{Construction variants under a fixed query policy. (a) Hit@1 and
+hit@3 with Wilson 95\% intervals. (b) Pairwise F1 and best-zone Jaccard against
+the manual zones. (c) Mean views checked per query. No variant dominates
+structure, retrieval, and cost.
+Manual-reference agreement is descriptive rather than independent GT because
+zones overlap and were authored during the pilot.}
 \label{fig:construction}
 \end{figure}
 
+\FloatBarrier
 \subsection{Deterministic same-input controls}
 On the manual records, flat lexical checks 19.4 views and 3,168 estimated
 tokens per query. Hierarchical lexical checks 4.77 views and 1,014 tokens.
@@ -453,11 +477,13 @@ under the paired 10,000-resample percentile bootstrap. BGE graph search checks
 obtains 0.680 and 0.928. These controls show that aggressive pruning saves
 context but can remove relevant evidence.
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.92\linewidth]{figures/fig_five_scene_summary.pdf}
-\caption{Manual-record lexical control. The hierarchy reduces checked views
-and estimated context but does not preserve flat hit@$k$.}
+\includegraphics[width=0.88\linewidth]{figures/fig_five_scene_summary.pdf}
+\caption{Manual-record lexical control as paired changes. Top: graph-to-flat
+cost ratios for views, serialized context, and runtime. Bottom: verified-view
+hit rates on the same 125 labeled queries. The hierarchy sharply reduces
+evidence and context, but does not preserve flat hit@$k$.}
 \label{fig:control}
 \end{figure}
 
